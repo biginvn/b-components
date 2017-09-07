@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
+    <script src="b-components.js"></script>
+</head>
+
+<body>
+    <template id="main-page">
+        <b-switch v-model="checked"></b-switch>
+    </template>
+    <div id="app"></div>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        data : {
+          checked : true
+        },
+        template: '#main-page'
+    });
+    </script>
+</body>
+
+</html>
