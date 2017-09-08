@@ -26,5 +26,9 @@
         box-sizing: border-box;
         transition: all .2s ease-in-out;
         padding: 8px 15px;
+        &:disabled {
+            border-color: whitesmoke;
+            color: #c5c5c5;
+        }
     }
 }
