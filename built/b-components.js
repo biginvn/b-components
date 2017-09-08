@@ -156,7 +156,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['value'],
+	props: ['value', 'disabled'],
 	methods: {
 		update() {
 			var checked = true;
@@ -191,7 +191,7 @@ exports = module.exports = __webpack_require__(5)();
 
 
 // module
-exports.push([module.i, ".b-switch {\n  display: inline-block;\n  box-sizing: border-box;\n  position: relative;\n  min-width: 51px;\n  font-size: 17px;\n  padding: 0 20px;\n  border: none;\n  overflow: visible;\n  width: 51px;\n  height: 32px;\n  text-align: left; }\n  .b-switch .switch__input {\n    padding: 0;\n    border: 0;\n    background-color: transparent;\n    outline: 0;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    vertical-align: top;\n    z-index: 0;\n    position: absolute; }\n    .b-switch .switch__input:checked + .switch__toggle {\n      box-shadow: inset 0 0 0 2px #5198db;\n      background-color: #5198db; }\n    .b-switch .switch__input:checked + .switch__toggle > .switch__handle {\n      left: 21px;\n      box-shadow: 0 3px 2px rgba(0, 0, 0, 0.25); }\n  .b-switch .switch__toggle {\n    position: absolute;\n    border-radius: 30px;\n    -webkit-transition-property: all;\n    transition-property: all;\n    -webkit-transition-duration: .35s;\n    transition-duration: .35s;\n    -webkit-transition-timing-function: ease-out;\n    transition-timing-function: ease-out;\n    box-shadow: inset 0 0 0 2px #e5e5e5;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0; }\n  .b-switch :checked + .switch__toggle {\n    box-shadow: inset 0 0 0 2px #5198db;\n    background-color: #5198db; }\n  .b-switch .switch__handle {\n    position: absolute;\n    background-color: #fff;\n    box-sizing: border-box;\n    border-radius: 28px;\n    height: 28px;\n    width: 28px;\n    left: 1px;\n    top: 2px;\n    -webkit-transition-property: all;\n    transition-property: all;\n    -webkit-transition-duration: .35s;\n    transition-duration: .35s;\n    -webkit-transition-timing-function: cubic-bezier(0.59, 0.01, 0.5, 0.99);\n    transition-timing-function: cubic-bezier(0.59, 0.01, 0.5, 0.99);\n    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25), 0 3px 2px rgba(0, 0, 0, 0.25); }\n  .b-switch .switch__touch {\n    position: absolute;\n    top: -5px;\n    bottom: -5px;\n    left: -10px;\n    right: -10px; }\n", ""]);
+exports.push([module.i, ".b-switch {\n  display: inline-block;\n  box-sizing: border-box;\n  position: relative;\n  min-width: 51px;\n  font-size: 17px;\n  padding: 0 20px;\n  border: none;\n  overflow: visible;\n  width: 51px;\n  height: 32px;\n  text-align: left; }\n  .b-switch .switch__input {\n    padding: 0;\n    border: 0;\n    background-color: transparent;\n    outline: 0;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    vertical-align: top;\n    z-index: 0;\n    position: absolute; }\n    .b-switch .switch__input:checked + .switch__toggle {\n      box-shadow: inset 0 0 0 2px #5198db;\n      background-color: #5198db; }\n    .b-switch .switch__input:checked + .switch__toggle > .switch__handle {\n      left: 21px;\n      box-shadow: 0 3px 2px rgba(0, 0, 0, 0.25); }\n    .b-switch .switch__input:disabled + .switch__toggle {\n      opacity: .3;\n      cursor: default;\n      pointer-events: none; }\n  .b-switch .switch__toggle {\n    position: absolute;\n    border-radius: 30px;\n    -webkit-transition-property: all;\n    transition-property: all;\n    -webkit-transition-duration: .35s;\n    transition-duration: .35s;\n    -webkit-transition-timing-function: ease-out;\n    transition-timing-function: ease-out;\n    box-shadow: inset 0 0 0 2px #e5e5e5;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0; }\n  .b-switch :checked + .switch__toggle {\n    box-shadow: inset 0 0 0 2px #5198db;\n    background-color: #5198db; }\n  .b-switch .switch__handle {\n    position: absolute;\n    background-color: #fff;\n    box-sizing: border-box;\n    border-radius: 28px;\n    height: 28px;\n    width: 28px;\n    left: 1px;\n    top: 2px;\n    -webkit-transition-property: all;\n    transition-property: all;\n    -webkit-transition-duration: .35s;\n    transition-duration: .35s;\n    -webkit-transition-timing-function: cubic-bezier(0.59, 0.01, 0.5, 0.99);\n    transition-timing-function: cubic-bezier(0.59, 0.01, 0.5, 0.99);\n    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25), 0 3px 2px rgba(0, 0, 0, 0.25); }\n  .b-switch .switch__touch {\n    position: absolute;\n    top: -5px;\n    bottom: -5px;\n    left: -10px;\n    right: -10px; }\n", ""]);
 
 // exports
 
@@ -821,7 +821,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('input', {
     staticClass: "switch__input",
     attrs: {
-      "type": "checkbox"
+      "type": "checkbox",
+      "disabled": _vm.disabled
     },
     domProps: {
       "checked": _vm.value

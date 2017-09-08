@@ -1,6 +1,6 @@
 <template>
 	<div checked="" class="b-switch" v-on:click="update()">
-      	<input type="checkbox" class="switch__input" v-bind:checked="value">
+      	<input type="checkbox" class="switch__input" v-bind:checked="value" :disabled="disabled">
 		<div class="switch__toggle">
 			<div class="switch__handle">
 				<div class="switch__touch"></div>
@@ -11,7 +11,7 @@
 <script>
 
 	export default {
-		props: ['value'],
+		props: ['value', 'disabled'],
 		methods: {
 			update() {
 				var checked = true;

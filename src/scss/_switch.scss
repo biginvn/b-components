@@ -38,6 +38,11 @@
 		    left: 21px;
 		    box-shadow: 0 3px 2px rgba(0,0,0,.25);
 		}
+		&:disabled+.switch__toggle {
+		    opacity: .3;
+		    cursor: default;
+		    pointer-events: none;
+		}
 	}
 	
 	.switch__toggle {

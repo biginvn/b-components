@@ -9,7 +9,13 @@
 
 <body>
     <template id="main-page">
-        <b-switch v-model="checked"></b-switch>
+        <div>
+            <p>Enabled</p>
+            <b-switch v-model="checked"></b-switch>
+            <p>Disabled</p>
+            <b-switch v-model="checked" disabled></b-switch>    
+        </div>
+        
     </template>
     <div id="app"></div>
     <script>
