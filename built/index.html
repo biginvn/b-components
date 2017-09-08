@@ -3,43 +3,59 @@
 
 <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
     <script src="b-components.js"></script>
 </head>
 
 <body>
+<div class="container">
     <template id="main-page">
         <div>
             <figure>
                 <h3>Switch</h3>
-                <p>Enabled</p>
+                <p class="mb-2 mt-2"><strong>Enabled</strong></p>
                 <b-switch v-model="checked"></b-switch>
-                <p>Disabled</p>
+                <p  class="mb-2 mt-2"><strong>Disabled</strong></p>
                 <b-switch v-model="checked" disabled></b-switch>    
             </figure>
 
             <figure>
                 <h3>Switch</h3>
-                <p>Enabled</p>
+                <p class="mb-2 mt-2"><strong>Enabled</strong></p>
                 <b-float-label-input v-model="input" placeholder="Input yout text" label="Label"></b-float-label-input>
-                <p>Disabled</p>
+                <p class="mb-2 mt-2"><strong>Disabled</strong></p>
                 <b-float-label-input v-model="inputDisabled" placeholder="Input yout text" label="Label" disabled></b-float-label-input>    
+            </figure>
+
+            <figure>
+                <h3>Checkbox</h3>
+                <p class="mb-2 mt-2"><strong>Enabled</strong></p>
+                    <b-checkbox v-model="checkbox" placeholder="Input yout text" label="Label"></b-checkbox>
+                    <b-checkbox v-model="checkboxFalse" placeholder="Input yout text" label="Label"></b-checkbox>
+                <p class="mb-2 mt-2"><strong>Enabled</strong></p>
+                    <b-checkbox v-model="checkbox" disabled placeholder="Input yout text" label="Label"></b-checkbox>
+                    <b-checkbox v-model="checkboxFalse" disabled placeholder="Input yout text" label="Label"></b-checkbox>    
             </figure>
         </div>
         
     </template>
     <div id="app"></div>
-    <script>
+</div>
+    
+ <script>
     var vm = new Vue({
         el: '#app',
         data : {
           checked : true,
           input : 'testing',
-          inputDisabled : 'testing- input 2'
+          inputDisabled : 'testing- input 2',
+          checkbox : true,
+          checkboxFalse : false
         },
         template: '#main-page'
     });
-    </script>
+    </script>   
 </body>
 
 </html>

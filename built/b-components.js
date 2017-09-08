@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -170,7 +170,7 @@ module.exports = function normalizeComponent (
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(7);
+var content = __webpack_require__(9);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -178,7 +178,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(11)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -201,9 +201,49 @@ if(false) {
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(4),
+  __webpack_require__(5),
   /* template */
-  __webpack_require__(11),
+  __webpack_require__(13),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/components/Checkbox.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Checkbox.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1adc8271", Component.options)
+  } else {
+    hotAPI.reload("data-v-1adc8271", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(6),
+  /* template */
+  __webpack_require__(14),
   /* styles */
   null,
   /* scopeId */
@@ -235,15 +275,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(5),
+  __webpack_require__(7),
   /* template */
-  __webpack_require__(12),
+  __webpack_require__(15),
   /* styles */
   null,
   /* scopeId */
@@ -275,7 +315,32 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 4 */
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['value', 'disabled'],
+	methods: {
+		update() {
+			var checked = true;
+			if (this.value) checked = false;
+			this.$emit('input', checked);
+		}
+	}
+
+});
+
+/***/ }),
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -317,7 +382,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -346,17 +411,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Switch__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Switch__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Switch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Switch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_FloatLabelInput__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_FloatLabelInput__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_FloatLabelInput___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_FloatLabelInput__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__scss_b_component_scss__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__scss_b_component_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__scss_b_component_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Checkbox__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_Checkbox__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__scss_b_component_scss__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__scss_b_component_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__scss_b_component_scss__);
+
 
 
 
@@ -364,23 +432,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 Vue.component('BSwitch', __WEBPACK_IMPORTED_MODULE_0__components_Switch___default.a);
 Vue.component('BFloatLabelInput', __WEBPACK_IMPORTED_MODULE_1__components_FloatLabelInput___default.a);
+Vue.component('BCheckbox', __WEBPACK_IMPORTED_MODULE_2__components_Checkbox___default.a);
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)();
+exports = module.exports = __webpack_require__(10)();
 // imports
 
 
 // module
-exports.push([module.i, ".b-switch {\n  display: inline-block;\n  box-sizing: border-box;\n  position: relative;\n  min-width: 51px;\n  font-size: 17px;\n  padding: 0 20px;\n  border: none;\n  overflow: visible;\n  width: 51px;\n  height: 32px;\n  text-align: left; }\n  .b-switch .switch__input {\n    padding: 0;\n    border: 0;\n    background-color: transparent;\n    outline: 0;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    vertical-align: top;\n    z-index: 0;\n    position: absolute; }\n    .b-switch .switch__input:checked + .switch__toggle {\n      box-shadow: inset 0 0 0 2px #5198db;\n      background-color: #5198db; }\n    .b-switch .switch__input:checked + .switch__toggle > .switch__handle {\n      left: 21px;\n      box-shadow: 0 3px 2px rgba(0, 0, 0, 0.25); }\n    .b-switch .switch__input:disabled + .switch__toggle {\n      opacity: .3;\n      cursor: default;\n      pointer-events: none; }\n  .b-switch .switch__toggle {\n    position: absolute;\n    border-radius: 30px;\n    -webkit-transition-property: all;\n    transition-property: all;\n    -webkit-transition-duration: .35s;\n    transition-duration: .35s;\n    -webkit-transition-timing-function: ease-out;\n    transition-timing-function: ease-out;\n    box-shadow: inset 0 0 0 2px #e5e5e5;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0; }\n  .b-switch :checked + .switch__toggle {\n    box-shadow: inset 0 0 0 2px #5198db;\n    background-color: #5198db; }\n  .b-switch .switch__handle {\n    position: absolute;\n    background-color: #fff;\n    box-sizing: border-box;\n    border-radius: 28px;\n    height: 28px;\n    width: 28px;\n    left: 1px;\n    top: 2px;\n    -webkit-transition-property: all;\n    transition-property: all;\n    -webkit-transition-duration: .35s;\n    transition-duration: .35s;\n    -webkit-transition-timing-function: cubic-bezier(0.59, 0.01, 0.5, 0.99);\n    transition-timing-function: cubic-bezier(0.59, 0.01, 0.5, 0.99);\n    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25), 0 3px 2px rgba(0, 0, 0, 0.25); }\n  .b-switch .switch__touch {\n    position: absolute;\n    top: -5px;\n    bottom: -5px;\n    left: -10px;\n    right: -10px; }\n\n.b-float-label {\n  position: relative; }\n  .b-float-label label {\n    position: absolute;\n    opacity: 0;\n    top: 0px;\n    left: 10px;\n    height: 20px;\n    font-size: 11px;\n    color: #1976d2;\n    padding: 0px 10px;\n    background-color: #fff;\n    transition: all .2s ease-in-out; }\n  .b-float-label label.active {\n    opacity: 1;\n    top: -10px; }\n  .b-float-label input[type=text] {\n    width: 100%;\n    outline: 0;\n    line-height: 1.5;\n    border-radius: 3px;\n    border: 1px solid #dfdfdf;\n    background-color: #fff;\n    box-sizing: border-box;\n    transition: all .2s ease-in-out;\n    padding: 8px 15px; }\n    .b-float-label input[type=text]:disabled {\n      border-color: whitesmoke;\n      color: #c5c5c5;\n      cursor: no-drop; }\n", ""]);
+exports.push([module.i, ".b-switch {\n  display: inline-block;\n  box-sizing: border-box;\n  position: relative;\n  min-width: 51px;\n  font-size: 17px;\n  padding: 0 20px;\n  border: none;\n  overflow: visible;\n  width: 51px;\n  height: 32px;\n  text-align: left; }\n  .b-switch .switch__input {\n    padding: 0;\n    border: 0;\n    background-color: transparent;\n    outline: 0;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    vertical-align: top;\n    z-index: 0;\n    position: absolute; }\n    .b-switch .switch__input:checked + .switch__toggle {\n      box-shadow: inset 0 0 0 2px #5198db;\n      background-color: #5198db; }\n    .b-switch .switch__input:checked + .switch__toggle > .switch__handle {\n      left: 21px;\n      box-shadow: 0 3px 2px rgba(0, 0, 0, 0.25); }\n    .b-switch .switch__input:disabled + .switch__toggle {\n      opacity: .3;\n      cursor: default;\n      pointer-events: none; }\n  .b-switch .switch__toggle {\n    position: absolute;\n    border-radius: 30px;\n    -webkit-transition-property: all;\n    transition-property: all;\n    -webkit-transition-duration: .35s;\n    transition-duration: .35s;\n    -webkit-transition-timing-function: ease-out;\n    transition-timing-function: ease-out;\n    box-shadow: inset 0 0 0 2px #e5e5e5;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0; }\n  .b-switch :checked + .switch__toggle {\n    box-shadow: inset 0 0 0 2px #5198db;\n    background-color: #5198db; }\n  .b-switch .switch__handle {\n    position: absolute;\n    background-color: #fff;\n    box-sizing: border-box;\n    border-radius: 28px;\n    height: 28px;\n    width: 28px;\n    left: 1px;\n    top: 2px;\n    -webkit-transition-property: all;\n    transition-property: all;\n    -webkit-transition-duration: .35s;\n    transition-duration: .35s;\n    -webkit-transition-timing-function: cubic-bezier(0.59, 0.01, 0.5, 0.99);\n    transition-timing-function: cubic-bezier(0.59, 0.01, 0.5, 0.99);\n    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25), 0 3px 2px rgba(0, 0, 0, 0.25); }\n  .b-switch .switch__touch {\n    position: absolute;\n    top: -5px;\n    bottom: -5px;\n    left: -10px;\n    right: -10px; }\n\n.b-checkbox {\n  position: relative;\n  display: inline-block;\n  width: 22px;\n  height: 22px;\n  cursor: pointer; }\n  .b-checkbox .checkbox__input {\n    position: absolute;\n    right: 0;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    padding: 0;\n    border: 0;\n    background-color: transparent;\n    z-index: 1;\n    vertical-align: top;\n    outline: 0;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none; }\n    .b-checkbox .checkbox__input:checked + .checkbox__checkmark:after {\n      border-width: 1px; }\n    .b-checkbox .checkbox__input:checked + .checkbox__checkmark:before {\n      background: rgba(24, 103, 194, 0.81);\n      border: none; }\n    .b-checkbox .checkbox__input[disabled] + .checkbox__checkmark {\n      opacity: .5; }\n  .b-checkbox .checkbox__checkmark {\n    box-sizing: border-box;\n    background-clip: padding-box;\n    user-select: none;\n    position: relative;\n    height: 22px;\n    width: 22px;\n    pointer-events: none; }\n    .b-checkbox .checkbox__checkmark:after {\n      position: absolute;\n      content: '';\n      background: 0 0;\n      top: 7px;\n      left: 5px;\n      width: 11px;\n      height: 5px;\n      border: 2px solid #fff;\n      border-width: 0px;\n      border-top: none;\n      border-right: none;\n      border-radius: 0;\n      -webkit-transform: rotate(-45deg);\n      transform: rotate(-45deg);\n      opacity: 1; }\n    .b-checkbox .checkbox__checkmark:before {\n      position: absolute;\n      background: 0 0;\n      content: '';\n      box-sizing: border-box;\n      width: 22px;\n      height: 22px;\n      border: 1px solid #c7c7cd;\n      border-radius: 22px;\n      box-shadow: none;\n      left: 0; }\n\n.b-float-label {\n  position: relative; }\n  .b-float-label label {\n    position: absolute;\n    margin: 0;\n    opacity: 0;\n    top: 0px;\n    left: 10px;\n    height: 15px;\n    font-size: 11px;\n    color: #1976d2;\n    padding: 0px 5px;\n    background-color: #fff;\n    transition: all .2s ease-in-out; }\n  .b-float-label label.active {\n    opacity: 1;\n    top: -8px; }\n  .b-float-label input[type=text] {\n    width: 100%;\n    outline: 0;\n    line-height: 1.5;\n    font-size: 14px;\n    border-radius: 3px;\n    border: 1px solid #dfdfdf;\n    background-color: #fff;\n    box-sizing: border-box;\n    transition: all .2s ease-in-out;\n    padding: 6px 15px; }\n    .b-float-label input[type=text]:disabled {\n      border-color: whitesmoke;\n      color: #c5c5c5;\n      cursor: no-drop; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports) {
 
 /*
@@ -436,7 +505,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -482,7 +551,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(10);
+var	fixUrls = __webpack_require__(12);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -795,7 +864,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports) {
 
 
@@ -890,7 +959,40 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 11 */
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "b-checkbox"
+  }, [_c('input', {
+    staticClass: "checkbox__input",
+    attrs: {
+      "type": "checkbox",
+      "disabled": _vm.disabled
+    },
+    domProps: {
+      "checked": _vm.value
+    },
+    on: {
+      "click": function($event) {
+        _vm.update()
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "checkbox__checkmark"
+  })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1adc8271", module.exports)
+  }
+}
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -925,7 +1027,7 @@ if (false) {
 }
 
 /***/ }),
-/* 12 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
