@@ -29,6 +29,7 @@
         &:disabled {
             border-color: whitesmoke;
             color: #c5c5c5;
+            cursor: no-drop;
         }
     }
 }

@@ -1,6 +1,6 @@
 <template>
 	<div class="b-ios b-float-label">
-		<label :class="classLabel">{{ placeholder }}</label>
+		<label :class="classLabel">{{ label }}</label>
       	<input :placeholder="placeholder" type="text" ref="bInput" class="b__input" :value="value" :disabled="disabled" @input="change()">
 	</div>
 </template>
@@ -12,7 +12,7 @@
 				classLabel : ''
 			}
 		},
-		props	: ['value', 'disabled', 'placeholder'],
+		props	: ['value', 'disabled', 'placeholder', 'label'],
 		mounted () {
 			this.change();
 		},
