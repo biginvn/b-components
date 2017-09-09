@@ -61,6 +61,7 @@
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
                     <b-select id="select-red" label="Select color" v-model="select" :list="list" name="select-name" item-key="nameItem" item-val = "id"></b-select>
 
+                    <p>When update list, you should update again value for model </p>
                 <p><strong>Model : </strong> {{ select }} </p>
                 <p class="mb-2 mt-2"><strong>Disabled</strong></p>
             </figure>
@@ -77,7 +78,7 @@
         el: '#app',
         data : {
             radio: "yellow",
-            select : 111,
+            select : 11,
             list : [
                 { id : 10, 'nameItem' : 'Red'},
                 { id : 11, 'nameItem' : 'Yellow'},

@@ -1,0 +1,36 @@
+.b-select {
+    select {
+        font-size: 13px;
+        line-height: 1.5;
+        border-radius: 3px;
+        border: 1px solid #dfdfdf;
+        background-color: #fff;
+        box-sizing: border-box;
+        transition: all .2s ease-in-out;
+        padding: 6px 20px 6px 8px!important;
+        outline: none;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        &:after{
+            content: "\f078";
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: absolute;
+            display: block;
+            padding-top: 11px;
+            top: 1px;
+            right: 6px;
+            height: calc(100% - 2px);
+            width: 12px;
+            font-size: 10px;
+            color: #74767d;
+            z-index: 2;
+        }
+    }
+}
