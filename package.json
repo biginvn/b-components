@@ -2,7 +2,7 @@
   "name": "b-components",
   "version": "1.0.0",
   "description": "Components for Vue",
-  "main": "src/main.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack --config config/base.config.js",
     "dev-server": "./node_modules/.bin/webpack-dev-server --config config/base.config.js --content-base built/",
