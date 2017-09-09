@@ -11,7 +11,9 @@
 <body>
 <div class="container">
     <template id="main-page">
+
         <div>
+            <h1 class="text-center m-5">IOS FAKE</h1>
             <figure>
                 <h3>Switch</h3>
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
@@ -19,7 +21,7 @@
                 <b-switch v-model="checkboxFalse"></b-switch>
                 <p  class="mb-2 mt-2"><strong>Disabled</strong></p>
                 <b-switch v-model="checked" disabled></b-switch>  
-                <b-switch v-model="checkboxFalse"></b-switch>  
+                <b-switch v-model="checkboxFalse" disabled></b-switch>  
             </figure>
 
             <figure>
@@ -41,6 +43,18 @@
                     <b-checkbox v-model="checked" disabled placeholder="Input yout text" label="Label"></b-checkbox>
                     <b-checkbox v-model="checkboxFalse" disabled placeholder="Input yout text" label="Label"></b-checkbox>    
             </figure>
+
+            <figure>
+                <h3>Radio</h3>
+                <p class="mb-2 mt-2"><strong>Enabled</strong></p>
+                    <b-radio id="radio-red" label="Red" v-model="radio" name="radio-name" value="red"></b-radio>
+                    <b-radio id="radio-yellow" label="Yellow" v-model="radio" name="radio-name" value="yellow"></b-radio>
+
+                <p><strong>Model : </strong> {{ radio }} </p>
+                <p class="mb-2 mt-2"><strong>Disabled</strong></p>
+                    <b-radio v-model="radio" label="Red" name="radio-name-disabled" disabled value="red"></b-radio>
+                    <b-radio v-model="radio" label="Yellow" name="radio-name-disabled" disabled value="yellow"></b-radio>    
+            </figure>
         </div>
         
     </template>
@@ -51,6 +65,7 @@
     var vm = new Vue({
         el: '#app',
         data : {
+            radio: "yellow",
           checked : true,
           input : 'testing',
           inputDisabled : 'testing- input 2',
