@@ -67,6 +67,12 @@
 		    -webkit-transform: rotate(-45deg);
 		    transform: rotate(-45deg);
 		    opacity: 1;
+		    -webkit-transition-property: all;
+			transition-property: all;
+			-webkit-transition-duration: .35s;
+			transition-duration: .35s;
+			-webkit-transition-timing-function: ease-out;
+			transition-timing-function: ease-out;
 	    }
 
 	    &:before {
@@ -80,6 +86,12 @@
 		    border-radius: 22px;
 		    box-shadow: none;
 		    left: 0;
+		    -webkit-transition-property: all;
+			transition-property: all;
+			-webkit-transition-duration: .35s;
+			transition-duration: .35s;
+			-webkit-transition-timing-function: ease-out;
+			transition-timing-function: ease-out;
 		}
 
 	}
