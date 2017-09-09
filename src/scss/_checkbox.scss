@@ -1,7 +1,6 @@
 .b-checkbox{
     position: relative;
     display: inline-block;
-    width: 22px;
     height: 22px;
     cursor: pointer;
 	.checkbox__input{
@@ -37,18 +36,20 @@
 				opacity: .5;	
 			}
 		}
-	    
-
+	}
+	label{
+	    margin: 0 10px 0 30px;
 	}
 
 	.checkbox__checkmark {
 	    box-sizing: border-box;
 	    background-clip: padding-box;
 	    user-select: none;
-	    position: relative;
+	    position: absolute;
 	    height: 22px;
 	    width: 22px;
 	    pointer-events: none;
+	    display: inline-block;
 
 	    &:after {
     	    position: absolute;
