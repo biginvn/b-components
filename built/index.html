@@ -55,6 +55,17 @@
                     <b-radio v-model="radio" label="Red" name="radio-name-disabled" disabled value="red"></b-radio>
                     <b-radio v-model="radio" label="Yellow" name="radio-name-disabled" disabled value="yellow"></b-radio>    
             </figure>
+
+            <figure>
+                <h3>Select</h3>
+                <p class="mb-2 mt-2"><strong>Enabled</strong></p>
+                    <b-select id="select-red" label="Select color" v-model="select" :list="list" name="select-name" item-key="nameItem" item-val = "id"></b-select>
+
+                <p><strong>Model : </strong> {{ select }} </p>
+                <p class="mb-2 mt-2"><strong>Disabled</strong></p>
+            </figure>
+
+
         </div>
         
     </template>
@@ -66,6 +77,13 @@
         el: '#app',
         data : {
             radio: "yellow",
+            select : 111,
+            list : [
+                { id : 10, 'nameItem' : 'Red'},
+                { id : 11, 'nameItem' : 'Yellow'},
+                { id : 12, 'nameItem' : 'Blue'},
+                { id : 13, 'nameItem' : 'Green'}
+            ],
           checked : true,
           input : 'testing',
           inputDisabled : 'testing- input 2',
