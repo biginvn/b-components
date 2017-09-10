@@ -80,7 +80,13 @@
                     <b-select id="select-blue" label="Select color" disabled v-model="select" :list="list" name="select-name" item-key="nameItem" item-val = "id"></b-select>
                 </p>
             </figure>
-
+            
+            <figure>
+                <h3>Confirm</h3>
+                <div id="bottom">
+                    <confirm :func="alert" sure-class="btn--transparent-white" class="btn btn--red">Delete</confirm>
+                </div>
+            </figure>
 
         </div>
         
@@ -107,7 +113,12 @@
           checkbox : true,
           checkboxFalse : false
         },
-        template: '#main-page'
+        template: '#main-page',
+        method: {
+            alert(){
+                alert('test confirm succcess')
+            }
+        }
     });
     </script>   
 </body>
