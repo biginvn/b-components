@@ -1,6 +1,6 @@
 <template id="b-confirm-template">
 	<div>
-		<button v-show="!confirm" @click.prevent="confirm=!confirm">
+		<button v-show="!confirm" :class="btnClass" @click.prevent="confirm=!confirm">
 			<slot></slot>
 		</button><span
 						v-show="confirm"
@@ -20,9 +20,13 @@
 		</button>
 	</div>
 </template>
+
 <script>
+
 	export default {
 		props: {
+			btnClass :String,
+			sureClass: String,
 			func: {
 				type: Function,
 				required: true

@@ -14,4 +14,4 @@ Vue.component('BCheckbox', Checkbox);
 Vue.component('BRadio', Radio);
 Vue.component('BSelect', Select);
 Vue.component('BTextarea', Textarea);
-// Vue.component('b-confirm', Confirm);
+Vue.component('b-confirm', Confirm);
