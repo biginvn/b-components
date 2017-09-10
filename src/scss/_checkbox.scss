@@ -3,6 +3,9 @@
     display: inline-block;
     height: 22px;
     cursor: pointer;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 	.checkbox__input{
 		position: absolute;
 	    right: 0;

@@ -2,6 +2,9 @@
     position: relative;
     display: inline-block;
     cursor: pointer;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 	.radio__input{
 		position: absolute;
 	    right: 0;

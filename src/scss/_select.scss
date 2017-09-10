@@ -1,4 +1,9 @@
 .b-select {
+    position: relative;
+    display: inline-block;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     select {
         font-size: 13px;
         line-height: 1.5;
@@ -7,30 +12,75 @@
         background-color: #fff;
         box-sizing: border-box;
         transition: all .2s ease-in-out;
-        padding: 6px 20px 6px 8px!important;
+        padding: 6px 30px 6px 10px;
         outline: none;
         display: inline-block;
         position: relative;
         cursor: pointer;
         -webkit-appearance: none;
         -moz-appearance: none;
-        &:after{
-            content: "\f078";
-            display: inline-block;
-            font: normal normal normal 14px/1 FontAwesome;
-            text-rendering: auto;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            position: absolute;
-            display: block;
-            padding-top: 11px;
-            top: 1px;
-            right: 6px;
-            height: calc(100% - 2px);
-            width: 12px;
-            font-size: 10px;
-            color: #74767d;
-            z-index: 2;
+        &:disabled{
+            opacity: .5;
+            cursor: no-drop;
+            + .placeholder.show {
+                opacity: .5;
+                cursor: no-drop;
+            }
+        }
+        
+    }
+    .placeholder {
+        position: absolute;
+        z-index: 1;
+        top: 5px;
+        left: 10px;
+        font-size: 14px;
+        color: grey;
+        opacity: 0;
+        transition: all .2s ease-in-out;
+        &.show {
+            opacity: 1;
+        }
+    }
+
+
+    &:after{
+        content: "\f078";
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: absolute;
+        display: block;
+        padding-top: 11px;
+        top: 1px;
+        right: 6px;
+        height: calc(100% - 2px);
+        width: 12px;
+        font-size: 10px;
+        color: #74767d;
+        z-index: 2;
+    }
+    & > label {
+        opacity: 0;
+        visibility: hidden;
+        display: block;
+        position: absolute;
+        top: -6px;
+        left: 10px;
+        padding: 0 2px;
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 1;
+        color: #1976d2;
+        background-color: #fff;
+        border-radius-top-left: 3px;
+        transition: all .2s ease-in-out;
+        z-index: 1;
+        &.active{
+            opacity: 1;
+            visibility: visible;
         }
     }
 }

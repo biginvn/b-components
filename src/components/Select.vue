@@ -1,21 +1,27 @@
 <template>
 	<div class="b-select">
-		<label :for="id">{{ label }}</label>
-		<select :name="name" :id="id" :disabled="disabled" @change="update($event.target.value)" v-model="selected">
+		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
+		<select :placeholder="label" :name="name" :id="id" :disabled="disabled" @change="update($event.target.value)" v-model="selected">
 			<option v-for="item in items" :value="item.value">{{ item.name }}</option>
 		</select>
+		<span :class=" isActive ? 'placeholder' : 'placeholder show' ">{{ label }}</span>
 	</div>
 </template>
 <script>
 	export default {
 		data () {
 			return {
+				isActive : false
 			}
+		},
+		mounted () {
+			this.float()
 		},
 		props : [ 'id', 'default', 'label', 'name', 'disabled', 'list', 'item-key', 'item-val', 'value'],
 		computed : {
 			selected : {
 				get () {
+					this.float()
 					return this.value;
 				},
 				set(newValue) {
@@ -45,14 +51,32 @@
 		methods : {
 			update(val) {
 				this.$emit('input', val)
+				this.float()
 			},
-			isSelected(v) {
-				if(this.value == v){
-					this.selected = v
-					return true
+			float() {
+				if( this.$el== undefined || this.value == null || this.value.length == 0){
+					this.isActive = false;
+					return;
 				}
-				return false
+
+				if (this.isModelInList()){
+					this.isActive = true;
+					return;
+				}
+
+				this.isActive = false;
 			},
+			isModelInList() {
+				var found = false;
+				for (var i =0; i < this.items.length; i++){
+					var item = this.items[i]
+					if (item.value.toString() == this.value.toString()){
+						found = true;
+						break;
+					}
+				}
+				return found;
+			}
 		}
 
 	}

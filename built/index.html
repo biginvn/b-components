@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
     <script src="b-components.js"></script>
 </head>
@@ -60,10 +61,14 @@
                 <h3>Select</h3>
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
                     <b-select id="select-red" label="Select color" v-model="select" :list="list" name="select-name" item-key="nameItem" item-val = "id"></b-select>
+                    
 
                     <p>When update list, you should update again value for model </p>
                 <p><strong>Model : </strong> {{ select }} </p>
                 <p class="mb-2 mt-2"><strong>Disabled</strong></p>
+                <p>
+                    <b-select id="select-blue" label="Select color" disabled v-model="select" :list="list" name="select-name" item-key="nameItem" item-val = "id"></b-select>
+                </p>
             </figure>
 
 
@@ -80,10 +85,10 @@
             radio: "yellow",
             select : 11,
             list : [
-                { id : 10, 'nameItem' : 'Red'},
-                { id : 11, 'nameItem' : 'Yellow'},
-                { id : 12, 'nameItem' : 'Blue'},
-                { id : 13, 'nameItem' : 'Green'}
+                { id : 10, 'nameItem' : 'Red Shirt - Blue Car - Pink House'},
+                { id : 11, 'nameItem' : 'Yellow Shirt - Pink Car - White House'},
+                { id : 12, 'nameItem' : 'Blue Shirt - Green Car - Yellow House'},
+                { id : 13, 'nameItem' : 'Green Shirt - Yellow Car - Blue House'}
             ],
           checked : true,
           input : 'testing',

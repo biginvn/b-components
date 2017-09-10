@@ -1,5 +1,8 @@
 .b-float-label {
     position: relative;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     label {
         position: absolute;
         margin: 0;

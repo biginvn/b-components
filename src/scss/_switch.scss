@@ -10,6 +10,9 @@
     width: 51px;
     height: 32px;
     text-align: left;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     .switch__input {
 	    padding: 0;
 	    border: 0;
