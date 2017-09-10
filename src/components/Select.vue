@@ -18,6 +18,11 @@
 			this.float()
 		},
 		props : [ 'id', 'default', 'label', 'name', 'disabled', 'list', 'item-key', 'item-val', 'value'],
+		watch : {
+			value() {
+				this.float()
+			}
+		},
 		computed : {
 			selected : {
 				get () {
