@@ -1,7 +1,7 @@
 <template>
 	<div class="b-ios b-float-label">
 		<label :class="classLabel">{{ label }}</label>
-      	<input :placeholder="placeholder" type="text" ref="bInput" class="b__input" :value="value" :disabled="disabled" @input="change()">
+      	<input :placeholder="placeholder" type="text" ref="bInput" class="b__input" :value="value" :disabled="disabled" @input="change($event.target.value)">
 	</div>
 </template>
 <script>
@@ -14,7 +14,7 @@
 		},
 		props	: ['value', 'disabled', 'placeholder', 'label'],
 		mounted () {
-			this.change();
+			this.change(this.value);
 		},
 		watch :{
 			value(value) {
@@ -22,8 +22,8 @@
 			}
 		},
 		methods : {
-			change () {
-				this.updateChange(this.$refs.bInput.value);
+			change (value) {
+				this.updateChange(value);
 			},
 			updateChange (value) {
 				var isEmpty = value == undefined || value == null || value.length == 0 ? true : false;
