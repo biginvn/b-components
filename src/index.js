@@ -6,6 +6,7 @@ import Checkbox from './components/Checkbox';
 import Radio from './components/Radio';
 import Select from './components/Select';
 import Textarea from './components/Textarea';
+import Confirm from './components/Confirm';
 
 import './scss/b-component.scss'
 
@@ -15,3 +16,4 @@ Vue.component('BCheckbox', Checkbox);
 Vue.component('BRadio', Radio);
 Vue.component('BSelect', Select);
 Vue.component('BTextarea', Textarea);
+Vue.component('BConfirm', Confirm);

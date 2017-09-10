@@ -1,0 +1,41 @@
+$bg-black: #101010;
+$bg-gray: #f2f2f2;
+$bg-red: #df0923;
+
+$text-white: #fff;
+$text-black: #000;
+$text-gray: #d5d5d5;
+
+.b-btn{
+	display: inline-block;
+	padding: .7em 1em;
+	background-color: $bg-gray;
+	color: $text-white;
+	border: none;
+	text-align: center;
+	transition: .25s background-color;
+	text-decoration: none;
+
+	&:not([disabled]):not(.btn--nohover):hover{
+		color: $text-white;
+		background-color: $bg-black;
+	}
+
+	&--red{
+		background-color: $bg-red;
+	}
+
+	&--gray{
+		background-color: $text-gray;
+	}
+
+	&--transparent{
+		background-color: transparent;
+		color: $text-black;
+	}
+
+	&--transparent-white{
+		background-color: transparent;
+		color: $text-white;
+	}
+}
