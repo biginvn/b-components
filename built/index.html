@@ -84,7 +84,7 @@
             <figure>
                 <h3>Confirm</h3>
                 <div id="bottom">
-                    <confirm :func="alert" sure-class="btn--transparent-white" class="btn btn--red">Delete</confirm>
+                    <button :func="alert" is="BConfirm" sure-class="btn--transparent-white" class="btn btn--red">Delete</button>
                 </div>
             </figure>
 
@@ -114,7 +114,7 @@
           checkboxFalse : false
         },
         template: '#main-page',
-        method: {
+        methods: {
             alert(){
                 alert('test confirm succcess')
             }
