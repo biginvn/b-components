@@ -36,6 +36,16 @@
             </figure>
 
             <figure>
+                <h3>Textarea</h3>
+                <p class="mb-2 mt-2"><strong>Enabled</strong></p>
+                <b-textarea v-model="textarea" placeholder="Input yout text" label="Your textarea"></b-textarea>
+                <p>Model preview : {{ textarea }}</p>
+                
+                <p class="mb-2 mt-2"><strong>Disabled</strong></p>
+                <b-textarea v-model="textarea" placeholder="Input yout text" label="Label" disabled></b-textarea>    
+            </figure>
+
+            <figure>
                 <h3>Checkbox</h3>
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
                     <b-checkbox v-model="checked" placeholder="Input yout text" label="USA"></b-checkbox>
@@ -83,7 +93,8 @@
         el: '#app',
         data : {
             radio: "yellow",
-            select : 11,
+            textarea : 'Shayne',
+            select : null,
             list : [
                 { id : 10, 'nameItem' : 'Red Shirt - Blue Car - Pink House'},
                 { id : 11, 'nameItem' : 'Yellow Shirt - Pink Car - White House'},

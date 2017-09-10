@@ -5,6 +5,7 @@ import FloatLabelInput from './components/FloatLabelInput';
 import Checkbox from './components/Checkbox';
 import Radio from './components/Radio';
 import Select from './components/Select';
+import Textarea from './components/Textarea';
 
 import './scss/b-component.scss'
 
@@ -13,3 +14,4 @@ Vue.component('BFloatLabelInput', FloatLabelInput);
 Vue.component('BCheckbox', Checkbox);
 Vue.component('BRadio', Radio);
 Vue.component('BSelect', Select);
+Vue.component('BTextarea', Textarea);
