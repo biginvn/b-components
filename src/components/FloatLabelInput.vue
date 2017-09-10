@@ -14,7 +14,7 @@
 		},
 		props	: ['value', 'disabled', 'placeholder', 'label'],
 		mounted () {
-			this.change(this.value);
+			this.change();
 		},
 		watch :{
 			value(value) {
@@ -23,7 +23,7 @@
 		},
 		methods : {
 			change (value) {
-				this.updateChange(value);
+				this.updateChange(this.$refs.bInput.value);
 			},
 			updateChange (value) {
 				var isEmpty = value == undefined || value == null || value.length == 0 ? true : false;
