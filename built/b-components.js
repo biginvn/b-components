@@ -449,7 +449,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['value', 'disabled', 'id', 'label'],
+	data() {
+		return {
+			checkedStore: false
+		};
+	},
+	props: ['value', 'disabled', 'id', 'label', 'checked'],
+	created() {
+		if (this.value != undefined) {
+			this.checkedStore = this.value;
+		} else {
+			this.checkedStore = this.checked;
+		}
+	},
+	computed: {
+		isChecked() {
+			return this.checkedStore;
+		}
+	},
 	methods: {
 		update() {
 			var checked = true;
@@ -1300,7 +1317,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "disabled": _vm.disabled
     },
     domProps: {
-      "checked": _vm.value
+      "checked": _vm.isChecked
     },
     on: {
       "click": function($event) {
