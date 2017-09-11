@@ -9,7 +9,8 @@
 	export default {
 		data(){
 			return {
-				classLabel : ''
+				classLabel : '',
+				value : ''
 			}
 		},
 		props	: ['value', 'disabled', 'placeholder', 'label', 'class-name', 'name', 'id'],
