@@ -211,7 +211,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin_project\\b-components\\src\\components\\Checkbox.vue"
+Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/components/Checkbox.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Checkbox.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -251,7 +251,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin_project\\b-components\\src\\components\\Confirm.vue"
+Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/components/Confirm.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Confirm.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -291,7 +291,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin_project\\b-components\\src\\components\\FloatLabelInput.vue"
+Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/components/FloatLabelInput.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] FloatLabelInput.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -331,7 +331,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin_project\\b-components\\src\\components\\Radio.vue"
+Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/components/Radio.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Radio.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -371,7 +371,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin_project\\b-components\\src\\components\\Select.vue"
+Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/components/Select.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Select.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -411,7 +411,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin_project\\b-components\\src\\components\\Switch.vue"
+Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/components/Switch.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Switch.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -451,7 +451,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin_project\\b-components\\src\\components\\Textarea.vue"
+Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/components/Textarea.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Textarea.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -632,9 +632,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		classes() {
 			return (this.className ? this.className : '') + " b__input";
 		}
-	},
-	mounted() {
-		this.change();
 	},
 	watch: {
 		value(value) {
@@ -818,12 +815,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data() {
 		return {
-			classLabel: ''
+			classLabel: '',
+			text: ''
 		};
 	},
 	props: ['value', 'disabled', 'placeholder', 'label', 'col', 'row', 'class-name', 'id', 'name'],
 	mounted() {
-		this.change();
+		this.change(this.value);
 	},
 	watch: {
 		value(value) {
@@ -832,11 +830,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	methods: {
 		change(value) {
-			this.updateChange(this.$refs.bTextarea.value);
+			this.updateChange(value);
 		},
 		updateChange(value) {
 			var isEmpty = value == undefined || value == null || value.length == 0 ? true : false;
 			if (!isEmpty) this.classLabel = 'active';else this.classLabel = '';
+
+			this.text = value;
+			this.$el.querySelector('textarea').value = this.text;
 
 			this.$emit('input', value);
 		}
@@ -1433,7 +1434,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.change($event.target.value)
       }
     }
-  }, [_vm._v(_vm._s(_vm.value))])])
+  }, [_vm._v(_vm._s(_vm.text))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

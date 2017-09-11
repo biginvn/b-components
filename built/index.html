@@ -27,6 +27,10 @@
 
             <figure>
                 <h3>Float Label</h3>
+
+                <input v-model="input.nameB" type="text">
+                <input v-model="input.nameA" type="text">
+
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
                 <b-float-label-input name="minh" id="asdasd" class-name="minh class" v-model="input.name" placeholder="Input yout text" label="Label"></b-float-label-input>
                 <p>Model preview : {{ input.name }}</p>
@@ -38,6 +42,7 @@
             <figure>
                 <h3>Textarea</h3>
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
+                <textarea v-model="textareaV"></textarea>
                 <b-textarea v-model="textarea" placeholder="Input yout text" label="Your textarea"></b-textarea>
                 <p>Model preview : {{ textarea }}</p>
                 
@@ -96,12 +101,12 @@
                 </p>
             </figure>
             
-            <figure>
+            <!-- <figure>
                 <h3>Confirm</h3>
                 <div id="bottom">
                     <button is="b-confirm" sure-class="btn--transparent-white" btn-class="btn btn--red">Delete</button>
                 </div>
-            </figure>
+            </figure> -->
 
         </div>
         
@@ -114,7 +119,8 @@
         el: '#app',
         data : {
             radio: "yellow",
-            textarea : 'Shayne',
+            textarea : 'Test',
+            textareaV : 'Vue',
             checkedBoolean : true,
             select : null,
             list : [
