@@ -504,7 +504,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	computed: {
 		classes() {
-			return this.className + ' checkbox__input';
+			return (this.className ? this.className : '') + ' checkbox__input';
 		},
 		isChecked() {
 			return this.checkedStore;
@@ -591,7 +591,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	props: ['value', 'disabled', 'placeholder', 'label', 'class-name', 'name', 'id'],
 	computed: {
 		classes() {
-			return this.className + " b__input";
+			return (this.className ? this.className : '') + " b__input";
 		}
 	},
 	mounted() {
@@ -670,7 +670,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	mounted() {
 		this.float();
 	},
-	props: ['id', 'default', 'label', 'name', 'disabled', 'list', 'item-key', 'item-val', 'value', 'class-name'],
+	props: ['id', 'default', 'label', 'name', 'disabled', 'list', 'item-text', 'item-val', 'value', 'class-name'],
 	computed: {
 		selected: {
 			get() {
@@ -692,7 +692,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				let listItem = this.list[i];
 				let item = {
 					value: listItem[this.itemVal],
-					name: listItem[this.itemKey]
+					name: listItem[this.itemText]
 				};
 				items.push(item);
 			}
@@ -1379,7 +1379,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('textarea', {
     ref: "bTextarea",
-    class: _vm.className + ' b__textarea',
+    class: (_vm.className ? _vm.className : '') + ' b__textarea',
     attrs: {
       "placeholder": _vm.placeholder,
       "type": "text",
@@ -1499,7 +1499,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.selected),
       expression: "selected"
     }],
-    class: _vm.className + 'b__select_element',
+    class: (_vm.className ? _vm.className : '') + ' b__select_element',
     attrs: {
       "placeholder": _vm.label,
       "name": _vm.name,
@@ -1612,7 +1612,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "b-radio"
   }, [_c('input', {
     ref: "bRadio",
-    class: _vm.className + 'radio__input',
+    class: (_vm.className ? _vm.className : '') + ' radio__input',
     attrs: {
       "type": "radio",
       "name": _vm.name,

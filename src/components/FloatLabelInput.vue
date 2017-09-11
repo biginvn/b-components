@@ -15,7 +15,7 @@
 		props	: ['value', 'disabled', 'placeholder', 'label', 'class-name', 'name', 'id'],
 		computed : {
 			classes () {
-				return this.className + " b__input"
+				return (this.className?this.className:'') + " b__input"
 			}
 		},
 		mounted () {

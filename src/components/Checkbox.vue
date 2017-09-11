@@ -23,7 +23,7 @@
 		},
 		computed : {
 			classes () {
-				return this.className + ' checkbox__input'
+				return (this.className?this.className:'') + ' checkbox__input'
 			},
 			isChecked (){
 				return this.checkedStore

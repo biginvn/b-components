@@ -1,6 +1,6 @@
 <template>
 	<div class="b-radio">
-		<input type="radio" :name="name" :id="id" ref="bRadio" :class="className + 'radio__input'" :disabled="disabled" :checked="isCheck" @change="update()">
+		<input type="radio" :name="name" :id="id" ref="bRadio" :class="(className?className:'') + ' radio__input'" :disabled="disabled" :checked="isCheck" @change="update()">
 
 		<span class="radio__checkmark"></span>
 		<label :for="id">{{ label }}</label>

@@ -70,14 +70,14 @@
             <figure>
                 <h3>Select</h3>
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
-                    <b-select id="select-red" label="Select color" v-model="select" :list="list" name="select-name" item-key="nameItem" item-val = "id"></b-select>
+                    <b-select id="select-red" label="Select color" v-model="select" :list="list" name="select-name" item-text="nameItem" item-val = "id"></b-select>
                     
 
                     <p>When update list, you should update again value for model </p>
                 <p><strong>Model : </strong> {{ select }} </p>
                 <p class="mb-2 mt-2"><strong>Disabled</strong></p>
                 <p>
-                    <b-select id="select-blue" label="Select color" disabled v-model="select" :list="list" name="select-name" item-key="nameItem" item-val = "id"></b-select>
+                    <b-select id="select-blue" label="Select color" disabled :list="list" name="select-name" item-text="nameItem" item-val = "id"></b-select>
                 </p>
             </figure>
             
