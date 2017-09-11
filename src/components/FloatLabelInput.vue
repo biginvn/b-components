@@ -18,10 +18,7 @@
 				return (this.className?this.className:'') + " b__input"
 			}
 		},
-		mounted () {
-			this.change();
-		},
-		watch :{
+		watch : {
 			value(value) {
 				this.updateChange(value);
 			}
