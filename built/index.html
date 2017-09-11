@@ -28,8 +28,8 @@
             <figure>
                 <h3>Float Label</h3>
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
-                <b-float-label-input name="minh" id="asdasd" class-name="minh class" v-model="input" placeholder="Input yout text" label="Label"></b-float-label-input>
-                <p>Model preview : {{ input }}</p>
+                <b-float-label-input name="minh" id="asdasd" class-name="minh class" v-model="input.name" placeholder="Input yout text" label="Label"></b-float-label-input>
+                <p>Model preview : {{ input.name }}</p>
                 
                 <p class="mb-2 mt-2"><strong>Disabled</strong></p>
                 <b-float-label-input v-model="inputDisabled" placeholder="Input yout text" label="Label" disabled></b-float-label-input>    
@@ -48,8 +48,20 @@
             <figure>
                 <h3>Checkbox</h3>
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
-                    <b-checkbox v-model="checked" placeholder="Input yout text" label="USA" name="testName" class-name="Test asd a"></b-checkbox>
-                    <b-checkbox checked="true" placeholder="Input yout text" label="UK"></b-checkbox>
+                    <p>v-model is array</p>
+                    <b-checkbox v-model="checked" bind-value="USA" placeholder="Input yout text" label="USA" name="testName" class-name="Test asd a"></b-checkbox>
+                    <b-checkbox v-model="checked" bind-value="BINLADEN" placeholder="Input yout text" label="UK"></b-checkbox>
+
+                    <p>{{ checked }}</p>
+                    
+
+                    <p>v-model is boolean</p>
+                    <b-checkbox v-model="checkedBoolean" bind-value="MINH USA" placeholder="Input yout text" label="USA" name="testName" class-name="Test asd a"></b-checkbox>
+                    
+
+                    <p>{{ checkedBoolean }}</p>
+
+
                 <p class="mb-2 mt-2"><strong>Disabled</strong></p>
                     <b-checkbox v-model="checked" disabled placeholder="Input yout text" label="USA"></b-checkbox>
                     <b-checkbox v-model="checkboxFalse" disabled placeholder="Input yout text" label="UK"></b-checkbox>    
@@ -71,8 +83,11 @@
                 <h3>Select</h3>
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
                     <b-select id="select-red" label="Select color" v-model="select" :list="list" name="select-name" item-text="nameItem" item-val = "id"></b-select>
+                    <p>
+                        
+                        <strong>This component won't work without model assign</strong>
+                    </p>
                     
-
                     <p>When update list, you should update again value for model </p>
                 <p><strong>Model : </strong> {{ select }} </p>
                 <p class="mb-2 mt-2"><strong>Disabled</strong></p>
@@ -100,6 +115,7 @@
         data : {
             radio: "yellow",
             textarea : 'Shayne',
+            checkedBoolean : true,
             select : null,
             list : [
                 { id : 10, 'nameItem' : 'Red Shirt - Blue Car - Pink House'},
@@ -107,8 +123,8 @@
                 { id : 12, 'nameItem' : 'Blue Shirt - Green Car - Yellow House'},
                 { id : 13, 'nameItem' : 'Green Shirt - Yellow Car - Blue House'}
             ],
-          checked : true,
-          input : 'testing',
+          checked : ['USA', 'BINLADEN'],
+          input : {},
           inputDisabled : 'testing- input 2',
           checkbox : true,
           checkboxFalse : false
