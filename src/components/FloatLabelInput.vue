@@ -1,7 +1,7 @@
 <template>
 	<div class="b-ios b-float-label">
 		<label :class="classLabel">{{ label }}</label>
-      	<input :placeholder="placeholder" type="text" ref="bInput" class="b__input" :value="value" :disabled="disabled" @input="change($event.target.value)">
+      	<input :placeholder="placeholder" type="text" ref="bInput" :name="name" :id="id" :class="classes" :value="value" :disabled="disabled" @input="change($event.target.value)">
 	</div>
 </template>
 <script>
@@ -12,7 +12,12 @@
 				classLabel : ''
 			}
 		},
-		props	: ['value', 'disabled', 'placeholder', 'label'],
+		props	: ['value', 'disabled', 'placeholder', 'label', 'class-name', 'name', 'id'],
+		computed : {
+			classes () {
+				return (this.className?this.className:'') + " b__input"
+			}
+		},
 		mounted () {
 			this.change();
 		},

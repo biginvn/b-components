@@ -1,7 +1,7 @@
 <template>
 	<div class="b-select">
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
-		<select :placeholder="label" :name="name" :id="id" :disabled="disabled" @change="update($event.target.value)" v-model="selected">
+		<select :placeholder="label" :name="name" :id="id" :disabled="disabled" @change="update($event.target.value)" v-model="selected" :class="(className?className:'') + ' b__select_element'">
 			<option v-for="item in items" :value="item.value">{{ item.name }}</option>
 		</select>
 		<span :class=" isActive ? 'placeholder' : 'placeholder show' ">{{ label }}</span>
@@ -17,7 +17,7 @@
 		mounted () {
 			this.float()
 		},
-		props : [ 'id', 'default', 'label', 'name', 'disabled', 'list', 'item-key', 'item-val', 'value'],
+		props : [ 'id', 'default', 'label', 'name', 'disabled', 'list', 'item-text', 'item-val', 'value', 'class-name'],
 		computed : {
 			selected : {
 				get () {
@@ -40,7 +40,7 @@
 					let listItem = this.list[i];
 					let item = {
 						value : listItem[this.itemVal], 
-						name : listItem[this.itemKey]
+						name : listItem[this.itemText]
 					}
 					items.push(item);
 				}
