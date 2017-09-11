@@ -1,7 +1,7 @@
 <template>
 	<div class="b-ios b-textarea">
 		<label :class="classLabel">{{ label }}</label>
-      	<textarea :placeholder="placeholder" type="text" :col="col" :row="row" ref="bTextarea" :id="id" :name="name" :class="(className?className:'') + ' b__textarea'" :disabled="disabled" @input="change($event.target.value)">{{ value }}</textarea>
+      	<textarea :placeholder="placeholder" type="text" :col="col" :row="row" ref="bTextarea" :id="id" :name="name" :class="(className?className:'') + ' b__textarea'" :disabled="disabled" @input="change($event.target.value)">{{ text }}</textarea>
 	</div>
 </template>
 <script>
@@ -9,12 +9,13 @@
 	export default {
 		data(){
 			return {
-				classLabel : ''
+				classLabel : '',
+				text : ''
 			}
 		},
 		props	: ['value', 'disabled', 'placeholder', 'label', 'col', 'row', 'class-name', 'id', 'name'],
 		mounted () {
-			this.change();
+			this.change(this.value);
 		},
 		watch :{
 			value(value) {
@@ -23,7 +24,7 @@
 		},
 		methods : {
 			change (value) {
-				this.updateChange(this.$refs.bTextarea.value);
+				this.updateChange(value);
 			},
 			updateChange (value) {
 				var isEmpty = value == undefined || value == null || value.length == 0 ? true : false;
@@ -31,6 +32,9 @@
 					this.classLabel = 'active';
 				else
 					this.classLabel = '';
+
+				this.text = value
+				this.$el.querySelector('textarea').value=this.text
 
 				this.$emit('input', value);
 			}
