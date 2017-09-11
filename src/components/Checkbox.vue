@@ -1,6 +1,6 @@
 <template>
 	<div class="b-checkbox">
-		<input type="checkbox" :id="id" class="checkbox__input" :disabled="disabled" :checked="isChecked" @click="update()">
+		<input type="checkbox" :name="name" :id="id" :class="classes" :disabled="disabled" :checked="isChecked" @click="update()">
 		<span class="checkbox__checkmark"></span>
 		<label :for="id">{{ label }}</label>
 	</div>
@@ -13,7 +13,7 @@
 			}
 			
 		},
-		props : [ 'value', 'disabled', 'id', 'label', 'checked' ],
+		props : [ 'class-name','value', 'disabled', 'id', 'label', 'checked', 'name' ],
 		created () {
 			if (this.value != undefined){
 				this.checkedStore = this.value
@@ -22,6 +22,9 @@
 			}
 		},
 		computed : {
+			classes () {
+				return this.className + ' checkbox__input'
+			},
 			isChecked (){
 				return this.checkedStore
 			}
