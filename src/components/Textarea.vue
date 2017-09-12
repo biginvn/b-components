@@ -1,7 +1,7 @@
 <template>
 	<div class="b-ios b-textarea">
 		<label :class="classLabel">{{ label }}</label>
-      	<textarea :placeholder="placeholder" type="text" :cols="col" :rows="row" ref="bTextarea" :id="id" :name="name" :class="(className?className:'') + ' b__textarea'" :disabled="disabled" @input="change($event.target.value)">{{ text }}</textarea>
+      	<textarea :placeholder="placeholder" type="text" :cols="cols" :rows="rows" ref="bTextarea" :id="id" :name="name" :class="(className?className:'') + ' b__textarea'" :disabled="disabled" @input="change($event.target.value)">{{ text }}</textarea>
 	</div>
 </template>
 <script>
@@ -13,7 +13,7 @@
 				text : ''
 			}
 		},
-		props	: ['value', 'disabled', 'placeholder', 'label', 'col', 'row', 'class-name', 'id', 'name'],
+		props	: ['value', 'disabled', 'placeholder', 'label', 'cols', 'rows', 'class-name', 'id', 'name'],
 		mounted () {
 			this.change(this.value);
 		},
