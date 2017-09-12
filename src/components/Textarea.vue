@@ -1,7 +1,7 @@
 <template>
 	<div class="b-ios b-textarea">
 		<label :class="classLabel">{{ label }}</label>
-      	<textarea :placeholder="placeholder" type="text" :col="col" :row="row" ref="bTextarea" :id="id" :name="name" :class="(className?className:'') + ' b__textarea'" :disabled="disabled" @input="change($event.target.value)">{{ text }}</textarea>
+      	<textarea :placeholder="placeholder" type="text" :cols="col" :rows="row" ref="bTextarea" :id="id" :name="name" :class="(className?className:'') + ' b__textarea'" :disabled="disabled" @input="change($event.target.value)">{{ text }}</textarea>
 	</div>
 </template>
 <script>
