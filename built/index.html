@@ -42,9 +42,9 @@
             <figure>
                 <h3>Textarea</h3>
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
-                <textarea v-model="textareaV"></textarea>
-                <b-textarea v-model="textarea" placeholder="Input yout text" label="Your textarea"></b-textarea>
-                <p>Model preview : {{ textarea }}</p>
+                <textarea v-model="textareaV.text"></textarea>
+                <b-textarea v-model="textarea.text" placeholder="Input yout text" label="Your textarea"></b-textarea>
+                <p>Model preview : {{ textarea.text }}</p>
                 
                 <p class="mb-2 mt-2"><strong>Disabled</strong></p>
                 <b-textarea v-model="textarea" placeholder="Input yout text" label="Label" disabled></b-textarea>    
@@ -119,8 +119,12 @@
         el: '#app',
         data : {
             radio: "yellow",
-            textarea : 'Test',
-            textareaV : 'Vue',
+            textarea : {
+                text : 'Test'
+            },
+            textareaV : {
+                text : 'Vue'
+            },
             checkedBoolean : true,
             select : null,
             list : [

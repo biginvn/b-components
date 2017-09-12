@@ -706,7 +706,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	mounted() {
 		this.float();
 	},
-	props: ['id', 'default', 'label', 'name', 'disabled', 'list', 'item-text', 'item-val', 'value', 'class-name'],
+	props: ['id', 'default', 'label', 'name', 'disabled', 'list', 'item-text', 'item-val', 'value', 'class-name', 'placeholder'],
 	computed: {
 		selected: {
 			get() {
@@ -819,7 +819,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			text: ''
 		};
 	},
-	props: ['value', 'disabled', 'placeholder', 'label', 'col', 'row', 'class-name', 'id', 'name'],
+	props: ['value', 'disabled', 'placeholder', 'label', 'cols', 'rows', 'class-name', 'id', 'name'],
 	mounted() {
 		this.change(this.value);
 	},
@@ -838,6 +838,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			this.text = value;
 			this.$el.querySelector('textarea').value = this.text;
+			if (value == undefined || value == null) this.$el.querySelector('textarea').value = '';
 
 			this.$emit('input', value);
 		}
@@ -1423,8 +1424,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "placeholder": _vm.placeholder,
       "type": "text",
-      "col": _vm.col,
-      "row": _vm.row,
+      "cols": _vm.cols,
+      "rows": _vm.rows,
       "id": _vm.id,
       "name": _vm.name,
       "disabled": _vm.disabled
@@ -1541,7 +1542,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     class: (_vm.className ? _vm.className : '') + ' b__select_element',
     attrs: {
-      "placeholder": _vm.label,
+      "placeholder": _vm.placeholder,
       "name": _vm.name,
       "id": _vm.id,
       "disabled": _vm.disabled
@@ -1567,7 +1568,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(item.name))])
   })), _vm._v(" "), _c('span', {
     class: _vm.isActive ? 'placeholder' : 'placeholder show'
-  }, [_vm._v(_vm._s(_vm.label))])])
+  }, [_vm._v(_vm._s(_vm.placeholder))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

@@ -35,6 +35,8 @@
 
 				this.text = value
 				this.$el.querySelector('textarea').value=this.text
+				if (value == undefined || value == null)
+					this.$el.querySelector('textarea').value=''
 
 				this.$emit('input', value);
 			}
