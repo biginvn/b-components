@@ -1,7 +1,7 @@
 <template>
 	<div class="b-ios b-float-label">
 		<label :class="classLabel">{{ label }}</label>
-      	<input :placeholder="placeholder" type="text" ref="bInput" :name="name" :id="id" :class="classes" :value="value" :disabled="disabled" @input="change($event.target.value)">
+      	<input :placeholder="placeholder" type="text" ref="bInput" :name="name" :id="id" :class="classes" v-model="objModel" :disabled="disabled" @input="change($event.target.value)">
 	</div>
 </template>
 <script>
@@ -9,7 +9,8 @@
 	export default {
 		data(){
 			return {
-				classLabel : ''
+				classLabel : '',
+				objModel : this.value
 			}
 		},
 		props	: ['value', 'disabled', 'placeholder', 'label', 'class-name', 'name', 'id'],
@@ -19,22 +20,33 @@
 			}
 		},
 		watch : {
-			value(value) {
-				this.updateChange(value);
+			value : {
+				deep : true,
+				handler (val, oldVal) {
+					console.log('aaaaaa')
+					this.updateChange(val);
+				}
 			}
 		},
 		methods : {
 			change (value) {
-				this.updateChange(this.$refs.bInput.value);
+				this.updateChange(value);
 			},
 			updateChange (value) {
 				var isEmpty = value == undefined || value == null || value.length == 0 ? true : false;
-				if (!isEmpty)
+				if (!isEmpty){
 					this.classLabel = 'active';
+				}
 				else
 					this.classLabel = '';
+				this.objModel = value
 
+				console.log('$emit value : ', value)
 				this.$emit('input', value);
+
+				this.$nextTick(function(){
+					this.$forceUpdate()
+				})
 			}
 		}
 	}

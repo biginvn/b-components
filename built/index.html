@@ -29,6 +29,7 @@
                 <h3>Float Label</h3>
 
                 <input v-model="input.nameB" type="text">
+                <p>Model preview : {{ input.nameB }}</p>
                 <input v-model="input.nameA" type="text">
 
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
@@ -134,7 +135,9 @@
                 { id : 13, 'nameItem' : 'Green Shirt - Yellow Car - Blue House'}
             ],
           checked : ['USA', 'BINLADEN'],
-          input : {},
+          input : {
+            
+          },
           inputDisabled : 'testing- input 2',
           checkbox : true,
           checkboxFalse : false

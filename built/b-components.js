@@ -624,7 +624,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data() {
 		return {
-			classLabel: ''
+			classLabel: '',
+			objModel: this.value
 		};
 	},
 	props: ['value', 'disabled', 'placeholder', 'label', 'class-name', 'name', 'id'],
@@ -634,19 +635,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	watch: {
-		value(value) {
-			this.updateChange(value);
+		value: {
+			deep: true,
+			handler(val, oldVal) {
+				console.log('aaaaaa');
+				this.updateChange(val);
+			}
 		}
 	},
 	methods: {
 		change(value) {
-			this.updateChange(this.$refs.bInput.value);
+			this.updateChange(value);
 		},
 		updateChange(value) {
 			var isEmpty = value == undefined || value == null || value.length == 0 ? true : false;
-			if (!isEmpty) this.classLabel = 'active';else this.classLabel = '';
+			if (!isEmpty) {
+				this.classLabel = 'active';
+			} else this.classLabel = '';
+			this.objModel = value;
 
+			console.log('$emit value : ', value);
 			this.$emit('input', value);
+
+			this.$nextTick(function () {
+				this.$forceUpdate();
+			});
 		}
 	}
 });
@@ -1494,6 +1507,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('label', {
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.objModel),
+      expression: "objModel"
+    }],
     ref: "bInput",
     class: _vm.classes,
     attrs: {
@@ -1504,12 +1523,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "disabled": _vm.disabled
     },
     domProps: {
-      "value": _vm.value
+      "value": (_vm.objModel)
     },
     on: {
-      "input": function($event) {
+      "input": [function($event) {
+        if ($event.target.composing) { return; }
+        _vm.objModel = $event.target.value
+      }, function($event) {
         _vm.change($event.target.value)
-      }
+      }]
     }
   })])
 },staticRenderFns: []}
