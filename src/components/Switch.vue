@@ -1,5 +1,5 @@
 <template>
-	<div checked="" class="b-switch" v-on:click="update()">
+	<div checked="" class="b__components b-switch" v-on:click="update()">
       	<input type="checkbox" class="switch__input" v-bind:checked="value" :disabled="disabled">
 		<div class="switch__toggle">
 			<div class="switch__handle">

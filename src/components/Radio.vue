@@ -1,5 +1,5 @@
 <template>
-	<div class="b-radio">
+	<div class="b__components b-radio">
 		<input type="radio" :name="name" :id="id" ref="bRadio" :class="(className?className:'') + ' radio__input'" :disabled="disabled" :checked="isCheck" @change="update()">
 
 		<span class="radio__checkmark"></span>

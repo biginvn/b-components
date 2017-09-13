@@ -1,5 +1,5 @@
 <template id="b-confirm-template">
-	<div>
+	<div class="b__components ">
 		<button v-show="!confirm" :class="btnClass" @click.prevent="confirm=!confirm">
 			<slot></slot>
 		</button><span
