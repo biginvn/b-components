@@ -5,6 +5,10 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
     <script src="b-components.js"></script>
 </head>
@@ -35,9 +39,11 @@
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
                 <b-float-label-input name="minh" id="asdasd" class-name="minh class" v-model="input.name" placeholder="Input yout text" label="Label"></b-float-label-input>
                 <p>Model preview : {{ input.name }}</p>
+
+                <!-- <v-text-field label="Vuetify" v-model="input.name"></v-text-field> -->
                 
                 <p class="mb-2 mt-2"><strong>Disabled</strong></p>
-                <b-float-label-input v-model="inputDisabled" placeholder="Input yout text" label="Label" disabled></b-float-label-input>    
+                <!-- <b-float-label-input v-model="inputDisabled" placeholder="Input yout text" label="Label" disabled></b-float-label-input>     -->
             </figure>
 
             <figure>
@@ -136,7 +142,6 @@
             ],
           checked : ['USA', 'BINLADEN'],
           input : {
-            
           },
           inputDisabled : 'testing- input 2',
           checkbox : true,

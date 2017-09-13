@@ -1,7 +1,7 @@
 <template>
 	<div class="b-ios b-float-label">
 		<label :class="classLabel">{{ label }}</label>
-      	<input :placeholder="placeholder" type="text" ref="bInput" :name="name" :id="id" :class="classes" v-model="objModel" :disabled="disabled" @input="change($event.target.value)">
+      	<input :placeholder="placeholder" type="text" ref="bInput" :name="name" :id="id" :class="classes" :value="value" :disabled="disabled" @input="change($event.target.value)">
 	</div>
 </template>
 <script>
@@ -19,15 +19,6 @@
 				return (this.className?this.className:'') + " b__input"
 			}
 		},
-		watch : {
-			value : {
-				deep : true,
-				handler (val, oldVal) {
-					console.log('aaaaaa')
-					this.updateChange(val);
-				}
-			}
-		},
 		methods : {
 			change (value) {
 				this.updateChange(value);
@@ -41,12 +32,8 @@
 					this.classLabel = '';
 				this.objModel = value
 
-				console.log('$emit value : ', value)
 				this.$emit('input', value);
 
-				this.$nextTick(function(){
-					this.$forceUpdate()
-				})
 			}
 		}
 	}
