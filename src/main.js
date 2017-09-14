@@ -16,6 +16,6 @@ Vue.component('BSelect', Select);
 Vue.component('BTextarea', Textarea);
 Vue.component('b-confirm', Confirm);
 
-import Vuetify from 'vuetify'
+// import Vuetify from 'vuetify'
 
-Vue.use(Vuetify)
+// Vue.use(Vuetify)

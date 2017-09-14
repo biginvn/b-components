@@ -61,8 +61,14 @@
                 <h3>Checkbox</h3>
                 <p class="mb-2 mt-2"><strong>Enabled</strong></p>
                     <p>v-model is array</p>
-                    <b-checkbox v-model="checked" bind-value="USA" placeholder="Input yout text" label="USA" name="testName" class-name="Test asd a"></b-checkbox>
-                    <b-checkbox v-model="checked" bind-value="BINLADEN" placeholder="Input yout text" label="UK"></b-checkbox>
+                    <p v-for="item in items">
+                        
+                        <b-checkbox v-model="checkboxTest" :bind-value="item.id" :placeholder="item.name" :label="item.name" name="testName" class-name="Test asd a"></b-checkbox>
+                    </p>
+                    <p>{{ checkboxTest }}</p>
+
+
+                    <!-- <b-checkbox v-model="checked" bind-value="BINLADEN" placeholder="Input yout text" label="UK"></b-checkbox> -->
 
                     <p>{{ checked }}</p>
                     
@@ -142,10 +148,18 @@
             ],
           checked : ['USA', 'BINLADEN'],
           input : {
+            name : 'asdasdas'
           },
           inputDisabled : 'testing- input 2',
           checkbox : true,
-          checkboxFalse : false
+          checkboxFalse : false,
+
+          checkboxTest : [],
+          items : [
+            { id : 1, name : 'USD'},
+            { id : 2, name : 'ENG'},
+            { id : 3, name : 'VND'},
+          ],
         },
         template: '#main-page',
         methods: {

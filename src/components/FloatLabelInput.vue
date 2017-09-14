@@ -19,6 +19,9 @@
 				return (this.className?this.className:'') + " b__input"
 			}
 		},
+		mounted () {
+			this.change(this.value)
+		},
 		methods : {
 			change (value) {
 				this.updateChange(value);
