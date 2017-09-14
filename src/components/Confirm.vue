@@ -1,7 +1,7 @@
 <template id="b-confirm-template">
-	<div class="b__components ">
+	<div>
 		<button v-show="!confirm" :class="btnClass" @click.prevent="confirm=!confirm">
-			<slot></slot>
+			<i class="icon-close">&nbsp;</i>
 		</button><span
 						v-show="confirm"
 						class='b-btn btn--nohover btn--transparent'
@@ -29,7 +29,7 @@
 			sureClass: String,
 			func: {
 				type: Function,
-				required: true
+				required: false
 			}
 		},
 		data: function() {
