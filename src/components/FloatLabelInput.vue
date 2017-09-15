@@ -1,7 +1,7 @@
 <template>
 	<div class="b__components b-ios b-float-label">
 		<label :class="classLabel">{{ label }}</label>
-      	<input :placeholder="placeholder" type="text" ref="bInput" :name="name" :id="id" :class="classes" :value="value" :disabled="disabled" @input="change($event.target.value)">
+      	<input :placeholder="placeholder" :type="typeComponent" ref="bInput" :name="name" :id="id" :class="classes" :value="value" :disabled="disabled" @input="change($event.target.value)">
 	</div>
 </template>
 <script>
@@ -13,10 +13,16 @@
 				objModel : this.value
 			}
 		},
-		props	: ['value', 'disabled', 'placeholder', 'label', 'class-name', 'name', 'id'],
+		props	: ['value', 'disabled', 'placeholder', 'label', 'class-name', 'name', 'id', 'type'],
+
 		computed : {
 			classes () {
 				return (this.className?this.className:'') + " b__input"
+			},
+			typeComponent () {
+				if (this.type == undefined || this.type== null || this.type.length == 0)
+					return 'text'
+				return this.type
 			}
 		},
 		mounted () {
