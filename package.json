@@ -6,7 +6,7 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack --config config/base.config.js",
     "build-scss": "./node_modules/.bin/gulp --gulpfile config/build-scss.js watch-complie-scss",
-    "dev-server": "./node_modules/.bin/webpack-dev-server --config config/base.config.js --content-base built/",
+    "dev-server": "./node_modules/.bin/webpack-dev-server --config config/base.config.js --content-base docs/",
     "test": "echo \"Welcome to BComponents\""
   },
   "author": "minh.truong@bigin.vn",
