@@ -65,9 +65,9 @@ label {
                     <figure class="col-md-6">
                         <h4 class="mb-3">Radio</h4>
                         <p>
-                            <b-radio name="minh" class-name="testing-b-radio" v-model="input.radio" value="USA" label="USA"></b-radio>
-                            <b-radio name="minh" class-name="testing-b-radio" v-model="input.radio" value="VN" label="VN"></b-radio>
-                            <b-radio name="minh" class-name="testing-b-radio" v-model="input.radio" value="Thai Lan" label="Thai Lan"></b-radio>
+                            <b-radio name="minh" id="radio-usa" class-name="testing-b-radio" v-model="input.radio" value="USA" label="USA"></b-radio>
+                            <b-radio name="minh" id="radio-vn" class-name="testing-b-radio" v-model="input.radio" value="VN" label="VN"></b-radio>
+                            <b-radio name="minh" id="radio-thai" class-name="testing-b-radio" v-model="input.radio" value="Thai Lan" label="Thai Lan"></b-radio>
                         </p>
                         <p>{{ input.radio }}</p>
 
@@ -83,11 +83,11 @@ label {
                             <label for="USA">USA</label>
                         </p>
                         <p>
-                            <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" bind-value="VN" label="VN"></b-switch>
+                            <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" bind-value="VN" id="VN"></b-switch>
                             <label for="VN">VN</label>
                         </p>
                         <p>
-                            <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" bind-value="Thai Lan" label="Thai Lan"></b-switch>
+                            <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" bind-value="Thai Lan" id="Thai Lan"></b-switch>
                             <label for="Thai Lan">Thai Lan</label>
                         </p>
                             
@@ -133,7 +133,7 @@ label {
                     <figure class="col-md-6">
                         <h4 class="mb-3">Rating</h4>
                         <p>
-                            <b-rating rate-max = "5" class-name="testing-b-rating" v-model="input.rating"></b-rating>
+                            <b-rating rate-max = "5" disabled = "disabled2" class-name="testing-b-rating" v-model="input.rating"></b-rating>
                         </p>
                         <p>{{ input.rating }}</p>
 

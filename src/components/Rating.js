@@ -25,7 +25,8 @@ export default {
 	},
 	methods : {
 		update(rate) {
-			this.$emit('input', rate)
+			if (this.disabled != 'disabled')
+				this.$emit('input', rate)
 		}
 	}
 

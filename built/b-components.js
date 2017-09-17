@@ -725,7 +725,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	methods: {
 		update(rate) {
-			this.$emit('input', rate);
+			if (this.disabled != 'disabled') this.$emit('input', rate);
 		}
 	}
 
