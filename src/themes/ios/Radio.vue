@@ -7,22 +7,6 @@
 	</div>
 </template>
 <script>
-	export default {
-		props : [ 'value', 'disabled', 'name', 'id', 'label', 'class-name' ],
-		computed : {
-			isCheck() {
-				if (this.value == this.$attrs.value)
-					return true;
-				else return false;
-			}
-		},
-		methods : {
-			update() {
-				if (this.$refs.bRadio.checked)
-					this.$emit('input', this.$attrs.value);
-
-			}
-		}
-
-	}
+	import Radio from './../../components/Radio'
+	export default Radio
 </script>

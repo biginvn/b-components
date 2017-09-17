@@ -1,21 +1,13 @@
-import BSwitch from './components/Switch';
-import FloatLabelInput from './components/FloatLabelInput';
-import Checkbox from './components/Checkbox';
-import Radio from './components/Radio';
-import Select from './components/Select';
-import Textarea from './components/Textarea';
-import Confirm from './components/Confirm';
+import BTextField from './themes/ios/TextField.vue'
+import BCheckBox from './themes/ios/CheckBox.vue'
+import BRadio from './themes/ios/Radio.vue'
+import BSwitch from './themes/ios/Switch.vue'
+import BSelect from './themes/ios/Select.vue'
+import BTextarea from './themes/ios/Textarea.vue'
 
-import './scss/b-component.scss'
-
-Vue.component('BSwitch', BSwitch);
-Vue.component('BFloatLabelInput', FloatLabelInput);
-Vue.component('BCheckbox', Checkbox);
-Vue.component('BRadio', Radio);
-Vue.component('BSelect', Select);
-Vue.component('BTextarea', Textarea);
-Vue.component('b-confirm', Confirm);
-
-// import Vuetify from 'vuetify'
-
-// Vue.use(Vuetify)
+Vue.component('BTextField', BTextField)
+Vue.component('BCheckBox', BCheckBox)
+Vue.component('BRadio', BRadio)
+Vue.component('BSwitch', BSwitch)
+Vue.component('BSelect', BSelect)
+Vue.component('BTextarea', BTextarea)

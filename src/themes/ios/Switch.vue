@@ -9,17 +9,6 @@
 	</div>
 </template>
 <script>
-
-	export default {
-		props: ['value', 'disabled'],
-		methods: {
-			update() {
-				var checked = true;
-				if (this.value)
-					checked = false;
-				this.$emit('input', checked);
-			}
-		}
-	}
-	
+	import Switch from './../../components/Switch'
+	export default Switch
 </script>
