@@ -4,6 +4,7 @@ var rename = require('gulp-rename');
 var uglifycss = require('gulp-uglifycss');
 
 var cssDestFolder = '../built';
+gulp.slurped = false;
 
 /* ----------------------------- Complied CSS -----------------------------*/
 gulp.task('complie-scss', function() {
@@ -14,4 +15,8 @@ gulp.task('complie-scss', function() {
         .pipe(rename('b-components.min.css'))
         .pipe(uglifycss())
         .pipe(gulp.dest(cssDestFolder));
+});
+
+gulp.task('watch-complie-scss', function () {
+    gulp.watch(['../src/scss/**/*'], ['complie-scss']);
 });

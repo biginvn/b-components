@@ -15,6 +15,9 @@
 body {
     font-size: 13px;
 }
+label {
+    vertical-align: top;
+}
 </style>
 <body>
     <div class="container">
@@ -75,17 +78,34 @@ body {
                     <figure class="col-md-6">
                         <h4 class="mb-3">Switch</h4>
                         <p>
-                            <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" value="USA" label="USA"></b-switch>
+
+                            <b-switch name="minh" id="USA" class-name="testing-b-switch" v-model="input.switch" bind-value="USA" label="USA"></b-switch>
                             <label for="USA">USA</label>
-                            <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" value="VN" label="VN"></b-switch>
+                        </p>
+                        <p>
+                            <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" bind-value="VN" label="VN"></b-switch>
                             <label for="VN">VN</label>
-                            <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" value="Thai Lan" label="Thai Lan"></b-switch>
+                        </p>
+                        <p>
+                            <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" bind-value="Thai Lan" label="Thai Lan"></b-switch>
                             <label for="Thai Lan">Thai Lan</label>
                         </p>
+                            
+                        </p>
                         <p>{{ input.switch }}</p>
-
-                        <button type="button" class="btn btn-success" @click="input.switch='VN'">VN only</button>
-                        <button type="button" class="btn btn-success" @click="input.switch=null">Null</button>
+                        <p>                            
+                            <button type="button" class="btn btn-success" @click="input.switch=['VN']">VN only</button>
+                            <button type="button" class="btn btn-success" @click="input.switch=[]">Empty</button>
+                        </p>
+                        
+                        <p>
+                            <b-switch name="minh" class-name="testing-b-switch" v-model="input.switchBool"></b-switch>
+                        </p>
+                        <p>{{ input.switchBool }}</p>
+                        <p>
+                            <button type="button" class="btn btn-success" @click="input.switchBool = true">True</button>
+                            <button type="button" class="btn btn-success" @click="input.switchBool = false">False</button>
+                        </p>
                     </figure>
 
                     <figure class="col-md-6">
@@ -110,6 +130,19 @@ body {
                         <button type="button" class="btn btn-success" @click="input.textarea=null">Null</button>
                     </figure>
 
+                    <figure class="col-md-6">
+                        <h4 class="mb-3">Rating</h4>
+                        <p>
+                            <b-rating rate-max = "5" class-name="testing-b-rating" v-model="input.rating"></b-rating>
+                        </p>
+                        <p>{{ input.rating }}</p>
+
+                        <button type="button" class="btn btn-success" @click="input.rating=5">5 stars</button>
+                        <button type="button" class="btn btn-success" @click="input.rating=3">Update to 3 stars</button>
+                        <button type="button" class="btn btn-success" @click="input.rating=7">More 5 stars (7)</button>
+                        <button type="button" class="btn btn-success" @click="input.rating=null">Null</button>
+                    </figure>
+
 
                 </div>
             </div>
@@ -125,9 +158,11 @@ body {
                 checkbox: [],
                 checkboxByValue : null,
                 radio : null,
-                switch : true,
+                switch : [],
+                switchBool : true,
                 select : null,
-                textarea : null
+                textarea : null,
+                rating : null,
             },
             list : [
                 { code : 'VN', name : 'Viet Nam'},

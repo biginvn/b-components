@@ -50,6 +50,7 @@ export default {
             }
         },
         update() {
+            console.log('Test')
             if (Array.isArray(this.value)) { // $emit array to outside model
                 if (this.checkedStore) { // Model already have value 
                     this.value.splice(this.value.indexOf(this.bindValue), 1)
