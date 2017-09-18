@@ -1,7 +1,7 @@
 <template>
 	<div class="b__components b-rating-gt">
 		<div class="stars" v-for="item in stringToArray(stars)">
-                <input  class="star" :id="item" type="radio" name="star" checked="" @click="showName(item)">
+                <input  class="star" :id="item" type="radio" name="star" :checked="item == value ? true:false" @click="showName(item)">
                 <label class="star" for=""></label>
               </div>ss
 	</div>

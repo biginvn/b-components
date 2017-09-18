@@ -1329,8 +1329,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "id": item,
         "type": "radio",
-        "name": "star",
-        "checked": ""
+        "name": "star"
+      },
+      domProps: {
+        "checked": item == _vm.value ? true : false
       },
       on: {
         "click": function($event) {
