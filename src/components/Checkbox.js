@@ -15,7 +15,7 @@ export default {
         classes() {
             return (this.className ? this.className : '') + ' checkbox__input'
         },
-        isChecked: {
+        isChecked : {
             cache: false,
             get() {
                 return this.checkedStore
@@ -23,16 +23,13 @@ export default {
         }
     },
     watch: {
-        value: {
-            handler(oldValue, newValue) {
-                this.updateUIByModel()
-            },
-            deep: true
+        value () {
+            this.updateUIByModel()
         }
     },
     methods: {
         uniqueArray(array) {
-            var result = array.filter(function(item, pos) {
+            var result = array.filter( (item, pos) => {
                 return array.indexOf(item) == pos;
             });
             return result
@@ -50,7 +47,6 @@ export default {
             }
         },
         update() {
-            console.log('Test')
             if (Array.isArray(this.value)) { // $emit array to outside model
                 if (this.checkedStore) { // Model already have value 
                     this.value.splice(this.value.indexOf(this.bindValue), 1)

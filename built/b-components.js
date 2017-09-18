@@ -203,16 +203,13 @@ const mixins = {
         }
     },
     watch: {
-        value: {
-            handler(oldValue, newValue) {
-                this.updateUIByModel();
-            },
-            deep: true
+        value() {
+            this.updateUIByModel();
         }
     },
     methods: {
         uniqueArray(array) {
-            var result = array.filter(function (item, pos) {
+            var result = array.filter((item, pos) => {
                 return array.indexOf(item) == pos;
             });
             return result;
@@ -231,7 +228,6 @@ const mixins = {
             }
         },
         update() {
-            console.log('Test');
             if (Array.isArray(this.value)) {
                 // $emit array to outside model
                 if (this.checkedStore) {
@@ -822,12 +818,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["a"] = ({
 	data() {
 		return {
-			classLabel: '',
-			objModel: this.value
+			classLabel: ''
+			// objModel : this.value
 		};
 	},
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* default */]],
-	props: ['disabled', 'placeholder', 'label', 'class-name', 'name', 'id', 'type'],
+	props: ['disabled', 'placeholder', 'label', 'class-name', 'name', 'id', 'type', 'a'],
 
 	computed: {
 		classes() {
@@ -839,9 +835,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	watch: {
-		value(newValue) {
-			this.change(newValue);
-		}
+		// value (newValue) {
+		// 	this.change(newValue)
+		// }
 	},
 	mounted() {
 		this.change(this.value);
@@ -855,7 +851,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (!isEmpty) {
 				this.classLabel = 'active';
 			} else this.classLabel = '';
-			this.objModel = value;
+			// this.objModel = value
 
 			this.$emit('input', value);
 		}
@@ -924,6 +920,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__themes_ios_Textarea_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__themes_ios_Textarea_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__themes_ios_Rating_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__themes_ios_Rating_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__themes_ios_Rating_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__themes_ios_rating_gt_vue__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__themes_ios_rating_gt_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__themes_ios_rating_gt_vue__);
+
 
 
 
@@ -939,6 +938,7 @@ Vue.component('BSwitch', __WEBPACK_IMPORTED_MODULE_3__themes_ios_Switch_vue___de
 Vue.component('BSelect', __WEBPACK_IMPORTED_MODULE_4__themes_ios_Select_vue___default.a);
 Vue.component('BTextarea', __WEBPACK_IMPORTED_MODULE_5__themes_ios_Textarea_vue___default.a);
 Vue.component('BRating', __WEBPACK_IMPORTED_MODULE_6__themes_ios_Rating_vue___default.a);
+Vue.component('BRatingGt', __WEBPACK_IMPORTED_MODULE_7__themes_ios_rating_gt_vue___default.a);
 
 /***/ }),
 /* 23 */
@@ -1240,6 +1240,116 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-c7a15320", module.exports)
+  }
+}
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(31),
+  /* template */
+  __webpack_require__(32),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/rating-gt.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] rating-gt.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-306c9631", Component.options)
+  } else {
+    hotAPI.reload("data-v-306c9631", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['stars', 'checked', 'value'],
+	methods: {
+		stringToArray(stars) {
+			var array = [];
+			for (var i = 1; i <= stars; i++) {
+				array.push(i);
+			}
+			return array;
+		},
+		showName(item) {
+			this.$emit('input', item);
+		}
+	}
+});
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "b__components b-rating-gt"
+  }, [_vm._l((_vm.stringToArray(_vm.stars)), function(item) {
+    return _c('div', {
+      staticClass: "stars"
+    }, [_c('input', {
+      staticClass: "star",
+      attrs: {
+        "id": item,
+        "type": "radio",
+        "name": "star",
+        "checked": ""
+      },
+      on: {
+        "click": function($event) {
+          _vm.showName(item)
+        }
+      }
+    }), _vm._v(" "), _c('label', {
+      staticClass: "star",
+      attrs: {
+        "for": ""
+      }
+    })])
+  }), _vm._v("ss\n\t")], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-306c9631", module.exports)
   }
 }
 
