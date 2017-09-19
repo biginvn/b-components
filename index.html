@@ -34,8 +34,8 @@ label {
                         </p>
                         <p>{{ input.name }}</p>
 
-                        <button type="button" class="btn btn-success" @click="input.name='Test'">Update model</button>
-                        <button type="button" class="btn btn-success" @click="input.name=''">Empty</button>
+                        <b-button type="button" class-name = "button-primary" icon = "<i class='fa fa-circle-thin'></i>" label="Update model" @click.native="input.name='Test'"></b-button>
+                        <b-button type="button" label="Empty" class-name = "button-solid button-danger" @click="input.name=''"></b-button>
                     </figure>
 
                     <figure class="col-md-6">
@@ -165,6 +165,29 @@ label {
                         <button type="button" class="btn btn-success" @click="input.zipCode='752541'">Invalid 752541</button>
                         <button type="button" class="btn btn-success" @click="input.zipCode=null">Null</button>
                     </figure>
+                    
+                    <figure class="col-md-6">
+                        <h4 class="mb-3">Button</h4>
+                        <p>
+                            <b-button type="button" class-name = "button-primary" label="Primary"></b-button>
+                            <b-button type="button" class-name = "button-danger" label="Danger"></b-button>
+                            <b-button type="button" class-name = "button-success" label="Success"></b-button>
+                            <b-button type="button" class-name = "button-warn" label="Warn"></b-button>
+                        </p>
+                        <p>
+                            <b-button type="button" icon = "<i class='fa fa-circle-thin'></i>" class-name = "button-primary" label="Click me"></b-button>
+                            <b-button type="button" icon = "<i class='fa fa-circle-thin'></i>" class-name = "button-danger" label="Click me"></b-button>
+                            <b-button type="button" icon = "<i class='fa fa-circle-thin'></i>" class-name = "button-success" label="Click me"></b-button>
+                            <b-button type="button" icon = "<i class='fa fa-circle-thin'></i>" class-name = "button-warn" label="Click me"></b-button>
+                        </p>
+                        <p>
+                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-primary button-solid" label="Solid"></b-button>
+                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-danger button-solid" label="Solid"></b-button>
+                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-success button-solid" label="Solid"></b-button>
+                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-warn button-solid" label="Solid"></b-button>
+                        </p>
+
+                    </figure>
 
                 </div>
             </div>
@@ -175,8 +198,9 @@ label {
     var vm = new Vue({
         el: '#app',
         data: {
+
             input: {
-                name: 'Please input some text here',
+                name: 'Input your text...',
                 checkbox: [],
                 checkboxByValue : null,
                 radio : null,
