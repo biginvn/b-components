@@ -1,39 +1,29 @@
-import baseComponent from '../base-component'
+import baseComponent from '../mixins/text-field-mixins'
 
 export default {
 	data(){
 		return {
-			classLabel : '',
 			text : ''
 		}
 	},
 	mixins : [baseComponent],
-	props	: ['value', 'disabled', 'placeholder', 'label', 'cols', 'rows', 'class-name', 'id', 'name'],
-	mounted () {
-		this.change(this.value);
-	},
-	watch :{
-		value(value) {
-			this.updateChange(value);
+	props	: ['cols', 'rows'],
+	watch : {
+		value () {
+			this.updateText(this.value)
 		}
 	},
 	methods : {
 		change (value) {
-			this.updateChange(value);
+			this.updateFloatLabel(value)
+			this.updateText(value)
+			this.$emit('input', value)
 		},
-		updateChange (value) {
-			var isEmpty = value == undefined || value == null || value.length == 0 ? true : false;
-			if (!isEmpty)
-				this.classLabel = 'active';
-			else
-				this.classLabel = '';
-
+		updateText (value) {
 			this.text = value
 			this.$el.querySelector('textarea').value=this.text
 			if (value == undefined || value == null)
 				this.$el.querySelector('textarea').value=''
-
-			this.$emit('input', value);
 		}
 	}
 }

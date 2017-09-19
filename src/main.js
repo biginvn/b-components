@@ -8,6 +8,7 @@ import BSelect from './themes/ios/Select.vue'
 import BTextarea from './themes/ios/Textarea.vue'
 import BRating from './themes/ios/Rating.vue'
 import BZipCode from './themes/ios/ZipCode.vue'
+import BButton from './themes/ios/Button.vue'
 import BRatingGt from './themes/ios/rating-gt.vue'
 
 Vue.component('BTextField', BTextField)
@@ -18,4 +19,5 @@ Vue.component('BSelect', BSelect)
 Vue.component('BTextarea', BTextarea)
 Vue.component('BRating', BRating)
 Vue.component('BZipCode', BZipCode)
+Vue.component('BButton', BButton)
 Vue.component('BRatingGt', BRatingGt)

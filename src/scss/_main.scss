@@ -1,7 +1,11 @@
 .b__components{
+	-webkit-font-smoothing: antialiased;
 	&.has-error {
+		label {
+			color : map-get($colors, danger);
+		}
 		input.b__input {
-			border-color : red;
+			border-color : map-get($colors, danger);
 		}
 	}	
 }
