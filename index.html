@@ -47,8 +47,8 @@ label {
                         </p>
                         <p>{{ input.checkbox }}</p>
                         <p>
-                            <button type="button" class="btn btn-success" @click="input.checkbox=['USA']">Only USA</button>
-                            <button type="button" class="btn btn-success" @click="input.checkbox=[]">Reset all</button>
+                            <b-button type="button" label = "Only USA" class-name="button-solid button-primary" @click.native="input.checkbox=['USA']"></b-button>
+                            <b-button type="button" label = "Reset" class-name="button-solid button-danger" @click.native="input.checkbox=[]"></b-button>
                         </p>
                         <br>
 
@@ -57,7 +57,7 @@ label {
                         </p>
                         <p>{{ input.checkboxByValue }}</p>
 
-                        <button type="button" class="btn btn-success" @click="input.checkboxByValue = true">USA</button>
+                        <b-button type="button" class-name="button-success" label = "USA" @click.native="input.checkboxByValue = true"></b-button>
 
 
                     </figure>
@@ -71,8 +71,8 @@ label {
                         </p>
                         <p>{{ input.radio }}</p>
 
-                        <button type="button" class="btn btn-success" @click="input.radio='VN'">VN only</button>
-                        <button type="button" class="btn btn-success" @click="input.radio=null">Null</button>
+                        <b-button type="button" class-name="button-primary" @click.native="input.radio='VN'" label = "VN"></b-button>
+                        <b-button type="button" class-name="button-danger button-solid" @click.native="input.radio=null" label = "Null"></b-button>
                     </figure>
 
                     <figure class="col-md-6">
@@ -94,8 +94,8 @@ label {
                         </p>
                         <p>{{ input.switch }}</p>
                         <p>                            
-                            <button type="button" class="btn btn-success" @click="input.switch=['VN']">VN only</button>
-                            <button type="button" class="btn btn-success" @click="input.switch=[]">Empty</button>
+                            <b-button type="button" class-name="button-primary" @click.native="input.switch=['VN']" label = "VN"></b-button>
+                            <b-button type="button" class-name="button-solid button-danger" @click.native="input.switch=[]" label = "Empty"></b-button>
                         </p>
                         
                         <p>
@@ -103,8 +103,8 @@ label {
                         </p>
                         <p>{{ input.switchBool }}</p>
                         <p>
-                            <button type="button" class="btn btn-success" @click="input.switchBool = true">True</button>
-                            <button type="button" class="btn btn-success" @click="input.switchBool = false">False</button>
+                            <b-button type="button" class-name="button-primary" @click.native="input.switchBool = true" label = "true"></b-button>
+                            <b-button type="button" class-name="button-warn" @click.native="input.switchBool = false" label = "false"></b-button>
                         </p>
                     </figure>
 
@@ -115,8 +115,8 @@ label {
                         </p>
                         <p>{{ input.select }}</p>
 
-                        <button type="button" class="btn btn-success" @click="input.select='USA'">Select USA</button>
-                        <button type="button" class="btn btn-success" @click="input.select=null">Null</button>
+                        <b-button type="button" class-name="button-primary" @click.native="input.select='USA'" label = "USA"></b-button>
+                        <b-button type="button" class-name="button-danger" @click.native="input.select=null" label = "Null"></b-button>
                     </figure>
 
                     <figure class="col-md-6">
@@ -126,8 +126,8 @@ label {
                         </p>
                         <p>{{ input.textarea }}</p>
 
-                        <button type="button" class="btn btn-success" @click="input.textarea='Awesome components'">Update</button>
-                        <button type="button" class="btn btn-success" @click="input.textarea=null">Null</button>
+                        <b-button type="button" class-name="button-primary" @click.native="input.textarea='Awesome components'" label = "Update"></b-button>
+                        <b-button type="button" class-name="button-danger" @click.native="input.textarea=null" label = "Null"></b-button>
                     </figure>
 
                     <figure class="col-md-6">
@@ -137,10 +137,10 @@ label {
                         </p>
                         <p>{{ input.rating }}</p>
 
-                        <button type="button" class="btn btn-success" @click="input.rating=5">5 stars</button>
-                        <button type="button" class="btn btn-success" @click="input.rating=3">Update to 3 stars</button>
-                        <button type="button" class="btn btn-success" @click="input.rating=7">More than 5 stars (7)</button>
-                        <button type="button" class="btn btn-success" @click="input.rating=null">Null</button>
+                        <b-button type="button" class-name="button-primary" @click.native="input.rating=5" label = "5 stars"></b-button>
+                        <b-button type="button" class-name="button-success" @click.native="input.rating=3" label = "3 stars"></b-button>
+                        <b-button type="button" class-name="button-warn" @click.native="input.rating=7" label = "7 stars"></b-button>
+                        <b-button type="button" class-name="button-danger" @click.native="input.rating=null" label = "Null"></b-button>
                     </figure>
 
                     <figure class="col-md-6">
@@ -150,8 +150,8 @@ label {
                         </p>
                         <p>{{ input.datePicker }}</p>
 
-                        <button type="button" class="btn btn-success" @click="input.datePicker='2016-12-21'">2016-12-21</button>
-                        <button type="button" class="btn btn-success" @click="input.datePicker=null">Null</button>
+                        <b-button type="button" class-name="button-primary" @click.native="input.datePicker='2016-12-21'" label = "2016-12-21"></b-button>
+                        <b-button type="button" class-name="button-danger button-solid" @click.native="input.datePicker=null" label = "Null"></b-button>
                     </figure>
                     
                     <figure class="col-md-6">
@@ -161,9 +161,9 @@ label {
                         </p>
                         <p>{{ input.zipCode }}</p>
 
-                        <button type="button" class="btn btn-success" @click="input.zipCode='68007'">Valid 68007</button>
-                        <button type="button" class="btn btn-success" @click="input.zipCode='752541'">Invalid 752541</button>
-                        <button type="button" class="btn btn-success" @click="input.zipCode=null">Null</button>
+                        <b-button type="button" class-name="button-primary" @click.native="input.zipCode='68007'" label = "Valid 68007"></b-button>
+                        <b-button type="button" class-name="button-warn button-solid" @click.native="input.zipCode='752541'" label = "Invalid 752541"></b-button>
+                        <b-button type="button" class-name="button-danger" @click.native="input.zipCode=null" label = "Null"></b-button>
                     </figure>
                     
                     <figure class="col-md-6">
