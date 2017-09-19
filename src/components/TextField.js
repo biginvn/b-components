@@ -3,11 +3,10 @@ export default {
 	data(){
 		return {
 			classLabel : '',
-			// objModel : this.value
 		}
 	},
 	mixins : [baseComponent],
-	props	: ['disabled', 'placeholder', 'label', 'class-name', 'name', 'id', 'type', 'a'],
+	props	: ['disabled', 'placeholder', 'label', 'class-name', 'name', 'id', 'type'],
 
 	computed : {
 		classes () {
@@ -18,11 +17,6 @@ export default {
 				return 'text'
 			return this.type
 		}
-	},
-	watch : {
-		// value (newValue) {
-		// 	this.change(newValue)
-		// }
 	},
 	mounted () {
 		this.change(this.value)
@@ -38,7 +32,6 @@ export default {
 			}
 			else
 				this.classLabel = '';
-			// this.objModel = value
 
 			this.$emit('input', value);
 

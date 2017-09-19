@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 import BTextField from './themes/ios/TextField.vue'
 import BCheckBox from './themes/ios/CheckBox.vue'
 import BRadio from './themes/ios/Radio.vue'

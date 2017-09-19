@@ -6,8 +6,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
-
     <link href='built/b-components.min.css' rel="stylesheet">
     <script src="built/b-components.js"></script>
 </head>
@@ -143,6 +141,17 @@ label {
                         <button type="button" class="btn btn-success" @click="input.rating=null">Null</button>
                     </figure>
 
+                    <figure class="col-md-6">
+                        <h4 class="mb-3">Date Picker</h4>
+                        <p>
+                            <b-text-field label="Date Picker" placeholder="Select date" type="date" class-name="testing-b-text-field" v-model="input.datePicker"></b-text-field>
+                        </p>
+                        <p>{{ input.datePicker }}</p>
+
+                        <button type="button" class="btn btn-success" @click="input.datePicker='2016-12-21'">2016-12-21</button>
+                        <button type="button" class="btn btn-success" @click="input.datePicker=null">Null</button>
+                    </figure>
+
 
                 </div>
             </div>
@@ -163,6 +172,7 @@ label {
                 select : null,
                 textarea : null,
                 rating : null,
+                datePicker : null
             },
             list : [
                 { code : 'VN', name : 'Viet Nam'},
