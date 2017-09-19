@@ -1,0 +1,7 @@
+.b__components{
+	&.has-error {
+		input.b__input {
+			border-color : red;
+		}
+	}	
+}

@@ -1,4 +1,4 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 
 import BTextField from './themes/ios/TextField.vue'
 import BCheckBox from './themes/ios/CheckBox.vue'
@@ -7,6 +7,7 @@ import BSwitch from './themes/ios/Switch.vue'
 import BSelect from './themes/ios/Select.vue'
 import BTextarea from './themes/ios/Textarea.vue'
 import BRating from './themes/ios/Rating.vue'
+import BZipCode from './themes/ios/ZipCode.vue'
 import BRatingGt from './themes/ios/rating-gt.vue'
 
 Vue.component('BTextField', BTextField)
@@ -16,4 +17,5 @@ Vue.component('BSwitch', BSwitch)
 Vue.component('BSelect', BSelect)
 Vue.component('BTextarea', BTextarea)
 Vue.component('BRating', BRating)
+Vue.component('BZipCode', BZipCode)
 Vue.component('BRatingGt', BRatingGt)

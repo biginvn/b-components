@@ -1,7 +1,7 @@
 <template>
-	<div class="b__components b-date-picker">
+	<div :class="wrapClass">
 		<label :class="classLabel">{{ label }}</label>
-      	<input :placeholder="placeholder" :name="name" :id="id" :class="classes" :value="value" :disabled="disabled" @input="change($event.target.value)">
+      	<input :placeholder="placeholder" :name="name" @blur="blur()" :id="id" :class="classes" :value="value" :disabled="disabled" @input="change($event.target.value)">
 	</div>
 </template>
 <script>
