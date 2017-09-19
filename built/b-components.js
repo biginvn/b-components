@@ -965,17 +965,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	mounted() {
 		this.change(this.value);
 	},
+	watch: {
+		value(newValue) {
+			// Detect when value change will update float label
+			this.updateChange(newValue);
+		}
+	},
 	methods: {
 		change(value) {
 			this.updateChange(value);
+			this.$emit('input', value);
 		},
 		updateChange(value) {
 			var isEmpty = value == undefined || value == null || value.length == 0 ? true : false;
 			if (!isEmpty) {
 				this.classLabel = 'active';
 			} else this.classLabel = '';
-
-			this.$emit('input', value);
 		}
 	}
 });
