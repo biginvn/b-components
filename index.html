@@ -35,7 +35,7 @@ label {
                         <p>{{ input.name }}</p>
 
                         <b-button type="button" class-name = "button-primary" icon = "<i class='fa fa-circle-thin'></i>" label="Update model" @click.native="input.name='Test'"></b-button>
-                        <b-button type="button" label="Empty" class-name = "button-solid button-danger" @click="input.name=''"></b-button>
+                        <b-button type="button" label="Empty" class-name = "button-solid button-danger" @click.native="input.name=''"></b-button>
                     </figure>
 
                     <figure class="col-md-6">
