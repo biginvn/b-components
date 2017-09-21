@@ -1,4 +1,4 @@
-import baseComponent from '../base-component'
+import baseComponent from '../mixins/base-mixins'
 export default {
 	mixins : [baseComponent],
 	props : [ 'disabled', 'name', 'id', 'label', 'class-name', 'rate-max' ],

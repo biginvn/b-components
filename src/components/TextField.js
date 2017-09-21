@@ -1,16 +1,10 @@
-import baseComponent from '../base-component'
+import baseComponent from '../mixins/text-field-mixins'
 export default {
-	data(){
-		return {
-			classLabel : '',
-		}
-	},
 	mixins : [baseComponent],
-	props	: ['disabled', 'placeholder', 'label', 'class-name', 'name', 'id', 'type'],
-
+	props	: ['type'],
 	computed : {
 		classes () {
-			return (this.className?this.className:'') + " b__input"
+			return (this.className?this.className:'') + " b__input 2"
 		},
 		typeComponent () {
 			if (this.type == undefined || this.type== null || this.type.length == 0)
@@ -18,23 +12,10 @@ export default {
 			return this.type
 		}
 	},
-	mounted () {
-		this.change(this.value)
-	},
 	methods : {
 		change (value) {
-			this.updateChange(value);
-		},
-		updateChange (value) {
-			var isEmpty = value == undefined || value == null || value.length == 0 ? true : false;
-			if (!isEmpty){
-				this.classLabel = 'active';
-			}
-			else
-				this.classLabel = '';
-
+			this.updateFloatLabel(value);
 			this.$emit('input', value);
-
 		}
 	}
 }
