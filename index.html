@@ -153,6 +153,21 @@ label {
                         <b-button type="button" class-name="button-primary" @click.native="input.datePicker='2016-12-21'" label = "2016-12-21"></b-button>
                         <b-button type="button" class-name="button-danger button-solid" @click.native="input.datePicker=null" label = "Null"></b-button>
                     </figure>
+
+                    <figure class="col-md-6">
+                        <h4 class="mb-3">Multi Select</h4>
+                        <p>
+                            <b-multi-select :list = "listMultiSelect" v-model = "input.multiSelect"></b-multi-select>
+                        </p>
+                        <p>{{ input.multiSelect }}</p>
+                        <p>
+                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-primary button-solid" label="Solid"></b-button>
+                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-danger button-solid" label="Solid"></b-button>
+                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-success button-solid" label="Solid"></b-button>
+                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-warn button-solid" label="Solid"></b-button>
+                        </p>
+
+                    </figure>
                     
                     <figure class="col-md-6">
                         <h4 class="mb-3">ZipCode</h4>
@@ -189,6 +204,8 @@ label {
 
                     </figure>
 
+                    
+
                 </div>
             </div>
         </template>
@@ -210,17 +227,80 @@ label {
                 textarea : null,
                 rating : null,
                 datePicker : null,
-                zipCode : null
+                zipCode : null,
+                multiSelect : [3,1,5]
             },
             list : [
                 { code : 'VN', name : 'Viet Nam'},
                 { code : 'USA', name : 'United States'},
                 { code : 'CAM', name : 'Campuchia'}
+            ],
+            listMultiSelect : [
+                {
+                    id : 1,
+                    html : '<p>Xabi Alonso</p><p class="club">Bayern Munich</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+                    keywords : 'Adam',
+                    thumbHtml : 'Alonso',
+                    icon : 'https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/x/xab/large/900.png'
+                },
+                {
+                    id : 2,
+                    keywords : 'Busquests',
+                    html : '<p>Serio Busquests</p><p class="club">Barca</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+                    thumbHtml : 'Busquests',
+                    icon : 'https://media-public.fcbarcelona.com/20157/0/document_thumbnail/20197/78/103/254/50227022/1.0-1/50227022.jpg'
+                },
+                {
+                    id : 3,
+                    keywords : 'Rashford',
+                    html : '<p>Rashford</p><p class="club">Manchester United</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+                    thumbHtml : 'Rashford',
+                    icon : 'https://i.imgur.com/2ukdYux.png'
+                },
+                {
+                    id : 4,
+                    keywords : 'Hazard',
+                    html : '<p>Hazard</p><p class="club">Chelsea</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+                    thumbHtml : 'Eden Hazard',
+                    icon : 'https://www.fifaindex.com/static/FIFA14/images/players/128/183277.png'
+                },
+                {
+                    id : 5,
+                    keywords : 'Smith',
+                    html : '<p>Xuan Truong Luong</p><p class="club">Hoang Anh Gia Lai</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+                    thumbHtml : 'Xuan Truong',
+                    icon : 'http://image.thanhnien.vn/uploaded/lanphuong/2016_03_11/xuantruongdeptrainhutraihanquoc_rkdz.jpg?width=500&encoder=wic&subsampling=444'
+                }
             ]
         },
         template: '#main-page'
     });
     </script>
+
+    <style>
+        .b__multi__select__list > .list-item .content {
+            font-weight: bold;
+        }
+
+        .b__multi__select__list > .list-item .content i {
+            color: #d89032;
+            margin-right: 3px;
+        }
+
+        .b__multi__select__list > .list-item .content .club {
+            color: grey;
+            font-weight: normal;
+        }
+        .b__components.b__multi__select .b__multi__select__list .list-item>.content p {
+            margin-bottom: 2px;
+        }
+        .b__components.b__multi__select .b__multi__select__list .list-item:hover p {
+            color: #fff;
+        }
+        .b__components.b__multi__select .b__multi__select__list .list-item.active:before {
+            top : 30px;
+        }
+    </style>
 </body>
 
 </html>
