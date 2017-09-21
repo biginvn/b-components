@@ -33,7 +33,7 @@
 		    		top: 12px;
 		    		width: 10px;
 		    		height: 10px;
-		    		border : 1px solid map-get($colors, primary);
+		    		background-color : map-get($colors, primary);
 					border-radius: 50%;
 		    	}
 		    }
@@ -41,7 +41,7 @@
 		    &:hover {
 		    	background-color : map-get($colors, primary-light);
 		    	&:before {
-		    		border-color : #FFF;
+		    		background-color : #FFF;
 		    	}
 		    }
 
