@@ -152,7 +152,7 @@ label {
                     <figure class="col-md-6">
                         <h4 class="mb-3">Numberic Formatted</h4>
                         <p>
-                            <b-numeric-formatted placeholder="How much you have ?" label="Your wallet" v-model="input.numericFormatted" :currency="currency" :prefixes="prefixes"></b-numeric-formatted>
+                            <b-numeric-formatted placeholder="How much you have ?" label="Your wallet" v-model="input.numericFormatted" :currency="currency" :prefix="prefixes"></b-numeric-formatted>
                         </p>
                         <p>Result:
                         {{ input.numericFormatted }} <br>Type: {{ typeof input.numericFormatted }}</p>
@@ -162,8 +162,8 @@ label {
                         <b-button type="button" class-name="button-primary" label = "VND" @click.native="currency = 'VND'"></b-button>
                         <b-button type="button" class-name="button-primary" label = "EUR" @click.native="currency = '€'"></b-button>
                         <b-button type="button" class-name="button-primary" label = "USA" @click.native="currency = '$'"></b-button>
-                        <b-button type="button" class-name="button-primary" label = "Suffix" @click.native="prefixes = true"></b-button>
-                        <b-button type="button" class-name="button-primary" label = "Prefix" @click.native="prefixes = false"></b-button>
+                        <b-button type="button" class-name="button-primary" label = "Suffix" @click.native="prefixes = false"></b-button>
+                        <b-button type="button" class-name="button-primary" label = "Prefix" @click.native="prefixes = true"></b-button>
                     </figure>
 
                     <figure class="col-md-6">
@@ -248,7 +248,7 @@ label {
                 textarea : null,
                 rating : null,
                 datePicker : null,
-                numericFormatted : 1234 ,
+                numericFormatted : null ,
                 zipCode : null,
                 multiSelect : [3,1,5]
             },

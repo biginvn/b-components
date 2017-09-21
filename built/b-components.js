@@ -1875,12 +1875,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
     staticClass: "b__input",
+    domProps: {
+      "value": _vm.mask
+    },
     on: {
       "blur": function($event) {
         _vm.blur($event.target.value)
       },
       "focus": function($event) {
-        _vm.focus($event.target.value)
+        _vm.focus()
       }
     }
   })])
@@ -1901,8 +1904,13 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(3);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+	data() {
+		return {
+			mask: '0 ' + '$'
+		};
+	},
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
-	props: ['currency', 'prefixes'],
+	props: ['currency', 'prefix'],
 	mounted() {
 		this.blur(this.value);
 	},
@@ -1910,7 +1918,7 @@ if (false) {
 		value() {
 			this.blur(this.value);
 		},
-		prefixes() {
+		prefix() {
 			this.blur(this.value);
 		},
 		currency() {
@@ -1918,26 +1926,24 @@ if (false) {
 		}
 	},
 	methods: {
-		focus(value) {
-			value = parseFloat(value.replace(/[^\d\.]/g, ""));
-			this.$el.querySelector('input').value = isNaN(value) ? 0 : value;
+		focus() {
+			this.mask = this.value;
 		},
 		blur(value) {
-			value = parseFloat(value.toString().replace(/[^\d\.]/g, ""));
+			this.mask = this.convertNumberToString(value);
+			value = this.convertValueToNumber(value);
 			this.$emit("input", value);
-			if (this.prefixes) {
-				if (this.$el.querySelector('input').value = isNaN(value)) {
-					this.$el.querySelector('input').value = 0 + ' ' + this.currency;
-				} else {
-					this.$el.querySelector('input').value = value.toLocaleString() + ' ' + this.currency;
-				}
-			} else {
-				if (this.$el.querySelector('input').value = isNaN(value)) {
-					this.$el.querySelector('input').value = this.currency + ' ' + 0;
-				} else {
-					this.$el.querySelector('input').value = this.currency + ' ' + value.toLocaleString();
-				}
-			}
+		},
+		convertNumberToString(number) {
+			let value = this.convertValueToNumber(number);
+			if (isNaN(value)) return this.prefix ? this.currency + ' 0' : '0 ' + this.currency;
+			return this.prefix ? this.currency + ' ' + value.toLocaleString() : value.toLocaleString() + ' ' + this.currency;
+		},
+		convertValueToNumber(value) {
+			if (value == undefined || value == null) value = 0;
+			let number = value.toString().replace(/[^\d\.]/g, "");
+			if (number.length == 0) return 0;
+			return parseFloat(number);
 		}
 	}
 });

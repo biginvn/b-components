@@ -1,15 +1,20 @@
 import baseMixins from '../mixins/text-field-mixins'
 export default{
+	data () {
+		return {
+			mask : '0 ' + '$'
+		}
+	},
 	mixins: [baseMixins],
-	props: ['currency','prefixes'],
+	props: ['currency','prefix'],
 	mounted() {
-		this.blur(this.value);
+		this.blur(this.value)
 	},
 	watch: {
 		value() {
 			this.blur(this.value);
 		},
-		prefixes() {
+		prefix() {
 			this.blur(this.value);
 		},
 		currency() {
@@ -17,29 +22,27 @@ export default{
 		}
 	},
 	methods: {
-		focus(value){
-			value = parseFloat(value.replace(/[^\d\.]/g, ""));
-			this.$el.querySelector('input').value = isNaN(value)? 0 : value;
+		focus(){
+			this.mask = this.value
 		},
 		blur(value){
-			value = parseFloat(value.toString().replace(/[^\d\.]/g, "")) ;
-			this.$emit("input", value);
-			if (this.prefixes) {
-				if(this.$el.querySelector('input').value = isNaN(value)){
-					this.$el.querySelector('input').value = 0 + ' ' + this.currency;
-				}
-				else{
-					this.$el.querySelector('input').value = value.toLocaleString() + ' ' + this.currency;
-				}
-			}
-			else{
-				if(this.$el.querySelector('input').value = isNaN(value)){
-					this.$el.querySelector('input').value = this.currency + ' ' + 0;
-				}
-				else{
-					this.$el.querySelector('input').value = this.currency + ' ' + value.toLocaleString();
-				}
-			}
+			this.mask = this.convertNumberToString(value)
+			value = this.convertValueToNumber(value)
+			this.$emit("input", value)
+		},
+		convertNumberToString(number){
+			let value = this.convertValueToNumber(number)
+			if(isNaN(value))
+				return this.prefix ? this.currency + ' 0' : '0 ' + this.currency
+			return this.prefix ? this.currency + ' ' + value.toLocaleString() : value.toLocaleString() + ' ' + this.currency
+		},
+		convertValueToNumber(value){
+			if (value == undefined || value == null)
+				value = 0
+			let number = value.toString().replace(/[^\d\.]/g, "")
+			if (number.length == 0)
+				return 0
+			return parseFloat(number)
 		}
 	}
 }
