@@ -161,10 +161,9 @@ label {
                         </p>
                         <p>{{ input.multiSelect }}</p>
                         <p>
-                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-primary button-solid" label="Solid"></b-button>
-                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-danger button-solid" label="Solid"></b-button>
-                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-success button-solid" label="Solid"></b-button>
-                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-warn button-solid" label="Solid"></b-button>
+                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-primary button-solid" label="Only 1" @click.native = "input.multiSelect= [1]"></b-button>
+                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-danger button-solid" label="Select all" @click.native = "input.multiSelect= [1,2,3,4,5]"></b-button>
+                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-success button-solid" label="Empty" @click.native = "input.multiSelect= []"></b-button>
                         </p>
 
                     </figure>
