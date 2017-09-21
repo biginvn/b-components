@@ -91,24 +91,15 @@ label {
 
                         <p>{{ input.switch }}</p>
                         <p>                            
-                            <button type="button" class="btn btn-success" @click="input.switch=['VN']">VN only</button>
-                            <button type="button" class="btn btn-success" @click="input.switch=[]">Empty</button>
+                            <b-button type="button" class-name="button-solid button-primary" label = "VN" @click.native="input.switch=['VN']"></b-button>
+                            <b-button type="button" class-name="button-solid button-primary" label = "Empty" @click.native="input.switch=[]"></b-button>
                         </p>
 
                         <p>
                             <b-switch name="minh" class-name="testing-b-switch" v-model="input.switchBool"></b-switch>
                         </p>
-                        <p>{{ input.switch }}</p>
-                        <p>                            
-                            <b-button type="button" class-name="button-primary" @click.native="input.switch=['VN']" label = "VN"></b-button>
-                            <b-button type="button" class-name="button-solid button-danger" @click.native="input.switch=[]" label = "Empty"></b-button>
-                        </p>
-                        
-                        <p>
-                            <b-switch name="minh" class-name="testing-b-switch" v-model="input.switchBool"></b-switch>
-                        </p>
                         <p>{{ input.switchBool }}</p>
-                        <p>
+                        <p>                            
                             <b-button type="button" class-name="button-primary" @click.native="input.switchBool = true" label = "true"></b-button>
                             <b-button type="button" class-name="button-warn" @click.native="input.switchBool = false" label = "false"></b-button>
                         </p>
