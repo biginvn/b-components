@@ -158,12 +158,12 @@ label {
                         {{ input.numericFormatted }} <br>Type: {{ typeof input.numericFormatted }}</p>
 
                         <b-button type="button" class-name="button-primary" label = "4321" @click.native="input.numericFormatted = 4321"></b-button>
-                        <b-button type="button" class-name="button-primary" label = "Null" @click.native="input.numericFormatted = 0"></b-button>
-                        <b-button type="button" class-name="button-primary" label = "VND" @click.native="currency = 'VND'"></b-button>
-                        <b-button type="button" class-name="button-primary" label = "EUR" @click.native="currency = '€'"></b-button>
-                        <b-button type="button" class-name="button-primary" label = "USA" @click.native="currency = '$'"></b-button>
-                        <b-button type="button" class-name="button-primary" label = "Suffix" @click.native="prefixes = false"></b-button>
-                        <b-button type="button" class-name="button-primary" label = "Prefix" @click.native="prefixes = true"></b-button>
+                        <b-button type="button" class-name="button-danger button-solid" label = "Null" @click.native="input.numericFormatted = 0"></b-button>
+                        <b-button type="button" class-name="button-success" label = "VND" @click.native="currency = 'VND'"></b-button>
+                        <b-button type="button" class-name="button-warn button-solid" label = "EUR" @click.native="currency = '€'"></b-button>
+                        <b-button type="button" class-name="button-primary button-solid" label = "USA" @click.native="currency = '$'"></b-button>
+                        <b-button type="button" class-name="button-danger" label = "Suffix" @click.native="prefixes = false"></b-button>
+                        <b-button type="button" class-name="button-success" label = "Prefix" @click.native="prefixes = true"></b-button>
                     </figure>
 
                     <figure class="col-md-6">
