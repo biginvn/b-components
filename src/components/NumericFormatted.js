@@ -1,5 +1,7 @@
+import baseMixins from '../mixins/text-field-mixins'
 export default{
-	props: ['value','currency','prefixes'],
+	mixins: [baseMixins],
+	props: ['currency','prefixes'],
 	mounted() {
 		this.blur(this.value);
 	},

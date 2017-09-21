@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
-    <script src="https://vuejs.org/js/vue.js"></script>
     <link href='built/b-components.min.css' rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
@@ -59,8 +58,6 @@ label {
                         <p>{{ input.checkboxByValue }}</p>
 
                         <b-button type="button" class-name="button-success" label = "USA" @click.native="input.checkboxByValue = true"></b-button>
-
-
                     </figure>
 
                     <figure class="col-md-6">
@@ -71,15 +68,15 @@ label {
                             <b-radio name="minh" id="radio-thai" class-name="testing-b-radio" v-model="input.radio" value="Thai Lan" label="Thai Lan"></b-radio>
                         </p>
                         <p>{{ input.radio }}</p>
-
-                        <b-button type="button" class-name="button-primary" @click.native="input.radio='VN'" label = "VN"></b-button>
-                        <b-button type="button" class-name="button-danger button-solid" @click.native="input.radio=null" label = "Null"></b-button>
+                        <p>
+                            <b-button type="button" class-name="button-primary" @click.native="input.radio='VN'" label = "VN"></b-button>
+                            <b-button type="button" class-name="button-danger button-solid" @click.native="input.radio=null" label = "Null"></b-button>
+                        </p>
                     </figure>
 
                     <figure class="col-md-6">
                         <h4 class="mb-3">Switch</h4>
                         <p>
-
                             <b-switch name="minh" id="USA" class-name="testing-b-switch" v-model="input.switch" bind-value="USA" label="USA"></b-switch>
                             <label for="USA">USA</label>
                         </p>
@@ -91,90 +88,15 @@ label {
                             <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" bind-value="Thai Lan" id="Thai Lan"></b-switch>
                             <label for="Thai Lan">Thai Lan</label>
                         </p>
-<<<<<<< .merge_file_a11488
 
-                    </p>
-                    <p>{{ input.switch }}</p>
-                    <p>                            
-                        <button type="button" class="btn btn-success" @click="input.switch=['VN']">VN only</button>
-                        <button type="button" class="btn btn-success" @click="input.switch=[]">Empty</button>
-                    </p>
+                        <p>{{ input.switch }}</p>
+                        <p>                            
+                            <button type="button" class="btn btn-success" @click="input.switch=['VN']">VN only</button>
+                            <button type="button" class="btn btn-success" @click="input.switch=[]">Empty</button>
+                        </p>
 
-                    <p>
-                        <b-switch name="minh" class-name="testing-b-switch" v-model="input.switchBool"></b-switch>
-                    </p>
-                    <p>{{ input.switchBool }}</p>
-                    <p>
-                        <button type="button" class="btn btn-success" @click="input.switchBool = true">True</button>
-                        <button type="button" class="btn btn-success" @click="input.switchBool = false">False</button>
-                    </p>
-                </figure>
-
-                <figure class="col-md-6">
-                    <h4 class="mb-3">Selectbox</h4>
-                    <p>
-                        <b-select item-text = "name" item-val = "code" label = "Select country" name="minh" class-name="testing-b-select" v-model="input.select" :list="list"></b-select>
-                    </p>
-                    <p>{{ input.select }}</p>
-
-                    <button type="button" class="btn btn-success" @click="input.select='USA'">Select USA</button>
-                    <button type="button" class="btn btn-success" @click="input.select=null">Null</button>
-                </figure>
-
-                <figure class="col-md-6">
-                    <h4 class="mb-3">Textarea</h4>
-                    <p>
-                        <b-textarea placeholder = "Because ..." label = "Why ..." name="minh" class-name="testing-b-textarea" v-model="input.textarea"></b-textarea>
-                    </p>
-                    <p>{{ input.textarea }}</p>
-
-                    <button type="button" class="btn btn-success" @click="input.textarea='Awesome components'">Update</button>
-                    <button type="button" class="btn btn-success" @click="input.textarea=null">Null</button>
-                </figure>
-
-                <figure class="col-md-6">
-                    <h4 class="mb-3">Rating</h4>
-                    <p>
-                        <b-rating rate-max = "5" disabled = "disabled2" class-name="testing-b-rating" v-model="input.rating"></b-rating>
-                    </p>
-                    <p>{{ input.rating }}</p>
-
-                    <button type="button" class="btn btn-success" @click="input.rating=5">5 stars</button>
-                    <button type="button" class="btn btn-success" @click="input.rating=3">Update to 3 stars</button>
-                    <button type="button" class="btn btn-success" @click="input.rating=7">More than 5 stars (7)</button>
-                    <button type="button" class="btn btn-success" @click="input.rating=null">Null</button>
-                </figure>
-
-                <figure class="col-md-6">
-                    <h4 class="mb-3">Date Picker</h4>
-                    <p>
-                        <b-text-field label="Date Picker" placeholder="Select date" type="date" class-name="testing-b-text-field" v-model="input.datePicker"></b-text-field>
-                    </p>
-                    <p>{{ input.datePicker }}</p>
-
-                    <button type="button" class="btn btn-success" @click="input.datePicker='2016-12-21'">2016-12-21</button>
-                    <button type="button" class="btn btn-success" @click="input.datePicker=null">Null</button>
-                </figure>
-
-                <figure class="col-md-6">
-                    <h4 class="mb-3">Numberic Formatted</h4>
-                    <p>
-                        <b-numberic-formatted v-model="input.numbericFormatted" :currency="currency" :prefixes="prefixes"></b-numberic-formatted>
-                    </p>
-                    <p>Result:
-                    {{ input.numbericFormatted }} <br>Type: {{ typeof input.numbericFormatted }}</p>
-
-                    <button type="button" class="btn btn-success" @click="input.numbericFormatted = 4321">Set 4321</button>
-                    <button type="button" class="btn btn-success" @click="input.numbericFormatted = 0">Null</button>
-                    <button type="button" class="btn btn-success" @click="currency = 'VND'">VND</button>
-                    <button type="button" class="btn btn-success" @click="currency = '€'">EUR</button>
-                    <button type="button" class="btn btn-success" @click="currency = '$'">USA</button>
-                    <div class="clearfix mt-1 "></div>
-                    <button type="button" class="btn btn-info" @click="prefixes = true">Prefixes</button>
-                    <button type="button" class="btn btn-info" @click="prefixes = false">Suffixes</button>
-                </figure>
-=======
-                            
+                        <p>
+                            <b-switch name="minh" class-name="testing-b-switch" v-model="input.switchBool"></b-switch>
                         </p>
                         <p>{{ input.switch }}</p>
                         <p>                            
@@ -228,6 +150,23 @@ label {
                     </figure>
 
                     <figure class="col-md-6">
+                        <h4 class="mb-3">Numberic Formatted</h4>
+                        <p>
+                            <b-numeric-formatted placeholder="How much you have ?" label="Your wallet" v-model="input.numericFormatted" :currency="currency" :prefixes="prefixes"></b-numeric-formatted>
+                        </p>
+                        <p>Result:
+                        {{ input.numericFormatted }} <br>Type: {{ typeof input.numericFormatted }}</p>
+
+                        <b-button type="button" class-name="button-primary" label = "4321" @click.native="input.numericFormatted = 4321"></b-button>
+                        <b-button type="button" class-name="button-primary" label = "Null" @click.native="input.numericFormatted = 0"></b-button>
+                        <b-button type="button" class-name="button-primary" label = "VND" @click.native="currency = 'VND'"></b-button>
+                        <b-button type="button" class-name="button-primary" label = "EUR" @click.native="currency = '€'"></b-button>
+                        <b-button type="button" class-name="button-primary" label = "USA" @click.native="currency = '$'"></b-button>
+                        <b-button type="button" class-name="button-primary" label = "Suffix" @click.native="prefixes = true"></b-button>
+                        <b-button type="button" class-name="button-primary" label = "Prefix" @click.native="prefixes = false"></b-button>
+                    </figure>
+
+                    <figure class="col-md-6">
                         <h4 class="mb-3">Date Picker</h4>
                         <p>
                             <b-text-field label="Date Picker" placeholder="Select date" type="date" class-name="testing-b-text-field" v-model="input.datePicker"></b-text-field>
@@ -237,7 +176,6 @@ label {
                         <b-button type="button" class-name="button-primary" @click.native="input.datePicker='2016-12-21'" label = "2016-12-21"></b-button>
                         <b-button type="button" class-name="button-danger button-solid" @click.native="input.datePicker=null" label = "Null"></b-button>
                     </figure>
->>>>>>> .merge_file_a11412
 
                     <figure class="col-md-6">
                         <h4 class="mb-3">Multi Select</h4>
@@ -287,24 +225,18 @@ label {
                         </p>
 
                     </figure>
-
-                    
-
+                </div>
             </div>
-        </div>
-    </template>
-    <div id="app"></div>
-</div>
+        </template>
+        <div id="app"></div>
+    </div>
+</body>
 <script>
     var vm = new Vue({
         el: '#app',
         data: {
-<<<<<<< .merge_file_a11488
             prefixes : true,
             currency : "$",
-=======
-
->>>>>>> .merge_file_a11412
             input: {
                 name: 'Input your text...',
                 checkbox: [],
@@ -316,14 +248,7 @@ label {
                 textarea : null,
                 rating : null,
                 datePicker : null,
-<<<<<<< .merge_file_a11488
-                numbericFormatted : 1234 
-            },
-            list : [
-            { code : 'VN', name : 'Viet Nam'},
-            { code : 'USA', name : 'United States'},
-            { code : 'CAM', name : 'Campuchia'}
-=======
+                numericFormatted : 1234 ,
                 zipCode : null,
                 multiSelect : [3,1,5]
             },
@@ -332,6 +257,7 @@ label {
                 { code : 'USA', name : 'United States'},
                 { code : 'CAM', name : 'Campuchia'}
             ],
+
             listMultiSelect : [
                 {
                     id : 1,
@@ -368,16 +294,11 @@ label {
                     thumbHtml : 'Xuan Truong',
                     icon : 'http://image.thanhnien.vn/uploaded/lanphuong/2016_03_11/xuantruongdeptrainhutraihanquoc_rkdz.jpg?width=500&encoder=wic&subsampling=444'
                 }
->>>>>>> .merge_file_a11412
             ]
         },
         template: '#main-page'
     });
-<<<<<<< .merge_file_a11488
-
     
-</script>
-=======
     </script>
 
     <style>
@@ -404,7 +325,6 @@ label {
             top : 30px;
         }
     </style>
->>>>>>> .merge_file_a11412
 </body>
 
 </html>
