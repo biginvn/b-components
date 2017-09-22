@@ -1027,6 +1027,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			isExpanding: false,
 			searchList: [],
+			pointerIndex: null, // Selecting index of list
+			hoverIndex: null, // Position of cursor is hovering select item
 			searchKeyword: ''
 		};
 	},
@@ -1047,9 +1049,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	methods: {
 		getSelectedList() {
 			// Get selected with full information [ { id : .. , html : ... } ] 
-			var selected = this.list.filter((item, position) => {
-				if (this.value == null) return false;
-				return this.value.includes(item.id);
+			let selected = [];
+			this.selected.forEach((id, index) => {
+				let item = this.list.find(value => value.id == id);
+				if (item != undefined) selected.push(item);
 			});
 			return selected;
 		},
@@ -1072,6 +1075,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			this.$emit('input', selectList);
 		},
+		hoverItem(index) {// Hover on item at (index) in searchList
+			// this
+		},
 		searchAction(keyword) {
 
 			this.searchList = this.list.filter((item, position) => {
@@ -1085,6 +1091,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		focusInputAction(keyword) {
 			this.searchAction(keyword);
 			this.switchList(true);
+		},
+		keypressAction(keyName) {
+			let pointerIndex = this.pointerIndex;
+			switch (keyName) {
+				case 'ArrowDown':
+					if (this.pointerIndex == null || this.pointerIndex >= this.searchList.length - 1) {
+						pointerIndex = 0;
+						break;
+					}
+
+					pointerIndex++;
+					break;
+				case 'ArrowUp':
+					if (this.pointerIndex == null || this.pointerIndex == 0) {
+						pointerIndex = this.searchList.length - 1;
+						break;
+					}
+
+					pointerIndex--;
+					break;
+				case 'BackSpace':
+					pointerIndex = null;
+					if (this.value.length > 0) this.value.splice(this.value.length - 1, 1);
+			}
+
+			this.hoverItem(pointerIndex);
+			this.pointerIndex = pointerIndex;
 		}
 	}
 
@@ -1515,6 +1548,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": _vm.searchKeyword
     },
     on: {
+      "keydown": [function($event) {
+        if (!('button' in $event) && $event.keyCode !== 40) { return null; }
+        _vm.keypressAction('ArrowDown')
+      }, function($event) {
+        if (!('button' in $event) && $event.keyCode !== 8) { return null; }
+        _vm.keypressAction('BackSpace')
+      }, function($event) {
+        if (!('button' in $event) && $event.keyCode !== 38) { return null; }
+        _vm.keypressAction('ArrowUp')
+      }, function($event) {
+        if (!('button' in $event) && $event.keyCode !== 13) { return null; }
+        _vm.searchList.length > 0 ? _vm.toggleItem(_vm.searchList[_vm.pointerIndex].id) : ''
+      }],
       "focus": function($event) {
         _vm.focusInputAction($event.target.value)
       },
@@ -1561,9 +1607,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "searchList.length == 0"
     }],
     staticClass: "not-found"
-  }, [_vm._v("Not found")]), _vm._v(" "), _vm._l((_vm.searchList), function(item) {
+  }, [_vm._v("Not found")]), _vm._v(" "), _vm._l((_vm.searchList), function(item, index) {
     return _c('li', {
-      class: (_vm.selected.includes(item.id) ? 'active' : '') + ' list-item',
+      staticClass: "list-item",
+      class: {
+        'active': _vm.selected.includes(item.id), 'hover': index == _vm.pointerIndex
+      },
       on: {
         "click": function($event) {
           _vm.toggleItem(item.id)

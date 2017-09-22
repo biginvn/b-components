@@ -5,6 +5,8 @@ export default {
 		return {
 			isExpanding : false,
 			searchList : [],
+			pointerIndex : null, // Selecting index of list
+			hoverIndex : null, // Position of cursor is hovering select item
 			searchKeyword : ''
 		}
 	},
@@ -23,11 +25,12 @@ export default {
 	},
 	methods : {
 		getSelectedList () { // Get selected with full information [ { id : .. , html : ... } ] 
-			var selected = this.list.filter( (item, position) => {
-					if (this.value == null)
-						return false
-            	return this.value.includes(item.id)
-        	});
+			let selected = []
+			this.selected.forEach( (id, index) => {
+				let item = this.list.find((value) => value.id == id)
+				if (item != undefined)
+					selected.push(item)
+			})
         	return selected
 		},
 		toggleList () {
@@ -55,6 +58,9 @@ export default {
 
 			this.$emit('input', selectList)
 		},
+		hoverItem(index){ // Hover on item at (index) in searchList
+			// this
+		},
 		searchAction (keyword) {
 
 			this.searchList = this.list.filter( (item, position) => {
@@ -69,6 +75,34 @@ export default {
 		focusInputAction (keyword) {
 			this.searchAction(keyword)
 			this.switchList(true)
+		},
+		keypressAction (keyName){
+			let pointerIndex = this.pointerIndex
+			switch (keyName) {
+				case 'ArrowDown':
+				if (this.pointerIndex == null || this.pointerIndex >= this.searchList.length - 1){
+					pointerIndex = 0
+					break
+				}
+
+				pointerIndex++
+				break
+				case 'ArrowUp':
+				if (this.pointerIndex == null || this.pointerIndex == 0){
+					pointerIndex = this.searchList.length-1
+					break
+				}
+
+				pointerIndex--
+				break
+				case 'BackSpace':
+				pointerIndex = null
+				if (this.value.length > 0)
+					this.value.splice(this.value.length-1,1)
+			}
+
+			this.hoverItem(pointerIndex)
+			this.pointerIndex = pointerIndex
 		}
 	}
 
