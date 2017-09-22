@@ -7,7 +7,7 @@ module.exports = {
     output: {
         sourceMapFilename: 'b-components.js.map',
         path: path.resolve('built/'),
-        publicPath: 'dist/',
+        publicPath: 'built/',
         filename: 'b-components.js'
     },
     module: {

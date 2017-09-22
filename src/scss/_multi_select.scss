@@ -20,7 +20,11 @@
 	    	opacity: 1;
 	    }
 
-
+		.not-found {
+		    padding: 5px 10px;
+		    color: map-get($supportColors, grey-dark);
+		    font-style: italic;
+		}
 		.list-item {
 		    padding: 8px 15px;
 
@@ -71,6 +75,7 @@
 	& .b__multi__select__control {
 	    min-width: 20px;
 	    min-height: 30px;
+	    padding-right: 30px;
 	    border-bottom: 1px solid map-get($colors, primary);
 	    & > .control {
 		    position: absolute;
