@@ -5,7 +5,7 @@
 				<span class="thumb" v-html="item.thumbHtml"></span>
 				<span class="close-item" @click = "toggleItem(item.id)"><i class="fa fa-times" aria-hidden="true"></i></span>
 			</div>
-			<div class="input-control-wrap"><input type="text" @keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')" @keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 ? toggleItem(searchList[pointerIndex].id) : ''" class="input-control" @focus = "focusInputAction($event.target.value)" @input = "searchAction($event.target.value)" :value = "searchKeyword"></div>
+			<div class="input-control-wrap"><input type="text" @keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')" @keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''" class="input-control" @focus = "focusInputAction($event.target.value)" @input = "searchAction($event.target.value)" :value = "searchKeyword"></div>
 			<div class="control" @click="toggleList()">
 				<i class="fa fa-angle-down" aria-hidden="true" v-show="!isExpanding"></i>
 				<i class="fa fa-angle-up" aria-hidden="true" v-show="isExpanding"></i>

@@ -291,33 +291,7 @@ const textFieldMixins = {
 });
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-Vue.directive('click-outside', {
-    priority: 700,
-    bind() {
-        let self = this;
-        this.event = function (event) {
-            self.vm.$emit(self.expression, event);
-        };
-
-        if (this.el != undefined) {
-            this.el.addEventListener('click', this.stopProp);
-            document.body.addEventListener('click', this.event);
-        }
-    },
-
-    unbind() {
-        this.el.removeEventListener('click', this.stopProp);
-        document.body.removeEventListener('click', this.event);
-    },
-    stopProp(event) {
-        event.stopPropagation();
-    }
-});
-
-/***/ }),
+/* 4 */,
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1445,33 +1419,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__directives_click_outside__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__directives_click_outside___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__directives_click_outside__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__themes_ios_TextField_vue__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__themes_ios_TextField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__themes_ios_TextField_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__themes_ios_CheckBox_vue__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__themes_ios_CheckBox_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__themes_ios_CheckBox_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__themes_ios_Radio_vue__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__themes_ios_Radio_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__themes_ios_Radio_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__themes_ios_Switch_vue__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__themes_ios_Switch_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__themes_ios_Switch_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__themes_ios_Select_vue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__themes_ios_Select_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__themes_ios_Select_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__themes_ios_Textarea_vue__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__themes_ios_Textarea_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__themes_ios_Textarea_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__themes_ios_Rating_vue__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__themes_ios_Rating_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__themes_ios_Rating_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__themes_ios_ZipCode_vue__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__themes_ios_ZipCode_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__themes_ios_ZipCode_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__themes_ios_Button_vue__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__themes_ios_Button_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__themes_ios_Button_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__themes_ios_MultiSelect_vue__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__themes_ios_MultiSelect_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__themes_ios_MultiSelect_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__themes_ios_NumericFormatted_vue__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__themes_ios_NumericFormatted_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__themes_ios_NumericFormatted_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__themes_ios_TextField_vue__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__themes_ios_TextField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__themes_ios_TextField_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__themes_ios_CheckBox_vue__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__themes_ios_CheckBox_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__themes_ios_CheckBox_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__themes_ios_Radio_vue__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__themes_ios_Radio_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__themes_ios_Radio_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__themes_ios_Switch_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__themes_ios_Switch_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__themes_ios_Switch_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__themes_ios_Select_vue__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__themes_ios_Select_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__themes_ios_Select_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__themes_ios_Textarea_vue__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__themes_ios_Textarea_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__themes_ios_Textarea_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__themes_ios_Rating_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__themes_ios_Rating_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__themes_ios_Rating_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__themes_ios_ZipCode_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__themes_ios_ZipCode_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__themes_ios_ZipCode_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__themes_ios_Button_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__themes_ios_Button_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__themes_ios_Button_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__themes_ios_MultiSelect_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__themes_ios_MultiSelect_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__themes_ios_MultiSelect_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__themes_ios_NumericFormatted_vue__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__themes_ios_NumericFormatted_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__themes_ios_NumericFormatted_vue__);
 // import Vue from 'vue'
-
-// Directives
 
 
 // Components
@@ -1487,17 +1457,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-Vue.component('BTextField', __WEBPACK_IMPORTED_MODULE_1__themes_ios_TextField_vue___default.a);
-Vue.component('BCheckBox', __WEBPACK_IMPORTED_MODULE_2__themes_ios_CheckBox_vue___default.a);
-Vue.component('BRadio', __WEBPACK_IMPORTED_MODULE_3__themes_ios_Radio_vue___default.a);
-Vue.component('BSwitch', __WEBPACK_IMPORTED_MODULE_4__themes_ios_Switch_vue___default.a);
-Vue.component('BSelect', __WEBPACK_IMPORTED_MODULE_5__themes_ios_Select_vue___default.a);
-Vue.component('BTextarea', __WEBPACK_IMPORTED_MODULE_6__themes_ios_Textarea_vue___default.a);
-Vue.component('BRating', __WEBPACK_IMPORTED_MODULE_7__themes_ios_Rating_vue___default.a);
-Vue.component('BZipCode', __WEBPACK_IMPORTED_MODULE_8__themes_ios_ZipCode_vue___default.a);
-Vue.component('BButton', __WEBPACK_IMPORTED_MODULE_9__themes_ios_Button_vue___default.a);
-Vue.component('BMultiSelect', __WEBPACK_IMPORTED_MODULE_10__themes_ios_MultiSelect_vue___default.a);
-Vue.component('BNumericFormatted', __WEBPACK_IMPORTED_MODULE_11__themes_ios_NumericFormatted_vue___default.a);
+Vue.component('BTextField', __WEBPACK_IMPORTED_MODULE_0__themes_ios_TextField_vue___default.a);
+Vue.component('BCheckBox', __WEBPACK_IMPORTED_MODULE_1__themes_ios_CheckBox_vue___default.a);
+Vue.component('BRadio', __WEBPACK_IMPORTED_MODULE_2__themes_ios_Radio_vue___default.a);
+Vue.component('BSwitch', __WEBPACK_IMPORTED_MODULE_3__themes_ios_Switch_vue___default.a);
+Vue.component('BSelect', __WEBPACK_IMPORTED_MODULE_4__themes_ios_Select_vue___default.a);
+Vue.component('BTextarea', __WEBPACK_IMPORTED_MODULE_5__themes_ios_Textarea_vue___default.a);
+Vue.component('BRating', __WEBPACK_IMPORTED_MODULE_6__themes_ios_Rating_vue___default.a);
+Vue.component('BZipCode', __WEBPACK_IMPORTED_MODULE_7__themes_ios_ZipCode_vue___default.a);
+Vue.component('BButton', __WEBPACK_IMPORTED_MODULE_8__themes_ios_Button_vue___default.a);
+Vue.component('BMultiSelect', __WEBPACK_IMPORTED_MODULE_9__themes_ios_MultiSelect_vue___default.a);
+Vue.component('BNumericFormatted', __WEBPACK_IMPORTED_MODULE_10__themes_ios_NumericFormatted_vue___default.a);
 
 /***/ }),
 /* 37 */
@@ -1559,7 +1529,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.keypressAction('ArrowUp')
       }, function($event) {
         if (!('button' in $event) && $event.keyCode !== 13) { return null; }
-        _vm.searchList.length > 0 ? _vm.toggleItem(_vm.searchList[_vm.pointerIndex].id) : ''
+        _vm.searchList.length > 0 && _vm.pointerIndex != null ? _vm.toggleItem(_vm.searchList[_vm.pointerIndex].id) : ''
       }],
       "focus": function($event) {
         _vm.focusInputAction($event.target.value)

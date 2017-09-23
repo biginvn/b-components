@@ -1,7 +1,5 @@
 // import Vue from 'vue'
 
-// Directives
-import './directives/click-outside'
 
 // Components
 import BTextField from './themes/ios/TextField.vue'
