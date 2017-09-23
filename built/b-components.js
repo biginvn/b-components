@@ -1113,7 +1113,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					break;
 				case 'BackSpace':
 					pointerIndex = null;
-					if (this.value.length > 0) this.value.splice(this.value.length - 1, 1);
+					if (this.value.length > 0 && this.searchKeyword.length == 0) this.value.splice(this.value.length - 1, 1);
 			}
 
 			this.hoverItem(pointerIndex);

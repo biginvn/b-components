@@ -97,7 +97,7 @@ export default {
 				break
 				case 'BackSpace':
 				pointerIndex = null
-				if (this.value.length > 0)
+				if (this.value.length > 0 && this.searchKeyword.length == 0)
 					this.value.splice(this.value.length-1,1)
 			}
 
