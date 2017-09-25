@@ -1,7 +1,5 @@
-// import Vue from 'vue'
+import Vue from 'vue'
 
-// Directives
-import './directives/click-outside'
 
 // Components
 import BTextField from './themes/ios/TextField.vue'
@@ -14,6 +12,7 @@ import BRating from './themes/ios/Rating.vue'
 import BZipCode from './themes/ios/ZipCode.vue'
 import BButton from './themes/ios/Button.vue'
 import BMultiSelect from './themes/ios/MultiSelect.vue'
+import BNumericFormatted from './themes/ios/NumericFormatted.vue'
 
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
@@ -25,3 +24,4 @@ Vue.component('BRating', BRating)
 Vue.component('BZipCode', BZipCode)
 Vue.component('BButton', BButton)
 Vue.component('BMultiSelect', BMultiSelect)
+Vue.component('BNumericFormatted', BNumericFormatted)

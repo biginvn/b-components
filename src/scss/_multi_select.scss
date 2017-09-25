@@ -20,7 +20,11 @@
 	    	opacity: 1;
 	    }
 
-
+		.not-found {
+		    padding: 5px 10px;
+		    color: map-get($supportColors, grey-dark);
+		    font-style: italic;
+		}
 		.list-item {
 		    padding: 8px 15px;
 
@@ -33,15 +37,18 @@
 		    		top: 12px;
 		    		width: 10px;
 		    		height: 10px;
-		    		border : 1px solid map-get($colors, primary);
+		    		background-color : map-get($colors, primary);
 					border-radius: 50%;
 		    	}
 		    }
 
-		    &:hover {
+		    &:hover, &.hover{
 		    	background-color : map-get($colors, primary-light);
+		    }
+
+		    &:hover {
 		    	&:before {
-		    		border-color : #FFF;
+		    		background-color : #FFF;
 		    	}
 		    }
 
@@ -71,6 +78,7 @@
 	& .b__multi__select__control {
 	    min-width: 20px;
 	    min-height: 30px;
+	    padding-right: 30px;
 	    border-bottom: 1px solid map-get($colors, primary);
 	    & > .control {
 		    position: absolute;
