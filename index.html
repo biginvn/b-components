@@ -2,7 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <title>Vue Components</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="http://bigin.vn/wp-content/uploads/2017/02/fav.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
@@ -14,9 +17,41 @@
 <style>
 body {
     font-size: 13px;
+    background: url(built/blurred-bg-6.jpg);
+    background-size: 100% 100%;
 }
 label {
     vertical-align: top;
+}
+.panel-border {
+    border: 1px solid #ddd !important;
+    background: #fff;
+    -webkit-box-shadow: 0 5px 5px -5px rgba(0,0,0,1);
+    -moz-box-shadow: 0 5px 5px -5px rgba(0,0,0,1);
+    box-shadow: 0 5px 5px -5px rgba(0,0,0,1);
+    border: 0 !important;
+    border-radius: 5px;
+}
+.panel-border .panel-heading {
+    padding: 20px;
+    overflow: hidden;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border: 0 !important;
+    height: 55px;
+    font-weight: 600;
+}
+.panel-border .panel-heading+.panel-body {
+    padding: 10px 15px 15px;
+}
+.jumbotron{
+    background: none;
+}
+.jumbotron h1{
+    font-family: Segoe UI Light;
+    color: #fff;
+    font-size: 90px;
+    text-shadow: 4px 3px 0 #1d9d74, 2px 3px 0 rgba(0,0,0,0.15);
 }
 </style>
 <body>
@@ -28,7 +63,9 @@ label {
                 </div>
                 <div class="row">
                     <figure class="col-md-6">
-                        <h4 class="mb-3">Text Field</h4>
+                        <div class="panel-border">
+                        <h4 class="mb-3 panel-heading">Text Field</h4>
+                        <div class="panel-body">
                         <p>
                             <b-text-field name="minh" id="asdasd" type="email" class-name="minh class" v-model="input.name" placeholder="Input yout text" label="Label"></b-text-field>
                         </p>
@@ -36,10 +73,14 @@ label {
 
                         <b-button type="button" class-name = "button-primary" icon = "<i class='fa fa-circle-thin'></i>" label="Update model" @click.native="input.name='Test'"></b-button>
                         <b-button type="button" label="Empty" class-name = "button-solid button-danger" @click.native="input.name=''"></b-button>
+                    </div>
+                    </div>
                     </figure>
 
                     <figure class="col-md-6">
-                        <h4 class="mb-3">Checkbox</h4>
+                        <div class="panel-border">
+                        <h4 class="mb-3 panel-heading">Checkbox</h4>
+                        <div class="panel-body">
                         <p>
                             <b-check-box class-name="minh class" v-model="input.checkbox" bind-value="USA" label="USA"></b-check-box>
                             <b-check-box class-name="minh class" v-model="input.checkbox" bind-value="Thai Lan" label="Thai Lan"></b-check-box>
@@ -58,10 +99,14 @@ label {
                         <p>{{ input.checkboxByValue }}</p>
 
                         <b-button type="button" class-name="button-success" label = "USA" @click.native="input.checkboxByValue = true"></b-button>
+                    </div>
+                    </div>
                     </figure>
 
                     <figure class="col-md-6">
-                        <h4 class="mb-3">Radio</h4>
+                        <div class="panel-border">
+                        <h4 class="mb-3 panel-heading">Radio</h4>
+                        <div class="panel-body">
                         <p>
                             <b-radio name="minh" id="radio-usa" class-name="testing-b-radio" v-model="input.radio" value="USA" label="USA"></b-radio>
                             <b-radio name="minh" id="radio-vn" class-name="testing-b-radio" v-model="input.radio" value="VN" label="VN"></b-radio>
@@ -72,10 +117,14 @@ label {
                             <b-button type="button" class-name="button-primary" @click.native="input.radio='VN'" label = "VN"></b-button>
                             <b-button type="button" class-name="button-danger button-solid" @click.native="input.radio=null" label = "Null"></b-button>
                         </p>
+                    </div>
+                    </div>
                     </figure>
 
                     <figure class="col-md-6">
-                        <h4 class="mb-3">Switch</h4>
+                        <div class="panel-border">
+                        <h4 class="mb-3 panel-heading">Switch</h4>
+                        <div class="panel-body">
                         <p>
                             <b-switch name="minh" id="USA" class-name="testing-b-switch" v-model="input.switch" bind-value="USA" label="USA"></b-switch>
                             <label for="USA">USA</label>
@@ -103,10 +152,14 @@ label {
                             <b-button type="button" class-name="button-primary" @click.native="input.switchBool = true" label = "true"></b-button>
                             <b-button type="button" class-name="button-warn" @click.native="input.switchBool = false" label = "false"></b-button>
                         </p>
+                    </div>
+                    </div>
                     </figure>
 
-                    <figure class="col-md-6">
-                        <h4 class="mb-3">Selectbox</h4>
+                                        <figure class="col-md-6">
+                        <div class="panel-border">
+                        <h4 class="mb-3 panel-heading">Selectbox</h4>
+                        <div class="panel-body">
                         <p>
                             <b-select item-text = "name" item-val = "code" label = "Select country" name="minh" class-name="testing-b-select" v-model="input.select" :list="list"></b-select>
                         </p>
@@ -114,10 +167,14 @@ label {
 
                         <b-button type="button" class-name="button-primary" @click.native="input.select='USA'" label = "USA"></b-button>
                         <b-button type="button" class-name="button-danger" @click.native="input.select=null" label = "Null"></b-button>
+                    </div>
+                    </div>
                     </figure>
 
                     <figure class="col-md-6">
-                        <h4 class="mb-3">Textarea</h4>
+                        <div class="panel-border">
+                            <h4 class="mb-3 panel-heading">Textarea</h4>
+                            <div class="panel-body">
                         <p>
                             <b-textarea placeholder = "Because ..." label = "Why ..." name="minh" class-name="testing-b-textarea" v-model="input.textarea"></b-textarea>
                         </p>
@@ -125,10 +182,14 @@ label {
 
                         <b-button type="button" class-name="button-primary" @click.native="input.textarea='Awesome components'" label = "Update"></b-button>
                         <b-button type="button" class-name="button-danger" @click.native="input.textarea=null" label = "Null"></b-button>
+                    </div>
+                    </div>
                     </figure>
 
                     <figure class="col-md-6">
-                        <h4 class="mb-3">Rating</h4>
+                        <div class="panel-border">
+                            <h4 class="mb-3 panel-heading">Rating</h4>
+                            <div class="panel-body">
                         <p>
                             <b-rating rate-max = "5" disabled = "disabled2" class-name="testing-b-rating" v-model="input.rating"></b-rating>
                         </p>
@@ -138,118 +199,140 @@ label {
                         <b-button type="button" class-name="button-success" @click.native="input.rating=3" label = "3 stars"></b-button>
                         <b-button type="button" class-name="button-warn" @click.native="input.rating=7" label = "7 stars"></b-button>
                         <b-button type="button" class-name="button-danger" @click.native="input.rating=null" label = "Null"></b-button>
+                    </div>
+                    </div>
                     </figure>
 
                     <figure class="col-md-6">
-                        <h4 class="mb-3">Numberic Formatted</h4>
+                        <div class="panel-border">
+                            <h4 class="mb-3 panel-heading">Numberic Formatted</h4>
+                            <div class="panel-body">
                         <p>
                             <b-numeric-formatted placeholder="How much you have ?" label="Your wallet" v-model="input.numericFormatted" :currency="currency" :is_prefix="prefixes" class-name="test-numberic"></b-numeric-formatted>
                         </p>
                         <p>Result:
-                        {{ input.numericFormatted }} <br>Type: {{ typeof input.numericFormatted }}</p>
+                            {{ input.numericFormatted }} <br>Type: {{ typeof input.numericFormatted }}</p>
 
-                        <b-button type="button" class-name="button-primary" label = "4321" @click.native="input.numericFormatted = 4321"></b-button>
-                        <b-button type="button" class-name="button-danger button-solid" label = "Null" @click.native="input.numericFormatted = 0"></b-button>
-                        <b-button type="button" class-name="button-success" label = "VND" @click.native="currency = 'VND'"></b-button>
-                        <b-button type="button" class-name="button-warn button-solid" label = "EUR" @click.native="currency = '€'"></b-button>
-                        <b-button type="button" class-name="button-primary button-solid" label = "USA" @click.native="currency = '$'"></b-button>
-                        <b-button type="button" class-name="button-danger" label = "Suffix" @click.native="prefixes = false"></b-button>
-                        <b-button type="button" class-name="button-success" label = "Prefix" @click.native="prefixes = true"></b-button>
+                            <b-button type="button" class-name="button-primary" label = "4321" @click.native="input.numericFormatted = 4321"></b-button>
+                            <b-button type="button" class-name="button-danger button-solid" label = "Null" @click.native="input.numericFormatted = 0"></b-button>
+                            <b-button type="button" class-name="button-success" label = "VND" @click.native="currency = 'VND'"></b-button>
+                            <b-button type="button" class-name="button-warn button-solid" label = "EUR" @click.native="currency = '€'"></b-button>
+                            <b-button type="button" class-name="button-primary button-solid" label = "USA" @click.native="currency = '$'"></b-button>
+                            <b-button type="button" class-name="button-danger" label = "Suffix" @click.native="prefixes = false"></b-button>
+                            <b-button type="button" class-name="button-success" label = "Prefix" @click.native="prefixes = true"></b-button>
+                        </div>
+                    </div>
                     </figure>
 
-                    <figure class="col-md-6">
-                        <h4 class="mb-3">Date Picker</h4>
-                        <p>
-                            <b-text-field label="Date Picker" placeholder="Select date" type="date" class-name="testing-b-text-field" v-model="input.datePicker"></b-text-field>
-                        </p>
-                        <p>{{ input.datePicker }}</p>
+                        <figure class="col-md-6">
+                        <div class="panel-border">
+                            <h4 class="mb-3 panel-heading">Date Picker</h4>
+                            <div class="panel-body">
+                            <p>
+                                <b-text-field label="Date Picker" placeholder="Select date" type="date" class-name="testing-b-text-field" v-model="input.datePicker"></b-text-field>
+                            </p>
+                            <p>{{ input.datePicker }}</p>
 
-                        <b-button type="button" class-name="button-primary" @click.native="input.datePicker='2016-12-21'" label = "2016-12-21"></b-button>
-                        <b-button type="button" class-name="button-danger button-solid" @click.native="input.datePicker=null" label = "Null"></b-button>
+                            <b-button type="button" class-name="button-primary" @click.native="input.datePicker='2016-12-21'" label = "2016-12-21"></b-button>
+                            <b-button type="button" class-name="button-danger button-solid" @click.native="input.datePicker=null" label = "Null"></b-button>
+                        </div>
+                    </div>
                     </figure>
 
-                    <figure class="col-md-6">
-                        <h4 class="mb-3">Multi Select</h4>
-                        <p>
-                            <b-multi-select :list = "listMultiSelect" v-model = "input.multiSelect"></b-multi-select>
-                        </p>
-                        <p>{{ input.multiSelect }}</p>
-                        <p>
-                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-primary button-solid" label="Only 1" @click.native = "input.multiSelect= [1]"></b-button>
-                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-danger button-solid" label="Select all" @click.native = "input.multiSelect= [1,2,3,4,5]"></b-button>
-                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-success button-solid" label="Empty" @click.native = "input.multiSelect= []"></b-button>
-                        </p>
+                        <figure class="col-md-6">
+                        <div class="panel-border">
+                            <h4 class="mb-3 panel-heading">Multi Select</h4>
+                            <div class="panel-body">
+                            <p>
+                                <b-multi-select :list = "listMultiSelect" v-model = "input.multiSelect"></b-multi-select>
+                            </p>
+                            <p>{{ input.multiSelect }}</p>
+                            <p>
+                                <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-primary button-solid" label="Only 1" @click.native = "input.multiSelect= [1]"></b-button>
+                                <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-danger button-solid" label="Select all" @click.native = "input.multiSelect= [1,2,3,4,5]"></b-button>
+                                <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-success button-solid" label="Empty" @click.native = "input.multiSelect= []"></b-button>
+                            </p>
 
+                        </div>
+                    </div>
                     </figure>
-                    
-                    <figure class="col-md-6">
-                        <h4 class="mb-3">ZipCode</h4>
-                        <p>
-                            <b-zip-code label="Zip code" placeholder="Input zip code" class-name="testing-b-zip-code" v-model="input.zipCode"></b-zip-code>
-                        </p>
-                        <p>{{ input.zipCode }}</p>
 
-                        <b-button type="button" class-name="button-primary" @click.native="input.zipCode='68007'" label = "Valid 68007"></b-button>
-                        <b-button type="button" class-name="button-warn button-solid" @click.native="input.zipCode='752541'" label = "Invalid 752541"></b-button>
-                        <b-button type="button" class-name="button-danger" @click.native="input.zipCode=null" label = "Null"></b-button>
-                    </figure>
-                    
-                    <figure class="col-md-6">
-                        <h4 class="mb-3">Button</h4>
-                        <p>
-                            <b-button type="button" class-name = "button-primary" label="Primary"></b-button>
-                            <b-button type="button" class-name = "button-danger" label="Danger"></b-button>
-                            <b-button type="button" class-name = "button-success" label="Success"></b-button>
-                            <b-button type="button" class-name = "button-warn" label="Warn"></b-button>
-                        </p>
-                        <p>
-                            <b-button type="button" icon = "<i class='fa fa-circle-thin'></i>" class-name = "button-primary" label="Click me"></b-button>
-                            <b-button type="button" icon = "<i class='fa fa-circle-thin'></i>" class-name = "button-danger" label="Click me"></b-button>
-                            <b-button type="button" icon = "<i class='fa fa-circle-thin'></i>" class-name = "button-success" label="Click me"></b-button>
-                            <b-button type="button" icon = "<i class='fa fa-circle-thin'></i>" class-name = "button-warn" label="Click me"></b-button>
-                        </p>
-                        <p>
-                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-primary button-solid" label="Solid"></b-button>
-                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-danger button-solid" label="Solid"></b-button>
-                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-success button-solid" label="Solid"></b-button>
-                            <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-warn button-solid" label="Solid"></b-button>
-                        </p>
+                        <figure class="col-md-6">
+                        <div class="panel-border">
+                            <h4 class="mb-3 panel-heading">Zip Code</h4>
+                            <div class="panel-body">
+                            <p>
+                                <b-zip-code label="Zip code" placeholder="Input zip code" class-name="testing-b-zip-code" v-model="input.zipCode"></b-zip-code>
+                            </p>
+                            <p>{{ input.zipCode }}</p>
 
+                            <b-button type="button" class-name="button-primary" @click.native="input.zipCode='68007'" label = "Valid 68007"></b-button>
+                            <b-button type="button" class-name="button-warn button-solid" @click.native="input.zipCode='752541'" label = "Invalid 752541"></b-button>
+                            <b-button type="button" class-name="button-danger" @click.native="input.zipCode=null" label = "Null"></b-button>
+                        </div>
+                    </div>
                     </figure>
+
+                        <figure class="col-md-6">
+                        <div class="panel-border">
+                            <h4 class="mb-3 panel-heading">Button</h4>
+                            <div class="panel-body">
+                            <p>
+                                <b-button type="button" class-name = "button-primary" label="Primary"></b-button>
+                                <b-button type="button" class-name = "button-danger" label="Danger"></b-button>
+                                <b-button type="button" class-name = "button-success" label="Success"></b-button>
+                                <b-button type="button" class-name = "button-warn" label="Warn"></b-button>
+                            </p>
+                            <p>
+                                <b-button type="button" icon = "<i class='fa fa-circle-thin'></i>" class-name = "button-primary" label="Click me"></b-button>
+                                <b-button type="button" icon = "<i class='fa fa-circle-thin'></i>" class-name = "button-danger" label="Click me"></b-button>
+                                <b-button type="button" icon = "<i class='fa fa-circle-thin'></i>" class-name = "button-success" label="Click me"></b-button>
+                                <b-button type="button" icon = "<i class='fa fa-circle-thin'></i>" class-name = "button-warn" label="Click me"></b-button>
+                            </p>
+                            <p>
+                                <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-primary button-solid" label="Solid"></b-button>
+                                <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-danger button-solid" label="Solid"></b-button>
+                                <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-success button-solid" label="Solid"></b-button>
+                                <b-button type="button" icon = "<i class='fa fa-heart-o'></i>" class-name = "button-warn button-solid" label="Solid"></b-button>
+                            </p>
+
+                        </div>
+                    </div>
+                    </figure>
+                    </div>
                 </div>
-            </div>
-        </template>
-        <div id="app"></div>
-    </div>
-</body>
-<script>
-    var vm = new Vue({
-        el: '#app',
-        data: {
-            prefixes : true,
-            currency : "$",
-            input: {
-                name: 'Input your text...',
-                checkbox: [],
-                checkboxByValue : null,
-                radio : null,
-                switch : [],
-                switchBool : true,
-                select : null,
-                textarea : null,
-                rating : null,
-                datePicker : null,
-                numericFormatted : null ,
-                zipCode : null,
-                multiSelect : null
-            },
-            list : [
+            </template>
+            <div id="app"></div>
+        </div>
+    </body>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                prefixes : true,
+                currency : "$",
+                input: {
+                    name: 'Input your text...',
+                    checkbox: [],
+                    checkboxByValue : null,
+                    radio : null,
+                    switch : [],
+                    switchBool : true,
+                    select : null,
+                    textarea : null,
+                    rating : null,
+                    datePicker : null,
+                    numericFormatted : null ,
+                    zipCode : null,
+                    multiSelect : null
+                },
+                list : [
                 { code : 'VN', name : 'Viet Nam'},
                 { code : 'USA', name : 'United States'},
                 { code : 'CAM', name : 'Campuchia'}
-            ],
+                ],
 
-            listMultiSelect : [
+                listMultiSelect : [
                 {
                     id : 1,
                     html : '<p>Xabi Alonso</p><p class="club">Bayern Munich</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
@@ -285,37 +368,37 @@ label {
                     thumbHtml : 'Xuan Truong',
                     icon : 'http://image.thanhnien.vn/uploaded/lanphuong/2016_03_11/xuantruongdeptrainhutraihanquoc_rkdz.jpg?width=500&encoder=wic&subsampling=444'
                 }
-            ]
-        },
-        template: '#main-page'
-    });
-    
+                ]
+            },
+            template: '#main-page'
+        });
+
     </script>
 
     <style>
-        .b__multi__select__list > .list-item .content {
-            font-weight: bold;
-        }
+    .b__multi__select__list > .list-item .content {
+        font-weight: bold;
+    }
 
-        .b__multi__select__list > .list-item .content i {
-            color: #d89032;
-            margin-right: 3px;
-        }
+    .b__multi__select__list > .list-item .content i {
+        color: #d89032;
+        margin-right: 3px;
+    }
 
-        .b__multi__select__list > .list-item .content .club {
-            color: grey;
-            font-weight: normal;
-        }
-        .b__components.b__multi__select .b__multi__select__list .list-item>.content p {
-            margin-bottom: 2px;
-        }
-        .b__components.b__multi__select .b__multi__select__list .list-item:hover p,.b__components.b__multi__select .b__multi__select__list .list-item.hover p {
-            color: #fff;
-        }
-        .b__components.b__multi__select .b__multi__select__list .list-item.active:before {
-            top : 30px;
-        }
-    </style>
+    .b__multi__select__list > .list-item .content .club {
+        color: grey;
+        font-weight: normal;
+    }
+    .b__components.b__multi__select .b__multi__select__list .list-item>.content p {
+        margin-bottom: 2px;
+    }
+    .b__components.b__multi__select .b__multi__select__list .list-item:hover p,.b__components.b__multi__select .b__multi__select__list .list-item.hover p {
+        color: #fff;
+    }
+    .b__components.b__multi__select .b__multi__select__list .list-item.active:before {
+        top : 30px;
+    }
+</style>
 </body>
 
 </html>
