@@ -1126,23 +1126,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	methods: {
+		updateInput(value) {
+			this.updateFloatLabel(value);
+			this.mask = this.convertNumberToString(value);
+			console.log("Mask : " + this.convertNumberToString(value));
+		},
 		focus() {
 			this.mask = this.value;
 		},
 		blur(value) {
+
 			this.mask = this.convertNumberToString(value);
 			value = this.convertValueToNumber(value);
 			this.$emit("input", value);
 		},
 		convertNumberToString(number) {
+			console.log('convert number to string' + number);
 			let value = this.convertValueToNumber(number);
-			if (isNaN(value)) return this.is_prefix ? this.currency + ' 0' : '0 ' + this.currency;
-			return this.is_prefix ? this.currency + ' ' + value.toLocaleString() : value.toLocaleString() + ' ' + this.currency;
+			console.log('value: ' + value);
+			if (value != null && value > 0) return this.is_prefix ? this.currency + ' ' + value.toLocaleString() : value.toLocaleString() + ' ' + this.currency;
+			return "";
 		},
 		convertValueToNumber(value) {
-			if (value == undefined || value == null) value = 0;
+			console.log('conver value to number');
+			if (value == undefined || value == null || value.toString().trim().length == 0) value = "";
 			let number = value.toString().replace(/[^\d\.]/g, "");
-			if (number.length == 0) return 0;
+			if (number.length == 0) return null;
 			return parseFloat(number);
 		}
 	}
@@ -1997,7 +2006,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
     class: _vm.classes,
     attrs: {
-      "type": "text"
+      "type": "text",
+      "placeholder": _vm.placeholder
     },
     domProps: {
       "value": _vm.mask
@@ -2008,6 +2018,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       "focus": function($event) {
         _vm.focus()
+      },
+      "input": function($event) {
+        _vm.updateInput($event.target.value)
       }
     }
   })])
