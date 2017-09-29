@@ -53,11 +53,27 @@ label {
     font-size: 90px;
     text-shadow: 4px 3px 0 #1d9d74, 2px 3px 0 rgba(0,0,0,0.15);
 }
+footer,footer a{
+    color: #fff;
+}
+footer a:hover{
+    color: #E0AF1D;
+}
+footer ul{
+    align-items: center;    
+    justify-content: center;
+    display: flex;
+    margin: 0;
+}
+footer ul>li {
+    margin: 10px;
+    font-size: 18px;
+}   
 </style>
 <body>
     <div class="container">
         <template id="main-page">
-            <div class="container" style="padding-bottom: 300px;">
+            <div class="container" style="padding-bottom: 100px;">
                 <div class="jumbotron">
                     <h1>Vue Components</h1>
                 </div>
@@ -304,6 +320,14 @@ label {
             </template>
             <div id="app"></div>
         </div>
+        <footer class="footer">
+            <div class="container">
+            <div class="col-md-12 text-center">
+                        COPYRIGHT © 2017 <a href="http://bigin.vn"><b>BIGIN.VN</b></a> | ALL RIGHTS RESERVED
+                        <div class="d-block">
+                        <ul class="list-unstyled"><li><a href="contact@bigin.vn" target="_blank" class="fa fa-envelope-o"></a></li><li><a href="https://www.facebook.com/bigin.vn" target="_blank" class="fa fa-facebook"></a></li> <li><a href="https://www.linkedin.com/company/bigin" target="_blank" class="fa fa-linkedin"></a></li> <li><a href="https://github.com/biginvn" target="_blank" class="fa fa-github"></a></li> </ul></div></div>
+            </div>
+        </footer>
     </body>
     <script>
         var vm = new Vue({
