@@ -23,34 +23,34 @@ export default{
 	},
 	methods: {
 		updateInput (value) {
+			this.mask = this.convertValueToNumber(value)
 			this.updateFloatLabel(value)
-			this.mask = this.convertNumberToString(value)
-			console.log("Mask : " + 
-				this.convertNumberToString(value))
 		},
 		focus(){
 			this.mask = this.value;
 		},
 		blur(value){
-
+			// console.log('Already Blur')
 			this.mask = this.convertNumberToString(value)
 			value = this.convertValueToNumber(value)
 			this.$emit("input", value)
+			this.updateFloatLabel(value)
 		},
 		convertNumberToString(number){
-			console.log('convert number to string' + number)
+			// console.log('Convert Number To String')
 			let value = this.convertValueToNumber(number)
-			console.log('value: ' + value)
-			if(value != null && value > 0)
+			if(value != null && value > 0){
 				return this.is_prefix ? this.currency + ' ' + value.toLocaleString() : value.toLocaleString() + ' ' + this.currency
-			return ""
+			return ''
+			}
 		},
 		convertValueToNumber(value){
-			console.log('conver value to number')
+			// console.log('Convert Value To Number')
 			if (value == undefined || value == null || value.toString().trim().length == 0)
 				value = ""
 			let number = value.toString().replace(/[^\d\.]/g, "")
-			if (number.length == 0)
+			console.log(number)
+			if (number == 0)
 				return null
 			return parseFloat(number)
 		}

@@ -18,12 +18,13 @@ const textFieldMixins = {
     },
     watch: {
         value(newValue) { // Detect when value change will update float label
+            console.log('update')
             this.updateFloatLabel(newValue)
         }
     },
     methods: {
         updateFloatLabel(value) {
-            var isEmpty = value == undefined || value == null || value.length == 0 ? true : false;
+            var isEmpty = value == undefined || value == null || value == 0 || value == '' ? true : false;
             if (!isEmpty) {
                 this.classLabel = 'active'
             } else
