@@ -6,7 +6,7 @@ export default{
 		}
 	},
 	mixins: [baseMixins],
-	props: ['currency','is_prefix'],
+	props: ['affix','is_prefix'],
 	mounted() {
 		this.blur(this.value)
 	},
@@ -17,7 +17,7 @@ export default{
 		is_prefix() {
 			this.blur(this.value);
 		},
-		currency() {
+		affix() {
 			this.blur(this.value);
 		}
 	},
@@ -39,9 +39,17 @@ export default{
 		convertNumberToString(number){
 			// console.log('Convert Number To String')
 			let value = this.convertValueToNumber(number)
-			if(value != null && value > 0){
-				return this.is_prefix ? this.currency + ' ' + value.toLocaleString() : value.toLocaleString() + ' ' + this.currency
-			return ''
+			if(this.is_prefix != undefined){
+				if(value != null && value > 0){
+					return this.is_prefix ? this.affix + ' ' + value.toLocaleString() : value.toLocaleString() + ' ' + this.affix
+				return ''
+				}
+			}
+			else{
+				if(value != null && value > 0){
+					return value.toLocaleString()
+				return ''
+				}
 			}
 		},
 		convertValueToNumber(value){
@@ -49,7 +57,7 @@ export default{
 			if (value == undefined || value == null || value.toString().trim().length == 0)
 				value = ""
 			let number = value.toString().replace(/[^\d\.]/g, "")
-			console.log(number)
+			// console.log(number)
 			if (number == 0)
 				return null
 			return parseFloat(number)

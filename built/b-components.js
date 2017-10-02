@@ -1111,7 +1111,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		};
 	},
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
-	props: ['currency', 'is_prefix'],
+	props: ['affix', 'is_prefix'],
 	mounted() {
 		this.blur(this.value);
 	},
@@ -1122,7 +1122,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		is_prefix() {
 			this.blur(this.value);
 		},
-		currency() {
+		affix() {
 			this.blur(this.value);
 		}
 	},
@@ -1144,16 +1144,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		convertNumberToString(number) {
 			// console.log('Convert Number To String')
 			let value = this.convertValueToNumber(number);
-			if (value != null && value > 0) {
-				return this.is_prefix ? this.currency + ' ' + value.toLocaleString() : value.toLocaleString() + ' ' + this.currency;
-				return '';
+			if (this.is_prefix != undefined) {
+				if (value != null && value > 0) {
+					return this.is_prefix ? this.affix + ' ' + value.toLocaleString() : value.toLocaleString() + ' ' + this.affix;
+					return '';
+				}
+			} else {
+				if (value != null && value > 0) {
+					return value.toLocaleString();
+					return '';
+				}
 			}
 		},
 		convertValueToNumber(value) {
 			// console.log('Convert Value To Number')
 			if (value == undefined || value == null || value.toString().trim().length == 0) value = "";
 			let number = value.toString().replace(/[^\d\.]/g, "");
-			console.log(number);
+			// console.log(number)
 			if (number == 0) return null;
 			return parseFloat(number);
 		}
