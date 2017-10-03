@@ -1,0 +1,280 @@
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #fff;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #ccc;
+	border-radius: 10px;
+}
+body {
+	font-family: 'Open Sans',sans-serif !important;
+	font-size: 13px;
+	background: url(../images/blurred-bg-6.jpg);
+	background-size: 100% 100%;
+}
+label {
+	vertical-align: top;
+}
+.jumbotron {
+	background: none;
+}
+.h1 {
+	font-family: Open Sans;
+}
+.jumbotron h1 {
+	color: #fff;
+	font-size: 90px;
+	font-weight: 300;
+	text-shadow: 4px 3px 0 #1d9d74, 2px 3px 0 rgba(0, 0, 0, 0.15);
+	text-align: center;
+}
+figure {
+	margin: 0 0 3rem;
+}
+/* Menu */
+.header-menu {
+	display: block;
+	width: 100%;
+	text-align: center;
+	position: relative;
+	z-index: 10;
+}
+
+.header-menu > ul {
+	display: inline-block;
+	border-radius: 0.35em;
+	padding: 0 1.5em 0 1.5em;
+	margin: 20px 0!important; 
+}
+
+.header-menu > ul > li {
+	display: inline-block;
+	text-align: center;
+	padding: 0 1.5em 0 1.5em;
+	-moz-transition: all .25s ease-in-out;
+	-webkit-transition: all .25s ease-in-out;
+	-o-transition: all .25s ease-in-out;
+	-ms-transition: all .25s ease-in-out;
+	transition: all .25s ease-in-out;
+}
+
+.header-menu > ul > li > ul {
+	display: none;
+}
+
+.header-menu > ul > li > a, .header-menu > ul > li > span {
+	display: block;
+	color: #666;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: bolder;
+	letter-spacing: 0.25em;
+	height: 3em;
+	line-height: 3em;
+	-moz-transition: all .25s ease-in-out;
+	-webkit-transition: all .25s ease-in-out;
+	-o-transition: all .25s ease-in-out;
+	-ms-transition: all .25s ease-in-out;
+	transition: all .25s ease-in-out;
+	outline: 0;
+}
+
+.header-menu > ul > li:hover{
+	background: rgba(255, 255, 255, 0.30);
+	border-radius: 5px;
+}
+
+.header-menu > ul > li.active > a, .header-menu > ul > li.active > span {
+	color: #fff;
+}
+/* Fixed Menu */
+.header-menu-fixed{
+	position: fixed;
+	z-index: 10;
+}
+.header-menu-fixed ul{
+	padding: 0 1.5em 0;
+	background: rgba(240, 248, 255, 0.90);
+	top: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Panel */
+.panel-border {
+	border: 1px solid #ddd !important;
+	background: #fff;
+	-webkit-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 1);
+	box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 1);
+	border: 0 !important;
+	border-radius: 5px;
+}
+.panel-border .panel-heading {
+	padding: 20px;
+	overflow: hidden;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border: 0 !important;
+	height: 55px;
+	font-weight: 600;
+}
+.panel-border .panel-heading+.panel-body {
+	padding: 10px 15px 15px;
+}
+
+/* Our Team */
+.our-team {
+	margin-bottom: 100px;
+}
+.profile-heading{
+	color: #fff;
+	text-align: center;
+	font-size: 2.5rem;
+	font-weight: 300;
+	margin-bottom: 20px;
+}
+.profile-content{
+	padding: 20px;
+}
+.profile-thumbnail{
+	text-align: center;
+}
+.profile-thumbnail img{
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+.thumbnail-center{
+	width: 200px!important;
+	height: 200px!important;
+}
+.profile-name{
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	display: block;
+	margin: 2px 0 5px 0;
+	text-align: center;
+}
+.profile-job{
+	font-size: 14px;
+	font-weight: 300;
+	color: #fff;
+	display: block;
+	text-align: center;
+}
+
+/* Footer */
+footer, footer a {
+	color: #fff;
+}
+footer a:hover {
+	color: #E0AF1D;
+}
+footer ul {
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	margin: 0;
+}
+footer ul>li {
+	margin: 10px;
+	font-size: 18px;
+}
+
+/* Slider */
+.dg-container {
+	width: 100%;
+	height: 450px;
+	position: relative;
+}
+.dg-wrapper {
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-perspective: 400px;
+	-moz-perspective: 400px;
+	-o-perspective: 400px;
+	-ms-perspective: 400px;
+	perspective: 400px;
+}
+.dg-wrapper a {
+	display: block;
+	position: absolute;
+}
+.dg-wrapper a.dg-transition {
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.dg-wrapper a img {
+	display: block;
+	border-radius: 500px;
+	width: 300px;
+	height: 300px;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+.dg-wrapper a div {
+	font-style: italic;
+	text-align: center;
+	line-height: 50px;
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+	color: #333;
+	font-size: 16px;
+	width: 100%;
+	bottom: -55px;
+	display: none;
+	position: absolute;
+}
+.dg-wrapper a.dg-center div {
+	display: block;
+}
+.dg-container nav {
+	position: absolute;
+	z-index: 1000;
+	bottom: 15px;
+	left: 50%;
+	margin-left: -29px;
+}
+.dg-container nav span {
+	float: left;
+	cursor: pointer;
+	width: 24px;
+	height: 25px;
+	opacity: 0.8;
+	font-size: 30px;
+	color: #fff;
+}
+.dg-container nav span:hover {
+	opacity: 1;
+}
+.dg-container nav span.dg-next {
+	margin-left: 20px;
+}
+#particles-js {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 0;
+}

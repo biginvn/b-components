@@ -1,534 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Vue Components</title>
-<meta content="width=device-width, initial-scale=1" name="viewport" />
-<meta charset="UTF-8">
-<link rel="icon" type="image/png" href="http://bigin.vn/wp-content/uploads/2017/02/fav.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-<!-- <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet"> -->
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <title>Vue Components</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="http://bigin.vn/wp-content/uploads/2017/02/fav.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 
 
-<!-- Plugins-->
-<!-- <link rel="stylesheet" type="text/css" href="css/demo.css" /> -->
-<script type="text/javascript" src="https://tympanus.net/Development/3DGallery/js/modernizr.custom.53451.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-<!-- Plugins-->
+  <!-- Plugins-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <!-- Plugins-->
 
-<link href='built/b-components.min.css' rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
-<script src="built/b-components.js"></script>
+  <link href='built/b-components.min.css' rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
+  <script src="built/b-components.js"></script>
+
+  <!-- Demo Style-->
+  <link href='built/assets/css/style.css' rel="stylesheet">
 </head>
-<style>
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
 
-::-webkit-scrollbar-track {
-  background: #fff;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
-}
-body {
-  font-family: 'Open Sans',sans-serif !important;
-	font-size: 13px;
-	background: url(built/assets/images/blurred-bg-6.jpg);
-	background-size: 100% 100%;
-}
-label {
-	vertical-align: top;
-}
-.panel-border {
-	border: 1px solid #ddd !important;
-	background: #fff;
-	-webkit-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 1);
-	-moz-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 1);
-	box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 1);
-	border: 0 !important;
-	border-radius: 5px;
-}
-.panel-border .panel-heading {
-	padding: 20px;
-	overflow: hidden;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	border: 0 !important;
-	height: 55px;
-	font-weight: 600;
-}
-.panel-border .panel-heading+.panel-body {
-	padding: 10px 15px 15px;
-}
-.jumbotron {
-	background: none;
-}
-.h1 {
-	font-family: Open Sans Light;
-}
-.jumbotron h1 {
-	font-family: Open Sans Light;
-	color: #fff;
-	font-size: 90px;
-	text-shadow: 4px 3px 0 #1d9d74, 2px 3px 0 rgba(0, 0, 0, 0.15);
-	text-align: center;
-}
-figure {
-	margin: 0 0 3rem;
-}
-footer, footer a {
-	color: #fff;
-}
-footer a:hover {
-	color: #E0AF1D;
-}
-footer ul {
-	align-items: center;
-	justify-content: center;
-	display: flex;
-	margin: 0;
-}
-footer ul>li {
-	margin: 10px;
-	font-size: 18px;
-}
-.browser-support {
-	margin-bottom: 100px;
-}
-.dg-container {
-	width: 100%;
-	height: 450px;
-	position: relative;
-}
-.dg-wrapper {
-	align-items: center;
-	justify-content: center;
-	display: flex;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	-webkit-transform-style: preserve-3d;
-	-moz-transform-style: preserve-3d;
-	-o-transform-style: preserve-3d;
-	-ms-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-	-webkit-perspective: 1000px;
-	-moz-perspective: 1000px;
-	-o-perspective: 1000px;
-	-ms-perspective: 1000px;
-	perspective: 1000px;
-}
-.dg-wrapper a {
-	display: block;
-	position: absolute;
-	/*background: transparent url(https://tympanus.net/Development/3DGallery/images/browser.png) no-repeat top left;*/
-	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-}
-.dg-wrapper a.dg-transition {
-	-webkit-transition: all 0.5s ease-in-out;
-	-moz-transition: all 0.5s ease-in-out;
-	-o-transition: all 0.5s ease-in-out;
-	-ms-transition: all 0.5s ease-in-out;
-	transition: all 0.5s ease-in-out;
-}
-.dg-wrapper a img {
-	display: block;
-}
-.dg-wrapper a div {
-	font-style: italic;
-	text-align: center;
-	line-height: 50px;
-	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
-	color: #333;
-	font-size: 16px;
-	width: 100%;
-	bottom: -55px;
-	display: none;
-	position: absolute;
-}
-.dg-wrapper a.dg-center div {
-	display: block;
-}
-.dg-container nav {
-	position: absolute;
-	z-index: 1000;
-	bottom: 15px;
-	left: 50%;
-	margin-left: -29px;
-}
-.dg-container nav span {
-	float: left;
-	cursor: pointer;
-	width: 24px;
-	height: 25px;
-	opacity: 0.8;
-	font-size: 30px;
-	color: #fff;
-}
-.dg-container nav span:hover {
-	opacity: 1;
-}
-.dg-container nav span.dg-next {
-	margin-left: 20px;
-}
-#particles-js {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 0;
-}
-</style>
-
-<body>
-<div id="particles-js"></div>
-<div class="container">
-  <template id="main-page">
-    <div class="container" style="padding-bottom: 100px;">
-      <div class="jumbotron wow animated fadeInDown">
-        <h1>Vue Components</h1>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <figure class="wow animated bounceInLeft">
-            <div class="panel-border">
-              <h4 class="mb-3 panel-heading">Text Field</h4>
-              <div class="panel-body">
-                <p>
-                  <b-text-field name="minh" id="asdasd" type="email" class-name="minh class" v-model="input.name" placeholder="Input yout text" label="Label"></b-text-field>
-                </p>
-                <p>{{ input.name }}</p>
-                <b-button type="button" class-name="button-primary" icon="<i class='fa fa-circle-thin'></i>" label="Update model" @click.native="input.name='Test'"></b-button>
-                <b-button type="button" label="Empty" class-name="button-solid button-danger" @click.native="input.name=''"></b-button>
-              </div>
-            </div>
-          </figure>
-          <figure class="wow animated bounceInLeft">
-            <div class="panel-border">
-              <h4 class="mb-3 panel-heading">Radio</h4>
-              <div class="panel-body">
-                <p>
-                  <b-radio name="minh" id="radio-usa" class-name="testing-b-radio" v-model="input.radio" value="USA" label="USA"></b-radio>
-                  <b-radio name="minh" id="radio-vn" class-name="testing-b-radio" v-model="input.radio" value="VN" label="VN"></b-radio>
-                  <b-radio name="minh" id="radio-thai" class-name="testing-b-radio" v-model="input.radio" value="Thai Lan" label="Thai Lan"></b-radio>
-                </p>
-                <p>{{ input.radio }}</p>
-                <p>
-                  <b-button type="button" class-name="button-primary" @click.native="input.radio='VN'" label="VN"></b-button>
-                  <b-button type="button" class-name="button-danger button-solid" @click.native="input.radio=null" label="Null"></b-button>
-                </p>
-              </div>
-            </div>
-          </figure>
-          <figure class="wow animated bounceInLeft">
-            <div class="panel-border">
-              <h4 class="mb-3 panel-heading">Checkbox</h4>
-              <div class="panel-body">
-                <p>
-                  <b-check-box class-name="minh class" v-model="input.checkbox" bind-value="USA" label="USA"></b-check-box>
-                  <b-check-box class-name="minh class" v-model="input.checkbox" bind-value="Thai Lan" label="Thai Lan"></b-check-box>
-                  <b-check-box class-name="minh class" v-model="input.checkbox" bind-value="VN" label="VN"></b-check-box>
-                </p>
-                <p>{{ input.checkbox }}</p>
-                <p>
-                  <b-button type="button" label="Only USA" class-name="button-solid button-primary" @click.native="input.checkbox=['USA']"></b-button>
-                  <b-button type="button" label="Reset" class-name="button-solid button-danger" @click.native="input.checkbox=[]"></b-button>
-                </p>
-                <br>
-                <p>
-                  <b-check-box class-name="minh class" v-model="input.checkboxByValue" bind-value="USA" label="USA"></b-check-box>
-                </p>
-                <p>{{ input.checkboxByValue }}</p>
-                <b-button type="button" class-name="button-success" label="USA" @click.native="input.checkboxByValue = true"></b-button>
-              </div>
-            </div>
-          </figure>
-          <figure class="wow animated bounceInLeft">
-            <div class="panel-border">
-              <h4 class="mb-3 panel-heading">Selectbox</h4>
-              <div class="panel-body">
-                <p>
-                  <b-select item-text="name" item-val="code" label="Select country" name="minh" class-name="testing-b-select" placeholder="Select box" v-model="input.select" :list="list"></b-select>
-                </p>
-                <p>{{ input.select }}</p>
-                <b-button type="button" class-name="button-primary" @click.native="input.select='USA'" label="USA"></b-button>
-                <b-button type="button" class-name="button-danger" @click.native="input.select=null" label="Null"></b-button>
-              </div>
-            </div>
-          </figure>
-          <figure class="wow animated bounceInLeft">
-            <div class="panel-border">
-              <h4 class="mb-3 panel-heading">Rating</h4>
-              <div class="panel-body">
-                <p>
-                  <b-rating rate-max="5" disabled="disabled2" class-name="testing-b-rating" v-model="input.rating"></b-rating>
-                </p>
-                <p>{{ input.rating }}</p>
-                <b-button type="button" class-name="button-primary" @click.native="input.rating=5" label="5 stars"></b-button>
-                <b-button type="button" class-name="button-success" @click.native="input.rating=3" label="3 stars"></b-button>
-                <b-button type="button" class-name="button-warn" @click.native="input.rating=7" label="7 stars"></b-button>
-                <b-button type="button" class-name="button-danger" @click.native="input.rating=null" label="Null"></b-button>
-              </div>
-            </div>
-          </figure>
-          <figure class="wow animated bounceInLeft">
-            <div class="panel-border">
-              <h4 class="mb-3 panel-heading">Date Picker</h4>
-              <div class="panel-body">
-                <p>
-                  <b-text-field label="Date Picker" placeholder="Select date" type="date" class-name="testing-b-text-field" v-model="input.datePicker"></b-text-field>
-                </p>
-                <p>{{ input.datePicker }}</p>
-                <b-button type="button" class-name="button-primary" @click.native="input.datePicker='2016-12-21'" label="2016-12-21"></b-button>
-                <b-button type="button" class-name="button-danger button-solid" @click.native="input.datePicker=null" label="Null"></b-button>
-              </div>
-            </div>
-          </figure>
-          <figure class="wow animated bounceInLeft">
-            <div class="panel-border">
-              <h4 class="mb-3 panel-heading">Zip Code</h4>
-              <div class="panel-body">
-                <p>
-                  <b-zip-code label="Zip code" placeholder="Input zip code" class-name="testing-b-zip-code" v-model="input.zipCode"></b-zip-code>
-                </p>
-                <p>{{ input.zipCode }}</p>
-                <b-button type="button" class-name="button-primary" @click.native="input.zipCode='68007'" label="Valid 68007"></b-button>
-                <b-button type="button" class-name="button-warn button-solid" @click.native="input.zipCode='752541'" label="Invalid 752541"></b-button>
-                <b-button type="button" class-name="button-danger" @click.native="input.zipCode=null" label="Null"></b-button>
-              </div>
-            </div>
-          </figure>
+<body id="home">
+  <div id="particles-js"></div>
+  <div class="header-menu">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#document">Document</a></li>
+      <li><a href="#usage">Usage</a></li>
+      <li><a href="#our-team">Our Team</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <template id="main-page">
+      <div class="container" style="padding-bottom: 100px;">
+        <div class="jumbotron wow animated fadeInDown">
+          <h1>Vue Components</h1>
         </div>
-        <div class="col-md-6">
-          <figure class="wow animated bounceInRight">
-            <div class="panel-border">
-              <h4 class="mb-3 panel-heading">Switch</h4>
-              <div class="panel-body">
-                <p>
-                  <b-switch name="minh" id="USA" class-name="testing-b-switch" v-model="input.switch" bind-value="USA" label="USA"></b-switch>
-                  <label for="USA">USA</label>
-                </p>
-                <p>
-                  <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" bind-value="VN" id="VN"></b-switch>
-                  <label for="VN">VN</label>
-                </p>
-                <p>
-                  <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" bind-value="Thai Lan" id="Thai Lan"></b-switch>
-                  <label for="Thai Lan">Thai Lan</label>
-                </p>
-                <p>{{ input.switch }}</p>
-                <p>
-                  <b-button type="button" class-name="button-solid button-primary" label="VN" @click.native="input.switch=['VN']"></b-button>
-                  <b-button type="button" class-name="button-solid button-primary" label="Empty" @click.native="input.switch=[]"></b-button>
-                </p>
-                <p>
-                  <b-switch name="minh" class-name="testing-b-switch" v-model="input.switchBool"></b-switch>
-                </p>
-                <p>{{ input.switchBool }}</p>
-                <p>
-                  <b-button type="button" class-name="button-primary" @click.native="input.switchBool = true" label="true"></b-button>
-                  <b-button type="button" class-name="button-warn" @click.native="input.switchBool = false" label="false"></b-button>
-                </p>
+        <div class="row">
+          <div class="col-md-6">
+            <figure class="wow animated bounceInLeft">
+              <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Text Field</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-text-field name="minh" id="asdasd" type="email" class-name="minh class" v-model="input.name" placeholder="Input yout text" label="Label"></b-text-field>
+                  </p>
+                  <p>{{ input.name }}</p>
+                  <b-button type="button" class-name="button-primary" icon="<i class='fa fa-circle-thin'></i>" label="Update model" @click.native="input.name='Test'"></b-button>
+                  <b-button type="button" label="Empty" class-name="button-solid button-danger" @click.native="input.name=''"></b-button>
+                </div>
               </div>
-            </div>
-          </figure>
-          <figure class="wow animated bounceInRight">
-            <div class="panel-border">
-              <h4 class="mb-3 panel-heading">Textarea</h4>
-              <div class="panel-body">
-                <p>
-                  <b-textarea placeholder="Because ..." label="Why ..." name="minh" class-name="testing-b-textarea" v-model="input.textarea"></b-textarea>
-                </p>
-                <p>{{ input.textarea }}</p>
-                <b-button type="button" class-name="button-primary" @click.native="input.textarea='Awesome components'" label="Update"></b-button>
-                <b-button type="button" class-name="button-danger" @click.native="input.textarea=null" label="Null"></b-button>
+            </figure>
+            <figure class="wow animated bounceInLeft">
+              <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Radio</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-radio name="minh" id="radio-usa" class-name="testing-b-radio" v-model="input.radio" value="USA" label="USA"></b-radio>
+                    <b-radio name="minh" id="radio-vn" class-name="testing-b-radio" v-model="input.radio" value="VN" label="VN"></b-radio>
+                    <b-radio name="minh" id="radio-thai" class-name="testing-b-radio" v-model="input.radio" value="Thai Lan" label="Thai Lan"></b-radio>
+                  </p>
+                  <p>{{ input.radio }}</p>
+                  <p>
+                    <b-button type="button" class-name="button-primary" @click.native="input.radio='VN'" label="VN"></b-button>
+                    <b-button type="button" class-name="button-danger button-solid" @click.native="input.radio=null" label="Null"></b-button>
+                  </p>
+                </div>
               </div>
-            </div>
-          </figure>
-          <figure class="wow animated bounceInRight">
-            <div class="panel-border">
-              <h4 class="mb-3 panel-heading">Numberic Formatted</h4>
-              <div class="panel-body">
-                <p>
-                  <b-numeric-formatted placeholder="How much you have ?" label="Your wallet" v-model="input.numericFormatted" :affix="affix" :is_prefix="prefixes" class-name="test-numberic"></b-numeric-formatted>
-                </p>
-                <p>Result: {{ input.numericFormatted }} <br>
+            </figure>
+            <figure class="wow animated bounceInLeft">
+              <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Checkbox</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-check-box class-name="minh class" v-model="input.checkbox" bind-value="USA" label="USA"></b-check-box>
+                    <b-check-box class-name="minh class" v-model="input.checkbox" bind-value="Thai Lan" label="Thai Lan"></b-check-box>
+                    <b-check-box class-name="minh class" v-model="input.checkbox" bind-value="VN" label="VN"></b-check-box>
+                  </p>
+                  <p>{{ input.checkbox }}</p>
+                  <p>
+                    <b-button type="button" label="Only USA" class-name="button-solid button-primary" @click.native="input.checkbox=['USA']"></b-button>
+                    <b-button type="button" label="Reset" class-name="button-solid button-danger" @click.native="input.checkbox=[]"></b-button>
+                  </p>
+                  <br>
+                  <p>
+                    <b-check-box class-name="minh class" v-model="input.checkboxByValue" bind-value="USA" label="USA"></b-check-box>
+                  </p>
+                  <p>{{ input.checkboxByValue }}</p>
+                  <b-button type="button" class-name="button-success" label="USA" @click.native="input.checkboxByValue = true"></b-button>
+                </div>
+              </div>
+            </figure>
+            <figure class="wow animated bounceInLeft">
+              <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Selectbox</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-select item-text="name" item-val="code" label="Select country" name="minh" class-name="testing-b-select" placeholder="Select box" v-model="input.select" :list="list"></b-select>
+                  </p>
+                  <p>{{ input.select }}</p>
+                  <b-button type="button" class-name="button-primary" @click.native="input.select='USA'" label="USA"></b-button>
+                  <b-button type="button" class-name="button-danger" @click.native="input.select=null" label="Null"></b-button>
+                </div>
+              </div>
+            </figure>
+            <figure class="wow animated bounceInLeft">
+              <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Rating</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-rating rate-max="5" disabled="disabled2" class-name="testing-b-rating" v-model="input.rating"></b-rating>
+                  </p>
+                  <p>{{ input.rating }}</p>
+                  <b-button type="button" class-name="button-primary" @click.native="input.rating=5" label="5 stars"></b-button>
+                  <b-button type="button" class-name="button-success" @click.native="input.rating=3" label="3 stars"></b-button>
+                  <b-button type="button" class-name="button-warn" @click.native="input.rating=7" label="7 stars"></b-button>
+                  <b-button type="button" class-name="button-danger" @click.native="input.rating=null" label="Null"></b-button>
+                </div>
+              </div>
+            </figure>
+            <figure class="wow animated bounceInLeft">
+              <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Date Picker</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-text-field label="Date Picker" placeholder="Select date" type="date" class-name="testing-b-text-field" v-model="input.datePicker"></b-text-field>
+                  </p>
+                  <p>{{ input.datePicker }}</p>
+                  <b-button type="button" class-name="button-primary" @click.native="input.datePicker='2016-12-21'" label="2016-12-21"></b-button>
+                  <b-button type="button" class-name="button-danger button-solid" @click.native="input.datePicker=null" label="Null"></b-button>
+                </div>
+              </div>
+            </figure>
+            <figure class="wow animated bounceInLeft">
+              <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Zip Code</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-zip-code label="Zip code" placeholder="Input zip code" class-name="testing-b-zip-code" v-model="input.zipCode"></b-zip-code>
+                  </p>
+                  <p>{{ input.zipCode }}</p>
+                  <b-button type="button" class-name="button-primary" @click.native="input.zipCode='68007'" label="Valid 68007"></b-button>
+                  <b-button type="button" class-name="button-warn button-solid" @click.native="input.zipCode='752541'" label="Invalid 752541"></b-button>
+                  <b-button type="button" class-name="button-danger" @click.native="input.zipCode=null" label="Null"></b-button>
+                </div>
+              </div>
+            </figure>
+          </div>
+          <div class="col-md-6">
+            <figure class="wow animated bounceInRight">
+              <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Switch</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-switch name="minh" id="USA" class-name="testing-b-switch" v-model="input.switch" bind-value="USA" label="USA"></b-switch>
+                    <label for="USA">USA</label>
+                  </p>
+                  <p>
+                    <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" bind-value="VN" id="VN"></b-switch>
+                    <label for="VN">VN</label>
+                  </p>
+                  <p>
+                    <b-switch name="minh" class-name="testing-b-switch" v-model="input.switch" bind-value="Thai Lan" id="Thai Lan"></b-switch>
+                    <label for="Thai Lan">Thai Lan</label>
+                  </p>
+                  <p>{{ input.switch }}</p>
+                  <p>
+                    <b-button type="button" class-name="button-solid button-primary" label="VN" @click.native="input.switch=['VN']"></b-button>
+                    <b-button type="button" class-name="button-solid button-primary" label="Empty" @click.native="input.switch=[]"></b-button>
+                  </p>
+                  <p>
+                    <b-switch name="minh" class-name="testing-b-switch" v-model="input.switchBool"></b-switch>
+                  </p>
+                  <p>{{ input.switchBool }}</p>
+                  <p>
+                    <b-button type="button" class-name="button-primary" @click.native="input.switchBool = true" label="true"></b-button>
+                    <b-button type="button" class-name="button-warn" @click.native="input.switchBool = false" label="false"></b-button>
+                  </p>
+                </div>
+              </div>
+            </figure>
+            <figure class="wow animated bounceInRight">
+              <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Textarea</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-textarea placeholder="Because ..." label="Why ..." name="minh" class-name="testing-b-textarea" v-model="input.textarea"></b-textarea>
+                  </p>
+                  <p>{{ input.textarea }}</p>
+                  <b-button type="button" class-name="button-primary" @click.native="input.textarea='Awesome components'" label="Update"></b-button>
+                  <b-button type="button" class-name="button-danger" @click.native="input.textarea=null" label="Null"></b-button>
+                </div>
+              </div>
+            </figure>
+            <figure class="wow animated bounceInRight">
+              <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Numberic Formatted</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-numeric-formatted placeholder="How much you have ?" label="Your wallet" v-model="input.numericFormatted" :affix="affix" :is_prefix="prefixes" class-name="test-numberic"></b-numeric-formatted>
+                  </p>
+                  <p>Result: {{ input.numericFormatted }} <br>
                   Type: {{ typeof input.numericFormatted }}</p>
-                <div class="my-2">
-                <b-button type="button" class-name="button-primary" label="4321" @click.native="input.numericFormatted = 4321"></b-button>
-                <b-button type="button" class-name="button-danger button-solid" label="Null" @click.native="input.numericFormatted = 0"></b-button>
-                </div>
-                <div class="my-2">
-                <b-button type="button" class-name="button-success" label="VND" @click.native="affix = 'VND'"></b-button>
-                <b-button type="button" class-name="button-warn button-solid" label="EUR" @click.native="affix = '€'"></b-button>
-                <b-button type="button" class-name="button-primary button-solid" label="USA" @click.native="affix = '%'"></b-button>
-                <b-button type="button" class-name="button-success" label="%" @click.native="affix = '%'"></b-button>
-                </div>
-                <div class="my-2">
-                <b-button type="button" class-name="button-danger" label="Suffix" @click.native="prefixes = false"></b-button>
-                <b-button type="button" class-name="button-success" label="Prefix" @click.native="prefixes = true"></b-button>
-                <b-button type="button" class-name="button-warn" label="No Affix" @click.native="prefixes = undefined"></b-button>
+                  <div class="my-2">
+                    <b-button type="button" class-name="button-primary" label="4321" @click.native="input.numericFormatted = 4321"></b-button>
+                    <b-button type="button" class-name="button-danger button-solid" label="Null" @click.native="input.numericFormatted = 0"></b-button>
+                  </div>
+                  <div class="my-2">
+                    <b-button type="button" class-name="button-success" label="VND" @click.native="affix = 'VND'"></b-button>
+                    <b-button type="button" class-name="button-warn button-solid" label="EUR" @click.native="affix = '€'"></b-button>
+                    <b-button type="button" class-name="button-primary button-solid" label="USA" @click.native="affix = '%'"></b-button>
+                    <b-button type="button" class-name="button-success" label="%" @click.native="affix = '%'"></b-button>
+                  </div>
+                  <div class="my-2">
+                    <b-button type="button" class-name="button-danger" label="Suffix" @click.native="prefixes = false"></b-button>
+                    <b-button type="button" class-name="button-success" label="Prefix" @click.native="prefixes = true"></b-button>
+                    <b-button type="button" class-name="button-warn" label="No Affix" @click.native="prefixes = undefined"></b-button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </figure>
-          <figure class="wow animated bounceInRight">
-            <div class="panel-border">
-              <h4 class="mb-3 panel-heading">Button</h4>
-              <div class="panel-body">
-                <p>
-                  <b-button type="button" class-name="button-primary" label="Primary"></b-button>
-                  <b-button type="button" class-name="button-danger" label="Danger"></b-button>
-                  <b-button type="button" class-name="button-success" label="Success"></b-button>
-                  <b-button type="button" class-name="button-warn" label="Warn"></b-button>
-                </p>
-                <p>
-                  <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-primary" label="Click me"></b-button>
-                  <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-danger" label="Click me"></b-button>
-                  <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-success" label="Click me"></b-button>
-                  <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-warn" label="Click me"></b-button>
-                </p>
-                <p>
-                  <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="Solid"></b-button>
-                  <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="Solid"></b-button>
-                  <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Solid"></b-button>
-                  <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-warn button-solid" label="Solid"></b-button>
-                </p>
+            </figure>
+            <figure class="wow animated bounceInRight">
+              <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Button</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-button type="button" class-name="button-primary" label="Primary"></b-button>
+                    <b-button type="button" class-name="button-danger" label="Danger"></b-button>
+                    <b-button type="button" class-name="button-success" label="Success"></b-button>
+                    <b-button type="button" class-name="button-warn" label="Warn"></b-button>
+                  </p>
+                  <p>
+                    <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-primary" label="Click me"></b-button>
+                    <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-danger" label="Click me"></b-button>
+                    <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-success" label="Click me"></b-button>
+                    <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-warn" label="Click me"></b-button>
+                  </p>
+                  <p>
+                    <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="Solid"></b-button>
+                    <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="Solid"></b-button>
+                    <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Solid"></b-button>
+                    <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-warn button-solid" label="Solid"></b-button>
+                  </p>
+                </div>
               </div>
-            </div>
-          </figure>
-          <figure class="wow animated bounceInRight">
-            <div class="panel-border">
-              <h4 class="mb-3 panel-heading">Multi Select</h4>
-              <div class="panel-body">
-                <p>
-                  <b-multi-select :list="listMultiSelect" v-model="input.multiSelect"></b-multi-select>
-                </p>
-                <p>{{ input.multiSelect }}</p>
-                <p>
-                  <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="Only 1" @click.native="input.multiSelect= [1]"></b-button>
-                  <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="Select all" @click.native="input.multiSelect= [1,2,3,4,5]"></b-button>
-                  <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Empty" @click.native="input.multiSelect= []"></b-button>
-                </p>
+            </figure>
+            <figure class="wow animated bounceInRight">
+              <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Multi Select</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-multi-select :list="listMultiSelect" v-model="input.multiSelect"></b-multi-select>
+                  </p>
+                  <p>{{ input.multiSelect }}</p>
+                  <p>
+                    <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="Only 1" @click.native="input.multiSelect= [1]"></b-button>
+                    <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="Select all" @click.native="input.multiSelect= [1,2,3,4,5]"></b-button>
+                    <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Empty" @click.native="input.multiSelect= []"></b-button>
+                  </p>
+                </div>
               </div>
-            </div>
-          </figure>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </template>
+    <div id="app"></div>
+  </div>
+  <div class="our-team" id="our-team">
+    <div class="container">
+      <div class="profile-heading">Our Team</div>
+      <div class="row justify-content-md-center align-items-center">
+        <div class="col-md-3">
+          <div class="profile-thumbnail"><img src="https://avatars3.githubusercontent.com/u/24769863?v=4&s=460"></div>
+          <div class="profile-content">
+            <div class="profile-name">Abc Xyz</div>
+            <div class="profile-job">Full Stack Developer</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="profile-thumbnail"><img class="thumbnail-center" src="https://avatars3.githubusercontent.com/u/29373028?v=4&s=460"></div>
+          <div class="profile-content">
+            <div class="profile-name">Truong Nhat Minh</div>
+            <div class="profile-job">Creator</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="profile-thumbnail"><img src="https://avatars0.githubusercontent.com/u/32159302?v=4&s=460"></div>
+          <div class="profile-content">
+            <div class="profile-name">Trinh Gia Tuan</div>
+            <div class="profile-job">Designer</div>
+          </div>
         </div>
       </div>
     </div>
-  </template>
-  <div id="app"></div>
-</div>
-<div class="browser-support wow animated bounceIn">
-  <div class="container">
-    <div class="h1 text-center text-white">Support Browser</div>
-    <section id="dg-container" class="dg-container">
-      <div class="dg-wrapper"> <a href="javascript:void(0);"><img src="built/assets/images/safari.jpg" alt="image01"></a> <a href="javascript:void(0);"><img src="built/assets/images/ie11.jpg" alt="image02"></a> <a href="javascript:void(0);"><img src="built/assets/images/firefox.jpg" alt="image03"></a> </div>
-      <nav> <span class="dg-prev"><i class="fa fa-arrow-circle-o-left"></i></span> <span class="dg-next"><i class="fa fa-arrow-circle-o-right"></i></span> </nav>
-    </section>
   </div>
-</div>
-<footer class="footer wow animated fadeInUp">
-  <div class="container">
-    <div class="col-md-12 text-center"> COPYRIGHT © 2017 <a href="http://bigin.vn"><b>BIGIN.VN</b></a> | ALL RIGHTS RESERVED
-      <div class="d-block">
-        <ul class="list-unstyled">
-          <li><a href="contact@bigin.vn" target="_blank" class="fa fa-envelope-o"></a></li>
-          <li><a href="https://www.facebook.com/bigin.vn" target="_blank" class="fa fa-facebook"></a></li>
-          <li><a href="https://www.linkedin.com/company/bigin" target="_blank" class="fa fa-linkedin"></a></li>
-          <li><a href="https://github.com/biginvn" target="_blank" class="fa fa-github"></a></li>
-        </ul>
+  <footer class="wow animated fadeInUp">
+    <div class="container">
+      <div class="col-md-12 text-center"> COPYRIGHT © 2017 <a href="http://bigin.vn"><b>BIGIN.VN</b></a> | ALL RIGHTS RESERVED
+        <div class="d-block">
+          <ul class="list-unstyled">
+            <li><a href="contact@bigin.vn" target="_blank" class="fa fa-envelope-o"></a></li>
+            <li><a href="https://www.facebook.com/bigin.vn" target="_blank" class="fa fa-facebook"></a></li>
+            <li><a href="https://www.linkedin.com/company/bigin" target="_blank" class="fa fa-linkedin"></a></li>
+            <li><a href="https://github.com/biginvn" target="_blank" class="fa fa-github"></a></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 </body>
 <script>
-var vm = new Vue({
+  var vm = new Vue({
     el: '#app',
     data: {
-        prefixes: true,
-        affix: "$",
-        input: {
-            name: 'Input your text...',
-            checkbox: [],
-            checkboxByValue: null,
-            radio: null,
-            switch: [],
-            switchBool: true,
-            select: null,
-            textarea: null,
-            rating: null,
-            datePicker: null,
-            numericFormatted: null,
-            zipCode: null,
-            multiSelect: null
-        },
-        list: [
-            { code: 'VN', name: 'Viet Nam' },
-            { code: 'USA', name: 'United States' },
-            { code: 'CAM', name: 'Campuchia' }
-        ],
+      prefixes: true,
+      affix: "$",
+      input: {
+        name: 'Input your text...',
+        checkbox: [],
+        checkboxByValue: null,
+        radio: null,
+        switch: [],
+        switchBool: true,
+        select: null,
+        textarea: null,
+        rating: null,
+        datePicker: null,
+        numericFormatted: null,
+        zipCode: null,
+        multiSelect: null
+      },
+      list: [
+      { code: 'VN', name: 'Viet Nam' },
+      { code: 'USA', name: 'United States' },
+      { code: 'CAM', name: 'Campuchia' }
+      ],
 
-        listMultiSelect: [{
-                id: 1,
-                html: '<p>Xabi Alonso</p><p class="club">Bayern Munich</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
-                keywords: 'Xabi Alonso',
-                thumbHtml: 'Alonso',
-                icon: 'https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/x/xab/large/900.png'
-            },
-            {
-                id: 2,
-                keywords: 'Serio Busquests',
-                html: '<p>Serio Busquests</p><p class="club">Barca</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
-                thumbHtml: 'Busquests',
-                icon: 'https://media-public.fcbarcelona.com/20157/0/document_thumbnail/20197/78/103/254/50227022/1.0-1/50227022.jpg'
-            },
-            {
-                id: 3,
-                keywords: 'Rashford',
-                html: '<p>Rashford</p><p class="club">Manchester United</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
-                thumbHtml: 'Rashford',
-                icon: 'https://i.imgur.com/2ukdYux.png'
-            },
-            {
-                id: 4,
-                keywords: 'Hazard',
-                html: '<p>Hazard</p><p class="club">Chelsea</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
-                thumbHtml: 'Eden Hazard',
-                icon: 'https://yt3.ggpht.com/-qAmaI4blHow/AAAAAAAAAAI/AAAAAAAAAAA/ow6gtUrpzps/s48-c-k-no-mo-rj-c0xffffff/photo.jpg'
-            },
-            {
-                id: 5,
-                keywords: 'Xuan Truong Luong',
-                html: '<p>Xuan Truong Luong</p><p class="club">Hoang Anh Gia Lai</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
-                thumbHtml: 'Xuan Truong',
-                icon: 'http://image.thanhnien.vn/uploaded/lanphuong/2016_03_11/xuantruongdeptrainhutraihanquoc_rkdz.jpg?width=500&encoder=wic&subsampling=444'
-            }
-        ]
+      listMultiSelect: [{
+        id: 1,
+        html: '<p>Xabi Alonso</p><p class="club">Bayern Munich</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+        keywords: 'Xabi Alonso',
+        thumbHtml: 'Alonso',
+        icon: 'https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/x/xab/large/900.png'
+      },
+      {
+        id: 2,
+        keywords: 'Serio Busquests',
+        html: '<p>Serio Busquests</p><p class="club">Barca</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+        thumbHtml: 'Busquests',
+        icon: 'https://media-public.fcbarcelona.com/20157/0/document_thumbnail/20197/78/103/254/50227022/1.0-1/50227022.jpg'
+      },
+      {
+        id: 3,
+        keywords: 'Rashford',
+        html: '<p>Rashford</p><p class="club">Manchester United</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+        thumbHtml: 'Rashford',
+        icon: 'https://i.imgur.com/2ukdYux.png'
+      },
+      {
+        id: 4,
+        keywords: 'Hazard',
+        html: '<p>Hazard</p><p class="club">Chelsea</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+        thumbHtml: 'Eden Hazard',
+        icon: 'https://yt3.ggpht.com/-qAmaI4blHow/AAAAAAAAAAI/AAAAAAAAAAA/ow6gtUrpzps/s48-c-k-no-mo-rj-c0xffffff/photo.jpg'
+      },
+      {
+        id: 5,
+        keywords: 'Xuan Truong Luong',
+        html: '<p>Xuan Truong Luong</p><p class="club">Hoang Anh Gia Lai</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+        thumbHtml: 'Xuan Truong',
+        icon: 'http://image.thanhnien.vn/uploaded/lanphuong/2016_03_11/xuantruongdeptrainhutraihanquoc_rkdz.jpg?width=500&encoder=wic&subsampling=444'
+      }
+      ]
     },
     template: '#main-page'
-});
+  });
 </script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://tympanus.net/Development/3DGallery/js/jquery.gallery.js"></script>
+<script type="text/javascript" src="built/assets/js/gallery.js"></script>
 <script type="text/javascript">
-$(function() {
+  $(function() {
     $('#dg-container').gallery();
-});
+  });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 <script>
-    var wow = new WOW(
+  var wow = new WOW(
   {
     boxClass:     'wow',      // animated element css class (default is wow)
     animateClass: 'animated', // animation css class (default is animated)
@@ -541,148 +401,198 @@ $(function() {
     },
     scrollContainer: null // optional scroll container selector, otherwise use window
   }
-);
-wow.init();
+  );
+  wow.init();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
-particlesJS("particles-js", {
+  particlesJS("particles-js", {
     "particles": {
-        "number": {
-            "value": 160,
-            "density": {
-                "enable": true,
-                "value_area": 800
-            }
-        },
-        "color": {
-            "value": "#ffffff"
-        },
-        "shape": {
-            "type": "circle",
-            "stroke": {
-                "width": 0,
-                "color": "#000000"
-            },
-            "polygon": {
-                "nb_sides": 5
-            },
-            "image": {
-                "src": "img/github.svg",
-                "width": 100,
-                "height": 100
-            }
-        },
-        "opacity": {
-            "value": 1,
-            "random": true,
-            "anim": {
-                "enable": true,
-                "speed": 1,
-                "opacity_min": 0,
-                "sync": false
-            }
-        },
-        "size": {
-            "value": 3,
-            "random": true,
-            "anim": {
-                "enable": false,
-                "speed": 4,
-                "size_min": 0.3,
-                "sync": false
-            }
-        },
-        "line_linked": {
-            "enable": false,
-            "distance": 150,
-            "color": "#ffffff",
-            "opacity": 0.4,
-            "width": 1
-        },
-        "move": {
-            "enable": true,
-            "speed": 1,
-            "direction": "none",
-            "random": true,
-            "straight": false,
-            "out_mode": "out",
-            "bounce": false,
-            "attract": {
-                "enable": false,
-                "rotateX": 600,
-                "rotateY": 600
-            }
+      "number": {
+        "value": 40,
+        "density": {
+          "enable": true,
+          "value_area": 800
         }
+      },
+      "color": {
+        "value": "#ffffff"
+      },
+      "shape": {
+        "type": "circle",
+        "stroke": {
+          "width": 0,
+          "color": "#000000"
+        },
+        "polygon": {
+          "nb_sides": 5
+        },
+        "image": {
+          "src": "img/github.svg",
+          "width": 100,
+          "height": 100
+        }
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": false,
+        "anim": {
+          "enable": false,
+          "speed": 1,
+          "opacity_min": 0.1,
+          "sync": false
+        }
+      },
+      "size": {
+        "value": 3,
+        "random": true,
+        "anim": {
+          "enable": false,
+          "speed": 40,
+          "size_min": 0.1,
+          "sync": false
+        }
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#ffffff",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 3,
+        "direction": "none",
+        "random": false,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false,
+        "attract": {
+          "enable": false,
+          "rotateX": 600,
+          "rotateY": 1200
+        }
+      }
     },
     "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-            "onhover": {
-                "enable": true,
-                "mode": "bubble"
-            },
-            "onclick": {
-                "enable": true,
-                "mode": "repulse"
-            },
-            "resize": true
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": false,
+          "mode": "repulse"
         },
-        "modes": {
-            "grab": {
-                "distance": 400,
-                "line_linked": {
-                    "opacity": 1
-                }
-            },
-            "bubble": {
-                "distance": 250,
-                "size": 0,
-                "duration": 2,
-                "opacity": 0,
-                "speed": 3
-            },
-            "repulse": {
-                "distance": 400,
-                "duration": 0.4
-            },
-            "push": {
-                "particles_nb": 4
-            },
-            "remove": {
-                "particles_nb": 2
-            }
+        "onclick": {
+          "enable": false,
+          "mode": "push"
+        },
+        "resize": true
+      },
+      "modes": {
+        "grab": {
+          "distance": 400,
+          "line_linked": {
+            "opacity": 1
+          }
+        },
+        "bubble": {
+          "distance": 400,
+          "size": 40,
+          "duration": 2,
+          "opacity": 8,
+          "speed": 3
+        },
+        "repulse": {
+          "distance": 200,
+          "duration": 0.4
+        },
+        "push": {
+          "particles_nb": 4
+        },
+        "remove": {
+          "particles_nb": 2
         }
+      }
     },
     "retina_detect": true
-});
+  });
+</script>
+
+<!--  Custom JS -->
+<script>
+  // Select all links with hashes
+  $('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+      ) {
+      // Figure out element to scroll to
+    var target = $(this.hash);
+    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });
+
+  // Scroll Menu and Fixed
+  $(document).scroll(function() {
+    var body = $(this).scrollTop();
+    if (body < 80) {
+      $('.header-menu').removeClass('header-menu-fixed');
+    } else {
+      $('.header-menu').addClass('header-menu-fixed');
+    }
+  });
 </script>
 <style>
 .b__multi__select__list>.list-item .content {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .b__multi__select__list>.list-item .content i {
-    color: #d89032;
-    margin-right: 3px;
+  color: #d89032;
+  margin-right: 3px;
 }
 
 .b__multi__select__list>.list-item .content .club {
-    color: grey;
-    font-weight: normal;
+  color: grey;
+  font-weight: normal;
 }
 
 .b__components.b__multi__select .b__multi__select__list .list-item>.content p {
-    margin-bottom: 2px;
+  margin-bottom: 2px;
 }
 
 .b__components.b__multi__select .b__multi__select__list .list-item:hover p,
 .b__components.b__multi__select .b__multi__select__list .list-item.hover p {
-    color: #fff;
+  color: #fff;
 }
 
 .b__components.b__multi__select .b__multi__select__list .list-item.active:before {
-    top: 30px;
+  top: 30px;
 }
 </style>
 </body>
