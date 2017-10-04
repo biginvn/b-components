@@ -10,6 +10,9 @@ module.exports = {
         publicPath: 'built/',
         filename: 'b-components.js'
     },
+    externals: {
+        "vue": "Vue"
+    },
     module: {
         rules: [{
                 test: /\.css$/,

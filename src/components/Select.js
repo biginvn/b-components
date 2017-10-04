@@ -63,7 +63,7 @@ export default {
 			var found = false;
 			for (var i =0; i < this.items.length; i++){
 				var item = this.items[i]
-				if (item.value.toString() == this.value.toString()){
+				if (item.value!=null && item.value.toString() == this.value.toString()){
 					found = true;
 					break;
 				}
