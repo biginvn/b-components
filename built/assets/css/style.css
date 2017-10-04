@@ -45,14 +45,17 @@ figure {
 	position: relative;
 	z-index: 10;
 }
-
 .header-menu > ul {
 	display: inline-block;
 	border-radius: 0.35em;
 	padding: 0 1.5em 0 1.5em;
-	margin: 20px 0!important; 
+	margin: 20px 0!important;
+	-moz-transition: all .25s ease-in-out;
+    -webkit-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    -ms-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
 }
-
 .header-menu > ul > li {
 	display: inline-block;
 	text-align: center;
@@ -63,11 +66,9 @@ figure {
 	-ms-transition: all .25s ease-in-out;
 	transition: all .25s ease-in-out;
 }
-
 .header-menu > ul > li > ul {
 	display: none;
 }
-
 .header-menu > ul > li > a, .header-menu > ul > li > span {
 	display: block;
 	color: #666;
@@ -89,10 +90,10 @@ figure {
 	background: rgba(255, 255, 255, 0.30);
 	border-radius: 5px;
 }
-
 .header-menu > ul > li.active > a, .header-menu > ul > li.active > span {
 	color: #fff;
 }
+
 /* Fixed Menu */
 .header-menu-fixed{
 	position: fixed;
@@ -100,7 +101,7 @@ figure {
 }
 .header-menu-fixed ul{
 	padding: 0 1.5em 0;
-	background: rgba(240, 248, 255, 0.90);
+	background: #f3f3f3;
 	top: 20px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
 }
@@ -177,6 +178,7 @@ footer, footer a {
 }
 footer a:hover {
 	color: #E0AF1D;
+	text-decoration: none;
 }
 footer ul {
 	align-items: center;

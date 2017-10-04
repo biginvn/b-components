@@ -1010,7 +1010,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	created() {
 		this.searchList = this.list;
 	},
-	props: ['list', 'value'],
+	props: ['list', 'value', 'disabled'],
 	computed: {
 		selected() {
 			// Convert v-model to [] if it's null
@@ -1835,6 +1835,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": _vm.name,
       "disabled": _vm.disabled
     },
+    domProps: {
+      "value": _vm.value
+    },
     on: {
       "input": function($event) {
         _vm.change($event.target.value)
@@ -2017,7 +2020,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: _vm.classes,
     attrs: {
       "type": "text",
-      "placeholder": _vm.placeholder
+      "placeholder": _vm.placeholder,
+      "disabled": _vm.disabled
     },
     domProps: {
       "value": _vm.mask
