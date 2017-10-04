@@ -249,6 +249,22 @@
             </figure>
             <figure class="wow animated bounceInRight">
               <div class="panel-border">
+                <h4 class="mb-3 panel-heading">Toggle</h4>
+                <div class="panel-body">
+                  <p>
+                    <b-toggle text-on="ON" text-off="OFF" v-model="input.toggle"></b-toggle>
+                  </p>
+                  <p>{{ input.toggle }}</p>
+                  <p>
+                    <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="true" @click.native="input.toggle=true"></b-button>
+                    <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="false" @click.native="input.toggle=false"></b-button>
+                    <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Null" @click.native="input.toggle= null"></b-button>
+                  </p>
+                </div>
+              </div>
+            </figure>
+            <figure class="wow animated bounceInRight">
+              <div class="panel-border">
                 <h4 class="mb-3 panel-heading">Multi Select</h4>
                 <div class="panel-body">
                   <p>
@@ -331,7 +347,8 @@
         datePicker: null,
         numericFormatted: null,
         zipCode: null,
-        multiSelect: null
+        multiSelect: null,
+        toggle: false
       },
       list: [
       { code: 'VN', name: 'Viet Nam' },
