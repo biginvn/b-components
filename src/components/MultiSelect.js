@@ -14,7 +14,7 @@ export default {
 	created () {
 		this.searchList = this.list
 	},
-	props : ['list', 'value'],
+	props : ['list', 'value', 'disabled'],
 	computed : {
 		selected () { // Convert v-model to [] if it's null
 			return this.value ? this.value : []

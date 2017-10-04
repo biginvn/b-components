@@ -1,7 +1,7 @@
 <template>
 	<div class="b__components b-ios b-float-label b__numeric">
 		<label :class="classLabel">{{ label }}</label>
-		<input @blur="blur($event.target.value)" @focus="focus()" class="b__input" :value = "mask">
+		<input type="text" :class="classes" @blur="blur($event.target.value)" @focus="focus()" :value="mask" :placeholder="placeholder" :disabled="disabled" @input="updateInput($event.target.value)">
 	</div>
 </template>
 <script>
