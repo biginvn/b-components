@@ -18,7 +18,6 @@ const textFieldMixins = {
     },
     watch: {
         value(newValue) { // Detect when value change will update float label
-            console.log('update')
             this.updateFloatLabel(newValue)
         }
     },
