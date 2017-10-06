@@ -252,13 +252,20 @@
                 <h4 class="mb-3 panel-heading">Toggle</h4>
                 <div class="panel-body">
                   <p>
-                    <b-toggle text-on="List" text-off="Detail" v-model="input.toggle"></b-toggle>
+                    <b-toggle text-on="List View" text-off="Detail View" v-model="input.toggle" :effect="effect"></b-toggle>
                   </p>
                   <p>{{ input.toggle }}</p>
                   <p>
+                    <div class="my-2">
                     <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="true" @click.native="input.toggle=true"></b-button>
                     <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="false" @click.native="input.toggle=false"></b-button>
                     <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Null" @click.native="input.toggle= null"></b-button>
+                    </div>
+                    <div class="my-2">
+                    <b-button type="button" class-name="button-danger" label="Flip" @click.native="effect = 'toggle__flip'"></b-button>
+                    <b-button type="button" class-name="button-success" label="Circle" @click.native="effect = 'toggle__circle'"></b-button>
+                    <b-button type="button" class-name="button-warn" label="Skewed" @click.native="effect = 'toggle__skewed'"></b-button>
+                  </div>
                   </p>
                 </div>
               </div>
@@ -332,6 +339,7 @@
   var vm = new Vue({
     el: '#app',
     data: {
+      effect : 'toggle__circle',
       prefixes: true,
       affix: "$",
       input: {
