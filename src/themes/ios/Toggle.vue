@@ -11,16 +11,19 @@
 <script>
 import CheckBox from '../../components/CheckBox'
 export default {
-	props : ['text-on', 'text-off' , 'effect'],
+	props : ['text-on', 'text-off' , 'effect', 'color_style'],
 	mixins :	[CheckBox],
 	watch: {
 		effect() {
 			this.effect = this.effect;
+		},
+		color_style() {
+			this.color_style = this.color_style;
 		}
 	},
 	computed : {
 		classes () {
-			return (this.className ? this.className : '') + ' toggle__input ' + this.effect
+			return (this.className ? this.className : '') + ' toggle__input ' + this.effect + ' ' + this.color_style
 		}
 	}
 }

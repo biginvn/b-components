@@ -307,7 +307,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin\\Templates\\b-components\\src\\themes\\ios\\Button.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Button.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Button.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -347,7 +347,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin\\Templates\\b-components\\src\\themes\\ios\\CheckBox.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/CheckBox.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] CheckBox.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -387,7 +387,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin\\Templates\\b-components\\src\\themes\\ios\\MultiSelect.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/MultiSelect.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] MultiSelect.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -427,7 +427,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin\\Templates\\b-components\\src\\themes\\ios\\NumericFormatted.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/NumericFormatted.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] NumericFormatted.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -467,7 +467,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin\\Templates\\b-components\\src\\themes\\ios\\Radio.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Radio.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Radio.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -507,7 +507,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin\\Templates\\b-components\\src\\themes\\ios\\Rating.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Rating.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Rating.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -547,7 +547,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin\\Templates\\b-components\\src\\themes\\ios\\Select.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Select.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Select.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -587,7 +587,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin\\Templates\\b-components\\src\\themes\\ios\\Switch.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Switch.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Switch.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -627,7 +627,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin\\Templates\\b-components\\src\\themes\\ios\\TextField.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/TextField.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TextField.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -667,7 +667,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin\\Templates\\b-components\\src\\themes\\ios\\Textarea.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Textarea.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Textarea.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -707,7 +707,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin\\Templates\\b-components\\src\\themes\\ios\\Toggle.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Toggle.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Toggle.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -747,7 +747,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "E:\\Bigin\\Templates\\b-components\\src\\themes\\ios\\ZipCode.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/ZipCode.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ZipCode.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -1006,16 +1006,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['text-on', 'text-off', 'effect'],
+	props: ['text-on', 'text-off', 'effect', 'color_style'],
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__components_CheckBox__["a" /* default */]],
 	watch: {
 		effect() {
 			this.effect = this.effect;
+		},
+		color_style() {
+			this.color_style = this.color_style;
 		}
 	},
 	computed: {
 		classes() {
-			return (this.className ? this.className : '') + ' toggle__input ' + this.effect;
+			return (this.className ? this.className : '') + ' toggle__input ' + this.effect + ' ' + this.color_style;
 		}
 	}
 });

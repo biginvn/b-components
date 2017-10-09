@@ -128,6 +128,35 @@ figure {
 .panel-border .panel-heading+.panel-body {
 	padding: 10px 15px 15px;
 }
+.choose-color-box{
+	display: -webkit-box;
+}
+.choose-color{
+	width: 15px;
+	height: 15px;
+	margin-right: 5px;
+	cursor: pointer;
+	opacity: .7;
+}
+.choose-color:hover{
+	opacity: 1;
+}
+.color-danger{
+	background-color: #f04134;
+    border-color: #f04134;
+}
+.color-success{
+	background-color: #00a854;
+    border-color: #00a854;
+}
+.color-warn{
+	background-color: #ffbf00;
+    border-color: #ffbf00;
+}
+.color-primary{
+	background-color: #108ee9;
+    border-color: #108ee9;
+}
 
 /* Our Team */
 .our-team {
