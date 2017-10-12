@@ -17,17 +17,8 @@
 		mixins :	[TextField],
 		methods: {
         	OnOffPassword(){
-        		if(this.switchEye == 'fa fa-eye'){
-        			this.switchEye = 'fa fa-eye-slash'
-        		}
-        		else{
-        			this.switchEye = 'fa fa-eye'
-        		}
-
-        		if (this.isShow == 'text'){
-					this.isShow = 'password';
-				}
-				else{ this.isShow = 'text'; }
+        		this.switchEye == 'fa fa-eye' ? this.switchEye = 'fa fa-eye-slash' : this.switchEye = 'fa fa-eye'
+				this.isShow == 'text' ? this.isShow = 'password' : this.isShow = 'text';
 			}
 		}
 	}
