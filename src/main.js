@@ -14,6 +14,7 @@ import BButton from './themes/ios/Button.vue'
 import BMultiSelect from './themes/ios/MultiSelect.vue'
 import BNumericFormatted from './themes/ios/NumericFormatted.vue'
 import BToggle from './themes/ios/Toggle.vue'
+import BShowPassword from './themes/ios/ShowPassword.vue'
 
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
@@ -27,3 +28,4 @@ Vue.component('BButton', BButton)
 Vue.component('BMultiSelect', BMultiSelect)
 Vue.component('BNumericFormatted', BNumericFormatted)
 Vue.component('BToggle', BToggle)
+Vue.component('BShowPassword', BShowPassword)
