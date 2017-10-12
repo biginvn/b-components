@@ -30697,7 +30697,7 @@ exports = module.exports = __webpack_require__(14)();
 
 
 // module
-exports.push([module.i, "\n.c-datepicker{\n    line-height: normal;\n    -webkit-font-smoothing:antialiased;\n    z-index: 1;\n}\n.c-datepicker__clock__hours, .c-datepicker__clock__minutes{\n    position: relative;\n}\n.c-datepicker__header-date {\n    height: 182px;\n}\n.c-scrim--shown{ z-index:1;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateTimePicker.vue?9fb1d4ae"],"names":[],"mappings":";AAgBA;IACA,oBAAA;IACA,mCAAA;IACA,WAAA;CACA;AACA;IACA,mBAAA;CACA;AACA;IACA,cAAA;CACA;AACA,iBAAA,UAAA;CAAA","file":"DateTimePicker.vue","sourcesContent":["<template>\n\t<div class=\"b__datetime__picker b__components b-float-label\">\n\t\t<label :class=\"classLabel\">{{ label }}</label>\n      \t<input :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :id=\"id\" :class=\"classes\" :disabled=\"disabled\" @input=\"change($event.target.value)\" @blur=\"onBlur\">\n\t\t<a class=\"c-btn c-datepicker-btn\" @click=\"togglePicker\">\n\t\t\t<span class=\"material-icon\">Open date picker</span>\n\t\t</a>\n\t</div>\n</template>\n<script>\n\timport DateTimePicker from './../../components/DateTimePicker'\n\timport '../../plugins/material-datetime-picker/material-datetime-picker.css'\n\texport default DateTimePicker\n</script>\n\n<style>\n\t.c-datepicker{\n\t    line-height: normal;\n\t    -webkit-font-smoothing:antialiased;\n\t    z-index: 1;\n\t}\n\t.c-datepicker__clock__hours, .c-datepicker__clock__minutes{\n\t    position: relative;\n\t}\n\t.c-datepicker__header-date {\n\t    height: 182px;\n\t}\n\t.c-scrim--shown{ z-index:1; }\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.c-datepicker{\n    line-height: normal;\n    -webkit-font-smoothing:antialiased;\n    z-index: 1;\n}\n.c-datepicker__clock__hours, .c-datepicker__clock__minutes{\n    position: relative;\n}\n.c-datepicker__header-date {\n    height: 182px;\n}\n.c-scrim--shown{ z-index:1;\n}\n.c-datepicker-btn {\n\tcursor: pointer;\n}\n.c-datepicker__day--selected::after{\n\tbackground-color:rgb(1, 188, 212);\n\tz-index: -1;\n}\n.c-datepicker__day--selected.c-datepicker__day-body{\n\tcolor: #FFF;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateTimePicker.vue?81d6569c"],"names":[],"mappings":";AAgBA;IACA,oBAAA;IACA,mCAAA;IACA,WAAA;CACA;AACA;IACA,mBAAA;CACA;AACA;IACA,cAAA;CACA;AACA,iBAAA,UAAA;CAAA;AACA;CACA,gBAAA;CACA;AACA;CACA,kCAAA;CACA,YAAA;CACA;AACA;CACA,YAAA;CACA","file":"DateTimePicker.vue","sourcesContent":["<template>\n\t<div class=\"b__datetime__picker b__components b-float-label\">\n\t\t<label :class=\"classLabel\">{{ label }}</label>\n      \t<input :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :id=\"id\" :class=\"classes\" :disabled=\"disabled\" @input=\"change($event.target.value)\" @blur=\"onBlur\">\n\t\t<a class=\"c-datepicker-btn\" @click=\"togglePicker\">\n\t\t\t<span class=\"material-icon\"><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i></span>\n\t\t</a>\n\t</div>\n</template>\n<script>\n\timport DateTimePicker from './../../components/DateTimePicker'\n\timport '../../plugins/material-datetime-picker/material-datetime-picker.css'\n\texport default DateTimePicker\n</script>\n\n<style>\n\t.c-datepicker{\n\t    line-height: normal;\n\t    -webkit-font-smoothing:antialiased;\n\t    z-index: 1;\n\t}\n\t.c-datepicker__clock__hours, .c-datepicker__clock__minutes{\n\t    position: relative;\n\t}\n\t.c-datepicker__header-date {\n\t    height: 182px;\n\t}\n\t.c-scrim--shown{ z-index:1; }\n\t.c-datepicker-btn {\n\t\tcursor: pointer;\n\t}\n\t.c-datepicker__day--selected::after{\n\t\tbackground-color:rgb(1, 188, 212);\n\t\tz-index: -1;\n\t}\n\t.c-datepicker__day--selected.c-datepicker__day-body{\n\t\tcolor: #FFF;\n\t}\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -45062,14 +45062,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "blur": _vm.onBlur
     }
   }), _vm._v(" "), _c('a', {
-    staticClass: "c-btn c-datepicker-btn",
+    staticClass: "c-datepicker-btn",
     on: {
       "click": _vm.togglePicker
     }
-  }, [_c('span', {
+  }, [_vm._m(0)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
     staticClass: "material-icon"
-  }, [_vm._v("Open date picker")])])])
-},staticRenderFns: []}
+  }, [_c('i', {
+    staticClass: "fa fa-calendar",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
