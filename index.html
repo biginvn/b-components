@@ -5,12 +5,16 @@
     <title>Vue Components</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="http://bigin.vn/wp-content/uploads/2017/02/fav.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <!-- Plugins-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Plugins-->
     <link href='built/b-components.min.css' rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
@@ -123,10 +127,11 @@
                                 <h4 class="mb-3 panel-heading">Date Picker</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-text-field label="Date Picker" placeholder="Select date" type="date" class-name="testing-b-text-field" v-model="input.datePicker"></b-text-field>
+                                        <b-date-time-picker format="YYYY-MM-DD HH:mm" label="Date Picker" placeholder="Select date" type="date" class-name="testing-b-datetime-picker" v-model="input.datePicker"></b-date-time-picker>
+                                        
                                     </p>
                                     <p>{{ input.datePicker }}</p>
-                                    <b-button type="button" class-name="button-primary" @click.native="input.datePicker='2016-12-21'" label="2016-12-21"></b-button>
+                                    <b-button type="button" class-name="button-primary" @click.native="input.datePicker='2016-12-21 22:10'" label="2016-12-21"></b-button>
                                     <b-button type="button" class-name="button-danger button-solid" @click.native="input.datePicker=null" label="Null"></b-button>
                                 </div>
                             </div>
@@ -632,6 +637,7 @@ $(document).scroll(function() {
 .b__components.b__multi__select .b__multi__select__list .list-item.active:before {
     top: 30px;
 }
+
 </style>
 </body>
 
