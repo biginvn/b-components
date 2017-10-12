@@ -29583,17 +29583,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__components_TextField__["a" /* default */]],
 	methods: {
 		OnOffPassword() {
-			if (this.switchEye == 'fa fa-eye') {
-				this.switchEye = 'fa fa-eye-slash';
-			} else {
-				this.switchEye = 'fa fa-eye';
-			}
-
-			if (this.isShow == 'text') {
-				this.isShow = 'password';
-			} else {
-				this.isShow = 'text';
-			}
+			this.switchEye == 'fa fa-eye' ? this.switchEye = 'fa fa-eye-slash' : this.switchEye = 'fa fa-eye';
+			this.isShow == 'text' ? this.isShow = 'password' : this.isShow = 'text';
 		}
 	}
 });
