@@ -1,10 +1,29 @@
 .b__datetime__picker.b__components {
     position: relative;
     .c-datepicker-btn {
-	    position: absolute;
-	    right: 5px;
-	    top: 5px;
-	}
-	
+        position: absolute;
+        right: 8px;
+        top: 8px;
+    }
 }
-
+.c-datepicker {
+	.c-datepicker__next:after {
+        content: "\f105";
+    }
+    .c-datepicker__back:before {
+        content: "\f104";
+    }
+    .c-datepicker__back, .c-datepicker__next, .c-datepicker__toggle{
+	    font: normal normal normal 14px/1 FontAwesome;
+	    font-size: inherit;
+	    text-rendering: auto;
+	    -webkit-font-smoothing: antialiased;
+	    -moz-osx-font-smoothing: grayscale;
+    }
+    .c-datepicker--show-calendar:after{
+    	content: "\f073";
+    }
+    .c-datepicker--show-time:after{
+    	content: "\f017";
+    }
+}
