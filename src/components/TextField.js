@@ -16,6 +16,9 @@ export default {
 		change (value) {
 			this.updateFloatLabel(value);
 			this.$emit('input', value);
+		},
+		blur() {
+			this.$emit('blur')
 		}
 	}
 }
