@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <!-- Plugins-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
 
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
@@ -128,7 +129,6 @@
                                 <div class="panel-body">
                                     <p>
                                         <b-date-time-picker format="YYYY-MM-DD HH:mm" label="Date Picker" placeholder="Select date" type="date" class-name="testing-b-datetime-picker" v-model="input.datePicker"></b-date-time-picker>
-                                        
                                     </p>
                                     <p>{{ input.datePicker }}</p>
                                     <b-button type="button" class-name="button-primary" @click.native="input.datePicker='2016-12-21 22:10'" label="2016-12-21"></b-button>
@@ -318,9 +318,9 @@
             <div class="profile-heading">Our Team</div>
             <div class="row justify-content-md-center align-items-center">
                 <div class="col-md-3">
-                    <div class="profile-thumbnail"><img src="https://avatars3.githubusercontent.com/u/24769863?v=4&s=460"></div>
+                    <div class="profile-thumbnail"><img src="https://i.imgur.com/fCOeXej.jpg"></div>
                     <div class="profile-content">
-                        <div class="profile-name">Abc Xyz</div>
+                        <div class="profile-name">Nguyen Dang Ke Thien</div>
                         <div class="profile-job">Full Stack Developer</div>
                     </div>
                 </div>
@@ -427,12 +427,6 @@ var vm = new Vue({
 });
 </script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="built/assets/js/gallery.js"></script>
-<script type="text/javascript">
-$(function() {
-    $('#dg-container').gallery();
-});
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 <script>
 var wow = new WOW({

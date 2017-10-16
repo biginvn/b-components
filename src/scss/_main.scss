@@ -6,12 +6,11 @@
 		}
 		input.b__input {
 			border-color : map-get($colors, danger);
-			box-shadow: 0 0px 4px map-get($colors, danger);
 		}
 	}
 	input.b__input, textarea, select{
 		&:focus{
-			box-shadow: 0 0px 4px #0082d5;
+			border: 1px solid #0082d5;
 		}
 	}
 }
