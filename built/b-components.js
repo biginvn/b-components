@@ -29629,7 +29629,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TextField__["a" /* default */]);
@@ -29809,6 +29808,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$emit('input', this.$refs.bInput.value);
       } else {
         this.$emit('input', null);
+        this.$refs.bInput.value = null;
+        this.classLabel = '';
       }
     },
     change(value) {
@@ -30065,6 +30066,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		};
 	},
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
+	watch: {
+		list(newValue) {
+			this.float();
+		}
+	},
 	mounted() {
 		this.float();
 	},
