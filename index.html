@@ -160,6 +160,23 @@
                                 </div>
                             </div>
                         </figure>
+
+                        <figure class="wow animated">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Single Select</h4>
+                                <div class="panel-body">
+                                    <p>
+                                        <b-multi-select :list="listMultiSelect" v-model="input.singleSelect" single-dropdown="true"></b-multi-select>
+                                    </p>
+                                    <p>{{ input.singleSelect }}</p>
+                                    <p>
+                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="Alonso" @click.native="input.singleSelect = 1"></b-button>
+                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="Rashford" @click.native="input.singleSelect = 3"></b-button>
+                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Empty" @click.native="input.singleSelect = null"></b-button>
+                                    </p>
+                                </div>
+                            </div>
+                        </figure>
                     </div>
                     <div class="col-md-6">
                         <figure class="wow animated bounceInRight">
@@ -307,6 +324,9 @@
                                 </div>
                             </div>
                         </figure>
+
+                        
+
                     </div>
                 </div>
             </div>
@@ -378,6 +398,7 @@ var vm = new Vue({
             numericFormatted: null,
             zipCode: null,
             multiSelect: null,
+            singleSelect: null,
             toggle: false
         },
         list: [
@@ -630,6 +651,11 @@ $(document).scroll(function() {
 
 .b__components.b__multi__select .b__multi__select__list .list-item.active:before {
     top: 30px;
+}
+
+/*Single selected*/
+.b__components.b__multi__select .b__multi__select__control .selected.single .thumb{
+
 }
 
 </style>

@@ -29476,6 +29476,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_MultiSelect__["a" /* default */]);
@@ -29840,19 +29843,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	created() {
 		this.searchList = this.list;
 	},
-	props: ['list', 'value', 'disabled'],
+	props: ['list', 'value', 'disabled', 'single-dropdown'],
 	computed: {
 		selected() {
 			// Convert v-model to [] if it's null
-			return this.value ? this.value : [];
+			return this.value ? this.value : this.isSingle ? null : [];
+		},
+		isSingle() {
+			return this.singleDropdown === "true" ? true : false;
 		},
 		listClasses() {
 			return (this.isExpanding ? "active" : "") + " b__multi__select__list";
 		}
 	},
 	methods: {
+		getSingleSelected() {
+			let listSelected = this.list.filter(item => {
+				return item.id == this.selected;
+			});
+
+			if (listSelected.length > 0) return listSelected[0];
+			return null;
+		},
 		getSelectedList() {
 			// Get selected with full information [ { id : .. , html : ... } ] 
+			if (this.isSingle) return;
 			let selected = [];
 			this.selected.forEach((id, index) => {
 				let item = this.list.find(value => value.id == id);
@@ -29867,17 +29882,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (on) this.isExpanding = true;else this.isExpanding = false;
 		},
 		toggleItem(id) {
-			let selectList = this.value == null ? [] : this.value;
-			if (selectList.includes(id)) selectList.splice(selectList.indexOf(id), 1);else selectList.push(id);
+			if (!this.isSingle) {
+				let selectList = this.value == null ? [] : this.value;
+				if (selectList.includes(id)) selectList.splice(selectList.indexOf(id), 1);else selectList.push(id);
 
-			this.switchList(true);
+				this.switchList(true);
 
-			// Reset search keyword at input field
-			this.searchKeyword = '';
-			this.$el.querySelector('input.input-control').focus();
-			this.focusInputAction('');
+				// Reset search keyword at input field
+				this.searchKeyword = '';
+				this.$el.querySelector('input.input-control').focus();
+				this.focusInputAction('');
 
-			this.$emit('input', selectList);
+				this.$emit('input', selectList);
+			} else {
+				let selectList = this.value == null ? [] : [this.value];
+				if (selectList.includes(id)) {
+					selectList.splice(selectList.indexOf(id), 1);
+					this.$emit('input', null);
+					this.$el.querySelector('input.input-control').focus();
+				} else {
+					selectList = [id];
+					this.$emit('input', id);
+				}
+
+				this.switchList(true);
+
+				// Reset search keyword at input field
+				this.searchKeyword = '';
+				this.focusInputAction('');
+			}
 		},
 		hoverItem(index) {// Hover on item at (index) in searchList
 			// this
@@ -29917,7 +29950,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					break;
 				case 'BackSpace':
 					pointerIndex = null;
-					if (this.value.length > 0 && this.searchKeyword.length == 0) this.value.splice(this.value.length - 1, 1);
+					if (this.value != null && this.value.length > 0 && this.searchKeyword.length == 0) this.value.splice(this.value.length - 1, 1);
 			}
 
 			this.hoverItem(pointerIndex);
@@ -44399,7 +44432,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "b__multi__select__control"
   }, [_vm._l((_vm.getSelectedList()), function(item) {
-    return _c('div', {
+    return (!_vm.isSingle) ? _c('div', {
       staticClass: "selected"
     }, [_c('span', {
       staticClass: "thumb",
@@ -44418,8 +44451,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "aria-hidden": "true"
       }
-    })])])
-  }), _vm._v(" "), _c('div', {
+    })])]) : _vm._e()
+  }), _vm._v(" "), (_vm.isSingle) ? _c('div', {
+    staticClass: "selected single"
+  }, [(_vm.getSingleSelected() != null) ? _c('span', {
+    staticClass: "thumb",
+    domProps: {
+      "innerHTML": _vm._s(_vm.getSingleSelected().thumbHtml)
+    }
+  }) : _vm._e()]) : _vm._e(), _vm._v(" "), (!_vm.isSingle || _vm.getSingleSelected() == null) ? _c('div', {
     staticClass: "input-control-wrap"
   }, [_c('input', {
     staticClass: "input-control",
@@ -44450,7 +44490,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.searchAction($event.target.value)
       }
     }
-  })]), _vm._v(" "), _c('div', {
+  })]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "control",
     on: {
       "click": function($event) {
@@ -44493,7 +44533,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('li', {
       staticClass: "list-item",
       class: {
-        'active': _vm.selected.includes(item.id), 'hover': index == _vm.pointerIndex
+        'active': (!_vm.isSingle && _vm.selected.includes(item.id)) || (_vm.isSingle && _vm.selected == item.id), 'hover': index == _vm.pointerIndex
       },
       on: {
         "click": function($event) {
