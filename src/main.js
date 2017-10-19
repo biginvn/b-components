@@ -16,6 +16,7 @@ import BNumericFormatted from './themes/ios/NumericFormatted.vue'
 import BToggle from './themes/ios/Toggle.vue'
 import BShowPassword from './themes/ios/ShowPassword.vue'
 import BDateTimePicker from './themes/ios/DateTimePicker.vue'
+import BUpload from './themes/ios/Upload.vue'
 
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
@@ -31,3 +32,4 @@ Vue.component('BNumericFormatted', BNumericFormatted)
 Vue.component('BToggle', BToggle)
 Vue.component('BShowPassword', BShowPassword)
 Vue.component('BDateTimePicker', BDateTimePicker)
+Vue.component('BUpload', BUpload)
