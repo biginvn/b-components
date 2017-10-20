@@ -3,6 +3,7 @@
         background-color: #f9f9f9;
         min-height: 100px;
         cursor: pointer;
+        border: 2px dashed #d9d9d9;
         .content {
             text-align: center;
             color: grey;
@@ -36,6 +37,12 @@
             padding: 0 10px 10px 0;
             float: left;
             position: relative;
+            .dz-thumb{
+                width: 90px;
+                height: 90px;
+                background: url(./assets/images/file-doc.svg) center no-repeat;
+                background-size: 80% 80%;
+            }
             .dz-name {
                 display: block;
                 text-align: center;
@@ -54,8 +61,12 @@
             .remove-archive {
                 position: absolute;
                 opacity: 0;
-                top: 27px;
-                left: 23px;
+                top: 50%;
+                left: 50%;
+                margin-left: -20px;
+                margin-top: -40px;
+                /*top: 27px;
+                left: 23px;*/
                 font-size: 13px;
                 color: rgba(255, 255, 255, 0.59);
                 border-radius: 50%;
