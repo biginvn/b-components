@@ -2,7 +2,7 @@
     <div class="b__components b__upload">
         <div class="b__components__dropzone" :id="id">
         	<div class="content">
-        		<p><i class="fa fa-cloud-upload fa-2x" aria-hidden="true"></i></p>
+        		<p><i class="fa fa-cloud-upload fa-5x" aria-hidden="true"></i></p>
         		<p>Drag and drop files here...</p>
         	</div>
         </div>
