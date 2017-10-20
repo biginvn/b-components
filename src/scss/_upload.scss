@@ -1,0 +1,76 @@
+.b__components.b__upload {
+    .b__components__dropzone {
+        background-color: #f9f9f9;
+        min-height: 100px;
+        cursor: pointer;
+        .content {
+            text-align: center;
+            color: grey;
+            padding: 20px 0 0 0;
+            cursor: pointer;
+        }
+
+        &+.total-progress {
+            .progress {
+                border-top: 2px solid map-get($colors, primary);
+                padding: 20px 0;
+                background-color: transparent;
+                border-radius: 0;
+                opacity: 0;
+                transition: all 1s;
+            }
+        }
+    }
+    .uploadTest__preview {
+        display: none;
+    }
+
+
+    & [class$="__preview__container"] {
+        &:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .preview {
+            padding: 0 10px 10px 0;
+            float: left;
+            position: relative;
+            .dz-name {
+                display: block;
+                text-align: center;
+                padding: 5px 0;
+                max-width: 80px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-weight: bold;
+                color: map-get($colors, primary);
+                white-space: nowrap;
+            }
+            .dz-size {
+                text-align: center;
+                display: block;
+            }
+            .remove-archive {
+                position: absolute;
+                opacity: 0;
+                top: 27px;
+                left: 23px;
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.59);
+                border-radius: 50%;
+                border: 1px solid rgba(255, 255, 255, 0.28);
+                width: 30px;
+                height: 30px;
+                line-height: 27px;
+                text-align: center;
+                padding: 0;
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.89);
+                    opacity: 1;
+                    color: map-get($supportColors, grey-dark);
+                }
+            }
+        }
+    }
+}

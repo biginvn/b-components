@@ -7,6 +7,11 @@ export default {
 		}
 	},
 	mixins: [baseComponent],
+	watch : {
+		list(newValue){
+			this.float()
+		}
+	},
 	mounted () {
 		this.float()
 	},

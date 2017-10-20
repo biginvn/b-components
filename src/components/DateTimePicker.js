@@ -24,7 +24,6 @@ export default {
     			this.$emit('input', null)
     			this.$refs.bInput.value = null
     		}
-
     	}
     },
     computed: {
@@ -68,6 +67,8 @@ export default {
     			this.$emit('input', this.$refs.bInput.value)
     		} else {
     			this.$emit('input', null)
+                this.$refs.bInput.value=null
+                this.classLabel = ''
     		}
     	},
     	change (value) {
