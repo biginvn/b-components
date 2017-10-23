@@ -26,6 +26,8 @@ export default {
 			// document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "0"
 		})
 
+        this.$emit('dropzone', this.dropzone)
+
     },
     props: ['name', 'config', 'id'],
     computed: {
