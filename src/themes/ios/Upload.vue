@@ -12,7 +12,7 @@
         </div>
         
         <div :class="id + '__preview__container'">
-            <div :class="id + '__preview'">
+            <div :class="id + '__preview stuff'">
                 <div class="preview">
             		<img class="dz-thumb" data-dz-thumbnail />
             		<span class="dz-name" data-dz-name></span>
