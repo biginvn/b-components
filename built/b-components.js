@@ -28826,7 +28826,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/Button.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Button.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Button.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -28866,7 +28866,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/CheckBox.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/CheckBox.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] CheckBox.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -28910,7 +28910,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/DateTimePicker.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/DateTimePicker.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DateTimePicker.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -28950,7 +28950,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/MultiSelect.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/MultiSelect.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] MultiSelect.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -28990,7 +28990,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/NumericFormatted.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/NumericFormatted.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] NumericFormatted.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -29030,7 +29030,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/Radio.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Radio.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Radio.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -29070,7 +29070,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/Rating.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Rating.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Rating.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -29110,7 +29110,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/Select.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Select.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Select.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -29150,7 +29150,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/ShowPassword.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/ShowPassword.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ShowPassword.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -29190,7 +29190,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/Switch.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Switch.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Switch.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -29230,7 +29230,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/TextField.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/TextField.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TextField.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -29270,7 +29270,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/Textarea.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Textarea.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Textarea.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -29310,7 +29310,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/Toggle.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Toggle.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Toggle.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -29350,7 +29350,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/Upload.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Upload.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Upload.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -29390,7 +29390,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/minh.truong/Documents/sources/b-components/src/themes/ios/ZipCode.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/ZipCode.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ZipCode.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -29737,6 +29737,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Upload__ = __webpack_require__(265);
+//
 //
 //
 //
@@ -30308,6 +30309,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.dropzone.on("totaluploadprogress", progress => {
             document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%";
+            document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block";
         });
 
         this.dropzone.on("sending", file => {
@@ -30316,6 +30318,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.dropzone.on("queuecomplete", progress => {
             // document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "0"
+        });
+
+        this.dropzone.on("addedfile", file => {
+            var parent = document.querySelectorAll('.preview:not(stuff)');
+            for (var i = 0; i < parent.length; i++) {
+                var child = parent[i].querySelector('.dz-thumb');
+                parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
+            }
+
+            var fileEx = file.name.split('.').pop();
+            if (fileEx != "JPG" || fileEx != "JPEG" || fileEx != "PNG" || fileEx != "GIF" || fileEx != "BMP") {
+                fileEx == "pdf" ? child.className += " dz-pdf" : child.className;
+                fileEx == "doc" ? child.className += " dz-doc" : child.className;
+                fileEx == "ppt" ? child.className += " dz-ppt" : child.className;
+                fileEx == "xls" ? child.className += " dz-xls" : child.className;
+                fileEx == "txt" ? child.className += " dz-txt" : child.className;
+                fileEx == "csv" ? child.className += " dz-csv" : child.className;
+                fileEx == "rtf" ? child.className += " dz-rtf" : child.className;
+                fileEx == "zip" ? child.className += " dz-zip" : child.className;
+            }
         });
 
         this.$emit('dropzone', this.dropzone);
@@ -45155,7 +45177,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._m(0)]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
     class: _vm.id + '__preview__container'
   }, [_c('div', {
-    class: _vm.id + '__preview stuff'
+    class: _vm.id + '__preview preview stuff'
   }, [_vm._m(2)])]), _vm._v(" "), _c('div', {
     staticClass: "upload-control"
   }, [_c('b-button', {
@@ -45173,12 +45195,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "content"
-  }, [_c('p', [_c('i', {
-    staticClass: "fa fa-cloud-upload fa-5x",
+  }, [_c('img', {
+    staticClass: "icon-upload",
     attrs: {
-      "aria-hidden": "true"
+      "src": "built/assets/images/svg-cloud-icon.svg"
     }
-  })]), _vm._v(" "), _c('p', [_vm._v("Drag and drop files here...")])])
+  }), _vm._v(" "), _c('p', [_vm._v("Drag and drop files here...")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "total-progress"
@@ -45191,12 +45213,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "preview"
+  }, [_c('div', {
+    staticClass: "dz-thumb"
   }, [_c('img', {
-    staticClass: "dz-thumb",
     attrs: {
       "data-dz-thumbnail": ""
     }
-  }), _vm._v(" "), _c('span', {
+  })]), _vm._v(" "), _c('span', {
     staticClass: "dz-name",
     attrs: {
       "data-dz-name": ""
