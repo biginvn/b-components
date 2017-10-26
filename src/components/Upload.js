@@ -60,7 +60,7 @@ export default {
                 autoQueue: false,
                 clickable: [`#${ this.id } .content`],
                 previewTemplate: document.querySelector(`.${this.id}__preview`).innerHTML,
-                accept : (file, done) => { done() }
+                accept : (file, done) => { done() },
                 previewsContainer: `.${this.id}__preview__container`
             }
             config = Object.assign(config, this.config)

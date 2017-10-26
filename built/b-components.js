@@ -29737,7 +29737,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Upload__ = __webpack_require__(265);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Upload__);
 //
 //
 //
@@ -29771,7 +29770,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Upload__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Upload__["a" /* default */]);
 
 /***/ }),
 /* 256 */
@@ -30290,10 +30289,85 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 265 */
-/***/ (function(module, __webpack_exports__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: Unexpected token, expected , (64:16)\n\n\u001b[0m \u001b[90m 62 | \u001b[39m                previewTemplate\u001b[33m:\u001b[39m document\u001b[33m.\u001b[39mquerySelector(\u001b[32m`.${this.id}__preview`\u001b[39m)\u001b[33m.\u001b[39minnerHTML\u001b[33m,\u001b[39m\n \u001b[90m 63 | \u001b[39m                accept \u001b[33m:\u001b[39m (file\u001b[33m,\u001b[39m done) \u001b[33m=>\u001b[39m { done() }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 64 | \u001b[39m                previewsContainer\u001b[33m:\u001b[39m \u001b[32m`.${this.id}__preview__container`\u001b[39m\n \u001b[90m    | \u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 65 | \u001b[39m            }\n \u001b[90m 66 | \u001b[39m            config \u001b[33m=\u001b[39m \u001b[33mObject\u001b[39m\u001b[33m.\u001b[39massign(config\u001b[33m,\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mconfig)\n \u001b[90m 67 | \u001b[39m            \u001b[36mreturn\u001b[39m config\u001b[0m\n");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__ = __webpack_require__(4);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data() {
+        return {
+            dropzone: null
+        };
+    },
+    components: {},
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
+    mounted() {
+        this.dropzone = new Dropzone(`#${this.id}`, this.configDropzone);
+        let dropzoneComponent = this;
+
+        this.dropzone.on("totaluploadprogress", progress => {
+            document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%";
+            document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block";
+        });
+
+        this.dropzone.on("sending", file => {
+            document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1";
+        });
+
+        this.dropzone.on("queuecomplete", progress => {
+            // document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "0"
+        });
+
+        this.dropzone.on("addedfile", file => {
+            var parent = document.querySelectorAll('.preview:not(stuff)');
+            for (var i = 0; i < parent.length; i++) {
+                var child = parent[i].querySelector('.dz-thumb');
+                parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
+            }
+
+            var fileEx = file.name.split('.').pop();
+            if (fileEx != "JPG" || fileEx != "JPEG" || fileEx != "PNG" || fileEx != "GIF" || fileEx != "BMP") {
+                fileEx == "pdf" ? child.className += " dz-pdf" : child.className;
+                fileEx == "doc" ? child.className += " dz-doc" : child.className;
+                fileEx == "ppt" ? child.className += " dz-ppt" : child.className;
+                fileEx == "xls" ? child.className += " dz-xls" : child.className;
+                fileEx == "txt" ? child.className += " dz-txt" : child.className;
+                fileEx == "csv" ? child.className += " dz-csv" : child.className;
+                fileEx == "rtf" ? child.className += " dz-rtf" : child.className;
+                fileEx == "zip" ? child.className += " dz-zip" : child.className;
+            }
+        });
+
+        this.$emit('dropzone', this.dropzone);
+    },
+    props: ['name', 'config', 'id'],
+    computed: {
+        configDropzone() {
+            let config = {
+                thumbnailWidth: 80,
+                thumbnailHeight: 80,
+                parallelUploads: 1,
+                autoQueue: false,
+                clickable: [`#${this.id} .content`],
+                previewTemplate: document.querySelector(`.${this.id}__preview`).innerHTML,
+                accept: (file, done) => {
+                    done();
+                },
+                previewsContainer: `.${this.id}__preview__container`
+            };
+            config = Object.assign(config, this.config);
+            return config;
+        }
+    },
+    methods: {
+        upload() {
+            this.dropzone.enqueueFiles(this.dropzone.getFilesWithStatus(Dropzone.ADDED));
+        }
+    }
+
+});
 
 /***/ }),
 /* 266 */
