@@ -3,7 +3,8 @@ import baseComponent from '../mixins/base-mixins'
 export default {
     data() {
         return {
-            dropzone: null
+            dropzone: null,
+            completedConfig : {}
         }
     },
     components: {
@@ -11,7 +12,8 @@ export default {
     },
     mixins: [baseComponent],
     mounted() {
-        this.dropzone = new Dropzone(`#${this.id}`, this.configDropzone)
+        this.configDropzone()
+        this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
         let dropzoneComponent = this
 
         this.dropzone.on("totaluploadprogress", (progress) => {
@@ -46,12 +48,19 @@ export default {
                 fileEx == "zip" ? child.className += " dz-zip" : child.className;
             }
         })
-
         this.$emit('dropzone', this.dropzone)
+
 
     },
     props: ['name', 'config', 'id'],
     computed: {
+        
+    },
+    methods: {
+        upload() {
+            this.dropzone.enqueueFiles(this.dropzone.getFilesWithStatus(Dropzone.ADDED));
+
+        },
         configDropzone() {
             let config = {
                 thumbnailWidth: 80,
@@ -59,18 +68,11 @@ export default {
                 parallelUploads: 1,
                 autoQueue: false,
                 clickable: [`#${ this.id } .content`],
-                previewTemplate: document.querySelector(`.${this.id}__preview`).innerHTML,
                 accept : (file, done) => { done() },
+                previewTemplate: document.querySelector(`.${this.id}__preview`).innerHTML,
                 previewsContainer: `.${this.id}__preview__container`
             }
-            config = Object.assign(config, this.config)
-            return config
-        }
-    },
-    methods: {
-        upload() {
-            this.dropzone.enqueueFiles(this.dropzone.getFilesWithStatus(Dropzone.ADDED));
-
+            this.completedConfig  = Object.assign(config, this.config)
         }
     }
 

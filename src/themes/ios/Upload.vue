@@ -1,15 +1,15 @@
 <template>
     <div class="b__components b__upload">
         <div class="b__components__dropzone" :id="id">
-        	<div class="content">
+            <div class="content">
 
-        		<img src="built/assets/images/svg-cloud-icon.svg" class="icon-upload">
-        		<p>Drag and drop files here...</p>
-        	</div>
+                <img v-if="completedConfig.publicPath" :src="completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'" class="icon-upload">
+                <p>Drag and drop files here...</p>
+            </div>
         </div>
 
         <div class="total-progress">
-        	<div class="progress" style="width:20%"></div>
+            <div class="progress" style="width:20%"></div>
         </div>
         
         <div :class="id + '__preview__container'">

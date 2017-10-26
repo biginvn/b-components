@@ -30298,13 +30298,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["a"] = ({
     data() {
         return {
-            dropzone: null
+            dropzone: null,
+            completedConfig: {}
         };
     },
     components: {},
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
     mounted() {
-        this.dropzone = new Dropzone(`#${this.id}`, this.configDropzone);
+        this.configDropzone();
+        this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig);
         let dropzoneComponent = this;
 
         this.dropzone.on("totaluploadprogress", progress => {
@@ -30339,11 +30341,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 fileEx == "zip" ? child.className += " dz-zip" : child.className;
             }
         });
-
         this.$emit('dropzone', this.dropzone);
     },
     props: ['name', 'config', 'id'],
-    computed: {
+    computed: {},
+    methods: {
+        upload() {
+            this.dropzone.enqueueFiles(this.dropzone.getFilesWithStatus(Dropzone.ADDED));
+        },
         configDropzone() {
             let config = {
                 thumbnailWidth: 80,
@@ -30351,19 +30356,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 parallelUploads: 1,
                 autoQueue: false,
                 clickable: [`#${this.id} .content`],
-                previewTemplate: document.querySelector(`.${this.id}__preview`).innerHTML,
                 accept: (file, done) => {
                     done();
                 },
+                previewTemplate: document.querySelector(`.${this.id}__preview`).innerHTML,
                 previewsContainer: `.${this.id}__preview__container`
             };
-            config = Object.assign(config, this.config);
-            return config;
-        }
-    },
-    methods: {
-        upload() {
-            this.dropzone.enqueueFiles(this.dropzone.getFilesWithStatus(Dropzone.ADDED));
+            this.completedConfig = Object.assign(config, this.config);
         }
     }
 
@@ -45177,11 +45176,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": _vm.id
     }
-  }, [_vm._m(0)]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+  }, [_c('div', {
+    staticClass: "content"
+  }, [(_vm.completedConfig.publicPath) ? _c('img', {
+    staticClass: "icon-upload",
+    attrs: {
+      "src": _vm.completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'
+    }
+  }) : _vm._e(), _vm._v(" "), _c('p', [_vm._v("Drag and drop files here...")])])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
     class: _vm.id + '__preview__container'
   }, [_c('div', {
     class: _vm.id + '__preview preview stuff'
-  }, [_vm._m(2)])]), _vm._v(" "), _c('div', {
+  }, [_vm._m(1)])]), _vm._v(" "), _c('div', {
     staticClass: "upload-control"
   }, [_c('b-button', {
     attrs: {
@@ -45196,15 +45202,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "content"
-  }, [_c('img', {
-    staticClass: "icon-upload",
-    attrs: {
-      "src": "built/assets/images/svg-cloud-icon.svg"
-    }
-  }), _vm._v(" "), _c('p', [_vm._v("Drag and drop files here...")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "total-progress"
   }, [_c('div', {
