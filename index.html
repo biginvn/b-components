@@ -332,13 +332,25 @@
                             </div>
                         </figure>
 
-                        <figure class="wow animated">
+                        <figure class="wow animated bounceInRight">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Upload</h4>
                                 <div class="panel-body">
                                     <p>
                                         <b-upload name="upload-document" id="uploadTest" :config="uploadConfig"></b-upload>
                                     </p>
+                                </div>
+                            </div>
+                        </figure>
+
+                        <figure class="wow animated bounceInRight">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Task List</h4>
+                                <div class="panel-body">
+                                    <p>
+                                        <b-task-list v-model="input.task" :task="taskList"></b-task-list>
+                                    </p>
+                                    <p>{{ taskList }}</p>
                                 </div>
                             </div>
                         </figure>
@@ -421,8 +433,17 @@ var vm = new Vue({
             zipCode: null,
             multiSelect: null,
             singleSelect: null,
-            toggle: false
+            toggle: false,
+            task: null
+            
         },
+        taskList: [
+                { title : 'Condition', content : 'If you are Girl?', button : true, html : ''},
+                { title : 'Condition', content : 'If you are Boy?', button : true, html : ''},
+                { title : 'Condition', content : 'If you are Gay?', button : true, html : ''}
+
+            ],
+
         list: [
             { code: 'VN', name: 'Viet Nam' },
             { code: 'USA', name: 'United States' },
