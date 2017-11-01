@@ -50,6 +50,7 @@ export default {
 		update(val) {
 			this.$emit('input', val)
 			this.float()
+			this.$emit('change', val)
 		},
 		float() {
 			if( this.$el== undefined || this.value == null || this.value.length == 0){
