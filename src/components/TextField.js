@@ -1,4 +1,5 @@
 import baseComponent from '../mixins/text-field-mixins'
+
 export default {
 	mixins : [baseComponent],
 	props	: ['type'],
