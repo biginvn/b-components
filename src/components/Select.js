@@ -38,7 +38,7 @@ export default {
 				let listItem = this.list[i];
 				let item = {
 					value : listItem[this.itemVal], 
-					name : listItem[this.itemText]
+					name : listItem[this.itemText],
 				}
 				items.push(item);
 			}
