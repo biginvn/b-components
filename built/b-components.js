@@ -29721,6 +29721,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Tag__["a" /* default */]);
@@ -30328,13 +30332,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
-	props: ['class-name', 'id', 'name'],
+	props: {
+		tags: {
+			type: Array,
+			default: () => []
+		}
+	},
 	data() {
 		return {
-			tags: [],
+
 			newTag: '',
-			classLabel: '',
-			placeholder: 'Input Tag'
+			classLabel: ''
 
 		};
 	},
@@ -30343,7 +30351,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.$el.queySelector('.new_tag').focus();
 		},
 		addNewTag(tag) {
-			if (tag && this.tags.indexOf(tag) == -1) {
+			if (tag && this.tags.indexOf(tag) === -1) {
 				this.updateChange(tag);
 				this.tags.push(tag);
 
@@ -30382,6 +30390,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (!isEmpty) {
 				this.classLabel = 'active';
 			} else this.classLabel = '';
+		},
+		onPaste(evt) {
+			console.log(tags);
 		}
 	}
 });
@@ -45143,7 +45154,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": _vm.placeholder
     },
     domProps: {
-      "value": _vm.value,
       "value": (_vm.newTag)
     },
     on: {
@@ -45157,12 +45167,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         $event.stopPropagation();
         _vm.addNewTag(_vm.newTag)
       }],
+      "paste": _vm.onPaste,
       "input": function($event) {
         if ($event.target.composing) { return; }
         _vm.newTag = $event.target.value
       }
     }
-  })], 2)])
+  })], 2), _vm._v(" "), _c('div', [_vm._v("\n\t\t" + _vm._s(_vm.tags) + "\n\t")])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

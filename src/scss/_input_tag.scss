@@ -1,13 +1,14 @@
 	.b__component_input_tag_wrapper .b__component_input_tag {
-	    background-color: #cde69c;
+	    background-color: map-get($colors,primary);
 	    border-radius: 2px;
-	    border: 1px solid #a5d24a;
-	    color: #638421;
+	    border: 1px solid map-get($colors,primary-light);
+	    color: #fff;
 	    display: inline-block;
 	    font-size: 13px;
 	    font-weight: 400;
 	    margin-bottom: 4px;
 	    margin-right: 4px;
+	    margin-top: 8px;
 	    padding: 3px;
 	}
 	.b__component_input_tag_wrapper .new_tag {
@@ -19,7 +20,7 @@
 	    margin-bottom: 6px;
 	    margin-top: 1px;
 	    outline: none;
-	    padding: 4px;
+	    padding: 0;
 	    padding-left: 0;
 	    width: auto;
   	}
@@ -27,7 +28,7 @@
 	  	background-color: #fff;
 	    border: 1px solid #dfdfdf;
 	    overflow: hidden;
-	    padding: 6px 15px;
+	    padding: 0 18px;
 	    cursor: text;
 	    text-align: left;
 	    -webkit-appearance: textfield;
@@ -42,7 +43,7 @@
 	.b__component_input_tag_wrapper .b__component_input_tag .remove {
 	    cursor: pointer;
 	    font-weight: bold;
-	    color: #638421;
+	    color: #000;
 	}
 
   	.b__component_input_tag_wrapper .b__component_input_tag .remove:hover {
