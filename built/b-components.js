@@ -7924,25 +7924,6 @@ module.exports = g;
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function isMoment (value) {
-  return value && Object.prototype.hasOwnProperty.call(value, '_isAMomentObject');
-}
-
-var api = {
-  moment: null,
-  isMoment: isMoment
-};
-
-module.exports = api;
-
-
-/***/ }),
-/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7981,6 +7962,25 @@ const textFieldMixins = {
     }
 };
 /* harmony default export */ __webpack_exports__["a"] = (textFieldMixins);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function isMoment (value) {
+  return value && Object.prototype.hasOwnProperty.call(value, '_isAMomentObject');
+}
+
+var api = {
+  moment: null,
+  isMoment: isMoment
+};
+
+module.exports = api;
+
 
 /***/ }),
 /* 7 */
@@ -8493,7 +8493,7 @@ module.exports = isInput;
 "use strict";
 
 
-var momentum = __webpack_require__(5);
+var momentum = __webpack_require__(6);
 
 function raw (date, format) {
   if (typeof date === 'string') {
@@ -8520,7 +8520,7 @@ module.exports = parse;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -27000,7 +27000,7 @@ var text = __webpack_require__(322);
 var parse = __webpack_require__(13);
 var clone = __webpack_require__(106);
 var defaults = __webpack_require__(107);
-var momentum = __webpack_require__(5);
+var momentum = __webpack_require__(6);
 var classes = __webpack_require__(105);
 var noop = __webpack_require__(310);
 var no;
@@ -27712,7 +27712,7 @@ module.exports = {
 "use strict";
 
 
-var momentum = __webpack_require__(5);
+var momentum = __webpack_require__(6);
 
 // naïve implementation, specifically meant to clone `options` objects
 function clone (thing) {
@@ -27748,7 +27748,7 @@ module.exports = clone;
 
 var parse = __webpack_require__(13);
 var isInput = __webpack_require__(12);
-var momentum = __webpack_require__(5);
+var momentum = __webpack_require__(6);
 
 function defaults (options, cal) {
   var temp;
@@ -40167,6 +40167,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_DateAndTime__["a" /* default */]);
@@ -40738,28 +40743,58 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
     data() {
-        return {};
+        return {
+            input: {
+                time: null
+            }
+        };
     },
 
     components: {},
 
-    props: ['id', 'default', 'label', 'size', 'name', 'disabled', 'list', 'alt', 'class-name'],
+    props: ['id', 'label', 'name', 'disabled', 'placeholder', 'class-name', 'datetimepicker-type'],
 
     mounted() {
-        this.getDateTime();
+        this.initDateTimePicker();
     },
 
     computed: {},
 
+    watch: {
+        value() {}
+    },
+
     methods: {
-        getDateTime() {
-            $('#datetimepicker4').datetimepicker({});
+        initDateTimePicker() {
+            this.disabled = "disabled";
+            var Vue = this;
+            $("#datetimepicker4").datetimepicker({
+                format: 'MM-DD-YYYY hh:mm A Z'
+            });
+            $("#datetimepicker4").on("dp.change", function (e) {
+                Vue.input.time = $("#datetimepicker4").val();
+                Vue.updateDateModel(Vue.input.time);
+            });
+        },
+
+        updateDateModel(data) {
+            this.$emit('input', data);
+        },
+
+        change(value) {
+            this.updateFloatLabel(value);
         }
     }
 
@@ -40771,7 +40806,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_material_datetime_picker__ = __webpack_require__(288);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_text_field_mixins__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_text_field_mixins__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(0);
@@ -41105,7 +41140,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	data() {
@@ -41390,7 +41425,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -41425,7 +41460,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -41882,7 +41917,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"DateAndTime.vue","sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"DateAndTime.vue","sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -43930,7 +43965,7 @@ var throttle = __webpack_require__(323);
 var clone = __webpack_require__(106);
 var defaults = __webpack_require__(107);
 var calendar = __webpack_require__(104);
-var momentum = __webpack_require__(5);
+var momentum = __webpack_require__(6);
 var classes = __webpack_require__(105);
 
 function inputCalendar (input, calendarOptions) {
@@ -44415,7 +44450,7 @@ module.exports = function throttle (fn, boundary) {
 "use strict";
 
 
-var momentum = __webpack_require__(5);
+var momentum = __webpack_require__(6);
 
 function use (moment) {
   this.moment = momentum.moment = moment;
@@ -45862,7 +45897,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c("div")
+  return _c('div', {
+    staticClass: "b__datetime__picker b__components b-float-label"
+  }, [_c('label', {
+    class: _vm.classLabel
+  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
+    ref: "bInput",
+    class: _vm.classes,
+    attrs: {
+      "id": "datetimepicker4",
+      "placeholder": _vm.placeholder,
+      "type": "text",
+      "name": _vm.name,
+      "disabled": _vm.disabled
+    }
+  })])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
