@@ -39784,17 +39784,13 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(349)
-}
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(260),
   /* template */
   __webpack_require__(333),
   /* styles */
-  injectStyle,
+  null,
   /* scopeId */
   null,
   /* moduleIdentifier (server only) */
@@ -40383,6 +40379,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TaskList__ = __webpack_require__(358);
 //
 //
 //
@@ -40417,61 +40414,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['value'],
-	data() {
-		return {
-			task: null
-		};
-	},
 
-	watch: {
-		value() {
-			if (this.value == undefined || this.value == null || this.value.length == 0) {
-				console.log('Array is NULL');
-			};
-		}
-	},
-
-	mounted() {
-		this.task = this.value;
-	},
-
-	methods: {
-		haveButton(button) {
-			if (button == true) {
-				for (var i = 0; i < this.task.length; i++) {}
-				return '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#modal-task-' + i + '">Edit Condition</button></div>';
-			}
-		},
-		addTask(button) {
-			var html = this.haveButton(button);
-			this.task = this.task ? this.task : [];
-			this.task.push({
-				title: 'Condition',
-				content: 'Your Condition',
-				button: button,
-				html: html
-			});
-			this.$emit('input', this.task);
-		},
-		deleteTask() {
-			var self = this;
-			// console.log(JSON.stringify(self.task));
-			document.querySelector('.task:last-child').style.animation = "vanishOut";
-			document.querySelector('.task:last-child').style.animationDuration = "0.5s";
-
-			setTimeout(function () {
-				self.task.pop();
-			}, 500);
-			this.$emit('input', this.task);
-		},
-		emptyTask() {
-			this.task = [];
-			this.$emit('input', this.task);
-		}
-	}
-});
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TaskList__["a" /* default */]);
 
 /***/ }),
 /* 261 */
@@ -42076,20 +42020,7 @@ exports.push([module.i, ".c-scrim {\n  position: fixed;\n  left: 0;\n  right: 0;
 
 
 /***/ }),
-/* 287 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(7)();
-// imports
-
-
-// module
-exports.push([module.i, "\n.task{\n\tdisplay: block;\n\twidth: 300px;\n\tborder: 1px solid #DDDDDD;\n\tborder-radius: 5px;\n\ttext-align: center;\n\tmargin: 0 auto;\n\tbox-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n\ttransition: .3s;\n\t-webkit-animation: fadeIn;\n\tanimation: fadeIn;\n\tanimation-duration: .5s;\n\tbackground: #fff;\n}\n.task:hover{\n\tbox-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);\n}\n.task-title{\n\tpadding: 5px 0;\n\tbackground: #F0F0F0;\n\tfont-weight: 600;\n}\n.task-content{\n\tpadding: 20px;\n}\n.task-btn-group{\n\tmargin-top: 20px;\n}\n.task-toolbar{\n\tmargin: 30px auto;\n\ttext-align: center;\n}\n.task-arrow{\n\tposition: relative;\n\t-webkit-animation: movingTopToBottom;\n\tanimation: movingTopToBottom;\n\tanimation-duration: .5s;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TaskList.vue?c6cb314c"],"names":[],"mappings":";AA4FA;CACA,eAAA;CACA,aAAA;CACA,0BAAA;CACA,mBAAA;CACA,mBAAA;CACA,eAAA;CACA,yCAAA;CACA,gBAAA;CACA,0BAAA;CACA,kBAAA;CACA,wBAAA;CACA,iBAAA;CACA;AACA;CACA,0CAAA;CACA;AACA;CACA,eAAA;CACA,oBAAA;CACA,iBAAA;CACA;AACA;CACA,cAAA;CACA;AACA;CACA,iBAAA;CACA;AACA;CACA,kBAAA;CACA,mBAAA;CACA;AACA;CACA,mBAAA;CACA,qCAAA;CACA,6BAAA;CACA,wBAAA;CACA","file":"TaskList.vue","sourcesContent":["<template>\n\t<div class=\"b__components b-task\">\n\t\t<div class=\"task-toolbar\">\n\t\t\t<button type=\"button\" class=\"btn btn-secondary\" @click=\"addTask(true)\">Condition</button>\n\t\t\t<button type=\"button\" class=\"btn btn-secondary\">Send Email Action</button>\n\t\t\t<button type=\"button\" class=\"btn btn-secondary\">Update Field Value Action</button>\n\t\t\t<button type=\"button\" class=\"btn btn-secondary\">Create Activity Value Action</button>\n\t\t\t<button type=\"button\" class=\"btn btn-secondary\">Wait Action</button>\n\t\t\t<!-- <button type=\"button\" class=\"btn btn-secondary\" @click=\"addTask(false)\">Add (No action)</button> -->\n\t\t\t<button type=\"button\" class=\"btn btn-secondary\" @click=\"deleteTask\">Delete</button>\n\t\t\t<button type=\"button\" class=\"btn btn-secondary\" @click=\"emptyTask\">Empty</button>\n\t\t</div>\n\t\t<div v-for=\"(item, index) in task\" :class=\"'task-el-' + index\">\n\t\t\t<div class=\"task\">\n\t\t\t\t<div class=\"task-title\"> {{ item.title }}</div>\n\t\t\t\t<div class=\"task-content\">\n\t\t\t\t\t{{ item.content }}\n\t\t\t\t\t<!-- <b>{{ '[' + index + ']'}}</b> -->\n\t\t\t\t\t<div v-html=\"item.html\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"task-arrow\" style=\"text-align: center;\" v-if = \"index < task.length - 1 \">\n\t\t\t\t<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 60 80\" style=\"height:60px;\">\n\t\t\t\t\t<title>arrow</title>\n\t\t\t\t\t<line x1=\"30\" y1=\"1.21\" x2=\"30\" y2=\"78.79\" fill=\"none\" stroke=\"#374250\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2\" />\n\t\t\t\t\t<line x1=\"30\" y1=\"78.79\" x2=\"17.45\" y2=\"66.23\" fill=\"none\" stroke=\"#374250\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2\" />\n\t\t\t\t\t<line x1=\"30\" y1=\"78.79\" x2=\"42.55\" y2=\"66.23\" fill=\"none\" stroke=\"#374250\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2\" />\n\t\t\t\t\t<line x1=\"30\" y1=\"1.21\" x2=\"30\" y2=\"78.79\" fill=\"none\" stroke=\"#374250\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2\" />\n\t\t\t\t</svg>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</template>\n<script>\nexport default {\n\tprops : ['value'],\n\tdata () {\n\t\treturn {\n\t\t\ttask : null\n\t\t}\n\t},\n\n\twatch :{\n\t\tvalue(){\n\t\t\tif (this.value == undefined || this.value == null || this.value.length == 0){\n\t\t\t\tconsole.log('Array is NULL');\n\t\t\t}; \n\t\t}\n\t},\n\n\tmounted(){\n\t\tthis.task = this.value\n\t},\n\n\tmethods : {\n\t\thaveButton(button){\n\t\t\tif(button == true){\n\t\t\t\tfor (var i = 0; i < this.task.length; i++) {}\n\t\t\t\t\treturn '<div class=\"task-btn-group\"><button type=\"button\" class=\"btn btn-primary btn-rounded\" data-toggle=\"modal\" data-target=\"#modal-task-' + i + '\">Edit Condition</button></div>'\n\t\t\t\t\n\t\t\t}\n\t\t},\n\t\taddTask(button){\n\t\t\tvar html = this.haveButton(button);\n\t\t\tthis.task = this.task ? this.task : [];\n\t\t\tthis.task.push({\n\t\t\t\ttitle : 'Condition' ,\n\t\t\t\tcontent : 'Your Condition',\n\t\t\t\tbutton : button,\n\t\t\t\thtml : html\n\t\t\t})\n\t\t\tthis.$emit('input', this.task);\n\t\t},\n\t\tdeleteTask(){\n\t\t\tvar self = this;\n\t\t\t// console.log(JSON.stringify(self.task));\n\t\t\tdocument.querySelector('.task:last-child').style.animation = \"vanishOut\";\n\t\t\tdocument.querySelector('.task:last-child').style.animationDuration = \"0.5s\";\n\n\t\t\tsetTimeout(function () {\n\t\t\t\tself.task.pop();\n\t\t\t}, 500);\n\t\t\tthis.$emit('input', this.task);\n\t\t},\n\t\temptyTask(){\n\t\t\tthis.task = [];\n\t\t\tthis.$emit('input', this.task);\n\t\t}\n\t}\n}\n</script>\n<style type=\"text/css\">\n.task{\n\tdisplay: block;\n\twidth: 300px;\n\tborder: 1px solid #DDDDDD;\n\tborder-radius: 5px;\n\ttext-align: center;\n\tmargin: 0 auto;\n\tbox-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n\ttransition: .3s;\n\t-webkit-animation: fadeIn;\n\tanimation: fadeIn;\n\tanimation-duration: .5s;\n\tbackground: #fff;\n}\n.task:hover{\n\tbox-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);\n}\n.task-title{\n\tpadding: 5px 0;\n\tbackground: #F0F0F0;\n\tfont-weight: 600;\n}\n.task-content{\n\tpadding: 20px;\n}\n.task-btn-group{\n\tmargin-top: 20px;\n}\n.task-toolbar{\n\tmargin: 30px auto;\n\ttext-align: center;\n}\n.task-arrow{\n\tposition: relative;\n\t-webkit-animation: movingTopToBottom;\n\tanimation: movingTopToBottom;\n\tanimation-duration: .5s;\n}\n</style>"],"sourceRoot":"webpack://"}]);
-
-// exports
-
-
-/***/ }),
+/* 287 */,
 /* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -46615,32 +46546,7 @@ if (false) {
 }
 
 /***/ }),
-/* 349 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(287);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(9)("d9b990b2", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3361b67f\",\"scoped\":false,\"hasInlineConfig\":false}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TaskList.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3361b67f\",\"scoped\":false,\"hasInlineConfig\":false}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TaskList.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
+/* 349 */,
 /* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -46964,6 +46870,67 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-5cb5910e", module.exports)
   }
 }
+
+/***/ }),
+/* 358 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+	props: ['value'],
+	data() {
+		return {
+			task: null
+		};
+	},
+
+	watch: {
+		value() {
+			if (this.value == undefined || this.value == null || this.value.length == 0) {
+				console.log('Array is NULL');
+			};
+		}
+	},
+
+	mounted() {
+		this.task = this.value;
+	},
+
+	methods: {
+		haveButton(button) {
+			if (button == true) {
+				for (var i = 0; i < this.task.length; i++) {}
+				return '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#modal-task-' + i + '">Edit Condition</button></div>';
+			}
+		},
+		addTask(button) {
+			var html = this.haveButton(button);
+			this.task = this.task ? this.task : [];
+			this.task.push({
+				title: 'Condition',
+				content: 'Your Condition',
+				button: button,
+				html: html
+			});
+			this.$emit('input', this.task);
+		},
+		deleteTask() {
+			var self = this;
+			// console.log(JSON.stringify(self.task));
+			document.querySelector('.task:last-child').style.animation = "vanishOut";
+			document.querySelector('.task:last-child').style.animationDuration = "0.5s";
+
+			setTimeout(function () {
+				self.task.pop();
+			}, 500);
+			this.$emit('input', this.task);
+		},
+		emptyTask() {
+			this.task = [];
+			this.$emit('input', this.task);
+		}
+	}
+});
 
 /***/ })
 /******/ ]);
