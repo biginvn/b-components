@@ -41308,16 +41308,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     components: {},
 
-    props: ['id', 'label', 'name', 'disabled', 'class-name', 'content'],
+    props: ['id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode'],
 
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
 
     mounted() {
         this.initSumerNote(this.content);
         this.updateFloatLabel(null);
-        // this.tinymce.on("change", (event) => {
-        //     alert("sdsd")
-        // })
     },
 
     computed: {
@@ -41327,33 +41324,107 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     watch: {
-        value() {}
+        value() {
+            this.updateContent(this.value);
+        }
     },
 
     methods: {
 
-        initSumerNote(content) {
+        initTinyMCEBasicMode(content) {
             var vm = this;
             this.tinymce = tinymce.init({
                 selector: '#mytextarea',
+                plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
+                toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
                 init_instance_callback: function (editor) {
                     this.setContent(content);
                     editor.on('keyup', function (e) {
                         if (this.getContent() != "") {
-                            document.querySelector('#label-tinyMCE').className = "active";
-                            vm.update(this.getContent());
+                            if (document.querySelector('#label-tinyMCE').className != "active") document.querySelector('#label-tinyMCE').className = "active";
                         } else {
                             document.querySelector('#label-tinyMCE').className = "";
-                            vm.update(this.getContent());
                         }
                     });
-
-                    editor.on('change', function (e) {
+                    editor.on('blur', function (e) {
                         this.contentOutPut = this.getContent();
                         vm.update(this.getContent());
                     });
                 }
             });
+        },
+
+        initTinyMCEAdvanceMode(content) {
+            var vm = this;
+            this.tinymce = tinymce.init({
+                selector: '#mytextarea',
+                plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
+
+                toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+                toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+                toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+                content_css: ['//fonts.googleapis.com/css?family=Lato:300,300i,400,400i', '//www.tinymce.com/css/codepen.min.css'],
+
+                menubar: false,
+                toolbar_items_size: 'small',
+
+                style_formats: [{
+                    title: 'Bold text',
+                    inline: 'b'
+                }, {
+                    title: 'Red text',
+                    inline: 'span',
+                    styles: {
+                        color: '#ff0000'
+                    }
+                }, {
+                    title: 'Red header',
+                    block: 'h1',
+                    styles: {
+                        color: '#ff0000'
+                    }
+                }, {
+                    title: 'Example 1',
+                    inline: 'span',
+                    classes: 'example1'
+                }, {
+                    title: 'Example 2',
+                    inline: 'span',
+                    classes: 'example2'
+                }, {
+                    title: 'Table styles'
+                }, {
+                    title: 'Table row 1',
+                    selector: 'tr',
+                    classes: 'tablerow1'
+                }],
+
+                templates: [{
+                    title: 'Test template 1',
+                    content: 'Test 1'
+                }, {
+                    title: 'Test template 2',
+                    content: 'Test 2'
+                }],
+                init_instance_callback: function (editor) {
+                    this.setContent(content);
+                    editor.on('keyup', function (e) {
+                        if (this.getContent() != "") {
+                            if (document.querySelector('#label-tinyMCE').className != "active") document.querySelector('#label-tinyMCE').className = "active";
+                        } else {
+                            document.querySelector('#label-tinyMCE').className = "";
+                        }
+                    });
+                    editor.on('blur', function (e) {
+                        this.contentOutPut = this.getContent();
+                        vm.update(this.getContent());
+                    });
+                }
+            });
+        },
+
+        initSumerNote(content) {
+            if (this.mode == "advance") this.initTinyMCEAdvanceMode(content);else this.initTinyMCEBasicMode(content);
         },
 
         getContentOutput() {
@@ -41364,6 +41435,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
             return this.contentOutPut;
+        },
+
+        updateContent(data) {
+            //  tinymce.activeEditor.remove('#mytextarea')
+            //  tinymce.init({
+            //     selector: '#mytextarea',
+            //     init_instance_callback: function (editor) {
+            //     }
+            // })
+            tinymce.activeEditor.setContent(data);
+            return this.$emit('input', data);
         },
 
         update(data) {
@@ -41650,7 +41732,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, "\n.fl-wrap-input{\n\t/*border: 1px solid #dce1e4;*/\n\tposition: relative;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    box-sizing: border-box;\n    font-family: inherit;\n    -webkit-font-smoothing: antialiased;\n    font-weight: normal;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?2de60578"],"names":[],"mappings":";AAmBA;CACA,8BAAA;CACA,mBAAA;IACA,mCAAA;IACA,oCAAA;IACA,uBAAA;IACA,qBAAA;IACA,oCAAA;IACA,oBAAA;CACA","file":"TinyMCE.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 31/10/2017 -->\r\n<!-- Component: SummerNote -->\r\n\r\n<template>\r\n\t<div class=\"b__components b__summernote b-ios b-float-label minh class b__input 2\">\r\n\t\t<div class=\"fl-wrap fl-wrap-input fl-is-active fl-has-focus\">\r\n\t\t\t<label :class=\"classLabel\" id=\"label-tinyMCE\" >{{ label }}</label>\r\n\t\t\t<textarea id=\"mytextarea\" @change=\"update()\" @input=\"update()\" @keypress=\"update()\"></textarea>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport TinyMCE from './../../components/TinyMCE'\r\n\texport default TinyMCE\r\n</script>\r\n\r\n<style type=\"text/css\">\r\n\t.fl-wrap-input{\r\n\t\t/*border: 1px solid #dce1e4;*/\r\n\t\tposition: relative;\r\n\t    text-rendering: optimizeLegibility;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    box-sizing: border-box;\r\n\t    font-family: inherit;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    font-weight: normal;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.fl-wrap-input{\n\t/*border: 1px solid #dce1e4;*/\n\tposition: relative;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    box-sizing: border-box;\n    font-family: inherit;\n    -webkit-font-smoothing: antialiased;\n    font-weight: normal;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?7a5ae995"],"names":[],"mappings":";AAmBA;CACA,8BAAA;CACA,mBAAA;IACA,mCAAA;IACA,oCAAA;IACA,uBAAA;IACA,qBAAA;IACA,oCAAA;IACA,oBAAA;CACA","file":"TinyMCE.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 31/10/2017 -->\r\n<!-- Component: SummerNote -->\r\n\r\n<template>\r\n\t<div class=\"b__components b__summernote b-ios b-float-label minh class b__input 2\">\r\n\t\t<div class=\"fl-wrap fl-wrap-input fl-is-active fl-has-focus\">\r\n\t\t\t<label :class=\"classLabel\" id=\"label-tinyMCE\" >{{ label }}</label>\r\n\t\t\t<textarea id=\"mytextarea\"></textarea>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport TinyMCE from './../../components/TinyMCE'\r\n\texport default TinyMCE\r\n</script>\r\n\r\n<style type=\"text/css\">\r\n\t.fl-wrap-input{\r\n\t\t/*border: 1px solid #dce1e4;*/\r\n\t\tposition: relative;\r\n\t    text-rendering: optimizeLegibility;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    box-sizing: border-box;\r\n\t    font-family: inherit;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    font-weight: normal;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -45571,17 +45653,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('textarea', {
     attrs: {
       "id": "mytextarea"
-    },
-    on: {
-      "change": function($event) {
-        _vm.update()
-      },
-      "input": function($event) {
-        _vm.update()
-      },
-      "keypress": function($event) {
-        _vm.update()
-      }
     }
   })])])
 },staticRenderFns: []}
