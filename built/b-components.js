@@ -30343,7 +30343,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 
 			newTag: '',
-			classLabel: ''
+			classLabel: '',
+			placeholder: 'Input Tag'
 
 		};
 	},
@@ -30358,6 +30359,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 				this.tagChange();
 			}
+			this.$emit('input', this.tags);
 			this.placeholder = '';
 			this.newTag = '';
 		},

@@ -13,6 +13,7 @@ export default {
 			
 			newTag: '',
 			classLabel : '',
+			placeholder:'Input Tag'
 			
 
 		}
@@ -27,8 +28,10 @@ export default {
 				this.tags.push(tag);
 
 				this.tagChange();
+				
 
 			}
+			this.$emit('input',this.tags);
 			this.placeholder = '';
 			this.newTag = '';
 		},

@@ -195,7 +195,7 @@
                                 <h4 class="mb-3 panel-heading">Input Tag</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-input-tag>
+                                        <b-input-tag v-model="input.tags">
                                             
                                         </b-input-tag>
                                     </p>
@@ -361,7 +361,7 @@
                                 </div>
                             </div>
                         </figure>
-                        
+
                         <figure class="wow animated bounceInRight">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Upload</h4>
@@ -491,7 +491,8 @@ var vm = new Vue({
             listUploaded      : null,
             dateAndTime       : null,
             task              : null,
-            tinyMCE           : null 
+            tinyMCE           : null,
+            tags: []
         },
         tinyMCE: {
             content: "Tiny MCE Content"
