@@ -128,6 +128,7 @@ body{
 	-webkit-animation: fadeIn;
 	animation: fadeIn;
 	animation-duration: .5s;
+	background: #fff;
 }
 .task:hover{
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -145,7 +146,6 @@ body{
 }
 .task-toolbar{
 	margin: 30px auto;
-	width: 500px;
 	text-align: center;
 }
 .task-arrow{
