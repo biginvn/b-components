@@ -364,7 +364,7 @@
 
                         <figure class="wow animated bounceInRight">
                             <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Image Gallery</h4>
+                                <h4 class="mb-3 panel-heading">List Uploaded</h4>
                                 <div class="panel-body">
                                     <p>
                                        <b-list-up-loaded v-model="input.listUploaded" :list="listUpload" ></b-list-up-loaded>
@@ -373,6 +373,13 @@
                                     <p v-for="item in input.imageGallery">ID: {{ item.id }}</p>
                                 </div>
                                 <div class="panel-body">
+                                    Parameters passed to:
+                                    variable : [{ <br>
+                                        id          : require, <br>
+                                        path        : require, <br>
+                                        name        : no force, <br>
+                                        className   : no force  <br>
+                                    }]
                                 </div>
                             </div>
                         </figure>
