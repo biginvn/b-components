@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "built/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 282);
+/******/ 	return __webpack_require__(__webpack_require__.s = 283);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -8146,6 +8146,156 @@ module.exports = {
 
 /***/ }),
 /* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__ = __webpack_require__(3);
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data() {
+        return {
+            checkedStore: false
+        };
+    },
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
+    props: ['class-name', 'disabled', 'id', 'label', 'checked', 'name', 'bind-value'],
+    created() {
+        this.updateUIByModel();
+    },
+    computed: {
+        classes() {
+            return (this.className ? this.className : '') + ' checkbox__input';
+        },
+        isChecked: {
+            cache: false,
+            get() {
+                return this.checkedStore;
+            }
+        }
+    },
+    watch: {
+        value() {
+            this.updateUIByModel();
+        }
+    },
+    methods: {
+        uniqueArray(array) {
+            var result = array.filter((item, pos) => {
+                return array.indexOf(item) == pos;
+            });
+            return result;
+        },
+        updateUIByModel() {
+            if (this.value != undefined || this.value == null) {
+                // if this have model, we will compare model and bind-value
+                if (this.bindValue && Array.isArray(this.value)) {
+                    this.checkedStore = this.value.indexOf(this.bindValue) >= 0;
+                    return;
+                }
+                this.checkedStore = this.value;
+            } else {
+                console.error('[B-Components] Checkbox component must assign the model');
+                this.checkedStore = false;
+            }
+        },
+        update() {
+            if (Array.isArray(this.value)) {
+                // $emit array to outside model
+                if (this.checkedStore) {
+                    // Model already have value 
+                    this.value.splice(this.value.indexOf(this.bindValue), 1);
+                    this.checkedStore = false;
+                } else {
+                    this.value.push(this.bindValue);
+                    this.checkedStore = true;
+                }
+                this.$emit('input', this.value);
+            } else {
+                if (this.value) {
+                    this.$emit('input', false);
+                } else this.$emit('input', true);
+            }
+        }
+    }
+
+});
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var no;
+var ikey = 'data-rome-id';
+var index = [];
+
+function find (thing) { // can be a DOM element or a number
+  if (typeof thing !== 'number' && thing && thing.getAttribute) {
+    return find(thing.getAttribute(ikey));
+  }
+  var existing = index[thing];
+  if (existing !== no) {
+    return existing;
+  }
+  return null;
+}
+
+function assign (elem, instance) {
+  elem.setAttribute(ikey, instance.id = index.push(instance) - 1);
+}
+
+module.exports = {
+  find: find,
+  assign: assign
+};
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function isInput (elem) {
+  return elem && elem.nodeName && elem.nodeName.toLowerCase() === 'input';
+}
+
+module.exports = isInput;
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var momentum = __webpack_require__(6);
+
+function raw (date, format) {
+  if (typeof date === 'string') {
+    return momentum.moment(date, format);
+  }
+  if (Object.prototype.toString.call(date) === '[object Date]') {
+    return momentum.moment(date);
+  }
+  if (momentum.isMoment(date)) {
+    return date.clone();
+  }
+}
+
+function parse (date, format) {
+  var m = raw(date, typeof format === 'string' ? format : null);
+  return m && m.isValid() ? m : null;
+}
+
+module.exports = parse;
+
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -8164,7 +8314,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(354)
+var listToStyles = __webpack_require__(353)
 
 /*
 type StyleObject = {
@@ -8363,156 +8513,6 @@ function applyToTag (styleElement, obj) {
     styleElement.appendChild(document.createTextNode(css))
   }
 }
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__ = __webpack_require__(3);
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    data() {
-        return {
-            checkedStore: false
-        };
-    },
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
-    props: ['class-name', 'disabled', 'id', 'label', 'checked', 'name', 'bind-value'],
-    created() {
-        this.updateUIByModel();
-    },
-    computed: {
-        classes() {
-            return (this.className ? this.className : '') + ' checkbox__input';
-        },
-        isChecked: {
-            cache: false,
-            get() {
-                return this.checkedStore;
-            }
-        }
-    },
-    watch: {
-        value() {
-            this.updateUIByModel();
-        }
-    },
-    methods: {
-        uniqueArray(array) {
-            var result = array.filter((item, pos) => {
-                return array.indexOf(item) == pos;
-            });
-            return result;
-        },
-        updateUIByModel() {
-            if (this.value != undefined || this.value == null) {
-                // if this have model, we will compare model and bind-value
-                if (this.bindValue && Array.isArray(this.value)) {
-                    this.checkedStore = this.value.indexOf(this.bindValue) >= 0;
-                    return;
-                }
-                this.checkedStore = this.value;
-            } else {
-                console.error('[B-Components] Checkbox component must assign the model');
-                this.checkedStore = false;
-            }
-        },
-        update() {
-            if (Array.isArray(this.value)) {
-                // $emit array to outside model
-                if (this.checkedStore) {
-                    // Model already have value 
-                    this.value.splice(this.value.indexOf(this.bindValue), 1);
-                    this.checkedStore = false;
-                } else {
-                    this.value.push(this.bindValue);
-                    this.checkedStore = true;
-                }
-                this.$emit('input', this.value);
-            } else {
-                if (this.value) {
-                    this.$emit('input', false);
-                } else this.$emit('input', true);
-            }
-        }
-    }
-
-});
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var no;
-var ikey = 'data-rome-id';
-var index = [];
-
-function find (thing) { // can be a DOM element or a number
-  if (typeof thing !== 'number' && thing && thing.getAttribute) {
-    return find(thing.getAttribute(ikey));
-  }
-  var existing = index[thing];
-  if (existing !== no) {
-    return existing;
-  }
-  return null;
-}
-
-function assign (elem, instance) {
-  elem.setAttribute(ikey, instance.id = index.push(instance) - 1);
-}
-
-module.exports = {
-  find: find,
-  assign: assign
-};
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function isInput (elem) {
-  return elem && elem.nodeName && elem.nodeName.toLowerCase() === 'input';
-}
-
-module.exports = isInput;
-
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var momentum = __webpack_require__(6);
-
-function raw (date, format) {
-  if (typeof date === 'string') {
-    return momentum.moment(date, format);
-  }
-  if (Object.prototype.toString.call(date) === '[object Date]') {
-    return momentum.moment(date);
-  }
-  if (momentum.isMoment(date)) {
-    return date.clone();
-  }
-}
-
-function parse (date, format) {
-  var m = raw(date, typeof format === 'string' ? format : null);
-  return m && m.isValid() ? m : null;
-}
-
-module.exports = parse;
 
 
 /***/ }),
@@ -26997,7 +26997,7 @@ var crossvent = __webpack_require__(8);
 var emitter = __webpack_require__(300);
 var dom = __webpack_require__(307);
 var text = __webpack_require__(322);
-var parse = __webpack_require__(13);
+var parse = __webpack_require__(12);
 var clone = __webpack_require__(106);
 var defaults = __webpack_require__(107);
 var momentum = __webpack_require__(6);
@@ -27746,8 +27746,8 @@ module.exports = clone;
 "use strict";
 
 
-var parse = __webpack_require__(13);
-var isInput = __webpack_require__(12);
+var parse = __webpack_require__(12);
+var isInput = __webpack_require__(11);
 var momentum = __webpack_require__(6);
 
 function defaults (options, cal) {
@@ -39378,7 +39378,7 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(352)
+  __webpack_require__(351)
 }
 var Component = __webpack_require__(2)(
   /* script */
@@ -39422,7 +39422,7 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(353)
+  __webpack_require__(352)
 }
 var Component = __webpack_require__(2)(
   /* script */
@@ -39824,17 +39824,13 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(350)
-}
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(261),
   /* template */
   __webpack_require__(333),
   /* styles */
-  injectStyle,
+  null,
   /* scopeId */
   null,
   /* moduleIdentifier (server only) */
@@ -39950,7 +39946,7 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(351)
+  __webpack_require__(350)
 }
 var Component = __webpack_require__(2)(
   /* script */
@@ -40135,7 +40131,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CheckBox__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CheckBox__ = __webpack_require__(9);
 //
 //
 //
@@ -40386,7 +40382,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CheckBox__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CheckBox__ = __webpack_require__(9);
 //
 //
 //
@@ -40443,6 +40439,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TaskList__ = __webpack_require__(278);
+//
+//
+//
 //
 //
 //
@@ -40474,85 +40474,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['task'],
-	data() {
-		return {
-			// list :{
-			// 	task : [{
-			// 		// title : 'Condition',
-			// 		// content : 'If you are Gay?',
-			// 		// button : true,
-			// 		// html : ''
-			// 		title : null,
-			// 		content : null,
-			// 		button : true,
-			// 		html : null
-			// 	}]
-			// }
-		};
-	},
 
-	watch: {
-		task() {
-			// debugger;
-			if (this.task == undefined || this.task == null || this.task.length == 0) {
-				alert('Is Null');
-			};
-		}
-	},
-
-	mounted() {
-		// this.haveButton();
-	},
-
-	methods: {
-		// haveButton(){
-		// 	for( let i = 0; i < this.task.length; i++ ){
-		// 		if(this.task[i].button == true){
-		// 			return this.task[i].html = '<div class="task-btn-group"><button type="button" class="btn btn-primary">Yes</button><button type="button" class="btn btn-secondary">No</button></div>'
-		// 		}
-		// 		else{
-		// 			return this.task[i].html = ''
-		// 		}
-		// 	}
-
-		// },
-
-		checkButton(button) {
-			if (button == true) {
-				return '<div class="task-btn-group"><button type="button" class="btn btn-primary">Yes</button><button type="button" class="btn btn-secondary">No</button></div>';
-			}
-		},
-
-		addTask(button) {
-			var html = this.checkButton(button);
-			this.task.push({
-				title: 'Condition',
-				content: 'Is Condition True?',
-				button: button,
-				html: html
-			});
-		},
-		deleteTask() {
-			var self = this;
-			document.querySelector('.task:last-child').style.animation = "vanishOut";
-			document.querySelector('.task:last-child').style.animationDuration = "0.5s";
-
-			setTimeout(function () {
-				self.task.pop();
-			}, 500);
-		},
-		emptyTask() {
-			this.task = null;
-		},
-		updateTask() {
-			// this.$emit('input', "this.task");
-		}
-	},
-
-	computed: {}
-});
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TaskList__["a" /* default */]);
 
 /***/ }),
 /* 262 */
@@ -40577,7 +40500,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Textarea__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Textarea__ = __webpack_require__(279);
 //
 //
 //
@@ -40594,7 +40517,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TinyMCE__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TinyMCE__ = __webpack_require__(280);
 //
 //
 //
@@ -40618,7 +40541,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CheckBox__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CheckBox__ = __webpack_require__(9);
 //
 //
 //
@@ -40655,7 +40578,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Upload__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Upload__ = __webpack_require__(281);
 //
 //
 //
@@ -40697,7 +40620,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ZipCode__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ZipCode__ = __webpack_require__(282);
 //
 //
 //
@@ -41365,7 +41288,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 
 			newTag: '',
-			classLabel: ''
+			classLabel: '',
+			placeholder: 'Input Tag'
 
 		};
 	},
@@ -41380,6 +41304,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 				this.tagChange();
 			}
+			this.$emit('input', this.tags);
 			this.placeholder = '';
 			this.newTag = '';
 		},
@@ -41425,6 +41350,67 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+	props: ['value'],
+	data() {
+		return {
+			task: null
+		};
+	},
+
+	watch: {
+		value() {
+			if (this.value == undefined || this.value == null || this.value.length == 0) {
+				console.log('Array is NULL');
+			};
+		}
+	},
+
+	mounted() {
+		this.task = this.value;
+	},
+
+	methods: {
+		haveButton(button) {
+			if (button == true) {
+				for (var i = 0; i < this.task.length; i++) {}
+				return '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#modal-task-' + i + '">Edit Condition</button></div>';
+			}
+		},
+		addTask(button) {
+			var html = this.haveButton(button);
+			this.task = this.task ? this.task : [];
+			this.task.push({
+				title: 'Condition',
+				content: 'Your Condition',
+				button: button,
+				html: html
+			});
+			this.$emit('input', this.task);
+		},
+		deleteTask() {
+			var self = this;
+			// console.log(JSON.stringify(self.task));
+			document.querySelector('.task:last-child').style.animation = "vanishOut";
+			document.querySelector('.task:last-child').style.animationDuration = "0.5s";
+
+			setTimeout(function () {
+				self.task.pop();
+			}, 500);
+			this.$emit('input', this.task);
+		},
+		emptyTask() {
+			this.task = [];
+			this.$emit('input', this.task);
+		}
+	}
+});
+
+/***/ }),
+/* 279 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
 
 
@@ -41456,7 +41442,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41630,7 +41616,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41711,7 +41697,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41774,7 +41760,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41867,20 +41853,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BTinymce', __WEBPACK_IMPO
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BInputTag', __WEBPACK_IMPORTED_MODULE_20__themes_ios_Tag_vue___default.a);
 
 /***/ }),
-/* 283 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(7)();
-// imports
-
-
-// module
-exports.push([module.i, ".c-scrim {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.541176);\n  opacity: 0;\n  transition: 200ms ease opacity;\n  will-change: opacity; }\n  .c-scrim--shown {\n    opacity: 1; }\n\n.c-datepicker {\n  min-height: 610px;\n  position: fixed;\n  left: 50%;\n  top: 45%;\n  transform: translate(-50%, -50%);\n  background: white;\n  border: 0;\n  width: 300px;\n  text-align: center;\n  -webkit-tap-highlight-color: transparent;\n  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.25), 0 10px 18px rgba(0, 0, 0, 0.22);\n  border-radius: 2px;\n  opacity: 0;\n  will-change: opacity;\n  transition: 200ms ease-in-out opacity, 200ms ease-in-out top; }\n  .c-datepicker--open {\n    opacity: 1;\n    top: 50%; }\n\n.c-datepicker__header {\n  position: relative; }\n\n.c-datepicker__header-day {\n  height: 32px;\n  background: #0097a7;\n  color: white;\n  line-height: 32px;\n  font-size: 12px;\n  font-weight: 200;\n  letter-spacing: 0.3px; }\n\n.c-datepicker__header::after {\n  content: \"\";\n  display: table;\n  clear: both; }\n\n.c-datepicker__header-date {\n  background: #00bcd4;\n  height: 150px;\n  padding: 16px 0; }\n\n.rd-month-label {\n  height: 56px;\n  line-height: 56px;\n  font-size: 14px;\n  font-weight: 800; }\n\n.c-datepicker__back, .c-datepicker__next, .c-datepicker__toggle {\n  position: absolute;\n  border: 0;\n  background: white;\n  font-family: 'Material Icons';\n  text-rendering: optimizeLegibility;\n  font-feature-settings: \"liga\" 1;\n  font-style: normal;\n  text-transform: none;\n  line-height: 1;\n  font-size: 24px;\n  width: 56px;\n  height: 56px;\n  display: inline-block;\n  overflow: hidden;\n  -webkit-font-smoothing: antialiased;\n  cursor: pointer; }\n  .c-datepicker__back:focus, .c-datepicker__next:focus, .c-datepicker__toggle:focus {\n    outline: 0; }\n\n.c-datepicker__back {\n  left: 0; }\n\n.c-datepicker__next {\n  right: 0; }\n\n.c-datepicker__back:before {\n  content: 'chevron_left'; }\n\n.c-datepicker__next:after {\n  content: 'chevron_right'; }\n\n.c-datepicker--show-time:after {\n  content: 'access_time';\n  color: white;\n  visibility: visible; }\n\n.c-datepicker--show-calendar:after {\n  content: 'grid_on';\n  color: white;\n  visibility: visible; }\n\n.c-datepicker__header-date span {\n  display: block;\n  color: white;\n  margin: 0;\n  transition: opacity 100ms ease-in-out; }\n\n.c-datepicker__header-date__month {\n  cursor: pointer;\n  font-size: 24px;\n  opacity: 0.6; }\n\n.c-datepicker__header-date__day {\n  cursor: pointer;\n  font-size: 64px;\n  opacity: 0.6; }\n\n.c-datepicker__header-date__time {\n  font-size: 25px;\n  opacity: 0.6; }\n  .c-datepicker__header-date__time > span {\n    display: inline-block; }\n\n.c-datepicker__header-date__hours, .c-datepicker__header-date__minutes {\n  cursor: pointer; }\n\n.c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time {\n  opacity: 1; }\n  .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__hours, .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__minutes {\n    opacity: .6; }\n    .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__hours.active, .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__minutes.active {\n      opacity: 1; }\n\n.c-datepicker--show-calendar.is-selected ~ .c-datepicker__header .c-datepicker__header-date__month, .c-datepicker--show-calendar.is-selected ~ .c-datepicker__header .c-datepicker__header-date__day {\n  opacity: 1; }\n\n.modal-btns {\n  padding: 20px;\n  position: absolute;\n  bottom: 0;\n  right: 0; }\n\n.c-datepicker__day-body {\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.8);\n  width: 36px;\n  height: 36px;\n  cursor: pointer;\n  position: relative; }\n  .c-datepicker__day-body:hover {\n    /* color: white; */ }\n\n.c-datepicker__day--selected::after {\n  content: \"\";\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  width: 35px;\n  height: 35px;\n  border-radius: 50%;\n  transform: translate(-50%, -50%);\n  background: rgba(0, 0, 0, 0.05); }\n\n.c-datepicker__day-head {\n  color: rgba(0, 0, 0, 0.54);\n  font-size: 12px;\n  height: 36px; }\n\n.c-datepicker__day-head, c-datepicker__day-body {\n  -webkit-tap-highlight-color: transparent; }\n\n.modal-btns {\n  float: right; }\n\n.c-btn {\n  display: inline-block;\n  min-width: 56px;\n  cursor: pointer; }\n\n.rd-day-prev-month {\n  opacity: 0.1;\n  pointer-events: none; }\n\n.rd-day-next-month {\n  opacity: 0.1;\n  pointer-events: none; }\n\n.c-datepicker__calendar {\n  height: 300px; }\n\n.c-datepicker__date {\n  position: absolute;\n  left: 0;\n  right: 0; }\n\n.c-datepicker__days {\n  margin: 10px 20px; }\n\n.c-datepicker__header-toggle {\n  position: absolute;\n  top: 50%;\n  color: white;\n  cursor: pointer; }\n  .c-datepicker__header-toggle i {\n    font-size: 26px; }\n\n.c-datepicker__header-toggle--left {\n  left: 20px; }\n\n.c-datepicker__header-toggle--right {\n  right: 20px; }\n\n.c-datepicker__header-toggle--inactive {\n  opacity: 0.2; }\n\n.c-datepicker__toggle {\n  top: 170px;\n  width: 36px;\n  height: 30px;\n  visibility: hidden;\n  opacity: 0.5;\n  z-index: 1;\n  transition: opacity 200ms ease-in-out; }\n\n.c-datepicker__toggle--right {\n  right: 10px; }\n\n.c-datepicker__toggle--left {\n  left: 10px; }\n\n.c-datepicker__toggle.is-selected {\n  opacity: 1; }\n\n.c-datepicker--show-time.is-selected ~ .c-datepicker__calendar {\n  display: none; }\n\n.c-datepicker--show-calendar.is-selected ~ .c-datepicker__clock {\n  display: none; }\n\n.c-datepicker__clock {\n  position: relative;\n  /* [1] */\n  width: 200px;\n  height: 200px;\n  padding: 0;\n  border-radius: 50%;\n  list-style: none;\n  /* [2] */\n  font-size: 14px;\n  line-height: 50px;\n  padding: 160px 0 20px 0;\n  margin: 0 auto; }\n  .c-datepicker__clock .c-datepicker__clock__num {\n    display: block;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    width: 50px;\n    height: 50px;\n    margin: -25px;\n    z-index: 98; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1) {\n      transform: rotate(0deg) translate(100px) rotate(-0deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(270deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(270deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2) {\n      transform: rotate(30deg) translate(100px) rotate(-30deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(300deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(300deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3) {\n      transform: rotate(60deg) translate(100px) rotate(-60deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(330deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(330deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4) {\n      transform: rotate(90deg) translate(100px) rotate(-90deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(360deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(360deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5) {\n      transform: rotate(120deg) translate(100px) rotate(-120deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(390deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(390deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6) {\n      transform: rotate(150deg) translate(100px) rotate(-150deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(420deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(420deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7) {\n      transform: rotate(180deg) translate(100px) rotate(-180deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(450deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(450deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8) {\n      transform: rotate(210deg) translate(100px) rotate(-210deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(480deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(480deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9) {\n      transform: rotate(240deg) translate(100px) rotate(-240deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(510deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(510deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10) {\n      transform: rotate(270deg) translate(100px) rotate(-270deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(540deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(540deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11) {\n      transform: rotate(300deg) translate(100px) rotate(-300deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(570deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(570deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12) {\n      transform: rotate(330deg) translate(100px) rotate(-330deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(600deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(600deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n  .c-datepicker__clock::before {\n    content: \"\";\n    position: absolute;\n    top: 70px;\n    left: -20px;\n    width: 240px;\n    height: 240px;\n    background: rgba(0, 0, 0, 0.05);\n    border-radius: 50%; }\n\n.u-hover-ball-effect, .c-datepicker__day-body, .c-datepicker__clock__num, .c-datepicker__clock__am-pm-toggle label {\n  position: relative;\n  cursor: pointer; }\n  .u-hover-ball-effect:before, .c-datepicker__day-body:before, .c-datepicker__clock__num:before, .c-datepicker__clock__am-pm-toggle label:before {\n    content: \"\";\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    width: 0%;\n    height: 0%;\n    border-radius: 50%;\n    transform: translate(-50%, -50%);\n    transition: width 100ms ease-in-out, height 100ms ease-in-out; }\n  .u-hover-ball-effect:hover, .c-datepicker__day-body:hover, .c-datepicker__clock__num:hover, .c-datepicker__clock__am-pm-toggle label:hover {\n    color: white; }\n    .u-hover-ball-effect:hover:before, .c-datepicker__day-body:hover:before, .c-datepicker__clock__num:hover:before, .c-datepicker__clock__am-pm-toggle label:hover:before {\n      background: #00bcd4;\n      width: 35px;\n      height: 35px;\n      z-index: -1; }\n\n.c-datepicker__day-body--active:not(.hide-hand), .c-datepicker__clock__num--active:not(.hide-hand) {\n  color: white; }\n  .c-datepicker__day-body--active:not(.hide-hand):before, .c-datepicker__clock__num--active:not(.hide-hand):before {\n    background: #00bcd4;\n    width: 35px;\n    height: 35px;\n    z-index: -1; }\n\n.c-datepicker__clock-hands {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%) rotate(180deg);\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  background: #0097a7; }\n\n.c-datepicker__hour-hand {\n  position: absolute;\n  opacity: 0;\n  height: 78px;\n  width: 2px;\n  background: #00bcd4;\n  left: 4px;\n  top: 10px; }\n\n.c-datepicker__clock__minutes {\n  display: none;\n  height: 200px;\n  margin: -69px 0 0 0;\n  width: 200px;\n  display: none; }\n  .c-datepicker__clock__minutes.active {\n    display: block; }\n\n.c-datepicker__clock__hours {\n  height: 200px;\n  margin: -69px 0 0 0;\n  width: 200px;\n  display: none; }\n  .c-datepicker__clock__hours.active {\n    display: block; }\n\n.c-datepicker__mask {\n  width: 127px;\n  height: 132px;\n  position: absolute;\n  top: 122px;\n  left: 37px;\n  z-index: 99; }\n  .c-datepicker__mask:after {\n    content: ' ';\n    width: 156px;\n    height: 70px;\n    display: block;\n    position: absolute;\n    top: 32px;\n    left: 0;\n    margin-left: -13px; }\n  .c-datepicker__mask:before {\n    content: ' ';\n    width: 75px;\n    height: 158px;\n    display: block;\n    position: absolute;\n    top: 6px;\n    left: 28px;\n    margin-top: -18px; }\n\n.c-datepicker__clock--show-minutes .c-datepicker__clock__minutes {\n  visibility: visible; }\n\n.c-datepicker__clock--show-minutes .c-datepicker__clock__hours {\n  visibility: hidden; }\n\n.c-datepicker__clock--show-hours .c-datepicker__clock__minutes {\n  visibility: hidden; }\n\n.c-datepicker__clock--show-hours .c-datepicker__clock__hours {\n  visibility: visible; }\n\n.c-datepicker__clock__am-pm-toggle {\n  position: absolute;\n  top: 0;\n  left: 10px;\n  right: 10px;\n  height: 40px;\n  padding: 20px;\n  line-height: 40px; }\n  .c-datepicker__clock__am-pm-toggle label {\n    width: 40px;\n    position: absolute; }\n    .c-datepicker__clock__am-pm-toggle label:nth-child(1) {\n      left: 0; }\n    .c-datepicker__clock__am-pm-toggle label:nth-child(2) {\n      right: 0; }\n    .c-datepicker__clock__am-pm-toggle label.c-datepicker__toggle--checked::after {\n      content: \"\";\n      position: absolute;\n      left: 50%;\n      top: 50%;\n      width: 0%;\n      height: 0%;\n      border-radius: 50%;\n      transform: translate(-50%, -50%);\n      width: 36px;\n      height: 36px;\n      z-index: -1;\n      background: rgba(0, 0, 0, 0.05); }\n", ""]);
-
-// exports
-
-
-/***/ }),
 /* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -41889,7 +41861,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, "\nbody{\r\n\tfont-family: 'Open Sans';\r\n\tpadding: 30px;\n}\n.task{\r\n\tdisplay: block;\r\n\twidth: 300px;\r\n\tborder: 1px solid #DDDDDD;\r\n\tborder-radius: 5px;\r\n\ttext-align: center;\r\n\tmargin: 0 auto;\r\n\tbox-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\r\n\ttransition: .3s;\r\n\t-webkit-animation: fadeIn;\r\n\tanimation: fadeIn;\r\n\tanimation-duration: .5s;\r\n\tbackground: #fff;\n}\n.task:hover{\r\n\tbox-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);\n}\n.task-title{\r\n\tpadding: 5px 0;\r\n\tbackground: #F0F0F0;\r\n\tfont-weight: 600;\n}\n.task-content{\r\n\tpadding: 20px;\n}\n.task-btn-group{\r\n\tmargin-top: 20px;\n}\n.task-toolbar{\r\n\tmargin: 30px auto;\r\n\ttext-align: center;\n}\n.task-arrow{\r\n\tposition: relative;\r\n\t-webkit-animation: movingTopToBottom;\r\n\tanimation: movingTopToBottom;\r\n\tanimation-duration: .5s;\n}\r\n", "", {"version":3,"sources":["/./src/themes/ios/TaskList.vue?8de96810"],"names":[],"mappings":";AAkHA;CACA,yBAAA;CACA,cAAA;CACA;AACA;CACA,eAAA;CACA,aAAA;CACA,0BAAA;CACA,mBAAA;CACA,mBAAA;CACA,eAAA;CACA,yCAAA;CACA,gBAAA;CACA,0BAAA;CACA,kBAAA;CACA,wBAAA;CACA,iBAAA;CACA;AACA;CACA,0CAAA;CACA;AACA;CACA,eAAA;CACA,oBAAA;CACA,iBAAA;CACA;AACA;CACA,cAAA;CACA;AACA;CACA,iBAAA;CACA;AACA;CACA,kBAAA;CACA,mBAAA;CACA;AACA;CACA,mBAAA;CACA,qCAAA;CACA,6BAAA;CACA,wBAAA;CACA","file":"TaskList.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b-task\">\r\n\t\t<div class=\"task-toolbar\">\r\n\t\t\t<button type=\"button\" class=\"btn btn-secondary\" @click=\"addTask(true)\">Add</button>\r\n\t\t\t<button type=\"button\" class=\"btn btn-secondary\" @click=\"addTask(false)\">Add (No action)</button>\r\n\t\t\t<button type=\"button\" class=\"btn btn-secondary\" @click=\"deleteTask\">Delete</button>\r\n\t\t\t<button type=\"button\" class=\"btn btn-secondary\" @click=\"emptyTask\">Empty</button>\r\n\t\t</div>\r\n\t\t<div v-for=\"(item, index) in task\" :class=\"'task-el-' + index\">\r\n\t\t\t<div class=\"task\">\r\n\t\t\t\t<div class=\"task-title\"> {{ item.title }}</div>\r\n\t\t\t\t<div class=\"task-content\">\r\n\t\t\t\t\t{{ item.content }}\r\n\t\t\t\t\t<b>{{ '[' + index + ']'}}</b>\r\n\t\t\t\t\t<div v-html=\"item.html\"></div>\r\n\t\t\t\t\t<!-- {{ item.html }} -->\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"task-arrow\" style=\"text-align: center;\" v-if = \"index < task.length - 1 \">\r\n\t\t\t\t<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 60 80\" style=\"height:60px;\">\r\n\t\t\t\t\t<title>arrow</title>\r\n\t\t\t\t\t<line x1=\"30\" y1=\"1.21\" x2=\"30\" y2=\"78.79\" fill=\"none\" stroke=\"#374250\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2\" />\r\n\t\t\t\t\t<line x1=\"30\" y1=\"78.79\" x2=\"17.45\" y2=\"66.23\" fill=\"none\" stroke=\"#374250\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2\" />\r\n\t\t\t\t\t<line x1=\"30\" y1=\"78.79\" x2=\"42.55\" y2=\"66.23\" fill=\"none\" stroke=\"#374250\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2\" />\r\n\t\t\t\t\t<line x1=\"30\" y1=\"1.21\" x2=\"30\" y2=\"78.79\" fill=\"none\" stroke=\"#374250\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2\" />\r\n\t\t\t\t</svg>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\nexport default {\r\n\tprops : ['task'],\r\n\tdata () {\r\n\t\treturn {\r\n\t\t\t// list :{\r\n\t\t\t// \ttask : [{\r\n\t\t\t// \t\t// title : 'Condition',\r\n\t\t\t// \t\t// content : 'If you are Gay?',\r\n\t\t\t// \t\t// button : true,\r\n\t\t\t// \t\t// html : ''\r\n\t\t\t// \t\ttitle : null,\r\n\t\t\t// \t\tcontent : null,\r\n\t\t\t// \t\tbutton : true,\r\n\t\t\t// \t\thtml : null\r\n\t\t\t// \t}]\r\n\t\t\t// }\r\n\t\t}\r\n\t},\r\n\r\n\twatch :{\r\n\t\ttask(){\r\n\t\t\t// debugger;\r\n\t\t\tif (this.task == undefined || this.task == null || this.task.length == 0){\r\n\t\t\t\talert('Is Null')\r\n\t\t\t};\r\n\t\t}\r\n\t},\r\n\r\n\tmounted(){\r\n\t\t// this.haveButton();\r\n\t},\r\n\r\n\tmethods : {\r\n\t\t// haveButton(){\r\n\t\t// \tfor( let i = 0; i < this.task.length; i++ ){\r\n\t\t// \t\tif(this.task[i].button == true){\r\n\t\t// \t\t\treturn this.task[i].html = '<div class=\"task-btn-group\"><button type=\"button\" class=\"btn btn-primary\">Yes</button><button type=\"button\" class=\"btn btn-secondary\">No</button></div>'\r\n\t\t// \t\t}\r\n\t\t// \t\telse{\r\n\t\t// \t\t\treturn this.task[i].html = ''\r\n\t\t// \t\t}\r\n\t\t// \t}\r\n\r\n\t\t// },\r\n\r\n\t\tcheckButton(button){\r\n\t\t\tif(button == true){\r\n\t\t\t\treturn '<div class=\"task-btn-group\"><button type=\"button\" class=\"btn btn-primary\">Yes</button><button type=\"button\" class=\"btn btn-secondary\">No</button></div>'\r\n\t\t\t}\r\n\t\t},\r\n\r\n\t\taddTask(button){\r\n\t\t\tvar html = this.checkButton(button);\r\n\t\t\tthis.task.push({\r\n\t\t\t\ttitle : 'Condition' ,\r\n\t\t\t\tcontent : 'Is Condition True?',\r\n\t\t\t\tbutton : button,\r\n\t\t\t\thtml : html\r\n\t\t\t})\r\n\t\t},\r\n\t\tdeleteTask(){\r\n\t\t\tvar self = this;\r\n\t\t\tdocument.querySelector('.task:last-child').style.animation = \"vanishOut\";\r\n\t\t\tdocument.querySelector('.task:last-child').style.animationDuration = \"0.5s\";\r\n\r\n\t\t\tsetTimeout(function () {\r\n\t\t\t\tself.task.pop();\r\n\t\t\t}, 500);\r\n\t\t},\r\n\t\temptyTask(){\r\n\t\t\tthis.task = null;\r\n\t\t},\r\n\t\tupdateTask(){\r\n\t\t\t// this.$emit('input', \"this.task\");\r\n\t\t}\r\n\t},\r\n\r\n\tcomputed : {\r\n\r\n\t}\r\n}\r\n</script>\r\n<style type=\"text/css\">\r\nbody{\r\n\tfont-family: 'Open Sans';\r\n\tpadding: 30px;\r\n}\r\n.task{\r\n\tdisplay: block;\r\n\twidth: 300px;\r\n\tborder: 1px solid #DDDDDD;\r\n\tborder-radius: 5px;\r\n\ttext-align: center;\r\n\tmargin: 0 auto;\r\n\tbox-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\r\n\ttransition: .3s;\r\n\t-webkit-animation: fadeIn;\r\n\tanimation: fadeIn;\r\n\tanimation-duration: .5s;\r\n\tbackground: #fff;\r\n}\r\n.task:hover{\r\n\tbox-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);\r\n}\r\n.task-title{\r\n\tpadding: 5px 0;\r\n\tbackground: #F0F0F0;\r\n\tfont-weight: 600;\r\n}\r\n.task-content{\r\n\tpadding: 20px;\r\n}\r\n.task-btn-group{\r\n\tmargin-top: 20px;\r\n}\r\n.task-toolbar{\r\n\tmargin: 30px auto;\r\n\ttext-align: center;\r\n}\r\n.task-arrow{\r\n\tposition: relative;\r\n\t-webkit-animation: movingTopToBottom;\r\n\tanimation: movingTopToBottom;\r\n\tanimation-duration: .5s;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".c-scrim {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.541176);\n  opacity: 0;\n  transition: 200ms ease opacity;\n  will-change: opacity; }\n  .c-scrim--shown {\n    opacity: 1; }\n\n.c-datepicker {\n  min-height: 610px;\n  position: fixed;\n  left: 50%;\n  top: 45%;\n  transform: translate(-50%, -50%);\n  background: white;\n  border: 0;\n  width: 300px;\n  text-align: center;\n  -webkit-tap-highlight-color: transparent;\n  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.25), 0 10px 18px rgba(0, 0, 0, 0.22);\n  border-radius: 2px;\n  opacity: 0;\n  will-change: opacity;\n  transition: 200ms ease-in-out opacity, 200ms ease-in-out top; }\n  .c-datepicker--open {\n    opacity: 1;\n    top: 50%; }\n\n.c-datepicker__header {\n  position: relative; }\n\n.c-datepicker__header-day {\n  height: 32px;\n  background: #0097a7;\n  color: white;\n  line-height: 32px;\n  font-size: 12px;\n  font-weight: 200;\n  letter-spacing: 0.3px; }\n\n.c-datepicker__header::after {\n  content: \"\";\n  display: table;\n  clear: both; }\n\n.c-datepicker__header-date {\n  background: #00bcd4;\n  height: 150px;\n  padding: 16px 0; }\n\n.rd-month-label {\n  height: 56px;\n  line-height: 56px;\n  font-size: 14px;\n  font-weight: 800; }\n\n.c-datepicker__back, .c-datepicker__next, .c-datepicker__toggle {\n  position: absolute;\n  border: 0;\n  background: white;\n  font-family: 'Material Icons';\n  text-rendering: optimizeLegibility;\n  font-feature-settings: \"liga\" 1;\n  font-style: normal;\n  text-transform: none;\n  line-height: 1;\n  font-size: 24px;\n  width: 56px;\n  height: 56px;\n  display: inline-block;\n  overflow: hidden;\n  -webkit-font-smoothing: antialiased;\n  cursor: pointer; }\n  .c-datepicker__back:focus, .c-datepicker__next:focus, .c-datepicker__toggle:focus {\n    outline: 0; }\n\n.c-datepicker__back {\n  left: 0; }\n\n.c-datepicker__next {\n  right: 0; }\n\n.c-datepicker__back:before {\n  content: 'chevron_left'; }\n\n.c-datepicker__next:after {\n  content: 'chevron_right'; }\n\n.c-datepicker--show-time:after {\n  content: 'access_time';\n  color: white;\n  visibility: visible; }\n\n.c-datepicker--show-calendar:after {\n  content: 'grid_on';\n  color: white;\n  visibility: visible; }\n\n.c-datepicker__header-date span {\n  display: block;\n  color: white;\n  margin: 0;\n  transition: opacity 100ms ease-in-out; }\n\n.c-datepicker__header-date__month {\n  cursor: pointer;\n  font-size: 24px;\n  opacity: 0.6; }\n\n.c-datepicker__header-date__day {\n  cursor: pointer;\n  font-size: 64px;\n  opacity: 0.6; }\n\n.c-datepicker__header-date__time {\n  font-size: 25px;\n  opacity: 0.6; }\n  .c-datepicker__header-date__time > span {\n    display: inline-block; }\n\n.c-datepicker__header-date__hours, .c-datepicker__header-date__minutes {\n  cursor: pointer; }\n\n.c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time {\n  opacity: 1; }\n  .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__hours, .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__minutes {\n    opacity: .6; }\n    .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__hours.active, .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__minutes.active {\n      opacity: 1; }\n\n.c-datepicker--show-calendar.is-selected ~ .c-datepicker__header .c-datepicker__header-date__month, .c-datepicker--show-calendar.is-selected ~ .c-datepicker__header .c-datepicker__header-date__day {\n  opacity: 1; }\n\n.modal-btns {\n  padding: 20px;\n  position: absolute;\n  bottom: 0;\n  right: 0; }\n\n.c-datepicker__day-body {\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.8);\n  width: 36px;\n  height: 36px;\n  cursor: pointer;\n  position: relative; }\n  .c-datepicker__day-body:hover {\n    /* color: white; */ }\n\n.c-datepicker__day--selected::after {\n  content: \"\";\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  width: 35px;\n  height: 35px;\n  border-radius: 50%;\n  transform: translate(-50%, -50%);\n  background: rgba(0, 0, 0, 0.05); }\n\n.c-datepicker__day-head {\n  color: rgba(0, 0, 0, 0.54);\n  font-size: 12px;\n  height: 36px; }\n\n.c-datepicker__day-head, c-datepicker__day-body {\n  -webkit-tap-highlight-color: transparent; }\n\n.modal-btns {\n  float: right; }\n\n.c-btn {\n  display: inline-block;\n  min-width: 56px;\n  cursor: pointer; }\n\n.rd-day-prev-month {\n  opacity: 0.1;\n  pointer-events: none; }\n\n.rd-day-next-month {\n  opacity: 0.1;\n  pointer-events: none; }\n\n.c-datepicker__calendar {\n  height: 300px; }\n\n.c-datepicker__date {\n  position: absolute;\n  left: 0;\n  right: 0; }\n\n.c-datepicker__days {\n  margin: 10px 20px; }\n\n.c-datepicker__header-toggle {\n  position: absolute;\n  top: 50%;\n  color: white;\n  cursor: pointer; }\n  .c-datepicker__header-toggle i {\n    font-size: 26px; }\n\n.c-datepicker__header-toggle--left {\n  left: 20px; }\n\n.c-datepicker__header-toggle--right {\n  right: 20px; }\n\n.c-datepicker__header-toggle--inactive {\n  opacity: 0.2; }\n\n.c-datepicker__toggle {\n  top: 170px;\n  width: 36px;\n  height: 30px;\n  visibility: hidden;\n  opacity: 0.5;\n  z-index: 1;\n  transition: opacity 200ms ease-in-out; }\n\n.c-datepicker__toggle--right {\n  right: 10px; }\n\n.c-datepicker__toggle--left {\n  left: 10px; }\n\n.c-datepicker__toggle.is-selected {\n  opacity: 1; }\n\n.c-datepicker--show-time.is-selected ~ .c-datepicker__calendar {\n  display: none; }\n\n.c-datepicker--show-calendar.is-selected ~ .c-datepicker__clock {\n  display: none; }\n\n.c-datepicker__clock {\n  position: relative;\n  /* [1] */\n  width: 200px;\n  height: 200px;\n  padding: 0;\n  border-radius: 50%;\n  list-style: none;\n  /* [2] */\n  font-size: 14px;\n  line-height: 50px;\n  padding: 160px 0 20px 0;\n  margin: 0 auto; }\n  .c-datepicker__clock .c-datepicker__clock__num {\n    display: block;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    width: 50px;\n    height: 50px;\n    margin: -25px;\n    z-index: 98; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1) {\n      transform: rotate(0deg) translate(100px) rotate(-0deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(270deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(270deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2) {\n      transform: rotate(30deg) translate(100px) rotate(-30deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(300deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(300deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3) {\n      transform: rotate(60deg) translate(100px) rotate(-60deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(330deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(330deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4) {\n      transform: rotate(90deg) translate(100px) rotate(-90deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(360deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(360deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5) {\n      transform: rotate(120deg) translate(100px) rotate(-120deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(390deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(390deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6) {\n      transform: rotate(150deg) translate(100px) rotate(-150deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(420deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(420deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7) {\n      transform: rotate(180deg) translate(100px) rotate(-180deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(450deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(450deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8) {\n      transform: rotate(210deg) translate(100px) rotate(-210deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(480deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(480deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9) {\n      transform: rotate(240deg) translate(100px) rotate(-240deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(510deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(510deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10) {\n      transform: rotate(270deg) translate(100px) rotate(-270deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(540deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(540deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11) {\n      transform: rotate(300deg) translate(100px) rotate(-300deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(570deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(570deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12) {\n      transform: rotate(330deg) translate(100px) rotate(-330deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(600deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(600deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n  .c-datepicker__clock::before {\n    content: \"\";\n    position: absolute;\n    top: 70px;\n    left: -20px;\n    width: 240px;\n    height: 240px;\n    background: rgba(0, 0, 0, 0.05);\n    border-radius: 50%; }\n\n.u-hover-ball-effect, .c-datepicker__day-body, .c-datepicker__clock__num, .c-datepicker__clock__am-pm-toggle label {\n  position: relative;\n  cursor: pointer; }\n  .u-hover-ball-effect:before, .c-datepicker__day-body:before, .c-datepicker__clock__num:before, .c-datepicker__clock__am-pm-toggle label:before {\n    content: \"\";\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    width: 0%;\n    height: 0%;\n    border-radius: 50%;\n    transform: translate(-50%, -50%);\n    transition: width 100ms ease-in-out, height 100ms ease-in-out; }\n  .u-hover-ball-effect:hover, .c-datepicker__day-body:hover, .c-datepicker__clock__num:hover, .c-datepicker__clock__am-pm-toggle label:hover {\n    color: white; }\n    .u-hover-ball-effect:hover:before, .c-datepicker__day-body:hover:before, .c-datepicker__clock__num:hover:before, .c-datepicker__clock__am-pm-toggle label:hover:before {\n      background: #00bcd4;\n      width: 35px;\n      height: 35px;\n      z-index: -1; }\n\n.c-datepicker__day-body--active:not(.hide-hand), .c-datepicker__clock__num--active:not(.hide-hand) {\n  color: white; }\n  .c-datepicker__day-body--active:not(.hide-hand):before, .c-datepicker__clock__num--active:not(.hide-hand):before {\n    background: #00bcd4;\n    width: 35px;\n    height: 35px;\n    z-index: -1; }\n\n.c-datepicker__clock-hands {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%) rotate(180deg);\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  background: #0097a7; }\n\n.c-datepicker__hour-hand {\n  position: absolute;\n  opacity: 0;\n  height: 78px;\n  width: 2px;\n  background: #00bcd4;\n  left: 4px;\n  top: 10px; }\n\n.c-datepicker__clock__minutes {\n  display: none;\n  height: 200px;\n  margin: -69px 0 0 0;\n  width: 200px;\n  display: none; }\n  .c-datepicker__clock__minutes.active {\n    display: block; }\n\n.c-datepicker__clock__hours {\n  height: 200px;\n  margin: -69px 0 0 0;\n  width: 200px;\n  display: none; }\n  .c-datepicker__clock__hours.active {\n    display: block; }\n\n.c-datepicker__mask {\n  width: 127px;\n  height: 132px;\n  position: absolute;\n  top: 122px;\n  left: 37px;\n  z-index: 99; }\n  .c-datepicker__mask:after {\n    content: ' ';\n    width: 156px;\n    height: 70px;\n    display: block;\n    position: absolute;\n    top: 32px;\n    left: 0;\n    margin-left: -13px; }\n  .c-datepicker__mask:before {\n    content: ' ';\n    width: 75px;\n    height: 158px;\n    display: block;\n    position: absolute;\n    top: 6px;\n    left: 28px;\n    margin-top: -18px; }\n\n.c-datepicker__clock--show-minutes .c-datepicker__clock__minutes {\n  visibility: visible; }\n\n.c-datepicker__clock--show-minutes .c-datepicker__clock__hours {\n  visibility: hidden; }\n\n.c-datepicker__clock--show-hours .c-datepicker__clock__minutes {\n  visibility: hidden; }\n\n.c-datepicker__clock--show-hours .c-datepicker__clock__hours {\n  visibility: visible; }\n\n.c-datepicker__clock__am-pm-toggle {\n  position: absolute;\n  top: 0;\n  left: 10px;\n  right: 10px;\n  height: 40px;\n  padding: 20px;\n  line-height: 40px; }\n  .c-datepicker__clock__am-pm-toggle label {\n    width: 40px;\n    position: absolute; }\n    .c-datepicker__clock__am-pm-toggle label:nth-child(1) {\n      left: 0; }\n    .c-datepicker__clock__am-pm-toggle label:nth-child(2) {\n      right: 0; }\n    .c-datepicker__clock__am-pm-toggle label.c-datepicker__toggle--checked::after {\n      content: \"\";\n      position: absolute;\n      left: 50%;\n      top: 50%;\n      width: 0%;\n      height: 0%;\n      border-radius: 50%;\n      transform: translate(-50%, -50%);\n      width: 36px;\n      height: 36px;\n      z-index: -1;\n      background: rgba(0, 0, 0, 0.05); }\n", ""]);
 
 // exports
 
@@ -43739,7 +43711,7 @@ if (si) {
 }
 
 module.exports = tick;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(356).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(355).setImmediate))
 
 /***/ }),
 /* 303 */
@@ -43824,7 +43796,7 @@ module.exports = eventmap;
 "use strict";
 
 
-var isInput = __webpack_require__(12);
+var isInput = __webpack_require__(11);
 var bindings = {};
 
 function has (source, target) {
@@ -43879,10 +43851,10 @@ module.exports = {
 "use strict";
 
 
-var index = __webpack_require__(11);
+var index = __webpack_require__(10);
 var input = __webpack_require__(309);
 var inline = __webpack_require__(308);
-var isInput = __webpack_require__(12);
+var isInput = __webpack_require__(11);
 
 function core (elem, options) {
   var cal;
@@ -44369,7 +44341,7 @@ __webpack_require__(319);
 __webpack_require__(318);
 
 var core = __webpack_require__(306);
-var index = __webpack_require__(11);
+var index = __webpack_require__(10);
 var use = __webpack_require__(324);
 
 core.use = use.bind(core);
@@ -44466,8 +44438,8 @@ module.exports = use;
 "use strict";
 
 
-var index = __webpack_require__(11);
-var parse = __webpack_require__(13);
+var index = __webpack_require__(10);
+var parse = __webpack_require__(12);
 var association = __webpack_require__(305);
 
 function compareBuilder (compare) {
@@ -44812,7 +44784,7 @@ webpackContext.id = 326;
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(283);
+var content = __webpack_require__(284);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -45548,7 +45520,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "task-toolbar"
   }, [_c('button', {
-    staticClass: "btn btn-secondary",
+    staticClass: "btn btn-default btn-rounded",
     attrs: {
       "type": "button"
     },
@@ -45557,18 +45529,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.addTask(true)
       }
     }
-  }, [_vm._v("Add")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-secondary",
+  }, [_vm._v("Condition")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-default btn-rounded",
     attrs: {
       "type": "button"
-    },
-    on: {
-      "click": function($event) {
-        _vm.addTask(false)
-      }
     }
-  }, [_vm._v("Add (No action)")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-secondary",
+  }, [_vm._v("Send Email Action")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-default btn-rounded",
+    attrs: {
+      "type": "button"
+    }
+  }, [_vm._v("Update Field Value Action")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-default btn-rounded",
+    attrs: {
+      "type": "button"
+    }
+  }, [_vm._v("Create Activity Value Action")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-default btn-rounded",
+    attrs: {
+      "type": "button"
+    }
+  }, [_vm._v("Wait Action")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-default btn-rounded",
     attrs: {
       "type": "button"
     },
@@ -45576,7 +45558,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.deleteTask
     }
   }, [_vm._v("Delete")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-secondary",
+    staticClass: "btn btn-default btn-rounded",
     attrs: {
       "type": "button"
     },
@@ -45592,7 +45574,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "task-title"
     }, [_vm._v(" " + _vm._s(item.title))]), _vm._v(" "), _c('div', {
       staticClass: "task-content"
-    }, [_vm._v("\n\t\t\t\t" + _vm._s(item.content) + "\n\t\t\t\t"), _c('b', [_vm._v(_vm._s('[' + index + ']'))]), _vm._v(" "), _c('div', {
+    }, [_vm._v("\n\t\t\t\t" + _vm._s(item.content) + "\n\t\t\t\t"), _vm._v(" "), _c('div', {
       domProps: {
         "innerHTML": _vm._s(item.html)
       }
@@ -46414,37 +46396,11 @@ if (false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(284);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(9)("d9b990b2", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3361b67f\",\"scoped\":false,\"hasInlineConfig\":false}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TaskList.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3361b67f\",\"scoped\":false,\"hasInlineConfig\":false}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TaskList.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 351 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
 var content = __webpack_require__(285);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(9)("7e1aa470", content, false);
+var update = __webpack_require__(13)("7e1aa470", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -46460,7 +46416,7 @@ if(false) {
 }
 
 /***/ }),
-/* 352 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -46470,7 +46426,7 @@ var content = __webpack_require__(286);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(9)("e46444d8", content, false);
+var update = __webpack_require__(13)("e46444d8", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -46486,7 +46442,7 @@ if(false) {
 }
 
 /***/ }),
-/* 353 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -46496,7 +46452,7 @@ var content = __webpack_require__(287);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(9)("300fd200", content, false);
+var update = __webpack_require__(13)("300fd200", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -46512,7 +46468,7 @@ if(false) {
 }
 
 /***/ }),
-/* 354 */
+/* 353 */
 /***/ (function(module, exports) {
 
 /**
@@ -46545,7 +46501,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 355 */
+/* 354 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -46735,7 +46691,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 356 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -46788,13 +46744,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(357);
+__webpack_require__(356);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 357 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -46984,7 +46940,7 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(355)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(354)))
 
 /***/ })
 /******/ ]);
