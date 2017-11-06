@@ -32,7 +32,6 @@ export default {
 
     methods: {
         initDateTimePicker(){
-            this.disabled = "disabled"
             var Vue = this
             $("#datetimepicker4").datetimepicker({
                 format: 'MM-DD-YYYY hh:mm A Z'
@@ -45,6 +44,10 @@ export default {
 
         updateDateModel(data){
             this.$emit('input', data)
+        },
+
+        validationDate(time){
+            var arrayTime = split(" ")
         },
 
         change (value) {

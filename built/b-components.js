@@ -40701,7 +40701,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         initDateTimePicker() {
-            this.disabled = "disabled";
             var Vue = this;
             $("#datetimepicker4").datetimepicker({
                 format: 'MM-DD-YYYY hh:mm A Z'
@@ -40714,6 +40713,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         updateDateModel(data) {
             this.$emit('input', data);
+        },
+
+        validationDate(time) {
+            var arrayTime = split(" ");
         },
 
         change(value) {
@@ -41486,12 +41489,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var vm = this;
             var readonly = this.checkDisabled();
             this.tinymce = tinymce.init({
-                selector: '#mytextarea',
+                selector: '#bTinyMCE__Components',
                 readonly: readonly,
                 plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
                 toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
                 init_instance_callback: function (editor) {
-                    this.setContent(content);
+                    if (content != null || content != undefined) this.setContent(content);
                     editor.on('keyup', function (e) {
                         if (this.getContent() != "") {
                             if (document.querySelector('#label-tinyMCE').className != "active") document.querySelector('#label-tinyMCE').className = "active";
@@ -41511,7 +41514,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var vm = this;
             var readonly = this.checkDisabled();
             this.tinymce = tinymce.init({
-                selector: '#mytextarea',
+                selector: '#bTinyMCE__Components',
                 readonly: readonly,
                 plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
 
@@ -41584,7 +41587,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         getContentOutput() {
             tinymce.init({
-                selector: '#mytextarea',
+                selector: '#bTinyMCE__Components',
                 init_instance_callback: function (editor) {
                     this.contentOutPut = this.getContent();
                 }
@@ -41875,7 +41878,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, "\n.fl-wrap-input{\n\t/*border: 1px solid #dce1e4;*/\n\tposition: relative;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    box-sizing: border-box;\n    font-family: inherit;\n    -webkit-font-smoothing: antialiased;\n    font-weight: normal;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?7a5ae995"],"names":[],"mappings":";AAmBA;CACA,8BAAA;CACA,mBAAA;IACA,mCAAA;IACA,oCAAA;IACA,uBAAA;IACA,qBAAA;IACA,oCAAA;IACA,oBAAA;CACA","file":"TinyMCE.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 31/10/2017 -->\r\n<!-- Component: SummerNote -->\r\n\r\n<template>\r\n\t<div class=\"b__components b__summernote b-ios b-float-label minh class b__input 2\">\r\n\t\t<div class=\"fl-wrap fl-wrap-input fl-is-active fl-has-focus\">\r\n\t\t\t<label :class=\"classLabel\" id=\"label-tinyMCE\" >{{ label }}</label>\r\n\t\t\t<textarea id=\"mytextarea\"></textarea>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport TinyMCE from './../../components/TinyMCE'\r\n\texport default TinyMCE\r\n</script>\r\n\r\n<style type=\"text/css\">\r\n\t.fl-wrap-input{\r\n\t\t/*border: 1px solid #dce1e4;*/\r\n\t\tposition: relative;\r\n\t    text-rendering: optimizeLegibility;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    box-sizing: border-box;\r\n\t    font-family: inherit;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    font-weight: normal;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.fl-wrap-input{\n\t/*border: 1px solid #dce1e4;*/\n\tposition: relative;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    box-sizing: border-box;\n    font-family: inherit;\n    -webkit-font-smoothing: antialiased;\n    font-weight: normal;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?416a50d0"],"names":[],"mappings":";AAmBA;CACA,8BAAA;CACA,mBAAA;IACA,mCAAA;IACA,oCAAA;IACA,uBAAA;IACA,qBAAA;IACA,oCAAA;IACA,oBAAA;CACA","file":"TinyMCE.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 31/10/2017 -->\r\n<!-- Component: SummerNote -->\r\n\r\n<template>\r\n\t<div class=\"b__components b__summernote b-ios b-float-label minh class b__input 2\">\r\n\t\t<div class=\"fl-wrap fl-wrap-input fl-is-active fl-has-focus\">\r\n\t\t\t<label :class=\"classLabel\" id=\"label-tinyMCE\" >{{ label }}</label>\r\n\t\t\t<textarea id=\"bTinyMCE__Components\"></textarea>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport TinyMCE from './../../components/TinyMCE'\r\n\texport default TinyMCE\r\n</script>\r\n\r\n<style type=\"text/css\">\r\n\t.fl-wrap-input{\r\n\t\t/*border: 1px solid #dce1e4;*/\r\n\t\tposition: relative;\r\n\t    text-rendering: optimizeLegibility;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    box-sizing: border-box;\r\n\t    font-family: inherit;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    font-weight: normal;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -45805,7 +45808,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('textarea', {
     attrs: {
-      "id": "mytextarea"
+      "id": "bTinyMCE__Components"
     }
   })])])
 },staticRenderFns: []}
@@ -45892,6 +45895,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "text",
       "name": _vm.name,
       "disabled": _vm.disabled
+    },
+    on: {
+      "input": function($event) {
+        _vm.change($event.target.value)
+      }
     }
   })])
 },staticRenderFns: []}

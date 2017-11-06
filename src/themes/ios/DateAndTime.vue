@@ -11,7 +11,7 @@
 	</div> -->
 	<div class="b__datetime__picker b__components b-float-label">
 		<label :class="classLabel">{{ label }}</label>
-      	<input id="datetimepicker4" :placeholder="placeholder" type="text" ref="bInput" :name="name" :class="classes" :disabled="disabled">
+      	<input id="datetimepicker4" :placeholder="placeholder" type="text" ref="bInput" :name="name" :class="classes" :disabled="disabled" @input="change($event.target.value)">
 
 	</div>
 </template>

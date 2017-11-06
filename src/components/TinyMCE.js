@@ -39,7 +39,7 @@ export default {
             var vm = this
             var readonly = this.checkDisabled()
             this.tinymce = tinymce.init({
-                selector: '#mytextarea',
+                selector: '#bTinyMCE__Components',
                 readonly : readonly,
                 plugins: [
                     "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
@@ -47,7 +47,8 @@ export default {
                 ],
                 toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
                 init_instance_callback: function (editor) {
-                    this.setContent(content)
+                    if(content != null || content != undefined)
+                        this.setContent(content)
                     editor.on('keyup', function (e) {
                         if(this.getContent() != ""){
                             if( document.querySelector('#label-tinyMCE').className != "active" )
@@ -68,7 +69,7 @@ export default {
             var vm = this
             var readonly = this.checkDisabled()
             this.tinymce = tinymce.init({
-                selector: '#mytextarea',
+                selector: '#bTinyMCE__Components',
                 readonly : readonly,
                 plugins: [
                     "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
@@ -150,7 +151,7 @@ export default {
 
         getContentOutput(){
             tinymce.init({
-                selector: '#mytextarea',
+                selector: '#bTinyMCE__Components',
                 init_instance_callback: function (editor) {
                     this.contentOutPut = this.getContent()
                 }
