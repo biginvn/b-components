@@ -1,8 +1,12 @@
 <template>
 	<div class="b__components b-task">
 		<div class="task-toolbar">
-			<button type="button" class="btn btn-secondary" @click="addTask(true)">Add</button>
-			<button type="button" class="btn btn-secondary" @click="addTask(false)">Add (No action)</button>
+			<button type="button" class="btn btn-secondary" @click="addTask(true)">Condition</button>
+			<button type="button" class="btn btn-secondary">Send Email Action</button>
+			<button type="button" class="btn btn-secondary">Update Field Value Action</button>
+			<button type="button" class="btn btn-secondary">Create Activity Value Action</button>
+			<button type="button" class="btn btn-secondary">Wait Action</button>
+			<!-- <button type="button" class="btn btn-secondary" @click="addTask(false)">Add (No action)</button> -->
 			<button type="button" class="btn btn-secondary" @click="deleteTask">Delete</button>
 			<button type="button" class="btn btn-secondary" @click="emptyTask">Empty</button>
 		</div>
@@ -13,7 +17,6 @@
 					{{ item.content }}
 					<b>{{ '[' + index + ']'}}</b>
 					<div v-html="item.html"></div>
-					<!-- {{ item.html }} -->
 				</div>
 			</div>
 			<div class="task-arrow" style="text-align: center;" v-if = "index < task.length - 1 ">
@@ -30,92 +33,63 @@
 </template>
 <script>
 export default {
-	props : ['task'],
+	props : ['value'],
 	data () {
 		return {
-			// list :{
-			// 	task : [{
-			// 		// title : 'Condition',
-			// 		// content : 'If you are Gay?',
-			// 		// button : true,
-			// 		// html : ''
-			// 		title : null,
-			// 		content : null,
-			// 		button : true,
-			// 		html : null
-			// 	}]
-			// }
+			task : null
 		}
 	},
 
 	watch :{
-		task(){
-			// debugger;
-			if (this.task == undefined || this.task == null || this.task.length == 0){
-				alert('Is Null')
-			};
+		value(){
+			if (this.value == undefined || this.value == null || this.value.length == 0){
+				console.log('Array is NULL');
+			}; 
 		}
 	},
 
 	mounted(){
-		// this.haveButton();
+		this.task = this.value
 	},
 
 	methods : {
-		// haveButton(){
-		// 	for( let i = 0; i < this.task.length; i++ ){
-		// 		if(this.task[i].button == true){
-		// 			return this.task[i].html = '<div class="task-btn-group"><button type="button" class="btn btn-primary">Yes</button><button type="button" class="btn btn-secondary">No</button></div>'
-		// 		}
-		// 		else{
-		// 			return this.task[i].html = ''
-		// 		}
-		// 	}
-
-		// },
-
-		checkButton(button){
+		haveButton(button){
 			if(button == true){
-				return '<div class="task-btn-group"><button type="button" class="btn btn-primary">Yes</button><button type="button" class="btn btn-secondary">No</button></div>'
+				for (var i = 0; i < this.task.length; i++) {}
+					return '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#modal-task-' + i + '">Edit Condition</button></div>'
+				
 			}
 		},
-
 		addTask(button){
-			var html = this.checkButton(button);
+			var html = this.haveButton(button);
+			this.task = this.task ? this.task : [];
 			this.task.push({
 				title : 'Condition' ,
-				content : 'Is Condition True?',
+				content : 'Your Condition',
 				button : button,
 				html : html
 			})
+			this.$emit('input', this.task);
 		},
 		deleteTask(){
 			var self = this;
+			// console.log(JSON.stringify(self.task));
 			document.querySelector('.task:last-child').style.animation = "vanishOut";
 			document.querySelector('.task:last-child').style.animationDuration = "0.5s";
 
 			setTimeout(function () {
 				self.task.pop();
 			}, 500);
+			this.$emit('input', this.task);
 		},
 		emptyTask(){
-			this.task = null;
-		},
-		updateTask(){
-			// this.$emit('input', "this.task");
+			this.task = [];
+			this.$emit('input', this.task);
 		}
-	},
-
-	computed : {
-
 	}
 }
 </script>
 <style type="text/css">
-body{
-	font-family: 'Open Sans';
-	padding: 30px;
-}
 .task{
 	display: block;
 	width: 300px;
