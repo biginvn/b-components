@@ -398,7 +398,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE</h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" v-model="input.tinyMCE" :content="''"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="basic" v-model="input.tinyMCE" :content="''"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
@@ -472,6 +472,7 @@ var vm = new Vue({
             paramName : 'minh',
             method : 'POST'   
         },
+
         input: {
             name: 'Input your text...',
             checkbox          : [],
@@ -497,6 +498,9 @@ var vm = new Vue({
         tinyMCE: {
             content: "Tiny MCE Content"
         },
+
+        tinyMCEMode: 'basic',
+
         // imageList : [  // write by thien.nguyen
         //     {  path : "https://i.imgur.com/fCOeXej.jpg", id : "2", name: "name", show : true, buttonShow : false},
         //     {  path : "http://anh.eva.vn/upload/1-2016/images/2016-03-19/bich-phuong-idol-hanh-phuc-khi-lan-dau-tien-lam-giam-khao-ca-si-bich-phuong-lam-giam-khao-vong-so-tuyen-tai-da-nang-2-1458322889-width500height601.jpg", id : "3", name: "name", show : true, buttonShow : false},
@@ -577,6 +581,12 @@ var vm = new Vue({
             }
         ]
     },
+    method : {
+        changeTinyMCEMode(mode){
+            this.tinyMCEMode = mode
+        },
+    },
+
     template: '#main-page'
 });
 </script>
