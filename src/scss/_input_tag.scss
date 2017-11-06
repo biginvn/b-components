@@ -1,0 +1,55 @@
+	.b__component_input_tag_wrapper .b__component_input_tag {
+	    background-color: map-get($colors,primary);
+	    border-radius: 2px;
+	    border: 1px solid map-get($colors,primary-light);
+	    color: #fff;
+	    display: inline-block;
+	    font-size: 13px;
+	    font-weight: 400;
+	    margin-bottom: 4px;
+	    margin-right: 4px;
+	    margin-top: 8px;
+	    padding: 3px;
+	}
+	.b__component_input_tag_wrapper .new_tag {
+	    background: transparent;
+	    border: 0;
+	    color: #777;
+	    font-size: 13px;
+	    font-weight: 400;
+	    margin-bottom: 6px;
+	    margin-top: 1px;
+	    outline: none;
+	    padding: 0;
+	    padding-left: 0;
+	    width: auto;
+  	}
+	.b__component_input_tag_wrapper{
+	  	background-color: #fff;
+	    border: 1px solid #dfdfdf;
+	    overflow: hidden;
+	    padding: 0 18px;
+	    cursor: text;
+	    text-align: left;
+	    -webkit-appearance: textfield;
+	    width: 100%;
+	    outline: 0;
+	    line-height: 1.5;
+	    font-size: 19px;
+	    border-radius: 3px;
+	    box-sizing: border-box;
+	    transition: all .2s ease-in-out;
+	}
+	.b__component_input_tag_wrapper .b__component_input_tag .remove {
+	    cursor: pointer;
+	    font-weight: bold;
+	    color: #000;
+	}
+
+  	.b__component_input_tag_wrapper .b__component_input_tag .remove:hover {
+    	text-decoration: none;
+  	}
+
+  	.b__component_input_tag_wrapper .b__component_input_tag .remove::before {
+    	content: " x";
+  	}

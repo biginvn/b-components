@@ -98,6 +98,7 @@ figure {
 .header-menu-fixed{
 	position: fixed;
 	z-index: 10;
+	top: -10px;
 }
 .header-menu-fixed ul{
 	padding: 0 1.5em 0;

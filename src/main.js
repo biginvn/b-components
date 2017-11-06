@@ -17,7 +17,11 @@ import BToggle from './themes/ios/Toggle.vue'
 import BShowPassword from './themes/ios/ShowPassword.vue'
 import BDateTimePicker from './themes/ios/DateTimePicker.vue'
 import BUpload from './themes/ios/Upload.vue'
-import BTag from './themes/ios/Tag.vue'
+import BTaskList from './themes/ios/TaskList.vue'
+import BDateAndTime from './themes/ios/DateAndTime.vue'
+import BListUpLoaded from './themes/ios/ListUpLoaded.vue'
+import BTinymce from './themes/ios/TinyMCE.vue'
+import BInputTag from './themes/ios/Tag.vue'
 
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
@@ -34,4 +38,8 @@ Vue.component('BToggle', BToggle)
 Vue.component('BShowPassword', BShowPassword)
 Vue.component('BDateTimePicker', BDateTimePicker)
 Vue.component('BUpload', BUpload)
-Vue.component('BTag', BTag)
+Vue.component('BTaskList', BTaskList)
+Vue.component('BListUpLoaded', BListUpLoaded)
+Vue.component('BDateAndTime', BDateAndTime)
+Vue.component('BTinymce', BTinymce)
+Vue.component('BInputTag', BInputTag)

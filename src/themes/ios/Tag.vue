@@ -1,33 +1,22 @@
 <template>
-	<div class="b__components b__tag" @mouseleave = "switchList(false)" @click = "switchList(true)">
-		<div class="b__multi__select__control">
-			<div class="selected" v-if="!isSingle" v-for="item in getSelectedList()">
-				<span class="thumb" v-html="item.thumbHtml"></span>
-				<span class="close-item" @click = "toggleItem(item.id)"><i class="fa fa-times" aria-hidden="true"></i></span>
-			</div>
-			<div class="selected single" v-if="isSingle">
-				<span class="thumb" v-if = "getSingleSelected()!=null" v-html="getSingleSelected().thumbHtml"></span>
-			</div>
-			<div class="input-control-wrap" v-if = "!isSingle || getSingleSelected() == null "><input type="text" @keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')" @keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''" class="input-control" @focus = "focusInputAction($event.target.value)" @input = "searchAction($event.target.value)" :value = "searchKeyword"></div>
-			<div class="control" @click="toggleList()">
-				<i class="fa fa-angle-down" aria-hidden="true" v-show="!isExpanding"></i>
-				<i class="fa fa-angle-up" aria-hidden="true" v-show="isExpanding"></i>
-			</div>
+	<div class=" b-float-label">
+		
+		<div class="b__component_input_tag_wrapper ">
+			<label :class="classLabel">Input tag </label>
+			<span v-for="(tag,index) in tags" v-bind:key="index" class="b__component_input_tag">
+				<span>{{tag}} </span>
+				<a @click.prevent.stop="remove(index)" class="remove"></a>
+			</span>
+			
+			<input type="text"  name="input__tag" :placeholder="placeholder" v-model="newTag" class="new_tag" v-on:keydown.delete.stop="removeLastTag()" v-on:keydown.enter.188.tab.prevent.stop="addNewTag(newTag)" @paste="onPaste">
 		</div>
-
-		<ul :class="listClasses">
-			<li v-show = "searchList.length == 0" class="not-found">Not found</li>
-			<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }" v-for = "(item, index) in searchList" @click="toggleItem(item.id)">
-				<div class="icon" v-if = "!disableIcon">
-					<img :src="item.icon" class="icon-img">
-				</div>
-				<div class="content" v-html="item.html"></div>
-
-			</li>
-		</ul>
+		<div>
+			{{tags}}
+		</div>
 	</div>
 </template>
+
 <script>
-	import Tag from './../../components/Tag'
-	export default Tag
+	import InputTag from './../../components/Tag'
+	export default InputTag
 </script>

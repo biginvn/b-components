@@ -10,10 +10,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <!-- Plugins-->
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
+
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 
     <!-- Plugins-->
     <link href='built/b-components.min.css' rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- tinyMCE -->    
+    <script src="src/plugins/tinimce/tinymce.min.js"></script>
+    <!-- tinyMCE -->
+    
+    <!-- Jquery DateTimePicker-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+    <!-- Jquery DateTimePicker-->
 
     <!-- Dropzone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.css" />
@@ -162,13 +182,13 @@
                                 <h4 class="mb-3 panel-heading">Show/Hide Password</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-show-password name="minh" id="asdasd" type="email" class-name="minh class" v-model="input.name" placeholder="Input yout text" label="Label"></b-show-password>
+                                        <b-show-password name="minh" id="" type="email" class-name="minh class" v-model="input.name" placeholder="Input yout text" label="Label"></b-show-password>
                                     </p>
                                 </div>
                             </div>
                         </figure>
 
-                        <figure class="wow animated">
+                        <figure class="wow animated bounceInLeft">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Single Select</h4>
                                 <div class="panel-body">
@@ -181,6 +201,29 @@
                                         <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="Rashford" @click.native="input.singleSelect = 3"></b-button>
                                         <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Empty" @click.native="input.singleSelect = null"></b-button>
                                     </p>
+                                </div>
+                            </div>
+                        </figure>
+
+                        <figure class="wow animated bounceInLeft">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Input Tag</h4>
+                                <div class="panel-body">
+                                    <p>
+                                        <b-input-tag v-model="input.tags"></b-input-tag>
+                                    </p>
+                                </div>
+                            </div>
+                        </figure>
+
+                        <figure class="wow animated bounceInLeft">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Task List</h4>
+                                <div class="panel-body">
+                                    <p>
+                                        <b-task-list v-model="taskList"></b-task-list>
+                                    </p>
+                                    <p>{{ taskList }}</p>
                                 </div>
                             </div>
                         </figure>
@@ -240,144 +283,157 @@
                                     </p>
                                     <p>Result: {{ input.numericFormatted }}
                                         <br> Type: {{ typeof input.numericFormatted }}</p>
-                                    <div class="my-2">
-                                        <b-button type="button" class-name="button-primary" label="4321" @click.native="input.numericFormatted = 4321"></b-button>
-                                        <b-button type="button" class-name="button-danger button-solid" label="Null" @click.native="input.numericFormatted = 0"></b-button>
-                                    </div>
-                                    <div class="my-2">
-                                        <b-button type="button" class-name="button-success" label="VND" @click.native="affix = 'VND'"></b-button>
-                                        <b-button type="button" class-name="button-warn button-solid" label="EUR" @click.native="affix = '€'"></b-button>
-                                        <b-button type="button" class-name="button-primary button-solid" label="USA" @click.native="affix = '%'"></b-button>
-                                        <b-button type="button" class-name="button-success" label="%" @click.native="affix = '%'"></b-button>
-                                    </div>
-                                    <div class="my-2">
-                                        <b-button type="button" class-name="button-danger" label="Suffix" @click.native="prefixes = false"></b-button>
-                                        <b-button type="button" class-name="button-success" label="Prefix" @click.native="prefixes = true"></b-button>
-                                        <b-button type="button" class-name="button-warn" label="No Affix" @click.native="prefixes = undefined"></b-button>
+                                        <div class="my-2">
+                                            <b-button type="button" class-name="button-primary" label="4321" @click.native="input.numericFormatted = 4321"></b-button>
+                                            <b-button type="button" class-name="button-danger button-solid" label="Null" @click.native="input.numericFormatted = 0"></b-button>
+                                        </div>
+                                        <div class="my-2">
+                                            <b-button type="button" class-name="button-success" label="VND" @click.native="affix = 'VND'"></b-button>
+                                            <b-button type="button" class-name="button-warn button-solid" label="EUR" @click.native="affix = '€'"></b-button>
+                                            <b-button type="button" class-name="button-primary button-solid" label="USA" @click.native="affix = '%'"></b-button>
+                                            <b-button type="button" class-name="button-success" label="%" @click.native="affix = '%'"></b-button>
+                                        </div>
+                                        <div class="my-2">
+                                            <b-button type="button" class-name="button-danger" label="Suffix" @click.native="prefixes = false"></b-button>
+                                            <b-button type="button" class-name="button-success" label="Prefix" @click.native="prefixes = true"></b-button>
+                                            <b-button type="button" class-name="button-warn" label="No Affix" @click.native="prefixes = undefined"></b-button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </figure>
-                        <figure class="wow animated bounceInRight">
-                            <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Button</h4>
-                                <div class="panel-body">
-                                    <p>
-                                        <b-button type="button" class-name="button-primary" label="Primary"></b-button>
-                                        <b-button type="button" class-name="button-danger" label="Danger"></b-button>
-                                        <b-button type="button" class-name="button-success" label="Success"></b-button>
-                                        <b-button type="button" class-name="button-warn" label="Warn"></b-button>
-                                    </p>
-                                    <p>
-                                        <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-primary" label="Click me"></b-button>
-                                        <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-danger" label="Click me"></b-button>
-                                        <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-success" label="Click me"></b-button>
-                                        <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-warn" label="Click me"></b-button>
-                                    </p>
-                                    <p>
-                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="Solid"></b-button>
-                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="Solid"></b-button>
-                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Solid"></b-button>
-                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-warn button-solid" label="Solid"></b-button>
-                                    </p>
+                            </figure>
+                            <figure class="wow animated bounceInRight">
+                                <div class="panel-border">
+                                    <h4 class="mb-3 panel-heading">Button</h4>
+                                    <div class="panel-body">
+                                        <p>
+                                            <b-button type="button" class-name="button-primary" label="Primary"></b-button>
+                                            <b-button type="button" class-name="button-danger" label="Danger"></b-button>
+                                            <b-button type="button" class-name="button-success" label="Success"></b-button>
+                                            <b-button type="button" class-name="button-warn" label="Warn"></b-button>
+                                        </p>
+                                        <p>
+                                            <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-primary" label="Click me"></b-button>
+                                            <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-danger" label="Click me"></b-button>
+                                            <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-success" label="Click me"></b-button>
+                                            <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-warn" label="Click me"></b-button>
+                                        </p>
+                                        <p>
+                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="Solid"></b-button>
+                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="Solid"></b-button>
+                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Solid"></b-button>
+                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-warn button-solid" label="Solid"></b-button>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </figure>
+                            </figure>
 
-                        <figure class="wow animated bounceInRight">
-                            <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Tag</h4>
-                                <div class="panel-body">
-                                    <p>
-                                        <v-select v-model="tag" label="Select a favorite activity or create a new one" chips tags :items="tagItems" ></v-select>
-                                    </p>
-                                    <p>{{ input.toggle }}</p>
-                                    <p>
-                                        <div class="mt-2 mb-4">
-                                            <div class="my-1"><b>Choose Color:</b></div>
-                                            <div class="choose-color-box">
-                                                <div class="choose-color rounded-circle color-danger" @click="color_style='toggle__danger'"></div>
-                                                <div class="choose-color rounded-circle color-success" @click="color_style='toggle__success'"></div>
-                                                <div class="choose-color rounded-circle color-warn" @click="color_style='toggle__warn'"></div>
-                                                <div class="choose-color rounded-circle color-primary" @click="color_style='toggle__primary'"></div>
+                            <figure class="wow animated bounceInRight">
+                                <div class="panel-border">
+                                    <h4 class="mb-3 panel-heading">Toggle</h4>
+                                    <div class="panel-body">
+                                        <p>
+                                            <b-toggle text-on="List View" text-off="Detail View" v-model="input.toggle" :effect="effect" :color_style="color_style"></b-toggle>
+                                        </p>
+                                        <p>{{ input.toggle }}</p>
+                                        <p>
+                                            <div class="mt-2 mb-4">
+                                                <div class="my-1"><b>Choose Color:</b></div>
+                                                <div class="choose-color-box">
+                                                    <div class="choose-color rounded-circle color-danger" @click="color_style='toggle__danger'"></div>
+                                                    <div class="choose-color rounded-circle color-success" @click="color_style='toggle__success'"></div>
+                                                    <div class="choose-color rounded-circle color-warn" @click="color_style='toggle__warn'"></div>
+                                                    <div class="choose-color rounded-circle color-primary" @click="color_style='toggle__primary'"></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="my-2">
-                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="true" @click.native="input.toggle=true"></b-button>
-                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="false" @click.native="input.toggle=false"></b-button>
-                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Null" @click.native="input.toggle= null"></b-button>
-                                        </div>
-                                        <div class="my-2">
-                                            <b-button type="button" class-name="button-danger" label="Flip" @click.native="effect = 'toggle__flip'"></b-button>
-                                            <b-button type="button" class-name="button-success" label="Circle" @click.native="effect = 'toggle__circle'"></b-button>
-                                            <b-button type="button" class-name="button-warn" label="Skewed" @click.native="effect = 'toggle__skewed'"></b-button>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </figure>
-
-
-                        <figure class="wow animated bounceInRight">
-                            <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Toggle</h4>
-                                <div class="panel-body">
-                                    <p>
-                                        <b-toggle text-on="List View" text-off="Detail View" v-model="input.toggle" :effect="effect" :color_style="color_style"></b-toggle>
-                                    </p>
-                                    <p>{{ input.toggle }}</p>
-                                    <p>
-                                        <div class="mt-2 mb-4">
-                                            <div class="my-1"><b>Choose Color:</b></div>
-                                            <div class="choose-color-box">
-                                                <div class="choose-color rounded-circle color-danger" @click="color_style='toggle__danger'"></div>
-                                                <div class="choose-color rounded-circle color-success" @click="color_style='toggle__success'"></div>
-                                                <div class="choose-color rounded-circle color-warn" @click="color_style='toggle__warn'"></div>
-                                                <div class="choose-color rounded-circle color-primary" @click="color_style='toggle__primary'"></div>
+                                            <div class="my-2">
+                                                <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="true" @click.native="input.toggle=true"></b-button>
+                                                <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="false" @click.native="input.toggle=false"></b-button>
+                                                <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Null" @click.native="input.toggle= null"></b-button>
                                             </div>
-                                        </div>
-                                        <div class="my-2">
-                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="true" @click.native="input.toggle=true"></b-button>
-                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="false" @click.native="input.toggle=false"></b-button>
-                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Null" @click.native="input.toggle= null"></b-button>
-                                        </div>
-                                        <div class="my-2">
-                                            <b-button type="button" class-name="button-danger" label="Flip" @click.native="effect = 'toggle__flip'"></b-button>
-                                            <b-button type="button" class-name="button-success" label="Circle" @click.native="effect = 'toggle__circle'"></b-button>
-                                            <b-button type="button" class-name="button-warn" label="Skewed" @click.native="effect = 'toggle__skewed'"></b-button>
-                                        </div>
-                                    </p>
+                                            <div class="my-2">
+                                                <b-button type="button" class-name="button-danger" label="Flip" @click.native="effect = 'toggle__flip'"></b-button>
+                                                <b-button type="button" class-name="button-success" label="Circle" @click.native="effect = 'toggle__circle'"></b-button>
+                                                <b-button type="button" class-name="button-warn" label="Skewed" @click.native="effect = 'toggle__skewed'"></b-button>
+                                            </div>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </figure>
-                        <figure class="wow animated bounceInRight">
-                            <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Multi Select</h4>
-                                <div class="panel-body">
-                                    <p>
-                                        <b-multi-select :list="listMultiSelect" v-model="input.multiSelect"></b-multi-select>
-                                    </p>
-                                    <p>{{ input.multiSelect }}</p>
-                                    <p>
-                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="Only 1" @click.native="input.multiSelect= [1]"></b-button>
-                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="Select all" @click.native="input.multiSelect= [1,2,3,4,5]"></b-button>
-                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Empty" @click.native="input.multiSelect= []"></b-button>
-                                    </p>
+                            </figure>
+                            <figure class="wow animated bounceInRight">
+                                <div class="panel-border">
+                                    <h4 class="mb-3 panel-heading">Multi Select</h4>
+                                    <div class="panel-body">
+                                        <p>
+                                            <b-multi-select :list="listMultiSelect" v-model="input.multiSelect"></b-multi-select>
+                                        </p>
+                                        <p>{{ input.multiSelect }}</p>
+                                        <p>
+                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="Only 1" @click.native="input.multiSelect= [1]"></b-button>
+                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="Select all" @click.native="input.multiSelect= [1,2,3,4,5]"></b-button>
+                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Empty" @click.native="input.multiSelect= []"></b-button>
+                                        </p>
+                                    </div>
                                 </div>
+                            </figure>
+
+                            <figure class="wow animated bounceInRight">
+                                <div class="panel-border">
+                                    <h4 class="mb-3 panel-heading">Upload</h4>
+                                    <div class="panel-body">
+                                        <p>
+                                            <b-upload name="upload-document" id="uploadTest" :config="uploadConfig"></b-upload>
+                                        </p>
+                                    </div>
                             </div>
                         </figure>
 
+                        <figure class="wow animated bounceInRight">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">List Uploaded</h4>
+                                <div class="panel-body">
+                                    <p>
+                                       <b-list-up-loaded v-model="input.listUploaded" :list="listUpload" ></b-list-up-loaded>
+                                        <b-button type="button" class-name="button-warn" label="Delete All" @click.native="input.listUploaded = null"></b-button>
+                                    </p>
+                                    <p v-for="item in input.imageGallery">ID: {{ item.id }}</p>
+                                </div>
+                                <div class="panel-body">
+                                    Parameters passed to:
+                                    variable : [{ <br>
+                                        id          : require, <br>
+                                        path        : require, <br>
+                                        name        : no force, <br>
+                                        className   : no force  <br>
+                                    }]
+                                </div>
+                            </div>
+                        </figure>
                         <figure class="wow animated">
                             <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Upload</h4>
+                                <h4 class="mb-3 panel-heading">Tiny MCE</h4>
                                 <div class="panel-body">
-                                    <p>
-                                        <b-upload name="upload-document" id="uploadTest" :config="uploadConfig"></b-upload>
-                                    </p>
+                                    <b-tinymce label="CONTENT" mode="basic" v-model="input.tinyMCE"></b-tinymce>
+                                </div>
+                                <div class="panel-body">
+                                    <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
+                                    <b-button type="button" class-name="button-warn" label="Delete Content" @click.native="input.tinyMCE = ''"></b-button>
+                                </div>
+                                <div class="panel-body">
+                                    v-model data: {{ input.tinyMCE }}
                                 </div>
                             </div>
                         </figure>
-
+                        <figure class="wow animated">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Date Time Picker 2.0</h4>
+                                <div class="panel-body">
+                                    <b-date-and-time  label="Date & Time" v-model="input.dateAndTime"></b-date-and-time>
+                                </div>
+                                <div class="panel-body">
+                                    v-model data: {{ input.dateAndTime }}
+                                </div>
+                            </div>
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -396,7 +452,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="profile-thumbnail"><img class="thumbnail-center" src="https://avatars3.githubusercontent.com/u/29373028?v=4&s=460"></div>
+                    <div class="profile-thumbnail"><a href="https://www.facebook.com/aquarius.love.allgirl" alt="Hot Boy of Bigin Company"><img class="thumbnail-center" src="https://avatars3.githubusercontent.com/u/29373028?v=4&s=460"></a></div>
                     <div class="profile-content">
                         <div class="profile-name">Truong Nhat Minh</div>
                         <div class="profile-job">Creator</div>
@@ -442,69 +498,104 @@ var vm = new Vue({
         uploadConfig: { 
             url: 'upload-documents',
             paramName : 'minh',
-            method : 'POST'
-            
+            method : 'POST'   
         },
+
         input: {
             name: 'Input your text...',
-            checkbox: [],
-            checkboxByValue: null,
-            radio: null,
-            switch: [],
-            switchBool: true,
-            select: null,
-            textarea: null,
-            rating: null,
-            datePicker: null,
-            numericFormatted: null,
-            zipCode: null,
-            multiSelect: null,
-            singleSelect: null,
-            toggle: false
+            checkbox          : [],
+            checkboxByValue   : null,
+            radio             : null,
+            switch            : [],
+            switchBool        : true,
+            select            : null,
+            textarea          : null,
+            rating            : null,
+            datePicker        : null,
+            numericFormatted  : null,
+            zipCode           : null,
+            multiSelect       : null,
+            singleSelect      : null,
+            toggle            : false,
+            listUploaded      : null,
+            dateAndTime       : null,
+            task              : null,
+            tinyMCE           : null,
+            tags: []
         },
-        list: [
-            { code: 'VN', name: 'Viet Nam' },
-            { code: 'USA', name: 'United States' },
-            { code: 'CAM', name: 'Campuchia' }
-        ],
+        tinyMCE: {
+            content  : "Tiny MCE Content",
+            mode     : 'basic',
+            disabled : ''
+        },
 
+
+        listUpload : [
+            {
+                id   :"1",
+                path : "https://i.imgur.com/fCOeXej.jpg",
+            },
+            {
+                id   :"2",
+                path : "https://i.imgur.com/fCOeXej.mp4",
+            },
+            {
+                id   :"3",
+                path : "https://i.imgur.com/fCOeXej.docx",
+            },
+        ],
+        taskList: [
+        { title : 'Condition', content : 'Your Condition', button : true, html : '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded">Edit Condition</button></div>'},
+        { title : 'Condition', content : 'Your Condition', button : false, html : ''},
+        { title : 'Condition', content : 'Your Condition', button : true, html : '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded">Edit Condition</button></div>'}
+
+        ],
+        list: [
+        { code: 'VN', name: 'Viet Nam' },
+        { code: 'USA', name: 'United States' },
+        { code: 'CAM', name: 'Campuchia' }
+        ],
         listMultiSelect: [{
-                id: 1,
-                html: '<p>Xabi Alonso</p><p class="club">Bayern Munich</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
-                keywords: 'Xabi Alonso',
-                thumbHtml: 'Alonso',
-                icon: 'https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/x/xab/large/900.png'
-            },
-            {
-                id: 2,
-                keywords: 'Serio Busquests',
-                html: '<p>Serio Busquests</p><p class="club">Barca</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
-                thumbHtml: 'Busquests',
-                icon: 'https://media-public.fcbarcelona.com/20157/0/document_thumbnail/20197/78/103/254/50227022/1.0-1/50227022.jpg'
-            },
-            {
-                id: 3,
-                keywords: 'Rashford',
-                html: '<p>Rashford</p><p class="club">Manchester United</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
-                thumbHtml: 'Rashford',
-                icon: 'https://i.imgur.com/2ukdYux.png'
-            },
-            {
-                id: 4,
-                keywords: 'Hazard',
-                html: '<p>Hazard</p><p class="club">Chelsea</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
-                thumbHtml: 'Eden Hazard',
-                icon: 'https://yt3.ggpht.com/-qAmaI4blHow/AAAAAAAAAAI/AAAAAAAAAAA/ow6gtUrpzps/s48-c-k-no-mo-rj-c0xffffff/photo.jpg'
-            },
-            {
-                id: 5,
-                keywords: 'Xuan Truong Luong',
-                html: '<p>Xuan Truong Luong</p><p class="club">Hoang Anh Gia Lai</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
-                thumbHtml: 'Xuan Truong',
-                icon: 'http://image.thanhnien.vn/uploaded/lanphuong/2016_03_11/xuantruongdeptrainhutraihanquoc_rkdz.jpg?width=500&encoder=wic&subsampling=444'
-            }
+            id: 1,
+            html: '<p>Xabi Alonso</p><p class="club">Bayern Munich</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+            keywords: 'Xabi Alonso',
+            thumbHtml: 'Alonso',
+            icon: 'https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/x/xab/large/900.png'
+        },
+        {
+            id: 2,
+            keywords: 'Serio Busquests',
+            html: '<p>Serio Busquests</p><p class="club">Barca</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+            thumbHtml: 'Busquests',
+            icon: 'https://media-public.fcbarcelona.com/20157/0/document_thumbnail/20197/78/103/254/50227022/1.0-1/50227022.jpg'
+        },
+        {
+            id: 3,
+            keywords: 'Rashford',
+            html: '<p>Rashford</p><p class="club">Manchester United</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+            thumbHtml: 'Rashford',
+            icon: 'https://i.imgur.com/2ukdYux.png'
+        },
+        {
+            id: 4,
+            keywords: 'Hazard',
+            html: '<p>Hazard</p><p class="club">Chelsea</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+            thumbHtml: 'Eden Hazard',
+            icon: 'https://yt3.ggpht.com/-qAmaI4blHow/AAAAAAAAAAI/AAAAAAAAAAA/ow6gtUrpzps/s48-c-k-no-mo-rj-c0xffffff/photo.jpg'
+        },
+        {
+            id: 5,
+            keywords: 'Xuan Truong Luong',
+            html: '<p>Xuan Truong Luong</p><p class="club">Hoang Anh Gia Lai</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+            thumbHtml: 'Xuan Truong',
+            icon: 'http://image.thanhnien.vn/uploaded/lanphuong/2016_03_11/xuantruongdeptrainhutraihanquoc_rkdz.jpg?width=500&encoder=wic&subsampling=444'
+        }
         ]
     },
+    method : {
+
+    },
+
     template: '#main-page'
 });
 </script>
@@ -649,10 +740,10 @@ $('a[href*="#"]')
         if (
             location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
             location.hostname == this.hostname
-        ) {
+            ) {
             // Figure out element to scroll to
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
             // Does a scroll target exist?
             if (target.length) {
                 // Only prevent default if animation is actually gonna happen
