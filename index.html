@@ -400,23 +400,9 @@
                                         className   : no force  <br>
                                     }]
                                 </div>
-                            </figure>
-
-                            <figure class="wow animated bounceInRight">
-                                <div class="panel-border">
-                                    <h4 class="mb-3 panel-heading">Image Gallery</h4>
-                                    <div class="panel-body">
-                                        <p>
-                                           <b-list-up-loaded v-model="input.listUploaded" :list="listUpload" ></b-list-up-loaded>
-                                           <b-button type="button" class-name="button-warn" label="Delete All" @click.native="input.listUploaded = null"></b-button>
-                                       </p>
-                                       <p v-for="item in input.imageGallery">ID: {{ item.id }}</p>
-                                   </div>
-                                   <div class="panel-body">
-                                   </div>
-                               </div>
-                           </figure>
-                           <figure class="wow animated">
+                            </div>
+                        </figure>
+                        <figure class="wow animated">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE</h4>
                                 <div class="panel-body">
