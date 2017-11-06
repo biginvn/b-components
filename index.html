@@ -15,7 +15,6 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
 
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-
     <!-- Plugins-->
     <link href='built/b-components.min.css' rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -25,6 +24,15 @@
     <!-- tinyMCE -->    
     <script src="src/plugins/tinimce/tinymce.min.js"></script>
     <!-- tinyMCE -->
+    <!-- Jquery DateTimePicker-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+    <!-- Jquery DateTimePicker-->
 
     <!-- Dropzone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.css" />
@@ -168,7 +176,7 @@
                                 <h4 class="mb-3 panel-heading">Show/Hide Password</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-show-password name="minh" id="asdasd" type="email" class-name="minh class" v-model="input.name" placeholder="Input yout text" label="Label"></b-show-password>
+                                        <b-show-password name="minh" id="" type="email" class-name="minh class" v-model="input.name" placeholder="Input yout text" label="Label"></b-show-password>
                                     </p>
                                 </div>
                             </div>
@@ -392,27 +400,13 @@
                                         className   : no force  <br>
                                     }]
                                 </div>
-                            </figure>
-
-                            <figure class="wow animated bounceInRight">
-                                <div class="panel-border">
-                                    <h4 class="mb-3 panel-heading">Image Gallery</h4>
-                                    <div class="panel-body">
-                                        <p>
-                                           <b-list-up-loaded v-model="input.listUploaded" :list="listUpload" ></b-list-up-loaded>
-                                           <b-button type="button" class-name="button-warn" label="Delete All" @click.native="input.listUploaded = null"></b-button>
-                                       </p>
-                                       <p v-for="item in input.imageGallery">ID: {{ item.id }}</p>
-                                   </div>
-                                   <div class="panel-body">
-                                   </div>
-                               </div>
-                           </figure>
-                           <figure class="wow animated">
+                            </div>
+                        </figure>
+                        <figure class="wow animated">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE</h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" mode="basic" v-model="input.tinyMCE" :content="''"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="basic" v-model="input.tinyMCE"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
@@ -423,7 +417,17 @@
                                 </div>
                             </div>
                         </figure>
-
+                        <figure class="wow animated">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Date Time Picker 2.0</h4>
+                                <div class="panel-body">
+                                    <b-date-and-time  label="Date & Time" v-model="input.dateAndTime"></b-date-and-time>
+                                </div>
+                                <div class="panel-body">
+                                    v-model data: {{ input.dateAndTime }}
+                                </div>
+                            </div>
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -510,42 +514,25 @@ var vm = new Vue({
             tags: []
         },
         tinyMCE: {
-            content: "Tiny MCE Content"
+            content  : "Tiny MCE Content",
+            mode     : 'basic',
+            disabled : ''
         },
 
-        tinyMCEMode: 'basic',
 
-        // imageList : [  // write by thien.nguyen
-        //     {  path : "https://i.imgur.com/fCOeXej.jpg", id : "2", name: "name", show : true, buttonShow : false},
-        //     {  path : "http://anh.eva.vn/upload/1-2016/images/2016-03-19/bich-phuong-idol-hanh-phuc-khi-lan-dau-tien-lam-giam-khao-ca-si-bich-phuong-lam-giam-khao-vong-so-tuyen-tai-da-nang-2-1458322889-width500height601.jpg", id : "3", name: "name", show : true, buttonShow : false},
-        //     {  path : "https://i.imgur.com/fCOeXej.jpg", id : "4", name: "name", show : true, buttonShow : false},
-        //     {  path : "http://anh.eva.vn/upload/1-2016/images/2016-03-19/bich-phuong-idol-hanh-phuc-khi-lan-dau-tien-lam-giam-khao-ca-si-bich-phuong-lam-giam-khao-vong-so-tuyen-tai-da-nang-2-1458322889-width500height601.jpg", id : "1", name: "name",show : true, buttonShow : false},
-        //     {  path : "https://i.imgur.com/fCOeXej.jpg", id : "6", name: "name", show : true, buttonShow : false},
-        //     {  path : "http://anh.eva.vn/upload/1-2016/images/2016-03-19/bich-phuong-idol-hanh-phuc-khi-lan-dau-tien-lam-giam-khao-ca-si-bich-phuong-lam-giam-khao-vong-so-tuyen-tai-da-nang-2-1458322889-width500height601.jpg", id : "5", name: "name", show : true, buttonShow : false}
-        // ], 
-        // imageSize : { 
-        //     width: "145", 
-        //     height: "145" 
-        // },
         listUpload : [
-        {
-            id   :"1",
-            path : "https://i.imgur.com/fCOeXej.jpg",
-            name : "19391503_170451653493469_1632177749613346816_n.jpg",
-            size : 865535,
-        },
-        {
-            id   :"2",
-            path : "https://i.imgur.com/fCOeXej.mp4",
-            name : "19391503_170451653493469_1632177749613346816_n.MP4",
-            size : 865535,
-        },
-        {
-            id   :"3",
-            path : "https://i.imgur.com/fCOeXej.docx",
-            name : "19391503_170451653493469_1632177749613346816_n.docx",
-            size : 865535,
-        },
+            {
+                id   :"1",
+                path : "https://i.imgur.com/fCOeXej.jpg",
+            },
+            {
+                id   :"2",
+                path : "https://i.imgur.com/fCOeXej.mp4",
+            },
+            {
+                id   :"3",
+                path : "https://i.imgur.com/fCOeXej.docx",
+            },
         ],
         taskList: [
         { title : 'Condition', content : 'Your Condition', button : true, html : '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded">Edit Condition</button></div>'},

@@ -37,8 +37,10 @@ export default {
 
         initTinyMCEBasicMode(content){
             var vm = this
+            var readonly = this.checkDisabled()
             this.tinymce = tinymce.init({
                 selector: '#mytextarea',
+                readonly : readonly,
                 plugins: [
                     "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
                     "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
@@ -64,8 +66,10 @@ export default {
 
         initTinyMCEAdvanceMode(content){
             var vm = this
+            var readonly = this.checkDisabled()
             this.tinymce = tinymce.init({
                 selector: '#mytextarea',
+                readonly : readonly,
                 plugins: [
                     "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
                     "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
@@ -155,14 +159,15 @@ export default {
         },
 
         updateContent(data){
-            //  tinymce.activeEditor.remove('#mytextarea')
-            //  tinymce.init({
-            //     selector: '#mytextarea',
-            //     init_instance_callback: function (editor) {
-            //     }
-            // })
             tinymce.activeEditor.setContent(data);
             return this.$emit('input', data)
+        },
+
+        checkDisabled(){
+            if(this.disabled == "disabled")
+                return 1
+            else
+                return 0
         },
 
         update(data) {
