@@ -12,8 +12,7 @@
 						<img v-if="item.className != 'preview'" data-dz-thumbnail="" :src="item.path">
 						<img v-else data-dz-thumbnail="">
 					</div> 
-					<span data-dz-name="" class="dz-name">{{ item.name }}</span>
-					<span data-dz-size="" class="dz-size"><strong>{{ item.size }}</strong> MB</span> 
+					<a :href="item.path"><span data-dz-name="" class="dz-name">{{ item.name }}</span></a>
 					<a data-dz-remove="" class="remove-archive" @click="deleteThisImage(item.id)"><i class="fa fa-trash-o"></i></a>
 				</div>
 			</div>
