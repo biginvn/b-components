@@ -344,7 +344,6 @@
                                         </p>
                                     </div>
                                 </div>
-<<<<<<< HEAD
                             </figure>
                             <figure class="wow animated bounceInRight">
                                 <div class="panel-border">
@@ -371,7 +370,6 @@
                                             <b-upload name="upload-document" id="uploadTest" :config="uploadConfig"></b-upload>
                                         </p>
                                     </div>
-=======
                             </div>
                         </figure>
 
@@ -393,7 +391,6 @@
                                         name        : no force, <br>
                                         className   : no force  <br>
                                     }]
->>>>>>> 9f56a6c2d23e52fb7f5718b1c43141e020c6d63d
                                 </div>
                             </figure>
 
@@ -477,44 +474,6 @@
     </footer>
 </body>
 <script>
-<<<<<<< HEAD
-    var vm = new Vue({
-        el: '#app',
-        data: {
-            effect: 'toggle__circle',
-            color_style: 'toggle__danger',
-            prefixes: true,
-            affix: "$",
-            uploadConfig: { 
-                url: 'upload-documents',
-                paramName : 'minh',
-                method : 'POST'   
-            },
-            input: {
-                name: 'Input your text...',
-                checkbox          : [],
-                checkboxByValue   : null,
-                radio             : null,
-                switch            : [],
-                switchBool        : true,
-                select            : null,
-                textarea          : null,
-                rating            : null,
-                datePicker        : null,
-                numericFormatted  : null,
-                zipCode           : null,
-                multiSelect       : null,
-                singleSelect      : null,
-                toggle            : false,
-                listUploaded      : null,
-                dateAndTime       : null,
-                task              : null,
-                tinyMCE           : null 
-            },
-            tinyMCE: {
-                content: "Tiny MCE Content"
-            },
-=======
 var vm = new Vue({
     el: '#app',
     data: {
@@ -556,7 +515,6 @@ var vm = new Vue({
 
         tinyMCEMode: 'basic',
 
->>>>>>> 9f56a6c2d23e52fb7f5718b1c43141e020c6d63d
         // imageList : [  // write by thien.nguyen
         //     {  path : "https://i.imgur.com/fCOeXej.jpg", id : "2", name: "name", show : true, buttonShow : false},
         //     {  path : "http://anh.eva.vn/upload/1-2016/images/2016-03-19/bich-phuong-idol-hanh-phuc-khi-lan-dau-tien-lam-giam-khao-ca-si-bich-phuong-lam-giam-khao-vong-so-tuyen-tai-da-nang-2-1458322889-width500height601.jpg", id : "3", name: "name", show : true, buttonShow : false},
@@ -590,9 +548,9 @@ var vm = new Vue({
         },
         ],
         taskList: [
-        { title : 'Condition', content : 'If you are Girl?', button : true, html : 'aaaa'},
-        { title : 'Condition', content : 'If you are Boy?', button : true, html : ''},
-        { title : 'Condition', content : 'If you are Gay?', button : true, html : ''}
+        { title : 'Condition', content : 'Your Condition', button : true, html : '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded>Edit Condition</button></div>'},
+        { title : 'Condition', content : 'Your Condition', button : true, html : ''},
+        { title : 'Condition', content : 'Your Condition', button : true, html : '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded>Edit Condition</button></div>'}
 
         ],
         list: [

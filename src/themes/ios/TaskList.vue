@@ -15,7 +15,7 @@
 				<div class="task-title"> {{ item.title }}</div>
 				<div class="task-content">
 					{{ item.content }}
-					<b>{{ '[' + index + ']'}}</b>
+					<!-- <b>{{ '[' + index + ']'}}</b> -->
 					<div v-html="item.html"></div>
 				</div>
 			</div>
