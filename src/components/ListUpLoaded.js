@@ -52,13 +52,17 @@ export default {
 
 			let items = [];
 			for(let i=0; i < list.length; i++){
-				let listItem = list[i];    
-                var className = this.getClassByPath(listItem.path)
+				let listItem = list[i];   
+                let className 
+                if( listItem.className != null || listItem.className != undefined )
+                    className = listItem.className
+                else
+                    className = this.getClassByPath(listItem.path)
+                let name = this.getNameByPath(listItem.path)
 				let item = {
                     id         : listItem.id, 
                     path       : listItem.path,
-                    name       : listItem.name,
-                    size       : listItem.size,
+                    name       : name,
 					path       : listItem.path,
                     className  : className,
 				}
@@ -80,6 +84,11 @@ export default {
                 return itemClass = itemClass + " dz-image-preview"
             }
             return itemClass
+        },
+
+        getNameByPath(path){
+            var name = path.split('/').pop()
+            return name = name.split('.').shift()
         },
 
         deleteThisImage(id){

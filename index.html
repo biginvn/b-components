@@ -193,6 +193,17 @@
 
                         <figure class="wow animated bounceInLeft">
                             <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Input Tag</h4>
+                                <div class="panel-body">
+                                    <p>
+                                        <b-input-tag v-model="input.tags"></b-input-tag>
+                                    </p>
+                                </div>
+                            </div>
+                        </figure>
+
+                        <figure class="wow animated bounceInLeft">
+                            <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Task List</h4>
                                 <div class="panel-body">
                                     <p>
@@ -333,6 +344,7 @@
                                         </p>
                                     </div>
                                 </div>
+<<<<<<< HEAD
                             </figure>
                             <figure class="wow animated bounceInRight">
                                 <div class="panel-border">
@@ -359,6 +371,29 @@
                                             <b-upload name="upload-document" id="uploadTest" :config="uploadConfig"></b-upload>
                                         </p>
                                     </div>
+=======
+                            </div>
+                        </figure>
+
+                        <figure class="wow animated bounceInRight">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">List Uploaded</h4>
+                                <div class="panel-body">
+                                    <p>
+                                       <b-list-up-loaded v-model="input.listUploaded" :list="listUpload" ></b-list-up-loaded>
+                                        <b-button type="button" class-name="button-warn" label="Delete All" @click.native="input.listUploaded = null"></b-button>
+                                    </p>
+                                    <p v-for="item in input.imageGallery">ID: {{ item.id }}</p>
+                                </div>
+                                <div class="panel-body">
+                                    Parameters passed to:
+                                    variable : [{ <br>
+                                        id          : require, <br>
+                                        path        : require, <br>
+                                        name        : no force, <br>
+                                        className   : no force  <br>
+                                    }]
+>>>>>>> 9f56a6c2d23e52fb7f5718b1c43141e020c6d63d
                                 </div>
                             </figure>
 
@@ -380,12 +415,11 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE</h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" v-model="input.tinyMCE" :content="''"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="basic" v-model="input.tinyMCE" :content="''"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
                                     <b-button type="button" class-name="button-warn" label="Delete Content" @click.native="input.tinyMCE = ''"></b-button>
-                                    <b-button type="button" class-name="button-warn" label="GetContent" @click.native="input.tinyMCE = getContent()"></b-button>
                                 </div>
                                 <div class="panel-body">
                                     v-model data: {{ input.tinyMCE }}
@@ -443,6 +477,7 @@
     </footer>
 </body>
 <script>
+<<<<<<< HEAD
     var vm = new Vue({
         el: '#app',
         data: {
@@ -479,6 +514,49 @@
             tinyMCE: {
                 content: "Tiny MCE Content"
             },
+=======
+var vm = new Vue({
+    el: '#app',
+    data: {
+        effect: 'toggle__circle',
+        color_style: 'toggle__danger',
+        prefixes: true,
+        affix: "$",
+        uploadConfig: { 
+            url: 'upload-documents',
+            paramName : 'minh',
+            method : 'POST'   
+        },
+
+        input: {
+            name: 'Input your text...',
+            checkbox          : [],
+            checkboxByValue   : null,
+            radio             : null,
+            switch            : [],
+            switchBool        : true,
+            select            : null,
+            textarea          : null,
+            rating            : null,
+            datePicker        : null,
+            numericFormatted  : null,
+            zipCode           : null,
+            multiSelect       : null,
+            singleSelect      : null,
+            toggle            : false,
+            listUploaded      : null,
+            dateAndTime       : null,
+            task              : null,
+            tinyMCE           : null,
+            tags: []
+        },
+        tinyMCE: {
+            content: "Tiny MCE Content"
+        },
+
+        tinyMCEMode: 'basic',
+
+>>>>>>> 9f56a6c2d23e52fb7f5718b1c43141e020c6d63d
         // imageList : [  // write by thien.nguyen
         //     {  path : "https://i.imgur.com/fCOeXej.jpg", id : "2", name: "name", show : true, buttonShow : false},
         //     {  path : "http://anh.eva.vn/upload/1-2016/images/2016-03-19/bich-phuong-idol-hanh-phuc-khi-lan-dau-tien-lam-giam-khao-ca-si-bich-phuong-lam-giam-khao-vong-so-tuyen-tai-da-nang-2-1458322889-width500height601.jpg", id : "3", name: "name", show : true, buttonShow : false},
@@ -559,6 +637,12 @@
         }
         ]
     },
+    method : {
+        changeTinyMCEMode(mode){
+            this.tinyMCEMode = mode
+        },
+    },
+
     template: '#main-page'
 });
 </script>

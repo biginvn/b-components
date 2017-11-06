@@ -21,6 +21,7 @@ import BTaskList from './themes/ios/TaskList.vue'
 import BDateAndTime from './themes/ios/DateAndTime.vue'
 import BListUpLoaded from './themes/ios/ListUpLoaded.vue'
 import BTinymce from './themes/ios/TinyMCE.vue'
+import BInputTag from './themes/ios/Tag.vue'
 
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
@@ -41,3 +42,4 @@ Vue.component('BTaskList', BTaskList)
 Vue.component('BListUpLoaded', BListUpLoaded)
 Vue.component('BDateAndTime', BDateAndTime)
 Vue.component('BTinymce', BTinymce)
+Vue.component('BInputTag', BInputTag)

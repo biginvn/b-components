@@ -2,13 +2,19 @@ import baseComponent from '../mixins/base-mixins'
 
 export default {
 	mixins : [baseComponent],
-	props:['class-name','id','name'],
+	props:{
+		tags:{
+			type: Array,
+			default:() => []
+		}
+	},
 	data(){
 		return {
-			tags:[],
+			
 			newTag: '',
 			classLabel : '',
 			placeholder:'Input Tag'
+			
 
 		}
 	},
@@ -17,13 +23,15 @@ export default {
 			this.$el.queySelector('.new_tag').focus();
 		},
 		addNewTag(tag){
-			if(tag && this.tags.indexOf(tag) == -1){
+			if(tag && this.tags.indexOf(tag) === -1){
 				this.updateChange(tag);
 				this.tags.push(tag);
 
 				this.tagChange();
+				
 
 			}
+			this.$emit('input',this.tags);
 			this.placeholder = '';
 			this.newTag = '';
 		},
@@ -59,5 +67,8 @@ export default {
 			else
 				this.classLabel = '';
 		},
+		onPaste(evt){
+			console.log(tags);
+		}
 	}
 }

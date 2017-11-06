@@ -40196,7 +40196,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_ListUpLoaded__["a" /* default */]);
@@ -40838,12 +40837,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             let items = [];
             for (let i = 0; i < list.length; i++) {
                 let listItem = list[i];
-                var className = this.getClassByPath(listItem.path);
+                let className;
+                if (listItem.className != null || listItem.className != undefined) className = listItem.className;else className = this.getClassByPath(listItem.path);
+                let name = this.getNameByPath(listItem.path);
                 let item = {
                     id: listItem.id,
                     path: listItem.path,
-                    name: listItem.name,
-                    size: listItem.size,
+                    name: name,
                     path: listItem.path,
                     className: className
                 };
@@ -40865,6 +40865,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return itemClass = itemClass + " dz-image-preview";
             }
             return itemClass;
+        },
+
+        getNameByPath(path) {
+            var name = path.split('/').pop();
+            return name = name.split('.').shift();
         },
 
         deleteThisImage(id) {
@@ -41289,16 +41294,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     components: {},
 
-    props: ['id', 'label', 'name', 'disabled', 'class-name', 'content'],
+    props: ['id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode'],
 
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
 
     mounted() {
         this.initSumerNote(this.content);
         this.updateFloatLabel(null);
-        // this.tinymce.on("change", (event) => {
-        //     alert("sdsd")
-        // })
     },
 
     computed: {
@@ -41309,29 +41311,106 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     watch: {
         value() {
-            this.updateTiniMCE(this.value);
+            this.updateContent(this.value);
         }
     },
 
     methods: {
-        initSumerNote(content) {
+
+        initTinyMCEBasicMode(content) {
+            var vm = this;
             this.tinymce = tinymce.init({
                 selector: '#mytextarea',
+                plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
+                toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
                 init_instance_callback: function (editor) {
                     this.setContent(content);
                     editor.on('keyup', function (e) {
                         if (this.getContent() != "") {
-                            document.querySelector('#label-tinyMCE').className = "active";
+                            if (document.querySelector('#label-tinyMCE').className != "active") document.querySelector('#label-tinyMCE').className = "active";
                         } else {
                             document.querySelector('#label-tinyMCE').className = "";
                         }
                     });
-
-                    editor.on('change', function (e) {
+                    editor.on('blur', function (e) {
                         this.contentOutPut = this.getContent();
+                        vm.update(this.getContent());
                     });
                 }
             });
+        },
+
+        initTinyMCEAdvanceMode(content) {
+            var vm = this;
+            this.tinymce = tinymce.init({
+                selector: '#mytextarea',
+                plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
+
+                toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+                toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+                toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+                content_css: ['//fonts.googleapis.com/css?family=Lato:300,300i,400,400i', '//www.tinymce.com/css/codepen.min.css'],
+
+                menubar: false,
+                toolbar_items_size: 'small',
+
+                style_formats: [{
+                    title: 'Bold text',
+                    inline: 'b'
+                }, {
+                    title: 'Red text',
+                    inline: 'span',
+                    styles: {
+                        color: '#ff0000'
+                    }
+                }, {
+                    title: 'Red header',
+                    block: 'h1',
+                    styles: {
+                        color: '#ff0000'
+                    }
+                }, {
+                    title: 'Example 1',
+                    inline: 'span',
+                    classes: 'example1'
+                }, {
+                    title: 'Example 2',
+                    inline: 'span',
+                    classes: 'example2'
+                }, {
+                    title: 'Table styles'
+                }, {
+                    title: 'Table row 1',
+                    selector: 'tr',
+                    classes: 'tablerow1'
+                }],
+
+                templates: [{
+                    title: 'Test template 1',
+                    content: 'Test 1'
+                }, {
+                    title: 'Test template 2',
+                    content: 'Test 2'
+                }],
+                init_instance_callback: function (editor) {
+                    this.setContent(content);
+                    editor.on('keyup', function (e) {
+                        if (this.getContent() != "") {
+                            if (document.querySelector('#label-tinyMCE').className != "active") document.querySelector('#label-tinyMCE').className = "active";
+                        } else {
+                            document.querySelector('#label-tinyMCE').className = "";
+                        }
+                    });
+                    editor.on('blur', function (e) {
+                        this.contentOutPut = this.getContent();
+                        vm.update(this.getContent());
+                    });
+                }
+            });
+        },
+
+        initSumerNote(content) {
+            if (this.mode == "advance") this.initTinyMCEAdvanceMode(content);else this.initTinyMCEBasicMode(content);
         },
 
         getContentOutput() {
@@ -41344,15 +41423,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.contentOutPut;
         },
 
-        updateTiniMCE(content) {
-            tinymce.activeEditor.remove('#mytextarea');
-            this.initSumerNote(content);
+        updateContent(data) {
+            //  tinymce.activeEditor.remove('#mytextarea')
+            //  tinymce.init({
+            //     selector: '#mytextarea',
+            //     init_instance_callback: function (editor) {
+            //     }
+            // })
+            tinymce.activeEditor.setContent(data);
+            return this.$emit('input', data);
         },
 
-        update() {
-            alert("sdsdsd");
-            //this.value = this.getContentOutput()
-            this.$emit('input', this.getContentOutput());
+        update(data) {
+            this.$emit('input', data);
         },
 
         updateFloatLabel(value) {
@@ -41555,9 +41638,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__themes_ios_ListUpLoaded_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18__themes_ios_ListUpLoaded_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__themes_ios_TinyMCE_vue__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__themes_ios_TinyMCE_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19__themes_ios_TinyMCE_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__themes_ios_Tag_vue__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__themes_ios_Tag_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__themes_ios_Tag_vue__);
 
 
 // Components
+
 
 
 
@@ -41597,6 +41683,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BTaskList', __WEBPACK_IMP
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BListUpLoaded', __WEBPACK_IMPORTED_MODULE_18__themes_ios_ListUpLoaded_vue___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BDateAndTime', __WEBPACK_IMPORTED_MODULE_17__themes_ios_DateAndTime_vue___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BTinymce', __WEBPACK_IMPORTED_MODULE_19__themes_ios_TinyMCE_vue___default.a);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BInputTag', __WEBPACK_IMPORTED_MODULE_20__themes_ios_Tag_vue___default.a);
 
 /***/ }),
 /* 281 */
@@ -42011,7 +42098,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, "\n.fl-wrap-input{\n\t/*border: 1px solid #dce1e4;*/\n\tposition: relative;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    box-sizing: border-box;\n    font-family: inherit;\n    -webkit-font-smoothing: antialiased;\n    font-weight: normal;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?19b8324a"],"names":[],"mappings":";AAmBA;CACA,8BAAA;CACA,mBAAA;IACA,mCAAA;IACA,oCAAA;IACA,uBAAA;IACA,qBAAA;IACA,oCAAA;IACA,oBAAA;CACA","file":"TinyMCE.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\n<!-- Contacts: thien.nguyen@bigin.vn -->\n<!-- Date: 31/10/2017 -->\n<!-- Component: SummerNote -->\n\n<template>\n\t<div class=\"b__components b__summernote b-ios b-float-label minh class b__input 2\">\n\t\t<div class=\"fl-wrap fl-wrap-input fl-is-active fl-has-focus\">\n\t\t\t<label :class=\"classLabel\" id=\"label-tinyMCE\" >{{ label }}</label>\n\t\t\t<textarea id=\"mytextarea\" @change=\"update()\" @input=\"update()\" @keypress=\"update()\"></textarea>\n\t\t</div>\n\t</div>\n</template>\n<script>\n\timport TinyMCE from './../../components/TinyMCE'\n\texport default TinyMCE\n</script>\n\n<style type=\"text/css\">\n\t.fl-wrap-input{\n\t\t/*border: 1px solid #dce1e4;*/\n\t\tposition: relative;\n\t    text-rendering: optimizeLegibility;\n\t    -webkit-font-smoothing: antialiased;\n\t    box-sizing: border-box;\n\t    font-family: inherit;\n\t    -webkit-font-smoothing: antialiased;\n\t    font-weight: normal;\n\t}\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.fl-wrap-input{\n\t/*border: 1px solid #dce1e4;*/\n\tposition: relative;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    box-sizing: border-box;\n    font-family: inherit;\n    -webkit-font-smoothing: antialiased;\n    font-weight: normal;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?9cf73290"],"names":[],"mappings":";AAmBA;CACA,8BAAA;CACA,mBAAA;IACA,mCAAA;IACA,oCAAA;IACA,uBAAA;IACA,qBAAA;IACA,oCAAA;IACA,oBAAA;CACA","file":"TinyMCE.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\n<!-- Contacts: thien.nguyen@bigin.vn -->\n<!-- Date: 31/10/2017 -->\n<!-- Component: SummerNote -->\n\n<template>\n\t<div class=\"b__components b__summernote b-ios b-float-label minh class b__input 2\">\n\t\t<div class=\"fl-wrap fl-wrap-input fl-is-active fl-has-focus\">\n\t\t\t<label :class=\"classLabel\" id=\"label-tinyMCE\" >{{ label }}</label>\n\t\t\t<textarea id=\"mytextarea\"></textarea>\n\t\t</div>\n\t</div>\n</template>\n<script>\n\timport TinyMCE from './../../components/TinyMCE'\n\texport default TinyMCE\n</script>\n\n<style type=\"text/css\">\n\t.fl-wrap-input{\n\t\t/*border: 1px solid #dce1e4;*/\n\t\tposition: relative;\n\t    text-rendering: optimizeLegibility;\n\t    -webkit-font-smoothing: antialiased;\n\t    box-sizing: border-box;\n\t    font-family: inherit;\n\t    -webkit-font-smoothing: antialiased;\n\t    font-weight: normal;\n\t}\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -45875,17 +45962,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "data-dz-thumbnail": ""
       }
-    })]), _vm._v(" "), _c('span', {
+    })]), _vm._v(" "), _c('a', {
+      attrs: {
+        "href": item.path
+      }
+    }, [_c('span', {
       staticClass: "dz-name",
       attrs: {
         "data-dz-name": ""
       }
-    }, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('span', {
-      staticClass: "dz-size",
-      attrs: {
-        "data-dz-size": ""
-      }
-    }, [_c('strong', [_vm._v(_vm._s(item.size))]), _vm._v(" MB")]), _vm._v(" "), _c('a', {
+    }, [_vm._v(_vm._s(item.name))])]), _vm._v(" "), _c('a', {
       staticClass: "remove-archive",
       attrs: {
         "data-dz-remove": ""
@@ -46002,17 +46088,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('textarea', {
     attrs: {
       "id": "mytextarea"
-    },
-    on: {
-      "change": function($event) {
-        _vm.update()
-      },
-      "input": function($event) {
-        _vm.update()
-      },
-      "keypress": function($event) {
-        _vm.update()
-      }
     }
   })])])
 },staticRenderFns: []}
@@ -46675,6 +46750,220 @@ module.exports = function listToStyles (parentId, list) {
   return styles
 }
 
+
+/***/ }),
+/* 354 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(355),
+  /* template */
+  __webpack_require__(357),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Tag.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Tag.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5cb5910e", Component.options)
+  } else {
+    hotAPI.reload("data-v-5cb5910e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 355 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Tag__ = __webpack_require__(356);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Tag__["a" /* default */]);
+
+/***/ }),
+/* 356 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__ = __webpack_require__(3);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
+	props: {
+		tags: {
+			type: Array,
+			default: () => []
+		}
+	},
+	data() {
+		return {
+
+			newTag: '',
+			classLabel: '',
+			placeholder: 'Input Tag'
+
+		};
+	},
+	methods: {
+		focusNewTag() {
+			this.$el.queySelector('.new_tag').focus();
+		},
+		addNewTag(tag) {
+			if (tag && this.tags.indexOf(tag) === -1) {
+				this.updateChange(tag);
+				this.tags.push(tag);
+
+				this.tagChange();
+			}
+			this.$emit('input', this.tags);
+			this.placeholder = '';
+			this.newTag = '';
+		},
+		remove(index) {
+			this.tags.splice(index, 1);
+			if (this.tags.length == 0) {
+				this.updateChange(this.tags);
+				this.placeholder = 'Input Tag';
+			}
+			this.tagChange();
+		},
+		tagChange() {
+			if (this.onChange) {
+				this.onChange(JSON.parse(JSON.stringify(this.tags)));
+			}
+		},
+		removeLastTag() {
+			if (this.newTag) {
+				return;
+			}
+			this.tags.pop();
+			if (this.tags.length == 0) {
+				this.updateChange(this.tags);
+				this.placeholder = 'Input Tag';
+			}
+			this.tagChange();
+		},
+		updateChange(value) {
+
+			var isEmpty = value == undefined || value == '' || value.length == 0 ? true : false;
+			if (!isEmpty) {
+				this.classLabel = 'active';
+			} else this.classLabel = '';
+		},
+		onPaste(evt) {
+			console.log(tags);
+		}
+	}
+});
+
+/***/ }),
+/* 357 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: " b-float-label"
+  }, [_c('div', {
+    staticClass: "b__component_input_tag_wrapper "
+  }, [_c('label', {
+    class: _vm.classLabel
+  }, [_vm._v("Input tag ")]), _vm._v(" "), _vm._l((_vm.tags), function(tag, index) {
+    return _c('span', {
+      key: index,
+      staticClass: "b__component_input_tag"
+    }, [_c('span', [_vm._v(_vm._s(tag) + " ")]), _vm._v(" "), _c('a', {
+      staticClass: "remove",
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          $event.stopPropagation();
+          _vm.remove(index)
+        }
+      }
+    })])
+  }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.newTag),
+      expression: "newTag"
+    }],
+    staticClass: "new_tag",
+    attrs: {
+      "type": "text",
+      "name": "input__tag",
+      "placeholder": _vm.placeholder
+    },
+    domProps: {
+      "value": (_vm.newTag)
+    },
+    on: {
+      "keydown": [function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "delete", [8, 46])) { return null; }
+        $event.stopPropagation();
+        _vm.removeLastTag()
+      }, function($event) {
+        if (!('button' in $event) && $event.keyCode !== 188 && _vm._k($event.keyCode, "enter", 13) && _vm._k($event.keyCode, "tab", 9)) { return null; }
+        $event.preventDefault();
+        $event.stopPropagation();
+        _vm.addNewTag(_vm.newTag)
+      }],
+      "paste": _vm.onPaste,
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.newTag = $event.target.value
+      }
+    }
+  })], 2), _vm._v(" "), _c('div', [_vm._v("\n\t\t" + _vm._s(_vm.tags) + "\n\t")])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-5cb5910e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
