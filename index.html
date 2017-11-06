@@ -10,11 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <!-- Plugins-->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
-
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 
     <!-- Plugins-->
     <link href='built/b-components.min.css' rel="stylesheet">
@@ -24,8 +19,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/min/dropzone.min.js"></script>
 
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <!-- Vuejs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
+    <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
     <script src="built/b-components.js"></script>
     <!-- Demo Style-->
     <link href='built/assets/css/style.css' rel="stylesheet">
@@ -46,6 +44,8 @@
             <div class="container" style="padding-bottom: 100px;">
                 <div class="jumbotron wow animated fadeInDown">
                     <h1>Vue Components</h1>
+
+                                        
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -283,6 +283,41 @@
                                 </div>
                             </div>
                         </figure>
+
+                        <figure class="wow animated bounceInRight">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Tag</h4>
+                                <div class="panel-body">
+                                    <p>
+                                        <v-select v-model="tag" label="Select a favorite activity or create a new one" chips tags :items="tagItems" ></v-select>
+                                    </p>
+                                    <p>{{ input.toggle }}</p>
+                                    <p>
+                                        <div class="mt-2 mb-4">
+                                            <div class="my-1"><b>Choose Color:</b></div>
+                                            <div class="choose-color-box">
+                                                <div class="choose-color rounded-circle color-danger" @click="color_style='toggle__danger'"></div>
+                                                <div class="choose-color rounded-circle color-success" @click="color_style='toggle__success'"></div>
+                                                <div class="choose-color rounded-circle color-warn" @click="color_style='toggle__warn'"></div>
+                                                <div class="choose-color rounded-circle color-primary" @click="color_style='toggle__primary'"></div>
+                                            </div>
+                                        </div>
+                                        <div class="my-2">
+                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="true" @click.native="input.toggle=true"></b-button>
+                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="false" @click.native="input.toggle=false"></b-button>
+                                            <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Null" @click.native="input.toggle= null"></b-button>
+                                        </div>
+                                        <div class="my-2">
+                                            <b-button type="button" class-name="button-danger" label="Flip" @click.native="effect = 'toggle__flip'"></b-button>
+                                            <b-button type="button" class-name="button-success" label="Circle" @click.native="effect = 'toggle__circle'"></b-button>
+                                            <b-button type="button" class-name="button-warn" label="Skewed" @click.native="effect = 'toggle__skewed'"></b-button>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </figure>
+
+
                         <figure class="wow animated bounceInRight">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Toggle</h4>
@@ -396,6 +431,10 @@
 var vm = new Vue({
     el: '#app',
     data: {
+        tag : [],
+        tagItems : [
+            '123', '456'
+        ],
         effect: 'toggle__circle',
         color_style: 'toggle__danger',
         prefixes: true,
