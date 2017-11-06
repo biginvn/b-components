@@ -45733,7 +45733,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "task-toolbar"
   }, [_c('button', {
-    staticClass: "btn btn-secondary",
+    staticClass: "btn btn-default btn-rounded",
     attrs: {
       "type": "button"
     },
@@ -45743,27 +45743,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v("Condition")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-secondary",
+    staticClass: "btn btn-default btn-rounded",
     attrs: {
       "type": "button"
     }
   }, [_vm._v("Send Email Action")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-secondary",
+    staticClass: "btn btn-default btn-rounded",
     attrs: {
       "type": "button"
     }
   }, [_vm._v("Update Field Value Action")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-secondary",
+    staticClass: "btn btn-default btn-rounded",
     attrs: {
       "type": "button"
     }
   }, [_vm._v("Create Activity Value Action")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-secondary",
+    staticClass: "btn btn-default btn-rounded",
     attrs: {
       "type": "button"
     }
   }, [_vm._v("Wait Action")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-secondary",
+    staticClass: "btn btn-default btn-rounded",
     attrs: {
       "type": "button"
     },
@@ -45771,7 +45771,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.deleteTask
     }
   }, [_vm._v("Delete")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-secondary",
+    staticClass: "btn btn-default btn-rounded",
     attrs: {
       "type": "button"
     },

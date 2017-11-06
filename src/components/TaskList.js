@@ -15,7 +15,7 @@ export default {
 	},
 
 	mounted(){
-		this.task = this.value
+		this.task = this.value;
 	},
 
 	methods : {
@@ -23,7 +23,6 @@ export default {
 			if(button == true){
 				for (var i = 0; i < this.task.length; i++) {}
 					return '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#modal-task-' + i + '">Edit Condition</button></div>'
-				
 			}
 		},
 		addTask(button){
@@ -34,7 +33,7 @@ export default {
 				content : 'Your Condition',
 				button : button,
 				html : html
-			})
+			});
 			this.$emit('input', this.task);
 		},
 		deleteTask(){

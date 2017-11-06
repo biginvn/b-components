@@ -1,14 +1,14 @@
 <template>
 	<div class="b__components b-task">
 		<div class="task-toolbar">
-			<button type="button" class="btn btn-secondary" @click="addTask(true)">Condition</button>
-			<button type="button" class="btn btn-secondary">Send Email Action</button>
-			<button type="button" class="btn btn-secondary">Update Field Value Action</button>
-			<button type="button" class="btn btn-secondary">Create Activity Value Action</button>
-			<button type="button" class="btn btn-secondary">Wait Action</button>
-			<!-- <button type="button" class="btn btn-secondary" @click="addTask(false)">Add (No action)</button> -->
-			<button type="button" class="btn btn-secondary" @click="deleteTask">Delete</button>
-			<button type="button" class="btn btn-secondary" @click="emptyTask">Empty</button>
+			<button type="button" class="btn btn-default btn-rounded" @click="addTask(true)">Condition</button>
+			<button type="button" class="btn btn-default btn-rounded">Send Email Action</button>
+			<button type="button" class="btn btn-default btn-rounded">Update Field Value Action</button>
+			<button type="button" class="btn btn-default btn-rounded">Create Activity Value Action</button>
+			<button type="button" class="btn btn-default btn-rounded">Wait Action</button>
+			<!-- <button type="button" class="btn btn-default btn-rounded" @click="addTask(false)">Add (No action)</button> -->
+			<button type="button" class="btn btn-default btn-rounded" @click="deleteTask">Delete</button>
+			<button type="button" class="btn btn-default btn-rounded" @click="emptyTask">Empty</button>
 		</div>
 		<div v-for="(item, index) in task" :class="'task-el-' + index">
 			<div class="task">
