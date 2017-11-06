@@ -38,7 +38,7 @@ export default {
 				let listItem = this.list[i];
 				let item = {
 					value : listItem[this.itemVal], 
-					name : listItem[this.itemText]
+					name : listItem[this.itemText],
 				}
 				items.push(item);
 			}
@@ -50,7 +50,6 @@ export default {
 		update(val) {
 			this.$emit('input', val)
 			this.float()
-			this.$emit('change', val)
 		},
 		float() {
 			if( this.$el== undefined || this.value == null || this.value.length == 0){

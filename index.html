@@ -19,6 +19,12 @@
     <!-- Plugins-->
     <link href='built/b-components.min.css' rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- tinyMCE -->    
+    <script src="src/plugins/tinimce/tinymce.min.js"></script>
+    <!-- tinyMCE -->
 
     <!-- Dropzone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.css" />
@@ -168,7 +174,7 @@
                             </div>
                         </figure>
 
-                        <figure class="wow animated">
+                        <figure class="wow animated bounceInLeft">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Single Select</h4>
                                 <div class="panel-body">
@@ -181,6 +187,18 @@
                                         <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="Rashford" @click.native="input.singleSelect = 3"></b-button>
                                         <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Empty" @click.native="input.singleSelect = null"></b-button>
                                     </p>
+                                </div>
+                            </div>
+                        </figure>
+
+                        <figure class="wow animated bounceInLeft">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Task List</h4>
+                                <div class="panel-body">
+                                    <p>
+                                        <b-task-list v-model="input.task" :task="taskList"></b-task-list>
+                                    </p>
+                                    <p>{{ taskList }}</p>
                                 </div>
                             </div>
                         </figure>
@@ -283,6 +301,7 @@
                                 </div>
                             </div>
                         </figure>
+
                         <figure class="wow animated bounceInRight">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Toggle</h4>
@@ -332,7 +351,7 @@
                             </div>
                         </figure>
 
-                        <figure class="wow animated">
+                        <figure class="wow animated bounceInRight">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Upload</h4>
                                 <div class="panel-body">
@@ -343,15 +362,39 @@
                             </div>
                         </figure>
 
-                        <figure class="wow animated">
+                        <figure class="wow animated bounceInRight">
                             <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Input Tag</h4>
+                                <h4 class="mb-3 panel-heading">List Uploaded</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-input-tag>
-                                            
-                                        </b-input-tag>
+                                       <b-list-up-loaded v-model="input.listUploaded" :list="listUpload" ></b-list-up-loaded>
+                                        <b-button type="button" class-name="button-warn" label="Delete All" @click.native="input.listUploaded = null"></b-button>
                                     </p>
+                                    <p v-for="item in input.imageGallery">ID: {{ item.id }}</p>
+                                </div>
+                                <div class="panel-body">
+                                    Parameters passed to:
+                                    variable : [{ <br>
+                                        id          : require, <br>
+                                        path        : require, <br>
+                                        name        : no force, <br>
+                                        className   : no force  <br>
+                                    }]
+                                </div>
+                            </div>
+                        </figure>
+                        <figure class="wow animated">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Tiny MCE</h4>
+                                <div class="panel-body">
+                                    <b-tinymce label="CONTENT" v-model="input.tinyMCE" :content="''"></b-tinymce>
+                                </div>
+                                <div class="panel-body">
+                                    <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
+                                    <b-button type="button" class-name="button-warn" label="Delete Content" @click.native="input.tinyMCE = ''"></b-button>
+                                </div>
+                                <div class="panel-body">
+                                    v-model data: {{ input.tinyMCE }}
                                 </div>
                             </div>
                         </figure>
@@ -374,7 +417,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="profile-thumbnail"><img class="thumbnail-center" src="https://avatars3.githubusercontent.com/u/29373028?v=4&s=460"></div>
+                    <div class="profile-thumbnail"><a href="https://www.facebook.com/aquarius.love.allgirl" alt="Hot Boy of Bigin Company"><img class="thumbnail-center" src="https://avatars3.githubusercontent.com/u/29373028?v=4&s=460"></a></div>
                     <div class="profile-content">
                         <div class="profile-name">Truong Nhat Minh</div>
                         <div class="profile-job">Creator</div>
@@ -416,32 +459,75 @@ var vm = new Vue({
         uploadConfig: { 
             url: 'upload-documents',
             paramName : 'minh',
-            method : 'POST'
-            
+            method : 'POST'   
         },
         input: {
             name: 'Input your text...',
-            checkbox: [],
-            checkboxByValue: null,
-            radio: null,
-            switch: [],
-            switchBool: true,
-            select: null,
-            textarea: null,
-            rating: null,
-            datePicker: null,
-            numericFormatted: null,
-            zipCode: null,
-            multiSelect: null,
-            singleSelect: null,
-            toggle: false
+            checkbox          : [],
+            checkboxByValue   : null,
+            radio             : null,
+            switch            : [],
+            switchBool        : true,
+            select            : null,
+            textarea          : null,
+            rating            : null,
+            datePicker        : null,
+            numericFormatted  : null,
+            zipCode           : null,
+            multiSelect       : null,
+            singleSelect      : null,
+            toggle            : false,
+            listUploaded      : null,
+            dateAndTime       : null,
+            task              : null,
+            tinyMCE           : null 
         },
+        tinyMCE: {
+            content: "Tiny MCE Content"
+        },
+        // imageList : [  // write by thien.nguyen
+        //     {  path : "https://i.imgur.com/fCOeXej.jpg", id : "2", name: "name", show : true, buttonShow : false},
+        //     {  path : "http://anh.eva.vn/upload/1-2016/images/2016-03-19/bich-phuong-idol-hanh-phuc-khi-lan-dau-tien-lam-giam-khao-ca-si-bich-phuong-lam-giam-khao-vong-so-tuyen-tai-da-nang-2-1458322889-width500height601.jpg", id : "3", name: "name", show : true, buttonShow : false},
+        //     {  path : "https://i.imgur.com/fCOeXej.jpg", id : "4", name: "name", show : true, buttonShow : false},
+        //     {  path : "http://anh.eva.vn/upload/1-2016/images/2016-03-19/bich-phuong-idol-hanh-phuc-khi-lan-dau-tien-lam-giam-khao-ca-si-bich-phuong-lam-giam-khao-vong-so-tuyen-tai-da-nang-2-1458322889-width500height601.jpg", id : "1", name: "name",show : true, buttonShow : false},
+        //     {  path : "https://i.imgur.com/fCOeXej.jpg", id : "6", name: "name", show : true, buttonShow : false},
+        //     {  path : "http://anh.eva.vn/upload/1-2016/images/2016-03-19/bich-phuong-idol-hanh-phuc-khi-lan-dau-tien-lam-giam-khao-ca-si-bich-phuong-lam-giam-khao-vong-so-tuyen-tai-da-nang-2-1458322889-width500height601.jpg", id : "5", name: "name", show : true, buttonShow : false}
+        // ], 
+        // imageSize : { 
+        //     width: "145", 
+        //     height: "145" 
+        // },
+        listUpload : [
+            {
+                id   :"1",
+                path : "https://i.imgur.com/fCOeXej.jpg",
+                name : "19391503_170451653493469_1632177749613346816_n.jpg",
+                size : 865535,
+            },
+            {
+                id   :"2",
+                path : "https://i.imgur.com/fCOeXej.mp4",
+                name : "19391503_170451653493469_1632177749613346816_n.MP4",
+                size : 865535,
+            },
+            {
+                id   :"3",
+                path : "https://i.imgur.com/fCOeXej.docx",
+                name : "19391503_170451653493469_1632177749613346816_n.docx",
+                size : 865535,
+            },
+        ],
+        taskList: [
+            { title : 'Condition', content : 'If you are Girl?', button : true, html : ''},
+            { title : 'Condition', content : 'If you are Boy?', button : true, html : ''},
+            { title : 'Condition', content : 'If you are Gay?', button : true, html : ''}
+
+        ],
         list: [
             { code: 'VN', name: 'Viet Nam' },
             { code: 'USA', name: 'United States' },
             { code: 'CAM', name: 'Campuchia' }
         ],
-
         listMultiSelect: [{
                 id: 1,
                 html: '<p>Xabi Alonso</p><p class="club">Bayern Munich</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
