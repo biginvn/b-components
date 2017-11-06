@@ -40167,13 +40167,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_DateAndTime__["a" /* default */]);
@@ -40745,10 +40738,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -40760,8 +40751,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     props: ['id', 'default', 'label', 'size', 'name', 'disabled', 'list', 'alt', 'class-name'],
 
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
-
     mounted() {
         this.getDateTime();
     },
@@ -40770,10 +40759,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         getDateTime() {
-            $('#datetimepicker10').datetimepicker({
-                viewMode: 'years',
-                format: 'MM/YYYY'
-            });
+            $('#datetimepicker4').datetimepicker({});
         }
     }
 
@@ -41477,8 +41463,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         initTinyMCEBasicMode(content) {
             var vm = this;
+            var readonly = this.checkDisabled();
             this.tinymce = tinymce.init({
                 selector: '#mytextarea',
+                readonly: readonly,
                 plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
                 toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
                 init_instance_callback: function (editor) {
@@ -41500,8 +41488,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         initTinyMCEAdvanceMode(content) {
             var vm = this;
+            var readonly = this.checkDisabled();
             this.tinymce = tinymce.init({
                 selector: '#mytextarea',
+                readonly: readonly,
                 plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
 
                 toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
@@ -41582,14 +41572,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         updateContent(data) {
-            //  tinymce.activeEditor.remove('#mytextarea')
-            //  tinymce.init({
-            //     selector: '#mytextarea',
-            //     init_instance_callback: function (editor) {
-            //     }
-            // })
             tinymce.activeEditor.setContent(data);
             return this.$emit('input', data);
+        },
+
+        checkDisabled() {
+            if (this.disabled == "disabled") return 1;else return 0;
         },
 
         update(data) {
@@ -41894,7 +41882,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"DateAndTime.vue","sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"DateAndTime.vue","sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -45874,33 +45862,8 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "b__components b__gallery"
-  }, [_c('div', {
-    staticClass: "col-sm-6",
-    staticStyle: {
-      "height": "130px"
-    }
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('div', {
-    staticClass: "input-group date",
-    attrs: {
-      "id": "datetimepicker10"
-    }
-  }, [_c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text"
-    }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "input-group-addon"
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-calendar"
-  })])])])])])
-}]}
+  return _c("div")
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

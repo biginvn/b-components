@@ -398,7 +398,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE</h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" mode="basic" v-model="input.tinyMCE" :content="''"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="basic" v-model="input.tinyMCE"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
@@ -409,7 +409,14 @@
                                 </div>
                             </div>
                         </figure>
-
+                        <figure class="wow animated">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Date Time Picker 2.0</h4>
+                                <div class="panel-body">
+                                    <b-date-and-time  v-model="input.dateAndTime"></b-date-and-time>
+                                </div>
+                            </div>
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -500,36 +507,18 @@ var vm = new Vue({
 
         tinyMCEMode: 'basic',
 
-        // imageList : [  // write by thien.nguyen
-        //     {  path : "https://i.imgur.com/fCOeXej.jpg", id : "2", name: "name", show : true, buttonShow : false},
-        //     {  path : "http://anh.eva.vn/upload/1-2016/images/2016-03-19/bich-phuong-idol-hanh-phuc-khi-lan-dau-tien-lam-giam-khao-ca-si-bich-phuong-lam-giam-khao-vong-so-tuyen-tai-da-nang-2-1458322889-width500height601.jpg", id : "3", name: "name", show : true, buttonShow : false},
-        //     {  path : "https://i.imgur.com/fCOeXej.jpg", id : "4", name: "name", show : true, buttonShow : false},
-        //     {  path : "http://anh.eva.vn/upload/1-2016/images/2016-03-19/bich-phuong-idol-hanh-phuc-khi-lan-dau-tien-lam-giam-khao-ca-si-bich-phuong-lam-giam-khao-vong-so-tuyen-tai-da-nang-2-1458322889-width500height601.jpg", id : "1", name: "name",show : true, buttonShow : false},
-        //     {  path : "https://i.imgur.com/fCOeXej.jpg", id : "6", name: "name", show : true, buttonShow : false},
-        //     {  path : "http://anh.eva.vn/upload/1-2016/images/2016-03-19/bich-phuong-idol-hanh-phuc-khi-lan-dau-tien-lam-giam-khao-ca-si-bich-phuong-lam-giam-khao-vong-so-tuyen-tai-da-nang-2-1458322889-width500height601.jpg", id : "5", name: "name", show : true, buttonShow : false}
-        // ], 
-        // imageSize : { 
-        //     width: "145", 
-        //     height: "145" 
-        // },
         listUpload : [
             {
                 id   :"1",
                 path : "https://i.imgur.com/fCOeXej.jpg",
-                name : "19391503_170451653493469_1632177749613346816_n.jpg",
-                size : 865535,
             },
             {
                 id   :"2",
                 path : "https://i.imgur.com/fCOeXej.mp4",
-                name : "19391503_170451653493469_1632177749613346816_n.MP4",
-                size : 865535,
             },
             {
                 id   :"3",
                 path : "https://i.imgur.com/fCOeXej.docx",
-                name : "19391503_170451653493469_1632177749613346816_n.docx",
-                size : 865535,
             },
         ],
         taskList: [
