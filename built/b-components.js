@@ -41627,7 +41627,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         getContentOutput() {
             tinymce.init({
-                selector: '#bTinyMCE__Components',
+                selector: '#' + Vue.id,
                 init_instance_callback: function (editor) {
                     this.contentOutPut = this.getContent();
                 }

@@ -152,7 +152,7 @@ export default {
 
         getContentOutput(){
             tinymce.init({
-                selector: '#bTinyMCE__Components',
+                selector: '#' + Vue.id,
                 init_instance_callback: function (editor) {
                     this.contentOutPut = this.getContent()
                 }
