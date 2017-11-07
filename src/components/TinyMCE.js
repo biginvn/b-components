@@ -68,9 +68,6 @@ export default {
                     this.tinyConfig ? this.tinyConfig : {}
                 )
             )
-
-
-            console.log(Vue.tinymce)
         },
 
         initTinyMCEAdvanceMode(content){

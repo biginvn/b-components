@@ -41557,8 +41557,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     });
                 }
             }, this.tinyConfig ? this.tinyConfig : {}));
-
-            console.log(Vue.tinymce);
         },
 
         initTinyMCEAdvanceMode(content) {
