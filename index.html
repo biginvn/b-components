@@ -412,7 +412,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE</h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor" v-model="input.tinyMCE"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor" :tiny-config="tinyConfig" v-model="input.tinyMCE"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
@@ -429,7 +429,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE2 </h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor2" v-model="input.tinyMCE2"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor2" v-model="input.tinyMCE"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE2 = tinyMCE2.content"></b-button>
@@ -508,6 +508,9 @@
 var vm = new Vue({
     el: '#app',
     data: {
+        tinyConfig : {
+            // theme_url : "http://www.example.com/path1/a.js"
+        },
         tag : [],
         tagItems : [
             '123', '456'
