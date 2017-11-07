@@ -17,14 +17,11 @@ export default {
     mixins: [baseComponent],
 
     mounted() {
-        this.initSumerNote(this.content)
+        this.initTinyMCE(this.content)
         this.updateFloatLabel(null)
     },
 
     computed: {
-        classes () {
-            return (this.className?this.className:'') + " b__input 2"
-        },
     },
 
     watch:{
@@ -38,7 +35,7 @@ export default {
         initTinyMCEBasicMode(content){
             var Vue = this
             var readonly = this.checkDisabled()
-            this.tinymce = tinymce.init({
+            Vue.tinymce = tinymce.init({
                 selector: '#' + Vue.id,
                 readonly : readonly,
                 plugins: [
@@ -68,7 +65,7 @@ export default {
         initTinyMCEAdvanceMode(content){
             var Vue = this
             var readonly = this.checkDisabled()
-            this.tinymce = tinymce.init({
+            Vue.tinymce = tinymce.init({
                 selector: '#' + Vue.id,
                 readonly : readonly,
                 plugins: [
@@ -143,7 +140,7 @@ export default {
             });
         },
 
-        initSumerNote(content){
+        initTinyMCE(content){
             if( this.mode == "advance" )
                 return this.initTinyMCEAdvanceMode(content)
             else
@@ -151,17 +148,11 @@ export default {
         },
 
         getContentOutput(){
-            tinymce.init({
-                selector: '#' + Vue.id,
-                init_instance_callback: function (editor) {
-                    this.contentOutPut = this.getContent()
-                }
-            })
-            return this.contentOutPut
+            return this.contentOutPut = tinymce.get(this.id).getContent(data)
         },
 
         updateContent(data){
-            tinymce.activeEditor.setContent(data);
+            tinymce.get(this.id).setContent(data)
             return this.$emit('input', data)
         },
 
