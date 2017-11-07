@@ -40162,12 +40162,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_DateAndTime__["a" /* default */]);
@@ -40680,7 +40674,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data() {
         return {
             input: {
-                time: null
+                time: null,
+                defaultClassInput: ""
             }
         };
     },
@@ -40688,6 +40683,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {},
 
     props: ['id', 'label', 'name', 'disabled', 'placeholder', 'class-name', 'datetimepicker-type'],
+
+    created() {
+        this.initData();
+    },
 
     mounted() {
         this.initDateTimePicker();
@@ -40702,25 +40701,66 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         initDateTimePicker() {
             var Vue = this;
-            $("#datetimepicker4").datetimepicker({
+            $("#" + Vue.id).datetimepicker({
                 format: 'MM-DD-YYYY hh:mm A Z'
             });
-            $("#datetimepicker4").on("dp.change", function (e) {
-                Vue.input.time = $("#datetimepicker4").val();
+            $("#" + Vue.id).on("dp.change", function (e) {
+                Vue.input.time = $("#" + Vue.id).val();
                 Vue.updateDateModel(Vue.input.time);
             });
+            $("#" + Vue.id).on("dp.error", function (e) {});
         },
 
         updateDateModel(data) {
             this.$emit('input', data);
         },
 
-        validationDate(time) {
-            var arrayTime = split(" ");
+        checkInputInvalid(time) {
+            if (this.validationDateTime(time) == false) {
+                this.classLabel = "active hasError";
+                document.querySelector('.b__input').style.borderColor = "#f04134";
+                // this.classes    = this.input.defaultClassInput + " hasError" //because Variable this.classes can'nt change therefore I must be Hard Code
+            } else {
+                this.classLabel = "active";
+                document.querySelector('.b__input').style.borderColor = "";
+                // this.classes    = this.input.defaultClassInput     
+            }
+        },
+
+        validationDateTime(time) {
+            var arrayTime = time.split(" ");
+            var time = {
+                date: arrayTime[0],
+                time: arrayTime[1],
+                session: arrayTime[2],
+                zone: arrayTime[3]
+            };
+            if (this.regularExpression(/(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/, time.date) == false) return false;
+            if (this.regularExpression(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/, time.time) == false) return false;
+            if (this.checkAMPM(time.session) == false) return false;
+            if (this.regularExpression(/^(Z|[+-](?:2[0-3]|[01]?[0-9])(?::?(?:[0-5]?[0-9]))?)$/, time.zone) == false) return false;
+            return true;
+        },
+
+        checkAMPM(value) {
+            if (value == "AM" || value == "PM" || value == "am" || value == "pm") return true;
+            return false;
+        },
+
+        regularExpression(regex, value) {
+            var reg = regex;
+            if (!reg.test(value)) {
+                return false;
+            }
+            return true;
         },
 
         change(value) {
             this.updateFloatLabel(value);
+        },
+
+        initData() {
+            this.input.defaultClassInput = this.classes;
         }
     }
 
@@ -41486,10 +41526,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
 
         initTinyMCEBasicMode(content) {
-            var vm = this;
+            var Vue = this;
             var readonly = this.checkDisabled();
             this.tinymce = tinymce.init({
-                selector: '#bTinyMCE__Components',
+                selector: '#' + Vue.id,
                 readonly: readonly,
                 plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
                 toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
@@ -41497,24 +41537,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     if (content != null || content != undefined) this.setContent(content);
                     editor.on('keyup', function (e) {
                         if (this.getContent() != "") {
-                            if (document.querySelector('#label-tinyMCE').className != "active") document.querySelector('#label-tinyMCE').className = "active";
+                            if (Vue.classLabel != "active") Vue.classLabel = "active";
                         } else {
-                            document.querySelector('#label-tinyMCE').className = "";
+                            Vue.classLabel != "";
                         }
                     });
                     editor.on('blur', function (e) {
                         this.contentOutPut = this.getContent();
-                        vm.update(this.getContent());
+                        Vue.update(this.getContent());
                     });
                 }
             });
         },
 
         initTinyMCEAdvanceMode(content) {
-            var vm = this;
+            var Vue = this;
             var readonly = this.checkDisabled();
             this.tinymce = tinymce.init({
-                selector: '#bTinyMCE__Components',
+                selector: '#' + Vue.id,
                 readonly: readonly,
                 plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
 
@@ -41565,24 +41605,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     content: 'Test 2'
                 }],
                 init_instance_callback: function (editor) {
-                    this.setContent(content);
+                    if (content != null || content != undefined) this.setContent(content);
                     editor.on('keyup', function (e) {
                         if (this.getContent() != "") {
-                            if (document.querySelector('#label-tinyMCE').className != "active") document.querySelector('#label-tinyMCE').className = "active";
+                            if (Vue.classLabel != "active") Vue.classLabel = "active";
                         } else {
-                            document.querySelector('#label-tinyMCE').className = "";
+                            Vue.classLabel != "";
                         }
                     });
                     editor.on('blur', function (e) {
                         this.contentOutPut = this.getContent();
-                        vm.update(this.getContent());
+                        Vue.update(this.getContent());
                     });
                 }
             });
         },
 
         initSumerNote(content) {
-            if (this.mode == "advance") this.initTinyMCEAdvanceMode(content);else this.initTinyMCEBasicMode(content);
+            if (this.mode == "advance") return this.initTinyMCEAdvanceMode(content);else return this.initTinyMCEBasicMode(content);
         },
 
         getContentOutput() {
@@ -41614,6 +41654,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.classLabel = 'active';
             } else this.classLabel = '';
         }
+
     }
 
 });
@@ -41878,7 +41919,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, "\n.fl-wrap-input{\n\t/*border: 1px solid #dce1e4;*/\n\tposition: relative;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    box-sizing: border-box;\n    font-family: inherit;\n    -webkit-font-smoothing: antialiased;\n    font-weight: normal;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?416a50d0"],"names":[],"mappings":";AAmBA;CACA,8BAAA;CACA,mBAAA;IACA,mCAAA;IACA,oCAAA;IACA,uBAAA;IACA,qBAAA;IACA,oCAAA;IACA,oBAAA;CACA","file":"TinyMCE.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 31/10/2017 -->\r\n<!-- Component: SummerNote -->\r\n\r\n<template>\r\n\t<div class=\"b__components b__summernote b-ios b-float-label minh class b__input 2\">\r\n\t\t<div class=\"fl-wrap fl-wrap-input fl-is-active fl-has-focus\">\r\n\t\t\t<label :class=\"classLabel\" id=\"label-tinyMCE\" >{{ label }}</label>\r\n\t\t\t<textarea id=\"bTinyMCE__Components\"></textarea>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport TinyMCE from './../../components/TinyMCE'\r\n\texport default TinyMCE\r\n</script>\r\n\r\n<style type=\"text/css\">\r\n\t.fl-wrap-input{\r\n\t\t/*border: 1px solid #dce1e4;*/\r\n\t\tposition: relative;\r\n\t    text-rendering: optimizeLegibility;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    box-sizing: border-box;\r\n\t    font-family: inherit;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    font-weight: normal;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.fl-wrap-input{\n\t/*border: 1px solid #dce1e4;*/\n\tposition: relative;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    box-sizing: border-box;\n    font-family: inherit;\n    -webkit-font-smoothing: antialiased;\n    font-weight: normal;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?c97f19fc"],"names":[],"mappings":";AAmBA;CACA,8BAAA;CACA,mBAAA;IACA,mCAAA;IACA,oCAAA;IACA,uBAAA;IACA,qBAAA;IACA,oCAAA;IACA,oBAAA;CACA","file":"TinyMCE.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 31/10/2017 -->\r\n<!-- Component: SummerNote -->\r\n\r\n<template>\r\n\t<div class=\"b__components b__summernote b-ios b-float-label minh class b__input 2\">\r\n\t\t<div class=\"fl-wrap fl-wrap-input fl-is-active fl-has-focus\">\r\n\t\t\t<label :class=\"classLabel\">{{ label }}</label>\r\n\t\t\t<textarea :id=\"id\"></textarea>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport TinyMCE from './../../components/TinyMCE'\r\n\texport default TinyMCE\r\n</script>\r\n\r\n<style type=\"text/css\">\r\n\t.fl-wrap-input{\r\n\t\t/*border: 1px solid #dce1e4;*/\r\n\t\tposition: relative;\r\n\t    text-rendering: optimizeLegibility;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    box-sizing: border-box;\r\n\t    font-family: inherit;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    font-weight: normal;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -41892,7 +41933,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"DateAndTime.vue","sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.hasError{\n\tcolor: #f04134 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateAndTime.vue?57a87a5d"],"names":[],"mappings":";AAkBA;CACA,0BAAA;CACA","file":"DateAndTime.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 01/10/2017 -->\r\n<!-- Component: DateAndTime -->\r\n\r\n<template>\r\n\t<div class=\"b__datetime__picker b__components b-float-label\">\r\n\t\t<label :class=\"classLabel\">{{ label }}</label>\r\n      \t<input :id=\"id\" :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :class=\"classes\" :disabled=\"disabled\" @input=\"checkInputInvalid($event.target.value)\">\r\n\t</div>\r\n</template>\r\n\r\n<script>\r\n\timport DateAndTime from './../../components/DateAndTime'\r\n\texport default DateAndTime\r\n</script>\r\n\r\n<style>\r\n\t.hasError{\r\n\t\tcolor: #f04134 !important;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -45802,13 +45843,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "fl-wrap fl-wrap-input fl-is-active fl-has-focus"
   }, [_c('label', {
-    class: _vm.classLabel,
-    attrs: {
-      "id": "label-tinyMCE"
-    }
+    class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('textarea', {
     attrs: {
-      "id": "bTinyMCE__Components"
+      "id": _vm.id
     }
   })])])
 },staticRenderFns: []}
@@ -45890,7 +45928,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     ref: "bInput",
     class: _vm.classes,
     attrs: {
-      "id": "datetimepicker4",
+      "id": _vm.id,
       "placeholder": _vm.placeholder,
       "type": "text",
       "name": _vm.name,
@@ -45898,7 +45936,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "input": function($event) {
-        _vm.change($event.target.value)
+        _vm.checkInputInvalid($event.target.value)
       }
     }
   })])
