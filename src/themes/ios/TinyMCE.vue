@@ -6,8 +6,8 @@
 <template>
 	<div class="b__components b__summernote b-ios b-float-label minh class b__input 2">
 		<div class="fl-wrap fl-wrap-input fl-is-active fl-has-focus">
-			<label :class="classLabel" id="label-tinyMCE" >{{ label }}</label>
-			<textarea id="bTinyMCE__Components"></textarea>
+			<label :class="classLabel">{{ label }}</label>
+			<textarea :id="id"></textarea>
 		</div>
 	</div>
 </template>

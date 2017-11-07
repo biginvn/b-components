@@ -412,7 +412,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE</h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" mode="basic" v-model="input.tinyMCE"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor" v-model="input.tinyMCE"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
@@ -427,7 +427,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Date Time Picker 2.0</h4>
                                 <div class="panel-body">
-                                    <b-date-and-time  label="Date & Time" v-model="input.dateAndTime"></b-date-and-time>
+                                    <b-date-and-time id="datetimepicker4" label="Date & Time" placeholder="Date Time Picker Make By Thien Nguyen Dev" v-model="input.dateAndTime"></b-date-and-time>
                                 </div>
                                 <div class="panel-body">
                                     v-model data: {{ input.dateAndTime }}

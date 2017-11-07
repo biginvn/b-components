@@ -36,10 +36,10 @@ export default {
     methods: {  
 
         initTinyMCEBasicMode(content){
-            var vm = this
+            var Vue = this
             var readonly = this.checkDisabled()
             this.tinymce = tinymce.init({
-                selector: '#bTinyMCE__Components',
+                selector: '#' + Vue.id,
                 readonly : readonly,
                 plugins: [
                     "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
@@ -51,25 +51,25 @@ export default {
                         this.setContent(content)
                     editor.on('keyup', function (e) {
                         if(this.getContent() != ""){
-                            if( document.querySelector('#label-tinyMCE').className != "active" )
-                                document.querySelector('#label-tinyMCE').className = "active"
+                            if( Vue.classLabel != "active" )
+                                Vue.classLabel = "active"
                         }else{
-                            document.querySelector('#label-tinyMCE').className = ""
+                            Vue.classLabel != ""
                         }
                     })
                     editor.on('blur', function (e) {
                         this.contentOutPut = this.getContent()
-                        vm.update(this.getContent())
+                        Vue.update(this.getContent())
                     })
                 }
             });
         },
 
         initTinyMCEAdvanceMode(content){
-            var vm = this
+            var Vue = this
             var readonly = this.checkDisabled()
             this.tinymce = tinymce.init({
-                selector: '#bTinyMCE__Components',
+                selector: '#' + Vue.id,
                 readonly : readonly,
                 plugins: [
                     "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
@@ -125,18 +125,19 @@ export default {
                     content: 'Test 2'
                     }],
                 init_instance_callback: function (editor) {
-                    this.setContent(content)
+                    if(content != null || content != undefined)
+                        this.setContent(content)
                     editor.on('keyup', function (e) {
                         if(this.getContent() != ""){
-                            if( document.querySelector('#label-tinyMCE').className != "active" )
-                                document.querySelector('#label-tinyMCE').className = "active"
+                            if( Vue.classLabel != "active" )
+                                Vue.classLabel = "active"
                         }else{
-                            document.querySelector('#label-tinyMCE').className = ""
+                            Vue.classLabel != ""
                         }
                     })
                     editor.on('blur', function (e) {
                         this.contentOutPut = this.getContent()
-                        vm.update(this.getContent())
+                        Vue.update(this.getContent())
                     })
                 }
             });
@@ -144,9 +145,9 @@ export default {
 
         initSumerNote(content){
             if( this.mode == "advance" )
-                this.initTinyMCEAdvanceMode(content)
+                return this.initTinyMCEAdvanceMode(content)
             else
-                this.initTinyMCEBasicMode(content)
+                return this.initTinyMCEBasicMode(content)
         },
 
         getContentOutput(){
@@ -182,6 +183,7 @@ export default {
             } else
                 this.classLabel = ''
         },
+
     }
 
 }
