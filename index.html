@@ -420,6 +420,25 @@
                                 </div>
                                 <div class="panel-body">
                                     v-model data: {{ input.tinyMCE }}
+                                    <br>
+                                    User Must be tranmission parameter ID
+                                </div>
+                            </div>
+                        </figure>
+                                                <figure class="wow animated">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Tiny MCE2 </h4>
+                                <div class="panel-body">
+                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor2" v-model="input.tinyMCE2"></b-tinymce>
+                                </div>
+                                <div class="panel-body">
+                                    <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE2 = tinyMCE2.content"></b-button>
+                                    <b-button type="button" class-name="button-warn" label="Delete Content" @click.native="input.tinyMCE2 = ''"></b-button>
+                                </div>
+                                <div class="panel-body">
+                                    v-model data: {{ input.tinyMCE2 }}
+                                    <br>
+                                    User Must be tranmission parameter ID
                                 </div>
                             </div>
                         </figure>
@@ -431,6 +450,8 @@
                                 </div>
                                 <div class="panel-body">
                                     v-model data: {{ input.dateAndTime }}
+                                    <br>
+                                    User Must be tranmission parameter ID
                                 </div>
                             </div>
                         </figure>
@@ -521,14 +542,20 @@ var vm = new Vue({
             dateAndTime       : null,
             task              : null,
             tinyMCE           : null,
+            tinyMCE2 : null,
             tags: []
         },
         tinyMCE: {
-            content  : "Tiny MCE Content",
+            content  : "Tiny MCE Content 1 (khác nhau)",
             mode     : 'basic',
             disabled : ''
         },
 
+        tinyMCE2: {
+            content  : "Tiny MCE Content 2 (khác nhau)",
+            mode     : 'basic',
+            disabled : ''
+        },
 
         listUpload : [
             {

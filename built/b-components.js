@@ -41507,15 +41507,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
 
     mounted() {
-        this.initSumerNote(this.content);
+        this.initTinyMCE(this.content);
         this.updateFloatLabel(null);
     },
 
-    computed: {
-        classes() {
-            return (this.className ? this.className : '') + " b__input 2";
-        }
-    },
+    computed: {},
 
     watch: {
         value() {
@@ -41528,7 +41524,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         initTinyMCEBasicMode(content) {
             var Vue = this;
             var readonly = this.checkDisabled();
-            this.tinymce = tinymce.init({
+            Vue.tinymce = tinymce.init({
                 selector: '#' + Vue.id,
                 readonly: readonly,
                 plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
@@ -41553,7 +41549,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         initTinyMCEAdvanceMode(content) {
             var Vue = this;
             var readonly = this.checkDisabled();
-            this.tinymce = tinymce.init({
+            Vue.tinymce = tinymce.init({
                 selector: '#' + Vue.id,
                 readonly: readonly,
                 plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
@@ -41621,22 +41617,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
 
-        initSumerNote(content) {
+        initTinyMCE(content) {
             if (this.mode == "advance") return this.initTinyMCEAdvanceMode(content);else return this.initTinyMCEBasicMode(content);
         },
 
         getContentOutput() {
-            tinymce.init({
-                selector: '#bTinyMCE__Components',
-                init_instance_callback: function (editor) {
-                    this.contentOutPut = this.getContent();
-                }
-            });
-            return this.contentOutPut;
+            return this.contentOutPut = tinymce.get(this.id).getContent(data);
         },
 
         updateContent(data) {
-            tinymce.activeEditor.setContent(data);
+            tinymce.get(this.id).setContent(data);
             return this.$emit('input', data);
         },
 
@@ -41919,7 +41909,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, "\n.fl-wrap-input{\n\t/*border: 1px solid #dce1e4;*/\n\tposition: relative;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    box-sizing: border-box;\n    font-family: inherit;\n    -webkit-font-smoothing: antialiased;\n    font-weight: normal;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?c97f19fc"],"names":[],"mappings":";AAmBA;CACA,8BAAA;CACA,mBAAA;IACA,mCAAA;IACA,oCAAA;IACA,uBAAA;IACA,qBAAA;IACA,oCAAA;IACA,oBAAA;CACA","file":"TinyMCE.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 31/10/2017 -->\r\n<!-- Component: SummerNote -->\r\n\r\n<template>\r\n\t<div class=\"b__components b__summernote b-ios b-float-label minh class b__input 2\">\r\n\t\t<div class=\"fl-wrap fl-wrap-input fl-is-active fl-has-focus\">\r\n\t\t\t<label :class=\"classLabel\">{{ label }}</label>\r\n\t\t\t<textarea :id=\"id\"></textarea>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport TinyMCE from './../../components/TinyMCE'\r\n\texport default TinyMCE\r\n</script>\r\n\r\n<style type=\"text/css\">\r\n\t.fl-wrap-input{\r\n\t\t/*border: 1px solid #dce1e4;*/\r\n\t\tposition: relative;\r\n\t    text-rendering: optimizeLegibility;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    box-sizing: border-box;\r\n\t    font-family: inherit;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    font-weight: normal;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.fl-wrap-input{\n\t/*border: 1px solid #dce1e4;*/\n\tposition: relative;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    box-sizing: border-box;\n    font-family: inherit;\n    -webkit-font-smoothing: antialiased;\n    font-weight: normal;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?5d18391f"],"names":[],"mappings":";AAmBA;CACA,8BAAA;CACA,mBAAA;IACA,mCAAA;IACA,oCAAA;IACA,uBAAA;IACA,qBAAA;IACA,oCAAA;IACA,oBAAA;CACA","file":"TinyMCE.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 31/10/2017 -->\r\n<!-- Component: SummerNote -->\r\n\r\n<template>\r\n\t<div class=\"b__components b__summernote b-ios b-float-label minh class b__input 2\">\r\n\t\t<div class=\"class\">\r\n\t\t\t<label :class=\"classLabel\">{{ label }}</label>\r\n\t\t\t<textarea :id=\"id\"></textarea>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport TinyMCE from './../../components/TinyMCE'\r\n\texport default TinyMCE\r\n</script>\r\n\r\n<style type=\"text/css\">\r\n\t.fl-wrap-input{\r\n\t\t/*border: 1px solid #dce1e4;*/\r\n\t\tposition: relative;\r\n\t    text-rendering: optimizeLegibility;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    box-sizing: border-box;\r\n\t    font-family: inherit;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    font-weight: normal;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -45841,7 +45831,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "b__components b__summernote b-ios b-float-label minh class b__input 2"
   }, [_c('div', {
-    staticClass: "fl-wrap fl-wrap-input fl-is-active fl-has-focus"
+    staticClass: "class"
   }, [_c('label', {
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('textarea', {
