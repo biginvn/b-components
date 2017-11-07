@@ -17,7 +17,7 @@ export default {
     mixins: [baseComponent],
 
     mounted() {
-        this.initTinyMCE(this.content)
+        this.initTinyMCE(this.value)
         this.updateFloatLabel(null)
     },
 
@@ -44,7 +44,6 @@ export default {
                             "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
                             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
                         ],
-
                         toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
 
                         init_instance_callback: function (editor) {
