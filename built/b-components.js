@@ -41528,8 +41528,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 selector: '#' + Vue.id,
                 readonly: readonly,
                 plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
+
                 toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+
                 init_instance_callback: function (editor) {
+                    $('tr.mceFirst').css('z-index', '1000');
                     if (content != null || content != undefined) this.setContent(content);
                     editor.on('keyup', function (e) {
                         if (this.getContent() != "") {
