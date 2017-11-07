@@ -12,7 +12,7 @@ export default {
 
     },
 
-    props : [ 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode'],
+    props : [ 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config'],
 
     mixins: [baseComponent],
 
@@ -35,34 +35,39 @@ export default {
         initTinyMCEBasicMode(content){
             var Vue = this
             var readonly = this.checkDisabled()
-            Vue.tinymce = tinymce.init({
-                selector: '#' + Vue.id,
-                readonly : readonly,
-                plugins: [
-                    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
-                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                ],
+            Vue.tinymce = tinymce.init(
+                Object.assign({},
+                    {
+                        selector: '#' + Vue.id,
+                        readonly : readonly,
+                        plugins: [
+                            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
+                            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                        ],
 
-                toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+                        toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
 
-                init_instance_callback: function (editor) {
-                    $('tr.mceFirst').css('z-index','1000')
-                    if(content != null || content != undefined)
-                        this.setContent(content)
-                    editor.on('keyup', function (e) {
-                        if(this.getContent() != ""){
-                            if( Vue.classLabel != "active" )
-                                Vue.classLabel = "active"
-                        }else{
-                            Vue.classLabel != ""
+                        init_instance_callback: function (editor) {
+                            $('tr.mceFirst').css('z-index','1000')
+                            if(content != null || content != undefined)
+                                this.setContent(content)
+                            editor.on('keyup', function (e) {
+                                if(this.getContent() != ""){
+                                    if( Vue.classLabel != "active" )
+                                        Vue.classLabel = "active"
+                                }else{
+                                    Vue.classLabel != ""
+                                }
+                            })
+                            editor.on('blur', function (e) {
+                                this.contentOutPut = this.getContent()
+                                Vue.update(this.getContent())
+                            })
                         }
-                    })
-                    editor.on('blur', function (e) {
-                        this.contentOutPut = this.getContent()
-                        Vue.update(this.getContent())
-                    })
-                }
-            });
+                    },
+                    this.tinyConfig ? this.tinyConfig : {}
+                )
+            )
         },
 
         initTinyMCEAdvanceMode(content){

@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <!-- Plugins-->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
+
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
 
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
     <!-- Plugins-->
     <link href='built/b-components.min.css' rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -39,8 +40,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/min/dropzone.min.js"></script>
 
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <!-- Vuejs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
+    <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
     <script src="built/b-components.js"></script>
     <!-- Demo Style-->
     <link href='built/assets/css/style.css' rel="stylesheet">
@@ -61,6 +65,8 @@
             <div class="container" style="padding-bottom: 100px;">
                 <div class="jumbotron wow animated fadeInDown">
                     <h1>Vue Components</h1>
+
+                                        
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -407,7 +413,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE</h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor" v-model="input.tinyMCE"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor" :tiny-config="tinyConfig" v-model="input.tinyMCE"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
@@ -424,7 +430,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE2 </h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor2" v-model="input.tinyMCE2"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor2" v-model="input.tinyMCE"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE2 = tinyMCE2.content"></b-button>
@@ -503,6 +509,13 @@
 var vm = new Vue({
     el: '#app',
     data: {
+        tinyConfig : {
+            // theme_url : "http://www.example.com/path1/a.js"
+        },
+        tag : [],
+        tagItems : [
+            '123', '456'
+        ],
         effect: 'toggle__circle',
         color_style: 'toggle__danger',
         prefixes: true,
