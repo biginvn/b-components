@@ -41508,7 +41508,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted() {
         this.initTinyMCE(this.value);
-        this.updateFloatLabel(null);
     },
 
     computed: {},
@@ -41620,6 +41619,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         initTinyMCE(content) {
+            this.updateFloatLabel(content);
             if (this.mode == "advance") return this.initTinyMCEAdvanceMode(content);else return this.initTinyMCEBasicMode(content);
         },
 
@@ -41911,7 +41911,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, "\n.fl-wrap-input{\n\t/*border: 1px solid #dce1e4;*/\n\tposition: relative;\n    text-rendering: optimizeLegibility;\n    -webkit-font-smoothing: antialiased;\n    box-sizing: border-box;\n    font-family: inherit;\n    -webkit-font-smoothing: antialiased;\n    font-weight: normal;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?5d18391f"],"names":[],"mappings":";AAmBA;CACA,8BAAA;CACA,mBAAA;IACA,mCAAA;IACA,oCAAA;IACA,uBAAA;IACA,qBAAA;IACA,oCAAA;IACA,oBAAA;CACA","file":"TinyMCE.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 31/10/2017 -->\r\n<!-- Component: SummerNote -->\r\n\r\n<template>\r\n\t<div class=\"b__components b__summernote b-ios b-float-label minh class b__input 2\">\r\n\t\t<div class=\"class\">\r\n\t\t\t<label :class=\"classLabel\">{{ label }}</label>\r\n\t\t\t<textarea :id=\"id\"></textarea>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport TinyMCE from './../../components/TinyMCE'\r\n\texport default TinyMCE\r\n</script>\r\n\r\n<style type=\"text/css\">\r\n\t.fl-wrap-input{\r\n\t\t/*border: 1px solid #dce1e4;*/\r\n\t\tposition: relative;\r\n\t    text-rendering: optimizeLegibility;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    box-sizing: border-box;\r\n\t    font-family: inherit;\r\n\t    -webkit-font-smoothing: antialiased;\r\n\t    font-weight: normal;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"TinyMCE.vue","sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -45831,7 +45831,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "b__components b__summernote b-ios b-float-label minh class b__input 2"
+    staticClass: "b__components b__tinymce b-float-label b__input"
   }, [_c('div', {
     staticClass: "class"
   }, [_c('label', {

@@ -411,7 +411,22 @@
                         </figure>
                         <figure class="wow animated">
                             <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Tiny MCE</h4>
+                                <h4 class="mb-3 panel-heading">Date Time Picker 2.0</h4>
+                                <div class="panel-body">
+                                    <b-date-and-time id="datetimepicker4" label="Date & Time" placeholder="Date Time Picker Make By Thien Nguyen Dev" v-model="input.dateAndTime"></b-date-and-time>
+                                </div>
+                                <div class="panel-body">
+                                    v-model data: {{ input.dateAndTime }}
+                                    <br>
+                                    User Must be tranmission parameter ID
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="col-md-12">
+                        <figure class="wow animated">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Tiny MCE Basic Mode</h4>
                                 <div class="panel-body">
                                     <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor" :tiny-config="tinyConfig" v-model="input.tinyMCE"></b-tinymce>
                                 </div>
@@ -426,11 +441,11 @@
                                 </div>
                             </div>
                         </figure>
-                                                <figure class="wow animated">
+                        <figure class="wow animated">
                             <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Tiny MCE2 </h4>
+                                <h4 class="mb-3 panel-heading">Tiny MCE Advance Mode </h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor2" v-model="input.tinyMCE"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="advance" id="bTinyMCE__Editor2" v-model="input.tinyMCE2"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE2 = tinyMCE2.content"></b-button>
@@ -438,19 +453,6 @@
                                 </div>
                                 <div class="panel-body">
                                     v-model data: {{ input.tinyMCE2 }}
-                                    <br>
-                                    User Must be tranmission parameter ID
-                                </div>
-                            </div>
-                        </figure>
-                        <figure class="wow animated">
-                            <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Date Time Picker 2.0</h4>
-                                <div class="panel-body">
-                                    <b-date-and-time id="datetimepicker4" label="Date & Time" placeholder="Date Time Picker Make By Thien Nguyen Dev" v-model="input.dateAndTime"></b-date-and-time>
-                                </div>
-                                <div class="panel-body">
-                                    v-model data: {{ input.dateAndTime }}
                                     <br>
                                     User Must be tranmission parameter ID
                                 </div>

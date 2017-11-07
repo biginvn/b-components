@@ -18,7 +18,6 @@ export default {
 
     mounted() {
         this.initTinyMCE(this.value)
-        this.updateFloatLabel(null)
     },
 
     computed: {
@@ -148,6 +147,7 @@ export default {
         },
 
         initTinyMCE(content){
+            this.updateFloatLabel(content)
             if( this.mode == "advance" )
                 return this.initTinyMCEAdvanceMode(content)
             else
