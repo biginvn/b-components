@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <!-- Plugins-->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
+
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
 
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
     <!-- Plugins-->
     <link href='built/b-components.min.css' rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -23,23 +24,27 @@
 
     <!-- tinyMCE -->    
     <script src="src/plugins/tinimce/tinymce.min.js"></script>
+     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.7.1/tinymce.min.js"></script>  -->
     <!-- tinyMCE -->
+    
     <!-- Jquery DateTimePicker-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
     <!-- Jquery DateTimePicker-->
 
     <!-- Dropzone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/min/dropzone.min.js"></script>
 
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <!-- Vuejs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
+    <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
     <script src="built/b-components.js"></script>
     <!-- Demo Style-->
     <link href='built/assets/css/style.css' rel="stylesheet">
@@ -60,6 +65,8 @@
             <div class="container" style="padding-bottom: 100px;">
                 <div class="jumbotron wow animated fadeInDown">
                     <h1>Vue Components</h1>
+
+                                        
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -416,9 +423,24 @@
                         </figure>
                         <figure class="wow animated">
                             <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Tiny MCE</h4>
+                                <h4 class="mb-3 panel-heading">Date Time Picker 2.0</h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" mode="basic" v-model="input.tinyMCE"></b-tinymce>
+                                    <b-date-and-time id="bDateTimePicker" label="Date & Time" time-format="MM-DD-YYYY hh:mm A"  placeholder="Date Time Picker Make By Thien Nguyen Dev" v-model="input.dateAndTime"></b-date-and-time>
+                                </div>
+                                <div class="panel-body">
+                                    v-model data: {{ input.dateAndTime }}
+                                    <br>
+                                    Parameter required: id(unique), time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" ), 
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="col-md-12">
+                        <figure class="wow animated">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Tiny MCE Basic Mode</h4>
+                                <div class="panel-body">
+                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor" :tiny-config="tinyConfig" v-model="input.tinyMCE"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
@@ -426,17 +448,27 @@
                                 </div>
                                 <div class="panel-body">
                                     v-model data: {{ input.tinyMCE }}
+                                    <br>
+                                    Parameter required: id(unique), time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" )
+                                    <br>Parameter non-required: mode( "basic" || "advance"), tiny-config
                                 </div>
                             </div>
                         </figure>
                         <figure class="wow animated">
                             <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Date Time Picker 2.0</h4>
+                                <h4 class="mb-3 panel-heading">Tiny MCE Advance Mode </h4>
                                 <div class="panel-body">
-                                    <b-date-and-time  label="Date & Time" v-model="input.dateAndTime"></b-date-and-time>
+                                    <b-tinymce label="CONTENT" mode="advance" id="bTinyMCE__Editor2" v-model="input.tinyMCE2"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
-                                    v-model data: {{ input.dateAndTime }}
+                                    <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE2 = tinyMCE2.content"></b-button>
+                                    <b-button type="button" class-name="button-warn" label="Delete Content" @click.native="input.tinyMCE2 = ''"></b-button>
+                                </div>
+                                <div class="panel-body">
+                                    v-model data: {{ input.tinyMCE2 }}
+                                    <br>
+                                    Parameter required: id(unique), time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" )
+                                    <br>Parameter non-required: mode( "basic" || "advance"), tiny-config
                                 </div>
                             </div>
                         </figure>
@@ -493,6 +525,13 @@
 var vm = new Vue({
     el: '#app',
     data: {
+        tinyConfig : {
+            // theme_url : "http://www.example.com/path1/a.js"
+        },
+        tag : [],
+        tagItems : [
+            '123', '456'
+        ],
         effect: 'toggle__circle',
         color_style: 'toggle__danger',
         prefixes: true,
@@ -522,15 +561,21 @@ var vm = new Vue({
             listUploaded      : null,
             dateAndTime       : null,
             task              : null,
-            tinyMCE           : null,
+            tinyMCE           : "Lão Minh bắt fix bug nhiều quá",
+            tinyMCE2 : null,
             tags: []
         },
         tinyMCE: {
-            content  : "Tiny MCE Content",
+            content  : "Tiny MCE Content 1 (khác nhau)",
             mode     : 'basic',
             disabled : ''
         },
 
+        tinyMCE2: {
+            content  : "Tiny MCE Content 2 (khác nhau)",
+            mode     : 'basic',
+            disabled : ''
+        },
 
         listUpload : [
             {
@@ -595,9 +640,7 @@ var vm = new Vue({
         ]
     },
     method : {
-        changeTinyMCEMode(mode){
-            this.tinyMCEMode = mode
-        },
+
     },
 
     template: '#main-page'

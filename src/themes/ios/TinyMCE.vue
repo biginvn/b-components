@@ -4,10 +4,10 @@
 <!-- Component: SummerNote -->
 
 <template>
-	<div class="b__components b__summernote b-ios b-float-label minh class b__input 2">
-		<div class="fl-wrap fl-wrap-input fl-is-active fl-has-focus">
-			<label :class="classLabel" id="label-tinyMCE" >{{ label }}</label>
-			<textarea id="mytextarea"></textarea>
+	<div class="b__components b__tinymce b-float-label b__input">
+		<div class="class">
+			<label :class="classLabel">{{ label }}</label>
+			<textarea :id="id"></textarea>
 		</div>
 	</div>
 </template>
@@ -17,14 +17,4 @@
 </script>
 
 <style type="text/css">
-	.fl-wrap-input{
-		/*border: 1px solid #dce1e4;*/
-		position: relative;
-	    text-rendering: optimizeLegibility;
-	    -webkit-font-smoothing: antialiased;
-	    box-sizing: border-box;
-	    font-family: inherit;
-	    -webkit-font-smoothing: antialiased;
-	    font-weight: normal;
-	}
 </style>

@@ -12,19 +12,15 @@ export default {
 
     },
 
-    props : [ 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode'],
+    props : [ 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config'],
 
     mixins: [baseComponent],
 
     mounted() {
-        this.initSumerNote(this.content)
-        this.updateFloatLabel(null)
+        this.initTinyMCE(this.value)
     },
 
     computed: {
-        classes () {
-            return (this.className?this.className:'') + " b__input 2"
-        },
     },
 
     watch:{
@@ -36,46 +32,54 @@ export default {
     methods: {  
 
         initTinyMCEBasicMode(content){
-            var vm = this
+            var Vue = this
             var readonly = this.checkDisabled()
-            this.tinymce = tinymce.init({
-                selector: '#mytextarea',
-                readonly : readonly,
-                plugins: [
-                    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
-                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                ],
-                toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-                init_instance_callback: function (editor) {
-                    this.setContent(content)
-                    editor.on('keyup', function (e) {
-                        if(this.getContent() != ""){
-                            if( document.querySelector('#label-tinyMCE').className != "active" )
-                                document.querySelector('#label-tinyMCE').className = "active"
-                        }else{
-                            document.querySelector('#label-tinyMCE').className = ""
+            Vue.tinymce = tinymce.init(
+                Object.assign({},
+                    {
+                        selector: '#' + Vue.id,
+                        readonly : readonly,
+                        plugins: [
+                            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
+                            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                        ],
+                        toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+
+                        init_instance_callback: function (editor) {
+                            $('tr.mceFirst').css('z-index','1000')
+                            if(content != null || content != undefined)
+                                this.setContent(content)
+                            editor.on('keyup', function (e) {
+                                if(this.getContent() != ""){
+                                    if( Vue.classLabel != "active" )
+                                        Vue.classLabel = "active"
+                                }else{
+                                    Vue.classLabel != ""
+                                }
+                            })
+                            editor.on('blur', function (e) {
+                                this.contentOutPut = this.getContent()
+                                Vue.update(this.getContent())
+                            })
                         }
-                    })
-                    editor.on('blur', function (e) {
-                        this.contentOutPut = this.getContent()
-                        vm.update(this.getContent())
-                    })
-                }
-            });
+                    },
+                    this.tinyConfig ? this.tinyConfig : {}
+                )
+            )
         },
 
         initTinyMCEAdvanceMode(content){
-            var vm = this
+            var Vue = this
             var readonly = this.checkDisabled()
-            this.tinymce = tinymce.init({
-                selector: '#mytextarea',
+            Vue.tinymce = tinymce.init({
+                selector: '#' + Vue.id,
                 readonly : readonly,
                 plugins: [
                     "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
                     "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
                 ],
-
-                toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+                toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify",
+                // toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
                 toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
                 toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft",
                 content_css: [
@@ -124,42 +128,38 @@ export default {
                     content: 'Test 2'
                     }],
                 init_instance_callback: function (editor) {
-                    this.setContent(content)
+                    if(content != null || content != undefined)
+                        this.setContent(content)
                     editor.on('keyup', function (e) {
                         if(this.getContent() != ""){
-                            if( document.querySelector('#label-tinyMCE').className != "active" )
-                                document.querySelector('#label-tinyMCE').className = "active"
+                            if( Vue.classLabel != "active" )
+                                Vue.classLabel = "active"
                         }else{
-                            document.querySelector('#label-tinyMCE').className = ""
+                            Vue.classLabel != ""
                         }
                     })
                     editor.on('blur', function (e) {
                         this.contentOutPut = this.getContent()
-                        vm.update(this.getContent())
+                        Vue.update(this.getContent())
                     })
                 }
             });
         },
 
-        initSumerNote(content){
+        initTinyMCE(content){
+            this.updateFloatLabel(content)
             if( this.mode == "advance" )
-                this.initTinyMCEAdvanceMode(content)
+                return this.initTinyMCEAdvanceMode(content)
             else
-                this.initTinyMCEBasicMode(content)
+                return this.initTinyMCEBasicMode(content)
         },
 
         getContentOutput(){
-            tinymce.init({
-                selector: '#mytextarea',
-                init_instance_callback: function (editor) {
-                    this.contentOutPut = this.getContent()
-                }
-            })
-            return this.contentOutPut
+            return this.contentOutPut = tinymce.get(this.id).getContent(data)
         },
 
         updateContent(data){
-            tinymce.activeEditor.setContent(data);
+            tinymce.get(this.id).setContent(data)
             return this.$emit('input', data)
         },
 
@@ -181,6 +181,7 @@ export default {
             } else
                 this.classLabel = ''
         },
+
     }
 
 }
