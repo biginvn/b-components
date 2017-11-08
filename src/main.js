@@ -22,6 +22,7 @@ import BDateAndTime from './themes/ios/DateAndTime.vue'
 import BListUpLoaded from './themes/ios/ListUpLoaded.vue'
 import BTinymce from './themes/ios/TinyMCE.vue'
 import BInputTag from './themes/ios/Tag.vue'
+import BLoader from './themes/ios/Loader.vue'
 
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
@@ -43,3 +44,4 @@ Vue.component('BListUpLoaded', BListUpLoaded)
 Vue.component('BDateAndTime', BDateAndTime)
 Vue.component('BTinymce', BTinymce)
 Vue.component('BInputTag', BInputTag)
+Vue.component('BLoader', BLoader)
