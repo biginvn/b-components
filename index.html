@@ -413,12 +413,12 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Date Time Picker 2.0</h4>
                                 <div class="panel-body">
-                                    <b-date-and-time id="datetimepicker4" label="Date & Time" placeholder="Date Time Picker Make By Thien Nguyen Dev" v-model="input.dateAndTime"></b-date-and-time>
+                                    <b-date-and-time id="bDateTimePicker" label="Date & Time" time-format="MM-DD-YYYY hh:mm A"  placeholder="Date Time Picker Make By Thien Nguyen Dev" v-model="input.dateAndTime"></b-date-and-time>
                                 </div>
                                 <div class="panel-body">
                                     v-model data: {{ input.dateAndTime }}
                                     <br>
-                                    User Must be tranmission parameter ID
+                                    Parameter required: id(unique), time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" ), 
                                 </div>
                             </div>
                         </figure>
@@ -437,7 +437,8 @@
                                 <div class="panel-body">
                                     v-model data: {{ input.tinyMCE }}
                                     <br>
-                                    User Must be tranmission parameter ID
+                                    Parameter required: id(unique), time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" )
+                                    <br>Parameter non-required: mode( "basic" || "advance"), tiny-config
                                 </div>
                             </div>
                         </figure>
@@ -454,7 +455,8 @@
                                 <div class="panel-body">
                                     v-model data: {{ input.tinyMCE2 }}
                                     <br>
-                                    User Must be tranmission parameter ID
+                                    Parameter required: id(unique), time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" )
+                                    <br>Parameter non-required: mode( "basic" || "advance"), tiny-config
                                 </div>
                             </div>
                         </figure>

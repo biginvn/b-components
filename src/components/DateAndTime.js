@@ -17,7 +17,7 @@ export default {
 
     },
 
-    props : [ 'id', 'label', 'name', 'disabled', 'placeholder', 'class-name', 'datetimepicker-type'],
+    props : [ 'id', 'label', 'name', 'disabled', 'placeholder', 'class-name', 'datetimepicker-type', 'time-format'],
 
     created() {
         this.initData();
@@ -38,15 +38,22 @@ export default {
     methods: {
         initDateTimePicker(){
             var Vue = this
+            var timeFormat = 'MM-DD-YYYY hh:mm A'
+            if( Vue.timeFormat != null || Vue.timeFormat != undefined || Vue.timeFormat != "")
+                timeFormat = Vue.timeFormat
             $("#" + Vue.id).datetimepicker({
-                format: 'MM-DD-YYYY hh:mm A Z'
+                format: timeFormat
             })
-            $("#" + Vue.id).on("dp.change", function(e) {
+            $("#" + Vue.id).on("dp.change", function(ev) {
+                if( (Vue.value != null) && (Vue.value != undefined) && (Vue.value.split(" ")[0] != $("#" + Vue.id).val().split(" ")[0]) )
+                    $(document).find('.picker-switch a[data-action="togglePicker"]').click()
                 Vue.input.time = $("#" + Vue.id).val()
                 Vue.updateDateModel(Vue.input.time)
             })
-            $("#" + Vue.id).on("dp.error", function(e) {
-            })
+
+            $("#" + Vue.id).datetimepicker().on('dp.changeDate', function(e){
+                alert("sdsds")
+            })  
         },
 
         updateDateModel(data){
@@ -70,8 +77,8 @@ export default {
             var time = {
                 date : arrayTime[0],
                 time : arrayTime[1],
-                session : arrayTime[2], 
-                zone    : arrayTime[3]
+                session : arrayTime[2] 
+                // zone    : arrayTime[3]
             }
             if( this.regularExpression(/(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/, time.date) == false)
                 return false
@@ -79,8 +86,8 @@ export default {
                 return false
             if( this.checkAMPM(time.session) == false)
                 return false
-            if( this.regularExpression(/^(Z|[+-](?:2[0-3]|[01]?[0-9])(?::?(?:[0-5]?[0-9]))?)$/, time.zone) == false)
-                return false
+            // if( this.regularExpression(/^(Z|[+-](?:2[0-3]|[01]?[0-9])(?::?(?:[0-5]?[0-9]))?)$/, time.zone) == false)
+            //     return false
             return true
         },
 
