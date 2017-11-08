@@ -5,7 +5,7 @@
     <title>Vue Components</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <link rel="icon" type="image/png" href="http://bigin.vn/wp-content/uploads/2017/02/fav.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -17,7 +17,7 @@
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 
     <!-- Plugins-->
-    <link href='built/b-components.min.css' rel="stylesheet">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -40,12 +40,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/min/dropzone.min.js"></script>
 
+    <!-- Vutify Plugin -->
     <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+
     <!-- Vuejs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
-    <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+
+    <!-- B Components -->
+    <link href='built/b-components.min.css' rel="stylesheet">
     <script src="built/b-components.js"></script>
+
     <!-- Demo Style-->
     <link href='built/assets/css/style.css' rel="stylesheet">
 </head>
@@ -291,7 +296,7 @@
                                         <div class="my-2">
                                             <b-button type="button" class-name="button-success" label="VND" @click.native="affix = 'VND'"></b-button>
                                             <b-button type="button" class-name="button-warn button-solid" label="EUR" @click.native="affix = '€'"></b-button>
-                                            <b-button type="button" class-name="button-primary button-solid" label="USA" @click.native="affix = '%'"></b-button>
+                                            <b-button type="button" class-name="button-primary button-solid" label="USA" @click.native="affix = '$'"></b-button>
                                             <b-button type="button" class-name="button-success" label="%" @click.native="affix = '%'"></b-button>
                                         </div>
                                         <div class="my-2">
@@ -360,6 +365,18 @@
                                     </div>
                                 </div>
                             </figure>
+
+                            <figure class="wow animated bounceInRight">
+                                <div class="panel-border">
+                                    <h4 class="mb-3 panel-heading">Loader</h4>
+                                    <div class="panel-body">
+                                        <p>
+                                            <b-loader></b-loader>
+                                        </p>
+                                    </div>
+                                </div>
+                            </figure>
+
                             <figure class="wow animated bounceInRight">
                                 <div class="panel-border">
                                     <h4 class="mb-3 panel-heading">Multi Select</h4>
@@ -541,7 +558,7 @@ var vm = new Vue({
             textarea          : null,
             rating            : null,
             datePicker        : null,
-            numericFormatted  : null,
+            numericFormatted  : '32121123123',
             zipCode           : null,
             multiSelect       : null,
             singleSelect      : null,
