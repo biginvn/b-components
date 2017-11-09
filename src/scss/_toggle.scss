@@ -81,8 +81,7 @@ $height: 25px;
     & *:before,
     &+.toggle__btn {
         box-sizing: border-box;
-        width: 106px!important;
-        height: 32px!important;
+       
         padding-top: 3px;
         position: relative;
         border-radius: 20px;
@@ -136,6 +135,8 @@ $height: 25px;
         transition: all .2s ease;
         background: #a9a9a9;
         border-radius: 20px;
+         width: 106px!important;
+        height: 32px!important;
         .toggle__icon {
             width: $width;
             height: $height;
@@ -167,8 +168,8 @@ $height: 25px;
                 padding-bottom: 0;
                 height: 100%;
                 width: 0;
-                left: -13px;
-                top: -3px;
+                top: -4px;
+                right: 90px;
                 // -webkit-transition: .4s;
                 // transition: all 2s ease;
                 border-radius: 20px;
@@ -184,11 +185,10 @@ $height: 25px;
                 padding-bottom: 0;
                 height: 100%;
                 width: 0;
-                right: -13px;
-                // -webkit-transition: .4s;
-                // transition: all 2s ease;
+                left: 90px;
+                top: -4px;
                 border-radius: 20px;
-                top: -3px;
+             
             }
         }
 
