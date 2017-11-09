@@ -9,7 +9,7 @@
 			<div class="toggle__on" :class= "{'active' : isChecked }" v-if="textOn">{{ textOn }}
 				<span class="toggle-handle btn btn-default" v-show="isChecked"></span>
 			</div>
-			
+				
 
 		</div>
 	</div>

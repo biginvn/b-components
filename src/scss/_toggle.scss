@@ -133,7 +133,7 @@ $height: 25px;
         overflow: hidden;
         backface-visibility: hidden;
         transition: all .2s ease;
-        background: #a9a9a9;
+        background: #f1f1f1;
         border-radius: 20px;
          width: 106px!important;
         height: 32px!important;
@@ -155,12 +155,13 @@ $height: 25px;
             position: absolute;
             line-height: 2em;
             font-weight: bold;
-            color: #fff;
+            color: #333;
             text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
         }
 
         .toggle__on {
             left: 100%;
+             color: #fff;
             .toggle-handle {
                 position: absolute;
                 margin: 0 auto;
@@ -178,6 +179,7 @@ $height: 25px;
 
         .toggle__off {
             left: 0;
+
             .toggle-handle {
                 position: absolute;
                 margin: 0 auto;
@@ -340,4 +342,7 @@ $height: 25px;
 
 .toggle__primary:checked+.toggle__btn,.toggle__primary+.toggle__btn .toggle__on{
     background: #108ee9!important;
+}
+.toggle__purple:checked+.toggle__btn,.toggle__purple+.toggle__btn .toggle__on{
+    background: #7a6fbe!important;
 }
