@@ -32,6 +32,7 @@ export default {
 
     watch:{
         value(){
+            $("#" + Vue.id).val(this.value)
         },
     },
 
