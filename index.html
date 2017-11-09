@@ -231,12 +231,27 @@
 
                         <figure class="wow animated bounceInLeft">
                             <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Modal</h4>
+                                <div class="panel-body">
+                                    <b-button type="button" class-name="button-primary" @click.native="input.showModal=true" label="Show Modal"></b-button>
+                                    <p >
+                                        <b-modal v-if="input.showModal" v-model="input.showModal"></b-modal>
+                                    </p>
+                                    {{input.showModal}}
+                                </div>
+                            </div>
+                        </figure>
+
+                        <figure class="wow animated bounceInLeft">
+                            <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Task List</h4>
                                 <div class="panel-body">
                                     <p>
                                         <b-task-list v-model="taskList"></b-task-list>
                                     </p>
+                                    
                                     <p>{{ taskList }}</p>
+                                    
                                 </div>
                             </div>
                         </figure>
@@ -575,7 +590,8 @@ var vm = new Vue({
             task              : null,
             tinyMCE           : "Lão Minh bắt fix bug nhiều quá",
             tinyMCE2 : null,
-            tags: []
+            tags: [],
+            showModal: false
         },
         tinyMCE: {
             content  : "Tiny MCE Content 1 (khác nhau)",

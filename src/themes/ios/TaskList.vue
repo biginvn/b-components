@@ -2,7 +2,8 @@
 	<div class="b__components b-task">
 		<div class="task-toolbar">
 			<button type="button" class="btn btn-default btn-rounded" @click="addTask(true)">Condition</button>
-			<button type="button" class="btn btn-default btn-rounded">Send Email Action</button>
+			<button type="button" class="btn btn-default btn-rounded" @click="changeStatusModal">Send Email Action</button>
+	
 			<button type="button" class="btn btn-default btn-rounded">Update Field Value Action</button>
 			<button type="button" class="btn btn-default btn-rounded">Create Activity Value Action</button>
 			<button type="button" class="btn btn-default btn-rounded">Wait Action</button>
@@ -10,6 +11,7 @@
 			<button type="button" class="btn btn-default btn-rounded" @click="deleteTask">Delete</button>
 			<button type="button" class="btn btn-default btn-rounded" @click="emptyTask">Empty</button>
 		</div>
+		 <b-modal v-if="showModal" v-model="showModal"></b-modal>
 		<div v-for="(item, index) in task" :class="'task-el-' + index">
 			<div class="task">
 				<div class="task-title"> {{ item.title }}</div>
@@ -33,5 +35,7 @@
 </template>
 <script>
 import TaskList from './../../components/TaskList'
+
 export default TaskList
+
 </script>
