@@ -455,6 +455,9 @@
                                     <b-date-and-time id="bDateTimePicker" label="Date & Time" time-format="MM-DD-YYYY hh:mm A"  placeholder="Date Time Picker Make By Thien Nguyen Dev" v-model="input.dateAndTime"></b-date-and-time>
                                 </div>
                                 <div class="panel-body">
+                                    <b-button type="button" class-name="button-primary" label="Set Time" @click.native="input.dateAndTime = '11-09-2017 11:52 AM'"></b-button>
+                                </div>
+                                <div class="panel-body">
                                     v-model data: {{ input.dateAndTime }}<br>
                                     <br>
                                     Parameter required: <br>id(unique), <br>time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" ), 

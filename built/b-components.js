@@ -40843,7 +40843,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {},
 
     watch: {
-        value() {}
+        value() {
+            $("#" + Vue.id).val(this.value);
+        }
     },
 
     methods: {
@@ -41533,13 +41535,13 @@ var Events = new Vue({});
 	data() {
 		return {
 			newTag: '',
-			classLabel: '',
 			tagPlaceholder: ''
 		};
 	},
 
 	mounted() {
 		this.setDataDefault();
+		this.setTag(this.value);
 	},
 
 	watch: {
@@ -41571,7 +41573,7 @@ var Events = new Vue({});
 			this.tags.splice(index, 1);
 			if (this.tags.length == 0) {
 				this.updateChange(this.tags);
-				this.tagPlaceholder = this.placeholder;
+				// this.tagPlaceholder = this.placeholder;
 			}
 			this.tagChange();
 		},
@@ -41602,7 +41604,10 @@ var Events = new Vue({});
 			console.log(tags);
 		},
 		setTag(arrayTag) {
-			if (arrayTag.length == 0) this.tags = [];
+			if (arrayTag.length == 0) {
+				this.tags = [];
+				this.tagPlaceholder = this.placeholder;
+			}
 			for (let i = 0; i < arrayTag.length; i++) {
 				this.addNewTag(arrayTag[i]);
 			}
@@ -46211,7 +46216,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: " b-float-label"
   }, [_c('div', {
-    staticClass: "b__component b__component_input_tag_wrapper "
+    staticClass: "b__components b__component_input_tag_wrapper "
   }, [_c('label', {
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _vm._l((_vm.tags), function(tag, index) {

@@ -11,13 +11,13 @@ export default {
 	data(){
 		return {
 			newTag: '',
-			classLabel : '',
 			tagPlaceholder : ''
 		}
 	},
 
 	mounted(){
 		this.setDataDefault()
+		this.setTag(this.value)
 	},
 
 	watch:{
@@ -49,7 +49,7 @@ export default {
 			this.tags.splice(index,1);
 			if(this.tags.length == 0){
 	        	this.updateChange(this.tags);
-	        	this.tagPlaceholder = this.placeholder;
+	        	// this.tagPlaceholder = this.placeholder;
 	        }
 			this.tagChange();
 		},
@@ -81,8 +81,10 @@ export default {
 			console.log(tags);
 		},
 		setTag(arrayTag){
-			if( arrayTag.length == 0 )
+			if( arrayTag.length == 0 ){
 				this.tags = []
+				this.tagPlaceholder = this.placeholder
+			}
 			for( let i = 0; i < arrayTag.length; i++ ){
 				this.addNewTag(arrayTag[i])
 			}
