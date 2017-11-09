@@ -2,16 +2,11 @@ import baseComponent from '../mixins/text-field-mixins'
 
 export default {
 	mixins : [baseComponent],
-	props:{
-		tags:{
-			type: Array,
-			default:() => []
-		},
-	},
+	props: ['type'],
 	data(){
 		return {
 			newTag: '',
-			tagPlaceholder : ''
+			tagPlaceholder : '',
 		}
 	},
 
@@ -20,14 +15,13 @@ export default {
 		this.setTag(this.value)
 	},
 
-	watch:{
-        value(){
-        	this.setTag(this.value)
+	computed:{
+        tags(){
+        	return this.value ? this.value.map( item => item.toString() ) : []
         },
     },
 
 	methods:{
-
 		setDataDefault(){
 			return this.tagPlaceholder = this.placeholder
 		},
@@ -36,7 +30,13 @@ export default {
 			this.$el.queySelector('.new_tag').focus();
 		},
 		addNewTag(tag){
-			if(tag && this.tags.indexOf(tag) === -1){
+			if(tag!= undefined && tag!=null)
+				tag = tag.toString()
+
+			let regex = /^[0-9]+\-*[0-9]+$/g
+			if(tag!= undefined && tag!=null && !tag.match(regex) && this.type == 'zipcode') return
+
+			if(tag && this.tags.indexOf(tag.toString()) === -1){
 				this.updateChange(tag);
 				this.tags.push(tag);
 				this.tagChange();
@@ -52,6 +52,7 @@ export default {
 	        	// this.tagPlaceholder = this.placeholder;
 	        }
 			this.tagChange();
+			this.$emit('input', this.tags)
 		},
 		tagChange () {
 	        if (this.onChange) {
@@ -66,6 +67,7 @@ export default {
 	        	this.tagPlaceholder = this.placeholder;
 	        }
 	        this.tagChange();
+	        this.$emit('input', this.tags)
 	        
      	 },
       	updateChange(value) {
@@ -77,8 +79,9 @@ export default {
 			else
 				this.classLabel = '';
 		},
-		onPaste(evt){
-			console.log(tags);
+		onPaste(tag){
+			tag = tag.split(',');
+			this.setTag(tag);
 		},
 		setTag(arrayTag){
 			if( arrayTag.length == 0 ){
