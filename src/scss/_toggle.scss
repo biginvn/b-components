@@ -81,8 +81,7 @@ $height: 25px;
     & *:before,
     &+.toggle__btn {
         box-sizing: border-box;
-        width: 106px!important;
-        height: 32px!important;
+       
         padding-top: 3px;
         position: relative;
         border-radius: 20px;
@@ -134,8 +133,10 @@ $height: 25px;
         overflow: hidden;
         backface-visibility: hidden;
         transition: all .2s ease;
-        background: #a9a9a9;
+        background: #f1f1f1;
         border-radius: 20px;
+         width: 106px!important;
+        height: 32px!important;
         .toggle__icon {
             width: $width;
             height: $height;
@@ -154,12 +155,13 @@ $height: 25px;
             position: absolute;
             line-height: 2em;
             font-weight: bold;
-            color: #fff;
+            color: #333;
             text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
         }
 
         .toggle__on {
             left: 100%;
+             color: #fff;
             .toggle-handle {
                 position: absolute;
                 margin: 0 auto;
@@ -167,8 +169,8 @@ $height: 25px;
                 padding-bottom: 0;
                 height: 100%;
                 width: 0;
-                left: -13px;
-                top: -3px;
+                top: -4px;
+                right: 90px;
                 // -webkit-transition: .4s;
                 // transition: all 2s ease;
                 border-radius: 20px;
@@ -177,6 +179,7 @@ $height: 25px;
 
         .toggle__off {
             left: 0;
+
             .toggle-handle {
                 position: absolute;
                 margin: 0 auto;
@@ -184,11 +187,10 @@ $height: 25px;
                 padding-bottom: 0;
                 height: 100%;
                 width: 0;
-                right: -13px;
-                // -webkit-transition: .4s;
-                // transition: all 2s ease;
+                left: 90px;
+                top: -4px;
                 border-radius: 20px;
-                top: -3px;
+             
             }
         }
 
@@ -340,4 +342,7 @@ $height: 25px;
 
 .toggle__primary:checked+.toggle__btn,.toggle__primary+.toggle__btn .toggle__on{
     background: #108ee9!important;
+}
+.toggle__purple:checked+.toggle__btn,.toggle__purple+.toggle__btn .toggle__on{
+    background: #7a6fbe!important;
 }

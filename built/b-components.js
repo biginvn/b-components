@@ -40694,6 +40694,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -46520,6 +46521,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'active': !_vm.isChecked
     }
   }, [_vm._v(_vm._s(_vm.textOff) + "\n\t\t\t"), _c('span', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.isChecked),
+      expression: "!isChecked"
+    }],
     staticClass: "toggle-handle btn btn-default"
   })]) : _vm._e(), _vm._v(" "), (_vm.textOn) ? _c('div', {
     staticClass: "toggle__on",
@@ -46527,6 +46534,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'active': _vm.isChecked
     }
   }, [_vm._v(_vm._s(_vm.textOn) + "\n\t\t\t"), _c('span', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.isChecked),
+      expression: "isChecked"
+    }],
     staticClass: "toggle-handle btn btn-default"
   })]) : _vm._e()])])
 },staticRenderFns: []}
