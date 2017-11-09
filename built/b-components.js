@@ -40479,10 +40479,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Tag__["a" /* default */]);
@@ -41400,11 +41396,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
+	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
 	props: {
 		tags: {
 			type: Array,
@@ -41413,14 +41409,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	data() {
 		return {
-
 			newTag: '',
 			classLabel: '',
-			placeholder: 'Input Tag'
-
+			tagPlaceholder: ''
 		};
 	},
+
+	mounted() {
+		this.setDataDefault();
+	},
+
+	watch: {
+		value() {
+			this.setTag(this.value);
+		}
+	},
+
 	methods: {
+
+		setDataDefault() {
+			return this.tagPlaceholder = this.placeholder;
+		},
+
 		focusNewTag() {
 			this.$el.queySelector('.new_tag').focus();
 		},
@@ -41428,18 +41438,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (tag && this.tags.indexOf(tag) === -1) {
 				this.updateChange(tag);
 				this.tags.push(tag);
-
 				this.tagChange();
 			}
 			this.$emit('input', this.tags);
-			this.placeholder = '';
+			this.tagPlaceholder = '';
 			this.newTag = '';
 		},
 		remove(index) {
 			this.tags.splice(index, 1);
 			if (this.tags.length == 0) {
 				this.updateChange(this.tags);
-				this.placeholder = 'Input Tag';
+				this.tagPlaceholder = this.placeholder;
 			}
 			this.tagChange();
 		},
@@ -41455,7 +41464,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.tags.pop();
 			if (this.tags.length == 0) {
 				this.updateChange(this.tags);
-				this.placeholder = 'Input Tag';
+				this.tagPlaceholder = this.placeholder;
 			}
 			this.tagChange();
 		},
@@ -41468,6 +41477,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		onPaste(evt) {
 			console.log(tags);
+		},
+		setTag(arrayTag) {
+			if (arrayTag.length == 0) this.tags = [];
+			for (let i = 0; i < arrayTag.length; i++) {
+				this.addNewTag(arrayTag[i]);
+			}
 		}
 	}
 });
@@ -46051,10 +46066,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: " b-float-label"
   }, [_c('div', {
-    staticClass: "b__component_input_tag_wrapper "
+    staticClass: "b__component b__component_input_tag_wrapper "
   }, [_c('label', {
     class: _vm.classLabel
-  }, [_vm._v("Input tag ")]), _vm._v(" "), _vm._l((_vm.tags), function(tag, index) {
+  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _vm._l((_vm.tags), function(tag, index) {
     return _c('span', {
       key: index,
       staticClass: "b__component_input_tag"
@@ -46078,8 +46093,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "new_tag",
     attrs: {
       "type": "text",
+      "id": _vm.id,
+      "disabled": _vm.disabled,
       "name": "input__tag",
-      "placeholder": _vm.placeholder
+      "placeholder": _vm.tagPlaceholder
     },
     domProps: {
       "value": (_vm.newTag)
@@ -46101,7 +46118,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.newTag = $event.target.value
       }
     }
-  })], 2), _vm._v(" "), _c('div', [_vm._v("\n\t\t" + _vm._s(_vm.tags) + "\n\t")])])
+  })], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

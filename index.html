@@ -216,8 +216,15 @@
                                 <h4 class="mb-3 panel-heading">Input Tag</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-input-tag v-model="input.tags"></b-input-tag>
+                                        <b-input-tag label="Zip Code Tag" v-model="input.tags" placeholder="Zip Code Tag"></b-input-tag>
                                     </p>
+                                </div>
+                                <div class="panel-body">
+                                    v-model = {{ input.tags }}
+                                </div>
+                                <div class="panel-body">
+                                    <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-primary" label="Set Tag" @click.native="input.tags = ['Lông Vạn', 'Minh Lưu', 'Duẩn Béo', 'Thiện Đẹp Trai', 'Nam Lôm Côm']"></b-button>
+                                    <b-button type="button" class-name="button-danger" label="Empty Tag" @click.native="input.tags = []"></b-button>
                                 </div>
                             </div>
                         </figure>
