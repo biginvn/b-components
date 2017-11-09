@@ -15,8 +15,8 @@
 body {
 	font-family: 'Open Sans',sans-serif !important;
 	font-size: 13px;
-	background: url(../images/blurred-bg-6.jpg);
-	background-size: 100% 100%;
+	background: url(../images/blurred-bg-6.jpg) fixed;
+	/*background-size: 100% 100%;*/
 }
 label {
 	vertical-align: top;
@@ -125,6 +125,7 @@ figure {
 	border: 0 !important;
 	height: 55px;
 	font-weight: 600;
+	font-size: 18px;
 }
 .panel-border .panel-heading+.panel-body {
 	padding: 10px 15px 15px;
@@ -309,4 +310,7 @@ footer ul>li {
 	bottom: 0;
 	left: 0;
 	z-index: 0;
+}
+.btn{
+	text-transform: none;
 }
