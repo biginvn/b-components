@@ -69,6 +69,8 @@ $height: 25px;
 	}
 	*/
 
+
+
 .toggle__input {
     display: none; // add default box-sizing for this scope
     &,
@@ -79,6 +81,11 @@ $height: 25px;
     & *:before,
     &+.toggle__btn {
         box-sizing: border-box;
+        width: 106px!important;
+        height: 32px!important;
+        padding-top: 3px;
+        position: relative;
+        border-radius: 20px;
         &::selection {
             background: none;
         }
@@ -110,7 +117,15 @@ $height: 25px;
         }
     }
 }
+.b-toggle{
+    border-radius: 20px;
+}
 
+// .active > .toggle-handle {
+//     webkit-transform: translateX(26px);
+//     -ms-transform: translateX(26px);
+//     transform: translateX(58px);
+// }
 
 /* Themes */
 
@@ -120,7 +135,7 @@ $height: 25px;
         backface-visibility: hidden;
         transition: all .2s ease;
         background: #a9a9a9;
-        border-radius: 5px;
+        border-radius: 20px;
         .toggle__icon {
             width: $width;
             height: $height;
@@ -145,10 +160,36 @@ $height: 25px;
 
         .toggle__on {
             left: 100%;
+            .toggle-handle {
+                position: absolute;
+                margin: 0 auto;
+                padding-top: 0;
+                padding-bottom: 0;
+                height: 100%;
+                width: 0;
+                left: -13px;
+                top: -3px;
+                // -webkit-transition: .4s;
+                // transition: all 2s ease;
+                border-radius: 20px;
+            }
         }
 
         .toggle__off {
             left: 0;
+            .toggle-handle {
+                position: absolute;
+                margin: 0 auto;
+                padding-top: 0;
+                padding-bottom: 0;
+                height: 100%;
+                width: 0;
+                right: -13px;
+                // -webkit-transition: .4s;
+                // transition: all 2s ease;
+                border-radius: 20px;
+                top: -3px;
+            }
         }
 
         &:active {
