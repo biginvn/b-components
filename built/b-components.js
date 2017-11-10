@@ -40845,7 +40845,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     watch: {
         value() {
-            $("#" + Vue.id).val(this.value);
+            this.setDate(this.value);
         }
     },
 
@@ -40854,9 +40854,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var Vue = this;
             var timeFormat = 'MM-DD-YYYY hh:mm A';
             if (Vue.timeFormat != null || Vue.timeFormat != undefined || Vue.timeFormat != "") timeFormat = Vue.timeFormat;
-            $("#" + Vue.id).datetimepicker({
-                format: timeFormat
-            });
+            if (Vue.value == null || Vue.value == undefined || Vue.value == "") {
+                $("#" + Vue.id).datetimepicker({
+                    format: timeFormat,
+                    showTodayButton: true,
+                    keyBinds: {
+                        left: null,
+                        right: null
+                    }
+                });
+            } else {
+                $("#" + Vue.id).datetimepicker({
+                    format: timeFormat,
+                    showTodayButton: true,
+                    date: Vue.value,
+                    keyBinds: {
+                        left: null,
+                        right: null
+                    }
+                });
+            }
+
             $("#" + Vue.id).on("dp.change", function (ev) {
                 if (Vue.value != null && Vue.value != undefined && Vue.value.split(" ")[0] != $("#" + Vue.id).val().split(" ")[0]) $(document).find('.picker-switch a[data-action="togglePicker"]').click();
                 Vue.input.time = $("#" + Vue.id).val();
@@ -40870,6 +40888,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         updateDateModel(data) {
             this.$emit('input', data);
+        },
+
+        setDate(date) {
+            $("#" + this.id).data("DateTimePicker").date(date);
         },
 
         checkInputInvalid(time) {
@@ -41837,6 +41859,7 @@ var Events = new Vue({});
                     content: 'Test 2'
                 }],
                 init_instance_callback: function (editor) {
+                    $('tr.mceFirst').css('z-index', '1000');
                     if (content != null || content != undefined) this.setContent(content);
                     editor.on('keyup', function (e) {
                         if (this.getContent() != "") {
