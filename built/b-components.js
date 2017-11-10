@@ -41549,12 +41549,7 @@ var Events = new Vue({});
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
-	props: {
-		tags: {
-			type: Array,
-			default: () => []
-		}
-	},
+	props: ['type'],
 	data() {
 		return {
 			newTag: '',
@@ -41567,14 +41562,13 @@ var Events = new Vue({});
 		this.setTag(this.value);
 	},
 
-	watch: {
-		value() {
-			this.setTag(this.value);
+	computed: {
+		tags() {
+			return this.value ? this.value.map(item => item.toString()) : [];
 		}
 	},
 
 	methods: {
-
 		setDataDefault() {
 			return this.tagPlaceholder = this.placeholder;
 		},
@@ -41583,7 +41577,12 @@ var Events = new Vue({});
 			this.$el.queySelector('.new_tag').focus();
 		},
 		addNewTag(tag) {
-			if (tag && this.tags.indexOf(tag) === -1) {
+			if (tag != undefined && tag != null) tag = tag.toString();
+
+			let regex = /^[0-9]+\-*[0-9]+$/g;
+			if (tag != undefined && tag != null && !tag.match(regex) && this.type == 'zipcode') return;
+
+			if (tag && this.tags.indexOf(tag.toString()) === -1) {
 				this.updateChange(tag);
 				this.tags.push(tag);
 				this.tagChange();
@@ -41599,6 +41598,7 @@ var Events = new Vue({});
 				// this.tagPlaceholder = this.placeholder;
 			}
 			this.tagChange();
+			this.$emit('input', this.tags);
 		},
 		tagChange() {
 			if (this.onChange) {
@@ -41615,6 +41615,7 @@ var Events = new Vue({});
 				this.tagPlaceholder = this.placeholder;
 			}
 			this.tagChange();
+			this.$emit('input', this.tags);
 		},
 		updateChange(value) {
 
@@ -41623,8 +41624,9 @@ var Events = new Vue({});
 				this.classLabel = 'active';
 			} else this.classLabel = '';
 		},
-		onPaste(evt) {
-			console.log(tags);
+		onPaste(tag) {
+			tag = tag.split(',');
+			this.setTag(tag);
 		},
 		setTag(arrayTag) {
 			if (arrayTag.length == 0) {
@@ -46245,9 +46247,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _vm._l((_vm.tags), function(tag, index) {
     return _c('span', {
-      key: index,
       staticClass: "b__component_input_tag"
-    }, [_c('span', [_vm._v(_vm._s(tag) + " ")]), _vm._v(" "), _c('a', {
+    }, [_c('span', [_vm._v(_vm._s(tag))]), _vm._v(" "), _c('a', {
       staticClass: "remove",
       on: {
         "click": function($event) {
@@ -46286,7 +46287,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         $event.stopPropagation();
         _vm.addNewTag(_vm.newTag)
       }],
-      "paste": _vm.onPaste,
+      "keyup": function($event) {
+        if (!('button' in $event) && $event.keyCode !== 188 && _vm._k($event.keyCode, "enter", 13, $event.key) && _vm._k($event.keyCode, "tab", 9, $event.key)) { return null; }
+        $event.preventDefault();
+        $event.stopPropagation();
+        _vm.onPaste(_vm.newTag)
+      },
+      "change": function($event) {
+        _vm.onPaste(_vm.newTag)
+      },
       "input": function($event) {
         if ($event.target.composing) { return; }
         _vm.newTag = $event.target.value
