@@ -199,7 +199,7 @@
                                 <h4 class="mb-3 panel-heading">Single Select</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-multi-select :list="listMultiSelect" v-model="input.singleSelect" single-dropdown="true"></b-multi-select>
+                                        <b-multi-select label="label" request-url="http://date.jsontest.com/" :list="listMultiSelect" v-model="input.singleSelect" single-dropdown="true"></b-multi-select>
                                     </p>
                                     <p>{{ input.singleSelect }}</p>
                                     <p>
@@ -593,7 +593,7 @@ var vm = new Vue({
             listUploaded      : null,
             dateAndTime       : null,
             task              : null,
-            tinyMCE           : "Lão Minh bắt fix bug nhiều quá",
+            tinyMCE           : "Test Content",
             tinyMCE2 : null,
             tags: [],
             showModal: false
