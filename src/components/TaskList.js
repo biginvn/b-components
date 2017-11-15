@@ -1,4 +1,4 @@
-var Events = new Vue({});	
+// var Events = new Vue({});	
 
 export default {
 	props : ['value'],
