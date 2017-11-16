@@ -41481,10 +41481,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.mask = this.value;
 		},
 		blur(mask) {
+			// Validation type Affix
+			this.affix == '$' || this.affix == '€' ? mask : mask = Math.trunc(mask).toString();
+			if (this.affix == '%') {
+				mask > 100 ? mask = '100' : mask;
+			}
 			// Get String position
 			var pos = mask.indexOf('.');
 			// Remove A-Z text
 			mask = mask.toString().replace(/[^\d\.]/g, "");
+			// Cut String to Forward & Behind  "432.11" => "432" & "11"
 			if (pos > 0) {
 				var behind = mask.substring(pos + 1),
 				    // 1 is the length of your "." marker
