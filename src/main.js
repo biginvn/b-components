@@ -1,6 +1,8 @@
 import Vue from 'vue'
-
-
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
+Vue.http.options.emulateJSON = true; 
+Vue.http.options.xhr = {withCredentials: true};
 // Components
 import BTextField from './themes/ios/TextField.vue'
 import BCheckBox from './themes/ios/CheckBox.vue'
@@ -24,6 +26,7 @@ import BTinymce from './themes/ios/TinyMCE.vue'
 import BInputTag from './themes/ios/Tag.vue'
 import BModal from './themes/ios/Modal.vue'
 import BLoader from './themes/ios/Loader.vue'
+import BLoadingRemoteData from './themes/ios/LoadingRemoteData.vue'
 
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
@@ -47,3 +50,4 @@ Vue.component('BTinymce', BTinymce)
 Vue.component('BInputTag', BInputTag)
 Vue.component('BModal', BModal)
 Vue.component('BLoader', BLoader)
+Vue.component('BLoadingRemoteData', BLoadingRemoteData)

@@ -464,7 +464,20 @@
                                     Parameter required: <br>id(unique), <br>time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" ), 
                                 </div>
                             </div>
+                        </figure> 
+                 
+                        <figure class="wow animated">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Loading Remote Data</h4>
+                                <div class="panel-body">
+                                    <p>
+                                        <b-loading-remote-data :list="listLoadingRemoteData" v-model="input.remoteData"></b-loading-remote-data>
+                                    </p>
+                                    {{input.remoteData}}
+                                </div>
+                            </div>
                         </figure>
+
                     </div>
                     <div class="col-md-12">
                         <figure class="wow animated">
@@ -595,7 +608,9 @@ var vm = new Vue({
             tinyMCE           : "Lão Minh bắt fix bug nhiều quá",
             tinyMCE2 : null,
             tags: [],
-            showModal: false
+            showModal: false,
+            remoteData:[]
+
         },
         tinyMCE: {
             content  : "Tiny MCE Content 1 (khác nhau)",
@@ -669,7 +684,8 @@ var vm = new Vue({
             thumbHtml: 'Xuan Truong',
             icon: 'http://image.thanhnien.vn/uploaded/lanphuong/2016_03_11/xuantruongdeptrainhutraihanquoc_rkdz.jpg?width=500&encoder=wic&subsampling=444'
         }
-        ]
+        ],
+        listLoadingRemoteData:[],
     },
     method : {
 
