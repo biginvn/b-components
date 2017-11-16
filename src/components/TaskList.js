@@ -1,8 +1,11 @@
+// var Events = new Vue({});	
+
 export default {
 	props : ['value'],
 	data () {
 		return {
-			task : null
+			task : null,
+			showModal:false
 		}
 	},
 
@@ -50,6 +53,11 @@ export default {
 		emptyTask(){
 			this.task = [];
 			this.$emit('input', this.task);
-		}
+		},
+		changeStatusModal(){
+			this.showModal = true;
+			
+		},
+
 	}
 }

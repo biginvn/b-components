@@ -32,6 +32,7 @@ export default {
 
     watch:{
         value(){
+            this.setDate(this.value)
         },
     },
 
@@ -41,9 +42,27 @@ export default {
             var timeFormat = 'MM-DD-YYYY hh:mm A'
             if( Vue.timeFormat != null || Vue.timeFormat != undefined || Vue.timeFormat != "")
                 timeFormat = Vue.timeFormat
-            $("#" + Vue.id).datetimepicker({
-                format: timeFormat
-            })
+            if( Vue.value == null || Vue.value == undefined || Vue.value == ""){
+                $("#" + Vue.id).datetimepicker({
+                    format: timeFormat,
+                    showTodayButton: true,
+                    keyBinds : {
+                        left: null,
+                        right: null  
+                    }
+                })
+            }else{
+                $("#" + Vue.id).datetimepicker({
+                    format: timeFormat,
+                    showTodayButton: true,
+                    date: Vue.value,
+                    keyBinds : {
+                        left: null,
+                        right: null  
+                    }
+                })
+            }
+            
             $("#" + Vue.id).on("dp.change", function(ev) {
                 if( (Vue.value != null) && (Vue.value != undefined) && (Vue.value.split(" ")[0] != $("#" + Vue.id).val().split(" ")[0]) )
                     $(document).find('.picker-switch a[data-action="togglePicker"]').click()
@@ -58,6 +77,10 @@ export default {
 
         updateDateModel(data){
             this.$emit('input', data)
+        },
+
+        setDate(date){
+            $("#" + this.id).data("DateTimePicker").date(date)
         },
 
         checkInputInvalid(time){

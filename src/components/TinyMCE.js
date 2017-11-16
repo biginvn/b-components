@@ -43,8 +43,8 @@ export default {
                             "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
                             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
                         ],
-                        toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-
+                        toolbar1: "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image media code | preview | forecolor backcolor",
+                        menubar: false,
                         init_instance_callback: function (editor) {
                             $('tr.mceFirst').css('z-index','1000')
                             if(content != null || content != undefined)
@@ -128,6 +128,7 @@ export default {
                     content: 'Test 2'
                     }],
                 init_instance_callback: function (editor) {
+                    $('tr.mceFirst').css('z-index','1000')
                     if(content != null || content != undefined)
                         this.setContent(content)
                     editor.on('keyup', function (e) {

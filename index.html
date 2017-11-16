@@ -199,7 +199,7 @@
                                 <h4 class="mb-3 panel-heading">Single Select</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-multi-select :list="listMultiSelect" v-model="input.singleSelect" single-dropdown="true"></b-multi-select>
+                                        <b-multi-select label="label" mode="ajax-request" request-url="http://date.jsontest.com/" :list="listMultiSelect" v-model="input.singleSelect" single-dropdown="true"></b-multi-select>
                                     </p>
                                     <p>{{ input.singleSelect }}</p>
                                     <p>
@@ -216,8 +216,28 @@
                                 <h4 class="mb-3 panel-heading">Input Tag</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-input-tag v-model="input.tags"></b-input-tag>
+                                        <b-input-tag label="Zip Code Tag" v-model="input.tags" placeholder="Zip Code Tag" type="zipcode"></b-input-tag>
                                     </p>
+                                </div>
+                                <div class="panel-body">
+                                    v-model = {{ input.tags }}
+                                </div>
+                                <div class="panel-body">
+                                    <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-primary" label="Set Tag" @click.native="input.tags = ['Lông Vạn', 'Minh Lưu', 'Duẩn Béo', 'Thiện Đẹp Trai', 'Nam Lôm Côm']"></b-button>
+                                    <b-button type="button" class-name="button-danger" label="Empty Tag" @click.native="input.tags = []"></b-button>
+                                </div>
+                            </div>
+                        </figure>
+
+                        <figure class="wow animated bounceInLeft">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Modal</h4>
+                                <div class="panel-body">
+                                    <b-button type="button" class-name="button-primary" @click.native="input.showModal=true" label="Show Modal"></b-button>
+                                    <p >
+                                        <b-modal v-if="input.showModal" v-model="input.showModal"></b-modal>
+                                    </p>
+                                    {{input.showModal}}
                                 </div>
                             </div>
                         </figure>
@@ -229,7 +249,9 @@
                                     <p>
                                         <b-task-list v-model="taskList"></b-task-list>
                                     </p>
+                                    
                                     <p>{{ taskList }}</p>
+                                    
                                 </div>
                             </div>
                         </figure>
@@ -349,6 +371,7 @@
                                                     <div class="choose-color rounded-circle color-success" @click="color_style='toggle__success'"></div>
                                                     <div class="choose-color rounded-circle color-warn" @click="color_style='toggle__warn'"></div>
                                                     <div class="choose-color rounded-circle color-primary" @click="color_style='toggle__primary'"></div>
+                                                    <div class="choose-color rounded-circle color-purple" @click="color_style='toggle__purple'"></div>
                                                 </div>
                                             </div>
                                             <div class="my-2">
@@ -433,9 +456,13 @@
                                     <b-date-and-time id="bDateTimePicker" label="Date & Time" time-format="MM-DD-YYYY hh:mm A"  placeholder="Date Time Picker Make By Thien Nguyen Dev" v-model="input.dateAndTime"></b-date-and-time>
                                 </div>
                                 <div class="panel-body">
-                                    v-model data: {{ input.dateAndTime }}
+                                    <b-button type="button" class-name="button-primary" label="Set Time" @click.native="input.dateAndTime = '11-09-2017 11:52 AM'"></b-button>
+                                </div>
+                                <div class="panel-body">
+                                    v-model data: {{ input.dateAndTime }}<br>
                                     <br>
-                                    Parameter required: id(unique), time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" ), 
+                                    Parameter required: <br>id(unique), <br>time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" ), 
+                                    <br><br>Standard Date Time Format Permit: <a href="http://momentjs.com/docs/#/displaying/format/">See more...</a>
                                 </div>
                             </div>
                         </figure>
@@ -452,7 +479,7 @@
                                     <b-button type="button" class-name="button-warn" label="Delete Content" @click.native="input.tinyMCE = ''"></b-button>
                                 </div>
                                 <div class="panel-body">
-                                    v-model data: {{ input.tinyMCE }}
+                                    v-model data: {{ input.tinyMCE }}<br>
                                     <br>
                                     Parameter required: id(unique), time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" )
                                     <br>Parameter non-required: mode( "basic" || "advance"), tiny-config
@@ -470,7 +497,7 @@
                                     <b-button type="button" class-name="button-warn" label="Delete Content" @click.native="input.tinyMCE2 = ''"></b-button>
                                 </div>
                                 <div class="panel-body">
-                                    v-model data: {{ input.tinyMCE2 }}
+                                    v-model data: {{ input.tinyMCE2 }}<br>
                                     <br>
                                     Parameter required: id(unique), time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" )
                                     <br>Parameter non-required: mode( "basic" || "advance"), tiny-config
@@ -566,9 +593,10 @@ var vm = new Vue({
             listUploaded      : null,
             dateAndTime       : null,
             task              : null,
-            tinyMCE           : "Lão Minh bắt fix bug nhiều quá",
+            tinyMCE           : "Test Content",
             tinyMCE2 : null,
-            tags: []
+            tags: [],
+            showModal: false
         },
         tinyMCE: {
             content  : "Tiny MCE Content 1 (khác nhau)",
