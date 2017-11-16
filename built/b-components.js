@@ -7924,6 +7924,25 @@ module.exports = g;
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function isMoment (value) {
+  return value && Object.prototype.hasOwnProperty.call(value, '_isAMomentObject');
+}
+
+var api = {
+  moment: null,
+  isMoment: isMoment
+};
+
+module.exports = api;
+
+
+/***/ }),
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7962,25 +7981,6 @@ const textFieldMixins = {
     }
 };
 /* harmony default export */ __webpack_exports__["a"] = (textFieldMixins);
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function isMoment (value) {
-  return value && Object.prototype.hasOwnProperty.call(value, '_isAMomentObject');
-}
-
-var api = {
-  moment: null,
-  isMoment: isMoment
-};
-
-module.exports = api;
-
 
 /***/ }),
 /* 7 */
@@ -8493,7 +8493,7 @@ module.exports = isInput;
 "use strict";
 
 
-var momentum = __webpack_require__(6);
+var momentum = __webpack_require__(5);
 
 function raw (date, format) {
   if (typeof date === 'string') {
@@ -8520,7 +8520,7 @@ module.exports = parse;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(6);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -38318,7 +38318,7 @@ var text = __webpack_require__(319);
 var parse = __webpack_require__(13);
 var clone = __webpack_require__(222);
 var defaults = __webpack_require__(223);
-var momentum = __webpack_require__(6);
+var momentum = __webpack_require__(5);
 var classes = __webpack_require__(221);
 var noop = __webpack_require__(307);
 var no;
@@ -39030,7 +39030,7 @@ module.exports = {
 "use strict";
 
 
-var momentum = __webpack_require__(6);
+var momentum = __webpack_require__(5);
 
 // naïve implementation, specifically meant to clone `options` objects
 function clone (thing) {
@@ -39066,7 +39066,7 @@ module.exports = clone;
 
 var parse = __webpack_require__(13);
 var isInput = __webpack_require__(12);
-var momentum = __webpack_require__(6);
+var momentum = __webpack_require__(5);
 
 function defaults (options, cal) {
   var temp;
@@ -40727,7 +40727,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(0);
@@ -40846,7 +40846,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_material_datetime_picker__ = __webpack_require__(298);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_text_field_mixins__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_text_field_mixins__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(0);
@@ -41180,22 +41180,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(6);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	data() {
 		return {
-			mask: '0 ' + '$'
+			mask: String
 		};
 	},
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
 	props: ['affix', 'is_prefix'],
-	mounted() {
+	mounted(mask) {
 		this.blur(this.value);
 	},
 	watch: {
 		value() {
-			this.blur(this.value);
+			this.blur(this.value.toString());
+			this.updateInput(this.value);
 		},
 		is_prefix() {
 			this.blur(this.value);
@@ -41206,55 +41207,78 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	methods: {
 		updateInput(value) {
-			this.mask = this.convertValueToNumber(value);
-			this.updateFloatLabel(value);
+			// Null Value and return ''
+			if (value == null || value == '') {
+				value = '';
+				this.updateFloatLabel(value);
+				this.$emit("input", value);
+			}
 		},
-		focus() {
+		focus(mask) {
 			this.mask = this.value;
 		},
-		blur(value) {
-			this.mask = this.convertNumberToString(value);
-			value = this.convertValueToNumber(value);
-			this.$emit("input", value);
-			this.updateFloatLabel(value);
-		},
-		convertNumberToString(number) {
-			let value = this.convertValueToNumber(number);
-			// debugger;
+		blur(mask) {
+			// Get String position
+			var pos = mask.indexOf('.');
+			// Remove A-Z text
+			mask = mask.toString().replace(/[^\d\.]/g, "");
+			if (pos > 0) {
+				var behind = mask.substring(pos + 1),
+				    // 1 is the length of your "." marker
+				forward = mask.split(".").shift();
+				if (behind == undefined || behind == null || behind == '') {
+					mask = forward + '.0';
+				}
+				this.$emit("input", mask);
+				// If Value = 4321. return 4321.0
+				behind = '0.' + behind;
+				mask = forward;
+			} else {
+				if (mask == 0) {
+					mask = '';
+				}
+				this.$emit("input", mask);
+				behind = 0;
+			}
+
+			var n, number, $mask, $result;
+			n = parseFloat(mask) + parseFloat(behind);
+			// Check Value is Null & Check Affix
+			$mask = this.isNull(n);
 			if (this.is_prefix != undefined) {
-				if (value != null && value > 0) {
-					return this.is_prefix ? this.affix + ' ' + this.separator(value) : this.separator(value) + ' ' + this.affix;
-					return '';
+				if ($mask != '') {
+					$result = this.is_prefix ? this.affix + ' ' + this.separator($mask) : this.separator($mask) + ' ' + this.affix;
+				} else {
+					$result = '';
 				}
 			} else {
-				if (value != null && value > 0) {
-					return this.separator(value);
-					return '';
+				if ($mask != '') {
+					$result = this.separator($mask);
+				} else {
+					$result = '';
 				}
 			}
-		},
-		convertValueToNumber(value) {
-			if (value == undefined || value == null || value.toString().trim().length == 0) value = "";
-			let number = value.toString().replace(/[^\d\.]/g, "");
-			if (number == 0) {
-				return null;
-			} else {
-				return this.currencyType(number);
-			}
-		},
-		currencyType(number) {
-			if (this.affix == '$') {
-				return parseFloat(number).toFixed(2);
-				console.log('Is Dollar');
-			} else {
-				return parseFloat(number);
-			}
+			this.mask = $result;
+			console.log($result + ' ' + typeof $result);
 		},
 		separator(value) {
 			return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-			console.log(value);
+		},
+		isNull(n) {
+			if (typeof n == 'number') {
+				if (n == undefined || n == null || n == 0 || isNaN(n)) {
+					return n = '';
+				} else {
+					if (this.affix == '$' || this.affix == '€') {
+						return n.toFixed(2);
+					}
+					if (this.affix == '%' || this.affix == 'VND') {
+						return Math.trunc(n);
+					}
+					return n;
+				}
+			}
 		}
-
 	}
 });
 
@@ -41545,7 +41569,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(6);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -41580,7 +41604,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(6);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -44019,7 +44043,7 @@ var throttle = __webpack_require__(320);
 var clone = __webpack_require__(222);
 var defaults = __webpack_require__(223);
 var calendar = __webpack_require__(220);
-var momentum = __webpack_require__(6);
+var momentum = __webpack_require__(5);
 var classes = __webpack_require__(221);
 
 function inputCalendar (input, calendarOptions) {
@@ -44504,7 +44528,7 @@ module.exports = function throttle (fn, boundary) {
 "use strict";
 
 
-var momentum = __webpack_require__(6);
+var momentum = __webpack_require__(5);
 
 function use (moment) {
   this.moment = momentum.moment = moment;
