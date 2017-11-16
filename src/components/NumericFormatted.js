@@ -2,19 +2,20 @@ import baseMixins from '../mixins/text-field-mixins'
 export default{
 	data () {
 		return {
-			mask : '0 ' + '$'
+			mask : String
 		}
 	},
 	mixins: [baseMixins],
 	props: ['affix','is_prefix'],
-	mounted() {
-		this.blur(this.value)
+	mounted(mask) {
+		this.blur(this.value);
 	},
 	watch: {
 		value() {
-			this.blur(this.value);
+			this.blur(this.value.toString());
+			this.updateInput(this.value);
 		},
-		is_prefix() {
+		is_prefix(){
 			this.blur(this.value);
 		},
 		affix() {
@@ -23,58 +24,81 @@ export default{
 	},
 	methods: {
 		updateInput (value) {
-			this.mask = this.convertValueToNumber(value)
-			this.updateFloatLabel(value)
+			// Null Value and return ''
+			if(value == null || value == ''){
+				value = '';
+				this.updateFloatLabel(value);
+				this.$emit("input", value);
+			}
 		},
-		focus(){
+		focus(mask){
 			this.mask = this.value;
 		},
-		blur(value){
-			this.mask = this.convertNumberToString(value)
-			value = this.convertValueToNumber(value)
-			this.$emit("input", value)
-			this.updateFloatLabel(value)
-		},
-		convertNumberToString(number){
-			let value = this.convertValueToNumber(number)
-			// debugger;
+		blur(mask){
+			// Get String position
+			var pos = mask.indexOf('.');
+			// Remove A-Z text
+			mask = mask.toString().replace(/[^\d\.]/g, "")
+			if (pos > 0) {
+				var behind = mask.substring(pos+1), // 1 is the length of your "." marker
+					forward = mask.split(".").shift();
+				if(behind == undefined || behind == null || behind == ''){
+					mask = forward + '.0'
+				}
+				this.$emit("input", mask);
+				// If Value = 4321. return 4321.0
+				behind = '0.' + behind;
+				mask = forward;
+			}
+			else{
+				if(mask == 0){
+					mask = '';
+				}
+				this.$emit("input", mask);
+				behind = 0;
+			}
+
+			var n, number, $mask, $result;
+			n = parseFloat(mask) + parseFloat(behind);
+			// Check Value is Null & Check Affix
+			$mask = this.isNull(n);
 			if(this.is_prefix != undefined){
-				if(value != null && value > 0){
-					return this.is_prefix ? this.affix + ' ' + this.separator(value) : this.separator(value) + ' ' + this.affix
-					return ''
+				if($mask != ''){
+					$result = this.is_prefix ? this.affix + ' ' + this.separator($mask) : this.separator($mask) + ' ' + this.affix
+				}
+				else{
+					$result = '';
 				}
 			}
 			else{
-				if(value != null && value > 0){
-					return this.separator(value)
-					return ''
+				if($mask != ''){
+					$result = this.separator($mask)
+				}
+				else{
+					$result = '';
 				}
 			}
-		},
-		convertValueToNumber(value){
-			if (value == undefined || value == null || value.toString().trim().length == 0)
-				value = ""
-			let number = value.toString().replace(/[^\d\.]/g, "")
-			if (number == 0){
-				return null
-			}
-			else{
-				return this.currencyType(number);
-			}
-		},
-		currencyType(number){
-			if(this.affix == '$'){
-				return parseFloat(number).toFixed(2);
-				console.log('Is Dollar');
-			}
-			else{
-				return parseFloat(number);
-			}
+			this.mask = $result;
+			console.log($result + ' ' + typeof($result));
 		},
 		separator(value){
 			return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-			console.log(value);
+		},
+		isNull(n){
+			if(typeof(n) == 'number'){
+				if(n == undefined || n == null || n == 0 || isNaN(n)){
+					return n = '';
+				}
+				else{
+					if(this.affix == '$' || this.affix == '€'){
+						return n.toFixed(2);
+					}
+					if(this.affix == '%' || this.affix == 'VND'){
+						return Math.trunc(n);
+					}
+					return n;
+				}
+			}
 		}
-		
 	}
 }
