@@ -218,12 +218,14 @@
                                     <p>
                                         <b-input-tag v-model="input.tags" label="Zip Code Tag"  type="zipcode"></b-input-tag>
                                     </p>
-                                    <p>{{ input.singleSelect }}</p>
-                                    <p>
-                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-primary button-solid" label="Alonso" @click.native="input.singleSelect = 1"></b-button>
-                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-danger button-solid" label="Rashford" @click.native="input.singleSelect = 3"></b-button>
-                                        <b-button type="button" icon="<i class='fa fa-heart-o'></i>" class-name="button-success button-solid" label="Empty" @click.native="input.singleSelect = null"></b-button>
-                                    </p>
+
+                                </div>
+                                <div class="panel-body">
+                                    v-model = {{ input.tags }}
+                                </div>
+                                <div class="panel-body">
+                                    <b-button type="button" icon="<i class='fa fa-circle-thin'></i>" class-name="button-primary" label="Set Tag" @click.native="input.tags = ['Lông Vạn', 'Minh Lưu', 'Duẩn Béo', 'Thiện Đẹp Trai', 'Nam Lôm Côm']"></b-button>
+                                    <b-button type="button" class-name="button-danger" label="Empty Tag" @click.native="input.tags = []"></b-button>
                                 </div>
                             </div>
                         </figure>
