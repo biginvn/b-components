@@ -1,6 +1,7 @@
 <template>
-	<div class="b__components b__multi__select" @mouseleave = "switchList(false)" @click = "switchList(true)">
-		<div class="b__multi__select__control">
+	<div class="b__components b__multi__select b-ios b-float-label" @mouseleave = "switchList(false)" @click = "switchList(true)">
+		<label :class="classLabel">{{ label }}</label>
+		<div class="b__multi__select__control  b__input 2">
 			<div class="selected" v-if="!isSingle" v-for="item in getSelectedList()">
 				<span class="thumb" v-html="item.thumbHtml"></span>
 				<span class="close-item" @click = "toggleItem(item.id)"><i class="fa fa-times" aria-hidden="true"></i></span>
@@ -31,3 +32,6 @@
 	import MultiSelect from './../../components/MultiSelect'
 	export default MultiSelect
 </script>
+<style type="text/css">
+
+</style>

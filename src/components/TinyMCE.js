@@ -128,6 +128,7 @@ export default {
                     content: 'Test 2'
                     }],
                 init_instance_callback: function (editor) {
+                    $('tr.mceFirst').css('z-index','1000')
                     if(content != null || content != undefined)
                         this.setContent(content)
                     editor.on('keyup', function (e) {

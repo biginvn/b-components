@@ -1,5 +1,5 @@
 import baseComponent from '../mixins/base-mixins'
-var Events = new Vue({})
+// var Events = new Vue({})
 export default {
 	mixins : [baseComponent],
 	props:{
