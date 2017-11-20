@@ -29,24 +29,34 @@ export default{
 			this.watchDataValue(this.value)
 		},
 		affix(){
-			if(this.affix != null || this.affix != undefined)
+			if(this.affix != null || this.affix != undefined){
 				this.inputAffix = this.affix
+				this.eventBlur(this.value)
+			}
 		},
 		type(){
-			if(this.type != null || this.type != undefined)
+			if(this.type != null || this.type != undefined){
 				this.inputType = this.type
+				this.eventBlur(this.value)
+			}
 		},
 		tail(){
-			if(this.tail != null || this.tail != undefined)
+			if(this.tail != null || this.tail != undefined){
 				this.inputTail = this.tail
+				this.eventBlur(this.value)
+			}
 		},
 		interrupt(){
-			if(this.interrupt != null || this.interrupt != undefined)
+			if(this.interrupt != null || this.interrupt != undefined){
 				this.inputInterrupt = this.interrupt
+				this.eventBlur(this.value)
+			}
 		},
 		typeOutput(){
-			if(this.typeOutput != null || this.typeOutput != undefined)
+			if(this.typeOutput != null || this.typeOutput != undefined){
 				this.inputTypeOutput = this.typeOutput
+				this.eventBlur(this.value)
+			}
 		},
 	},
 
