@@ -447,7 +447,35 @@
                                 </div>
                             </div>
                         </figure> 
-                 
+                        <figure class="wow animated">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Numberic Formatted 2.0</h4>
+                                <div class="panel-body">
+                                    <b-telerik-numberic :affix="telerikNumbericParam.affix" :interrupt="telerikNumbericParam.interrupt" :type-output="telerikNumbericParam.typeOutput" :tail="telerikNumbericParam.tail" :type="telerikNumbericParam.type" id="telerikNumbericId" v-model="input.telerikNumberic" label="telerik numberic" placeholder="Telerik Numberic"></b-telerik-numberic>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="my-2">
+                                        <b-button type="button" class-name="button-primary" label="4321" @click.native="input.telerikNumberic = 5000"></b-button>
+                                        <b-button type="button" class-name="button-danger button-solid" label="Null" @click.native="input.telerikNumberic = null"></b-button>
+                                    </div>
+                                    <div class="my-2">
+                                        <b-button type="button" class-name="button-success" label="VND" @click.native="telerikNumbericParam.affix = 'VND'"></b-button>
+                                        <b-button type="button" class-name="button-warn button-solid" label="EUR" @click.native="telerikNumbericParam.affix = '€'"></b-button>
+                                        <b-button type="button" class-name="button-primary button-solid" label="USA" @click.native="telerikNumbericParam.affix = '$'"></b-button>
+                                        <b-button type="button" class-name="button-success" label="%" @click.native="telerikNumbericParam.affix = '%'"></b-button>
+                                    </div>
+                                    <div class="my-2">
+                                        <b-button type="button" class-name="button-danger" label="Affix = prefix" @click.native="telerikNumbericParam.type = 'prefix'"></b-button>
+                                        <b-button type="button" class-name="button-success" label="Tail = (.00)" @click.native="telerikNumbericParam.tail = '(.00)'"></b-button>
+                                        <b-button type="button" class-name="button-warn" label="Interrupt = ' '" @click.native="telerikNumbericParam.interrupt = ' '"></b-button>
+                                    </div>
+                                    v-model data: {{ input.telerikNumberic }}
+                                    <br>
+                                    Parameter required: 
+                                </div>
+                            </div>
+                        </figure> 
                         <!-- <figure class="wow animated">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Loading Remote Data</h4>
@@ -459,7 +487,6 @@
                                 </div>
                             </div>
                         </figure> -->
-
                     </div>
                     <div class="col-md-12">
                         <figure class="wow animated">
@@ -568,6 +595,14 @@ var vm = new Vue({
             method : 'POST'   
         },
 
+        telerikNumbericParam : {
+            affix       : " vnd",
+            type        : "suffix" ,
+            tail        : ".00",
+            interrupt   : ",",
+            typeOutput : "default"
+        },
+
         input: {
             name: 'Input your text...',
             checkbox          : [],
@@ -588,11 +623,11 @@ var vm = new Vue({
             dateAndTime       : null,
             task              : null,
             tinyMCE           : "Lão Minh bắt fix bug nhiều quá",
-            tinyMCE2 : null,
-            tags: [],
-            showModal: false,
-            remoteData:[]
-
+            tinyMCE2           : null,
+            tags               : [],
+            showModal          : false,
+            remoteData         :[],
+            telerikNumberic    : null
         },
         tinyMCE: {
             content  : "Tiny MCE Content 1 (khác nhau)",
