@@ -2,19 +2,19 @@ import baseMixins from '../mixins/text-field-mixins'
 export default{
 	data () {
 		return {
-			valueTemp        : "",
-			inputValue       : "",
-			inputAffix	     : "",
-			inputType	     : "suffix",
-			inputTail        : "",
-			inputInterrupt   : "",
-			inputTypeOutput  : "default"
+			valueTemp          : "",
+			inputValue         : "",
+			inputAffix	       : "",
+			inputType	       : "suffix",
+			inputInterrupt     : ",",
+			inputTypeOutput    : "default",
+			inputRoundDecimal  : 0
 		}
 	},
 
 	mixins: [baseMixins],
 
-	props: ['affix', 'type', 'tail', 'interrupt', 'type-output'],
+	props: ['affix', 'type', 'interrupt', 'type-output','rounding-decimal'],
 
 	created(){
 		this.initComponentData()
@@ -40,12 +40,6 @@ export default{
 				this.eventBlur(this.value)
 			}
 		},
-		tail(){
-			if(this.tail != null || this.tail != undefined){
-				this.inputTail = this.tail
-				this.eventBlur(this.value)
-			}
-		},
 		interrupt(){
 			if(this.interrupt != null || this.interrupt != undefined){
 				this.inputInterrupt = this.interrupt
@@ -58,6 +52,12 @@ export default{
 				this.eventBlur(this.value)
 			}
 		},
+		roundingDecimal(){
+			if(this.roundingDecimal != null || this.roundingDecimal != undefined){
+				this.inputRoundDecimal = this.roundingDecimal
+				this.eventBlur(this.value)
+			}
+		}
 	},
 
 	methods: {
@@ -78,16 +78,16 @@ export default{
 				this.inputAffix = this.affix
 			if(this.type != null || this.type != undefined)
 				this.inputType = this.type
-			if(this.tail != null || this.tail != undefined)
-				this.inputTail = this.tail
 			if(this.interrupt != null || this.interrupt != undefined)
 				this.inputInterrupt = this.interrupt
 			if(this.typeOutput != null || this.typeOutput != undefined)
 				this.inputTypeOutput = this.typeOutput
+			if(this.roundingDecimal != null || this.roundingDecimal != undefined)
+				this.inputRoundDecimal = this.roundingDecimal
 		},
 
 		checkIsNumber(number){
-			let reg = new RegExp('^[0-9]$')
+			let reg = new RegExp(/^[\d.]+$/)
 			if(!reg.test(number))
 				return false
 			return true
@@ -110,7 +110,6 @@ export default{
 			this.inputValue = string
 			if( this.checkInputInvalid(string) == false ){
 				this.inputValue = this.valueTemp
-				// document.querySelector('#' + this.id).value = this.valueTemp
 			}else{
 				this.valueTemp = string
 				this.updateFloatLabel(string)
@@ -122,16 +121,6 @@ export default{
 				this.affixInput(string)
 			if( this.inputTypeOutput == "default")
 				this.$emit("input", this.valueTemp)
-			// if( this.inputTypeOutput == "full" )
-			// 	this.$emit("input", this.inputValue)
-			// if( this.inputTypeOutput == "only-affix" ){
-			// 	let output = (this.inputType == "prefix") ? (this.inputAffix + this.interruptInput(this.valueTemp)) : (this.interruptInput(this.valueTemp) + this.inputAffix)
-			// 	this.$emit("input", output)
-			// }
-			// if( this.inputTypeOutput == "only-tail" )
-			// 	this.$emit("input", (this.interruptInput(this.valueTemp) + this.inputTail) )
-			// if( this.inputTypeOutput == "only-interrupt" )
-			// 	this.$emit("input", this.interruptInput(this.valueTemp))
 		},
 
 		interruptInput(string){
@@ -158,19 +147,21 @@ export default{
 		},
 
 		affixInput(string){
+			string      	 = parseFloat(string).toFixed(this.inputRoundDecimal)
+			let beginString  = (string.split(".")[0] == null || string.split(".")[0] == undefined) ? "" : string.split(".")[0]
+			let endString    = (string.split(".")[1] == null || string.split(".")[1] == undefined) ? "" : string.split(".")[1]
+			let decimalPoint = (endString == "" || endString == null || endString == undefined) ? "" : "."
 			if(string == "" || string == null || string == undefined)
 				return this.inputValue = ""
 			if( this.inputType == "prefix"){
-				this.inputValue = this.inputAffix + this.interruptInput(this.valueTemp) + this.inputTail
+				this.inputValue = this.inputAffix + this.interruptInput(parseInt(this.valueTemp)) + decimalPoint + endString 			
 			}else{
-				this.inputValue = this.interruptInput(this.valueTemp) + this.inputTail + this.inputAffix
+				this.inputValue = this.interruptInput(parseInt(this.valueTemp)) + decimalPoint + endString + this.inputAffix
 			}
-			// document.querySelector('#' + this.id).value = this.inputValue 				
 		},	
 
 		eventForcus(string){
 			this.inputValue = this.valueTemp
-			// document.querySelector('#' + this.id).value = this.valueTemp
 		},
 
 	}

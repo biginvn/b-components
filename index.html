@@ -451,7 +451,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Numberic Formatted 2.0</h4>
                                 <div class="panel-body">
-                                    <b-telerik-numberic :affix="telerikNumbericParam.affix" :interrupt="telerikNumbericParam.interrupt" :type-output="telerikNumbericParam.typeOutput" :tail="telerikNumbericParam.tail" :type="telerikNumbericParam.type" id="telerikNumbericId" v-model="input.telerikNumberic" label="telerik numberic" placeholder="Telerik Numberic"></b-telerik-numberic>
+                                    <b-telerik-numberic :affix="telerikNumbericParam.affix" :interrupt="telerikNumbericParam.interrupt" :type-output="telerikNumbericParam.typeOutput" :type="telerikNumbericParam.type" :rounding-decimal="telerikNumbericParam.roundingDecimal" id="telerikNumbericId" v-model="input.telerikNumberic" label="telerik numberic" placeholder="Telerik Numberic"></b-telerik-numberic>
                                 </div>
                                 <div class="panel-body">
 
@@ -467,7 +467,7 @@
                                     </div>
                                     <div class="my-2">
                                         <b-button type="button" class-name="button-danger" label="Affix = prefix" @click.native="telerikNumbericParam.type = 'prefix'"></b-button>
-                                        <b-button type="button" class-name="button-success" label="Tail = (.00)" @click.native="telerikNumbericParam.tail = '(.00)'"></b-button>
+                                        <b-button type="button" class-name="button-success" label="Rounding Decimal = 2" @click.native="telerikNumbericParam.roundingDecimal = 2"></b-button>
                                         <b-button type="button" class-name="button-warn" label="Interrupt = ' '" @click.native="telerikNumbericParam.interrupt = ' '"></b-button>
                                     </div>
                                     v-model data: {{ input.telerikNumberic }}
@@ -598,9 +598,9 @@ var vm = new Vue({
         telerikNumbericParam : {
             affix       : " vnd",
             type        : "suffix" ,
-            tail        : ".00",
             interrupt   : ",",
-            typeOutput : "default"
+            typeOutput  : "default",
+            roundingDecimal : 4
         },
 
         input: {
