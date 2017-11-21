@@ -43770,7 +43770,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 
 		eventBlur(string) {
-			if (string != "") this.affixInput(string);
+			if (string != "" || string != null || string != undefined) this.affixInput(string);
 			if (this.inputTypeOutput == "default") this.$emit("input", this.valueTemp);
 		},
 
@@ -43796,6 +43796,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 
 		affixInput(string) {
+			if (string == "" || string == null || string == undefined) {
+				return this.inputValue = "";
+				return this.valueTemp = "";
+			}
 			string = parseFloat(string).toFixed(this.inputRoundDecimal);
 			let beginString = string.split(".")[0] == null || string.split(".")[0] == undefined ? "" : string.split(".")[0];
 			let endString = string.split(".")[1] == null || string.split(".")[1] == undefined ? "" : string.split(".")[1];
