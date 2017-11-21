@@ -43764,7 +43764,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (this.checkInputInvalid(string) == false) {
 				this.inputValue = this.valueTemp;
 			} else {
-				this.valueTemp = string;
+				this.valueTemp = this.checkValidateString(string);
 				this.updateFloatLabel(string);
 			}
 		},
@@ -43795,11 +43795,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return string + strResult;
 		},
 
+		checkValidateString(string) {
+			if (string.split(".").length > 2) return string.split(".")[0] + "." + string.split(".")[1];
+			if (string.split(".").length == 2) {
+				if (string.split(".")[1] == null || string.split(".")[1] == undefined || string.split(".")[1] == "") return string.split(".")[0];
+			}
+			return string;
+		},
+
 		affixInput(string) {
 			if (string == "" || string == null || string == undefined) {
-				return this.inputValue = "";
+				this.inputValue = "";
 				return this.valueTemp = "";
 			}
+			string = this.checkValidateString(string);
 			string = parseFloat(string).toFixed(this.inputRoundDecimal);
 			let beginString = string.split(".")[0] == null || string.split(".")[0] == undefined ? "" : string.split(".")[0];
 			let endString = string.split(".")[1] == null || string.split(".")[1] == undefined ? "" : string.split(".")[1];

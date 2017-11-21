@@ -111,7 +111,7 @@ export default{
 			if( this.checkInputInvalid(string) == false ){
 				this.inputValue = this.valueTemp
 			}else{
-				this.valueTemp = string
+				this.valueTemp = this.checkValidateString(string)
 				this.updateFloatLabel(string)
 			}
 		},
@@ -146,11 +146,22 @@ export default{
 			return string + strResult
 		},
 
+		checkValidateString(string){
+			if( string.split(".").length > 2)
+				return string.split(".")[0] +"."+ string.split(".")[1]
+			if(string.split(".").length == 2){
+				if(string.split(".")[1] == null || string.split(".")[1] == undefined || string.split(".")[1] == "")
+					return string.split(".")[0]
+			}
+			return string
+		},
+
 		affixInput(string){
 			if(string == "" || string == null || string == undefined){
-				return this.inputValue = ""
+				this.inputValue = ""
 				return this.valueTemp  = ""
 			}
+			string = this.checkValidateString(string)
 			string      	 = parseFloat(string).toFixed(this.inputRoundDecimal)
 			let beginString  = (string.split(".")[0] == null || string.split(".")[0] == undefined) ? "" : string.split(".")[0]
 			let endString    = (string.split(".")[1] == null || string.split(".")[1] == undefined) ? "" : string.split(".")[1]
@@ -158,7 +169,7 @@ export default{
 			if(string == "" || string == null || string == undefined)
 				return this.inputValue = ""
 			if( this.inputType == "prefix"){
-				this.inputValue = this.inputAffix + this.interruptInput(parseInt(this.valueTemp)) + decimalPoint + endString 			
+				this.inputValue = this.inputAffix + this.interruptInput(parseInt(this.valueTemp)) + decimalPoint + endString 
 			}else{
 				this.inputValue = this.interruptInput(parseInt(this.valueTemp)) + decimalPoint + endString + this.inputAffix
 			}
