@@ -43594,7 +43594,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		keyhandler(event) {
 			console.log(event);
 			let regex = /^[0-9]$/g;
-			if (event.key.match(regex) == null && event.keyCode != 8) {
+			if (event.key.match(regex) == null && event.keyCode != 8 && event.keyCode != 189) {
 				event.preventDefault();
 			}
 		}
