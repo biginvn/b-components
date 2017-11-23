@@ -42890,7 +42890,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_loading_remote_data_mixins__["a" /* default */]],
 
-	props: ['value', 'disable-icon', 'single-dropdown'],
+	props: ['value', 'disable-icon', 'single-dropdown', 'url'],
 	computed: {
 		selected() {
 			// Convert v-model to [] if it's null
@@ -42938,10 +42938,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		callAjax(value) {
 
-			this.$http.post('http://localhost/serverside.php', { 'name': value }, { timeout: 10000 }).then(function (response) {
+			this.$http.post(this.url, { 'name': value }, { timeout: 10000 }).then(function (response) {
 				console.log(response.body);
 				this.searchList = response.body;
 			});
+			this.searchList = [{
+				id: 1,
+				html: '<p>Anh Duan Nguyen</p><p class="club">Bayern Munich</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+				keywords: 'Anh Duan Nguyen',
+				thumbHtml: 'Anh Duan Nguyen',
+				icon: 'https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/x/xab/large/900.png'
+			}];
 		},
 		removeLastTag() {
 			this.list.pop();
@@ -43618,6 +43625,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			for (let i = 0; i < arrayTag.length; i++) {
 				this.addNewTag(arrayTag[i]);
 			}
+		},
+		keyhandler(event) {
+			console.log(event);
+			let regex = /^[0-9]$/g;
+			if (event.key.match(regex) == null && event.keyCode != 8 && event.keyCode != 189) {
+				event.preventDefault();
+			}
 		}
 	}
 });
@@ -44287,6 +44301,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_resource__["a" /* default */]);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.emulateJSON = true;
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.xhr = { withCredentials: true };
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.emulateHTTP = true;
+
 // Components
 
 
@@ -49057,7 +49073,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         $event.preventDefault();
         $event.stopPropagation();
         _vm.addNewTag(_vm.newTag)
-      }],
+      }, _vm.keyhandler],
       "keyup": function($event) {
         if (!('button' in $event) && $event.keyCode !== 188 && _vm._k($event.keyCode, "enter", 13) && _vm._k($event.keyCode, "tab", 9)) { return null; }
         $event.preventDefault();
