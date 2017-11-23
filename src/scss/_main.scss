@@ -6,6 +6,9 @@
 		}
 		input.b__input {
 			border-color : map-get($colors, danger);
+			&:focus{
+				border: 1px solid map-get($colors, danger)!important;
+			}
 		}
 	}
 	input.b__input, textarea, select{
