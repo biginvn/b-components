@@ -42890,7 +42890,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_loading_remote_data_mixins__["a" /* default */]],
 
-	props: ['value', 'disable-icon', 'single-dropdown'],
+	props: ['value', 'disable-icon', 'single-dropdown', 'url'],
 	computed: {
 		selected() {
 			// Convert v-model to [] if it's null
@@ -42938,10 +42938,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		callAjax(value) {
 
-			this.$http.post('http://localhost/serverside.php', { 'name': value }, { timeout: 10000 }).then(function (response) {
+			this.$http.post(this.url, { 'name': value }, { timeout: 10000 }).then(function (response) {
 				console.log(response.body);
 				this.searchList = response.body;
 			});
+			this.searchList = [{
+				id: 1,
+				html: '<p>Anh Duan Nguyen</p><p class="club">Bayern Munich</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+				keywords: 'Anh Duan Nguyen',
+				thumbHtml: 'Anh Duan Nguyen',
+				icon: 'https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/x/xab/large/900.png'
+			}];
 		},
 		removeLastTag() {
 			this.list.pop();
@@ -44267,6 +44274,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.emulateJSON = true;
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.xhr = { withCredentials: true };
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.emulateHTTP = true;
+
 // Components
 
 
