@@ -28,6 +28,7 @@ import BInputTag from './themes/ios/Tag.vue'
 import BModal from './themes/ios/Modal.vue'
 import BLoader from './themes/ios/Loader.vue'
 import BLoadingRemoteData from './themes/ios/LoadingRemoteData.vue'
+import BTelerikNumberic from './themes/ios/TelerikNumberic.vue'
 
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
@@ -52,3 +53,4 @@ Vue.component('BInputTag', BInputTag)
 Vue.component('BModal', BModal)
 Vue.component('BLoader', BLoader)
 Vue.component('BLoadingRemoteData', BLoadingRemoteData)
+Vue.component('BTelerikNumberic', BTelerikNumberic)

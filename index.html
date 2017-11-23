@@ -447,7 +447,35 @@
                                 </div>
                             </div>
                         </figure> 
-                 
+                        <figure class="wow animated">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Numberic Formatted 2.0</h4>
+                                <div class="panel-body">
+                                    <b-telerik-numberic :affix="telerikNumbericParam.affix" :interrupt="telerikNumbericParam.interrupt" :type-output="telerikNumbericParam.typeOutput" :type="telerikNumbericParam.type" :rounding-decimal="telerikNumbericParam.roundingDecimal" id="telerikNumbericId" v-model="input.telerikNumberic" label="telerik numberic" placeholder="Telerik Numberic"></b-telerik-numberic>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="my-2">
+                                        <b-button type="button" class-name="button-primary" label="5000" @click.native="input.telerikNumberic = 5000"></b-button>
+                                        <b-button type="button" class-name="button-danger button-solid" label="Null" @click.native="input.telerikNumberic = null"></b-button>
+                                    </div>
+                                    <div class="my-2">
+                                        <b-button type="button" class-name="button-success" label="VND" @click.native="telerikNumbericParam.affix = 'VND'"></b-button>
+                                        <b-button type="button" class-name="button-warn button-solid" label="EUR" @click.native="telerikNumbericParam.affix = '€'"></b-button>
+                                        <b-button type="button" class-name="button-primary button-solid" label="USA" @click.native="telerikNumbericParam.affix = '$'"></b-button>
+                                        <b-button type="button" class-name="button-success" label="%" @click.native="telerikNumbericParam.affix = '%'"></b-button>
+                                    </div>
+                                    <div class="my-2">
+                                        <b-button type="button" class-name="button-danger" label="Affix = prefix" @click.native="telerikNumbericParam.type = 'prefix'"></b-button>
+                                        <b-button type="button" class-name="button-success" label="Rounding Decimal = 2" @click.native="telerikNumbericParam.roundingDecimal = 2"></b-button>
+                                        <b-button type="button" class-name="button-warn" label="Interrupt = ' '" @click.native="telerikNumbericParam.interrupt = ' '"></b-button>
+                                    </div>
+                                    v-model data: {{ input.telerikNumberic }}
+                                    <br>
+                                    Parameter required: 
+                                </div>
+                            </div>
+                        </figure> 
                        <!--  <figure class="wow animated">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Loading Remote Data</h4>
@@ -459,7 +487,6 @@
                                 </div>
                             </div>
                         </figure> -->
-
                     </div>
                     <div class="col-md-12">
                         <figure class="wow animated">
@@ -568,6 +595,14 @@ var vm = new Vue({
             method : 'POST'   
         },
 
+        telerikNumbericParam : {
+            affix       : " vnd",
+            type        : "suffix" ,
+            interrupt   : ",",
+            typeOutput  : "default",
+            roundingDecimal : 4
+        },
+
         input: {
             name: 'Input your text...',
             checkbox          : [],
@@ -588,11 +623,11 @@ var vm = new Vue({
             dateAndTime       : null,
             task              : null,
             tinyMCE           : "Lão Minh bắt fix bug nhiều quá",
-            tinyMCE2 : null,
-            tags: [],
-            showModal: false,
-            remoteData:[]
-
+            tinyMCE2           : null,
+            tags               : [],
+            showModal          : false,
+            remoteData         :[],
+            telerikNumberic    : null
         },
         tinyMCE: {
             content  : "Tiny MCE Content 1 (khác nhau)",
@@ -621,9 +656,9 @@ var vm = new Vue({
             },
         ],
         taskList: [
-        { title : 'Condition', content : 'Your Condition', button : true, html : '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded">Edit Condition</button></div>'},
-        { title : 'Condition', content : 'Your Condition', button : false, html : ''},
-        { title : 'Condition', content : 'Your Condition', button : true, html : '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded">Edit Condition</button></div>'}
+        { title : 'Condition', content : 'Task List is Awesome', button : true, html : '<button type="button" class="btn btn-primary btn-rounded">Edit Condition</button>'},
+        { title : 'Condition', content : 'Write your HTML here', button : false, html : ''},
+        { title : 'Condition', content : 'Easy to use. YOLO !!!', button : true, html : '<button type="button" class="btn btn-primary btn-rounded">Edit Condition</button>'}
 
         ],
         list: [

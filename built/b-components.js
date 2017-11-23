@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "built/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 293);
+/******/ 	return __webpack_require__(__webpack_require__.s = 296);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1914,7 +1914,7 @@ function loadLocale(name) {
         try {
             oldLocale = globalLocale._abbr;
             var aliasedRequire = require;
-            __webpack_require__(309)("./" + name);
+            __webpack_require__(312)("./" + name);
             getSetGlobalLocale(oldLocale);
         } catch (e) {}
     }
@@ -4859,7 +4859,7 @@ return hooks;
                 module && module.exports) {
             try {
                 oldLocale = globalLocale._abbr;
-                __webpack_require__(308)("./" + name);
+                __webpack_require__(311)("./" + name);
                 // because defineLocale currently also sets the global locale, we
                 // want to undo that for lazy loaded locales
                 locale_locales__getSetGlobalLocale(oldLocale);
@@ -8058,7 +8058,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(373)
+var listToStyles = __webpack_require__(377)
 
 /*
 type StyleObject = {
@@ -8266,8 +8266,8 @@ function applyToTag (styleElement, obj) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-var customEvent = __webpack_require__(306);
-var eventmap = __webpack_require__(299);
+var customEvent = __webpack_require__(309);
+var eventmap = __webpack_require__(302);
 var doc = document;
 var addEvent = addEventEasy;
 var removeEvent = removeEventEasy;
@@ -38312,15 +38312,15 @@ return zhTw;
 
 
 var crossvent = __webpack_require__(9);
-var emitter = __webpack_require__(298);
-var dom = __webpack_require__(313);
-var text = __webpack_require__(328);
+var emitter = __webpack_require__(301);
+var dom = __webpack_require__(316);
+var text = __webpack_require__(331);
 var parse = __webpack_require__(13);
 var clone = __webpack_require__(222);
 var defaults = __webpack_require__(223);
 var momentum = __webpack_require__(7);
 var classes = __webpack_require__(221);
-var noop = __webpack_require__(316);
+var noop = __webpack_require__(319);
 var no;
 
 function calendar (calendarOptions) {
@@ -39179,10 +39179,10 @@ module.exports = defaults;
 
 var getSelection;
 var doc = global.document;
-var getSelectionRaw = __webpack_require__(333);
-var getSelectionNullOp = __webpack_require__(332);
-var getSelectionSynthetic = __webpack_require__(334);
-var isHost = __webpack_require__(335);
+var getSelectionRaw = __webpack_require__(336);
+var getSelectionNullOp = __webpack_require__(335);
+var getSelectionSynthetic = __webpack_require__(337);
+var isHost = __webpack_require__(338);
 if (isHost.method(global, 'getSelection')) {
   getSelection = getSelectionRaw;
 } else if (typeof doc.selection === 'object' && doc.selection) {
@@ -39298,9 +39298,9 @@ module.exports = function(module) {
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(253),
+  __webpack_require__(254),
   /* template */
-  __webpack_require__(360),
+  __webpack_require__(364),
   /* styles */
   null,
   /* scopeId */
@@ -39308,7 +39308,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\Button.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Button.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Button.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39338,9 +39338,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(254),
+  __webpack_require__(255),
   /* template */
-  __webpack_require__(352),
+  __webpack_require__(355),
   /* styles */
   null,
   /* scopeId */
@@ -39348,7 +39348,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\CheckBox.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/CheckBox.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] CheckBox.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39378,13 +39378,13 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(370)
+  __webpack_require__(374)
 }
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(255),
+  __webpack_require__(256),
   /* template */
-  __webpack_require__(355),
+  __webpack_require__(358),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -39392,7 +39392,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\DateAndTime.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/DateAndTime.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DateAndTime.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39422,13 +39422,13 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(372)
+  __webpack_require__(376)
 }
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(256),
+  __webpack_require__(257),
   /* template */
-  __webpack_require__(367),
+  __webpack_require__(371),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -39436,7 +39436,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\DateTimePicker.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/DateTimePicker.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DateTimePicker.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39466,9 +39466,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(257),
+  __webpack_require__(258),
   /* template */
-  __webpack_require__(350),
+  __webpack_require__(353),
   /* styles */
   null,
   /* scopeId */
@@ -39476,7 +39476,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\ListUpLoaded.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/ListUpLoaded.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ListUpLoaded.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39506,13 +39506,13 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(371)
+  __webpack_require__(375)
 }
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(258),
+  __webpack_require__(259),
   /* template */
-  __webpack_require__(361),
+  __webpack_require__(365),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -39520,7 +39520,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\Loader.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Loader.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Loader.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39550,9 +39550,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(259),
+  __webpack_require__(260),
   /* template */
-  __webpack_require__(346),
+  __webpack_require__(349),
   /* styles */
   null,
   /* scopeId */
@@ -39560,7 +39560,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\LoadingRemoteData.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/LoadingRemoteData.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] LoadingRemoteData.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39590,9 +39590,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(260),
+  __webpack_require__(261),
   /* template */
-  __webpack_require__(357),
+  __webpack_require__(361),
   /* styles */
   null,
   /* scopeId */
@@ -39600,7 +39600,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\Modal.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Modal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Modal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39630,13 +39630,13 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(368)
+  __webpack_require__(372)
 }
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(261),
+  __webpack_require__(262),
   /* template */
-  __webpack_require__(345),
+  __webpack_require__(348),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -39644,7 +39644,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\MultiSelect.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/MultiSelect.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] MultiSelect.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39674,9 +39674,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(262),
+  __webpack_require__(263),
   /* template */
-  __webpack_require__(366),
+  __webpack_require__(370),
   /* styles */
   null,
   /* scopeId */
@@ -39684,7 +39684,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\NumericFormatted.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/NumericFormatted.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] NumericFormatted.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39714,9 +39714,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(263),
+  __webpack_require__(264),
   /* template */
-  __webpack_require__(363),
+  __webpack_require__(367),
   /* styles */
   null,
   /* scopeId */
@@ -39724,7 +39724,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\Radio.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Radio.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Radio.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39754,9 +39754,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(264),
+  __webpack_require__(265),
   /* template */
-  __webpack_require__(348),
+  __webpack_require__(351),
   /* styles */
   null,
   /* scopeId */
@@ -39764,7 +39764,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\Rating.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Rating.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Rating.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39794,9 +39794,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(265),
+  __webpack_require__(266),
   /* template */
-  __webpack_require__(354),
+  __webpack_require__(357),
   /* styles */
   null,
   /* scopeId */
@@ -39804,7 +39804,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\Select.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Select.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Select.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39834,9 +39834,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(266),
+  __webpack_require__(267),
   /* template */
-  __webpack_require__(347),
+  __webpack_require__(350),
   /* styles */
   null,
   /* scopeId */
@@ -39844,7 +39844,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\ShowPassword.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/ShowPassword.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ShowPassword.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39874,9 +39874,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(267),
+  __webpack_require__(268),
   /* template */
-  __webpack_require__(365),
+  __webpack_require__(369),
   /* styles */
   null,
   /* scopeId */
@@ -39884,7 +39884,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\Switch.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Switch.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Switch.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39914,9 +39914,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(268),
+  __webpack_require__(269),
   /* template */
-  __webpack_require__(356),
+  __webpack_require__(360),
   /* styles */
   null,
   /* scopeId */
@@ -39924,7 +39924,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\Tag.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Tag.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Tag.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39954,9 +39954,9 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(269),
+  __webpack_require__(270),
   /* template */
-  __webpack_require__(349),
+  __webpack_require__(352),
   /* styles */
   null,
   /* scopeId */
@@ -39964,7 +39964,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\TaskList.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/TaskList.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TaskList.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39994,7 +39994,7 @@ module.exports = Component.exports
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(270),
+  __webpack_require__(271),
   /* template */
   __webpack_require__(359),
   /* styles */
@@ -40004,7 +40004,47 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\TextField.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/TelerikNumberic.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] TelerikNumberic.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-596e7761", Component.options)
+  } else {
+    hotAPI.reload("data-v-596e7761", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 245 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(272),
+  /* template */
+  __webpack_require__(363),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/TextField.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TextField.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -40028,15 +40068,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(271),
+  __webpack_require__(273),
   /* template */
-  __webpack_require__(358),
+  __webpack_require__(362),
   /* styles */
   null,
   /* scopeId */
@@ -40044,7 +40084,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\Textarea.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Textarea.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Textarea.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -40068,19 +40108,19 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(369)
+  __webpack_require__(373)
 }
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(272),
+  __webpack_require__(274),
   /* template */
-  __webpack_require__(353),
+  __webpack_require__(356),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -40088,7 +40128,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\TinyMCE.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/TinyMCE.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TinyMCE.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -40112,15 +40152,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(273),
+  __webpack_require__(275),
   /* template */
-  __webpack_require__(362),
+  __webpack_require__(366),
   /* styles */
   null,
   /* scopeId */
@@ -40128,7 +40168,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\Toggle.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Toggle.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Toggle.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -40152,15 +40192,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(274),
+  __webpack_require__(276),
   /* template */
-  __webpack_require__(364),
+  __webpack_require__(368),
   /* styles */
   null,
   /* scopeId */
@@ -40168,7 +40208,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\Upload.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/Upload.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Upload.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -40192,15 +40232,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(275),
+  __webpack_require__(277),
   /* template */
-  __webpack_require__(351),
+  __webpack_require__(354),
   /* styles */
   null,
   /* scopeId */
@@ -40208,7 +40248,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\xampp7.0\\htdocs\\b-component\\b-components\\src\\themes\\ios\\ZipCode.vue"
+Component.options.__file = "/Work/Bigin/Templates/b-components/src/themes/ios/ZipCode.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ZipCode.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -40232,7 +40272,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41333,7 +41373,7 @@ var xhrClient = function (request) {
 
 var nodeClient = function (request) {
 
-    var client = __webpack_require__(374);
+    var client = __webpack_require__(378);
 
     return new PromiseObj(function (resolve) {
 
@@ -41809,25 +41849,25 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports) {
 
 module.exports = Vue;
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports) {
 
 module.exports = function atoa (a, n) { return Array.prototype.slice.call(a, n); }
 
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Button__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Button__ = __webpack_require__(278);
 //
 //
 //
@@ -41838,7 +41878,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Button__["a" /* default */]);
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41856,12 +41896,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_CheckBox__["a" /* default */]);
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DateAndTime__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DateAndTime__ = __webpack_require__(279);
 //
 //
 //
@@ -41879,13 +41919,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_DateAndTime__["a" /* default */]);
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DateTimePicker__ = __webpack_require__(278);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__plugins_material_datetime_picker_material_datetime_picker_css__ = __webpack_require__(340);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DateTimePicker__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__plugins_material_datetime_picker_material_datetime_picker_css__ = __webpack_require__(343);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__plugins_material_datetime_picker_material_datetime_picker_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__plugins_material_datetime_picker_material_datetime_picker_css__);
 //
 //
@@ -41902,12 +41942,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_DateTimePicker__["a" /* default */]);
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ListUpLoaded__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ListUpLoaded__ = __webpack_require__(281);
 //
 //
 //
@@ -41934,7 +41974,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_ListUpLoaded__["a" /* default */]);
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports) {
 
 //
@@ -41950,12 +41990,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LoadingRemoteData__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LoadingRemoteData__ = __webpack_require__(282);
 //
 //
 //
@@ -41989,12 +42029,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_LoadingRemoteData__["a" /* default */]);
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Modal__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Modal__ = __webpack_require__(283);
 //
 //
 //
@@ -42033,12 +42073,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Modal__["a" /* default */]);
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_MultiSelect__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_MultiSelect__ = __webpack_require__(284);
 //
 //
 //
@@ -42074,12 +42114,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_MultiSelect__["a" /* default */]);
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_NumericFormatted__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_NumericFormatted__ = __webpack_require__(285);
 //
 //
 //
@@ -42091,12 +42131,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_NumericFormatted__["a" /* default */]);
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Radio__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Radio__ = __webpack_require__(286);
 //
 //
 //
@@ -42110,12 +42150,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Radio__["a" /* default */]);
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Rating__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Rating__ = __webpack_require__(287);
 //
 //
 //
@@ -42131,12 +42171,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Rating__["a" /* default */]);
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Select__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Select__ = __webpack_require__(288);
 //
 //
 //
@@ -42151,7 +42191,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Select__["a" /* default */]);
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42183,7 +42223,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42211,12 +42251,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Tag__ = __webpack_require__(287);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Tag__ = __webpack_require__(289);
 //
 //
 //
@@ -42236,12 +42276,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Tag__["a" /* default */]);
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TaskList__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TaskList__ = __webpack_require__(290);
+//
+//
+//
 //
 //
 //
@@ -42283,7 +42326,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TaskList__["a" /* default */]);
 
 /***/ }),
-/* 270 */
+/* 271 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TelerikNumberic__ = __webpack_require__(291);
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TelerikNumberic__["a" /* default */]);
+
+/***/ }),
+/* 272 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42300,12 +42360,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TextField__["a" /* default */]);
 
 /***/ }),
-/* 271 */
+/* 273 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Textarea__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Textarea__ = __webpack_require__(292);
 //
 //
 //
@@ -42317,12 +42377,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Textarea__["a" /* default */]);
 
 /***/ }),
-/* 272 */
+/* 274 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TinyMCE__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TinyMCE__ = __webpack_require__(293);
 //
 //
 //
@@ -42341,7 +42401,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TinyMCE__["a" /* default */]);
 
 /***/ }),
-/* 273 */
+/* 275 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42384,12 +42444,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 274 */
+/* 276 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Upload__ = __webpack_require__(291);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Upload__ = __webpack_require__(294);
 //
 //
 //
@@ -42426,12 +42486,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Upload__["a" /* default */]);
 
 /***/ }),
-/* 275 */
+/* 277 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ZipCode__ = __webpack_require__(292);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ZipCode__ = __webpack_require__(295);
 //
 //
 //
@@ -42443,7 +42503,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_ZipCode__["a" /* default */]);
 
 /***/ }),
-/* 276 */
+/* 278 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42473,7 +42533,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 277 */
+/* 279 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42615,11 +42675,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 278 */
+/* 280 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_material_datetime_picker__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_material_datetime_picker__ = __webpack_require__(310);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_text_field_mixins__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_jquery__);
@@ -42699,7 +42759,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 279 */
+/* 281 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42811,11 +42871,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 280 */
+/* 282 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_loading_remote_data_mixins__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_loading_remote_data_mixins__ = __webpack_require__(297);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	data() {
@@ -42892,7 +42952,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 281 */
+/* 283 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42923,7 +42983,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 282 */
+/* 284 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43176,7 +43236,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 283 */
+/* 285 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43289,7 +43349,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 284 */
+/* 286 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43312,7 +43372,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 285 */
+/* 287 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43347,7 +43407,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 286 */
+/* 288 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43433,7 +43493,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 287 */
+/* 289 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43535,75 +43595,263 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 288 */
+/* 290 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // var Events = new Vue({});	
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-	props: ['value'],
+    props: ['value'],
+    data() {
+        return {
+            task: null,
+            showModal: false
+        };
+    },
+
+    watch: {
+        value() {
+            if (this.value == undefined || this.value == null || this.value.length == 0) {
+                console.log('Array is NULL');
+            };
+        }
+    },
+
+    mounted() {
+        this.task = this.value;
+    },
+
+    methods: {
+        haveButton(button) {
+            if (button == true) {
+                for (var i = 0; i < this.task.length; i++) {}
+                return '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#modal-task-' + i + '">Edit Condition</button></div>';
+            }
+        },
+        addTask(button) {
+            var html = this.haveButton(button);
+            this.task = this.task ? this.task : [];
+            this.task.push({
+                title: 'Condition',
+                content: 'Your Condition',
+                button: button,
+                html: html
+            });
+            this.$emit('input', this.task);
+        },
+        deleteTask(index) {
+            var self = this;
+
+            // Animation
+            var arrow = index - 1;
+            document.querySelectorAll('.task')[index].setAttribute("style", "animation: vanishOut; animation-duration: 0.5s;");
+            arrow > -1 ? document.querySelectorAll('[data-name="svg-task-arrow"]')[arrow].setAttribute("style", "animation: vanishOut; animation-duration: 0.5s; height: 60px;") : document.querySelectorAll('[data-name="svg-task-arrow"]')[arrow];
+
+            // Animation then Remove Element
+            setTimeout(function () {
+                if (index > -1) {
+                    self.task.splice(index, 1);
+                    // Remove Style
+                    document.querySelectorAll('.task')[index].removeAttribute("style");
+                    arrow > -1 ? document.querySelectorAll('[data-name="svg-task-arrow"]')[arrow].setAttribute("style", "height: 60px;") : document.querySelectorAll('[data-name="svg-task-arrow"]')[arrow];
+                }
+            }, 500);
+            this.$emit('input', self.task);
+            // console.log(JSON.stringify(self.task));
+        },
+        emptyTask() {
+            this.task = [];
+            this.$emit('input', this.task);
+        },
+        changeStatusModal() {
+            this.showModal = true;
+        },
+        mouseover() {
+            console.log('hover');
+        }
+
+    }
+});
+
+/***/ }),
+/* 291 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
+
+/* harmony default export */ __webpack_exports__["a"] = ({
 	data() {
 		return {
-			task: null,
-			showModal: false
+			valueTemp: "",
+			inputValue: "",
+			inputAffix: "",
+			inputType: "suffix",
+			inputInterrupt: ",",
+			inputTypeOutput: "default",
+			inputRoundDecimal: 0
 		};
+	},
+
+	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
+
+	props: ['affix', 'type', 'interrupt', 'type-output', 'rounding-decimal'],
+
+	created() {
+		this.initComponentData();
+	},
+
+	mounted() {
+		this.watchDataValue(this.value);
 	},
 
 	watch: {
 		value() {
-			if (this.value == undefined || this.value == null || this.value.length == 0) {
-				console.log('Array is NULL');
-			};
+			this.watchDataValue(this.value);
+		},
+		affix() {
+			if (this.affix != null || this.affix != undefined) {
+				this.inputAffix = this.affix;
+				this.eventBlur(this.value);
+			}
+		},
+		type() {
+			if (this.type != null || this.type != undefined) {
+				this.inputType = this.type;
+				this.eventBlur(this.value);
+			}
+		},
+		interrupt() {
+			if (this.interrupt != null || this.interrupt != undefined) {
+				this.inputInterrupt = this.interrupt;
+				this.eventBlur(this.value);
+			}
+		},
+		typeOutput() {
+			if (this.typeOutput != null || this.typeOutput != undefined) {
+				this.inputTypeOutput = this.typeOutput;
+				this.eventBlur(this.value);
+			}
+		},
+		roundingDecimal() {
+			if (this.roundingDecimal != null || this.roundingDecimal != undefined) {
+				this.inputRoundDecimal = this.roundingDecimal;
+				this.eventBlur(this.value);
+			}
 		}
 	},
 
-	mounted() {
-		this.task = this.value;
-	},
-
 	methods: {
-		haveButton(button) {
-			if (button == true) {
-				for (var i = 0; i < this.task.length; i++) {}
-				return '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#modal-task-' + i + '">Edit Condition</button></div>';
+
+		watchDataValue(value) {
+			if (value != null || value != undefined) {
+				this.valueTemp = value;
+				this.inputValue = value;
+				this.affixInput(value);
+			} else {
+				this.valueTemp = "";
+				this.inputValue = "";
 			}
 		},
-		addTask(button) {
-			var html = this.haveButton(button);
-			this.task = this.task ? this.task : [];
-			this.task.push({
-				title: 'Condition',
-				content: 'Your Condition',
-				button: button,
-				html: html
-			});
-			this.$emit('input', this.task);
-		},
-		deleteTask() {
-			var self = this;
-			// console.log(JSON.stringify(self.task));
-			document.querySelector('.task:last-child').style.animation = "vanishOut";
-			document.querySelector('.task:last-child').style.animationDuration = "0.5s";
 
-			setTimeout(function () {
-				self.task.pop();
-			}, 500);
-			this.$emit('input', this.task);
+		initComponentData() {
+			if (this.affix != null || this.affix != undefined) this.inputAffix = this.affix;
+			if (this.type != null || this.type != undefined) this.inputType = this.type;
+			if (this.interrupt != null || this.interrupt != undefined) this.inputInterrupt = this.interrupt;
+			if (this.typeOutput != null || this.typeOutput != undefined) this.inputTypeOutput = this.typeOutput;
+			if (this.roundingDecimal != null || this.roundingDecimal != undefined) this.inputRoundDecimal = this.roundingDecimal;
 		},
-		emptyTask() {
-			this.task = [];
-			this.$emit('input', this.task);
+
+		checkIsNumber(number) {
+			let reg = new RegExp(/^[\d.]+$/);
+			if (!reg.test(number)) return false;
+			return true;
 		},
-		changeStatusModal() {
-			this.showModal = true;
+
+		checkInputInvalid(string) {
+			let arrayNumber = string.split("");
+			let lengthArr = arrayNumber.length;
+			for (let i = 0; i < lengthArr; i++) {
+				if (this.checkIsNumber(arrayNumber[i]) == false) return false;
+			}
+			return true;
+		},
+
+		eventInput(string) {
+			if (string == "" || string == null) {
+				this.valueTemp = "";
+			}
+			this.inputValue = string;
+			if (this.checkInputInvalid(string) == false) {
+				this.inputValue = this.valueTemp;
+			} else {
+				this.valueTemp = this.checkValidateString(string);
+				this.updateFloatLabel(string);
+			}
+		},
+
+		eventBlur(string) {
+			if (string != "" || string != null || string != undefined) this.affixInput(string);
+			if (this.inputTypeOutput == "default") this.$emit("input", this.valueTemp);
+		},
+
+		interruptInput(string) {
+			if (string == "" || string == null || undefined) return "";
+			string = parseInt(string);
+			string = String(string);
+			let strResult = "";
+			let strSub = "";
+			let loop = parseInt(string.length / 3);
+			if (loop < 1) return string;
+			for (let i = 1; i <= loop; i++) {
+				if (string.slice(0, string.length - 3) == "") {
+					strSub = string.slice(string.length - 3, string.length);
+					string = string.slice(0, string.length - 3);
+				} else {
+					strSub = this.inputInterrupt + string.slice(string.length - 3, string.length);
+					string = string.slice(0, string.length - 3);
+				}
+				strResult = strSub + strResult;
+			}
+			return string + strResult;
+		},
+
+		checkValidateString(string) {
+			if (string.split(".").length > 2) return string.split(".")[0] + "." + string.split(".")[1];
+			if (string.split(".").length == 2) {
+				if (string.split(".")[1] == null || string.split(".")[1] == undefined || string.split(".")[1] == "") return string.split(".")[0];
+			}
+			return string;
+		},
+
+		affixInput(string) {
+			if (string == "" || string == null || string == undefined) {
+				this.inputValue = "";
+				return this.valueTemp = "";
+			}
+			string = this.checkValidateString(string);
+			string = parseFloat(string).toFixed(this.inputRoundDecimal);
+			let beginString = string.split(".")[0] == null || string.split(".")[0] == undefined ? "" : string.split(".")[0];
+			let endString = string.split(".")[1] == null || string.split(".")[1] == undefined ? "" : string.split(".")[1];
+			let decimalPoint = endString == "" || endString == null || endString == undefined ? "" : ".";
+			if (string == "" || string == null || string == undefined) return this.inputValue = "";
+			if (this.inputType == "prefix") {
+				this.inputValue = this.inputAffix + this.interruptInput(parseInt(this.valueTemp)) + decimalPoint + endString;
+			} else {
+				this.inputValue = this.interruptInput(parseInt(this.valueTemp)) + decimalPoint + endString + this.inputAffix;
+			}
+		},
+
+		eventForcus(string) {
+			this.inputValue = this.valueTemp;
 		}
 
 	}
 });
 
 /***/ }),
-/* 289 */
+/* 292 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43638,7 +43886,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 290 */
+/* 293 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43806,7 +44054,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 291 */
+/* 294 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43887,7 +44135,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 292 */
+/* 295 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43950,15 +44198,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 293 */
+/* 296 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_resource__ = __webpack_require__(250);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__themes_ios_TextField_vue__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_resource__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__themes_ios_TextField_vue__ = __webpack_require__(245);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__themes_ios_TextField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__themes_ios_TextField_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__themes_ios_CheckBox_vue__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__themes_ios_CheckBox_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__themes_ios_CheckBox_vue__);
@@ -43968,11 +44216,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__themes_ios_Switch_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__themes_ios_Switch_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__themes_ios_Select_vue__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__themes_ios_Select_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__themes_ios_Select_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__themes_ios_Textarea_vue__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__themes_ios_Textarea_vue__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__themes_ios_Textarea_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__themes_ios_Textarea_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__themes_ios_Rating_vue__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__themes_ios_Rating_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__themes_ios_Rating_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__themes_ios_ZipCode_vue__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__themes_ios_ZipCode_vue__ = __webpack_require__(250);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__themes_ios_ZipCode_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__themes_ios_ZipCode_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__themes_ios_Button_vue__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__themes_ios_Button_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__themes_ios_Button_vue__);
@@ -43980,13 +44228,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__themes_ios_MultiSelect_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__themes_ios_MultiSelect_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__themes_ios_NumericFormatted_vue__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__themes_ios_NumericFormatted_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__themes_ios_NumericFormatted_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__themes_ios_Toggle_vue__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__themes_ios_Toggle_vue__ = __webpack_require__(248);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__themes_ios_Toggle_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__themes_ios_Toggle_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__themes_ios_ShowPassword_vue__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__themes_ios_ShowPassword_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__themes_ios_ShowPassword_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__themes_ios_DateTimePicker_vue__ = __webpack_require__(230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__themes_ios_DateTimePicker_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__themes_ios_DateTimePicker_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__themes_ios_Upload_vue__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__themes_ios_Upload_vue__ = __webpack_require__(249);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__themes_ios_Upload_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__themes_ios_Upload_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__themes_ios_TaskList_vue__ = __webpack_require__(243);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__themes_ios_TaskList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__themes_ios_TaskList_vue__);
@@ -43994,7 +44242,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__themes_ios_DateAndTime_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18__themes_ios_DateAndTime_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__themes_ios_ListUpLoaded_vue__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__themes_ios_ListUpLoaded_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19__themes_ios_ListUpLoaded_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__themes_ios_TinyMCE_vue__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__themes_ios_TinyMCE_vue__ = __webpack_require__(247);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__themes_ios_TinyMCE_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__themes_ios_TinyMCE_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__themes_ios_Tag_vue__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__themes_ios_Tag_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21__themes_ios_Tag_vue__);
@@ -44004,6 +44252,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__themes_ios_Loader_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_23__themes_ios_Loader_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__themes_ios_LoadingRemoteData_vue__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__themes_ios_LoadingRemoteData_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24__themes_ios_LoadingRemoteData_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__themes_ios_TelerikNumberic_vue__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__themes_ios_TelerikNumberic_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_25__themes_ios_TelerikNumberic_vue__);
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_resource__["a" /* default */]);
@@ -44011,6 +44261,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.emulateJSON = true;
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.xhr = { withCredentials: true };
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.emulateHTTP = true;
 // Components
+
 
 
 
@@ -44058,9 +44309,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BInputTag', __WEBPACK_IMP
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BModal', __WEBPACK_IMPORTED_MODULE_22__themes_ios_Modal_vue___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BLoader', __WEBPACK_IMPORTED_MODULE_23__themes_ios_Loader_vue___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BLoadingRemoteData', __WEBPACK_IMPORTED_MODULE_24__themes_ios_LoadingRemoteData_vue___default.a);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BTelerikNumberic', __WEBPACK_IMPORTED_MODULE_25__themes_ios_TelerikNumberic_vue___default.a);
 
 /***/ }),
-/* 294 */
+/* 297 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44076,7 +44328,7 @@ const loadingRemoteDataMixins = {
 /* harmony default export */ __webpack_exports__["a"] = (loadingRemoteDataMixins);
 
 /***/ }),
-/* 295 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44084,7 +44336,7 @@ const loadingRemoteDataMixins = {
 
 var crossvent = __webpack_require__(9);
 var throttle = __webpack_require__(15);
-var tailormade = __webpack_require__(296);
+var tailormade = __webpack_require__(299);
 
 function bullseye (el, target, options) {
   var o = options;
@@ -44169,15 +44421,15 @@ module.exports = bullseye;
 
 
 /***/ }),
-/* 296 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-var sell = __webpack_require__(338);
+var sell = __webpack_require__(341);
 var crossvent = __webpack_require__(9);
-var seleccion = __webpack_require__(336);
+var seleccion = __webpack_require__(339);
 var throttle = __webpack_require__(15);
 var getSelection = seleccion.get;
 var props = [
@@ -44353,13 +44605,13 @@ module.exports = tailormade;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 297 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var ticky = __webpack_require__(343);
+var ticky = __webpack_require__(346);
 
 module.exports = function debounce (fn, args, ctx) {
   if (!fn) { return; }
@@ -44370,14 +44622,14 @@ module.exports = function debounce (fn, args, ctx) {
 
 
 /***/ }),
-/* 298 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var atoa = __webpack_require__(252);
-var debounce = __webpack_require__(297);
+var atoa = __webpack_require__(253);
+var debounce = __webpack_require__(300);
 
 module.exports = function emitter (thing, options) {
   var opts = options || {};
@@ -44431,7 +44683,7 @@ module.exports = function emitter (thing, options) {
 
 
 /***/ }),
-/* 299 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44452,48 +44704,6 @@ module.exports = eventmap;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 300 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(6)();
-// imports
-
-
-// module
-exports.push([module.i, ".c-scrim {\r\n  position: fixed;\r\n  left: 0;\r\n  right: 0;\r\n  top: 0;\r\n  bottom: 0;\r\n  background-color: rgba(0, 0, 0, 0.541176);\r\n  opacity: 0;\r\n  transition: 200ms ease opacity;\r\n  will-change: opacity; }\r\n  .c-scrim--shown {\r\n    opacity: 1; }\r\n\r\n.c-datepicker {\r\n  min-height: 610px;\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 45%;\r\n  transform: translate(-50%, -50%);\r\n  background: white;\r\n  border: 0;\r\n  width: 300px;\r\n  text-align: center;\r\n  -webkit-tap-highlight-color: transparent;\r\n  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.25), 0 10px 18px rgba(0, 0, 0, 0.22);\r\n  border-radius: 2px;\r\n  opacity: 0;\r\n  will-change: opacity;\r\n  transition: 200ms ease-in-out opacity, 200ms ease-in-out top; }\r\n  .c-datepicker--open {\r\n    opacity: 1;\r\n    top: 50%; }\r\n\r\n.c-datepicker__header {\r\n  position: relative; }\r\n\r\n.c-datepicker__header-day {\r\n  height: 32px;\r\n  background: #0097a7;\r\n  color: white;\r\n  line-height: 32px;\r\n  font-size: 12px;\r\n  font-weight: 200;\r\n  letter-spacing: 0.3px; }\r\n\r\n.c-datepicker__header::after {\r\n  content: \"\";\r\n  display: table;\r\n  clear: both; }\r\n\r\n.c-datepicker__header-date {\r\n  background: #00bcd4;\r\n  height: 150px;\r\n  padding: 16px 0; }\r\n\r\n.rd-month-label {\r\n  height: 56px;\r\n  line-height: 56px;\r\n  font-size: 14px;\r\n  font-weight: 800; }\r\n\r\n.c-datepicker__back, .c-datepicker__next, .c-datepicker__toggle {\r\n  position: absolute;\r\n  border: 0;\r\n  background: white;\r\n  font-family: 'Material Icons';\r\n  text-rendering: optimizeLegibility;\r\n  font-feature-settings: \"liga\" 1;\r\n  font-style: normal;\r\n  text-transform: none;\r\n  line-height: 1;\r\n  font-size: 24px;\r\n  width: 56px;\r\n  height: 56px;\r\n  display: inline-block;\r\n  overflow: hidden;\r\n  -webkit-font-smoothing: antialiased;\r\n  cursor: pointer; }\r\n  .c-datepicker__back:focus, .c-datepicker__next:focus, .c-datepicker__toggle:focus {\r\n    outline: 0; }\r\n\r\n.c-datepicker__back {\r\n  left: 0; }\r\n\r\n.c-datepicker__next {\r\n  right: 0; }\r\n\r\n.c-datepicker__back:before {\r\n  content: 'chevron_left'; }\r\n\r\n.c-datepicker__next:after {\r\n  content: 'chevron_right'; }\r\n\r\n.c-datepicker--show-time:after {\r\n  content: 'access_time';\r\n  color: white;\r\n  visibility: visible; }\r\n\r\n.c-datepicker--show-calendar:after {\r\n  content: 'grid_on';\r\n  color: white;\r\n  visibility: visible; }\r\n\r\n.c-datepicker__header-date span {\r\n  display: block;\r\n  color: white;\r\n  margin: 0;\r\n  transition: opacity 100ms ease-in-out; }\r\n\r\n.c-datepicker__header-date__month {\r\n  cursor: pointer;\r\n  font-size: 24px;\r\n  opacity: 0.6; }\r\n\r\n.c-datepicker__header-date__day {\r\n  cursor: pointer;\r\n  font-size: 64px;\r\n  opacity: 0.6; }\r\n\r\n.c-datepicker__header-date__time {\r\n  font-size: 25px;\r\n  opacity: 0.6; }\r\n  .c-datepicker__header-date__time > span {\r\n    display: inline-block; }\r\n\r\n.c-datepicker__header-date__hours, .c-datepicker__header-date__minutes {\r\n  cursor: pointer; }\r\n\r\n.c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time {\r\n  opacity: 1; }\r\n  .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__hours, .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__minutes {\r\n    opacity: .6; }\r\n    .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__hours.active, .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__minutes.active {\r\n      opacity: 1; }\r\n\r\n.c-datepicker--show-calendar.is-selected ~ .c-datepicker__header .c-datepicker__header-date__month, .c-datepicker--show-calendar.is-selected ~ .c-datepicker__header .c-datepicker__header-date__day {\r\n  opacity: 1; }\r\n\r\n.modal-btns {\r\n  padding: 20px;\r\n  position: absolute;\r\n  bottom: 0;\r\n  right: 0; }\r\n\r\n.c-datepicker__day-body {\r\n  font-size: 12px;\r\n  color: rgba(0, 0, 0, 0.8);\r\n  width: 36px;\r\n  height: 36px;\r\n  cursor: pointer;\r\n  position: relative; }\r\n  .c-datepicker__day-body:hover {\r\n    /* color: white; */ }\r\n\r\n.c-datepicker__day--selected::after {\r\n  content: \"\";\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 50%;\r\n  width: 35px;\r\n  height: 35px;\r\n  border-radius: 50%;\r\n  transform: translate(-50%, -50%);\r\n  background: rgba(0, 0, 0, 0.05); }\r\n\r\n.c-datepicker__day-head {\r\n  color: rgba(0, 0, 0, 0.54);\r\n  font-size: 12px;\r\n  height: 36px; }\r\n\r\n.c-datepicker__day-head, c-datepicker__day-body {\r\n  -webkit-tap-highlight-color: transparent; }\r\n\r\n.modal-btns {\r\n  float: right; }\r\n\r\n.c-btn {\r\n  display: inline-block;\r\n  min-width: 56px;\r\n  cursor: pointer; }\r\n\r\n.rd-day-prev-month {\r\n  opacity: 0.1;\r\n  pointer-events: none; }\r\n\r\n.rd-day-next-month {\r\n  opacity: 0.1;\r\n  pointer-events: none; }\r\n\r\n.c-datepicker__calendar {\r\n  height: 300px; }\r\n\r\n.c-datepicker__date {\r\n  position: absolute;\r\n  left: 0;\r\n  right: 0; }\r\n\r\n.c-datepicker__days {\r\n  margin: 10px 20px; }\r\n\r\n.c-datepicker__header-toggle {\r\n  position: absolute;\r\n  top: 50%;\r\n  color: white;\r\n  cursor: pointer; }\r\n  .c-datepicker__header-toggle i {\r\n    font-size: 26px; }\r\n\r\n.c-datepicker__header-toggle--left {\r\n  left: 20px; }\r\n\r\n.c-datepicker__header-toggle--right {\r\n  right: 20px; }\r\n\r\n.c-datepicker__header-toggle--inactive {\r\n  opacity: 0.2; }\r\n\r\n.c-datepicker__toggle {\r\n  top: 170px;\r\n  width: 36px;\r\n  height: 30px;\r\n  visibility: hidden;\r\n  opacity: 0.5;\r\n  z-index: 1;\r\n  transition: opacity 200ms ease-in-out; }\r\n\r\n.c-datepicker__toggle--right {\r\n  right: 10px; }\r\n\r\n.c-datepicker__toggle--left {\r\n  left: 10px; }\r\n\r\n.c-datepicker__toggle.is-selected {\r\n  opacity: 1; }\r\n\r\n.c-datepicker--show-time.is-selected ~ .c-datepicker__calendar {\r\n  display: none; }\r\n\r\n.c-datepicker--show-calendar.is-selected ~ .c-datepicker__clock {\r\n  display: none; }\r\n\r\n.c-datepicker__clock {\r\n  position: relative;\r\n  /* [1] */\r\n  width: 200px;\r\n  height: 200px;\r\n  padding: 0;\r\n  border-radius: 50%;\r\n  list-style: none;\r\n  /* [2] */\r\n  font-size: 14px;\r\n  line-height: 50px;\r\n  padding: 160px 0 20px 0;\r\n  margin: 0 auto; }\r\n  .c-datepicker__clock .c-datepicker__clock__num {\r\n    display: block;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    width: 50px;\r\n    height: 50px;\r\n    margin: -25px;\r\n    z-index: 98; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1) {\r\n      transform: rotate(0deg) translate(100px) rotate(-0deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(270deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(270deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2) {\r\n      transform: rotate(30deg) translate(100px) rotate(-30deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(300deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(300deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3) {\r\n      transform: rotate(60deg) translate(100px) rotate(-60deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(330deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(330deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4) {\r\n      transform: rotate(90deg) translate(100px) rotate(-90deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(360deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(360deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5) {\r\n      transform: rotate(120deg) translate(100px) rotate(-120deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(390deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(390deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6) {\r\n      transform: rotate(150deg) translate(100px) rotate(-150deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(420deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(420deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7) {\r\n      transform: rotate(180deg) translate(100px) rotate(-180deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(450deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(450deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8) {\r\n      transform: rotate(210deg) translate(100px) rotate(-210deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(480deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(480deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9) {\r\n      transform: rotate(240deg) translate(100px) rotate(-240deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(510deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(510deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10) {\r\n      transform: rotate(270deg) translate(100px) rotate(-270deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(540deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(540deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11) {\r\n      transform: rotate(300deg) translate(100px) rotate(-300deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(570deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(570deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12) {\r\n      transform: rotate(330deg) translate(100px) rotate(-330deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(600deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(600deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n  .c-datepicker__clock::before {\r\n    content: \"\";\r\n    position: absolute;\r\n    top: 70px;\r\n    left: -20px;\r\n    width: 240px;\r\n    height: 240px;\r\n    background: rgba(0, 0, 0, 0.05);\r\n    border-radius: 50%; }\r\n\r\n.u-hover-ball-effect, .c-datepicker__day-body, .c-datepicker__clock__num, .c-datepicker__clock__am-pm-toggle label {\r\n  position: relative;\r\n  cursor: pointer; }\r\n  .u-hover-ball-effect:before, .c-datepicker__day-body:before, .c-datepicker__clock__num:before, .c-datepicker__clock__am-pm-toggle label:before {\r\n    content: \"\";\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    width: 0%;\r\n    height: 0%;\r\n    border-radius: 50%;\r\n    transform: translate(-50%, -50%);\r\n    transition: width 100ms ease-in-out, height 100ms ease-in-out; }\r\n  .u-hover-ball-effect:hover, .c-datepicker__day-body:hover, .c-datepicker__clock__num:hover, .c-datepicker__clock__am-pm-toggle label:hover {\r\n    color: white; }\r\n    .u-hover-ball-effect:hover:before, .c-datepicker__day-body:hover:before, .c-datepicker__clock__num:hover:before, .c-datepicker__clock__am-pm-toggle label:hover:before {\r\n      background: #00bcd4;\r\n      width: 35px;\r\n      height: 35px;\r\n      z-index: -1; }\r\n\r\n.c-datepicker__day-body--active:not(.hide-hand), .c-datepicker__clock__num--active:not(.hide-hand) {\r\n  color: white; }\r\n  .c-datepicker__day-body--active:not(.hide-hand):before, .c-datepicker__clock__num--active:not(.hide-hand):before {\r\n    background: #00bcd4;\r\n    width: 35px;\r\n    height: 35px;\r\n    z-index: -1; }\r\n\r\n.c-datepicker__clock-hands {\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%) rotate(180deg);\r\n  width: 10px;\r\n  height: 10px;\r\n  border-radius: 50%;\r\n  background: #0097a7; }\r\n\r\n.c-datepicker__hour-hand {\r\n  position: absolute;\r\n  opacity: 0;\r\n  height: 78px;\r\n  width: 2px;\r\n  background: #00bcd4;\r\n  left: 4px;\r\n  top: 10px; }\r\n\r\n.c-datepicker__clock__minutes {\r\n  display: none;\r\n  height: 200px;\r\n  margin: -69px 0 0 0;\r\n  width: 200px;\r\n  display: none; }\r\n  .c-datepicker__clock__minutes.active {\r\n    display: block; }\r\n\r\n.c-datepicker__clock__hours {\r\n  height: 200px;\r\n  margin: -69px 0 0 0;\r\n  width: 200px;\r\n  display: none; }\r\n  .c-datepicker__clock__hours.active {\r\n    display: block; }\r\n\r\n.c-datepicker__mask {\r\n  width: 127px;\r\n  height: 132px;\r\n  position: absolute;\r\n  top: 122px;\r\n  left: 37px;\r\n  z-index: 99; }\r\n  .c-datepicker__mask:after {\r\n    content: ' ';\r\n    width: 156px;\r\n    height: 70px;\r\n    display: block;\r\n    position: absolute;\r\n    top: 32px;\r\n    left: 0;\r\n    margin-left: -13px; }\r\n  .c-datepicker__mask:before {\r\n    content: ' ';\r\n    width: 75px;\r\n    height: 158px;\r\n    display: block;\r\n    position: absolute;\r\n    top: 6px;\r\n    left: 28px;\r\n    margin-top: -18px; }\r\n\r\n.c-datepicker__clock--show-minutes .c-datepicker__clock__minutes {\r\n  visibility: visible; }\r\n\r\n.c-datepicker__clock--show-minutes .c-datepicker__clock__hours {\r\n  visibility: hidden; }\r\n\r\n.c-datepicker__clock--show-hours .c-datepicker__clock__minutes {\r\n  visibility: hidden; }\r\n\r\n.c-datepicker__clock--show-hours .c-datepicker__clock__hours {\r\n  visibility: visible; }\r\n\r\n.c-datepicker__clock__am-pm-toggle {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 10px;\r\n  right: 10px;\r\n  height: 40px;\r\n  padding: 20px;\r\n  line-height: 40px; }\r\n  .c-datepicker__clock__am-pm-toggle label {\r\n    width: 40px;\r\n    position: absolute; }\r\n    .c-datepicker__clock__am-pm-toggle label:nth-child(1) {\r\n      left: 0; }\r\n    .c-datepicker__clock__am-pm-toggle label:nth-child(2) {\r\n      right: 0; }\r\n    .c-datepicker__clock__am-pm-toggle label.c-datepicker__toggle--checked::after {\r\n      content: \"\";\r\n      position: absolute;\r\n      left: 50%;\r\n      top: 50%;\r\n      width: 0%;\r\n      height: 0%;\r\n      border-radius: 50%;\r\n      transform: translate(-50%, -50%);\r\n      width: 36px;\r\n      height: 36px;\r\n      z-index: -1;\r\n      background: rgba(0, 0, 0, 0.05); }\r\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 301 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(6)();
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"MultiSelect.vue","sourceRoot":"webpack://"}]);
-
-// exports
-
-
-/***/ }),
-/* 302 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(6)();
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"TinyMCE.vue","sourceRoot":"webpack://"}]);
-
-// exports
-
-
-/***/ }),
 /* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -44502,7 +44712,7 @@ exports = module.exports = __webpack_require__(6)();
 
 
 // module
-exports.push([module.i, "\n.hasError{\n\tcolor: #f04134 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateAndTime.vue?57a87a5d"],"names":[],"mappings":";AAkBA;CACA,0BAAA;CACA","file":"DateAndTime.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 01/10/2017 -->\r\n<!-- Component: DateAndTime -->\r\n\r\n<template>\r\n\t<div class=\"b__datetime__picker b__components b-float-label\">\r\n\t\t<label :class=\"classLabel\">{{ label }}</label>\r\n      \t<input :id=\"id\" :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :class=\"classes\" :disabled=\"disabled\" @input=\"checkInputInvalid($event.target.value)\">\r\n\t</div>\r\n</template>\r\n\r\n<script>\r\n\timport DateAndTime from './../../components/DateAndTime'\r\n\texport default DateAndTime\r\n</script>\r\n\r\n<style>\r\n\t.hasError{\r\n\t\tcolor: #f04134 !important;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".c-scrim {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.541176);\n  opacity: 0;\n  transition: 200ms ease opacity;\n  will-change: opacity; }\n  .c-scrim--shown {\n    opacity: 1; }\n\n.c-datepicker {\n  min-height: 610px;\n  position: fixed;\n  left: 50%;\n  top: 45%;\n  transform: translate(-50%, -50%);\n  background: white;\n  border: 0;\n  width: 300px;\n  text-align: center;\n  -webkit-tap-highlight-color: transparent;\n  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.25), 0 10px 18px rgba(0, 0, 0, 0.22);\n  border-radius: 2px;\n  opacity: 0;\n  will-change: opacity;\n  transition: 200ms ease-in-out opacity, 200ms ease-in-out top; }\n  .c-datepicker--open {\n    opacity: 1;\n    top: 50%; }\n\n.c-datepicker__header {\n  position: relative; }\n\n.c-datepicker__header-day {\n  height: 32px;\n  background: #0097a7;\n  color: white;\n  line-height: 32px;\n  font-size: 12px;\n  font-weight: 200;\n  letter-spacing: 0.3px; }\n\n.c-datepicker__header::after {\n  content: \"\";\n  display: table;\n  clear: both; }\n\n.c-datepicker__header-date {\n  background: #00bcd4;\n  height: 150px;\n  padding: 16px 0; }\n\n.rd-month-label {\n  height: 56px;\n  line-height: 56px;\n  font-size: 14px;\n  font-weight: 800; }\n\n.c-datepicker__back, .c-datepicker__next, .c-datepicker__toggle {\n  position: absolute;\n  border: 0;\n  background: white;\n  font-family: 'Material Icons';\n  text-rendering: optimizeLegibility;\n  font-feature-settings: \"liga\" 1;\n  font-style: normal;\n  text-transform: none;\n  line-height: 1;\n  font-size: 24px;\n  width: 56px;\n  height: 56px;\n  display: inline-block;\n  overflow: hidden;\n  -webkit-font-smoothing: antialiased;\n  cursor: pointer; }\n  .c-datepicker__back:focus, .c-datepicker__next:focus, .c-datepicker__toggle:focus {\n    outline: 0; }\n\n.c-datepicker__back {\n  left: 0; }\n\n.c-datepicker__next {\n  right: 0; }\n\n.c-datepicker__back:before {\n  content: 'chevron_left'; }\n\n.c-datepicker__next:after {\n  content: 'chevron_right'; }\n\n.c-datepicker--show-time:after {\n  content: 'access_time';\n  color: white;\n  visibility: visible; }\n\n.c-datepicker--show-calendar:after {\n  content: 'grid_on';\n  color: white;\n  visibility: visible; }\n\n.c-datepicker__header-date span {\n  display: block;\n  color: white;\n  margin: 0;\n  transition: opacity 100ms ease-in-out; }\n\n.c-datepicker__header-date__month {\n  cursor: pointer;\n  font-size: 24px;\n  opacity: 0.6; }\n\n.c-datepicker__header-date__day {\n  cursor: pointer;\n  font-size: 64px;\n  opacity: 0.6; }\n\n.c-datepicker__header-date__time {\n  font-size: 25px;\n  opacity: 0.6; }\n  .c-datepicker__header-date__time > span {\n    display: inline-block; }\n\n.c-datepicker__header-date__hours, .c-datepicker__header-date__minutes {\n  cursor: pointer; }\n\n.c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time {\n  opacity: 1; }\n  .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__hours, .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__minutes {\n    opacity: .6; }\n    .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__hours.active, .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__minutes.active {\n      opacity: 1; }\n\n.c-datepicker--show-calendar.is-selected ~ .c-datepicker__header .c-datepicker__header-date__month, .c-datepicker--show-calendar.is-selected ~ .c-datepicker__header .c-datepicker__header-date__day {\n  opacity: 1; }\n\n.modal-btns {\n  padding: 20px;\n  position: absolute;\n  bottom: 0;\n  right: 0; }\n\n.c-datepicker__day-body {\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.8);\n  width: 36px;\n  height: 36px;\n  cursor: pointer;\n  position: relative; }\n  .c-datepicker__day-body:hover {\n    /* color: white; */ }\n\n.c-datepicker__day--selected::after {\n  content: \"\";\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  width: 35px;\n  height: 35px;\n  border-radius: 50%;\n  transform: translate(-50%, -50%);\n  background: rgba(0, 0, 0, 0.05); }\n\n.c-datepicker__day-head {\n  color: rgba(0, 0, 0, 0.54);\n  font-size: 12px;\n  height: 36px; }\n\n.c-datepicker__day-head, c-datepicker__day-body {\n  -webkit-tap-highlight-color: transparent; }\n\n.modal-btns {\n  float: right; }\n\n.c-btn {\n  display: inline-block;\n  min-width: 56px;\n  cursor: pointer; }\n\n.rd-day-prev-month {\n  opacity: 0.1;\n  pointer-events: none; }\n\n.rd-day-next-month {\n  opacity: 0.1;\n  pointer-events: none; }\n\n.c-datepicker__calendar {\n  height: 300px; }\n\n.c-datepicker__date {\n  position: absolute;\n  left: 0;\n  right: 0; }\n\n.c-datepicker__days {\n  margin: 10px 20px; }\n\n.c-datepicker__header-toggle {\n  position: absolute;\n  top: 50%;\n  color: white;\n  cursor: pointer; }\n  .c-datepicker__header-toggle i {\n    font-size: 26px; }\n\n.c-datepicker__header-toggle--left {\n  left: 20px; }\n\n.c-datepicker__header-toggle--right {\n  right: 20px; }\n\n.c-datepicker__header-toggle--inactive {\n  opacity: 0.2; }\n\n.c-datepicker__toggle {\n  top: 170px;\n  width: 36px;\n  height: 30px;\n  visibility: hidden;\n  opacity: 0.5;\n  z-index: 1;\n  transition: opacity 200ms ease-in-out; }\n\n.c-datepicker__toggle--right {\n  right: 10px; }\n\n.c-datepicker__toggle--left {\n  left: 10px; }\n\n.c-datepicker__toggle.is-selected {\n  opacity: 1; }\n\n.c-datepicker--show-time.is-selected ~ .c-datepicker__calendar {\n  display: none; }\n\n.c-datepicker--show-calendar.is-selected ~ .c-datepicker__clock {\n  display: none; }\n\n.c-datepicker__clock {\n  position: relative;\n  /* [1] */\n  width: 200px;\n  height: 200px;\n  padding: 0;\n  border-radius: 50%;\n  list-style: none;\n  /* [2] */\n  font-size: 14px;\n  line-height: 50px;\n  padding: 160px 0 20px 0;\n  margin: 0 auto; }\n  .c-datepicker__clock .c-datepicker__clock__num {\n    display: block;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    width: 50px;\n    height: 50px;\n    margin: -25px;\n    z-index: 98; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1) {\n      transform: rotate(0deg) translate(100px) rotate(-0deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(270deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(270deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2) {\n      transform: rotate(30deg) translate(100px) rotate(-30deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(300deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(300deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3) {\n      transform: rotate(60deg) translate(100px) rotate(-60deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(330deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(330deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4) {\n      transform: rotate(90deg) translate(100px) rotate(-90deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(360deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(360deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5) {\n      transform: rotate(120deg) translate(100px) rotate(-120deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(390deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(390deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6) {\n      transform: rotate(150deg) translate(100px) rotate(-150deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(420deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(420deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7) {\n      transform: rotate(180deg) translate(100px) rotate(-180deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(450deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(450deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8) {\n      transform: rotate(210deg) translate(100px) rotate(-210deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(480deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(480deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9) {\n      transform: rotate(240deg) translate(100px) rotate(-240deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(510deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(510deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10) {\n      transform: rotate(270deg) translate(100px) rotate(-270deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(540deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(540deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11) {\n      transform: rotate(300deg) translate(100px) rotate(-300deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(570deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(570deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12) {\n      transform: rotate(330deg) translate(100px) rotate(-330deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(600deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(600deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n  .c-datepicker__clock::before {\n    content: \"\";\n    position: absolute;\n    top: 70px;\n    left: -20px;\n    width: 240px;\n    height: 240px;\n    background: rgba(0, 0, 0, 0.05);\n    border-radius: 50%; }\n\n.u-hover-ball-effect, .c-datepicker__day-body, .c-datepicker__clock__num, .c-datepicker__clock__am-pm-toggle label {\n  position: relative;\n  cursor: pointer; }\n  .u-hover-ball-effect:before, .c-datepicker__day-body:before, .c-datepicker__clock__num:before, .c-datepicker__clock__am-pm-toggle label:before {\n    content: \"\";\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    width: 0%;\n    height: 0%;\n    border-radius: 50%;\n    transform: translate(-50%, -50%);\n    transition: width 100ms ease-in-out, height 100ms ease-in-out; }\n  .u-hover-ball-effect:hover, .c-datepicker__day-body:hover, .c-datepicker__clock__num:hover, .c-datepicker__clock__am-pm-toggle label:hover {\n    color: white; }\n    .u-hover-ball-effect:hover:before, .c-datepicker__day-body:hover:before, .c-datepicker__clock__num:hover:before, .c-datepicker__clock__am-pm-toggle label:hover:before {\n      background: #00bcd4;\n      width: 35px;\n      height: 35px;\n      z-index: -1; }\n\n.c-datepicker__day-body--active:not(.hide-hand), .c-datepicker__clock__num--active:not(.hide-hand) {\n  color: white; }\n  .c-datepicker__day-body--active:not(.hide-hand):before, .c-datepicker__clock__num--active:not(.hide-hand):before {\n    background: #00bcd4;\n    width: 35px;\n    height: 35px;\n    z-index: -1; }\n\n.c-datepicker__clock-hands {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%) rotate(180deg);\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  background: #0097a7; }\n\n.c-datepicker__hour-hand {\n  position: absolute;\n  opacity: 0;\n  height: 78px;\n  width: 2px;\n  background: #00bcd4;\n  left: 4px;\n  top: 10px; }\n\n.c-datepicker__clock__minutes {\n  display: none;\n  height: 200px;\n  margin: -69px 0 0 0;\n  width: 200px;\n  display: none; }\n  .c-datepicker__clock__minutes.active {\n    display: block; }\n\n.c-datepicker__clock__hours {\n  height: 200px;\n  margin: -69px 0 0 0;\n  width: 200px;\n  display: none; }\n  .c-datepicker__clock__hours.active {\n    display: block; }\n\n.c-datepicker__mask {\n  width: 127px;\n  height: 132px;\n  position: absolute;\n  top: 122px;\n  left: 37px;\n  z-index: 99; }\n  .c-datepicker__mask:after {\n    content: ' ';\n    width: 156px;\n    height: 70px;\n    display: block;\n    position: absolute;\n    top: 32px;\n    left: 0;\n    margin-left: -13px; }\n  .c-datepicker__mask:before {\n    content: ' ';\n    width: 75px;\n    height: 158px;\n    display: block;\n    position: absolute;\n    top: 6px;\n    left: 28px;\n    margin-top: -18px; }\n\n.c-datepicker__clock--show-minutes .c-datepicker__clock__minutes {\n  visibility: visible; }\n\n.c-datepicker__clock--show-minutes .c-datepicker__clock__hours {\n  visibility: hidden; }\n\n.c-datepicker__clock--show-hours .c-datepicker__clock__minutes {\n  visibility: hidden; }\n\n.c-datepicker__clock--show-hours .c-datepicker__clock__hours {\n  visibility: visible; }\n\n.c-datepicker__clock__am-pm-toggle {\n  position: absolute;\n  top: 0;\n  left: 10px;\n  right: 10px;\n  height: 40px;\n  padding: 20px;\n  line-height: 40px; }\n  .c-datepicker__clock__am-pm-toggle label {\n    width: 40px;\n    position: absolute; }\n    .c-datepicker__clock__am-pm-toggle label:nth-child(1) {\n      left: 0; }\n    .c-datepicker__clock__am-pm-toggle label:nth-child(2) {\n      right: 0; }\n    .c-datepicker__clock__am-pm-toggle label.c-datepicker__toggle--checked::after {\n      content: \"\";\n      position: absolute;\n      left: 50%;\n      top: 50%;\n      width: 0%;\n      height: 0%;\n      border-radius: 50%;\n      transform: translate(-50%, -50%);\n      width: 36px;\n      height: 36px;\n      z-index: -1;\n      background: rgba(0, 0, 0, 0.05); }\n", ""]);
 
 // exports
 
@@ -44516,7 +44726,7 @@ exports = module.exports = __webpack_require__(6)();
 
 
 // module
-exports.push([module.i, "\n.loader {\r\n\tdisplay: block;\r\n\twidth: 5em;\r\n\tmargin: 10% auto;\n}\n@-webkit-keyframes rotate {\n0% {\r\n\t\t-webkit-transform: translateY(0%);\n}\n30% {\r\n\t\t-webkit-transform: translateY(-0.25em);\n}\n50% {\r\n\t\t-webkit-transform: translateY(0%);\n}\n70% {\r\n\t\t-webkit-transform: translateY(0.25em);\n}\n}\n.loader {\r\n\tdisplay: block;\n}\n.loader .inner1, .loader .inner2, .loader .inner3 {\r\n\tdisplay: inline-block;\r\n\tmargin: 0.125em;\r\n\twidth: 0.5em;\r\n\theight: 0.5em;\r\n\tborder: 1px solid lightgray;\r\n\tborder-radius: 1em;\r\n\tbackground-color: lightgray;\r\n\t-webkit-transform-origin: 50%;\r\n\t-webkit-animation-duration: 0.75s;\r\n\t-webkit-animation-name: rotate;\r\n\t-webkit-animation-iteration-count: infinite;\r\n\t-webkit-animation-timing-function: linear;\n}\n.loader .inner2 {\r\n\t-webkit-animation-delay: 0.1875s;\n}\n.loader .inner3 {\r\n\t-webkit-animation-delay: 0.375s;\n}\r\n\r\n", "", {"version":3,"sources":["/./src/themes/ios/Loader.vue?2197c0a5"],"names":[],"mappings":";AAcA;CACA,eAAA;CACA,WAAA;CACA,iBAAA;CACA;AAEA;AACA;EACA,kCAAA;CACA;AACA;EACA,uCAAA;CACA;AACA;EACA,kCAAA;CACA;AACA;EACA,sCAAA;CACA;CACA;AACA;CACA,eAAA;CACA;AACA;CACA,sBAAA;CACA,gBAAA;CACA,aAAA;CACA,cAAA;CACA,4BAAA;CACA,mBAAA;CACA,4BAAA;CACA,8BAAA;CACA,kCAAA;CACA,+BAAA;CACA,4CAAA;CACA,0CAAA;CACA;AACA;CACA,iCAAA;CACA;AACA;CACA,gCAAA;CACA","file":"Loader.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__loader\">\r\n\t\t<div class=\"b__components b__loader\">\r\n\t\t\t<div class=\"loader\">\r\n\t\t\t\t<span class=\"inner1\"></span>\r\n\t\t\t\t<span class=\"inner2\"></span>\r\n\t\t\t\t<span class=\"inner3\"></span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\n</script>\r\n<style>\r\n.loader {\r\n\tdisplay: block;\r\n\twidth: 5em;\r\n\tmargin: 10% auto;\r\n}\r\n\r\n@-webkit-keyframes rotate {\r\n\t0% {\r\n\t\t-webkit-transform: translateY(0%);\r\n\t}\r\n\t30% {\r\n\t\t-webkit-transform: translateY(-0.25em);\r\n\t}\r\n\t50% {\r\n\t\t-webkit-transform: translateY(0%);\r\n\t}\r\n\t70% {\r\n\t\t-webkit-transform: translateY(0.25em);\r\n\t}\r\n}\r\n.loader {\r\n\tdisplay: block;\r\n}\r\n.loader .inner1, .loader .inner2, .loader .inner3 {\r\n\tdisplay: inline-block;\r\n\tmargin: 0.125em;\r\n\twidth: 0.5em;\r\n\theight: 0.5em;\r\n\tborder: 1px solid lightgray;\r\n\tborder-radius: 1em;\r\n\tbackground-color: lightgray;\r\n\t-webkit-transform-origin: 50%;\r\n\t-webkit-animation-duration: 0.75s;\r\n\t-webkit-animation-name: rotate;\r\n\t-webkit-animation-iteration-count: infinite;\r\n\t-webkit-animation-timing-function: linear;\r\n}\r\n.loader .inner2 {\r\n\t-webkit-animation-delay: 0.1875s;\r\n}\r\n.loader .inner3 {\r\n\t-webkit-animation-delay: 0.375s;\r\n}\r\n\r\n</style>\r\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"MultiSelect.vue","sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -44530,13 +44740,55 @@ exports = module.exports = __webpack_require__(6)();
 
 
 // module
-exports.push([module.i, "\n.c-datepicker{\n    line-height: normal;\n    -webkit-font-smoothing:antialiased;\n    z-index: 1;\n}\n.c-datepicker__clock__hours, .c-datepicker__clock__minutes{\n    position: relative;\n}\n.c-datepicker__header-date {\n    height: 182px;\n}\n.c-scrim--shown{ z-index:1;\n}\n.c-datepicker-btn {\n\tcursor: pointer;\n}\n.c-datepicker__day--selected::after{\n\tbackground-color:rgb(1, 188, 212);\n\tz-index: -1;\n}\n.c-datepicker__day--selected.c-datepicker__day-body{\n\tcolor: #FFF;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateTimePicker.vue?48ffd720"],"names":[],"mappings":";AAgBA;IACA,oBAAA;IACA,mCAAA;IACA,WAAA;CACA;AACA;IACA,mBAAA;CACA;AACA;IACA,cAAA;CACA;AACA,iBAAA,UAAA;CAAA;AACA;CACA,gBAAA;CACA;AACA;CACA,kCAAA;CACA,YAAA;CACA;AACA;CACA,YAAA;CACA","file":"DateTimePicker.vue","sourcesContent":["<template>\r\n\t<div class=\"b__datetime__picker b__components b-float-label\">\r\n\t\t<label :class=\"classLabel\">{{ label }}</label>\r\n      \t<input :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :id=\"id\" :class=\"classes\" :disabled=\"disabled\" @input=\"change($event.target.value)\" @blur=\"onBlur\">\r\n\t\t<a class=\"c-datepicker-btn\" @click=\"togglePicker\">\r\n\t\t\t<span class=\"material-icon\"><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i></span>\r\n\t\t</a>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport DateTimePicker from './../../components/DateTimePicker'\r\n\timport '../../plugins/material-datetime-picker/material-datetime-picker.css'\r\n\texport default DateTimePicker\r\n</script>\r\n\r\n<style>\r\n\t.c-datepicker{\r\n\t    line-height: normal;\r\n\t    -webkit-font-smoothing:antialiased;\r\n\t    z-index: 1;\r\n\t}\r\n\t.c-datepicker__clock__hours, .c-datepicker__clock__minutes{\r\n\t    position: relative;\r\n\t}\r\n\t.c-datepicker__header-date {\r\n\t    height: 182px;\r\n\t}\r\n\t.c-scrim--shown{ z-index:1; }\r\n\t.c-datepicker-btn {\r\n\t\tcursor: pointer;\r\n\t}\r\n\t.c-datepicker__day--selected::after{\r\n\t\tbackground-color:rgb(1, 188, 212);\r\n\t\tz-index: -1;\r\n\t}\r\n\t.c-datepicker__day--selected.c-datepicker__day-body{\r\n\t\tcolor: #FFF;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"TinyMCE.vue","sourceRoot":"webpack://"}]);
 
 // exports
 
 
 /***/ }),
 /* 306 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(6)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.hasError{\n\tcolor: #f04134 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateAndTime.vue?1f65a09a"],"names":[],"mappings":";AAkBA;CACA,0BAAA;CACA","file":"DateAndTime.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\n<!-- Contacts: thien.nguyen@bigin.vn -->\n<!-- Date: 01/10/2017 -->\n<!-- Component: DateAndTime -->\n\n<template>\n\t<div class=\"b__datetime__picker b__components b-float-label\">\n\t\t<label :class=\"classLabel\">{{ label }}</label>\n      \t<input :id=\"id\" :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :class=\"classes\" :disabled=\"disabled\" @input=\"checkInputInvalid($event.target.value)\">\n\t</div>\n</template>\n\n<script>\n\timport DateAndTime from './../../components/DateAndTime'\n\texport default DateAndTime\n</script>\n\n<style>\n\t.hasError{\n\t\tcolor: #f04134 !important;\n\t}\n</style>"],"sourceRoot":"webpack://"}]);
+
+// exports
+
+
+/***/ }),
+/* 307 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(6)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.loader {\n\tdisplay: block;\n\twidth: 5em;\n\tmargin: 10% auto;\n}\n@-webkit-keyframes rotate {\n0% {\n\t\t-webkit-transform: translateY(0%);\n}\n30% {\n\t\t-webkit-transform: translateY(-0.25em);\n}\n50% {\n\t\t-webkit-transform: translateY(0%);\n}\n70% {\n\t\t-webkit-transform: translateY(0.25em);\n}\n}\n.loader {\n\tdisplay: block;\n}\n.loader .inner1, .loader .inner2, .loader .inner3 {\n\tdisplay: inline-block;\n\tmargin: 0.125em;\n\twidth: 0.5em;\n\theight: 0.5em;\n\tborder: 1px solid lightgray;\n\tborder-radius: 1em;\n\tbackground-color: lightgray;\n\t-webkit-transform-origin: 50%;\n\t-webkit-animation-duration: 0.75s;\n\t-webkit-animation-name: rotate;\n\t-webkit-animation-iteration-count: infinite;\n\t-webkit-animation-timing-function: linear;\n}\n.loader .inner2 {\n\t-webkit-animation-delay: 0.1875s;\n}\n.loader .inner3 {\n\t-webkit-animation-delay: 0.375s;\n}\n\n", "", {"version":3,"sources":["/./src/themes/ios/Loader.vue?90afdba4"],"names":[],"mappings":";AAcA;CACA,eAAA;CACA,WAAA;CACA,iBAAA;CACA;AAEA;AACA;EACA,kCAAA;CACA;AACA;EACA,uCAAA;CACA;AACA;EACA,kCAAA;CACA;AACA;EACA,sCAAA;CACA;CACA;AACA;CACA,eAAA;CACA;AACA;CACA,sBAAA;CACA,gBAAA;CACA,aAAA;CACA,cAAA;CACA,4BAAA;CACA,mBAAA;CACA,4BAAA;CACA,8BAAA;CACA,kCAAA;CACA,+BAAA;CACA,4CAAA;CACA,0CAAA;CACA;AACA;CACA,iCAAA;CACA;AACA;CACA,gCAAA;CACA","file":"Loader.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__loader\">\n\t\t<div class=\"b__components b__loader\">\n\t\t\t<div class=\"loader\">\n\t\t\t\t<span class=\"inner1\"></span>\n\t\t\t\t<span class=\"inner2\"></span>\n\t\t\t\t<span class=\"inner3\"></span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</template>\n<script>\n</script>\n<style>\n.loader {\n\tdisplay: block;\n\twidth: 5em;\n\tmargin: 10% auto;\n}\n\n@-webkit-keyframes rotate {\n\t0% {\n\t\t-webkit-transform: translateY(0%);\n\t}\n\t30% {\n\t\t-webkit-transform: translateY(-0.25em);\n\t}\n\t50% {\n\t\t-webkit-transform: translateY(0%);\n\t}\n\t70% {\n\t\t-webkit-transform: translateY(0.25em);\n\t}\n}\n.loader {\n\tdisplay: block;\n}\n.loader .inner1, .loader .inner2, .loader .inner3 {\n\tdisplay: inline-block;\n\tmargin: 0.125em;\n\twidth: 0.5em;\n\theight: 0.5em;\n\tborder: 1px solid lightgray;\n\tborder-radius: 1em;\n\tbackground-color: lightgray;\n\t-webkit-transform-origin: 50%;\n\t-webkit-animation-duration: 0.75s;\n\t-webkit-animation-name: rotate;\n\t-webkit-animation-iteration-count: infinite;\n\t-webkit-animation-timing-function: linear;\n}\n.loader .inner2 {\n\t-webkit-animation-delay: 0.1875s;\n}\n.loader .inner3 {\n\t-webkit-animation-delay: 0.375s;\n}\n\n</style>\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+
+
+/***/ }),
+/* 308 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(6)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.c-datepicker{\n    line-height: normal;\n    -webkit-font-smoothing:antialiased;\n    z-index: 1;\n}\n.c-datepicker__clock__hours, .c-datepicker__clock__minutes{\n    position: relative;\n}\n.c-datepicker__header-date {\n    height: 182px;\n}\n.c-scrim--shown{ z-index:1;\n}\n.c-datepicker-btn {\n\tcursor: pointer;\n}\n.c-datepicker__day--selected::after{\n\tbackground-color:rgb(1, 188, 212);\n\tz-index: -1;\n}\n.c-datepicker__day--selected.c-datepicker__day-body{\n\tcolor: #FFF;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateTimePicker.vue?81d6569c"],"names":[],"mappings":";AAgBA;IACA,oBAAA;IACA,mCAAA;IACA,WAAA;CACA;AACA;IACA,mBAAA;CACA;AACA;IACA,cAAA;CACA;AACA,iBAAA,UAAA;CAAA;AACA;CACA,gBAAA;CACA;AACA;CACA,kCAAA;CACA,YAAA;CACA;AACA;CACA,YAAA;CACA","file":"DateTimePicker.vue","sourcesContent":["<template>\n\t<div class=\"b__datetime__picker b__components b-float-label\">\n\t\t<label :class=\"classLabel\">{{ label }}</label>\n      \t<input :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :id=\"id\" :class=\"classes\" :disabled=\"disabled\" @input=\"change($event.target.value)\" @blur=\"onBlur\">\n\t\t<a class=\"c-datepicker-btn\" @click=\"togglePicker\">\n\t\t\t<span class=\"material-icon\"><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i></span>\n\t\t</a>\n\t</div>\n</template>\n<script>\n\timport DateTimePicker from './../../components/DateTimePicker'\n\timport '../../plugins/material-datetime-picker/material-datetime-picker.css'\n\texport default DateTimePicker\n</script>\n\n<style>\n\t.c-datepicker{\n\t    line-height: normal;\n\t    -webkit-font-smoothing:antialiased;\n\t    z-index: 1;\n\t}\n\t.c-datepicker__clock__hours, .c-datepicker__clock__minutes{\n\t    position: relative;\n\t}\n\t.c-datepicker__header-date {\n\t    height: 182px;\n\t}\n\t.c-scrim--shown{ z-index:1; }\n\t.c-datepicker-btn {\n\t\tcursor: pointer;\n\t}\n\t.c-datepicker__day--selected::after{\n\t\tbackground-color:rgb(1, 188, 212);\n\t\tz-index: -1;\n\t}\n\t.c-datepicker__day--selected.c-datepicker__day-body{\n\t\tcolor: #FFF;\n\t}\n</style>"],"sourceRoot":"webpack://"}]);
+
+// exports
+
+
+/***/ }),
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {
@@ -44591,11 +44843,11 @@ function CustomEvent (type, params) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 307 */
+/* 310 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rome__ = __webpack_require__(327);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rome__ = __webpack_require__(330);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rome__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
@@ -45338,7 +45590,7 @@ function _appendTemplate(parent, template) {
 
 
 /***/ }),
-/* 308 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -45527,10 +45779,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 308;
+webpackContext.id = 311;
 
 /***/ }),
-/* 309 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -45785,10 +46037,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 309;
+webpackContext.id = 312;
 
 /***/ }),
-/* 310 */
+/* 313 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -45978,7 +46230,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 311 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46033,15 +46285,15 @@ module.exports = {
 
 
 /***/ }),
-/* 312 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var index = __webpack_require__(11);
-var input = __webpack_require__(315);
-var inline = __webpack_require__(314);
+var input = __webpack_require__(318);
+var inline = __webpack_require__(317);
 var isInput = __webpack_require__(12);
 
 function core (elem, options) {
@@ -46065,7 +46317,7 @@ module.exports = core;
 
 
 /***/ }),
-/* 313 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46090,7 +46342,7 @@ module.exports = dom;
 
 
 /***/ }),
-/* 314 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46113,15 +46365,15 @@ module.exports = inline;
 
 
 /***/ }),
-/* 315 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var crossvent = __webpack_require__(9);
-var bullseye = __webpack_require__(295);
-var throttle = __webpack_require__(329);
+var bullseye = __webpack_require__(298);
+var throttle = __webpack_require__(332);
 var clone = __webpack_require__(222);
 var defaults = __webpack_require__(223);
 var calendar = __webpack_require__(220);
@@ -46248,7 +46500,7 @@ module.exports = inputCalendar;
 
 
 /***/ }),
-/* 316 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46260,7 +46512,7 @@ module.exports = noop;
 
 
 /***/ }),
-/* 317 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46278,7 +46530,7 @@ if (!Array.prototype.filter) {
 
 
 /***/ }),
-/* 318 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46299,7 +46551,7 @@ if (!Array.prototype.forEach) {
 
 
 /***/ }),
-/* 319 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46329,7 +46581,7 @@ if (!Array.prototype.indexOf) {
 
 
 /***/ }),
-/* 320 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46341,7 +46593,7 @@ Array.isArray || (Array.isArray = function (a) {
 
 
 /***/ }),
-/* 321 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46381,7 +46633,7 @@ if (!Array.prototype.map) {
 
 
 /***/ }),
-/* 322 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46423,7 +46675,7 @@ if (!Array.prototype.some) {
 
 
 /***/ }),
-/* 323 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46450,7 +46702,7 @@ if (!Function.prototype.bind) {
 
 
 /***/ }),
-/* 324 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46496,7 +46748,7 @@ if (!Object.keys) {
 
 
 /***/ }),
-/* 325 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46510,7 +46762,7 @@ if (!String.prototype.trim) {
 
 
 /***/ }),
-/* 326 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46518,36 +46770,36 @@ if (!String.prototype.trim) {
 
 // these are only required for IE < 9
 // maybe move to IE-specific distro?
-__webpack_require__(323);
-__webpack_require__(318);
+__webpack_require__(326);
 __webpack_require__(321);
-__webpack_require__(317);
+__webpack_require__(324);
 __webpack_require__(320);
-__webpack_require__(319);
+__webpack_require__(323);
 __webpack_require__(322);
 __webpack_require__(325);
-__webpack_require__(324);
+__webpack_require__(328);
+__webpack_require__(327);
 
-var core = __webpack_require__(312);
+var core = __webpack_require__(315);
 var index = __webpack_require__(11);
-var use = __webpack_require__(330);
+var use = __webpack_require__(333);
 
 core.use = use.bind(core);
 core.find = index.find;
-core.val = __webpack_require__(331);
+core.val = __webpack_require__(334);
 
 module.exports = core;
 
 
 /***/ }),
-/* 327 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var moment = __webpack_require__(0);
-var rome = __webpack_require__(326);
+var rome = __webpack_require__(329);
 
 rome.use(moment);
 
@@ -46555,7 +46807,7 @@ module.exports = rome;
 
 
 /***/ }),
-/* 328 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46572,7 +46824,7 @@ module.exports = text;
 
 
 /***/ }),
-/* 329 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46604,7 +46856,7 @@ module.exports = function throttle (fn, boundary) {
 
 
 /***/ }),
-/* 330 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46620,7 +46872,7 @@ module.exports = use;
 
 
 /***/ }),
-/* 331 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46628,7 +46880,7 @@ module.exports = use;
 
 var index = __webpack_require__(11);
 var parse = __webpack_require__(13);
-var association = __webpack_require__(311);
+var association = __webpack_require__(314);
 
 function compareBuilder (compare) {
   return function factory (value) {
@@ -46708,7 +46960,7 @@ module.exports = {
 
 
 /***/ }),
-/* 332 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46727,7 +46979,7 @@ module.exports = getSelectionNullOp;
 
 
 /***/ }),
-/* 333 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46742,7 +46994,7 @@ module.exports = getSelectionRaw;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 334 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47000,7 +47252,7 @@ module.exports = getSelection;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 335 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47036,14 +47288,14 @@ module.exports = {
 
 
 /***/ }),
-/* 336 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var getSelection = __webpack_require__(224);
-var setSelection = __webpack_require__(337);
+var setSelection = __webpack_require__(340);
 
 module.exports = {
   get: getSelection,
@@ -47052,7 +47304,7 @@ module.exports = {
 
 
 /***/ }),
-/* 337 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47095,7 +47347,7 @@ module.exports = setSelection;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 338 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47198,7 +47450,7 @@ module.exports = sell;
 
 
 /***/ }),
-/* 339 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -47388,16 +47640,16 @@ module.exports = sell;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(310)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(313)))
 
 /***/ }),
-/* 340 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(300);
+var content = __webpack_require__(303);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -47405,7 +47657,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(341)(content, options);
+var update = __webpack_require__(344)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -47422,7 +47674,7 @@ if(false) {
 }
 
 /***/ }),
-/* 341 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -47468,7 +47720,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(342);
+var	fixUrls = __webpack_require__(345);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -47781,7 +48033,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 342 */
+/* 345 */
 /***/ (function(module, exports) {
 
 
@@ -47876,7 +48128,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 343 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate) {var si = typeof setImmediate === 'function', tick;
@@ -47887,10 +48139,10 @@ if (si) {
 }
 
 module.exports = tick;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(344).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(347).setImmediate))
 
 /***/ }),
-/* 344 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -47943,13 +48195,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(339);
+__webpack_require__(342);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 345 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48100,7 +48352,7 @@ if (false) {
 }
 
 /***/ }),
-/* 346 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48153,7 +48405,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "keydown": function($event) {
-        if (!('button' in $event) && _vm._k($event.keyCode, "delete", [8, 46], $event.key)) { return null; }
+        if (!('button' in $event) && _vm._k($event.keyCode, "delete", [8, 46])) { return null; }
         $event.stopPropagation();
         _vm.removeLastTag()
       },
@@ -48205,7 +48457,7 @@ if (false) {
 }
 
 /***/ }),
-/* 347 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48254,7 +48506,7 @@ if (false) {
 }
 
 /***/ }),
-/* 348 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48304,7 +48556,7 @@ if (false) {
 }
 
 /***/ }),
-/* 349 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48322,46 +48574,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.addTask(true)
       }
     }
-  }, [_vm._v("Condition")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-default btn-rounded",
-    attrs: {
-      "type": "button"
-    },
-    on: {
-      "click": _vm.changeStatusModal
-    }
-  }, [_vm._v("Send Email Action")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-default btn-rounded",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Update Field Value Action")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-default btn-rounded",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Create Activity Value Action")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-default btn-rounded",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Wait Action")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-default btn-rounded",
-    attrs: {
-      "type": "button"
-    },
-    on: {
-      "click": _vm.deleteTask
-    }
-  }, [_vm._v("Delete")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-default btn-rounded",
-    attrs: {
-      "type": "button"
-    },
-    on: {
-      "click": _vm.emptyTask
-    }
-  }, [_vm._v("Empty")])]), _vm._v(" "), (_vm.showModal) ? _c('b-modal', {
+  }, [_vm._v("Add Condition")])]), _vm._v(" "), (_vm.showModal) ? _c('b-modal', {
     model: {
       value: (_vm.showModal),
       callback: function($$v) {
@@ -48378,11 +48591,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "task-title"
     }, [_vm._v(" " + _vm._s(item.title))]), _vm._v(" "), _c('div', {
       staticClass: "task-content"
-    }, [_vm._v("\n\t\t\t\t" + _vm._s(item.content) + "\n\t\t\t\t"), _vm._v(" "), _c('div', {
+    }, [_c('div', {
+      domProps: {
+        "innerHTML": _vm._s(item.content)
+      }
+    }), _vm._v(" "), _c('div', {
+      staticClass: "task-btn-group",
       domProps: {
         "innerHTML": _vm._s(item.html)
       }
-    })])]), _vm._v(" "), (index < _vm.task.length - 1) ? _c('div', {
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "task-remove",
+      on: {
+        "click": function($event) {
+          _vm.deleteTask(index)
+        }
+      }
+    }, [_vm._m(0, true)])]), _vm._v(" "), (index < _vm.task.length - 1) ? _c('div', {
       staticClass: "task-arrow",
       staticStyle: {
         "text-align": "center"
@@ -48392,12 +48617,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "height": "60px"
       },
       attrs: {
-        "id": "Layer_1",
-        "data-name": "Layer 1",
+        "data-name": "svg-task-arrow",
         "xmlns": "http://www.w3.org/2000/svg",
         "viewBox": "0 0 60 80"
       }
-    }, [_c('title', [_vm._v("arrow")]), _vm._v(" "), _c('line', {
+    }, [_c('line', {
       attrs: {
         "x1": "30",
         "y1": "1.21",
@@ -48447,7 +48671,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })])]) : _vm._e()])
   })], 2)
-},staticRenderFns: []}
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', [_c('i', {
+    staticClass: "fa fa-remove"
+  })])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -48457,7 +48685,7 @@ if (false) {
 }
 
 /***/ }),
-/* 350 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48517,7 +48745,7 @@ if (false) {
 }
 
 /***/ }),
-/* 351 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48555,7 +48783,7 @@ if (false) {
 }
 
 /***/ }),
-/* 352 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48594,7 +48822,7 @@ if (false) {
 }
 
 /***/ }),
-/* 353 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48619,7 +48847,7 @@ if (false) {
 }
 
 /***/ }),
-/* 354 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48676,7 +48904,7 @@ if (false) {
 }
 
 /***/ }),
-/* 355 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48710,7 +48938,48 @@ if (false) {
 }
 
 /***/ }),
-/* 356 */
+/* 359 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "b__components b-ios b-float-label b__numeric"
+  }, [_c('label', {
+    class: _vm.classLabel
+  }, [_vm._v(_vm._s(_vm.label) + " ( " + _vm._s(_vm.inputAffix) + " )")]), _vm._v(" "), _c('input', {
+    class: _vm.classes,
+    attrs: {
+      "type": "text",
+      "placeholder": _vm.placeholder,
+      "id": _vm.id,
+      "disabled": _vm.disabled
+    },
+    domProps: {
+      "value": _vm.inputValue
+    },
+    on: {
+      "input": function($event) {
+        _vm.eventInput($event.target.value)
+      },
+      "blur": function($event) {
+        _vm.eventBlur($event.target.value)
+      },
+      "focus": function($event) {
+        _vm.eventForcus()
+      }
+    }
+  })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-596e7761", module.exports)
+  }
+}
+
+/***/ }),
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48753,17 +49022,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "keydown": [function($event) {
-        if (!('button' in $event) && _vm._k($event.keyCode, "delete", [8, 46], $event.key)) { return null; }
+        if (!('button' in $event) && _vm._k($event.keyCode, "delete", [8, 46])) { return null; }
         $event.stopPropagation();
         _vm.removeLastTag()
       }, function($event) {
-        if (!('button' in $event) && $event.keyCode !== 188 && _vm._k($event.keyCode, "enter", 13, $event.key) && _vm._k($event.keyCode, "tab", 9, $event.key)) { return null; }
+        if (!('button' in $event) && $event.keyCode !== 188 && _vm._k($event.keyCode, "enter", 13) && _vm._k($event.keyCode, "tab", 9)) { return null; }
         $event.preventDefault();
         $event.stopPropagation();
         _vm.addNewTag(_vm.newTag)
       }],
       "keyup": function($event) {
-        if (!('button' in $event) && $event.keyCode !== 188 && _vm._k($event.keyCode, "enter", 13, $event.key) && _vm._k($event.keyCode, "tab", 9, $event.key)) { return null; }
+        if (!('button' in $event) && $event.keyCode !== 188 && _vm._k($event.keyCode, "enter", 13) && _vm._k($event.keyCode, "tab", 9)) { return null; }
         $event.preventDefault();
         $event.stopPropagation();
         _vm.onPaste(_vm.newTag)
@@ -48787,7 +49056,7 @@ if (false) {
 }
 
 /***/ }),
-/* 357 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48853,7 +49122,7 @@ if (false) {
 }
 
 /***/ }),
-/* 358 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48892,7 +49161,7 @@ if (false) {
 }
 
 /***/ }),
-/* 359 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48930,7 +49199,7 @@ if (false) {
 }
 
 /***/ }),
-/* 360 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48963,7 +49232,7 @@ if (false) {
 }
 
 /***/ }),
-/* 361 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48992,7 +49261,7 @@ if (false) {
 }
 
 /***/ }),
-/* 362 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -49059,7 +49328,7 @@ if (false) {
 }
 
 /***/ }),
-/* 363 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -49099,7 +49368,7 @@ if (false) {
 }
 
 /***/ }),
-/* 364 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -49183,7 +49452,7 @@ if (false) {
 }
 
 /***/ }),
-/* 365 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -49227,7 +49496,7 @@ if (false) {
 }
 
 /***/ }),
-/* 366 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -49267,7 +49536,7 @@ if (false) {
 }
 
 /***/ }),
-/* 367 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -49316,13 +49585,13 @@ if (false) {
 }
 
 /***/ }),
-/* 368 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(301);
+var content = __webpack_require__(304);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -49342,13 +49611,13 @@ if(false) {
 }
 
 /***/ }),
-/* 369 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(302);
+var content = __webpack_require__(305);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -49368,13 +49637,13 @@ if(false) {
 }
 
 /***/ }),
-/* 370 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(303);
+var content = __webpack_require__(306);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -49394,13 +49663,13 @@ if(false) {
 }
 
 /***/ }),
-/* 371 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(304);
+var content = __webpack_require__(307);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -49420,13 +49689,13 @@ if(false) {
 }
 
 /***/ }),
-/* 372 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(305);
+var content = __webpack_require__(308);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -49446,7 +49715,7 @@ if(false) {
 }
 
 /***/ }),
-/* 373 */
+/* 377 */
 /***/ (function(module, exports) {
 
 /**
@@ -49479,7 +49748,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 374 */
+/* 378 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
