@@ -3,6 +3,7 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource)
 Vue.http.options.emulateJSON = true; 
 Vue.http.options.xhr = {withCredentials: true};
+Vue.http.options.emulateHTTP = true;
 // Components
 import BTextField from './themes/ios/TextField.vue'
 import BCheckBox from './themes/ios/CheckBox.vue'

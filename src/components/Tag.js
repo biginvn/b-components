@@ -92,6 +92,13 @@ export default {
 			for( let i = 0; i < arrayTag.length; i++ ){
 				this.addNewTag(arrayTag[i])
 			}
-		}
+		},
+		keyhandler(event) {
+			console.log(event);
+     	 let regex = /^[0-9]$/g
+     	 if(event.key.match(regex) == null && event.keyCode != 8 ){
+     	 	event.preventDefault();
+     	 }
+    	},
 	}
 }
