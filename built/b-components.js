@@ -43313,6 +43313,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.mask = this.value;
         },
         blur(mask) {
+            if (mask == undefined) return;
             // Validation type Affix
             this.affix == '$' || this.affix == '€' ? mask : mask = Math.trunc(mask).toString();
             if (this.affix == '%') {
