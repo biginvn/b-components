@@ -20,6 +20,9 @@ export default {
 		},
 		blur() {
 			this.$emit('blur')
+		},
+		focus() {
+			this.$emit('focus')
 		}
 	}
 }

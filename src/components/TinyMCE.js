@@ -72,6 +72,10 @@ export default {
                                 this.contentOutPut = this.getContent()
                                 Vue.update(this.getContent())
                             })
+
+                            editor.on('focus', function (e) {
+                                Vue.$emit('focus')
+                            })
                         }
                     },
                     this.tinyConfig ? this.tinyConfig : {}
@@ -155,6 +159,10 @@ export default {
                             editor.on('blur', function (e) {
                                 this.contentOutPut = this.getContent()
                                 Vue.update(this.getContent())
+                            })
+
+                            editor.on('focus', function (e) {
+                                Vue.$emit('focus')
                             })
                         }
                      },
