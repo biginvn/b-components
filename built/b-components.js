@@ -42310,6 +42310,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -42885,7 +42888,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_loading_remote_data_mixins__["a" /* default */]],
 
-	props: ['value', 'disable-icon', 'single-dropdown'],
+	props: ['value', 'disable-icon', 'single-dropdown', 'url'],
 	computed: {
 		selected() {
 			// Convert v-model to [] if it's null
@@ -42933,10 +42936,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		callAjax(value) {
 
-			this.$http.post('http://localhost/serverside.php', { 'name': value }, { timeout: 10000 }).then(function (response) {
+			this.$http.post(this.url, { 'name': value }, { timeout: 10000 }).then(function (response) {
 				console.log(response.body);
 				this.searchList = response.body;
 			});
+			this.searchList = [{
+				id: 1,
+				html: '<p>Anh Duan Nguyen</p><p class="club">Bayern Munich</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+				keywords: 'Anh Duan Nguyen',
+				thumbHtml: 'Anh Duan Nguyen',
+				icon: 'https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/x/xab/large/900.png'
+			}];
 		},
 		removeLastTag() {
 			this.list.pop();
@@ -43238,109 +43248,138 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(5);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-	data() {
-		return {
-			mask: String
-		};
-	},
-	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
-	props: ['affix', 'is_prefix'],
-	mounted(mask) {
-		this.blur(this.value);
-	},
-	watch: {
-		value() {
-			this.blur(this.value.toString());
-			this.updateInput(this.value);
-		},
-		is_prefix() {
-			this.blur(this.value);
-		},
-		affix() {
-			this.blur(this.value);
-		}
-	},
-	methods: {
-		updateInput(value) {
-			// Null Value and return ''
-			if (value == null || value == '') {
-				value = '';
-				this.updateFloatLabel(value);
-				this.$emit("input", value);
-			}
-		},
-		focus(mask) {
-			this.mask = this.value;
-		},
-		blur(mask) {
-			// Validation type Affix
-			this.affix == '$' || this.affix == '€' ? mask : mask = Math.trunc(mask).toString();
-			if (this.affix == '%') {
-				mask > 100 ? mask = '100' : mask;
-			}
-			// Get String position
-			var pos = mask.indexOf('.');
-			// Remove A-Z text
-			mask = mask.toString().replace(/[^\d\.]/g, "");
-			// Cut String to Forward & Behind  "432.11" => "432" & "11"
-			if (pos > 0) {
-				var behind = mask.substring(pos + 1),
-				    // 1 is the length of your "." marker
-				forward = mask.split(".").shift();
-				if (behind == undefined || behind == null || behind == '') {
-					mask = forward + '.0';
-				}
-				this.$emit("input", mask);
-				// If Value = 4321. return 4321.0
-				behind = '0.' + behind;
-				mask = forward;
-			} else {
-				if (mask == 0) {
-					mask = '';
-				}
-				this.$emit("input", mask);
-				behind = 0;
-			}
+    data() {
+        return {
+            mask: String,
+            error: false
+        };
+    },
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
+    props: ['affix', 'is_prefix', 'class-name'],
+    mounted(mask) {
+        this.blur(this.value);
+    },
+    computed: {
+        wrapClass() {
+            let defaultClass = 'b__components b-ios b-float-label b__numeric';
+            return (this.error ? 'has-error ' : '') + defaultClass;
+        }
+    },
+    watch: {
+        value() {
+            // this.updateInput(this.value);
+            this.blur(this.value.toString());
+        },
+        is_prefix() {
+            this.blur(this.value);
+        },
+        affix() {
+            this.blur(this.value);
+        }
+    },
+    methods: {
+        keypress(event) {
+            // console.log(event)
+            // console.log(event.key)
+            // console.log(event.keyCode)
 
-			var n, number, $mask, $result;
-			n = parseFloat(mask) + parseFloat(behind);
-			// Check Value is Null & Check Affix
-			$mask = this.isNull(n);
-			if (this.is_prefix != undefined) {
-				if ($mask != '') {
-					$result = this.is_prefix ? this.affix + ' ' + this.separator($mask) : this.separator($mask) + ' ' + this.affix;
-				} else {
-					$result = '';
-				}
-			} else {
-				if ($mask != '') {
-					$result = this.separator($mask);
-				} else {
-					$result = '';
-				}
-			}
-			this.mask = $result;
-			console.log($result + ' ' + typeof $result);
-		},
-		separator(value) {
-			return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		},
-		isNull(n) {
-			if (typeof n == 'number') {
-				if (n == undefined || n == null || n == 0 || isNaN(n)) {
-					return n = '';
-				} else {
-					if (this.affix == '$' || this.affix == '€') {
-						return n.toFixed(2);
-					}
-					if (this.affix == '%' || this.affix == 'VND') {
-						return Math.trunc(n);
-					}
-					return n;
-				}
-			}
-		}
-	}
+            // Remove Alphabet
+            var charCode = event.charCode;
+            if (charCode != 0) {
+                // 48 - 57
+                if (charCode < 46 || charCode > 57 || charCode == 47) {
+                    event.preventDefault();
+                    return this.error = true;
+                }
+                return this.error = false;
+            }
+        },
+        keyup(event) {
+            if (event.key.match(/^[0-9]$/g, "") == null && event.keyCode != 8 && event.keyCode != 190) {
+                return this.error = false;
+            }
+        },
+        updateInput(value) {
+            // Null Value and return ''
+            if (value == undefined || value == null || value == '') {
+                value = '';
+                this.updateFloatLabel(value);
+                this.$emit("input", value);
+            }
+        },
+        focus(mask) {
+            this.mask = this.value;
+        },
+        blur(mask) {
+            if (mask == undefined) return;
+            // Validation type Affix
+            this.affix == '$' || this.affix == '€' ? mask : mask = Math.trunc(mask).toString();
+            if (this.affix == '%') {
+                mask > 100 ? mask = '100' : mask;
+            }
+            // Get String position
+            var pos = mask.indexOf('.');
+            // Remove A-Z text
+            mask = mask.toString().replace(/[^\d\.]/g, "");
+            // Cut String to Forward & Behind  "432.11" => "432" & "11"
+            if (pos > 0) {
+                var behind = mask.substring(pos + 1),
+                    // 1 is the length of your "." marker
+                forward = mask.split(".").shift();
+                if (behind == undefined || behind == null || behind == '') {
+                    mask = forward + '.0';
+                }
+                this.$emit("input", mask);
+                // If Value = 4321. return 4321.0
+                behind = '0.' + behind;
+                mask = forward;
+            } else {
+                if (mask == 0) {
+                    mask = '';
+                }
+                this.$emit("input", mask);
+                behind = 0;
+            }
+
+            var n, number, $mask, $result;
+            n = parseFloat(mask) + parseFloat(behind);
+            // Check Value is Null & Check Affix
+            $mask = this.isNull(n);
+            if (this.is_prefix != undefined) {
+                if ($mask != '') {
+                    $result = this.is_prefix ? this.affix + ' ' + this.separator($mask) : this.separator($mask) + ' ' + this.affix;
+                } else {
+                    $result = '';
+                }
+            } else {
+                if ($mask != '') {
+                    $result = this.separator($mask);
+                } else {
+                    $result = '';
+                }
+            }
+            this.mask = $result;
+            console.log($result + ' ' + typeof $result);
+        },
+        separator(value) {
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+        isNull(n) {
+            if (typeof n == 'number') {
+                if (n == undefined || n == null || n == 0 || isNaN(n)) {
+                    return n = '';
+                } else {
+                    if (this.affix == '$' || this.affix == '€') {
+                        return n.toFixed(2);
+                    }
+                    if (this.affix == '%' || this.affix == 'VND') {
+                        return Math.trunc(n);
+                    }
+                    return n;
+                }
+            }
+        }
+    }
 });
 
 /***/ }),
@@ -43585,6 +43624,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			for (let i = 0; i < arrayTag.length; i++) {
 				this.addNewTag(arrayTag[i]);
 			}
+		},
+		keyhandler(event) {
+			console.log(event);
+			let regex = /^[0-9]$/g;
+			if (event.key.match(regex) == null && event.keyCode != 8 && event.keyCode != 189) {
+				event.preventDefault();
+			}
 		}
 	}
 });
@@ -43597,64 +43643,76 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // var Events = new Vue({});	
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-	props: ['value'],
-	data() {
-		return {
-			task: null,
-			showModal: false
-		};
-	},
+    props: ['value'],
+    data() {
+        return {
+            task: null,
+            showModal: false
+        };
+    },
 
-	watch: {
-		value() {
-			if (this.value == undefined || this.value == null || this.value.length == 0) {
-				console.log('Array is NULL');
-			};
-		}
-	},
+    watch: {
+        value() {
+            if (this.value == undefined || this.value == null || this.value.length == 0) {
+                console.log('Array is NULL');
+            };
+        }
+    },
 
-	mounted() {
-		this.task = this.value;
-	},
+    mounted() {
+        this.task = this.value;
+    },
 
-	methods: {
-		haveButton(button) {
-			if (button == true) {
-				for (var i = 0; i < this.task.length; i++) {}
-				return '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#modal-task-' + i + '">Edit Condition</button></div>';
-			}
-		},
-		addTask(button) {
-			var html = this.haveButton(button);
-			this.task = this.task ? this.task : [];
-			this.task.push({
-				title: 'Condition',
-				content: 'Your Condition',
-				button: button,
-				html: html
-			});
-			this.$emit('input', this.task);
-		},
-		deleteTask() {
-			var self = this;
-			// console.log(JSON.stringify(self.task));
-			document.querySelector('.task:last-child').style.animation = "vanishOut";
-			document.querySelector('.task:last-child').style.animationDuration = "0.5s";
+    methods: {
+        haveButton(button) {
+            if (button == true) {
+                for (var i = 0; i < this.task.length; i++) {}
+                return '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#modal-task-' + i + '">Edit Condition</button></div>';
+            }
+        },
+        addTask(button) {
+            var html = this.haveButton(button);
+            this.task = this.task ? this.task : [];
+            this.task.push({
+                title: 'Condition',
+                content: 'Your Condition',
+                button: button,
+                html: html
+            });
+            this.$emit('input', this.task);
+        },
+        deleteTask(index) {
+            var self = this;
 
-			setTimeout(function () {
-				self.task.pop();
-			}, 500);
-			this.$emit('input', this.task);
-		},
-		emptyTask() {
-			this.task = [];
-			this.$emit('input', this.task);
-		},
-		changeStatusModal() {
-			this.showModal = true;
-		}
+            // Animation
+            var arrow = index - 1;
+            document.querySelectorAll('.task')[index].setAttribute("style", "animation: vanishOut; animation-duration: 0.5s;");
+            arrow > -1 ? document.querySelectorAll('[data-name="svg-task-arrow"]')[arrow].setAttribute("style", "animation: vanishOut; animation-duration: 0.5s; height: 60px;") : document.querySelectorAll('[data-name="svg-task-arrow"]')[arrow];
 
-	}
+            // Animation then Remove Element
+            setTimeout(function () {
+                if (index > -1) {
+                    self.task.splice(index, 1);
+                    // Remove Style
+                    document.querySelectorAll('.task')[index].removeAttribute("style");
+                    arrow > -1 ? document.querySelectorAll('[data-name="svg-task-arrow"]')[arrow].setAttribute("style", "height: 60px;") : document.querySelectorAll('[data-name="svg-task-arrow"]')[arrow];
+                }
+            }, 500);
+            this.$emit('input', self.task);
+            // console.log(JSON.stringify(self.task));
+        },
+        emptyTask() {
+            this.task = [];
+            this.$emit('input', this.task);
+        },
+        changeStatusModal() {
+            this.showModal = true;
+        },
+        mouseover() {
+            console.log('hover');
+        }
+
+    }
 });
 
 /***/ }),
@@ -44249,6 +44307,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_resource__["a" /* default */]);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.emulateJSON = true;
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.xhr = { withCredentials: true };
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.emulateHTTP = true;
+
 // Components
 
 
@@ -48128,46 +48188,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.addTask(true)
       }
     }
-  }, [_vm._v("Condition")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-default btn-rounded",
-    attrs: {
-      "type": "button"
-    },
-    on: {
-      "click": _vm.changeStatusModal
-    }
-  }, [_vm._v("Send Email Action")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-default btn-rounded",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Update Field Value Action")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-default btn-rounded",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Create Activity Value Action")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-default btn-rounded",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Wait Action")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-default btn-rounded",
-    attrs: {
-      "type": "button"
-    },
-    on: {
-      "click": _vm.deleteTask
-    }
-  }, [_vm._v("Delete")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-default btn-rounded",
-    attrs: {
-      "type": "button"
-    },
-    on: {
-      "click": _vm.emptyTask
-    }
-  }, [_vm._v("Empty")])]), _vm._v(" "), (_vm.showModal) ? _c('b-modal', {
+  }, [_vm._v("Add Condition")])]), _vm._v(" "), (_vm.showModal) ? _c('b-modal', {
     model: {
       value: (_vm.showModal),
       callback: function($$v) {
@@ -48184,11 +48205,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "task-title"
     }, [_vm._v(" " + _vm._s(item.title))]), _vm._v(" "), _c('div', {
       staticClass: "task-content"
-    }, [_vm._v("\n\t\t\t\t" + _vm._s(item.content) + "\n\t\t\t\t"), _vm._v(" "), _c('div', {
+    }, [_c('div', {
+      domProps: {
+        "innerHTML": _vm._s(item.content)
+      }
+    }), _vm._v(" "), _c('div', {
+      staticClass: "task-btn-group",
       domProps: {
         "innerHTML": _vm._s(item.html)
       }
-    })])]), _vm._v(" "), (index < _vm.task.length - 1) ? _c('div', {
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "task-remove",
+      on: {
+        "click": function($event) {
+          _vm.deleteTask(index)
+        }
+      }
+    }, [_vm._m(0, true)])]), _vm._v(" "), (index < _vm.task.length - 1) ? _c('div', {
       staticClass: "task-arrow",
       staticStyle: {
         "text-align": "center"
@@ -48198,12 +48231,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "height": "60px"
       },
       attrs: {
-        "id": "Layer_1",
-        "data-name": "Layer 1",
+        "data-name": "svg-task-arrow",
         "xmlns": "http://www.w3.org/2000/svg",
         "viewBox": "0 0 60 80"
       }
-    }, [_c('title', [_vm._v("arrow")]), _vm._v(" "), _c('line', {
+    }, [_c('line', {
       attrs: {
         "x1": "30",
         "y1": "1.21",
@@ -48253,7 +48285,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })])]) : _vm._e()])
   })], 2)
-},staticRenderFns: []}
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', [_c('i', {
+    staticClass: "fa fa-remove"
+  })])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -48608,7 +48644,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         $event.preventDefault();
         $event.stopPropagation();
         _vm.addNewTag(_vm.newTag)
-      }],
+      }, _vm.keyhandler],
       "keyup": function($event) {
         if (!('button' in $event) && $event.keyCode !== 188 && _vm._k($event.keyCode, "enter", 13, $event.key) && _vm._k($event.keyCode, "tab", 9, $event.key)) { return null; }
         $event.preventDefault();
@@ -49079,7 +49115,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "b__components b-ios b-float-label b__numeric"
+    class: _vm.wrapClass
   }, [_c('label', {
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
@@ -49093,6 +49129,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": _vm.mask
     },
     on: {
+      "keypress": _vm.keypress,
+      "keyup": _vm.keyup,
       "blur": function($event) {
         _vm.blur($event.target.value)
       },

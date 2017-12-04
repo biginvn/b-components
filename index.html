@@ -476,17 +476,17 @@
                                 </div>
                             </div>
                         </figure> 
-                        <!-- <figure class="wow animated">
+                        <figure class="wow animated">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Loading Remote Data</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-loading-remote-data :list="listLoadingRemoteData" v-model="input.remoteData"></b-loading-remote-data>
+                                        <b-loading-remote-data :list="listLoadingRemoteData" url="http://localhost/serverside.php" v-model="input.remoteData"></b-loading-remote-data>
                                     </p>
                                     {{input.remoteData}}
                                 </div>
                             </div>
-                        </figure> -->
+                        </figure>
                     </div>
                     <div class="col-md-12">
                         <figure class="wow animated">
@@ -656,9 +656,9 @@ var vm = new Vue({
             },
         ],
         taskList: [
-        { title : 'Condition', content : 'Your Condition', button : true, html : '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded">Edit Condition</button></div>'},
-        { title : 'Condition', content : 'Your Condition', button : false, html : ''},
-        { title : 'Condition', content : 'Your Condition', button : true, html : '<div class="task-btn-group"><button type="button" class="btn btn-primary btn-rounded">Edit Condition</button></div>'}
+        { title : 'Condition', content : 'Task List is Awesome', button : true, html : '<button type="button" class="btn btn-primary btn-rounded">Edit Condition</button>'},
+        { title : 'Condition', content : 'Write your HTML here', button : false, html : ''},
+        { title : 'Condition', content : 'Easy to use. YOLO !!!', button : true, html : '<button type="button" class="btn btn-primary btn-rounded">Edit Condition</button>'}
 
         ],
         list: [

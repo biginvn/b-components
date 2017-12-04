@@ -12,7 +12,7 @@ export default {
 	},
 	mixins: [baseComponent],
 	
-	props : ['value','disable-icon','single-dropdown'],
+	props : ['value','disable-icon','single-dropdown','url'],
 	computed:{
 		selected () { // Convert v-model to [] if it's null
 			return this.value ? this.value : (this.isSingle ? null : [])
@@ -62,10 +62,17 @@ export default {
 		},
 		callAjax(value){
 			
-       		this.$http.post('http://localhost/serverside.php',{'name':value},  { timeout: 10000 }).then(function(response){
-        		console.log(response.body);
-        		this.searchList = response.body;
-        	});
+	       		this.$http.post(this.url,{'name':value},  { timeout: 10000 }).then(function(response){
+	        		console.log(response.body);
+	        		this.searchList = response.body;
+	        	});
+        	 	this.searchList = [{
+		            id: 1,
+		            html: '<p>Anh Duan Nguyen</p><p class="club">Bayern Munich</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
+		            keywords: 'Anh Duan Nguyen',
+		            thumbHtml: 'Anh Duan Nguyen',
+		            icon: 'https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/x/xab/large/900.png'
+		        }]
         },
         removeLastTag () {
 	      	this.list.pop();

@@ -1,5 +1,6 @@
 .b__components.b-task{
 	.task{
+		position: relative;
 		display: block;
 		width: 300px;
 		border: 1px solid #DDDDDD;
@@ -12,8 +13,28 @@
 		animation: fadeIn;
 		animation-duration: .5s;
 		background: #fff;
+		.task-remove{
+			position: absolute;
+			top: -11px;
+			right: -10px;
+			background: #fff;
+			color: rgba(32,34,35,0.41);
+			padding: 0px 5px 2px 5px;
+			text-align: center;
+			transition: all .3s cubic-bezier(0.645,0.045,0.355,1);
+			border: 1px solid;
+			border-radius: 50px;
+			cursor: pointer;
+			visibility: hidden;
+			opacity: 0;
+		}
 		&:hover{
 			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+			.task-remove{
+				visibility: visible;
+				opacity: 1;
+				
+			}
 		}
 	}
 	.task-title{
