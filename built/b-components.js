@@ -42328,6 +42328,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TelerikNumberic__["a" /* default */]);
@@ -43881,7 +43886,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     components: {},
 
-    props: ['id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config'],
+    props: ['id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image'],
 
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
 
@@ -43891,10 +43896,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {},
 
+    destroyed() {
+        tinymce.get(this.id).remove();
+    },
+
     watch: {
         value() {
             this.updateContent(this.value);
-        }
+            // tinymce.get(this.id).insertContent("hellowords") // insert content
+        },
+        singleImage() {},
+        multipleImage() {}
     },
 
     methods: {
@@ -43929,7 +43941,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         initTinyMCEAdvanceMode(content) {
             var Vue = this;
             var readonly = this.checkDisabled();
-            Vue.tinymce = tinymce.init({
+            Vue.tinymce = tinymce.init(Object.assign({}, {
                 selector: '#' + Vue.id,
                 readonly: readonly,
                 plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"],
@@ -43995,7 +44007,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         Vue.update(this.getContent());
                     });
                 }
-            });
+            }, this.tinyConfig ? this.tinyConfig : {}));
         },
 
         initTinyMCE(content) {

@@ -1,3 +1,8 @@
+<!-- Author: Make By Thien Nguyen Developer -->
+<!-- Contacts: thien.nguyen@bigin.vn -->
+<!-- Date: 11/21/2017 -->
+<!-- Component: TelerikNumeric -->
+
 <template>
 	<div class="b__components b-ios b-float-label b__numeric">
 		<label :class="classLabel">{{ label }} ( {{ inputAffix }} )</label>
