@@ -23,6 +23,9 @@ export default {
 		},
 		focus() {
 			this.$emit('focus')
+		},
+		keyup(value){
+			this.$emit('keyup', value)
 		}
 	}
 }
