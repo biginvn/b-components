@@ -46,7 +46,7 @@ export default {
 	methods : {
 
 		setVariableDefault(){
-			this.searchList = this.list
+			this.searchList = JSON.parse(JSON.stringify(this.list))
 
 			if(this.mode != null || this.mode != undefined || this.mode != '')
 				this.searchMode = this.mode
