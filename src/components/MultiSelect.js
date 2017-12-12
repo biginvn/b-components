@@ -26,6 +26,9 @@ export default {
 
 	watch:{
 		value(){
+		},
+		list(newList) {
+			this.searchList = JSON.parse(JSON.stringify(newList))
 		}
 	},
 
@@ -184,41 +187,41 @@ export default {
 		},
 
 		searchAction (keyword) {
-			// if( this.searchMode != 'default'){
-			// 	if( keyword.length >= this.searchRangeKeywords ){
-			// 		switch ( this.searchRequestMethod ) {
-			// 			case 'get' :
-			// 				this.$http.get(this.searchRequestUrl, { params: { data:keyword } })
-			// 				.then( (success) => {
-			// 					let data = this.virtualDataRequestToTest()
-			// 					success.body = data
-			// 					this.addDataSearchList(success.body)
-			// 				}, (error) => {
-			// 					console.log(error)
-			// 				})
-			// 				break
-			// 			case 'post':
-			// 				this.$http.post(this.searchRequestUrl, { data:  keyword })
-			// 				.then( (success) => {
-			// 					let data = this.virtualDataRequestToTest()
-			// 					success.body = data
-			// 					this.addDataSearchList(success.body)
-			// 				}, (error) => {
-			// 					console.log(error)
-			// 				})
-			// 				break
-			// 			default:
-			// 				this.$http.get(this.searchRequestUrl, { params:  {data:keyword} })
-			// 				.then( (success) => {
-			// 					let data = this.virtualDataRequestToTest()
-			// 					success.body = data
-			// 					this.addDataSearchList(success.body)
-			// 				}, (error) => {
-			// 					console.log(error)
-			// 				})
-			// 		}
-			// 	}
-			// }
+			if( this.searchMode != 'default'){
+				if( keyword.length >= this.searchRangeKeywords ){
+					switch ( this.searchRequestMethod ) {
+						case 'get' :
+							this.$http.get(this.searchRequestUrl, { params: { data:keyword } })
+							.then( (success) => {
+								let data = this.virtualDataRequestToTest()
+								success.body = data
+								this.addDataSearchList(success.body)
+							}, (error) => {
+								console.log(error)
+							})
+							break
+						case 'post':
+							this.$http.post(this.searchRequestUrl, { data:  keyword })
+							.then( (success) => {
+								let data = this.virtualDataRequestToTest()
+								success.body = data
+								this.addDataSearchList(success.body)
+							}, (error) => {
+								console.log(error)
+							})
+							break
+						default:
+							this.$http.get(this.searchRequestUrl, { params:  {data:keyword} })
+							.then( (success) => {
+								let data = this.virtualDataRequestToTest()
+								success.body = data
+								this.addDataSearchList(success.body)
+							}, (error) => {
+								console.log(error)
+							})
+					}
+				}
+			}
 
 			this.searchList = this.searchList.filter( (item, position) => {
 				if (item.keywords == undefined || item.keywords == null)
