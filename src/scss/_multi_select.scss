@@ -75,21 +75,12 @@
             }
         }
     }
-    & > label {
-        display: none;
-    }
+
     & .b__multi__select__control {
-        width: 100%;
-        outline: 0;
-        line-height: 1.5;
-        font-size: 14px;
-        // border-radius: 3px;
-        background-color: #fff;
-        box-sizing: border-box;
-        transition: all .2s ease-in-out;
-        padding: 6px 15px;
-        position: relative;
-        border-bottom: 1px solid map-get($colors, primary-light);
+        min-width: 20px;
+        min-height: 30px;
+        padding-right: 30px;
+        border-bottom: 1px solid map-get($colors, primary);
         &>.control {
             position: absolute;
             right: 10px;
@@ -137,7 +128,7 @@
                 position: absolute;
                 opacity: .7;
                 right: 2px;
-                top: 3px;
+                top: 2px;
                 border-radius: 50%;
                 width: 25px;
                 height: 25px;
