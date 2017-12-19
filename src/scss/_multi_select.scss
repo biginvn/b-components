@@ -77,17 +77,10 @@
     }
 
     & .b__multi__select__control {
-        width: 100%;
-        outline: 0;
-        line-height: 1.5;
-        font-size: 14px;
-        border-radius: 3px;
-        border: 1px solid #dfdfdf;
-        background-color: #fff;
-        box-sizing: border-box;
-        transition: all .2s ease-in-out;
-        padding: 6px 15px;
-        position: relative;
+        min-width: 20px;
+        min-height: 30px;
+        padding-right: 30px;
+        border-bottom: 1px solid map-get($colors, primary);
         &>.control {
             position: absolute;
             right: 10px;
