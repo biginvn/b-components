@@ -19,6 +19,7 @@ export default {
 
     mounted() {
     	this.prepareItems(this.list)
+        this.updateUiByModel()
     	this.update()
     },
 

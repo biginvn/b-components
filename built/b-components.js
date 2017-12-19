@@ -42565,6 +42565,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted() {
         this.initDateTimePicker();
+        this.setDate(this.value);
     },
 
     computed: {},
@@ -42623,11 +42624,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         checkInputInvalid(time) {
             if (this.validationDateTime(time) == false) {
                 this.classLabel = "active hasError";
-                document.querySelector('.b__input').style.borderColor = "#f04134";
+                // document.querySelector('.b__input').style.borderColor   = "#f04134"
                 // this.classes    = this.input.defaultClassInput + " hasError" //because Variable this.classes can'nt change therefore I must be Hard Code
             } else {
                 this.classLabel = "active";
-                document.querySelector('.b__input').style.borderColor = "";
+                // document.querySelector('.b__input').style.borderColor   = ""
                 // this.classes    = this.input.defaultClassInput     
             }
         },
@@ -42781,6 +42782,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted() {
         this.prepareItems(this.list);
+        this.updateUiByModel();
         this.update();
     },
 
