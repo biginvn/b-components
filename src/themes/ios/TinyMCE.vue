@@ -1,7 +1,7 @@
 <!-- Author: Make By Thien Nguyen Developer -->
 <!-- Contacts: thien.nguyen@bigin.vn -->
 <!-- Date: 31/10/2017 -->
-<!-- Component: SummerNote -->
+<!-- Component: TinyMCE -->
 
 <template>
 	<div class="b__components b__tinymce b-float-label b__input">

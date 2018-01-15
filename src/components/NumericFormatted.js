@@ -2,13 +2,15 @@ import baseMixins from '../mixins/text-field-mixins'
 export default {
     data() {
         return {
-            mask: String,
+            mask: '',
+            valueTemp: '',
             error: false
         }
     },
     mixins: [baseMixins],
     props: ['affix', 'is_prefix', 'class-name'],
-    mounted(mask) {
+    mounted() {
+        // this.validateString(this.value);
         this.blur(this.value);
     },
     computed: {
@@ -19,9 +21,9 @@ export default {
     },
     watch: {
         value() {
-            // this.updateInput(this.value);
-            this.blur(this.value.toString());
-
+            this.blur(this.value);
+            // this.validateString(this.value);
+            this.mask == '0' ? this.mask = '' : this.mask;
         },
         is_prefix() {
             this.blur(this.value);
@@ -32,12 +34,14 @@ export default {
     },
     methods: {
         keypress(event) {
-            // console.log(event)
-            // console.log(event.key)
-            // console.log(event.keyCode)
+            var charCode = event.charCode;
+
+            // Prevent '..'
+            if( event.target.value.includes('.') ){
+                event.charCode == 46 ? event.preventDefault() : event.charCode;
+            }
 
             // Remove Alphabet
-            var charCode = event.charCode;
             if (charCode != 0) {
                 // 48 - 57
                 if (charCode < 46 || charCode > 57 || charCode == 47) {
@@ -49,9 +53,10 @@ export default {
 
         },
         keyup(event) {
+            this.mask = event.target.value;
             if(event.key.match(/^[0-9]$/g, "") == null && event.keyCode != 8 && event.keyCode != 190){
-				return this.error = false;
-			}
+                return this.error = false;
+            }
         },
         updateInput(value) {
             // Null Value and return ''
@@ -61,22 +66,18 @@ export default {
                 this.$emit("input", value);
             }
         },
-        focus(mask) {
+        focus() {
             this.mask = this.value;
         },
         blur(mask) {
-            
-            // if(mask==undefined) return
             // Validation type Affix
             this.affix == '$' || this.affix == '€' ? mask : mask = Math.trunc(mask).toString();
             if (this.affix == '%') {
                 mask > 100 ? mask = '100' : mask;
             }
+            mask = this.validateString(mask);
             // Get String position
-            mask != null ? mask.indexOf('.') : mask = '';
-            var pos = mask;
-            // Remove A-Z text
-            mask = mask.toString().replace(/[^\d\.]/g, "");
+            var pos = mask.indexOf('.');
             // Cut String to Forward & Behind  "432.11" => "432" & "11"
             if (pos > 0) {
                 var behind = mask.substring(pos + 1), // 1 is the length of your "." marker
@@ -114,10 +115,18 @@ export default {
                 }
             }
             this.mask = $result;
-            console.log($result + ' ' + typeof($result));
+        },
+        validateString(value){
+            typeof(value) == 'number' ? value = value.toString() : value;
+            if( value == undefined || value == null || value == '0' ){
+                value = '';
+                return value;
+            }
+            return value;
         },
         separator(value) {
-            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            value = this.validateString(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return value;
         },
         isNull(n) {
             if (typeof(n) == 'number') {
