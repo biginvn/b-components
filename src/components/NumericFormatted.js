@@ -10,7 +10,6 @@ export default {
     mixins: [baseMixins],
     props: ['affix', 'is_prefix', 'class-name'],
     mounted() {
-        // this.validateString(this.value);
         this.blur(this.value);
     },
     computed: {
@@ -22,7 +21,6 @@ export default {
     watch: {
         value() {
             this.blur(this.value);
-            // this.validateString(this.value);
             this.mask == '0' ? this.mask = '' : this.mask;
         },
         is_prefix() {
@@ -59,12 +57,11 @@ export default {
             }
         },
         updateInput(value) {
+            this.mask = event.target.value;
+            var mask = this.mask;
             // Null Value and return ''
-            if (value == undefined || value == null || value == '') {
-                value = '';
-                this.updateFloatLabel(value);
-                this.$emit("input", value);
-            }
+            mask == undefined || mask == null || mask == '' ? mask = '' : mask ;
+            this.updateFloatLabel(mask);
         },
         focus() {
             this.mask = this.value;
@@ -82,8 +79,9 @@ export default {
             if (pos > 0) {
                 var behind = mask.substring(pos + 1), // 1 is the length of your "." marker
                     forward = mask.split(".").shift();
+                // If behind is not define "432."
                 if (behind == undefined || behind == null || behind == '') {
-                    mask = forward + '.0'
+                    mask = forward
                 }
                 this.$emit("input", mask);
                 // If Value = 4321. return 4321.0
