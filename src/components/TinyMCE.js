@@ -12,7 +12,7 @@ export default {
 
     },
 
-    props : [ 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image'],
+    props : [ 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height'],
 
     mixins: [baseComponent],
 
@@ -45,16 +45,22 @@ export default {
         initTinyMCEBasicMode(content){
             var Vue = this
             var readonly = this.checkDisabled()
+            var height = (this.height == null || this.height == undefined) ? "300" : this.height
+            if( readonly == 1 )
+                var toolbar = false
+            else
+                var toolbar = "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image media code | preview | forecolor backcolor"
             Vue.tinymce = tinymce.init(
                 Object.assign({},
                     {
                         selector: '#' + Vue.id,
                         readonly : readonly,
+                        height : height,
                         plugins: [
                             "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
                             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
                         ],
-                        toolbar1: "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image media code | preview | forecolor backcolor",
+                        toolbar: toolbar,
                         menubar: false,
                         init_instance_callback: function (editor) {
                             $('tr.mceFirst').css('z-index','1000')
