@@ -299,7 +299,8 @@
                                         <br> Type: {{ typeof input.numericFormatted }}</p>
                                         <div class="my-2">
                                             <b-button type="button" class-name="button-primary" label="4321" @click.native="input.numericFormatted = 4321"></b-button>
-                                            <b-button type="button" class-name="button-danger button-solid" label="Null" @click.native="input.numericFormatted = 0"></b-button>
+                                            <b-button type="button" class-name="button-danger button-solid" label="Null" @click.native="input.numericFormatted = null"></b-button>
+                                            <b-button type="button" class-name="button-danger button-solid" label="Set 0" @click.native="input.numericFormatted = 0"></b-button>
                                         </div>
                                         <div class="my-2">
                                             <b-button type="button" class-name="button-success" label="VND" @click.native="affix = 'VND'"></b-button>
@@ -614,7 +615,7 @@ var vm = new Vue({
             textarea          : null,
             rating            : null,
             datePicker        : null,
-            numericFormatted  : '6969',
+            numericFormatted  : null,
             zipCode           : null,
             multiSelect       : null,
             singleSelect      : null,
