@@ -2,7 +2,7 @@ import baseComponent from '../mixins/text-field-mixins'
 
 export default {
 	mixins : [baseComponent],
-	props	: ['type', 'min', 'max'],
+	props	: ['type','maxlength'],
 	computed : {
 		classes () {
 			return (this.className?this.className:'') + " b__input 2"
@@ -26,6 +26,11 @@ export default {
 		},
 		keyup(value){
 			this.$emit('keyup', value)
+		},
+		maxLength(){
+		   if (this.maxlength == undefined || this.maxlength== null)
+		    return
+		   return this.maxlength
 		}
 	}
 }

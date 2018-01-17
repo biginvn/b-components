@@ -8525,7 +8525,7 @@ module.exports = parse;
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
-	props: ['type', 'min', 'max'],
+	props: ['type', 'maxlength'],
 	computed: {
 		classes() {
 			return (this.className ? this.className : '') + " b__input 2";
@@ -8548,6 +8548,10 @@ module.exports = parse;
 		},
 		keyup(value) {
 			this.$emit('keyup', value);
+		},
+		maxLength() {
+			if (this.maxlength == undefined || this.maxlength == null) return;
+			return this.maxlength;
 		}
 	}
 });
@@ -48694,8 +48698,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "placeholder": _vm.placeholder,
       "type": _vm.typeComponent,
-      "min": _vm.min,
-      "max": _vm.max,
+      "maxlength": _vm.maxLength,
       "name": _vm.name,
       "id": _vm.id,
       "disabled": _vm.disabled
@@ -48708,8 +48711,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.change($event.target.value)
       },
       "blur": _vm.blur,
-      "focus": _vm.focus,
-      "keyup": _vm.keyup
+      "focus": _vm.focus
     }
   })])
 },staticRenderFns: []}
