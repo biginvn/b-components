@@ -2,7 +2,7 @@ import baseComponent from '../mixins/text-field-mixins'
 
 export default {
 	mixins : [baseComponent],
-	props	: ['type','maxlength'],
+	props	: ['type', 'min', 'maxlength'],
 	computed : {
 		classes () {
 			return (this.className?this.className:'') + " b__input 2"
