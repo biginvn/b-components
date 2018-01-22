@@ -12,7 +12,7 @@ export default {
 
     },
 
-    props : [ 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height'],
+    props : [ 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path'],
 
     mixins: [baseComponent],
 
@@ -49,7 +49,7 @@ export default {
             if( readonly == 1 )
                 var toolbar = false
             else
-                var toolbar = "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image media code | preview | forecolor backcolor"
+                var toolbar = "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | table | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image code | preview | forecolor backcolor | pagebreak"
             Vue.tinymce = tinymce.init(
                 Object.assign({},
                     {
@@ -59,9 +59,63 @@ export default {
                         plugins: [
                             "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
                             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                            "table",
+                            "image code",
                         ],
                         toolbar: toolbar,
                         menubar: false,
+
+                        //Upload Fucntion & param
+                            toolbar_items_size: 'small',
+
+                            images_upload_url: Vue.images_upload_url,
+                            images_upload_base_path: Vue.images_upload_base_path,
+                            // images_upload_credentials: true,
+                            image_title: true, 
+                            // enable automatic uploads of images represented by blob or data URIs
+                            automatic_uploads: true,
+                            // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
+                            // images_upload_url: 'postAcceptor.php',
+                            // here we add custom filepicker only to Image dialog
+                            file_picker_types: 'image', 
+                            // and here's our custom image picker
+                            file_picker_callback : function(cb, value, meta) {
+                                if( Vue.images_upload_url == undefined || Vue.images_upload_url == null){
+                                    var input = document.createElement('input');
+                                    input.setAttribute('type', 'file');
+                                    input.setAttribute('accept', 'image/*');
+
+                                    // Note: In modern browsers input[type="file"] is functional without 
+                                    // even adding it to the DOM, but that might not be the case in some older
+                                    // or quirky browsers like IE, so you might want to add it to the DOM
+                                    // just in case, and visually hide it. And do not forget do remove it
+                                    // once you do not need it anymore.
+
+                                    input.onchange = function() {
+                                        var file = this.files[0];
+                                      
+                                        var reader = new FileReader();
+                                        reader.onload = function () {
+                                            // Note: Now we need to register the blob in TinyMCEs image blob
+                                            // registry. In the next release this part hopefully won't be
+                                            // necessary, as we are looking to handle it internally.
+                                            var id = 'blobid' + (new Date()).getTime();
+                                            var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                                            var base64 = reader.result.split(',')[1];
+                                            var blobInfo = blobCache.create(id, file, base64);
+                                            blobCache.add(blobInfo);
+
+                                            // call the callback and populate the Title field with the file name
+                                            cb(blobInfo.blobUri(), { title: file.name });
+                                        };
+                                        reader.readAsDataURL(file);
+                                    };
+                                    input.click();
+                                }else
+                                    return false
+                            },
+                        //Upload Fucntion & param
+
                         init_instance_callback: function (editor) {
                             $('tr.mceFirst').css('z-index','1000')
                             if(content != null || content != undefined)
@@ -100,18 +154,90 @@ export default {
                         plugins: [
                             "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
                             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                            "table",
+                            "image code",
                         ],
-                        toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify",
+                        toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | table",
                         // toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
                         toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-                        toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+                        toolbar3: "hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft",
                         content_css: [
                                 '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
                                 '//www.tinymce.com/css/codepen.min.css'],
 
-                        menubar: false,
+                        menubar: true,
                         toolbar_items_size: 'small',
 
+                        images_upload_url: Vue.images_upload_url,
+                        images_upload_base_path: Vue.images_upload_base_path,
+                        // images_upload_credentials: true,
+                        image_title: true, 
+                        // enable automatic uploads of images represented by blob or data URIs
+                        automatic_uploads: true,
+                        // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
+                        // images_upload_url: 'postAcceptor.php',
+                        // here we add custom filepicker only to Image dialog
+                        file_picker_types: 'image', 
+                        // and here's our custom image picker
+                        file_picker_callback: function(cb, value, meta) {
+                            var input = document.createElement('input');
+                            input.setAttribute('type', 'file');
+                            input.setAttribute('accept', 'image/*');
+
+                            // Note: In modern browsers input[type="file"] is functional without 
+                            // even adding it to the DOM, but that might not be the case in some older
+                            // or quirky browsers like IE, so you might want to add it to the DOM
+                            // just in case, and visually hide it. And do not forget do remove it
+                            // once you do not need it anymore.
+
+                            input.onchange = function() {
+                                var file = this.files[0];
+                              
+                                var reader = new FileReader();
+                                reader.onload = function () {
+                                    // Note: Now we need to register the blob in TinyMCEs image blob
+                                    // registry. In the next release this part hopefully won't be
+                                    // necessary, as we are looking to handle it internally.
+                                    var id = 'blobid' + (new Date()).getTime();
+                                    var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                                    var base64 = reader.result.split(',')[1];
+                                    var blobInfo = blobCache.create(id, file, base64);
+                                    blobCache.add(blobInfo);
+
+                                    // call the callback and populate the Title field with the file name
+                                    cb(blobInfo.blobUri(), { title: file.name });
+                                };
+                                reader.readAsDataURL(file);
+                            };
+
+                            input.click();
+                        },
+                        // images_upload_handler: function (blobInfo, success, failure) {
+                        //     var xhr, formData;
+                        //     xhr = new XMLHttpRequest();
+                        //     xhr.withCredentials = false;
+                        //     xhr.open('POST', 'postAcceptor.php');
+                        //     xhr.onload = function() {
+                        //       var json;
+
+                        //       if (xhr.status != 200) {
+                        //         failure('HTTP Error: ' + xhr.status);
+                        //         return;
+                        //       }
+                        //       json = JSON.parse(xhr.responseText);
+
+                        //       if (!json || typeof json.location != 'string') {
+                        //         failure('Invalid JSON: ' + xhr.responseText);
+                        //         return;
+                        //       }
+                        //       success(json.location);
+                        //     };
+                        //     formData = new FormData();
+                        //     formData.append('file', blobInfo.blob(), fileName(blobInfo));
+                        //     xhr.send(formData);
+                        // },
+
+                        table_toolbar: "tableprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol",
                         style_formats: [{
                             title: 'Bold text',
                             inline: 'b'
@@ -212,7 +338,5 @@ export default {
             } else
                 this.classLabel = ''
         },
-
     }
-
 }

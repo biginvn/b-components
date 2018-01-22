@@ -479,6 +479,27 @@
                         </figure> 
                         <figure class="wow animated">
                             <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Modal Message (Make By Thien Nguyen)</h4>
+                                <div class="panel-body">
+                                    <b-modal-message id="popup-modal-message" classModal="thien-class" v-model="input.modalMessage" message="Message."></b-modal-message>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="my-2">
+                                        <b-button type="button" class-name="button-primary" label="Show" @click.native="input.modalMessage = true"></b-button>
+                                    </div>
+                                    <div class="my-2">
+                                        <b-button type="button" class-name="button-success" label="Hide" @click.native="input.modalMessage = false"></b-button>
+                                    </div>
+
+                                    v-model data: {{ input.modalMessage }}
+                                    <br>
+                                    Parameter required: id, v-model
+                                </div>
+                            </div>
+                        </figure> 
+                        <figure class="wow animated">
+                            <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Loading Remote Data</h4>
                                 <div class="panel-body">
                                     <p>
@@ -494,7 +515,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE Basic Mode</h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor" :tiny-config="tinyConfig" v-model="input.tinyMCE"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor" :tiny-config="tinyConfig" v-model="input.tinyMCE" images_upload_url="UploadProcess.php" images_upload_base_path="/some/basepath"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
@@ -512,7 +533,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE Advance Mode </h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" mode="advance" id="bTinyMCE__Editor2" v-model="input.tinyMCE2"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="advance" id="bTinyMCE__Editor2" v-model="input.tinyMCE2" images_upload_url="UploadProcess.php" images_upload_base_path="/some/basepath"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE2 = tinyMCE2.content"></b-button>
@@ -624,11 +645,12 @@ var vm = new Vue({
             dateAndTime       : null,
             task              : null,
             tinyMCE           : "Lão Minh bắt fix bug nhiều quá",
-            tinyMCE2           : null,
-            tags               : [],
-            showModal          : false,
-            remoteData         :[],
-            telerikNumberic    : null
+            tinyMCE2          : null,
+            tags              : [],
+            showModal         : false,
+            remoteData        :[],
+            telerikNumberic   : null,
+            modalMessage      : false,
         },
         tinyMCE: {
             content  : "Tiny MCE Content 1 (khác nhau)",
