@@ -44260,10 +44260,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig);
         let dropzoneComponent = this;
 
-        this.dropzone.on("totaluploadprogress", progress => {
-            document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%";
-            document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block";
-        });
+        // this.dropzone.on("totaluploadprogress", (progress) => {
+        //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%"
+        //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block"
+        // })
 
         this.dropzone.on("sending", file => {
             document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1";
