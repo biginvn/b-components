@@ -17,10 +17,10 @@ export default {
         this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
         let dropzoneComponent = this
 
-        // this.dropzone.on("totaluploadprogress", (progress) => {
-        //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%"
-        //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block"
-        // })
+        this.dropzone.on("totaluploadprogress", (progress) => {
+            document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%"
+            document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block"
+        })
 
         this.dropzone.on("sending", (file) => {
             document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1"
@@ -81,7 +81,7 @@ export default {
                 clickable: [`#${ this.id } .content`],
                 accept : (file, done) => { done() },
                 previewTemplate: document.querySelector(`.${this.id}__preview`).innerHTML,
-                previewsContainer: `.${this.id}__preview__container`
+                previewsContainer: `.${this.id}__preview__container`,
             }
             this.completedConfig  = Object.assign(config, this.config)
         },
@@ -106,6 +106,7 @@ export default {
                 let name = this.getNameByPath(listItem.path)
                 let item = {
                     id         : listItem.id, 
+                    size       : listItem.size,
                     path       : listItem.path,
                     name       : name,
                     path       : listItem.path,

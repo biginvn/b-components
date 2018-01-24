@@ -42551,6 +42551,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Upload__["a" /* default */]);
@@ -44260,10 +44261,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig);
         let dropzoneComponent = this;
 
-        // this.dropzone.on("totaluploadprogress", (progress) => {
-        //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%"
-        //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block"
-        // })
+        this.dropzone.on("totaluploadprogress", progress => {
+            document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%";
+            document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block";
+        });
 
         this.dropzone.on("sending", file => {
             document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1";
@@ -44347,6 +44348,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 let name = this.getNameByPath(listItem.path);
                 let item = {
                     id: listItem.id,
+                    size: listItem.size,
                     path: listItem.path,
                     name: name,
                     path: listItem.path,
@@ -49312,7 +49314,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "data-dz-thumbnail": ""
       }
-    })]), _vm._v(" "), _c('a', {
+    }), _vm._v(" "), _c('a', {
       attrs: {
         "href": item.path
       }
@@ -49321,7 +49323,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "data-dz-name": ""
       }
-    }, [_vm._v(_vm._s(item.name))])]), _vm._v(" "), _c('a', {
+    }, [_vm._v(_vm._s(item.name))])]), _vm._v(" "), _c('strong', [_c('span', {
+      staticClass: "dz-size",
+      attrs: {
+        "data-dz-size": ""
+      }
+    }, [_vm._v(_vm._s(item.size))])]), _vm._v(" "), _c('a', {
       staticClass: "remove-archive",
       attrs: {
         "data-dz-remove": ""
@@ -49333,7 +49340,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('i', {
       staticClass: "fa fa-trash-o"
-    })])])
+    })])])])
   })], 2)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -49361,9 +49368,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank",
       "data-dz-remove": ""
     }
-  }, [_c('i', {
+  }, [_c('span', [_c('i', {
     staticClass: "fa fa-trash-o"
-  })])])
+  })])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
