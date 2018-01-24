@@ -408,8 +408,9 @@
                                     <h4 class="mb-3 panel-heading">Upload</h4>
                                     <div class="panel-body">
                                         <p>
-                                            <b-upload name="upload-document" id="uploadTest" :config="uploadConfig"></b-upload>
+                                            <b-upload v-model="input.upload" name="upload-document" id="uploadTest" :config="uploadConfig"></b-upload>
                                         </p>
+                                        <b-button type="button" class-name="button-warn" label="Set Value" @click.native="input.upload.list=listUpload"></b-button>
                                     </div>
                             </div>
                         </figure>
@@ -419,7 +420,7 @@
                                 <h4 class="mb-3 panel-heading">List Uploaded</h4>
                                 <div class="panel-body">
                                     <p>
-                                       <b-list-up-loaded v-model="input.listUploaded" :list="listUpload" ></b-list-up-loaded>
+                                        <b-list-up-loaded v-model="input.listUploaded" :list="listUpload" ></b-list-up-loaded>
                                         <b-button type="button" class-name="button-warn" label="Delete All" @click.native="input.listUploaded = null"></b-button>
                                     </p>
                                     <p v-for="item in input.imageGallery">ID: {{ item.id }}</p>
@@ -644,22 +645,26 @@ var vm = new Vue({
             listUploaded      : null,
             dateAndTime       : null,
             task              : null,
-            tinyMCE           : "Lão Minh bắt fix bug nhiều quá",
+            tinyMCE           : "Content",
             tinyMCE2          : null,
             tags              : [],
             showModal         : false,
             remoteData        :[],
             telerikNumberic   : null,
             modalMessage      : false,
+            upload            : {
+                list : [],
+                dropzone : null,
+            }
         },
         tinyMCE: {
-            content  : "Tiny MCE Content 1 (khác nhau)",
+            content  : "Tiny MCE Content 1",
             mode     : 'basic',
             disabled : ''
         },
 
         tinyMCE2: {
-            content  : "Tiny MCE Content 2 (khác nhau)",
+            content  : "Tiny MCE Content 2",
             mode     : 'basic',
             disabled : ''
         },
@@ -671,11 +676,11 @@ var vm = new Vue({
             },
             {
                 id   :"2",
-                path : "https://i.imgur.com/fCOeXej.mp4",
+                path : "https://i.imgur.com/fCOeXej.exe",
             },
             {
                 id   :"3",
-                path : "https://i.imgur.com/fCOeXej.docx",
+                path : "https://i.imgur.com/fCOeXej.doc",
             },
         ],
         taskList: [

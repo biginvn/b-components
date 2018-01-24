@@ -8525,7 +8525,7 @@ module.exports = parse;
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
-	props: ['type', 'maxlength'],
+	props: ['type', 'min', 'maxlength'],
 	computed: {
 		classes() {
 			return (this.className ? this.className : '') + " b__input 2";
@@ -42551,7 +42551,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Upload__["a" /* default */]);
@@ -44250,7 +44249,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data() {
         return {
             dropzone: null,
-            completedConfig: {}
+            completedConfig: {},
+            items: null
         };
     },
     components: {},
@@ -44293,13 +44293,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         });
         this.$emit('dropzone', this.dropzone);
+        // edit by thien nguyen
+        if (this.value.list != undefined || this.value.list != null) this.prepareItems(this.value.list);
     },
-    props: ['name', 'config', 'id'],
+    props: ['name', 'config', 'id', 'mode'],
     computed: {},
-    methods: {
-        upload() {
-            this.dropzone.enqueueFiles(this.dropzone.getFilesWithStatus(Dropzone.ADDED));
+    watch: {
+        'dropzone.files'(value) {
+            this.value.dropzone = this.dropzone;
+            this.$emit('input', this.value);
         },
+        'value.list'(value) {
+            // edit by thien nguyen
+            this.prepareItems(value);
+        }
+    },
+    methods: {
+        // upload() {  //rem by thien.nguyen
+        //     this.dropzone.enqueueFiles(this.dropzone.getFilesWithStatus(Dropzone.ADDED));
+        //     this.$emit('input', this.dropzone)
+        // },
         configDropzone() {
             let config = {
                 thumbnailWidth: 80,
@@ -44314,9 +44327,101 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 previewsContainer: `.${this.id}__preview__container`
             };
             this.completedConfig = Object.assign(config, this.config);
+        },
+
+        prepareItems(list) {
+            // this to down write by thien nguyen
+            if (list == undefined || list == null || list.length == 0) {
+                if (this.default != undefined && this.default != null) {
+                    this.items = [this.default];
+                    return [this.default];
+                }
+                return [{ id: '', path: '' }];
+            }
+
+            let items = [];
+            for (let i = 0; i < list.length; i++) {
+                let listItem = list[i];
+                let className;
+                if (listItem.className != null || listItem.className != undefined) className = listItem.className;else className = this.getClassByPath(listItem.path);
+                let name = this.getNameByPath(listItem.path);
+                let item = {
+                    id: listItem.id,
+                    path: listItem.path,
+                    name: name,
+                    path: listItem.path,
+                    className: className
+                };
+                items.push(item);
+            }
+            this.items = items;
+            return this.items;
+        },
+
+        checkTypeFile(path) {
+            var pathEx = path.split('.').pop().toLowerCase();
+            return pathEx;
+        },
+
+        getClassByPath(path) {
+            var itemClass = "dz-thumb";
+            var fileEx = this.checkTypeFile(path);
+            if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" || fileEx == "gif" || fileEx == "bmp") return itemClass;
+            switch (fileEx) {
+                case "pdf":
+                    itemClass += " dz-pdf";
+                    break;
+                case "doc":
+                    itemClass += " dz-doc";
+                    break;
+                case "docx":
+                    itemClass += " dz-doc";
+                    break;
+                case "ppt":
+                    itemClass += " dz-ppt";
+                    break;
+                case "xls":
+                    itemClass += " dz-xls";
+                    break;
+                case "xlsx":
+                    itemClass += " dz-xls";
+                    break;
+                case "txt":
+                    itemClass += " dz-txt";
+                    break;
+                case "csv":
+                    itemClass += " dz-csv";
+                    break;
+                case "rtf":
+                    itemClass += " dz-rtf";
+                    break;
+                case "zip":
+                    itemClass += " dz-zip";
+                    break;
+                case "rar":
+                    itemClass += " dz-zip";
+                    break;
+                default:
+                    itemClass = itemClass + " dz-file";
+            }
+            return itemClass;
+        },
+
+        getNameByPath(path) {
+            var name = path.split('/').pop();
+            return name = name.split('.').shift();
+        },
+        deleteThisItem(id) {
+            for (var i = 0; i < this.items.length; i++) {
+                if (this.items[i].id == id) {
+                    this.items[i].show = false;
+                    this.items.splice(i, 1);
+                }
+            }
+            this.value.list = this.items;
+            this.$emit('input', this.value);
         }
     }
-
 });
 
 /***/ }),
@@ -48972,6 +49077,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "placeholder": _vm.placeholder,
       "type": _vm.typeComponent,
+      "min": _vm.min,
       "maxlength": _vm.maxLength,
       "name": _vm.name,
       "id": _vm.id,
@@ -49185,34 +49291,51 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": _vm.completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'
     }
-  }) : _vm._e(), _vm._v(" "), _c('p', [_vm._v("Drag and drop files here...")])])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }) : _vm._e(), _vm._v(" "), _c('p', [_vm._v("Drag and drop files here...")])])]), _vm._v(" "), _c('div', {
     class: _vm.id + '__preview__container'
   }, [_c('div', {
     class: _vm.id + '__preview preview stuff'
-  }, [_vm._m(1)])]), _vm._v(" "), _c('div', {
-    staticClass: "upload-control"
-  }, [_c('b-button', {
-    attrs: {
-      "class-name": "button-primary",
-      "label": "Upload",
-      "icon": "<i class='fa fa-cloud-upload' aria-hidden='true'></i>"
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.upload()
+  }, [_vm._m(0)]), _vm._v(" "), _vm._l((_vm.items), function(item) {
+    return _c('div', {
+      staticClass: "preview"
+    }, [_c('div', {
+      class: item.className,
+      staticStyle: {
+        "animation": "fadeOut"
       }
-    }
-  })], 1)])
+    }, [(item.className == 'dz-thumb') ? _c('img', {
+      attrs: {
+        "data-dz-thumbnail": "",
+        "src": item.path
+      }
+    }) : _c('img', {
+      attrs: {
+        "data-dz-thumbnail": ""
+      }
+    })]), _vm._v(" "), _c('a', {
+      attrs: {
+        "href": item.path
+      }
+    }, [_c('span', {
+      staticClass: "dz-name",
+      attrs: {
+        "data-dz-name": ""
+      }
+    }, [_vm._v(_vm._s(item.name))])]), _vm._v(" "), _c('a', {
+      staticClass: "remove-archive",
+      attrs: {
+        "data-dz-remove": ""
+      },
+      on: {
+        "click": function($event) {
+          _vm.deleteThisItem(item.id)
+        }
+      }
+    }, [_c('i', {
+      staticClass: "fa fa-trash-o"
+    })])])
+  })], 2)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "total-progress"
-  }, [_c('div', {
-    staticClass: "progress",
-    staticStyle: {
-      "width": "20%"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "preview"
   }, [_c('div', {
