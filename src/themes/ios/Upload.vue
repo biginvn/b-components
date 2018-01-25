@@ -18,13 +18,15 @@
                 </div>
             </div>
             <div v-for= "item in items" class="preview">
-                <div :class="item.className" style="animation: fadeOut;">
-                    <img v-if="item.className == 'dz-thumb'" data-dz-thumbnail="" :src="item.path">
-                    <img v-else data-dz-thumbnail="">
-                    <a :href="item.path"><span data-dz-name="" class="dz-name">{{ item.name }}</span></a>
-                    <strong><span class="dz-size" data-dz-size>{{ item.size }}</span></strong>
-                    <a data-dz-remove="" class="remove-archive" @click="deleteThisItem(item.id)"><i class="fa fa-trash-o"></i></a>
-                </div> 
+                <!-- <a :href="item.path"> -->
+                    <div :class="item.className" style="animation: fadeOut;">
+                        <img v-if="item.className == 'dz-thumb'" data-dz-thumbnail="" :src="item.path">
+                        <img v-else data-dz-thumbnail="">
+                        <a :href="item.path"><span data-dz-name="" class="dz-name">{{ item.name }}</span></a>
+                        <strong><span class="dz-size" data-dz-size>{{ item.size }}</span></strong>
+                        <a data-dz-remove="" class="remove-archive" @click="deleteThisItem(item.id)"><i class="fa fa-trash-o"></i></a>
+                    </div> 
+                <!-- </a> -->
             </div>
         </div>
     </div>
