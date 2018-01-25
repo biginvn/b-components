@@ -2,9 +2,10 @@
     <div class="b__components b__upload">
         <div class="b__components__dropzone" :id="id">
             <div class="content">
-
-                <img v-if="completedConfig.publicPath" :src="completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'" class="icon-upload">
-                <p>Drag and drop files here...</p>
+                <div class="row">
+                    <img v-if="completedConfig.publicPath" :src="completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'" class="icon-upload">
+                </div>
+                <span class="uk-text-middle">Attach file by dropping here or</span>
             </div>
         </div>
         
