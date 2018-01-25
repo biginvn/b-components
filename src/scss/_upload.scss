@@ -56,7 +56,7 @@
             -webkit-animation: fadeIn;
             animation: fadeIn;
             animation-duration: 1s;
-            margin: 2px 2px 2px 2px;
+            margin: 2px !important;
             .dz-thumb {
                 width: 44px;
                 height: 55px;
@@ -68,7 +68,7 @@
                 transition: .3s all;
                 img {
                     width: 100%;
-                    margin: 5px 5px 5px 0px;
+                    margin: 5px 5px 5px 5px;
                 }
             }
             .dz-pdf {
@@ -124,19 +124,20 @@
             .remove-archive {
                 position: absolute;
                 opacity: 0;
-                top: 50%;
-                left: 50%;
+                top: 70%;
+                left: 96%;
                 margin-left: -20px;
                 margin-top: -40px;
                 font-size: 13px;
-                color: rgba(255, 255, 255, 0.59);
-                border-radius: 50%;
-                border: 1px solid rgba(255, 255, 255, 0.28);
+                border-radius: 5px;
+                border: 1px solid #dfdfdf;
                 width: 30px;
-                height: 30px;
+                height: 57px;
                 line-height: 27px;
                 text-align: center;
                 padding: 0;
+                padding-top: 16px;
+                cursor: pointer;
                 &:hover {
                     background-color: rgba(255, 255, 255, 0.89);
                     opacity: 1;
