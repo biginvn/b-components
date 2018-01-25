@@ -44306,6 +44306,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         'dropzone.files'(value) {
             this.value.dropzone = this.dropzone;
             this.$emit('input', this.value);
+            if (document.getElementsByClassName("dz-size") == '<strong>0</strong> null') document.getElementsByClassName("dz-size").value = '<strong>0</strong> KB';
         },
         'value.list'(value) {
             // edit by thien nguyen

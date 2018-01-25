@@ -12,6 +12,7 @@
   "author": "minh.truong@bigin.vn",
   "license": "ISC",
   "devDependencies": {
+    "b-components": "biginvn/b-components",
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
     "babel-preset-env": "^1.5.1",
