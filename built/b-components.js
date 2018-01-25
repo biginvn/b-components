@@ -42554,6 +42554,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Upload__["a" /* default */]);
@@ -49290,12 +49291,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: "content"
+  }, [_c('div', {
+    staticClass: "row"
   }, [(_vm.completedConfig.publicPath) ? _c('img', {
     staticClass: "icon-upload",
     attrs: {
       "src": _vm.completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'
     }
-  }) : _vm._e(), _vm._v(" "), _c('p', [_vm._v("Drag and drop files here...")])])]), _vm._v(" "), _c('div', {
+  }) : _vm._e()]), _vm._v(" "), _c('span', {
+    staticClass: "uk-text-middle"
+  }, [_vm._v("Attach file by dropping here or")])])]), _vm._v(" "), _c('div', {
     class: _vm.id + '__preview__container'
   }, [_c('div', {
     class: _vm.id + '__preview preview stuff'
