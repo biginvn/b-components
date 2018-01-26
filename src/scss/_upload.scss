@@ -140,7 +140,7 @@
                 cursor: pointer;
                 z-index: 9;
                 &:hover {
-                    background-color: gainsboro;
+                    background-color: gainsboro!important;
                     opacity: 1;
                     color: map-get($supportColors, grey-dark);
                 }

@@ -44348,12 +44348,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 let listItem = list[i];
                 let className;
                 if (listItem.className != null || listItem.className != undefined) className = listItem.className;else className = this.getClassByPath(listItem.path);
-                let name = this.getNameByPath(listItem.path);
                 let item = {
                     id: listItem.id,
                     size: listItem.size,
                     path: listItem.path,
-                    name: name,
+                    name: listItem.filename == null || listItem.filename == undefined ? this.getNameByPath(listItem.path) : listItem.filename,
                     path: listItem.path,
                     className: className
                 };
