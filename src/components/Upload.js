@@ -126,7 +126,7 @@ export default {
             var itemClass = "dz-thumb"
             var fileEx = this.checkTypeFile(path)
             if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" ||  fileEx == "gif" ||  fileEx == "bmp")
-                return itemClass
+                return itemClass += " dz-image"
             switch(fileEx) {
                 case "pdf":
                     itemClass += " dz-pdf"

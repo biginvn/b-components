@@ -44370,7 +44370,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getClassByPath(path) {
             var itemClass = "dz-thumb";
             var fileEx = this.checkTypeFile(path);
-            if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" || fileEx == "gif" || fileEx == "bmp") return itemClass;
+            if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" || fileEx == "gif" || fileEx == "bmp") return itemClass += " dz-image";
             switch (fileEx) {
                 case "pdf":
                     itemClass += " dz-pdf";
