@@ -1,4 +1,4 @@
-import Chart from 'chart.js'
+
 
 export default {
 	props:['type','id','data'],
@@ -31,7 +31,7 @@ export default {
 
 		this.$emit('input',this.data);
 
-		
+
 
 		this.chart = Morris.Donut({
 		  element: this.id,
