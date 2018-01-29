@@ -35,6 +35,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
     <!-- Jquery DateTimePicker-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
     <!-- Dropzone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.css" />
@@ -42,6 +46,7 @@
 
     <!-- Vutify Plugin -->
     <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+
     <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
 
     <!-- Vuejs -->
@@ -53,6 +58,8 @@
 
     <!-- Demo Style-->
     <link href='built/assets/css/style.css' rel="stylesheet">
+
+
 </head>
 
 <body id="home">
@@ -236,8 +243,29 @@
                                 <div class="panel-body">
                                     <p>
                                         <b-task-list v-model="taskList"></b-task-list>
+                                       
                                     </p>
                                     <p>{{ taskList }}</p>
+                                </div>
+                            </div>
+                        </figure>
+
+                        <figure class="wow animated bounceInLeft">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Chart</h4>
+                                <div class="panel-body">
+                                    <div class="row" style="display: flex;">
+
+                                        <div  class="col-md-8"  >
+                                            <b-chart type="doughnut" id="chart" :data="data" v-model="input.dataChart" style="width: 100%;height: 100%"></b-chart>
+                                        </div>
+                                        <div class="col-md-4" style="align-self: center;">
+                                            <ul class="list-unstyled weather-info">
+                                                <li v-for="dataChart in input.dataChart" class="my-2">{{dataChart.label}} <span class="pull-right"><b class="counter">{{dataChart.total}}</b></span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-8 text-center"><b class="counter"><big>4510</big></b> Total Transferees</div>
+                                    </div>
                                 </div>
                             </div>
                         </figure>
@@ -655,8 +683,58 @@ var vm = new Vue({
             upload            : {
                 list : [],
                 dropzone : null,
-            }
+            },
+            dataChart:[]
         },
+
+        data:[
+            {
+                label: "Active",
+                value: 45,
+                link: 'http://www.google.com',
+                total: 1410
+            }, 
+            {
+                label: "Cancelled",
+                value: 5,
+                link: 'http://www.google.com',
+                total: 300
+            }, 
+            {
+                label: "Complete",
+                value: 30,
+                link: 'http://www.google.com',
+                total:  1125
+            }, 
+            {
+                label: "Delete",
+                value: 5,
+                link: 'http://www.google.com',
+                total: 152
+            }, 
+            {
+                label: "On-Hold",
+                value: 5,
+                link: 'http://www.google.com',
+                total: 128
+            }, 
+            {
+                label: "Pending",
+                value: 5,
+                link: 'http://www.google.com',
+                total: 342
+            }, 
+            {
+                label: "Queued",
+                value: 5,
+                link: 'http://www.google.com',
+                total: 214
+
+            }],
+        
+
+       
+
         tinyMCE: {
             content  : "Tiny MCE Content 1",
             mode     : 'basic',
