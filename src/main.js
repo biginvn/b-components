@@ -31,6 +31,7 @@ import BModal from './themes/ios/Modal.vue'
 import BLoader from './themes/ios/Loader.vue'
 import BLoadingRemoteData from './themes/ios/LoadingRemoteData.vue'
 import BTelerikNumberic from './themes/ios/TelerikNumberic.vue'
+import BJVectorMap from './themes/ios/JVectorMap.vue'
 import BModalMessage from './themes/ios/ModalMessage.vue'
 import BChart from './themes/ios/Chart.vue'
 
@@ -58,6 +59,7 @@ Vue.component('BModal', BModal)
 Vue.component('BLoader', BLoader)
 Vue.component('BLoadingRemoteData', BLoadingRemoteData)
 Vue.component('BTelerikNumberic', BTelerikNumberic)
+Vue.component('BJVectorMap', BJVectorMap)
 Vue.component('BModalMessage', BModalMessage)
 Vue.component('BChart', BChart)
 
