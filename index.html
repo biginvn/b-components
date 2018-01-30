@@ -40,6 +40,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
     <!-- Dropzone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/min/dropzone.min.js"></script>
@@ -252,7 +255,7 @@
 
                         <figure class="wow animated bounceInLeft">
                             <div class="panel-border">
-                                <h4 class="mb-3 panel-heading">Chart</h4>
+                                <h4 class="mb-3 panel-heading">Doughnut Chart</h4>
                                 <div class="panel-body">
                                     <div class="row" style="display: flex;">
 
@@ -269,6 +272,8 @@
                                 </div>
                             </div>
                         </figure>
+
+                       
                     </div>
                     <div class="col-md-6">
                         <figure class="wow animated bounceInRight">
@@ -540,6 +545,14 @@
                         </figure>
                     </div>
                     <div class="col-md-12">
+                        <figure class="wow animated bounceInLeft">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Bar Chart</h4>
+                                <div class="panel-body">
+                                    <b-chart type="bar" id="barChart" :data="dataBarChart" v-model="input.barChart" style="width: 100%;height: 100%"></b-chart>
+                                </div>
+                            </div>
+                        </figure>
                         <figure class="wow animated">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE Basic Mode</h4>
@@ -684,7 +697,8 @@ var vm = new Vue({
                 list : [],
                 dropzone : null,
             },
-            dataChart:[]
+            dataChart:[],
+            barChart:null
         },
 
         data:[
@@ -730,7 +744,20 @@ var vm = new Vue({
                 link: 'http://www.google.com',
                 total: 214
 
-            }],
+            }
+        ],
+
+        dataBarChart: {
+            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            dataResponse: [
+                { 
+                    value: [28, 48, 40, 19, 86, 27, 90, 45, 12, 23, 32, 7],
+                },
+                {
+                    value: [65, 59, 80, 81, 56, 55, 40, 35, 98, 61, 2, 12],
+                }
+            ]
+        },
         
 
        
