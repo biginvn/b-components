@@ -60,3 +60,4 @@ Vue.component('BLoadingRemoteData', BLoadingRemoteData)
 Vue.component('BTelerikNumberic', BTelerikNumberic)
 Vue.component('BModalMessage', BModalMessage)
 Vue.component('BChart', BChart)
+
