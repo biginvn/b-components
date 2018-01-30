@@ -44664,10 +44664,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__themes_ios_LoadingRemoteData_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24__themes_ios_LoadingRemoteData_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__themes_ios_TelerikNumberic_vue__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__themes_ios_TelerikNumberic_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_25__themes_ios_TelerikNumberic_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__themes_ios_ModalMessage_vue__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__themes_ios_ModalMessage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_26__themes_ios_ModalMessage_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__themes_ios_JVectorMap_vue__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__themes_ios_JVectorMap_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_27__themes_ios_JVectorMap_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__themes_ios_JVectorMap_vue__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__themes_ios_JVectorMap_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_26__themes_ios_JVectorMap_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__themes_ios_ModalMessage_vue__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__themes_ios_ModalMessage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_27__themes_ios_ModalMessage_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__themes_ios_Chart_vue__ = __webpack_require__(385);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__themes_ios_Chart_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_28__themes_ios_Chart_vue__);
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_resource__["a" /* default */]);
@@ -44676,6 +44678,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.xhr = { withCredentials
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.emulateHTTP = true;
 
 // Components
+
 
 
 
@@ -44727,8 +44730,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BModal', __WEBPACK_IMPORT
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BLoader', __WEBPACK_IMPORTED_MODULE_23__themes_ios_Loader_vue___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BLoadingRemoteData', __WEBPACK_IMPORTED_MODULE_24__themes_ios_LoadingRemoteData_vue___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BTelerikNumberic', __WEBPACK_IMPORTED_MODULE_25__themes_ios_TelerikNumberic_vue___default.a);
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BModalMessage', __WEBPACK_IMPORTED_MODULE_26__themes_ios_ModalMessage_vue___default.a);
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BJVectorMap', __WEBPACK_IMPORTED_MODULE_27__themes_ios_JVectorMap_vue___default.a);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BJVectorMap', __WEBPACK_IMPORTED_MODULE_26__themes_ios_JVectorMap_vue___default.a);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BModalMessage', __WEBPACK_IMPORTED_MODULE_27__themes_ios_ModalMessage_vue___default.a);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BChart', __WEBPACK_IMPORTED_MODULE_28__themes_ios_Chart_vue___default.a);
 
 /***/ }),
 /* 302 */
@@ -50245,6 +50249,139 @@ exports.clearImmediate = clearImmediate;
 /***/ (function(module, exports) {
 
 /* (ignored) */
+
+/***/ }),
+/* 385 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(386),
+  /* template */
+  __webpack_require__(388),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "C:\\xampp7.1\\htdocs\\b-components\\src\\themes\\ios\\Chart.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Chart.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3a9a6052", Component.options)
+  } else {
+    hotAPI.reload("data-v-3a9a6052", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 386 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Chart__ = __webpack_require__(387);
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Chart__["a" /* default */]);
+
+/***/ }),
+/* 387 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+	props: ['type', 'id', 'data'],
+
+	data() {
+		return {
+			chart: null
+		};
+	},
+	computed: {
+		chartId() {
+			if (this.id == undefined || this.id == null || this.id.length == 0) return 'chartId';
+			return this.id;
+		},
+		chartType() {
+			if (this.type == undefined || this.type == null || this.type.length == 0) return 'bar';
+			return this.type;
+		},
+		chartData() {
+			if (this.data == undefined || this.data == null || this.data.length == 0) return [];
+			return this.data;
+		}
+
+	},
+
+	mounted() {
+
+		this.$emit('input', this.data);
+
+		this.chart = Morris.Donut({
+			element: this.id,
+			data: this.data,
+			formatter: function (t) {
+				return t + "%";
+			},
+			resize: !0,
+			colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"]
+		}).on('click', function (i, row) {
+			// window.location.href = row.link
+			window.open(row.link, '_blank');
+		});
+
+		console.log(this.chart);
+	}
+
+});
+
+/***/ }),
+/* 388 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "b__components b-ios b-float-labels chart-container"
+  }, [_c('div', {
+    attrs: {
+      "id": _vm.chartId,
+      "type": _vm.chartType,
+      "data": _vm.chartData
+    }
+  })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-3a9a6052", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
