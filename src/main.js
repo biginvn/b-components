@@ -32,6 +32,8 @@ import BLoader from './themes/ios/Loader.vue'
 import BLoadingRemoteData from './themes/ios/LoadingRemoteData.vue'
 import BTelerikNumberic from './themes/ios/TelerikNumberic.vue'
 import BModalMessage from './themes/ios/ModalMessage.vue'
+import BJVectorMap from './themes/ios/JVectorMap.vue'
+
 
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
@@ -58,3 +60,4 @@ Vue.component('BLoader', BLoader)
 Vue.component('BLoadingRemoteData', BLoadingRemoteData)
 Vue.component('BTelerikNumberic', BTelerikNumberic)
 Vue.component('BModalMessage', BModalMessage)
+Vue.component('BJVectorMap', BJVectorMap)
