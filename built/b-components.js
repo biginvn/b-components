@@ -59947,77 +59947,85 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 
 	},
-
+	watch: {
+		chartData(val) {
+			this.initialize(this.type, this.id, val);
+		}
+	},
 	mounted() {
-
-		if (this.type === 'doughnut') {
-			this.chart = Morris.Donut({
-				element: this.id,
-				data: this.data,
-				formatter: function (t) {
-					return t + "%";
-				},
-				resize: !0,
-				colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"]
-			}).on('click', function (i, row) {
-				window.open(row.link, '_blank');
-			});
-		} else if (this.type === 'bar') {
-
-			let idChart = this.id;
-
-			this.chart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(idChart, {
-				type: this.type,
-				data: {
-					labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-					datasets: [{
-						label: "Initiated",
-						backgroundColor: "rgba(0,123,255,0.5)",
-						borderColor: "rgba(0,123,255,0.8)",
-						highlightFill: "rgba(0,123,255,0.75)",
-						highlightStroke: "rgba(0,123,255,1)",
-						data: this.data.dataResponse[0].value,
-						borderWidth: 1
-					}, {
-						label: "Completed",
-						backgroundColor: "rgba(255,193,7,0.2)",
-						borderColor: "rgba(255,193,7,1)",
-						pointColor: "rgba(255,193,7,1)",
-						pointStrokeColor: "#fff",
-						pointHighlightFill: "#fff",
-						pointHighlightStroke: "rgba(18,175,203,1)",
-						data: this.data.dataResponse[1].value,
-						borderWidth: 1
-					}]
-				},
-				options: {
-					scaleBeginAtZero: true,
-					scaleShowGridLines: true,
-					scaleGridLineColor: "rgba(0,0,0,.05)",
-					scaleGridLineWidth: 1,
-					scaleShowHorizontalLines: true,
-					scaleShowVerticalLines: true,
-					barShowStroke: true,
-					barStrokeWidth: 2,
-					barDatasetSpacing: 1,
-					legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
-					responsive: true,
-					legend: {
-
-						position: 'right'
+		this.initialize(this.type, this.id, this.data);
+	},
+	methods: {
+		initialize(type, id, data) {
+			if (this.type === 'doughnut') {
+				this.chart = Morris.Donut({
+					element: this.id,
+					data: this.data,
+					formatter: function (t) {
+						return t + "%";
 					},
-					title: {
-						display: true,
-						text: 'Initiated & Completed Relocations by Month',
-						position: 'top'
+					resize: !0,
+					colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"]
+				}).on('click', function (i, row) {
+					window.open(row.link, '_blank');
+				});
+			} else if (this.type === 'bar') {
+
+				let idChart = this.id;
+
+				this.chart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(idChart, {
+					type: this.type,
+					data: {
+						labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+						datasets: [{
+							label: "Initiated",
+							backgroundColor: "rgba(0,123,255,0.5)",
+							borderColor: "rgba(0,123,255,0.8)",
+							highlightFill: "rgba(0,123,255,0.75)",
+							highlightStroke: "rgba(0,123,255,1)",
+							data: this.data.dataResponse[0].value,
+							borderWidth: 1
+						}, {
+							label: "Completed",
+							backgroundColor: "rgba(255,193,7,0.2)",
+							borderColor: "rgba(255,193,7,1)",
+							pointColor: "rgba(255,193,7,1)",
+							pointStrokeColor: "#fff",
+							pointHighlightFill: "#fff",
+							pointHighlightStroke: "rgba(18,175,203,1)",
+							data: this.data.dataResponse[1].value,
+							borderWidth: 1
+						}]
+					},
+					options: {
+						scaleBeginAtZero: true,
+						scaleShowGridLines: true,
+						scaleGridLineColor: "rgba(0,0,0,.05)",
+						scaleGridLineWidth: 1,
+						scaleShowHorizontalLines: true,
+						scaleShowVerticalLines: true,
+						barShowStroke: true,
+						barStrokeWidth: 2,
+						barDatasetSpacing: 1,
+						legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+						responsive: true,
+						legend: {
+
+							position: 'right'
+						},
+						title: {
+							display: true,
+							text: 'Initiated & Completed Relocations by Month',
+							position: 'top'
+
+						}
 
 					}
+				});
+			}
 
-				}
-			});
+			this.$emit('input', this.data);
 		}
-
-		this.$emit('input', this.data);
 	}
 
 });
