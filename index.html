@@ -42,6 +42,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
 
     <!-- Dropzone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.css" />
@@ -278,6 +279,21 @@
                                             </ul>
                                         </div>
                                         <div class="col-md-8 text-center"><b class="counter"><big>4510</big></b> Total Transferees</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+
+                        <figure class="wow animated bounceInLeft">
+                            <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">Pie Chart</h4>
+                                <div class="panel-body">
+                                    <div class="row" >
+
+                                        <div  class="col-md-12"  >
+                                            <b-chart type="doughnutChart" id="pieChart" :data="pieChart" v-model="input.dataPieChart" style="width: 100%;height: 100%"></b-chart>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -719,6 +735,8 @@ var vm = new Vue({
             },
             jVectorMap : null,
             dataChart:[],
+            barChart:null,
+            dataPieChart:null,
         },
         data:[
             {
@@ -778,6 +796,18 @@ var vm = new Vue({
             ]
         },
         
+       
+        pieChart:
+        [
+            {name: 'Active', y: 45, url: 'http://google.com'},
+            {name: 'Cancelled', y: 5, url: 'http://youtube.com'},
+            {name: 'Complete', y: 30, url: 'http://facebook.com'},
+            {name: 'Delete', y: 5, url: 'http://facebook.com'},
+            {name: 'On-Hold', y: 5, url: 'http://facebook.com'},
+            {name: 'Pending', y: 5, url: 'http://facebook.com'},
+            {name: 'Queued', y: 5, url: 'http://facebook.com'},
+        ],
+       
 
         jVectorWorldMapConfig : {
             map: "world_mill",

@@ -1,5 +1,7 @@
 import Chart from 'chart.js'
 
+import Highcharts from 'highcharts'
+
 export default {
 	props:['type','id','data'],
 
@@ -40,6 +42,9 @@ export default {
 				this.chart = Morris.Donut({
 				  element: this.id,
 				  data: this.data,
+				  hoverCallback: function(index, options, content) {
+			        console.log(content)
+			      },
 				  formatter: function(t) {
 		            return t + "%"
 		          },
@@ -52,7 +57,7 @@ export default {
 			else if(this.type === 'bar'){
 
 				let idChart = this.id
-
+				Chart.defaults.global.legend.display = true;
 				this.chart = new Chart(idChart,{
 					type:this.type,
 					data:{
@@ -106,6 +111,90 @@ export default {
 
 				    }
 				})
+			}
+
+			else if(this.type === 'doughnutChart'){
+			
+				Highcharts.chart(this.id, {
+				    chart: {
+				        plotBackgroundColor: null,
+				        plotBorderWidth: null,
+				        plotShadow: false,
+				        type: 'pie'
+				    },
+				    title: {
+					    text: '',
+					    floating: true,
+					    enabled:false,
+					    
+					},
+					
+					credits:{
+						enabled:false,
+						href:'http://www.highcharts.com',
+						
+						text:'duan.com'
+					},
+				    colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
+				    tooltip: {
+				        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+				    },
+				    plotOptions: {
+				        pie: {
+				            allowPointSelect: true,
+				            cursor: 'pointer',
+				            dataLabels: {
+				                enabled: false,
+				                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+				                style: {
+				                    color: (Highcharts.theme) || 'black'
+				                }
+				            }
+				        }
+				    },
+				    series: [{
+				        
+				        colorByPoint: true,
+				      	 point: {
+								events: {
+									click: function(e) {
+										//this.slice();
+										//console.log(e);
+				            			window.open( e.point.url,'_blank');
+										//window.location.href =;
+										e.preventDefault();
+									}
+								}
+							},
+							data: this.data
+				    }]
+				});
+
+				// let idChart = this.id
+				// // Chart.defaults.global.legend.display = false;
+				// this.chart = new Chart(idChart,{
+				// 	type:'doughnut',
+				// 	data:{
+				// 		labels: ["Active","Cancelled","Complete","Delete","On-Hold","Pending","Queued"],
+				// 		datasets: [
+				// 			{
+				// 				data: this.data[0].data,
+				// 				backgroundColor: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
+
+				// 			}
+				// 		],
+						
+				// 	},
+				// 	options:{
+				// 		onClick : clickFunction
+				// 	}
+				// })
+
+				// function clickFunction(d,i){
+				// 	console.log('click:',d)
+				// }
+
+
 			}
 
 			this.$emit('input',this.data);
