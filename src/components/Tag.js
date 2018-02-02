@@ -95,10 +95,10 @@ export default {
 		},
 		keyhandler(event) {
 			console.log(event);
-     	 let regex = /^[0-9]$/g
-     	 if(event.key.match(regex) == null && event.keyCode != 8 &&  event.keyCode != 189 ){
-     	 	event.preventDefault();
-     	 }
+     	 	let regex = /^[0-9]$/g
+	     	if(event.key.match(regex) == null && event.keyCode != 8 &&  event.keyCode != 189 ){
+	     	 	event.preventDefault();
+	     	}
     	},
 	}
 }

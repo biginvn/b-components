@@ -25,6 +25,7 @@ export default {
 
     mounted() {
         this.initDateTimePicker()
+        this.setDate(this.value)
     },
 
     computed: {
@@ -86,11 +87,11 @@ export default {
         checkInputInvalid(time){
             if( this.validationDateTime(time) == false ){
                 this.classLabel = "active hasError"
-                document.querySelector('.b__input').style.borderColor   = "#f04134"
+                // document.querySelector('.b__input').style.borderColor   = "#f04134"
                 // this.classes    = this.input.defaultClassInput + " hasError" //because Variable this.classes can'nt change therefore I must be Hard Code
             }else{
                 this.classLabel = "active"
-                document.querySelector('.b__input').style.borderColor   = ""
+                // document.querySelector('.b__input').style.borderColor   = ""
                 // this.classes    = this.input.defaultClassInput     
             }
         },

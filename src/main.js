@@ -1,6 +1,8 @@
 import Vue from 'vue'
+import axios from 'axios'
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
+Vue.use(axios)
 Vue.http.options.emulateJSON = true; 
 Vue.http.options.xhr = {withCredentials: true};
 Vue.http.options.emulateHTTP = true;
@@ -29,8 +31,12 @@ import BTinymce from './themes/ios/TinyMCE.vue'
 import BInputTag from './themes/ios/Tag.vue'
 import BModal from './themes/ios/Modal.vue'
 import BLoader from './themes/ios/Loader.vue'
-import BLoadingRemoteData from './themes/ios/LoadingRemoteData.vue'
+// import BLoadingRemoteData from './themes/ios/LoadingRemoteData.vue'
 import BTelerikNumberic from './themes/ios/TelerikNumberic.vue'
+import BJVectorMap from './themes/ios/JVectorMap.vue'
+import BModalMessage from './themes/ios/ModalMessage.vue'
+import BChart from './themes/ios/Chart.vue'
+import BDataTable from './themes/ios/DataTable.vue'
 
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
@@ -54,5 +60,10 @@ Vue.component('BTinymce', BTinymce)
 Vue.component('BInputTag', BInputTag)
 Vue.component('BModal', BModal)
 Vue.component('BLoader', BLoader)
-Vue.component('BLoadingRemoteData', BLoadingRemoteData)
+// Vue.component('BLoadingRemoteData', BLoadingRemoteData)
 Vue.component('BTelerikNumberic', BTelerikNumberic)
+Vue.component('BJVectorMap', BJVectorMap)
+Vue.component('BModalMessage', BModalMessage)
+Vue.component('BChart', BChart)
+Vue.component('BDataTable', BDataTable)
+

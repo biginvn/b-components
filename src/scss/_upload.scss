@@ -48,54 +48,67 @@
             clear: both;
         }
         .preview {
-            padding: 0 10px 10px 0;
+            width: 225px;
+            border: 1px solid #dfdfdf;
+            border-radius: 5px;
             float: left;
             position: relative;
             -webkit-animation: fadeIn;
             animation: fadeIn;
             animation-duration: 1s;
+            margin: 2px !important;
             .dz-thumb {
-                width: 90px;
-                height: 90px;
+                width: 44px;
+                height: 55px;
                 background-image: url(./assets/images/office-icon.svg);
-                background-size: 180px 444px;
+                background-size: 97px 250px;
                 background-position: 0 89px;
                 overflow: hidden;
                 border-radius: 5px;
                 transition: .3s all;
                 img {
                     width: 100%;
+                    margin: 5px 5px 5px 5px;
                 }
             }
             .dz-pdf {
                 background-position: 0 0;
             }
             .dz-doc {
-                background-position: -90px 0;
+                background-position: -51px 0px;
             }
             .dz-ppt {
-                background-position: -180px -89px;
+                background-position: -2px -49px;
             }
             .dz-xls {
-                background-position: -90px -90px;
+                background-position: -51px -49px;
             }
             .dz-txt {
-                background-position: -180px -177px;
+                background-position: -2px -98px;
             }
             .dz-csv {
-                background-position: -90px -177px;
-            }
-            .dz-zip {
-                background-position: -90px -266px;
+                background-position: -51px -97px;
             }
             .dz-rtf {
-                background-position: -180px -266px;
+                background-position: -2px -146px;
+            }
+            .dz-zip {
+                background-position: -51px -147px;
+            }
+            .dz-file {
+                background-position: -2px -194px;
+            }
+            .dz-image {
+                background-image: none !important;
             }
             .dz-name {
                 display: block;
                 text-align: center;
                 padding: 5px 0;
-                max-width: 80px;
+                position: absolute;
+                top: 8px;
+                left: 48px;
+                max-width: 150px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 font-weight: bold;
@@ -105,25 +118,32 @@
             .dz-size {
                 text-align: center;
                 display: block;
+                max-width: 160px;
+                font-size: 10.5px;
+                position: absolute;
+                bottom: 7px;
+                left: 50px;
             }
             .remove-archive {
                 position: absolute;
                 opacity: 0;
-                top: 50%;
-                left: 50%;
+                top: 70%;
+                left: 96%;
                 margin-left: -20px;
                 margin-top: -40px;
                 font-size: 13px;
-                color: rgba(255, 255, 255, 0.59);
-                border-radius: 50%;
-                border: 1px solid rgba(255, 255, 255, 0.28);
+                border-radius: 5px;
+                border: 1px solid #dfdfdf;
                 width: 30px;
-                height: 30px;
+                height: 57px;
                 line-height: 27px;
                 text-align: center;
                 padding: 0;
+                padding-top: 16px;
+                cursor: pointer;
+                z-index: 9;
                 &:hover {
-                    background-color: rgba(255, 255, 255, 0.89);
+                    background-color: gainsboro!important;
                     opacity: 1;
                     color: map-get($supportColors, grey-dark);
                 }

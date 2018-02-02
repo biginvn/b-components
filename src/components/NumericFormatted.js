@@ -2,13 +2,14 @@ import baseMixins from '../mixins/text-field-mixins'
 export default {
     data() {
         return {
-            mask: String,
+            mask: '',
+            valueTemp: '',
             error: false
         }
     },
     mixins: [baseMixins],
     props: ['affix', 'is_prefix', 'class-name'],
-    mounted(mask) {
+    mounted() {
         this.blur(this.value);
     },
     computed: {
@@ -19,9 +20,8 @@ export default {
     },
     watch: {
         value() {
-            // this.updateInput(this.value);
-            this.blur(this.value.toString());
-
+            this.blur(this.value);
+            this.mask == '0' ? this.mask = '' : this.mask;
         },
         is_prefix() {
             this.blur(this.value);
@@ -32,12 +32,14 @@ export default {
     },
     methods: {
         keypress(event) {
-            // console.log(event)
-            // console.log(event.key)
-            // console.log(event.keyCode)
+            var charCode = event.charCode;
+
+            // Prevent '..'
+            if( event.target.value.includes('.') ){
+                event.charCode == 46 ? event.preventDefault() : event.charCode;
+            }
 
             // Remove Alphabet
-            var charCode = event.charCode;
             if (charCode != 0) {
                 // 48 - 57
                 if (charCode < 46 || charCode > 57 || charCode == 47) {
@@ -49,38 +51,37 @@ export default {
 
         },
         keyup(event) {
+            this.mask = event.target.value;
             if(event.key.match(/^[0-9]$/g, "") == null && event.keyCode != 8 && event.keyCode != 190){
-				return this.error = false;
-			}
-        },
-        updateInput(value) {
-            // Null Value and return ''
-            if (value == undefined || value == null || value == '') {
-                value = '';
-                this.updateFloatLabel(value);
-                this.$emit("input", value);
+                return this.error = false;
             }
         },
-        focus(mask) {
+        updateInput(value) {
+            this.mask = event.target.value;
+            var mask = this.mask;
+            // Null Value and return ''
+            mask == undefined || mask == null || mask == '' ? mask = '' : mask ;
+            this.updateFloatLabel(mask);
+        },
+        focus() {
             this.mask = this.value;
         },
         blur(mask) {
-            if(mask==undefined) return
             // Validation type Affix
             this.affix == '$' || this.affix == '€' ? mask : mask = Math.trunc(mask).toString();
             if (this.affix == '%') {
                 mask > 100 ? mask = '100' : mask;
             }
+            mask = this.validateString(mask);
             // Get String position
             var pos = mask.indexOf('.');
-            // Remove A-Z text
-            mask = mask.toString().replace(/[^\d\.]/g, "");
             // Cut String to Forward & Behind  "432.11" => "432" & "11"
             if (pos > 0) {
                 var behind = mask.substring(pos + 1), // 1 is the length of your "." marker
                     forward = mask.split(".").shift();
+                // If behind is not define "432."
                 if (behind == undefined || behind == null || behind == '') {
-                    mask = forward + '.0'
+                    mask = forward
                 }
                 this.$emit("input", mask);
                 // If Value = 4321. return 4321.0
@@ -112,10 +113,18 @@ export default {
                 }
             }
             this.mask = $result;
-            console.log($result + ' ' + typeof($result));
+        },
+        validateString(value){
+            typeof(value) == 'number' ? value = value.toString() : value;
+            if( value == undefined || value == null || value == '0' ){
+                value = '';
+                return value;
+            }
+            return value;
         },
         separator(value) {
-            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            value = this.validateString(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return value;
         },
         isNull(n) {
             if (typeof(n) == 'number') {
