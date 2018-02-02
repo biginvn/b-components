@@ -4,7 +4,7 @@
 <!-- Component: B-JVectorMap -->
 
 <template>
-	<div class="b__components b__j_vector_map" :id="id">
+	<div class="b__components b__j_vector_map" :id="id" style="width:100%; height:100%;">
 	</div>
 </template>
 <script>
