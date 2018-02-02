@@ -62321,8 +62321,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             default: ''
         },
         idSearch: {
-            type: String,
-            required: true
+            type: String
         },
         classPanel: {
             type: String

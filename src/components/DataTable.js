@@ -40,7 +40,6 @@ export default {
         },
         idSearch: {
             type: String,
-            required: true
         },
         classPanel: {
             type: String
