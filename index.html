@@ -634,9 +634,16 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Demo DataTable Component</h4>
                                 <div class="panel-body">
-                                    <b-data-table id="dynamicTable" :calc-sum="calcSum" :edit-a-p-i="editAPI" :key-a-p-i="keyAPI" :table-data="tableData" :static="true" :table-column="tableColumn" :other-options="otherOptions">
-                                    </b-data-table>
+                                    <DataTable idTable="dynamicTable" :calcSum="calcSum" :editAPI="editAPI" :keyAPI="keyAPI" :tableData="tableData" :static="true" :tableColumn="tableColumn" :otherOptions="otherOptions"
+                                               :titlePanel="titlePanel" idSearch="searchList" searchURL="searchURL" :hasSearchFilter="true"
+                                    >
+                                        <div slot="elements">
+                                            <input v-model="reId" type="number" name="reId" value="" placeholder="id">
+                                            <input v-model="title" type="text" name="title" value="" placeholder="title">
+                                        </div>
+                                    </DataTable>
                                     <button type="button" class="btn btn-primary" @click="update">New Data</button>
+                                    <button @click="restore">Restore Data</button>
                                 </div>
                             </div>
                         </figure>
@@ -1044,10 +1051,10 @@ var vm = new Vue({
                 { title: "author", data: "author.name", className: "editable", "name": "author.name" },
                 { title: "author_id", data: "reId", "render": function ( data, type, row, meta ) {
                     if (data % 2 == 0) {
-                        return `<span class="label label-primary">Primary</span>`;
+                        return `<span class="badge badge-primary">Primary</span>`;
                     }
                     else {
-                        return `<span class="label label-success">Success</span>`;
+                        return `<span class="badge badge-success">Success</span>`;
                     }
 
                 } }
@@ -1070,7 +1077,11 @@ var vm = new Vue({
                 }
             ],
             editAPI: 'https://api.mlab.com/api/1/databases/vue-online-shop/collections/Product',
-            keyAPI: 'DqZnVxBibhCJwhNpj3XRwP7N5SuXaazT&pretty'
+            keyAPI: 'DqZnVxBibhCJwhNpj3XRwP7N5SuXaazT&pretty',
+            titlePanel: 'Search Client',
+            reId: '',
+            title: '',
+            searchURL: ''
         }
     },
     beforeCreate () {
@@ -1631,6 +1642,36 @@ var vm = new Vue({
                     type: 'number'
                 }
             ]
+        },
+        restore(data) {
+            axios.get('https://api.mlab.com/api/1/databases/vue-online-shop/collections/Product?q={%22category.name%22:%20%22book%22}&l=8&apiKey=DqZnVxBibhCJwhNpj3XRwP7N5SuXaazT&pretty=true')
+                .then(response => {
+                    this.tableData = response.data
+                    this.tableColumn= [
+                        { title: 'id', data: "reId", "name": "engine" },
+                        { title: `Title <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>`, data: "title", className: "editable", "name": "title" },
+                        { title: "price", data: "price", className: "editable", "name": "price" },
+                        { title: "price_sale.", data: "price_sale" },
+                        { title: "author", data: "author.name", className: "editable", "name": "author.name" },
+                        { title: "author_id", data: "reId", "render": function ( data, type, row, meta ) {
+                            if (data % 2 == 0) {
+                                return `<span class="badge badge-primary">Primary</span>`;
+                            }
+                            else {
+                                return `<span class="badge badge-success">Success</span>`;
+                            }
+
+                        } }
+                    ]
+                    this.otherOptions= {
+                        "searching": true,
+                        "processing": true,
+                        "destroy": true,
+                    }
+                })
+                .catch(e => {
+//                    this.errors.push(e)
+                })
         }
     },
 

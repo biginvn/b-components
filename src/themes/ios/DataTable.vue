@@ -1,6 +1,43 @@
 <template>
     <div class="b-table-custom">
-        <table class="display dataTable" :editAPI="editAPI" :keyAPI="keyAPI" :id="id" width="100%" :static="static" :tableData="tableData" :tableColumn="tableColumn" :otherOptions="otherOptions" :calcSum="calcSum">
+        <div v-if="hasSearchFilter" class="panel" :id="idSearch" :class="classPanel" :searchURL="searchURL">
+            <div class="panel-body">
+                <div class="panel panel-border">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ titlePanel }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form class="search-list">
+                            <div class="form-help">
+                                <slot name="help">
+
+                                </slot>
+                            </div>
+                            <div class="form-elements">
+                                <!--Add input, select, ... at here-->
+                                <slot name="elements">
+
+                                </slot>
+                            </div>
+                            <div class="form-actions">
+                                <!--Add buttons for actions at here-->
+                                <slot name="actions">
+                                    <button @click="searchFilter($event)" type="button" class="btn btn-success btn-rounded btn-search-list">Search</button>
+                                    <button @click="resetSearchForm($event)" type="button" class="btn btn-default btn-rounded">Clear</button>
+                                </slot>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="filter-actions" :class="classFilter">
+                    <!--Add buttons for action create/update,..-->
+                    <slot name="filter_actions">
+
+                    </slot>
+                </div>
+            </div>
+        </div>
+        <table class="display table dataTable" :editAPI="editAPI" :keyAPI="keyAPI" :id="idTable" width="100%" :static="static" :tableData="tableData" :tableColumn="tableColumn" :otherOptions="otherOptions" :calcSum="calcSum">
             <tbody>
             </tbody>
             <tfoot>
@@ -19,10 +56,9 @@
 </template>
 
 <script>
-    import DataTable from './../../components/DataTable'
+    import DataTable from './../scripts/DataTable'
     export default DataTable
 </script>
 
 <style>
-
 </style>

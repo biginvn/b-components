@@ -11,8 +11,7 @@ export default {
         }
     },
     props: {
-        // ['id', 'tableData', 'tableColumn', 'otherOptions', 'static'],
-        id: {
+        idTable: {
             type: String,
             required: true
         },
@@ -38,7 +37,27 @@ export default {
         keyAPI: {
             type: String,
             default: ''
-        }
+        },
+        idSearch: {
+            type: String,
+            required: true
+        },
+        classPanel: {
+            type: String
+        },
+        titlePanel: {
+            type: String
+        },
+        classFilter: {
+            type: String
+        },
+        searchURL: {
+            type: String
+        },
+        hasSearchFilter: {
+            type: Boolean,
+            default: true
+        },
     },
     computed: {
         options() {
@@ -53,8 +72,8 @@ export default {
         'otherOptions': function() {
             this.reRender()
         },
-        'tableColumn': function () {
-
+        'tableData': function () {
+            // this.$store.dispatch('updateTableDataStore', this.tableData)
         }
     },
     beforeUpdate() {
@@ -63,18 +82,17 @@ export default {
         console.log('beforeCreate')
     },
     mounted() {
-        let id = this.id
-        console.log(this.tableColumn)
+        let idTable = this.idTable
         for (let i = 0; i < this.tableColumn.length; i++) {
-            $('#' + id + ' tfoot tr').append(`<th></th>`)
+            $('#' + idTable + ' tfoot tr').append(`<th></th>`)
         }
-        this.bTable = $('#' + id).DataTable(this.options)
+        this.bTable = $('#' + idTable).DataTable(this.options)
         this.autoCalc()
         this.selectCell(this.editAPI, this.keyAPI)
     },
     updated() {
         console.log('updated')
-        let id = this.id
+        let idTable = this.idTable
         if (this.static) {
             this.bTable.clear()
                 .rows.add(this.tableData)
@@ -83,25 +101,25 @@ export default {
         }
         else {
             this.bTable.destroy();
-            $('#' + id).empty(); // empty in case the columns change
-            this.bTable = $('#' + id).DataTable(this.options);
+            $('#' + idTable).empty(); // empty in case the columns change
+            this.bTable = $('#' + idTable).DataTable(this.options);
         }
         this.autoCalc()
     },
     methods: {
         reRender() {
             console.log('render')
-            let id = this.id
+            let idTable = this.idTable
             this.bTable.destroy();
-            $('#' + id + ' tfoot tr th').empty();
-            this.tfoot = $('#' + id + ' tfoot');
-            $('#' + id).empty(); // empty in case the columns change
-            $('#' + id).append(this.tfoot)
-            this.bTable = $('#' + id).DataTable(this.options);
+            $('#' + idTable + ' tfoot tr th').empty();
+            this.tfoot = $('#' + idTable + ' tfoot');
+            $('#' + idTable).empty(); // empty in case the columns change
+            $('#' + idTable).append(this.tfoot)
+            this.bTable = $('#' + idTable).DataTable(this.options);
             this.selectCell(this.editAPI, this.keyAPI)
         },
         autoCalc() {
-            // $('#' + id + ' tbody').on( 'click', 'td', function (e) {
+            // $('#' + idTable + ' tbody').on( 'click', 'td', function (e) {
 
             // } );
             // Remove the formatting to get integer data for summation
@@ -170,15 +188,15 @@ export default {
             }
         },
         selectCell(editAPI, keyAPI) {
-            let id = this.id
+            let idTable = this.idTable
             console.log('this.editAPI: ' + editAPI)
             console.log('this.keyAPI: ' + keyAPI)
             $(document).click(function() {
                 $('td.selected_cell').removeClass('selected_cell')
 
             });
-            $('#' + id + ' tbody').on( 'click', 'td.editable', function (e) {
-                let btable = $('#' + id).DataTable();
+            $('#' + idTable + ' tbody').on( 'click', 'td.editable', function (e) {
+                let btable = $('#' + idTable).DataTable();
                 let data_cell = btable.cell( this ).data();
                 let columns = btable.settings().init().columns;
                 //get the index of the clicked cell
@@ -198,7 +216,7 @@ export default {
                         $(this).wrapInner( "<div class='data_cell'></div>");
                         $(this).append('<input class="update_cell" type="text" value="' + data_cell + '" name="' + columns[colIndex].name + '"><button type="button" class="btn-update-cell btn-sm btn-primary">Update</button>')
                         $('button').on('click', function () {
-                            $("#" + id + " .overlay-table").removeClass('hidden')
+                            $("#" + idTable + " .overlay-table").removeClass('hidden')
                             let new_val = $('.selected_cell input').val().trim()
                             let name = columns[colIndex].name;
                             let res = name.split(".");
@@ -227,10 +245,10 @@ export default {
                                 .then(response => {
                                     $('.selected_cell .data_cell').html(new_val)
                                     $('td.selected_cell').removeClass('selected_cell')
-                                    $("#" + id + " .overlay-table").addClass('hidden')
+                                    $("#" + idTable + " .overlay-table").addClass('hidden')
                                 })
                                 .catch(e => {
-                                    $("#" + id + " .overlay-table").addClass('hidden')
+                                    $("#" + idTable + " .overlay-table").addClass('hidden')
                                     alert('Please check data')
                                 })
                         })
@@ -239,12 +257,48 @@ export default {
                 event.stopPropagation();
             } );
 
-            // $('#' + id + ' tbody').on( 'click', 'tr', function (e) {
-            //     let btable = $('#' + id).DataTable();
+            // $('#' + idTable + ' tbody').on( 'click', 'tr', function (e) {
+            //     let btable = $('#' + idTable).DataTable();
             //     let data_cell = btable.row( this ).data();
             //     alert(JSON.stringify(data_cell))
             //     alert(data_cell.author.name)
             // } );
+        },
+
+        // Methods for search filter
+        searchFilter(e) {
+            const formData = $('.search-list').serialize();
+            console.log(formData)
+            this.getSearchResults(formData);
+        },
+        resetSearchForm(e) {
+            $('#' + this.idSearch + ' .search-list').find('input')
+                .filter(':text, :password, :file').val('')
+                .end()
+                .filter(':checkbox, :radio')
+                .removeAttr('checked')
+                .end()
+                .end()
+                .find('textarea').val('')
+                .end()
+                .find('select').prop("selectedIndex", -1)
+                .find('option:selected').removeAttr('selected')
+            ;
+            $('.btn-search-list').trigger('click');
+        },
+        getSearchResults(data=null) {
+            const url = (data==null) ? this.searchURL : this.searchURL + '?' + data;
+            axios.get(url)
+                .then(response => {
+                    this.updateDataStore(response.data)
+                })
+                .catch(e => {
+                    alert('Please check data')
+                })
+        },
+        //Emit data:
+        updateDataStore(data) {
+            this.$emit('updateDataTable', data)
         }
     },
 }
