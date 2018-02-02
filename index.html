@@ -634,14 +634,14 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Demo DataTable Component</h4>
                                 <div class="panel-body">
-                                    <DataTable idTable="dynamicTable" :calcSum="calcSum" :editAPI="editAPI" :keyAPI="keyAPI" :tableData="tableData" :static="true" :tableColumn="tableColumn" :otherOptions="otherOptions"
-                                               :titlePanel="titlePanel" idSearch="searchList" searchURL="searchURL" :hasSearchFilter="true"
+                                    <b-data-table id-table="dynamicTable" :calc-sum="calcSum" :edit-a-p-i="editAPI" :key-a-p-i="keyAPI" :table-data="tableData" :static="true" :table-column="tableColumn" :other-options="otherOptions"
+                                               :title-panel="titlePanel" id-search="searchList" search-u-r-l="searchURL" :has-search-filter="true"
                                     >
                                         <div slot="elements">
                                             <input v-model="reId" type="number" name="reId" value="" placeholder="id">
                                             <input v-model="title" type="text" name="title" value="" placeholder="title">
                                         </div>
-                                    </DataTable>
+                                    </b-data-table>
                                     <button type="button" class="btn btn-primary" @click="update">New Data</button>
                                     <button @click="restore">Restore Data</button>
                                 </div>
