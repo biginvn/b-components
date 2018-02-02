@@ -1,7 +1,7 @@
 <template>
 	<div class="b__components b-ios b-float-labels chart-container" >
-		<div v-if="chartType === 'doughnut'" :id="chartId" :type="chartType" :data="chartData"  ></div>
-		<canvas v-else :id="chartId" :type="chartType" :data="chartData"></canvas>
+		<div v-if="chartType === 'doughnut' || chartType === 'doughnutChart'" :id="chartId" :type="chartType" :data="chartData"  ></div>
+		<canvas v-else :id="chartId" :type="chartType" :data="chartData" ></canvas>
 	</div>
 </template>
 
