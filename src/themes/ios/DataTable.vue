@@ -56,7 +56,7 @@
 </template>
 
 <script>
-    import DataTable from './../scripts/DataTable'
+    import DataTable from '../../components/DataTable'
     export default DataTable
 </script>
 
