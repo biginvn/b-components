@@ -1,9 +1,9 @@
 import baseMixins from './base-mixins'
 
-const textFieldMixins = {
+let textFieldMixins = {
     data() {
         return {
-            classLabel: '',
+            classLabel: ''
         }
     },
     mixins: [baseMixins],
