@@ -1,6 +1,6 @@
 import baseMixins from './base-mixins'
 
-let textFieldMixins = {
+export default {
     data() {
         return {
             classLabel: ''
@@ -31,4 +31,3 @@ let textFieldMixins = {
         }
     }
 }
-export default textFieldMixins
