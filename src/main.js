@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import axios from 'axios'
+// import axios from 'axios'
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
-Vue.use(axios)
+// Vue.use(axios)
 Vue.http.options.emulateJSON = true; 
 Vue.http.options.xhr = {withCredentials: true};
 Vue.http.options.emulateHTTP = true;

@@ -1,7 +1,7 @@
 /**
  * Created by nobikun1412 on 29/01/2018.
  */
-import axios from 'axios';
+// import axios from 'axios';
 export default {
     data() {
         return {
@@ -55,7 +55,7 @@ export default {
         },
         hasSearchFilter: {
             type: Boolean,
-            default: true
+            default: false
         },
     },
     computed: {
@@ -86,28 +86,25 @@ export default {
             $('#' + idTable + ' tfoot tr').append(`<th></th>`)
         }
         this.bTable = $('#' + idTable).DataTable(this.options)
-        this.autoCalc()
+        // this.autoCalc()
         this.selectCell(this.editAPI, this.keyAPI)
     },
     updated() {
-        console.log('updated')
         let idTable = this.idTable
         if (this.static) {
             this.bTable.clear()
                 .rows.add(this.tableData)
                 .draw();
-            console.log('updated')
         }
         else {
             this.bTable.destroy();
             $('#' + idTable).empty(); // empty in case the columns change
             this.bTable = $('#' + idTable).DataTable(this.options);
         }
-        this.autoCalc()
+        // this.autoCalc()
     },
     methods: {
         reRender() {
-            console.log('render')
             let idTable = this.idTable
             this.bTable.destroy();
             $('#' + idTable + ' tfoot tr th').empty();
@@ -240,16 +237,16 @@ export default {
                             }
 
                             //Send request update:
-                            axios.put(editAPI + '/' + data_row._id.$oid + '?apiKey=' + keyAPI + '=true', new_data_row)
-                                .then(response => {
-                                    $('.selected_cell .data_cell').html(new_val)
-                                    $('td.selected_cell').removeClass('selected_cell')
-                                    $("#" + idTable + " .overlay-table").addClass('hidden')
-                                })
-                                .catch(e => {
-                                    $("#" + idTable + " .overlay-table").addClass('hidden')
-                                    alert('Please check data')
-                                })
+                            // axios.put(editAPI + '/' + data_row._id.$oid + '?apiKey=' + keyAPI + '=true', new_data_row)
+                            //     .then(response => {
+                            //         $('.selected_cell .data_cell').html(new_val)
+                            //         $('td.selected_cell').removeClass('selected_cell')
+                            //         $("#" + idTable + " .overlay-table").addClass('hidden')
+                            //     })
+                            //     .catch(e => {
+                            //         $("#" + idTable + " .overlay-table").addClass('hidden')
+                            //         alert('Please check data')
+                            //     })
                         })
                     }
                 }
@@ -266,8 +263,6 @@ export default {
 
         // Methods for search filter
         searchFilter(e) {
-            const formData = $('.search-list').serialize();
-            console.log(formData)
             this.getSearchResults(formData);
         },
         resetSearchForm(e) {
@@ -287,13 +282,13 @@ export default {
         },
         getSearchResults(data=null) {
             const url = (data==null) ? this.searchURL : this.searchURL + '?' + data;
-            axios.get(url)
-                .then(response => {
-                    this.updateDataStore(response.data)
-                })
-                .catch(e => {
-                    alert('Please check data')
-                })
+            // axios.get(url)
+            //     .then(response => {
+            //         this.updateDataStore(response.data)
+            //     })
+            //     .catch(e => {
+            //         alert('Please check data')
+            //     })
         },
         //Emit data:
         updateDataStore(data) {
