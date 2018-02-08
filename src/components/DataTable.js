@@ -30,6 +30,7 @@ export default {
         },
         calcSum: {
             type: Array,
+            default: null
         },
         editAPI: {
             type: String
@@ -86,7 +87,7 @@ export default {
             $('#' + idTable + ' tfoot tr').append(`<th></th>`)
         }
         this.bTable = $('#' + idTable).DataTable(this.options)
-        // this.autoCalc()
+        if (this.calcSum !== null) this.autoCalc()
         this.selectCell(this.editAPI, this.keyAPI)
     },
     updated() {
@@ -101,7 +102,7 @@ export default {
             $('#' + idTable).empty(); // empty in case the columns change
             this.bTable = $('#' + idTable).DataTable(this.options);
         }
-        // this.autoCalc()
+        if (this.calcSum !== null) this.autoCalc()
     },
     methods: {
         reRender() {
