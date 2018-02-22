@@ -58,10 +58,11 @@ export default {
 
 				let idChart = this.id
 				Chart.defaults.global.legend.display = true;
+				let labels = this.data.labels
 				this.chart = new Chart(idChart,{
 					type:this.type,
 					data:{
-						labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+						labels : labels,
 						datasets: [
 							{
 			                    label: "Initiated",
