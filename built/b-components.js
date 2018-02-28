@@ -60543,7 +60543,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             bTable: {},
             optionsTable: {},
-            tfoot: ''
+            tfoot: '',
+            renderTable: false
         };
     },
     props: {
@@ -60605,34 +60606,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     watch: {
-        'otherOptions': function () {
-            this.reRender();
-        },
-        'tableData': function () {
-            // this.$store.dispatch('updateTableDataStore', this.tableData)
-        }
+        // 'otherOptions': function() {
+        //     this.reRender()
+        // },
+        // 'tableData': function () {
+        //     // this.$store.dispatch('updateTableDataStore', this.tableData)
+        // }
     },
     beforeUpdate() {},
-    created() {
-        console.log('beforeCreate');
-    },
+    created() {},
     mounted() {
-        let idTable = this.idTable;
-        for (let i = 0; i < this.tableColumn.length; i++) {
-            $('#' + idTable + ' tfoot tr').append(`<th></th>`);
+        if (this.tableColumn.length > 0) {
+            let idTable = this.idTable;
+            for (let i = 0; i < this.tableColumn.length; i++) {
+                $('#' + idTable + ' tfoot tr').append(`<th></th>`);
+            }
+            this.bTable = $('#' + idTable).DataTable(this.options);
+            if (this.calcSum !== null) this.autoCalc();
+            this.selectCell(this.editAPI, this.keyAPI);
+            this.renderTable = true;
         }
-        this.bTable = $('#' + idTable).DataTable(this.options);
-        if (this.calcSum !== null) this.autoCalc();
-        this.selectCell(this.editAPI, this.keyAPI);
     },
     updated() {
         let idTable = this.idTable;
         if (this.static) {
             this.bTable.clear().rows.add(this.tableData).draw();
         } else {
-            this.bTable.destroy();
-            $('#' + idTable).empty(); // empty in case the columns change
+            if (this.renderTable) {
+                this.bTable.destroy();
+                $('#' + idTable).empty(); // empty in case the columns change
+            }
             this.bTable = $('#' + idTable).DataTable(this.options);
+            this.renderTable = true;
         }
         if (this.calcSum !== null) this.autoCalc();
     },
