@@ -25,7 +25,7 @@ export default {
 			return this.value ? this.value : (this.isSingle ? null : [])
 		},
 		isSingle(){
-			return this.singleDropdown === "true" ? true : false 
+			return this.singleDropdown === "true" ? true : false
 		},
 		listClasses () {
 			return (this.isExpanding ? "active" : "") + " b__multi__select__list"
@@ -41,7 +41,7 @@ export default {
 				return listSelected[0]
 			return null
 		},
-		getSelectedList () { // Get selected with full information [ { id : .. , html : ... } ] 
+		getSelectedList () { // Get selected with full information [ { id : .. , html : ... } ]
 			if (this.isSingle) return
 			let selected = []
 			this.selected.forEach( (id, index) => {
@@ -57,7 +57,7 @@ export default {
 		switchList (on = true) {
 			if (on)
 				this.isExpanding = true
-			else 
+			else
 				this.isExpanding = false
 		},
 		toggleItem(id){
@@ -100,15 +100,20 @@ export default {
 			// this
 		},
 		searchAction (keyword) {
-
+			console.log(keyword)
+			this.searchKeyword = keyword
+			this.switchList(true)
+			if(keyword == undefined && keyword == null || keyword.length == 0) {
+				this.searchList = JSON.parse(JSON.stringify(this.list))
+				return
+			}
 			this.searchList = this.list.filter( (item, position) => {
 				if (item.keywords == undefined || item.keywords == null)
 					return false
 				let regex = new RegExp('.*' + keyword.toLowerCase() +'.*')
-				return item.keywords.toLowerCase().match(regex) 
+				return item.keywords.toLowerCase().match(regex)
 			})
-			this.searchKeyword = keyword
-			this.switchList(true)
+
 		},
 		focusInputAction (keyword) {
 			this.searchAction(keyword)

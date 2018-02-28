@@ -26,7 +26,7 @@ export default {
 				return []
 			return this.data
 		},
-		
+
 	},
 	watch:{
 		chartData(val){
@@ -34,7 +34,7 @@ export default {
 		}
 	},
 	mounted(){
-		this.initialize(this.type,this.id,this.data);	
+		this.initialize(this.type,this.id,this.data);
 	},
 	methods:{
 		initialize(type,id,data){
@@ -98,7 +98,7 @@ export default {
 				        legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
 				        responsive: true,
 				        legend: {
-				        
+
 				            position: 'right',
 				        },
 				        title: {
@@ -114,25 +114,26 @@ export default {
 			}
 
 			else if(this.type === 'doughnutChart'){
-			
+
 				Highcharts.chart(this.id, {
 				    chart: {
 				        plotBackgroundColor: null,
 				        plotBorderWidth: null,
 				        plotShadow: false,
-				        type: 'pie'
+				        type: 'pie',
+						backgroundColor: 'transparent'
 				    },
 				    title: {
 					    text: '',
 					    floating: true,
 					    enabled:false,
-					    
+
 					},
-					
+
 					credits:{
 						enabled:false,
 						href:'http://www.highcharts.com',
-						
+
 						text:'duan.com'
 					},
 				    colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
@@ -153,7 +154,7 @@ export default {
 				        }
 				    },
 				    series: [{
-				        
+
 				        colorByPoint: true,
 				      	 point: {
 								events: {
@@ -183,7 +184,7 @@ export default {
 
 				// 			}
 				// 		],
-						
+
 				// 	},
 				// 	options:{
 				// 		onClick : clickFunction
@@ -200,6 +201,6 @@ export default {
 			this.$emit('input',this.data);
 		}
 	}
-	
+
 
 }
