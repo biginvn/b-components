@@ -18,8 +18,38 @@ export default {
 		list(newList) {
 			this.searchList = JSON.parse(JSON.stringify(newList))
 		},
+		resetSearchKeyWord() {
+			if (this.resetSearchKeyWord) {
+				this.searchKeyword = ''
+				this.$emit('search-keywords', '');
+			}
+		}
 	},
-	props : ['list', 'value', 'disabled', 'single-dropdown', 'disable-icon', 'placeholder'],
+	props: {
+        list: {
+        	
+        },
+        value: {
+        	
+        },
+        disabled: {
+
+        },
+        singleDropdown: {
+
+        },
+        disableIcon: {
+
+        },
+        placeholder: {
+
+        },
+        resetSearchKeyWord: {
+        	type: Boolean,
+        	default: false
+        }
+    },
+	// props : ['list', 'value', 'disabled', 'single-dropdown', 'disable-icon', 'placeholder'],
 	computed : {
 		selected () { // Convert v-model to [] if it's null
 			return this.value ? this.value : (this.isSingle ? null : [])
