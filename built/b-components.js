@@ -57334,13 +57334,17 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(566)
+}
 var Component = __webpack_require__(4)(
   /* script */
   __webpack_require__(394),
   /* template */
   __webpack_require__(531),
   /* styles */
-  null,
+  injectStyle,
   /* scopeId */
   null,
   /* moduleIdentifier (server only) */
@@ -59894,6 +59898,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_MultiSelect__["a" /* default */]);
@@ -60447,7 +60453,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						plotBackgroundColor: null,
 						plotBorderWidth: null,
 						plotShadow: false,
-						type: 'pie'
+						type: 'pie',
+						backgroundColor: 'transparent'
 					},
 					title: {
 						text: '',
@@ -61317,7 +61324,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return null;
 		},
 		getSelectedList() {
-			// Get selected with full information [ { id : .. , html : ... } ] 
+			// Get selected with full information [ { id : .. , html : ... } ]
 			if (this.isSingle) return;
 			let selected = [];
 			this.selected.forEach((id, index) => {
@@ -61350,7 +61357,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				if (selectList.includes(id)) {
 					selectList.splice(selectList.indexOf(id), 1);
 					this.$emit('input', null);
-					this.$el.querySelector('input.input-control').focus();
+					if (this.$el.querySelector('input.input-control') != null) {
+						this.$el.querySelector('input.input-control').focus();
+					}
 				} else {
 					selectList = [id];
 					this.$emit('input', id);
@@ -61367,14 +61376,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			// this
 		},
 		searchAction(keyword) {
-
+			this.searchKeyword = keyword;
+			this.switchList(true);
+			this.$emit('search-keywords', keyword);
+			if (keyword == undefined && keyword == null || keyword.length == 0) {
+				this.searchList = JSON.parse(JSON.stringify(this.list));
+				return;
+			}
 			this.searchList = this.list.filter((item, position) => {
 				if (item.keywords == undefined || item.keywords == null) return false;
 				let regex = new RegExp('.*' + keyword.toLowerCase() + '.*');
 				return item.keywords.toLowerCase().match(regex);
 			});
-			this.searchKeyword = keyword;
-			this.switchList(true);
 		},
 		focusInputAction(keyword) {
 			this.searchAction(keyword);
@@ -62469,7 +62482,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
         this.$emit('dropzone', this.dropzone);
         // edit by thien nguyen
-        if (this.value.list != undefined || this.value.list != null) this.prepareItems(this.value.list);
+        if (this.value != undefined && this.value != null && this.value.list != undefined && this.value.list != null) this.prepareItems(this.value.list);
     },
     props: ['name', 'config', 'id', 'mode'],
     computed: {},
@@ -80152,9 +80165,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('input', {
     staticClass: "input-control",
     staticStyle: {
-      "width": "100%"
+      "width": "100%",
+      "margin-left": "13px",
+      "margin-top": "3px",
+      "font-family": "'Open Sans',sans-serif",
+      "font-size": "14px"
     },
     attrs: {
+      "placeholder": _vm.placeholder,
       "type": "text"
     },
     domProps: {
@@ -81774,6 +81792,46 @@ module.exports = function listToStyles (parentId, list) {
 /***/ (function(module, exports) {
 
 /* (ignored) */
+
+/***/ }),
+/* 565 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(11)();
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"MultiSelect.vue","sourceRoot":"webpack://"}]);
+
+// exports
+
+
+/***/ }),
+/* 566 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(565);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(14)("086c5e7e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-09a82789\",\"scoped\":false,\"hasInlineConfig\":false}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MultiSelect.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-09a82789\",\"scoped\":false,\"hasInlineConfig\":false}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MultiSelect.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);
