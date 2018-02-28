@@ -81,7 +81,7 @@
         border-radius: 3px;
         border: 1px solid #dfdfdf;
         min-width: 20px;
-        min-height: 30px;
+        min-height: 34px;
         padding-right: 30px;
         /*border-bottom: 1px solid map-get($colors, primary);*/
 
@@ -131,11 +131,11 @@
             margin-right: 7px;
             margin-bottom: 5px;
             border-radius: 15px;
-            color: rgba(0, 0, 0, .87);
+            /*color: rgba(0, 0, 0, .87);*/
 
             &.single {
                 background-color: transparent;
-                padding: 0;
+                padding: 6px 30px 6px 10px;
                 display: block;
                 margin: 0;
                 .thumb {
