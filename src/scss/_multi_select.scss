@@ -1,6 +1,7 @@
 .b__components.b__multi__select {
     position: relative;
     cursor: pointer;
+    
     .b__multi__select__list {
         background-color: #FFF;
         padding: 0;
@@ -77,15 +78,34 @@
     }
 
     & .b__multi__select__control {
+        border-radius: 3px;
+        border: 1px solid #dfdfdf;
         min-width: 20px;
         min-height: 30px;
         padding-right: 30px;
-        border-bottom: 1px solid map-get($colors, primary);
+        /*border-bottom: 1px solid map-get($colors, primary);*/
+
         &>.control {
-            position: absolute;
+            /*position: absolute;
             right: 10px;
             bottom: 5px;
-            cursor: pointer;
+            cursor: pointer;*/
+            content: "\f078";
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: absolute;
+            display: block;
+            padding-top: 6px;
+            top: 1px;
+            right: 6px;
+            height: calc(100% - 2px);
+            width: 12px;
+            font-size: 15px;
+            color: #74767d;
+            z-index: 2;
         }
 
         &>.input-control-wrap {
@@ -100,8 +120,8 @@
                     border-width: 0;
                 }
             }
-        }
 
+        }
 
         .selected {
             display: inline-block;

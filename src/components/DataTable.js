@@ -8,6 +8,7 @@ export default {
             bTable: {},
             optionsTable: {},
             tfoot: '',
+            renderTable: false
         }
     },
     props: {
@@ -69,26 +70,29 @@ export default {
         },
     },
     watch: {
-        'otherOptions': function() {
-            this.reRender()
-        },
-        'tableData': function () {
-            // this.$store.dispatch('updateTableDataStore', this.tableData)
-        }
+        // 'otherOptions': function() {
+        //     this.reRender()
+        // },
+        // 'tableData': function () {
+        //     // this.$store.dispatch('updateTableDataStore', this.tableData)
+        // }
     },
     beforeUpdate() {
     },
     created() {
-        console.log('beforeCreate')
+
     },
     mounted() {
-        let idTable = this.idTable
-        for (let i = 0; i < this.tableColumn.length; i++) {
-            $('#' + idTable + ' tfoot tr').append(`<th></th>`)
+        if (this.tableColumn.length > 0) {
+            let idTable = this.idTable
+            for (let i = 0; i < this.tableColumn.length; i++) {
+                $('#' + idTable + ' tfoot tr').append(`<th></th>`)
+            }
+            this.bTable = $('#' + idTable).DataTable(this.options)
+            if (this.calcSum !== null) this.autoCalc()
+            this.selectCell(this.editAPI, this.keyAPI)
+            this.renderTable = true;
         }
-        this.bTable = $('#' + idTable).DataTable(this.options)
-        if (this.calcSum !== null) this.autoCalc()
-        this.selectCell(this.editAPI, this.keyAPI)
     },
     updated() {
         let idTable = this.idTable
@@ -98,9 +102,12 @@ export default {
                 .draw();
         }
         else {
-            this.bTable.destroy();
-            $('#' + idTable).empty(); // empty in case the columns change
+            if (this.renderTable) {
+                this.bTable.destroy();
+                $('#' + idTable).empty(); // empty in case the columns change
+            }
             this.bTable = $('#' + idTable).DataTable(this.options);
+            this.renderTable = true;
         }
         if (this.calcSum !== null) this.autoCalc()
     },

@@ -455,7 +455,12 @@
                                     <h4 class="mb-3 panel-heading">Multi Select</h4>
                                     <div class="panel-body">
                                         <p>
-                                            <b-multi-select :list="listMultiSelect" v-model="input.multiSelect"></b-multi-select>
+                                            <b-multi-select 
+                                                placeholder="Input your text"
+                                                :list="listMultiSelect" 
+                                                v-model="input.multiSelect"
+                                                v-on:clearInput="clearInput()"
+                                            ></b-multi-select>
                                         </p>
                                         <p>{{ input.multiSelect }}</p>
                                         <p>
@@ -1095,6 +1100,11 @@ var vm = new Vue({
         })
     },
     methods: {
+
+        clearInput:function(){
+             this.val('')
+        },
+
         update() {
             this.tableData= [
                 {

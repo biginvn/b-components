@@ -17,9 +17,9 @@ export default {
 	watch:{
 		list(newList) {
 			this.searchList = JSON.parse(JSON.stringify(newList))
-		}
+		},
 	},
-	props : ['list', 'value', 'disabled', 'single-dropdown', 'disable-icon'],
+	props : ['list', 'value', 'disabled', 'single-dropdown', 'disable-icon', 'placeholder'],
 	computed : {
 		selected () { // Convert v-model to [] if it's null
 			return this.value ? this.value : (this.isSingle ? null : [])
@@ -32,6 +32,11 @@ export default {
 		}
 	},
 	methods : {
+		blurSearch(){
+			if(this.searchList.length == 0){
+				this.searchKeyword = ""
+			}
+		},
 		getSingleSelected(){
 			let listSelected = this.list.filter( (item) => {
 				return item.id == this.selected
