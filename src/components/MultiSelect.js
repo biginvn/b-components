@@ -105,10 +105,9 @@ export default {
 			// this
 		},
 		searchAction (keyword) {
-			console.log(keyword)
 			this.searchKeyword = keyword
 			this.switchList(true)
-			this.$emit('search-keywords');
+			this.$emit('search-keywords', keyword);
 			if(keyword == undefined && keyword == null || keyword.length == 0) {
 				this.searchList = JSON.parse(JSON.stringify(this.list))
 				return
