@@ -86,7 +86,9 @@ export default {
 				if (selectList.includes(id)){
 					selectList.splice(selectList.indexOf(id), 1)
 					this.$emit('input', null)
-					this.$el.querySelector('input.input-control').focus()
+					if(this.$el.querySelector('input.input-control') != null){
+						this.$el.querySelector('input.input-control').focus()
+					}
 				}
 				else{
 					selectList = [id]
