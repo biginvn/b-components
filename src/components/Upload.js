@@ -51,12 +51,12 @@ export default {
         })
         this.$emit('dropzone', this.dropzone)
         // edit by thien nguyen
-        if(this.value.list != undefined || this.value.list != null)
+        if(this.value != undefined && this.value != null && this.value.list != undefined && this.value.list != null)
             this.prepareItems(this.value.list)
     },
     props: ['name', 'config', 'id', 'mode'],
     computed: {
-        
+
     },
     watch:{
         'dropzone.files'(value){
@@ -97,14 +97,14 @@ export default {
 
             let items = [];
             for(let i=0; i < list.length; i++){
-                let listItem = list[i];   
-                let className 
+                let listItem = list[i];
+                let className
                 if( listItem.className != null || listItem.className != undefined )
                     className = listItem.className
                 else
                     className = this.getClassByPath(listItem.path)
                 let item = {
-                    id         : listItem.id, 
+                    id         : listItem.id,
                     size       : listItem.size,
                     path       : listItem.path,
                     name       : (listItem.filename == null || listItem.filename == undefined) ? this.getNameByPath(listItem.path) : listItem.filename,
@@ -136,7 +136,7 @@ export default {
                     break;
                 case "docx":
                     itemClass += " dz-doc"
-                    break;      
+                    break;
                 case "ppt":
                     itemClass += " dz-ppt"
                     break;
