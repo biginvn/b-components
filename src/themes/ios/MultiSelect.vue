@@ -14,7 +14,7 @@
 				<input 
 				:placeholder="placeholder"
 				type="text" 
-				style="width:100%; margin-left: 13px; margin-top: 3px; font-family: 'Open Sans',sans-serif; font-size: 14px;" 
+				style="width:100%; margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 7px; left: 12px;" 
 				@keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')"
 				@keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''"
 				class="input-control" @focus = "focusInputAction($event.target.value)" @input = "searchAction($event.target.value)" :value = "searchKeyword"
@@ -43,4 +43,3 @@
 	import MultiSelect from './../../components/MultiSelect'
 	export default MultiSelect
 </script>
-
