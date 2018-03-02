@@ -1,5 +1,6 @@
 <template>
 	<div class="b__components b__multi__select" @mouseleave = "switchList(false)" @click = "switchList(true)">
+		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
 		<div class="b__multi__select__control">
 			<div class="selected" v-if="!isSingle" v-for="item in getSelectedList()">
 				<span class="thumb" v-html="item.thumbHtml"></span>
@@ -14,7 +15,7 @@
 				<input 
 				:placeholder="placeholder"
 				type="text" 
-				style="width:100%; margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 7px; left: 12px;" 
+				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px;" 
 				@keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')"
 				@keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''"
 				class="input-control" @focus = "focusInputAction($event.target.value)" @input = "searchAction($event.target.value)" :value = "searchKeyword"

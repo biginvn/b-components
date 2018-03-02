@@ -456,10 +456,11 @@
                                     <div class="panel-body">
                                         <p>
                                             <b-multi-select 
+                                                label="Select country"
                                                 placeholder="Input your text"
                                                 :list="listMultiSelect" 
                                                 v-model="input.multiSelect"
-                                                v-on:clearInput="clearInput()"
+                                            
                                             ></b-multi-select>
                                         </p>
                                         <p>{{ input.multiSelect }}</p>

@@ -7,7 +7,8 @@ export default {
 			searchList : [],
 			pointerIndex : null, // Selecting index of list
 			hoverIndex : null, // Position of cursor is hovering select item
-			searchKeyword : ''
+			searchKeyword : '',
+			isActive : false,
 		}
 	},
 	mixins: [baseComponent],
@@ -23,6 +24,10 @@ export default {
 				this.searchKeyword = ''
 				this.$emit('search-keywords', '');
 			}
+		},
+		value(value){
+			if(value != null)
+				this.isActive = true
 		}
 	},
 	props: {
@@ -42,6 +47,12 @@ export default {
 
         },
         placeholder: {
+
+        },
+        label:{
+
+        },
+        id:{
 
         },
         resetSearchKeyWord: {
@@ -67,6 +78,7 @@ export default {
 				this.searchKeyword = ""
 			}
 		},
+
 		getSingleSelected(){
 			let listSelected = this.list.filter( (item) => {
 				return item.id == this.selected

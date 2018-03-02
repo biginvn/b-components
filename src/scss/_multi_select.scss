@@ -2,6 +2,28 @@
     position: relative;
     cursor: pointer;
     
+    & > label {
+        opacity: 0;
+        visibility: hidden;
+        display: block;
+        position: absolute;
+        top: -6px;
+        left: 10px;
+        padding: 0 2px;
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 1;
+        color: #1976d2;
+        background-color: #fff;
+        border-radius-top-left: 3px;
+        transition: all .2s ease-in-out;
+        z-index: 1;
+        &.active{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
     .b__multi__select__list {
         background-color: #FFF;
         padding: 0;
@@ -81,8 +103,9 @@
         border-radius: 3px;
         border: 1px solid #dfdfdf;
         min-width: 20px;
-        min-height: 34px;
+        min-height: 33px;
         padding-right: 30px;
+        height: 33px;
         /*border-bottom: 1px solid map-get($colors, primary);*/
 
         &>.control {
@@ -98,7 +121,7 @@
             -moz-osx-font-smoothing: grayscale;
             position: absolute;
             display: block;
-            padding-top: 6px;
+            padding-top: 10px;
             top: 1px;
             right: 6px;
             height: calc(100% - 2px);
@@ -106,6 +129,7 @@
             font-size: 17x;
             color: #74767d;
             z-index: 2;
+            font-size: medium;
         }
 
         &>.input-control-wrap {
@@ -140,6 +164,7 @@
                 margin: 0;
                 font-size:12.5px;
                 padding:8px;
+                margin-left: 2px;
                 .thumb {
                     width: 100%;
                     display: block;
