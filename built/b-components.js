@@ -13775,7 +13775,7 @@ module.exports = function(module) {
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
-	props: ['type', 'min', 'maxlength'],
+	props: ['type', 'min', 'maxlength', 'classParent'],
 	computed: {
 		classes() {
 			return (this.className ? this.className : '') + " b__input 2";
@@ -13783,6 +13783,9 @@ module.exports = function(module) {
 		typeComponent() {
 			if (this.type == undefined || this.type == null || this.type.length == 0) return 'text';
 			return this.type;
+		},
+		classesParent() {
+			return this.classParent ? this.classParent : '';
 		}
 	},
 	methods: {
@@ -81224,7 +81227,8 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "b__components b-ios b-float-label"
+    staticClass: "b__components b-ios b-float-label",
+    class: _vm.classesParent
   }, [_c('label', {
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
