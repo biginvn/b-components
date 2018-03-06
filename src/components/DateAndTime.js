@@ -14,7 +14,6 @@ export default {
     },
 
     components: {
-
     },
 
     props : [ 'id', 'label', 'name', 'disabled', 'placeholder', 'class-name', 'datetimepicker-type', 'time-format'],
