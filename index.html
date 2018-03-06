@@ -106,7 +106,9 @@
                                 <h4 class="mb-3 panel-heading">Text Field</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-text-field name="minh" id="asdasd" type="email" class-name="minh class" v-model="input.name" placeholder="Input yout text" label="Label"></b-text-field>
+                                        <b-text-field name="minh" id="asdasd" type="email" class-parent="test-class" class-name="minh class" v-model="input.name" placeholder="Input yout text" label="Label">
+                                            <span slot="otherElements">hello123</span>
+                                        </b-text-field>
                                     </p>
                                     <p>{{ input.name }}</p>
                                     <b-button type="button" class-name="button-primary" icon="<i class='fa fa-circle-thin'></i>" label="Update model" @click.native="input.name='Test'"></b-button>
