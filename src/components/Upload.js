@@ -13,46 +13,8 @@ export default {
     },
     mixins: [baseComponent],
     mounted() {
-        this.configDropzone()
-        this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
-        let dropzoneComponent = this
-
-        // this.dropzone.on("totaluploadprogress", (progress) => {
-        //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%"
-        //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block"
-        // })
-
-        this.dropzone.on("sending", (file) => {
-            document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1"
-        })
-
-        this.dropzone.on("queuecomplete", (progress) => {
-            // document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "0"
-        })
-
-        this.dropzone.on("addedfile", (file) => {
-            var parent = document.querySelectorAll('.preview:not(stuff)');
-            for (var i = 0; i < parent.length ; i++) {
-                var child = parent[i].querySelector('.dz-thumb');
-                parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
-            }
-
-            var fileEx = file.name.split('.').pop();
-            if (fileEx != "JPG" || fileEx != "JPEG" || fileEx != "PNG" ||  fileEx != "GIF" ||  fileEx != "BMP"){
-                fileEx == "pdf" ? child.className += " dz-pdf" : child.className;
-                fileEx == "doc" ? child.className += " dz-doc" : child.className;
-                fileEx == "ppt" ? child.className += " dz-ppt" : child.className;
-                fileEx == "xls" ? child.className += " dz-xls" : child.className;
-                fileEx == "txt" ? child.className += " dz-txt" : child.className;
-                fileEx == "csv" ? child.className += " dz-csv" : child.className;
-                fileEx == "rtf" ? child.className += " dz-rtf" : child.className;
-                fileEx == "zip" ? child.className += " dz-zip" : child.className;
-            }
-        })
-        this.$emit('dropzone', this.dropzone)
-        // edit by thien nguyen
-        if(this.value.list != undefined || this.value.list != null)
-            this.prepareItems(this.value.list)
+        if(this.value != null && this.value != undefined)
+            this.initDropzone()
     },
     props: ['name', 'config', 'id', 'mode'],
     computed: {
@@ -64,14 +26,63 @@ export default {
             this.$emit('input', this.value)
         },
         'value.list'(value){ // edit by thien nguyen
-            this.prepareItems(value)
+            if(value != undefined)
+                this.prepareItems(value)
         },
+        value(value){
+            if(value != undefined && value != undefined)
+                this.initDropzone()
+        }
     },
     methods: {
         // upload() {  //rem by thien.nguyen
         //     this.dropzone.enqueueFiles(this.dropzone.getFilesWithStatus(Dropzone.ADDED));
         //     this.$emit('input', this.dropzone)
         // },
+        initDropzone(){
+            this.configDropzone()
+            this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
+            let dropzoneComponent = this
+
+            // this.dropzone.on("totaluploadprogress", (progress) => {
+            //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%"
+            //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block"
+            // })
+
+            this.dropzone.on("sending", (file) => {
+                document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1"
+            })
+
+            this.dropzone.on("queuecomplete", (progress) => {
+                // document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "0"
+            })
+
+            this.dropzone.on("addedfile", (file) => {
+                var parent = document.querySelectorAll('.preview:not(stuff)');
+                for (var i = 0; i < parent.length ; i++) {
+                    var child = parent[i].querySelector('.dz-thumb');
+                    parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
+                }
+
+                var fileEx = file.name.split('.').pop();
+                if (fileEx != "JPG" || fileEx != "JPEG" || fileEx != "PNG" ||  fileEx != "GIF" ||  fileEx != "BMP"){
+                    fileEx == "pdf" ? child.className += " dz-pdf" : child.className;
+                    fileEx == "doc" ? child.className += " dz-doc" : child.className;
+                    fileEx == "ppt" ? child.className += " dz-ppt" : child.className;
+                    fileEx == "xls" ? child.className += " dz-xls" : child.className;
+                    fileEx == "txt" ? child.className += " dz-txt" : child.className;
+                    fileEx == "csv" ? child.className += " dz-csv" : child.className;
+                    fileEx == "rtf" ? child.className += " dz-rtf" : child.className;
+                    fileEx == "zip" ? child.className += " dz-zip" : child.className;
+                }
+            })
+            this.$emit('dropzone', this.dropzone)
+            // edit by thien nguyen
+            if(this.value != undefined)
+                if(this.value.list != undefined && this.value.list != null)
+                    this.prepareItems(this.value.list)
+        },
+
         configDropzone() {
             let config = {
                 thumbnailWidth : 80,
