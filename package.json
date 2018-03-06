@@ -5,7 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack --config config/base.config.js",
-    "build-scss": "./node_modules/.bin/gulp --gulpfile config/build-scss.js watch-complie-scss",
+    "build-scss": "./node_modules/.bin/gulp --gulpfile config/build-scss.js complie-scss",
     "dev-server": "./node_modules/.bin/webpack-dev-server --config config/base.config.js --content-base ./",
     "test": "echo \"Welcome to BComponents\""
   },

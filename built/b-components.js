@@ -13747,7 +13747,7 @@ module.exports = function(module) {
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
-	props: ['type', 'min', 'maxlength'],
+	props: ['type', 'min', 'maxlength', 'classParent'],
 	computed: {
 		classes() {
 			return (this.className ? this.className : '') + " b__input 2";
@@ -13755,6 +13755,9 @@ module.exports = function(module) {
 		typeComponent() {
 			if (this.type == undefined || this.type == null || this.type.length == 0) return 'text';
 			return this.type;
+		},
+		classesParent() {
+			return this.classParent ? this.classParent : '';
 		}
 	},
 	methods: {
@@ -59509,6 +59512,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_MultiSelect__["a" /* default */]);
@@ -59754,6 +59770,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TextField__ = __webpack_require__(22);
+//
 //
 //
 //
@@ -60062,7 +60079,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						plotBackgroundColor: null,
 						plotBorderWidth: null,
 						plotShadow: false,
-						type: 'pie'
+						type: 'pie',
+						backgroundColor: 'transparent'
 					},
 					title: {
 						text: '',
@@ -60158,7 +60176,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             bTable: {},
             optionsTable: {},
-            tfoot: ''
+            tfoot: '',
+            renderTable: false
         };
     },
     props: {
@@ -60220,34 +60239,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     watch: {
-        'otherOptions': function () {
-            this.reRender();
-        },
-        'tableData': function () {
-            // this.$store.dispatch('updateTableDataStore', this.tableData)
-        }
+        // 'otherOptions': function() {
+        //     this.reRender()
+        // },
+        // 'tableData': function () {
+        //     // this.$store.dispatch('updateTableDataStore', this.tableData)
+        // }
     },
     beforeUpdate() {},
-    created() {
-        console.log('beforeCreate');
-    },
+    created() {},
     mounted() {
-        let idTable = this.idTable;
-        for (let i = 0; i < this.tableColumn.length; i++) {
-            $('#' + idTable + ' tfoot tr').append(`<th></th>`);
+        if (this.tableColumn.length > 0) {
+            let idTable = this.idTable;
+            for (let i = 0; i < this.tableColumn.length; i++) {
+                $('#' + idTable + ' tfoot tr').append(`<th></th>`);
+            }
+            this.bTable = $('#' + idTable).DataTable(this.options);
+            if (this.calcSum !== null) this.autoCalc();
+            this.selectCell(this.editAPI, this.keyAPI);
+            this.renderTable = true;
         }
-        this.bTable = $('#' + idTable).DataTable(this.options);
-        if (this.calcSum !== null) this.autoCalc();
-        this.selectCell(this.editAPI, this.keyAPI);
     },
     updated() {
         let idTable = this.idTable;
         if (this.static) {
             this.bTable.clear().rows.add(this.tableData).draw();
         } else {
-            this.bTable.destroy();
-            $('#' + idTable).empty(); // empty in case the columns change
+            if (this.renderTable) {
+                this.bTable.destroy();
+                $('#' + idTable).empty(); // empty in case the columns change
+            }
             this.bTable = $('#' + idTable).DataTable(this.options);
+            this.renderTable = true;
         }
         if (this.calcSum !== null) this.autoCalc();
     },
@@ -60887,7 +60910,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			searchList: [],
 			pointerIndex: null, // Selecting index of list
 			hoverIndex: null, // Position of cursor is hovering select item
-			searchKeyword: ''
+			searchKeyword: '',
+			isActive: false
 		};
 	},
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
@@ -60897,9 +60921,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	watch: {
 		list(newList) {
 			this.searchList = JSON.parse(JSON.stringify(newList));
+		},
+		resetSearchKeyWord() {
+			if (this.resetSearchKeyWord) {
+				this.searchKeyword = '';
+				this.$emit('search-keywords', '');
+			}
+		},
+		value(value) {
+			if (value != null) this.isActive = true;
 		}
 	},
-	props: ['list', 'value', 'disabled', 'single-dropdown', 'disable-icon'],
+	props: {
+		list: {},
+		value: {},
+		disabled: {},
+		singleDropdown: {},
+		disableIcon: {},
+		placeholder: {},
+		label: {},
+		id: {},
+		resetSearchKeyWord: {
+			type: Boolean,
+			default: false
+		}
+	},
+	// props : ['list', 'value', 'disabled', 'single-dropdown', 'disable-icon', 'placeholder'],
 	computed: {
 		selected() {
 			// Convert v-model to [] if it's null
@@ -60913,6 +60960,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	methods: {
+		blurSearch() {
+			if (this.searchList.length == 0) {
+				this.searchKeyword = "";
+			}
+		},
+
 		getSingleSelected() {
 			let listSelected = this.list.filter(item => {
 				return item.id == this.selected;
@@ -60922,7 +60975,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return null;
 		},
 		getSelectedList() {
-			// Get selected with full information [ { id : .. , html : ... } ] 
+			// Get selected with full information [ { id : .. , html : ... } ]
 			if (this.isSingle) return;
 			let selected = [];
 			this.selected.forEach((id, index) => {
@@ -60955,7 +61008,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				if (selectList.includes(id)) {
 					selectList.splice(selectList.indexOf(id), 1);
 					this.$emit('input', null);
-					this.$el.querySelector('input.input-control').focus();
+					if (this.$el.querySelector('input.input-control') != null) {
+						this.$el.querySelector('input.input-control').focus();
+					}
 				} else {
 					selectList = [id];
 					this.$emit('input', id);
@@ -60972,14 +61027,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			// this
 		},
 		searchAction(keyword) {
-
+			this.searchKeyword = keyword;
+			this.switchList(true);
+			this.$emit('search-keywords', keyword);
+			if (keyword == undefined && keyword == null || keyword.length == 0) {
+				this.searchList = JSON.parse(JSON.stringify(this.list));
+				return;
+			}
 			this.searchList = this.list.filter((item, position) => {
 				if (item.keywords == undefined || item.keywords == null) return false;
 				let regex = new RegExp('.*' + keyword.toLowerCase() + '.*');
 				return item.keywords.toLowerCase().match(regex);
 			});
-			this.searchKeyword = keyword;
-			this.switchList(true);
 		},
 		focusInputAction(keyword) {
 			this.searchAction(keyword);
@@ -62036,45 +62095,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {},
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
     mounted() {
-        this.configDropzone();
-        this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig);
-        let dropzoneComponent = this;
-
-        // this.dropzone.on("totaluploadprogress", (progress) => {
-        //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%"
-        //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block"
-        // })
-
-        this.dropzone.on("sending", file => {
-            document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1";
-        });
-
-        this.dropzone.on("queuecomplete", progress => {
-            // document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "0"
-        });
-
-        this.dropzone.on("addedfile", file => {
-            var parent = document.querySelectorAll('.preview:not(stuff)');
-            for (var i = 0; i < parent.length; i++) {
-                var child = parent[i].querySelector('.dz-thumb');
-                parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
-            }
-
-            var fileEx = file.name.split('.').pop();
-            if (fileEx != "JPG" || fileEx != "JPEG" || fileEx != "PNG" || fileEx != "GIF" || fileEx != "BMP") {
-                fileEx == "pdf" ? child.className += " dz-pdf" : child.className;
-                fileEx == "doc" ? child.className += " dz-doc" : child.className;
-                fileEx == "ppt" ? child.className += " dz-ppt" : child.className;
-                fileEx == "xls" ? child.className += " dz-xls" : child.className;
-                fileEx == "txt" ? child.className += " dz-txt" : child.className;
-                fileEx == "csv" ? child.className += " dz-csv" : child.className;
-                fileEx == "rtf" ? child.className += " dz-rtf" : child.className;
-                fileEx == "zip" ? child.className += " dz-zip" : child.className;
-            }
-        });
-        this.$emit('dropzone', this.dropzone);
-        // edit by thien nguyen
-        if (this.value.list != undefined || this.value.list != null) this.prepareItems(this.value.list);
+        if (this.value != null && this.value != undefined) this.initDropzone();
     },
     props: ['name', 'config', 'id', 'mode'],
     computed: {},
@@ -62085,7 +62106,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         'value.list'(value) {
             // edit by thien nguyen
-            this.prepareItems(value);
+            if (value != undefined) this.prepareItems(value);
+        },
+        value(value) {
+            if (value != undefined && value != undefined) this.initDropzone();
         }
     },
     methods: {
@@ -62093,6 +62117,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //     this.dropzone.enqueueFiles(this.dropzone.getFilesWithStatus(Dropzone.ADDED));
         //     this.$emit('input', this.dropzone)
         // },
+        initDropzone() {
+            this.configDropzone();
+            this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig);
+            let dropzoneComponent = this;
+
+            // this.dropzone.on("totaluploadprogress", (progress) => {
+            //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%"
+            //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block"
+            // })
+
+            this.dropzone.on("sending", file => {
+                document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1";
+            });
+
+            this.dropzone.on("queuecomplete", progress => {
+                // document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "0"
+            });
+
+            this.dropzone.on("addedfile", file => {
+                var parent = document.querySelectorAll('.preview:not(stuff)');
+                for (var i = 0; i < parent.length; i++) {
+                    var child = parent[i].querySelector('.dz-thumb');
+                    parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
+                }
+
+                var fileEx = file.name.split('.').pop();
+                if (fileEx != "JPG" || fileEx != "JPEG" || fileEx != "PNG" || fileEx != "GIF" || fileEx != "BMP") {
+                    fileEx == "pdf" ? child.className += " dz-pdf" : child.className;
+                    fileEx == "doc" ? child.className += " dz-doc" : child.className;
+                    fileEx == "ppt" ? child.className += " dz-ppt" : child.className;
+                    fileEx == "xls" ? child.className += " dz-xls" : child.className;
+                    fileEx == "txt" ? child.className += " dz-txt" : child.className;
+                    fileEx == "csv" ? child.className += " dz-csv" : child.className;
+                    fileEx == "rtf" ? child.className += " dz-rtf" : child.className;
+                    fileEx == "zip" ? child.className += " dz-zip" : child.className;
+                }
+            });
+            this.$emit('dropzone', this.dropzone);
+            // edit by thien nguyen
+            if (this.value != undefined) if (this.value.list != undefined && this.value.list != null) this.prepareItems(this.value.list);
+        },
+
         configDropzone() {
             let config = {
                 thumbnailWidth: 80,
@@ -79274,7 +79340,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.switchList(true)
       }
     }
-  }, [_c('div', {
+  }, [_c('label', {
+    class: _vm.isActive ? 'active' : '',
+    attrs: {
+      "for": _vm.id
+    }
+  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('div', {
     staticClass: "b__multi__select__control"
   }, [_vm._l((_vm.getSelectedList()), function(item) {
     return (!_vm.isSingle) ? _c('div', {
@@ -79312,9 +79383,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('input', {
     staticClass: "input-control",
     staticStyle: {
-      "width": "100%"
+      "margin-left": "13px",
+      "font-family": "'Open Sans',sans-serif",
+      "font-size": "14px",
+      "position": "absolute",
+      "top": "5px"
     },
     attrs: {
+      "placeholder": _vm.placeholder,
       "type": "text"
     },
     domProps: {
@@ -80317,7 +80393,8 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "b__components b-ios b-float-label"
+    staticClass: "b__components b-ios b-float-label",
+    class: _vm.classesParent
   }, [_c('label', {
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
@@ -80342,7 +80419,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "blur": _vm.blur,
       "focus": _vm.focus
     }
-  })])
+  }), _vm._v(" "), _vm._t("otherElements")], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
