@@ -11,7 +11,7 @@
 			}
 		}
 	}
-	input.b__input, textarea, select{
+	textarea, select, input.b__input{
 		&:focus{
 			border: 1px solid #0082d5;
 		}
