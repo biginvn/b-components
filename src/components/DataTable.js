@@ -33,6 +33,9 @@ export default {
             type: Array,
             default: null
         },
+        tableTfoot: {
+            type: Object/Array,
+        },
         editAPI: {
             type: String
         },
@@ -89,7 +92,8 @@ export default {
                 $('#' + idTable + ' tfoot tr').append(`<th></th>`)
             }
             this.bTable = $('#' + idTable).DataTable(this.options)
-            if (this.calcSum !== null) this.autoCalc()
+            if (this.tableTfoot !== null) {this.autoTfoot()}
+            if (this.calcSum !== null) {this.autoCalc()}
             this.selectCell(this.editAPI, this.keyAPI)
             this.renderTable = true;
         }
@@ -109,7 +113,8 @@ export default {
             this.bTable = $('#' + idTable).DataTable(this.options);
             this.renderTable = true;
         }
-        if (this.calcSum !== null) this.autoCalc()
+        if (this.tableTfoot !== null) {this.autoTfoot()}
+        if (this.calcSum !== null) {this.autoCalc()}
     },
     methods: {
         reRender() {
@@ -123,10 +128,7 @@ export default {
             this.selectCell(this.editAPI, this.keyAPI)
         },
         autoCalc() {
-            // $('#' + idTable + ' tbody').on( 'click', 'td', function (e) {
 
-            // } );
-            // Remove the formatting to get integer data for summation
             $( this.bTable.column( 0 ).footer() ).html(
                 'Total: '
             );
@@ -191,6 +193,33 @@ export default {
                 }
             }
         },
+
+        autoTfoot(){
+            for (let i = 0; i < this.tableTfoot.length; i++) {
+                $(this.bTable.column(i).footer()).html(
+                        this.tableTfoot[i].title
+                    );
+            }
+            /* $( this.bTable.column( 0 ).footer() ).html(
+                this.tableTfoot[0].title
+            )*/
+
+           /* for (let i = 0; i < this.tableTfoot.length; i++){
+                let total = this.bTable
+                        .column( this.tableTfoot[i].col )
+                        .data()
+                        .reduce( function (total, e) {
+                            if (Boolean(e)) {
+                                return total + 1;
+                            }
+                            else return total;
+                        }, 0 );
+                $( this.bTable.column( this.tableTfoot[i].col ).footer() ).html(
+                        total
+                    );
+            }*/
+        },
+
         selectCell(editAPI, keyAPI) {
             let idTable = this.idTable
             console.log('this.editAPI: ' + editAPI)

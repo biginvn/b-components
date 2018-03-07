@@ -37,7 +37,9 @@
                 </div>
             </div>
         </div>
-        <table class="display table dataTable" :editAPI="editAPI" :keyAPI="keyAPI" :id="idTable" width="100%" :static="static" :tableData="tableData" :tableColumn="tableColumn" :otherOptions="otherOptions" :calcSum="calcSum">
+
+
+        <table class="display table dataTable" :editAPI="editAPI" :keyAPI="keyAPI" :id="idTable" width="100%" :static="static" :tableData="tableData" :tableColumn="tableColumn" :otherOptions="otherOptions" :calcSum="calcSum" :tableTfoot="tableTfoot">
             <tbody>
             </tbody>
             <tfoot>
@@ -52,6 +54,7 @@
                 </div>
             </div>
         </table>
+
     </div>
 </template>
 
