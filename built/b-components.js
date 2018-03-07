@@ -59971,7 +59971,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-	props: ['type', 'id', 'data'],
+	props: ['type', 'id', 'data', 'color'],
 
 	data() {
 		return {
@@ -59995,26 +59995,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	watch: {
 		chartData(val) {
-			this.initialize(this.type, this.id, val);
+			this.initialize(this.type, this.id, val, this.color);
 		}
 	},
 	mounted() {
-		this.initialize(this.type, this.id, this.data);
+		this.initialize(this.type, this.id, this.data, this.color);
 	},
 	methods: {
-		initialize(type, id, data) {
+		initialize(type, id, data, color) {
 			if (this.type === 'doughnut') {
 				this.chart = Morris.Donut({
 					element: this.id,
 					data: this.data,
-					hoverCallback: function (index, options, content) {
-						console.log(content);
-					},
+					hoverCallback: function (index, options, content) {},
 					formatter: function (t) {
 						return t + "%";
 					},
 					resize: !0,
-					colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"]
+					colors: color
 				}).on('click', function (i, row) {
 					window.open(row.link, '_blank');
 				});
@@ -60060,42 +60058,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
 						responsive: true,
 						legend: {
-
 							position: 'right'
 						},
 						title: {
 							display: true,
 							text: 'Initiated & Completed Relocations by Month',
 							position: 'top'
-
 						}
-
 					}
 				});
 			} else if (this.type === 'doughnutChart') {
-
 				__WEBPACK_IMPORTED_MODULE_1_highcharts___default.a.chart(this.id, {
 					chart: {
 						plotBackgroundColor: null,
 						plotBorderWidth: null,
 						plotShadow: false,
-						type: 'pie',
-						backgroundColor: 'transparent'
+						type: 'pie'
 					},
 					title: {
 						text: '',
 						floating: true,
 						enabled: false
-
 					},
 
 					credits: {
 						enabled: false,
 						href: 'http://www.highcharts.com',
-
 						text: 'duan.com'
 					},
-					colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
+					colors: color,
 					tooltip: {
 						pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
 					},
@@ -60118,10 +60109,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						point: {
 							events: {
 								click: function (e) {
-									//this.slice();
-									//console.log(e);
 									window.open(e.point.url, '_blank');
-									//window.location.href =;
 									e.preventDefault();
 								}
 							}
@@ -60129,7 +60117,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						data: this.data
 					}]
 				});
-
 				// let idChart = this.id
 				// // Chart.defaults.global.legend.display = false;
 				// this.chart = new Chart(idChart,{
@@ -60153,9 +60140,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				// function clickFunction(d,i){
 				// 	console.log('click:',d)
 				// }
-
 			}
-
 			this.$emit('input', this.data);
 		}
 	}
