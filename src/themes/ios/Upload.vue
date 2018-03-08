@@ -1,6 +1,9 @@
 <template>
     <div class="b__components b__upload">
-        <div class="b__components__dropzone" :id="id">
+        <div class="b__components__dropzone" :id="id" v-show="totalFileSize < maxSize">
+<!--             <div class="disabled-upload text-center" >
+                <span class="uk-text-middle">Max File Size Uploaded...</span>
+            </div> -->
             <div class="content">
                 <div class="row">
                     <img v-if="completedConfig.publicPath" :src="completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'" class="icon-upload">
@@ -8,7 +11,11 @@
                 <span class="uk-text-middle">Attach file by dropping here or</span>
             </div>
         </div>
-        
+        <div class="b__components__dropzone" :id="id" v-show="totalFileSize >= maxSize && maxSize != undefined">
+            <div class="disabled-upload text-center">
+                <span class="uk-text-middle">Max File Size Uploaded...</span>
+            </div>
+        </div>
         <div :class="id + '__preview__container'">
             <div :class="id + '__preview preview stuff'">
                 <div class="preview">
@@ -24,7 +31,7 @@
                         <img v-if="item.className == 'dz-thumb'" data-dz-thumbnail="" :src="item.path">
                         <img v-else data-dz-thumbnail="">
                         <a :href="item.path"><span data-dz-name="" class="dz-name">{{ item.name }}</span></a>
-                        <strong><span class="dz-size" data-dz-size>{{ item.size }}</span></strong>
+                        <strong><span class="dz-size" data-dz-size>{{ item.filesize }}</span></strong>
                         <a data-dz-remove="" class="remove-archive" @click="deleteThisItem(item.id)"><i class="fa fa-trash-o"></i></a>
                     </div> 
                 <!-- </a> -->
@@ -36,4 +43,16 @@
 import Upload from './../../components/Upload'
 export default Upload
 </script>
+<style>
+    .disabled-upload:hover .uk-text-middle:after{
+        content: '(*Remove assets file to change new file.)';
+
+    }
+    .disabled-upload{
+        animation: fadeIn;
+        animation-duration: 1s;
+        will-change: padding;
+        cursor: help;
+    }
+</style>
 

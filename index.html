@@ -480,7 +480,7 @@
                                     <h4 class="mb-3 panel-heading">Upload</h4>
                                     <div class="panel-body">
                                         <p>
-                                            <b-upload v-model="input.upload" name="upload-document" id="uploadTest" :config="uploadConfig"></b-upload>
+                                            <b-upload v-model="input.upload" max-size="1024" name="upload-document" id="uploadTest" :config="uploadConfig"></b-upload>
                                         </p>
                                         <b-button type="button" class-name="button-warn" label="Set Value" @click.native="input.upload.list=listUpload"></b-button>
                                     </div>
@@ -951,51 +951,51 @@ var vm = new Vue({
             listUpload : [
                 {
                     id       : "1",
-                    filesize : "75kb",
-                    filename : "File Name Example",
+                    filesize : "75",
+                    filename : "File Name Example 1",
                     path     : "https://i.imgur.com/fCOeXej - doc.doc",
                 },
                 {
                     id       : "2",
-                    filesize : "75kb",
-                    filename : "File Name Example",
+                    filesize : "75",
+                    filename : "File Name Example 2",
                     path     : "https://i.imgur.com/fCOeXej - ppt.ppt",
                 },
                 {
                     id       : "3",
-                    filesize : "75kb",
-                    filename : "File Name Example",
+                    filesize : "75",
+                    filename : "File Name Example 3",
                     path     : "https://i.imgur.com/fCOeXej - xls.xls",
                 },
                 {
                     id       : "4",
-                    filesize : "75kb",
-                    filename : "File Name Example",
+                    filesize : "75",
+                    filename : "File Name Example 4",
                     path     : "https://i.imgur.com/fCOeXej - txt.txt",
                 },
                 {
                     id       : "5",
                     filesize : "75kb",
-                    filename : "File Name Example",
+                    filename : "File Name Example 5",
                     path     : "https://i.imgur.com/fCOeXej - csv.csv",
 
                 },
                 {
                     id       : "6",
-                    filesize : "75kb",
-                    filename : "File Name Example",
+                    filesize : "75mb",
+                    filename : "File Name Example 6",
                     path     : "https://i.imgur.com/fCOeXej - rtf.rtf",
                 },
                 {
                     id       : "7",
-                    filesize : "75kb",
-                    filename : "File Name Example",
+                    filesize : "75mb",
+                    filename : "File Name Example 7",
                     path     : "https://i.imgur.com/fCOeXej - zip.zip",
                 },
                 {
                     id       : "8",
                     filesize : "75kb",
-                    filename : "File Name Example",
+                    filename : "File Name Example 8",
                     path     : "https://i.imgur.com/fCOeXej - exe.exe",
                 },
             ],

@@ -6,6 +6,9 @@ export default {
             dropzone: null,
             completedConfig : {},
             items : null,
+            totalInputFileSize : 0,  
+            totalDropzoneFileSize : 0,
+            totalFileSize : 0
         }
     },
     components: {
@@ -16,22 +19,36 @@ export default {
         if(this.value != null && this.value != undefined)
             this.initDropzone()
     },
-    props: ['name', 'config', 'id', 'mode'],
+    props: ['name', 'config', 'id', 'mode', 'max-file', 'max-size'],
     computed: {
         
     },
     watch:{
         'dropzone.files'(value){
+            this.caculateTotalDropzoneFileSize(value)
             this.value.dropzone = this.dropzone
             this.$emit('input', this.value)
         },
         'value.list'(value){ // edit by thien nguyen
+            this.totalInputFileSize = 0
             if(value != undefined)
                 this.prepareItems(value)
         },
         value(value){
             if(value != undefined && value != undefined)
                 this.initDropzone()
+        },
+        totalInputFileSize(value){
+            this.totalFileSize = this.totalInputFileSize + this.totalDropzoneFileSize
+        },
+        totalDropzoneFileSize(value){
+            this.totalFileSize = this.totalDropzoneFileSize + this.totalInputFileSize
+        },
+        totalFileSize(value){
+            if(value >= this.maxSize ){
+                // this.dropzone.removeFile(this.dropzone.files[this.dropzone.files.length-1])
+                // alert('File too large.')
+            }
         }
     },
     methods: {
@@ -56,14 +73,13 @@ export default {
             this.dropzone.on("queuecomplete", (progress) => {
                 // document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "0"
             })
-
+            let Vue = this
             this.dropzone.on("addedfile", (file) => {
                 var parent = document.querySelectorAll('.preview:not(stuff)');
                 for (var i = 0; i < parent.length ; i++) {
                     var child = parent[i].querySelector('.dz-thumb');
                     parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
                 }
-
                 var fileEx = file.name.split('.').pop();
                 if (fileEx != "JPG" || fileEx != "JPEG" || fileEx != "PNG" ||  fileEx != "GIF" ||  fileEx != "BMP"){
                     fileEx == "pdf" ? child.className += " dz-pdf" : child.className;
@@ -82,7 +98,18 @@ export default {
                 if(this.value.list != undefined && this.value.list != null)
                     this.prepareItems(this.value.list)
         },
-
+        // removeFiles(totalFileSize){
+        //     let dropzoneTotal = 0
+        //     for( let i = 0; i < this.dropzone.files.length; i++){
+        //         dropzoneTotal = dropzoneTotal + this.dropzone.files[i].size
+        //         if( totalFileSize )  
+        //     }
+        //     if( (this.totalInputFileSize + this.totalDropzoneFileSize) > parseInt(this.maxSize) ){
+        //         alert('Total file size too large. File removed.')
+        //         console.log(file)
+        //         this.dropzone.removeFile(file)
+        //     }
+        // },
         configDropzone() {
             let config = {
                 thumbnailWidth : 80,
@@ -93,6 +120,12 @@ export default {
                 accept : (file, done) => { done() },
                 previewTemplate: document.querySelector(`.${this.id}__preview`).innerHTML,
                 previewsContainer: `.${this.id}__preview__container`,
+                maxFiles: (this.maxFile == undefined) ? null : this.maxFile,
+                maxfilesexceeded: function(file) {
+                    this.removeAllFiles();
+                    this.addFile(file);
+                    alert('Upload file too specified number.')
+                },
             }
             this.completedConfig  = Object.assign(config, this.config)
         },
@@ -105,7 +138,6 @@ export default {
                 }
                 return [{ id : '', path : '' }];
             }
-
             let items = [];
             for(let i=0; i < list.length; i++){
                 let listItem = list[i];   
@@ -114,9 +146,10 @@ export default {
                     className = listItem.className
                 else
                     className = this.getClassByPath(listItem.path)
+                let filesize = this.renderFileSize(listItem.filesize) 
                 let item = {
                     id         : listItem.id, 
-                    size       : listItem.size,
+                    filesize   : filesize,
                     path       : listItem.path,
                     name       : (listItem.filename == null || listItem.filename == undefined) ? this.getNameByPath(listItem.path) : listItem.filename,
                     path       : listItem.path,
@@ -191,6 +224,31 @@ export default {
             }
             this.value.list = this.items
             this.$emit('input', this.value)
+        },
+        renderFileSize(size){
+            let sizeLength = size.length
+            let result = ""
+            if(size.slice(sizeLength - 2, sizeLength).toLowerCase() == 'mb' || size.slice(sizeLength - 2, sizeLength).toLowerCase() == 'kb'){
+                result = size
+                this.totalInputFileSize = this.totalInputFileSize + parseInt(size.slice(0, sizeLength - 2))
+            }
+            else{
+                result = size + 'kb'
+                this.totalInputFileSize = this.totalInputFileSize + parseInt(size)
+            }
+            return result
+        },
+        caculateTotalDropzoneFileSize(listFile){
+            this.totalDropzoneFileSize = 0
+            for(let i = 0; i < listFile.length; i++){
+                if(listFile[i].accepted == true)
+                    this.totalDropzoneFileSize = this.totalDropzoneFileSize + listFile[i].size/1024
+                if( this.maxSize != undefined && (this.totalInputFileSize + this.totalDropzoneFileSize) >= this.maxSize){
+                    alert("File " + listFile[i].name + " removed because total size to large.")
+                    this.totalDropzoneFileSize = this.totalDropzoneFileSize - listFile[i].size/1024
+                    this.dropzone.removeFile(listFile[i])
+                }
+            }
         }
     },
 }
