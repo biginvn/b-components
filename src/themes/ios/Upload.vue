@@ -1,6 +1,6 @@
 <template>
     <div class="b__components b__upload">
-        <div class="b__components__dropzone" :id="id" v-show="totalFileSize < maxSize">
+        <div class="b__components__dropzone" :id="id" v-show="totalFileSize < maxSize || maxSize == undefined">
 <!--             <div class="disabled-upload text-center" >
                 <span class="uk-text-middle">Max File Size Uploaded...</span>
             </div> -->

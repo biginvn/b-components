@@ -44,12 +44,6 @@ export default {
         totalDropzoneFileSize(value){
             this.totalFileSize = this.totalDropzoneFileSize + this.totalInputFileSize
         },
-        totalFileSize(value){
-            if(value >= this.maxSize ){
-                // this.dropzone.removeFile(this.dropzone.files[this.dropzone.files.length-1])
-                // alert('File too large.')
-            }
-        }
     },
     methods: {
         // upload() {  //rem by thien.nguyen
