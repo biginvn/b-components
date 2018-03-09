@@ -132,7 +132,7 @@ export default {
                     className = listItem.className
                 else
                     className = this.getClassByPath(listItem.path)
-                let filesize = this.renderFileSize(listItem.filesize) 
+                let filesize = this.renderFileSize(listItem.filesize.replace(" ", "")) 
                 let item = {
                     id         : listItem.id, 
                     filesize   : filesize,
@@ -219,7 +219,7 @@ export default {
                 this.totalInputFileSize = this.totalInputFileSize + parseInt(size.slice(0, sizeLength - 2))
             }
             else{
-                result =  parseInt(size/1024) + 'kb'
+                result =  parseInt(size/1024) + ' KB'
                 this.totalInputFileSize = this.totalInputFileSize + parseInt(size/1024)
             }
             return result
