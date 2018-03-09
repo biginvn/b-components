@@ -1,55 +1,36 @@
 <template>
     <div class="b__components b__upload">
-        <div class="b__components__dropzone" :id="id" v-show="(dropzoneTotalFile + inputTotalFile) < parseInt(maxFile) || maxFile == undefined">
+        <div class="b__components__dropzone" :id="id">
             <div class="content">
-                <div class="row">
-                    <img v-if="completedConfig.publicPath" :src="completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'" class="icon-upload">
-                </div>
-                <span class="uk-text-middle">Attach file by dropping here or</span>
+
+                <img v-if="completedConfig.publicPath" :src="completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'" class="icon-upload">
+                <p>Drag and drop files here...</p>
             </div>
         </div>
-        <div class="b__components__dropzone" :id="id" v-show="(dropzoneTotalFile + inputTotalFile) >= parseInt(maxFile)">
-            <div class="disabled-upload text-center">
-                <span class="uk-text-middle">Max File Uploaded...</span>
-            </div>
+
+        <div class="total-progress">
+            <div class="progress" style="width:20%"></div>
         </div>
+        
         <div :class="id + '__preview__container'">
             <div :class="id + '__preview preview stuff'">
                 <div class="preview">
                     <div class="dz-thumb"><img data-dz-thumbnail /></div>
                     <span class="dz-name" data-dz-name></span>
                     <span class="dz-size" data-dz-size></span>
-                    <a href="#" class="remove-archive" target="_blank" data-dz-remove><span><i class="fa fa-trash-o"></i></span></a>
+                    <a href="#" class="remove-archive" target="_blank" data-dz-remove><i class="fa fa-trash-o"></i></a>
                 </div>
             </div>
-            <div v-for= "item in items" class="preview">
-                <!-- <a :href="item.path"> -->
-                    <div :class="item.className" style="animation: fadeOut;">
-                        <img v-if="item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'" data-dz-thumbnail="" :src="item.path">
-                        <img v-else data-dz-thumbnail="">
-                        <a :href="item.path"><span data-dz-name="" class="dz-name">{{ item.name }}</span></a>
-                        <strong><span class="dz-size" data-dz-size>{{ item.filesize }}</span></strong>
-                        <a data-dz-remove="" class="remove-archive" @click="deleteThisItem(item.id)"><i class="fa fa-trash-o"></i></a>
-                    </div> 
-                <!-- </a> -->
-            </div>
         </div>
-    </div>
+
+
+        <div class="upload-control">
+         <b-button class-name="button-primary" @click.native="upload()" label="Upload" icon="<i class='fa fa-cloud-upload' aria-hidden='true'></i>"></b-button>
+     </div>
+ </div>
 </template>
 <script>
 import Upload from './../../components/Upload'
 export default Upload
 </script>
-<style>
-    .disabled-upload:hover .uk-text-middle:after{
-        content: '(*Remove assets file to change new file.)';
-
-    }
-    .disabled-upload{
-        animation: fadeIn;
-        animation-duration: 1s;
-        will-change: padding;
-        cursor: help;
-    }
-</style>
 
