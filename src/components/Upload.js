@@ -8,11 +8,13 @@ export default {
             items : null,
             totalInputFileSize : 0,  
             totalDropzoneFileSize : 0,
-            totalFileSize : 0
+            totalFileSize : 0,
+            dropzoneTotalFile : 0,
+            inputTotalFile : 0,
         }
     },
     components: {
-
+                
     },
     mixins: [baseComponent],
     mounted() {
@@ -27,12 +29,15 @@ export default {
         'dropzone.files'(value){
             this.caculateTotalDropzoneFileSize(value)
             this.value.dropzone = this.dropzone
+            this.dropzoneTotalFile = this.dropzone.files.length
             this.$emit('input', this.value)
         },
         'value.list'(value){ // edit by thien nguyen
             this.totalInputFileSize = 0
-            if(value != undefined)
+            if(value != undefined){
                 this.prepareItems(value)
+                this.inputTotalFile = value.length
+            }
         },
         value(value){
             if(value != undefined && value != undefined)
@@ -92,18 +97,6 @@ export default {
                 if(this.value.list != undefined && this.value.list != null)
                     this.prepareItems(this.value.list)
         },
-        // removeFiles(totalFileSize){
-        //     let dropzoneTotal = 0
-        //     for( let i = 0; i < this.dropzone.files.length; i++){
-        //         dropzoneTotal = dropzoneTotal + this.dropzone.files[i].size
-        //         if( totalFileSize )  
-        //     }
-        //     if( (this.totalInputFileSize + this.totalDropzoneFileSize) > parseInt(this.maxSize) ){
-        //         alert('Total file size too large. File removed.')
-        //         console.log(file)
-        //         this.dropzone.removeFile(file)
-        //     }
-        // },
         configDropzone() {
             let config = {
                 thumbnailWidth : 80,
@@ -243,6 +236,6 @@ export default {
                     this.dropzone.removeFile(listFile[i])
                 }
             }
-        }
+        },
     },
 }

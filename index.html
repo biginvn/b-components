@@ -480,7 +480,7 @@
                                     <h4 class="mb-3 panel-heading">Upload</h4>
                                     <div class="panel-body">
                                         <p>
-                                            <b-upload v-model="input.upload" max-size="2048" name="upload-document" id="uploadTest" :config="uploadConfig"></b-upload>
+                                            <b-upload v-model="input.upload" max-file="3" max-size="2048" name="upload-document" id="uploadTest" :config="uploadConfig"></b-upload>
                                         </p>
                                         <b-button type="button" class-name="button-warn" label="Set Value" @click.native="input.upload.list=listUpload"></b-button>
                                     </div>

@@ -59919,9 +59919,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Upload__["a" /* default */]);
@@ -62128,7 +62125,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             items: null,
             totalInputFileSize: 0,
             totalDropzoneFileSize: 0,
-            totalFileSize: 0
+            totalFileSize: 0,
+            dropzoneTotalFile: 0,
+            inputTotalFile: 0
         };
     },
     components: {},
@@ -62142,12 +62141,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         'dropzone.files'(value) {
             this.caculateTotalDropzoneFileSize(value);
             this.value.dropzone = this.dropzone;
+            this.dropzoneTotalFile = this.dropzone.files.length;
             this.$emit('input', this.value);
         },
         'value.list'(value) {
             // edit by thien nguyen
             this.totalInputFileSize = 0;
-            if (value != undefined) this.prepareItems(value);
+            if (value != undefined) {
+                this.prepareItems(value);
+                this.inputTotalFile = value.length;
+            }
         },
         value(value) {
             if (value != undefined && value != undefined) this.initDropzone();
@@ -62204,18 +62207,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // edit by thien nguyen
             if (this.value != undefined) if (this.value.list != undefined && this.value.list != null) this.prepareItems(this.value.list);
         },
-        // removeFiles(totalFileSize){
-        //     let dropzoneTotal = 0
-        //     for( let i = 0; i < this.dropzone.files.length; i++){
-        //         dropzoneTotal = dropzoneTotal + this.dropzone.files[i].size
-        //         if( totalFileSize )  
-        //     }
-        //     if( (this.totalInputFileSize + this.totalDropzoneFileSize) > parseInt(this.maxSize) ){
-        //         alert('Total file size too large. File removed.')
-        //         console.log(file)
-        //         this.dropzone.removeFile(file)
-        //     }
-        // },
         configDropzone() {
             let config = {
                 thumbnailWidth: 80,
@@ -75667,7 +75658,7 @@ exports = module.exports = __webpack_require__(11)();
 
 
 // module
-exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/Upload.vue?66b07aae"],"names":[],"mappings":";AA8CA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA","file":"Upload.vue","sourcesContent":["<template>\n    <div class=\"b__components b__upload\">\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"totalFileSize < maxSize || maxSize == undefined\">\n<!--             <div class=\"disabled-upload text-center\" >\n                <span class=\"uk-text-middle\">Max File Size Uploaded...</span>\n            </div> -->\n            <div class=\"content\">\n                <div class=\"row\">\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\n                </div>\n                <span class=\"uk-text-middle\">Attach file by dropping here or</span>\n            </div>\n        </div>\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"totalFileSize >= maxSize && maxSize != undefined\">\n            <div class=\"disabled-upload text-center\">\n                <span class=\"uk-text-middle\">Max File Size Uploaded...</span>\n            </div>\n        </div>\n        <div :class=\"id + '__preview__container'\">\n            <div :class=\"id + '__preview preview stuff'\">\n                <div class=\"preview\">\n                    <div class=\"dz-thumb\"><img data-dz-thumbnail /></div>\n                    <span class=\"dz-name\" data-dz-name></span>\n                    <span class=\"dz-size\" data-dz-size></span>\n                    <a href=\"#\" class=\"remove-archive\" target=\"_blank\" data-dz-remove><span><i class=\"fa fa-trash-o\"></i></span></a>\n                </div>\n            </div>\n            <div v-for= \"item in items\" class=\"preview\">\n                <!-- <a :href=\"item.path\"> -->\n                    <div :class=\"item.className\" style=\"animation: fadeOut;\">\n                        <img v-if=\"item.className == 'dz-thumb'\" data-dz-thumbnail=\"\" :src=\"item.path\">\n                        <img v-else data-dz-thumbnail=\"\">\n                        <a :href=\"item.path\"><span data-dz-name=\"\" class=\"dz-name\">{{ item.name }}</span></a>\n                        <strong><span class=\"dz-size\" data-dz-size>{{ item.filesize }}</span></strong>\n                        <a data-dz-remove=\"\" class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fa fa-trash-o\"></i></a>\n                    </div> \n                <!-- </a> -->\n            </div>\n        </div>\n    </div>\n</template>\n<script>\nimport Upload from './../../components/Upload'\nexport default Upload\n</script>\n<style>\n    .disabled-upload:hover .uk-text-middle:after{\n        content: '(*Remove assets file to change new file.)';\n\n    }\n    .disabled-upload{\n        animation: fadeIn;\n        animation-duration: 1s;\n        will-change: padding;\n        cursor: help;\n    }\n</style>\n\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/Upload.vue?6f5b1076"],"names":[],"mappings":";AA2CA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA","file":"Upload.vue","sourcesContent":["<template>\n    <div class=\"b__components b__upload\">\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"(dropzoneTotalFile + inputTotalFile) <= parseInt(maxFile)\">\n            <div class=\"content\">\n                <div class=\"row\">\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\n                </div>\n                <span class=\"uk-text-middle\">Attach file by dropping here or</span>\n            </div>\n        </div>\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"(dropzoneTotalFile + inputTotalFile) > parseInt(maxFile)\">\n            <div class=\"disabled-upload text-center\">\n                <span class=\"uk-text-middle\">Max File Uploaded...</span>\n            </div>\n        </div>\n        <div :class=\"id + '__preview__container'\">\n            <div :class=\"id + '__preview preview stuff'\">\n                <div class=\"preview\">\n                    <div class=\"dz-thumb\"><img data-dz-thumbnail /></div>\n                    <span class=\"dz-name\" data-dz-name></span>\n                    <span class=\"dz-size\" data-dz-size></span>\n                    <a href=\"#\" class=\"remove-archive\" target=\"_blank\" data-dz-remove><span><i class=\"fa fa-trash-o\"></i></span></a>\n                </div>\n            </div>\n            <div v-for= \"item in items\" class=\"preview\">\n                <!-- <a :href=\"item.path\"> -->\n                    <div :class=\"item.className\" style=\"animation: fadeOut;\">\n                        <img v-if=\"item.className == 'dz-thumb'\" data-dz-thumbnail=\"\" :src=\"item.path\">\n                        <img v-else data-dz-thumbnail=\"\">\n                        <a :href=\"item.path\"><span data-dz-name=\"\" class=\"dz-name\">{{ item.name }}</span></a>\n                        <strong><span class=\"dz-size\" data-dz-size>{{ item.filesize }}</span></strong>\n                        <a data-dz-remove=\"\" class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fa fa-trash-o\"></i></a>\n                    </div> \n                <!-- </a> -->\n            </div>\n        </div>\n    </div>\n</template>\n<script>\nimport Upload from './../../components/Upload'\nexport default Upload\n</script>\n<style>\n    .disabled-upload:hover .uk-text-middle:after{\n        content: '(*Remove assets file to change new file.)';\n\n    }\n    .disabled-upload{\n        animation: fadeIn;\n        animation-duration: 1s;\n        will-change: padding;\n        cursor: help;\n    }\n</style>\n\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -80730,8 +80721,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.totalFileSize < _vm.maxSize || _vm.maxSize == undefined),
-      expression: "totalFileSize < maxSize || maxSize == undefined"
+      value: ((_vm.dropzoneTotalFile + _vm.inputTotalFile) <= parseInt(_vm.maxFile)),
+      expression: "(dropzoneTotalFile + inputTotalFile) <= parseInt(maxFile)"
     }],
     staticClass: "b__components__dropzone",
     attrs: {
@@ -80752,8 +80743,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.totalFileSize >= _vm.maxSize && _vm.maxSize != undefined),
-      expression: "totalFileSize >= maxSize && maxSize != undefined"
+      value: ((_vm.dropzoneTotalFile + _vm.inputTotalFile) > parseInt(_vm.maxFile)),
+      expression: "(dropzoneTotalFile + inputTotalFile) > parseInt(maxFile)"
     }],
     staticClass: "b__components__dropzone",
     attrs: {
@@ -80813,7 +80804,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "disabled-upload text-center"
   }, [_c('span', {
     staticClass: "uk-text-middle"
-  }, [_vm._v("Max File Size Uploaded...")])])
+  }, [_vm._v("Max File Uploaded...")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "preview"
