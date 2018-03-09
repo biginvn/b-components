@@ -219,8 +219,8 @@ export default {
                 this.totalInputFileSize = this.totalInputFileSize + parseInt(size.slice(0, sizeLength - 2))
             }
             else{
-                result = size + 'kb'
-                this.totalInputFileSize = this.totalInputFileSize + parseInt(size)
+                result =  parseInt(size/1024) + 'kb'
+                this.totalInputFileSize = this.totalInputFileSize + parseInt(size/1024)
             }
             return result
         },
