@@ -92,7 +92,6 @@ export default {
                 }
             })
             this.$emit('dropzone', this.dropzone)
-            // edit by thien nguyen
             if(this.value != undefined)
                 if(this.value.list != undefined && this.value.list != null)
                     this.prepareItems(this.value.list)
