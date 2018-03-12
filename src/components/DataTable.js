@@ -92,7 +92,7 @@ export default {
                 $('#' + idTable + ' tfoot tr').append(`<th></th>`)
             }
             this.bTable = $('#' + idTable).DataTable(this.options)
-            if (this.tableTfoot !== null) {this.autoTfoot()}
+            if (this.tableTfoot !== null && this.tableTfoot !== undefined) {this.autoTfoot()}
             if (this.calcSum !== null) {this.autoCalc()}
             this.selectCell(this.editAPI, this.keyAPI)
             this.renderTable = true;
@@ -113,7 +113,7 @@ export default {
             this.bTable = $('#' + idTable).DataTable(this.options);
             this.renderTable = true;
         }
-        if (this.tableTfoot !== null) {this.autoTfoot()}
+        if (this.tableTfoot !== null && this.tableTfoot !== undefined) {this.autoTfoot()}
         if (this.calcSum !== null) {this.autoCalc()}
     },
     methods: {

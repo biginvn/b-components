@@ -63,5 +63,8 @@
     export default DataTable
 </script>
 
-<style>
+<style scope>
+thead tr th {
+     border-top: none !important;
+}
 </style>
