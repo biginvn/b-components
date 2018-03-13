@@ -3,11 +3,13 @@ import Chart from 'chart.js'
 import Highcharts from 'highcharts'
 
 export default {
-	props:['type','id','data'],
+	props:['type','id','data','mode'],
 
 	data(){
 		return {
-			chart:null
+			chart:null,
+			
+			
 		}
 	},
 	computed : {
@@ -26,33 +28,60 @@ export default {
 				return []
 			return this.data
 		},
+		chartMode(){
+			if (this.mode == undefined || this.mode == null || this.mode.length == 0)
+				return null
+			return this.mode
+		},
 		
 	},
 	watch:{
 		chartData(val){
-			this.initialize(this.type,this.id,val);
+			
+			this.initialize(this.type,this.id,this.data);
+			
 		}
 	},
 	mounted(){
+		
 		this.initialize(this.type,this.id,this.data);	
+		
 	},
 	methods:{
 		initialize(type,id,data){
 			if(this.type === 'doughnut'){
-				this.chart = Morris.Donut({
-				  element: this.id,
-				  data: this.data,
-				  hoverCallback: function(index, options, content) {
-			        console.log(content)
-			      },
-				  formatter: function(t) {
-		            return t + "%"
-		          },
+				if(this.mode === 'transferee'){
+					this.chart = Morris.Donut({
+				  	element: this.id,
+				    data: this.data,
+					hoverCallback: function(index, options, content) {
+				        console.log(content)
+				    },
+					formatter: function(t) {
+			            return t + "%"
+			        },
 			        resize: !0,
-			        colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"]
-				}).on('click', function (i,row){
-					window.open(row.link,'_blank');
-				});
+			        colors:["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
+					}).on('click', function (i,row){
+						window.open(row.link,'_blank');
+					});
+				}else{
+					this.chart = Morris.Donut({
+				  	element: this.id,
+				    data: this.data,
+					hoverCallback: function(index, options, content) {
+				        console.log(content)
+				    },
+					formatter: function(t) {
+			            return t + "%"
+			        },
+			        resize: !0,
+			        colors:["#12afcb", "#a9a9a9"],
+					}).on('click', function (i,row){
+						window.open(row.link,'_blank');
+					});
+				}
+				
 			}
 			else if(this.type === 'bar'){
 
@@ -120,7 +149,9 @@ export default {
 				        plotBackgroundColor: null,
 				        plotBorderWidth: null,
 				        plotShadow: false,
-				        type: 'pie'
+				      
+				        type: 'pie',
+				        backgroundColor: 'transparent',
 				    },
 				    title: {
 					    text: '',
@@ -131,9 +162,9 @@ export default {
 					
 					credits:{
 						enabled:false,
-						href:'http://www.highcharts.com',
+						// href:'http://www.highcharts.com',
 						
-						text:'duan.com'
+						// text:'duan.com'
 					},
 				    colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
 				    tooltip: {
@@ -155,6 +186,7 @@ export default {
 				    series: [{
 				        
 				        colorByPoint: true,
+				       
 				      	 point: {
 								events: {
 									click: function(e) {

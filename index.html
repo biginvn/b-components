@@ -593,7 +593,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE Basic Mode</h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor" :tiny-config="tinyConfig" v-model="input.tinyMCE" images_upload_url="UploadProcess.php" images_upload_base_path="/some/basepath"></b-tinymce>
+                                    <b-tinymce label="CONTENT" @range="updateRange" @event="updateEvent" mode="basic" id="bTinyMCE__Editor" :tiny-config="tinyConfig" v-model="input.tinyMCE" images_upload_url="UploadProcess.php" images_upload_base_path="/some/basepath"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
@@ -702,6 +702,8 @@ var vm = new Vue({
             typeOutput  : "default",
             roundingDecimal : 4
         },
+        range:null,
+        event:null,
 
         input: {
             name: 'Input your text...',

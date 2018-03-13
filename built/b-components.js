@@ -59929,11 +59929,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-	props: ['type', 'id', 'data'],
+	props: ['type', 'id', 'data', 'mode'],
 
 	data() {
 		return {
 			chart: null
+
 		};
 	},
 	computed: {
@@ -59948,34 +59949,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		chartData() {
 			if (this.data == undefined || this.data == null || this.data.length == 0) return [];
 			return this.data;
+		},
+		chartMode() {
+			if (this.mode == undefined || this.mode == null || this.mode.length == 0) return null;
+			return this.mode;
 		}
 
 	},
 	watch: {
 		chartData(val) {
-			this.initialize(this.type, this.id, val);
+
+			this.initialize(this.type, this.id, this.data);
 		}
 	},
 	mounted() {
+
 		this.initialize(this.type, this.id, this.data);
 	},
 	methods: {
 		initialize(type, id, data) {
 			if (this.type === 'doughnut') {
-				this.chart = Morris.Donut({
-					element: this.id,
-					data: this.data,
-					hoverCallback: function (index, options, content) {
-						console.log(content);
-					},
-					formatter: function (t) {
-						return t + "%";
-					},
-					resize: !0,
-					colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"]
-				}).on('click', function (i, row) {
-					window.open(row.link, '_blank');
-				});
+				if (this.mode === 'transferee') {
+					this.chart = Morris.Donut({
+						element: this.id,
+						data: this.data,
+						hoverCallback: function (index, options, content) {
+							console.log(content);
+						},
+						formatter: function (t) {
+							return t + "%";
+						},
+						resize: !0,
+						colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"]
+					}).on('click', function (i, row) {
+						window.open(row.link, '_blank');
+					});
+				} else {
+					this.chart = Morris.Donut({
+						element: this.id,
+						data: this.data,
+						hoverCallback: function (index, options, content) {
+							console.log(content);
+						},
+						formatter: function (t) {
+							return t + "%";
+						},
+						resize: !0,
+						colors: ["#12afcb", "#a9a9a9"]
+					}).on('click', function (i, row) {
+						window.open(row.link, '_blank');
+					});
+				}
 			} else if (this.type === 'bar') {
 
 				let idChart = this.id;
@@ -60036,7 +60060,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						plotBackgroundColor: null,
 						plotBorderWidth: null,
 						plotShadow: false,
-						type: 'pie'
+
+						type: 'pie',
+						backgroundColor: 'transparent'
 					},
 					title: {
 						text: '',
@@ -60046,10 +60072,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					},
 
 					credits: {
-						enabled: false,
-						href: 'http://www.highcharts.com',
+						enabled: false
+						// href:'http://www.highcharts.com',
 
-						text: 'duan.com'
+						// text:'duan.com'
 					},
 					colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
 					tooltip: {
@@ -60071,6 +60097,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					series: [{
 
 						colorByPoint: true,
+
 						point: {
 							events: {
 								click: function (e) {
@@ -61516,7 +61543,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data() {
         return {
             tinymce: null,
-            contentOutPut: ""
+            contentOutPut: "",
+            range: null
         };
     },
 
@@ -61557,6 +61585,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 readonly: readonly,
                 height: height,
                 plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table", "image code"],
+                force_br_newlines: true,
+                force_p_newlines: true,
+                forced_root_block: '',
                 toolbar: toolbar,
                 menubar: false,
 
@@ -61614,18 +61645,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     $('tr.mceFirst').css('z-index', '1000');
                     if (content != null || content != undefined) this.setContent(content);
                     editor.on('keyup', function (e) {
+                        if (e.which == 13) {
+                            Vue.$emit('event', e.which);
+                        }
                         if (this.getContent() != "") {
                             if (Vue.classLabel != "active") Vue.classLabel = "active";
                         } else {
                             Vue.classLabel != "";
                         }
                     });
+
                     editor.on('blur', function (e) {
+
+                        Vue.range = this.selection.getRng().startOffset; // get range
+
+                        Vue.$emit('range', Vue.range);
+
                         this.contentOutPut = this.getContent();
                         Vue.update(this.getContent());
                     });
 
                     editor.on('focus', function (e) {
+
                         Vue.$emit('focus');
                     });
                 }
@@ -61768,6 +61809,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     });
                     editor.on('blur', function (e) {
                         this.contentOutPut = this.getContent();
+
                         Vue.update(this.getContent());
                     });
 
@@ -61806,6 +61848,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.classLabel = 'active';
             } else this.classLabel = '';
         }
+
     }
 });
 
