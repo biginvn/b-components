@@ -5,6 +5,7 @@ export default {
         return {
             tinymce : null,
             contentOutPut : "",
+            range:null
         }
     },
 
@@ -19,6 +20,7 @@ export default {
     mounted() {
         this.initTinyMCE(this.value)
     },
+    
 
     computed: {
     },
@@ -63,6 +65,9 @@ export default {
                             "table",
                             "image code",
                         ],
+                        force_br_newlines : true,
+                        force_p_newlines : true,
+                        forced_root_block : '',
                         toolbar: toolbar,
                         menubar: false,
 
@@ -122,6 +127,9 @@ export default {
                             if(content != null || content != undefined)
                                 this.setContent(content)
                             editor.on('keyup', function (e) {
+                                if(e.which == 13){
+                                    Vue.$emit('event',e.which)
+                                }
                                 if(this.getContent() != ""){
                                     if( Vue.classLabel != "active" )
                                         Vue.classLabel = "active"
@@ -129,12 +137,19 @@ export default {
                                     Vue.classLabel != ""
                                 }
                             })
+                            
                             editor.on('blur', function (e) {
+                              
+                                Vue.range = this.selection.getRng().startOffset;     // get range
+
+                                Vue.$emit('range',Vue.range)
+                               
                                 this.contentOutPut = this.getContent()
                                 Vue.update(this.getContent())
                             })
 
                             editor.on('focus', function (e) {
+                                
                                 Vue.$emit('focus')
                             })
                         }
@@ -291,6 +306,7 @@ export default {
                             })
                             editor.on('blur', function (e) {
                                 this.contentOutPut = this.getContent()
+
                                 Vue.update(this.getContent())
                             })
 
@@ -339,5 +355,6 @@ export default {
             } else
                 this.classLabel = ''
         },
+       
     }
 }
