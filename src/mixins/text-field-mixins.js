@@ -1,9 +1,9 @@
 import baseMixins from './base-mixins'
 
-const textFieldMixins = {
+export default {
     data() {
         return {
-            classLabel: '',
+            classLabel: ''
         }
     },
     mixins: [baseMixins],
@@ -31,4 +31,3 @@ const textFieldMixins = {
         }
     }
 }
-export default textFieldMixins

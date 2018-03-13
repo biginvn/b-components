@@ -26,7 +26,8 @@ export default {
     },
 
     destroyed(){
-        tinymce.get(this.id).remove()
+        if(document.querySelector('#' + this.id) != null )
+            tinymce.get(this.id).remove()
     },
 
     watch:{
