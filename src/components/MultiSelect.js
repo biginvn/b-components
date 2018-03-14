@@ -73,6 +73,11 @@ export default {
 		}
 	},
 	methods : {
+
+		closeDropdow(){
+			this.isExpanding = false
+		},
+
 		blurSearch(){
 			if(this.searchList.length == 0){
 				this.searchKeyword = ""

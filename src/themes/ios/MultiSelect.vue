@@ -22,6 +22,7 @@
 				required
 				oninvalid="this.setCustomValidity('The query field must not be blank')"
     			oninput="setCustomValidity('')"
+    			@blur='closeDropdow()'
 			></div>
 
 			<div class="control" @click="toggleList()">
