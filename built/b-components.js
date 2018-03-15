@@ -59623,6 +59623,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_MultiSelect__["a" /* default */]);
@@ -60066,11 +60070,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-	props: ['type', 'id', 'data', 'color'],
+	props: ['type', 'id', 'data', 'mode'],
 
 	data() {
 		return {
 			chart: null
+
 		};
 	},
 	computed: {
@@ -60085,41 +60090,65 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		chartData() {
 			if (this.data == undefined || this.data == null || this.data.length == 0) return [];
 			return this.data;
+		},
+		chartMode() {
+			if (this.mode == undefined || this.mode == null || this.mode.length == 0) return null;
+			return this.mode;
 		}
 
 	},
 	watch: {
 		chartData(val) {
-			this.initialize(this.type, this.id, val, this.color);
+
+			this.initialize(this.type, this.id, this.data);
 		}
 	},
 	mounted() {
-		this.initialize(this.type, this.id, this.data, this.color);
+
+		this.initialize(this.type, this.id, this.data);
 	},
 	methods: {
-		initialize(type, id, data, color) {
+		initialize(type, id, data) {
 			if (this.type === 'doughnut') {
-				this.chart = Morris.Donut({
-					element: this.id,
-					data: this.data,
-					hoverCallback: function (index, options, content) {},
-					formatter: function (t) {
-						return t + "%";
-					},
-					resize: !0,
-					colors: color
-				}).on('click', function (i, row) {
-					window.open(row.link, '_blank');
-				});
+				if (this.mode === 'transferee') {
+					this.chart = Morris.Donut({
+						element: this.id,
+						data: this.data,
+						hoverCallback: function (index, options, content) {
+							console.log(content);
+						},
+						formatter: function (t) {
+							return t + "%";
+						},
+						resize: !0,
+						colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"]
+					}).on('click', function (i, row) {
+						window.open(row.link, '_blank');
+					});
+				} else {
+					this.chart = Morris.Donut({
+						element: this.id,
+						data: this.data,
+						hoverCallback: function (index, options, content) {
+							console.log(content);
+						},
+						formatter: function (t) {
+							return t + "%";
+						},
+						resize: !0,
+						colors: ["#12afcb", "#a9a9a9"]
+					}).on('click', function (i, row) {
+						window.open(row.link, '_blank');
+					});
+				}
 			} else if (this.type === 'bar') {
 
 				let idChart = this.id;
 				__WEBPACK_IMPORTED_MODULE_0_chart_js___default.a.defaults.global.legend.display = true;
-				let labels = this.data.labels;
 				this.chart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(idChart, {
 					type: this.type,
 					data: {
-						labels: labels,
+						labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 						datasets: [{
 							label: "Initiated",
 							backgroundColor: "rgba(0,123,255,0.5)",
@@ -60153,35 +60182,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
 						responsive: true,
 						legend: {
+
 							position: 'right'
 						},
 						title: {
 							display: true,
 							text: 'Initiated & Completed Relocations by Month',
 							position: 'top'
+
 						}
+
 					}
 				});
 			} else if (this.type === 'doughnutChart') {
+
 				__WEBPACK_IMPORTED_MODULE_1_highcharts___default.a.chart(this.id, {
 					chart: {
 						plotBackgroundColor: null,
 						plotBorderWidth: null,
 						plotShadow: false,
-						type: 'pie'
+
+						type: 'pie',
+						backgroundColor: 'transparent'
 					},
 					title: {
 						text: '',
 						floating: true,
 						enabled: false
+
 					},
 
 					credits: {
-						enabled: false,
-						href: 'http://www.highcharts.com',
-						text: 'duan.com'
+						enabled: false
+						// href:'http://www.highcharts.com',
+
+						// text:'duan.com'
 					},
-					colors: color,
+					colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
 					tooltip: {
 						pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
 					},
@@ -60201,10 +60238,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					series: [{
 
 						colorByPoint: true,
+
 						point: {
 							events: {
 								click: function (e) {
+									//this.slice();
+									//console.log(e);
 									window.open(e.point.url, '_blank');
+									//window.location.href =;
 									e.preventDefault();
 								}
 							}
@@ -60212,6 +60253,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						data: this.data
 					}]
 				});
+
 				// let idChart = this.id
 				// // Chart.defaults.global.legend.display = false;
 				// this.chart = new Chart(idChart,{
@@ -60235,7 +60277,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				// function clickFunction(d,i){
 				// 	console.log('click:',d)
 				// }
+
 			}
+
 			this.$emit('input', this.data);
 		}
 	}
@@ -61312,6 +61356,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	methods: {
+
+		closeDropdow() {
+			this.isExpanding = false;
+		},
+
 		blurSearch() {
 			if (this.searchList.length == 0) {
 				this.searchKeyword = "";
@@ -62135,7 +62184,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data() {
         return {
             tinymce: null,
-            contentOutPut: ""
+            contentOutPut: "",
+            range: null
         };
     },
 
@@ -62176,6 +62226,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 readonly: readonly,
                 height: height,
                 plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table", "image code"],
+                force_br_newlines: true,
+                force_p_newlines: true,
+                forced_root_block: '',
                 toolbar: toolbar,
                 menubar: false,
 
@@ -62233,18 +62286,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     $('tr.mceFirst').css('z-index', '1000');
                     if (content != null || content != undefined) this.setContent(content);
                     editor.on('keyup', function (e) {
+                        if (e.which == 13) {
+                            Vue.$emit('event', e.which);
+                        }
                         if (this.getContent() != "") {
                             if (Vue.classLabel != "active") Vue.classLabel = "active";
                         } else {
                             Vue.classLabel != "";
                         }
                     });
+
                     editor.on('blur', function (e) {
+
+                        Vue.range = this.selection.getRng().startOffset; // get range
+
+                        Vue.$emit('range', Vue.range);
+
                         this.contentOutPut = this.getContent();
                         Vue.update(this.getContent());
                     });
 
                     editor.on('focus', function (e) {
+
                         Vue.$emit('focus');
                     });
                 }
@@ -62387,6 +62450,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     });
                     editor.on('blur', function (e) {
                         this.contentOutPut = this.getContent();
+
                         Vue.update(this.getContent());
                     });
 
@@ -62425,6 +62489,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.classLabel = 'active';
             } else this.classLabel = '';
         }
+
     }
 });
 
@@ -75754,7 +75819,7 @@ exports = module.exports = __webpack_require__(11)();
 
 
 // module
-exports.push([module.i, "\n.addBorder{\n\tborder: 1px solid #0082d5 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?1fb6a834"],"names":[],"mappings":";AA6CA;CACA,qCAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\r\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\r\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{addBorder : isExpanding}\">\r\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\r\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\r\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\r\n\t\t\t\t<span class=\"thumb\" v-if = \"getSingleSelected()!=null\" v-html=\"getSingleSelected().thumbHtml\"></span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\r\n\t\t\t\t<input\r\n\t\t\t\t:placeholder=\"placeholder\"\r\n\t\t\t\ttype=\"text\" \r\n\t\t\t\tstyle=\"margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%\" \r\n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\r\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\r\n\t\t\t\tclass=\"input-control\" @focus = \"focusInputAction($event.target.value)\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\r\n\t\t\t></div>\r\n\r\n\t\t\t<div class=\"control\" @click=\"toggleList()\">\r\n\t\t\t\t<i class=\"fa fa-angle-down\" aria-hidden=\"true\" v-show=\"!isExpanding\"></i>\r\n\t\t\t\t<i class=\"fa fa-angle-up\" aria-hidden=\"true\" v-show=\"isExpanding\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\r\n\t\t\t<li v-show = \"searchList.length == 0\" class=\"not-found\">Not found</li>\r\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\r\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\r\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport MultiSelect from './../../components/MultiSelect'\r\n\texport default MultiSelect\r\n</script>\r\n<style scope>\r\n\t.addBorder{\r\n\t\tborder: 1px solid #0082d5 !important;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.addBorder{\n\tborder: 1px solid #0082d5 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?1f0b2106"],"names":[],"mappings":";AAiDA;CACA,qCAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\r\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\r\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{addBorder : isExpanding}\">\r\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\r\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\r\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\r\n\t\t\t\t<span class=\"thumb\" v-if = \"getSingleSelected()!=null\" v-html=\"getSingleSelected().thumbHtml\"></span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\r\n\t\t\t\t<input\r\n\t\t\t\t:placeholder=\"placeholder\"\r\n\t\t\t\ttype=\"text\" \r\n\t\t\t\tstyle=\"margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%\" \r\n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\r\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\r\n\t\t\t\tclass=\"input-control\" @focus = \"focusInputAction($event.target.value)\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\r\n\t\t\t\trequired\r\n\t\t\t\toninvalid=\"this.setCustomValidity('The query field must not be blank')\"\r\n    \t\t\toninput=\"setCustomValidity('')\"\r\n    \t\t\t@blur='closeDropdow()'\r\n\t\t\t></div>\r\n\r\n\t\t\t<div class=\"control\" @click=\"toggleList()\">\r\n\t\t\t\t<i class=\"fa fa-angle-down\" aria-hidden=\"true\" v-show=\"!isExpanding\"></i>\r\n\t\t\t\t<i class=\"fa fa-angle-up\" aria-hidden=\"true\" v-show=\"isExpanding\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\r\n\t\t\t<li v-show = \"searchList.length == 0\" class=\"not-found\">Not found</li>\r\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\r\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\r\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport MultiSelect from './../../components/MultiSelect'\r\n\texport default MultiSelect\r\n</script>\r\n<style scope>\r\n\t.addBorder{\r\n\t\tborder: 1px solid #0082d5 !important;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -79666,7 +79731,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "placeholder": _vm.placeholder,
-      "type": "text"
+      "type": "text",
+      "required": "",
+      "oninvalid": "this.setCustomValidity('The query field must not be blank')",
+      "oninput": "setCustomValidity('')"
     },
     domProps: {
       "value": _vm.searchKeyword
@@ -79690,6 +79758,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       "input": function($event) {
         _vm.searchAction($event.target.value)
+      },
+      "blur": function($event) {
+        _vm.closeDropdow()
       }
     }
   })]) : _vm._e(), _vm._v(" "), _c('div', {

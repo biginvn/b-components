@@ -3,11 +3,13 @@ import Chart from 'chart.js'
 import Highcharts from 'highcharts'
 
 export default {
-	props:['type', 'id', 'data', 'color'],
+	props:['type','id','data','mode'],
 
 	data(){
 		return {
-			chart:null
+			chart:null,
+			
+			
 		}
 	},
 	computed : {
@@ -26,42 +28,69 @@ export default {
 				return []
 			return this.data
 		},
+		chartMode(){
+			if (this.mode == undefined || this.mode == null || this.mode.length == 0)
+				return null
+			return this.mode
+		},
 		
 	},
 	watch:{
 		chartData(val){
-			this.initialize(this.type, this.id, val, this.color);
+			
+			this.initialize(this.type,this.id,this.data);
+			
 		}
-	}, 
+	},
 	mounted(){
-		this.initialize(this.type, this.id, this.data, this.color);	
+		
+		this.initialize(this.type,this.id,this.data);	
+		
 	},
 	methods:{
-		initialize(type,id,data, color){
+		initialize(type,id,data){
 			if(this.type === 'doughnut'){
-				this.chart = Morris.Donut({
-				  element: this.id,
-				  data: this.data,
-				  hoverCallback: function(index, options, content) {
-			      },
-				  formatter: function(t) {
-		            return t + "%"
-		          },
+				if(this.mode === 'transferee'){
+					this.chart = Morris.Donut({
+				  	element: this.id,
+				    data: this.data,
+					hoverCallback: function(index, options, content) {
+				        console.log(content)
+				    },
+					formatter: function(t) {
+			            return t + "%"
+			        },
 			        resize: !0,
-			        colors: color
-				}).on('click', function (i,row){
-					window.open(row.link,'_blank');
-				});
+			        colors:["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
+					}).on('click', function (i,row){
+						window.open(row.link,'_blank');
+					});
+				}else{
+					this.chart = Morris.Donut({
+				  	element: this.id,
+				    data: this.data,
+					hoverCallback: function(index, options, content) {
+				        console.log(content)
+				    },
+					formatter: function(t) {
+			            return t + "%"
+			        },
+			        resize: !0,
+			        colors:["#12afcb", "#a9a9a9"],
+					}).on('click', function (i,row){
+						window.open(row.link,'_blank');
+					});
+				}
+				
 			}
 			else if(this.type === 'bar'){
 
 				let idChart = this.id
 				Chart.defaults.global.legend.display = true;
-				let labels = this.data.labels
 				this.chart = new Chart(idChart,{
 					type:this.type,
 					data:{
-						labels: labels,
+						labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 						datasets: [
 							{
 			                    label: "Initiated",
@@ -98,36 +127,46 @@ export default {
 				        legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
 				        responsive: true,
 				        legend: {
+				        
 				            position: 'right',
 				        },
 				        title: {
 				            display: true,
 				            text: 'Initiated & Completed Relocations by Month',
 				            position:'top',
+
 				        },
+
+
 				    }
 				})
 			}
+
 			else if(this.type === 'doughnutChart'){
+			
 				Highcharts.chart(this.id, {
 				    chart: {
 				        plotBackgroundColor: null,
 				        plotBorderWidth: null,
 				        plotShadow: false,
-				        type: 'pie'
+				      
+				        type: 'pie',
+				        backgroundColor: 'transparent',
 				    },
 				    title: {
 					    text: '',
 					    floating: true,
 					    enabled:false,
+					    
 					},
 					
 					credits:{
 						enabled:false,
-						href:'http://www.highcharts.com',
-						text:'duan.com'
+						// href:'http://www.highcharts.com',
+						
+						// text:'duan.com'
 					},
-				    colors: color,
+				    colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
 				    tooltip: {
 				        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
 				    },
@@ -147,10 +186,14 @@ export default {
 				    series: [{
 				        
 				        colorByPoint: true,
+				       
 				      	 point: {
 								events: {
 									click: function(e) {
+										//this.slice();
+										//console.log(e);
 				            			window.open( e.point.url,'_blank');
+										//window.location.href =;
 										e.preventDefault();
 									}
 								}
@@ -158,6 +201,7 @@ export default {
 							data: this.data
 				    }]
 				});
+
 				// let idChart = this.id
 				// // Chart.defaults.global.legend.display = false;
 				// this.chart = new Chart(idChart,{
@@ -181,7 +225,10 @@ export default {
 				// function clickFunction(d,i){
 				// 	console.log('click:',d)
 				// }
+
+
 			}
+
 			this.$emit('input',this.data);
 		}
 	}
