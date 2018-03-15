@@ -60338,7 +60338,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 $('#' + idTable + ' tfoot tr').append(`<th></th>`);
             }
             this.bTable = $('#' + idTable).DataTable(this.options);
-            if (this.tableTfoot !== null) {
+            if (this.tableTfoot !== null && this.tableTfoot !== undefined) {
                 this.autoTfoot();
             }
             if (this.calcSum !== null) {
@@ -60360,7 +60360,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.bTable = $('#' + idTable).DataTable(this.options);
             this.renderTable = true;
         }
-        if (this.tableTfoot !== null) {
+        if (this.tableTfoot !== null && this.tableTfoot !== undefined) {
             this.autoTfoot();
         }
         if (this.calcSum !== null) {
@@ -75768,7 +75768,7 @@ exports = module.exports = __webpack_require__(11)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"DataTable.vue","sourceRoot":"webpack://"}]);
+exports.push([module.i, "\nthead tr th {\r\n     border-top: none !important;\n}\r\n", "", {"version":3,"sources":["/./src/themes/ios/DataTable.vue?0a8fb316"],"names":[],"mappings":";AAkEA;KACA,4BAAA;CACA","file":"DataTable.vue","sourcesContent":["<template>\r\n    <div class=\"b-table-custom\">\r\n        <div v-if=\"hasSearchFilter\" class=\"panel\" :id=\"idSearch\" :class=\"classPanel\" :searchURL=\"searchURL\">\r\n            <div class=\"panel-body\">\r\n                <div class=\"panel panel-border\">\r\n                    <div class=\"panel-heading\">\r\n                        <h3 class=\"panel-title\">{{ titlePanel }}</h3>\r\n                    </div>\r\n                    <div class=\"panel-body\">\r\n                        <form class=\"search-list\">\r\n                            <div class=\"form-help\">\r\n                                <slot name=\"help\">\r\n\r\n                                </slot>\r\n                            </div>\r\n                            <div class=\"form-elements\">\r\n                                <!--Add input, select, ... at here-->\r\n                                <slot name=\"elements\">\r\n\r\n                                </slot>\r\n                            </div>\r\n                            <div class=\"form-actions\">\r\n                                <!--Add buttons for actions at here-->\r\n                                <slot name=\"actions\">\r\n                                    <button @click=\"searchFilter($event)\" type=\"button\" class=\"btn btn-success btn-rounded btn-search-list\">Search</button>\r\n                                    <button @click=\"resetSearchForm($event)\" type=\"button\" class=\"btn btn-default btn-rounded\">Clear</button>\r\n                                </slot>\r\n                            </div>\r\n                        </form>\r\n                    </div>\r\n                </div>\r\n                <div class=\"filter-actions\" :class=\"classFilter\">\r\n                    <!--Add buttons for action create/update,..-->\r\n                    <slot name=\"filter_actions\">\r\n\r\n                    </slot>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n\r\n        <table class=\"display table dataTable\" :editAPI=\"editAPI\" :keyAPI=\"keyAPI\" :id=\"idTable\" width=\"100%\" :static=\"static\" :tableData=\"tableData\" :tableColumn=\"tableColumn\" :otherOptions=\"otherOptions\" :calcSum=\"calcSum\" :tableTfoot=\"tableTfoot\">\r\n            <tbody>\r\n            </tbody>\r\n            <tfoot>\r\n            <tr>\r\n            </tr>\r\n            </tfoot>\r\n            <slot></slot>\r\n            <div class=\"overlay-table hidden\">\r\n                <div class=\"message-processing\">\r\n                    Please wait ...\r\n                    <i class=\"fa fa-spinner fa-spin fa-fw\"></i>\r\n                </div>\r\n            </div>\r\n        </table>\r\n\r\n    </div>\r\n</template>\r\n\r\n<script>\r\n    import DataTable from '../../components/DataTable'\r\n    export default DataTable\r\n</script>\r\n\r\n<style scope>\r\nthead tr th {\r\n     border-top: none !important;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -80210,6 +80210,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data": _vm.chartData
     }
   }) : _c('canvas', {
+    staticStyle: {
+      "width": "100%",
+      "height": "350px"
+    },
     attrs: {
       "id": _vm.chartId,
       "type": _vm.chartType,
