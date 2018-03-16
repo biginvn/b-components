@@ -31,7 +31,6 @@ export default {
 				return null
 			return this.mode
 		},
-		
 	},
 	watch:{
 		chartData(val){

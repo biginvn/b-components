@@ -60,7 +60,7 @@ export default {
                         readonly : readonly,
                         height : height,
                         plugins: [
-                            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
+                            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
                             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
                             "table",
                             "image code",
@@ -168,7 +168,7 @@ export default {
                         selector: '#' + Vue.id,
                         readonly : readonly,
                         plugins: [
-                            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
+                            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
                             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
                             "table",
                             "image code",

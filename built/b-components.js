@@ -60094,7 +60094,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (this.mode == undefined || this.mode == null || this.mode.length == 0) return null;
 			return this.mode;
 		}
-
 	},
 	watch: {
 		chartData(val) {
@@ -62206,7 +62205,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 selector: '#' + Vue.id,
                 readonly: readonly,
                 height: height,
-                plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table", "image code"],
+                plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table", "image code"],
                 force_br_newlines: true,
                 force_p_newlines: true,
                 forced_root_block: '',
@@ -62301,7 +62300,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             Vue.tinymce = tinymce.init(Object.assign({}, {
                 selector: '#' + Vue.id,
                 readonly: readonly,
-                plugins: ["advlist autolink autosave link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table", "image code"],
+                plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table", "image code"],
                 toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | table",
                 // toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
                 toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
