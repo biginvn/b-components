@@ -8,7 +8,13 @@
 			</div>
 
 			<div class="selected single" v-if="isSingle">
-				<span class="thumb" v-if = "getSingleSelected()!=null" v-html="getSingleSelected().thumbHtml"></span>
+				<span 
+					class="thumb" 
+					v-if="getSingleSelected()!=null"
+					v-html="getSingleSelected().thumbHtml"
+					@click='editQuery()'	
+				>
+				</span>
 			</div>
 
 			<div class="input-control-wrap" v-if = "!isSingle || getSingleSelected() == null " style="width:100%;">

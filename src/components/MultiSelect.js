@@ -29,6 +29,7 @@ export default {
 			if(value != null)
 				this.isActive = true
 		}
+		
 	},
 	props: {
         list: {
@@ -70,12 +71,17 @@ export default {
 		},
 		listClasses () {
 			return (this.isExpanding ? "active" : "") + " b__multi__select__list"
-		}
+		}	
 	},
 	methods : {
+		editQuery(){
+			this.value=null;
+		},
 
 		closeDropdow(){
-			this.isExpanding = false
+			if(this.searchList.length == 0){
+				this.isExpanding = false
+			}	
 		},
 
 		blurSearch(){
@@ -93,6 +99,7 @@ export default {
 				return listSelected[0]
 			return null
 		},
+
 		getSelectedList () { // Get selected with full information [ { id : .. , html : ... } ]
 			if (this.isSingle) return
 			let selected = []
@@ -103,9 +110,11 @@ export default {
 			})
         	return selected
 		},
+
 		toggleList () {
 			this.switchList(!this.isExpanding)
 		},
+
 		switchList (on = true) {
 			if (on)
 				this.isExpanding = true
