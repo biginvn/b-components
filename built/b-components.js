@@ -61367,7 +61367,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	methods: {
 		editQuery() {
-			this.value = null;
+			this.searchKeyword = null;
 		},
 
 		closeDropdow() {

@@ -76,7 +76,7 @@ export default {
 	},
 	methods : {
 		editQuery(){
-			this.value=null;
+			this.searchKeyword=null;
 		},
 
 		closeDropdow(){
