@@ -61057,7 +61057,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             for (let i = 0; i < listFile.length; i++) {
                 if (listFile[i].accepted == true) this.totalDropzoneFileSize = this.totalDropzoneFileSize + listFile[i].size / 1024;
                 if (this.maxSize != undefined && this.totalInputFileSize + this.totalDropzoneFileSize >= this.maxSize) {
-                    fileError = fileError + i + 1;
+                    fileError = fileError + listFile[i].name + " ";
                     this.totalDropzoneFileSize = this.totalDropzoneFileSize - listFile[i].size / 1024;
                     this.dropzone.removeFile(listFile[i]);
                 }
