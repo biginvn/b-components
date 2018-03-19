@@ -76,7 +76,8 @@ export default {
 	},
 	methods : {
 		editQuery(){
-			this.searchKeyword=null;
+			// this.searchKeyword=null;
+			return this.$emit('input', null)
 		},
 
 		closeDropdow(){
