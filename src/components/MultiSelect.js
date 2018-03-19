@@ -26,8 +26,9 @@ export default {
 			}
 		},
 		value(value){
-			if(value != null)
+			if(value != "" && value != null)
 				this.isActive = true
+			else this.isActive = false
 		}
 		
 	},
