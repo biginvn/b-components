@@ -38,6 +38,7 @@ export default {
         value: {
         	
         },
+        name : null,
         disabled: {
 
         },
