@@ -91,6 +91,8 @@ export default {
 		},
 
 		getSingleSelected(){
+			if(this.list == undefined)
+				return;
 			let listSelected = this.list.filter( (item) => {
 				return item.id == this.selected
 			})
