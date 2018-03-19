@@ -61334,7 +61334,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		value(value) {
 			if (value != null) this.isActive = true;
 		}
-
 	},
 	props: {
 		list: {},

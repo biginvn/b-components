@@ -29,7 +29,6 @@ export default {
 			if(value != null)
 				this.isActive = true
 		}
-		
 	},
 	props: {
         list: {
