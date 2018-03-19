@@ -19,7 +19,6 @@
 
 			<div class="input-control-wrap" v-if = "!isSingle || getSingleSelected() == null " style="width:100%;">
 				<input
-				:name="name" 
 				:placeholder="placeholder"
 				type="text" 
 				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%" 
