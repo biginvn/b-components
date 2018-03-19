@@ -61053,14 +61053,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         caculateTotalDropzoneFileSize(listFile) {
             this.totalDropzoneFileSize = 0;
+            let fileError = "";
             for (let i = 0; i < listFile.length; i++) {
                 if (listFile[i].accepted == true) this.totalDropzoneFileSize = this.totalDropzoneFileSize + listFile[i].size / 1024;
                 if (this.maxSize != undefined && this.totalInputFileSize + this.totalDropzoneFileSize >= this.maxSize) {
-                    alert("File " + listFile[i].name + " removed because total size to large.");
+                    fileError = fileError + i + 1;
                     this.totalDropzoneFileSize = this.totalDropzoneFileSize - listFile[i].size / 1024;
                     this.dropzone.removeFile(listFile[i]);
                 }
             }
+            if (fileError != null && fileError != "") alert("File: " + fileError + " removed because total size to large.");
         }
     }
 });

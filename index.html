@@ -469,7 +469,17 @@
                                         <p>
                                             <b-upload v-model="input.upload" name="upload-document" id="uploadTest" :config="uploadConfig"></b-upload>
                                         </p>
-                                        <b-button type="button" class-name="button-warn" label="Set Value" @click.native="input.upload.list=listUpload"></b-button>
+                                    </div>
+                            </div>
+
+                            <figure class="wow animated bounceInRight">
+                                <div class="panel-border">
+                                    <h4 class="mb-3 panel-heading">Upload 2.0</h4>
+                                    <div class="panel-body">
+                                        <p>
+                                            <b-dropzone-upload v-model="input.dropzoneUpload" max-file="10" max-size="5000" name="upload-document" id="b-component-upload2" :config="uploadConfig"></b-dropzone-upload>
+                                        </p>
+                                        <b-button type="button" class-name="button-warn" label="Set Value" @click.native="input.dropzoneUpload.list=listUpload"></b-button>
                                     </div>
                             </div>
                         </figure>
@@ -731,7 +741,8 @@ var vm = new Vue({
             remoteData        :[],
             telerikNumberic   : null,
             modalMessage      : false,
-            upload            : {
+            upload            : null,
+            dropzoneUpload    : {
                 list : [],
                 dropzone : null,
             },
