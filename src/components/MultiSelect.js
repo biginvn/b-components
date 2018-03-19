@@ -26,8 +26,10 @@ export default {
 			}
 		},
 		value(value){
-			if(value != null)
+			if(value != null && value != '')
 				this.isActive = true
+			else
+				this.isActive = false
 		}
 	},
 	props: {
