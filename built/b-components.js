@@ -13747,7 +13747,7 @@ module.exports = function(module) {
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
-	props: ['type', 'min', 'maxlength'],
+	props: ['type', 'min', 'maxlength', 'classParent'],
 	computed: {
 		classes() {
 			return (this.className ? this.className : '') + " b__input 2";
@@ -13755,6 +13755,9 @@ module.exports = function(module) {
 		typeComponent() {
 			if (this.type == undefined || this.type == null || this.type.length == 0) return 'text';
 			return this.type;
+		},
+		classesParent() {
+			return this.classParent ? this.classParent : '';
 		}
 	},
 	methods: {
@@ -59635,11 +59638,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_MultiSelect__["a" /* default */]);
+// 	required
+// oninvalid="this.setCustomValidity('The query field must not be blank')"
+// 			oninput="setCustomValidity('')"
 
 /***/ }),
 /* 395 */
@@ -59904,6 +59908,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TextField__["a" /* default */]);
@@ -60130,14 +60135,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	methods: {
 		initialize(type, id, data, color) {
+			color = color != undefined && color != null ? color : [];
 			if (this.type === 'doughnut') {
 				if (this.mode === 'transferee') {
 					this.chart = Morris.Donut({
 						element: this.id,
 						data: this.data,
-						hoverCallback: function (index, options, content) {
-							console.log(content);
-						},
+						hoverCallback: function (index, options, content) {},
 						formatter: function (t) {
 							return t + "%";
 						},
@@ -60150,9 +60154,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					this.chart = Morris.Donut({
 						element: this.id,
 						data: this.data,
-						hoverCallback: function (index, options, content) {
-							console.log(content);
-						},
+						hoverCallback: function (index, options, content) {},
 						formatter: function (t) {
 							return t + "%";
 						},
@@ -60213,6 +60215,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					}
 				});
 			} else if (this.type === 'doughnutChart') {
+
 				__WEBPACK_IMPORTED_MODULE_1_highcharts___default.a.chart(this.id, {
 					chart: {
 						plotBackgroundColor: null,
@@ -60230,8 +60233,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					},
 					credits: {
 						enabled: false
-						// href:'http://www.highcharts.com',
-						// text:'duan.com'
 					},
 					colors: color,
 					tooltip: {
@@ -60265,26 +60266,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						data: this.data
 					}]
 				});
-				// let idChart = this.id
-				// // Chart.defaults.global.legend.display = false;
-				// this.chart = new Chart(idChart,{
-				// 	type:'doughnut',
-				// 	data:{
-				// 		labels: ["Active","Cancelled","Complete","Delete","On-Hold","Pending","Queued"],
-				// 		datasets: [
-				// 			{
-				// 				data: this.data[0].data,
-				// 				backgroundColor: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
-				// 			}
-				// 		],
-				// 	},
-				// 	options:{
-				// 		onClick : clickFunction
-				// 	}
-				// })
-				// function clickFunction(d,i){
-				// 	console.log('click:',d)
-				// }
 			}
 			this.$emit('input', this.data);
 		}
@@ -61332,7 +61313,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 		},
 		value(value) {
-			if (value != null && value != '') this.isActive = true;else this.isActive = false;
+			if (value != "" && value != null) this.isActive = true;else this.isActive = false;
 		}
 	},
 	props: {
@@ -61365,7 +61346,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	methods: {
 		editQuery() {
-			// this.searchKeyword=null;
 			return this.$emit('input', null);
 		},
 
@@ -61803,6 +61783,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	props: ['type'],
 	data() {
 		return {
+			tags: [],
 			newTag: '',
 			tagPlaceholder: '',
 			classLabel: ''
@@ -61812,12 +61793,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	mounted() {
 		this.setDataDefault();
 		this.setTag(this.value);
-	},
-
-	computed: {
-		tags() {
-			return this.value ? this.value.map(item => item.toString()) : [];
-		}
 	},
 
 	methods: {
@@ -61890,7 +61865,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 		},
 		keyhandler(event) {
-			console.log(event);
 			let regex = /^[0-9]$/g;
 			if (event.key.match(regex) == null && event.keyCode != 8 && event.keyCode != 189) {
 				event.preventDefault();
@@ -75832,7 +75806,7 @@ exports = module.exports = __webpack_require__(11)();
 
 
 // module
-exports.push([module.i, "\n.addBorder{\n\tborder: 1px solid #0082d5 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?3a645fbf"],"names":[],"mappings":";AAuDA;CACA,qCAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\r\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\r\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{addBorder : isExpanding}\">\r\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\r\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\r\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\r\n\t\t\t\t<span \r\n\t\t\t\t\tclass=\"thumb\" \r\n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\r\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\r\n\t\t\t\t\t@click='editQuery()'\t\r\n\t\t\t\t>\r\n\t\t\t\t</span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\r\n\t\t\t\t<input\r\n\t\t\t\t:placeholder=\"placeholder\"\r\n\t\t\t\ttype=\"text\" \r\n\t\t\t\tstyle=\"margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%\" \r\n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\r\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\r\n\t\t\t\tclass=\"input-control\" @focus = \"focusInputAction($event.target.value)\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\r\n\t\t\t\trequired\r\n\t\t\t\toninvalid=\"this.setCustomValidity('The query field must not be blank')\"\r\n    \t\t\toninput=\"setCustomValidity('')\"\r\n    \t\t\t@blur='closeDropdow()'\r\n\t\t\t></div>\r\n\r\n\t\t\t<div class=\"control\" @click=\"toggleList()\">\r\n\t\t\t\t<i class=\"fa fa-angle-down\" aria-hidden=\"true\" v-show=\"!isExpanding\"></i>\r\n\t\t\t\t<i class=\"fa fa-angle-up\" aria-hidden=\"true\" v-show=\"isExpanding\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<input type=\"hidden\" :name=\"name\" :value=\"value\" class=\"mutiple-select-hidden-value\">\r\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\r\n\t\t\t<li v-show = \"searchList == undefined || searchList.length == 0\" class=\"not-found\">Not found</li>\r\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\r\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\r\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport MultiSelect from './../../components/MultiSelect'\r\n\texport default MultiSelect\r\n</script>\r\n<style scope>\r\n\t.addBorder{\r\n\t\tborder: 1px solid #0082d5 !important;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.addBorder{\n\tborder: 1px solid #0082d5 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?3ad828df"],"names":[],"mappings":";AAwDA;CACA,qCAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\r\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\r\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{addBorder : isExpanding}\">\r\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\r\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\r\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\r\n\t\t\t\t<span \r\n\t\t\t\t\tclass=\"thumb\" \r\n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\r\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\r\n\t\t\t\t\t@click='editQuery()'\t\r\n\t\t\t\t>\r\n\t\t\t\t</span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\r\n\t\t\t\t<input\r\n\t\t\t\t:placeholder=\"placeholder\"\r\n\t\t\t\ttype=\"text\" \r\n\t\t\t\tstyle=\"margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%\" \r\n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\r\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\r\n\t\t\t\tclass=\"input-control\" @focus = \"focusInputAction($event.target.value)\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\r\n\r\n    \t\t\t@blur='closeDropdow()'\r\n\t\t\t></div>\r\n\r\n\t\t\t<div class=\"control\" @click=\"toggleList()\">\r\n\t\t\t\t<i class=\"fa fa-angle-down\" aria-hidden=\"true\" v-show=\"!isExpanding\"></i>\r\n\t\t\t\t<i class=\"fa fa-angle-up\" aria-hidden=\"true\" v-show=\"isExpanding\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<input type=\"hidden\" :name=\"name\" :value=\"value\" class=\"mutiple-select-hidden-value\">\r\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\r\n\t\t\t<li v-show = \"searchList == undefined || searchList.length == 0\" class=\"not-found\">Not found</li>\r\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\r\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\r\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport MultiSelect from './../../components/MultiSelect'\r\n\texport default MultiSelect\r\n\t\t\t\t// \trequired\r\n\t\t\t\t// oninvalid=\"this.setCustomValidity('The query field must not be blank')\"\r\n    // \t\t\toninput=\"setCustomValidity('')\"\r\n</script>\r\n<style scope>\r\n\t.addBorder{\r\n\t\tborder: 1px solid #0082d5 !important;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -79749,10 +79723,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "placeholder": _vm.placeholder,
-      "type": "text",
-      "required": "",
-      "oninvalid": "this.setCustomValidity('The query field must not be blank')",
-      "oninput": "setCustomValidity('')"
+      "type": "text"
     },
     domProps: {
       "value": _vm.searchKeyword
@@ -80773,7 +80744,8 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "b__components b-ios b-float-label"
+    staticClass: "b__components b-ios b-float-label",
+    class: _vm.classesParent
   }, [_c('label', {
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
@@ -80800,7 +80772,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "keyup": _vm.keyupEnter,
       "keypress": _vm.keyupEnter
     }
-  })])
+  }), _vm._v(" "), _vm._t("otherElements")], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

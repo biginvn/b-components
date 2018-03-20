@@ -26,10 +26,9 @@ export default {
 			}
 		},
 		value(value){
-			if(value != null && value != '')
+			if(value != "" && value != null)
 				this.isActive = true
-			else
-				this.isActive = false
+			else this.isActive = false
 		}
 	},
 	props: {
@@ -77,7 +76,6 @@ export default {
 	},
 	methods : {
 		editQuery(){
-			// this.searchKeyword=null;
 			return this.$emit('input', null)
 		},
 

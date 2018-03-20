@@ -25,9 +25,7 @@
 				@keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')"
 				@keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''"
 				class="input-control" @focus = "focusInputAction($event.target.value)" @input = "searchAction($event.target.value)" :value = "searchKeyword"
-				required
-				oninvalid="this.setCustomValidity('The query field must not be blank')"
-    			oninput="setCustomValidity('')"
+
     			@blur='closeDropdow()'
 			></div>
 
@@ -51,6 +49,9 @@
 <script>
 	import MultiSelect from './../../components/MultiSelect'
 	export default MultiSelect
+				// 	required
+				// oninvalid="this.setCustomValidity('The query field must not be blank')"
+    // 			oninput="setCustomValidity('')"
 </script>
 <style scope>
 	.addBorder{
