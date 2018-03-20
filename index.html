@@ -17,12 +17,12 @@
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 
     <!-- Plugins-->
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <!-- tinyMCE -->    
+    <!-- tinyMCE -->
     <script src="src/plugins/tinimce/tinymce.min.js"></script>
      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.7.1/tinymce.min.js"></script>  -->
     <!-- tinyMCE -->
@@ -57,8 +57,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
 
 <!-- JVectorMap Libary write  by thien.nguyen -->
-    <script src="src/plugins/jquery-jvectormap/jquery-jvectormap-2.0.3.min.js"></script>    
-    <script src="src/plugins/jquery-jvectormap/jquery-jvectormap-2.0.3.css"></script>
+    <script src="src/plugins/jquery-jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="src/plugins/jquery-jvectormap/jquery-jvectormap-2.0.3.css" />
 <!-- JVectorMap Libary write  by thien.nguyen -->
 <!-- add map write  by thien.nguyen -->
     <script src="src/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
@@ -92,7 +92,7 @@
                 <div class="jumbotron wow animated fadeInDown">
                     <h1>Vue Components</h1>
 
-                                        
+
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -240,7 +240,7 @@
                                         <b-input-tag v-model="input.tags" label="Zip Code Tag"  type="zipcode"></b-input-tag>
                                     </p>
 
-                                </div> 
+                                </div>
                                 <div class="panel-body">
                                     v-model = {{ input.tags }}
                                 </div>
@@ -257,7 +257,7 @@
                                 <div class="panel-body">
                                     <p>
                                         <b-task-list v-model="taskList"></b-task-list>
-                                       
+
                                     </p>
                                     <p>{{ taskList }}</p>
                                 </div>
@@ -293,13 +293,13 @@
                                         <div  class="col-md-12"  >
                                             <b-chart type="doughnutChart" id="pieChart" :data="pieChart" v-model="input.dataPieChart" style="width: 100%;height: 100%"></b-chart>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
                         </figure>
 
-                       
+
                     </div>
                     <div class="col-md-6">
                         <figure class="wow animated bounceInRight">
@@ -514,10 +514,10 @@
                                 <div class="panel-body">
                                     v-model data: {{ input.dateAndTime }}
                                     <br>
-                                    Parameter required: id(unique), time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" ), 
+                                    Parameter required: id(unique), time-format( example: "MM-DD-YYYY hh:mm A" || "MM-DD-YYYY" || ""hh:mm" ),
                                 </div>
                             </div>
-                        </figure> 
+                        </figure>
                         <figure class="wow animated">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Numberic Formatted 2.0</h4>
@@ -543,15 +543,15 @@
                                     </div>
                                     v-model data: {{ input.telerikNumberic }}
                                     <br>
-                                    Parameter required: 
+                                    Parameter required:
                                 </div>
                             </div>
-                        </figure> 
+                        </figure>
                         <figure class="wow animated">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Modal Message (Make By Thien Nguyen)</h4>
                                 <div class="panel-body">
-                                    <b-modal-message id="popup-modal-message" classModal="thien-class" v-model="input.modalMessage" message="Message."></b-modal-message>
+                                    <b-modal-message id="popup-modal-message" class-modal="thien-class" v-model="input.modalMessage" message="Message."></b-modal-message>
                                 </div>
                                 <div class="panel-body">
 
@@ -567,7 +567,7 @@
                                     Parameter required: id, v-model
                                 </div>
                             </div>
-                        </figure> 
+                        </figure>
                         <figure class="wow animated">
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">JVectorMap (Make By Thien Nguyen)</h4>
@@ -588,7 +588,7 @@
                                     Parameter required: id, v-model
                                 </div>
                             </div>
-                        </figure> 
+                        </figure>
                     </div>
                     <div class="col-md-12">
                         <figure class="wow animated bounceInLeft">
@@ -603,7 +603,7 @@
                             <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Tiny MCE Basic Mode</h4>
                                 <div class="panel-body">
-                                    <b-tinymce label="CONTENT" @range="updateRange" @event="updateEvent" mode="basic" id="bTinyMCE__Editor" :tiny-config="tinyConfig" v-model="input.tinyMCE" images_upload_url="UploadProcess.php" images_upload_base_path="/some/basepath"></b-tinymce>
+                                    <b-tinymce label="CONTENT" mode="basic" id="bTinyMCE__Editor" :tiny-config="tinyConfig" v-model="input.tinyMCE" images_upload_url="UploadProcess.php" images_upload_base_path="/some/basepath"></b-tinymce>
                                 </div>
                                 <div class="panel-body">
                                     <b-button type="button" class-name="button-warn" label="Set Content" @click.native="input.tinyMCE = tinyMCE.content"></b-button>
@@ -699,10 +699,10 @@ var vm = new Vue({
         color_style: 'toggle__danger',
         prefixes: true,
         affix: "$",
-        uploadConfig: { 
+        uploadConfig: {
             url: 'upload-documents',
             paramName : 'minh',
-            method : 'POST'   
+            method : 'POST'
         },
 
         telerikNumbericParam : {
@@ -757,37 +757,37 @@ var vm = new Vue({
                 value: 45,
                 link: 'http://www.google.com',
                 total: 1410
-            }, 
+            },
             {
                 label: "Cancelled",
                 value: 5,
                 link: 'http://www.google.com',
                 total: 300
-            }, 
+            },
             {
                 label: "Complete",
                 value: 30,
                 link: 'http://www.google.com',
                 total:  1125
-            }, 
+            },
             {
                 label: "Delete",
                 value: 5,
                 link: 'http://www.google.com',
                 total: 152
-            }, 
+            },
             {
                 label: "On-Hold",
                 value: 5,
                 link: 'http://www.google.com',
                 total: 128
-            }, 
+            },
             {
                 label: "Pending",
                 value: 5,
                 link: 'http://www.google.com',
                 total: 342
-            }, 
+            },
             {
                 label: "Queued",
                 value: 5,
@@ -800,7 +800,7 @@ var vm = new Vue({
         dataBarChart: {
             labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             dataResponse: [
-                { 
+                {
                     value: [28, 48, 40, 19, 86, 27, 90, 45, 12, 23, 32, 7],
                 },
                 {
@@ -808,8 +808,8 @@ var vm = new Vue({
                 }
             ]
         },
-        
-       
+
+
         pieChart:
         [
             {name: 'Active', y: 45, url: 'http://google.com'},
@@ -820,7 +820,7 @@ var vm = new Vue({
             {name: 'Pending', y: 5, url: 'http://facebook.com'},
             {name: 'Queued', y: 5, url: 'http://facebook.com'},
         ],
-       
+
 
         jVectorWorldMapConfig : {
             map: "world_mill",
@@ -1025,7 +1025,7 @@ var vm = new Vue({
             keywords: 'Xuan Truong Luong',
             html: '<p>Xuan Truong Luong</p><p class="club">Hoang Anh Gia Lai</p><p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>',
             thumbHtml: 'Xuan Truong',
-            icon: 'http://image.thanhnien.vn/uploaded/lanphuong/2016_03_11/xuantruongdeptrainhutraihanquoc_rkdz.jpg?width=500&encoder=wic&subsampling=444'
+            icon: '/images/FootballPlayer.jpg'
         }
         ],
         listLoadingRemoteData:[],
