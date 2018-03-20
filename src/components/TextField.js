@@ -2,7 +2,7 @@ import baseComponent from '../mixins/text-field-mixins'
 
 export default {
 	mixins : [baseComponent],
-	props	: ['type', 'min', 'maxlength'],
+	props	: ['type', 'min', 'maxlength', 'classParent'],
 	computed : {
 		classes () {
 			return (this.className?this.className:'') + " b__input 2"
@@ -11,8 +11,11 @@ export default {
 			if (this.type == undefined || this.type== null || this.type.length == 0)
 				return 'text'
 			return this.type
-		}
-	},
+		},
+		classesParent() {
+ 		 	 return (this.classParent?this.classParent:'')
+ 			}
+		},
 	methods : {
 		change (value) {
 			this.updateFloatLabel(value);
