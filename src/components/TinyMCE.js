@@ -20,16 +20,11 @@ export default {
     mounted() {
         this.initTinyMCE(this.value)
     },
-    
-
     computed: {
     },
-
-    destroyed(){
-        if(document.querySelector('#' + this.id) != null )
-            tinymce.get(this.id).remove()
+    beforeDestroy(){
+        tinymce.get(this.id).destroy()
     },
-
     watch:{
         value(){
             this.updateContent(this.value)
@@ -42,9 +37,7 @@ export default {
 
         }
     },
- 
     methods: {  
-
         initTinyMCEBasicMode(content){
             var Vue = this
             var readonly = this.checkDisabled()

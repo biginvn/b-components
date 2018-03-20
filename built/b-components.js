@@ -62216,13 +62216,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted() {
         this.initTinyMCE(this.value);
     },
-
     computed: {},
-
-    destroyed() {
-        if (document.querySelector('#' + this.id) != null) tinymce.get(this.id).remove();
+    beforeDestroy() {
+        tinymce.get(this.id).destroy();
     },
-
     watch: {
         value() {
             this.updateContent(this.value);
@@ -62231,9 +62228,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         singleImage() {},
         multipleImage() {}
     },
-
     methods: {
-
         initTinyMCEBasicMode(content) {
             var Vue = this;
             var readonly = this.checkDisabled();
