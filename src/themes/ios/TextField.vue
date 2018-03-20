@@ -18,6 +18,7 @@
 	@keyup="keyupEnter"
 	@keypress="keyupEnter"
   	>
+    <slot name="otherElements"></slot>
  </div>
 </template>
 <script>

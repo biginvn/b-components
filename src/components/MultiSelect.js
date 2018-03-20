@@ -26,16 +26,9 @@ export default {
 			}
 		},
 		value(value){
-<<<<<<< HEAD
 			if(value != "" && value != null)
 				this.isActive = true
 			else this.isActive = false
-=======
-			if(value != null && value != '')
-				this.isActive = true
-			else
-				this.isActive = false
->>>>>>> 225dfd688bf19dec4200bd7855b1cc1f40ae5eaa
 		}
 	},
 	props: {
@@ -83,7 +76,6 @@ export default {
 	},
 	methods : {
 		editQuery(){
-			// this.searchKeyword=null;
 			return this.$emit('input', null)
 		},
 
