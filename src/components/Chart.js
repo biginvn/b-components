@@ -38,17 +38,17 @@ export default {
 		}
 	},
 	mounted(){
-		this.initialize(this.type, this.id, this.data, this.color);	
+		this.initialize(this.type, this.id, this.data, this.color);
 	},
 	methods:{
 		initialize(type,id,data, color){
+			color = color != undefined && color != null ? color : [];
 			if(this.type === 'doughnut'){
 				if(this.mode === 'transferee'){
 					this.chart = Morris.Donut({
 				  	element: this.id,
 				    data: this.data,
 					hoverCallback: function(index, options, content) {
-				        console.log(content)
 				    },
 					formatter: function(t) {
 			            return t + "%"
@@ -63,7 +63,6 @@ export default {
 				  	element: this.id,
 				    data: this.data,
 					hoverCallback: function(index, options, content) {
-				        console.log(content)
 				    },
 					formatter: function(t) {
 			            return t + "%"
@@ -130,12 +129,13 @@ export default {
 				})
 			}
 			else if(this.type === 'doughnutChart'){
+
 				Highcharts.chart(this.id, {
 				    chart: {
 				        plotBackgroundColor: null,
 				        plotBorderWidth: null,
 				        plotShadow: false,
-				      
+
 				        type: 'pie',
 				        backgroundColor: 'transparent',
 				    },
@@ -143,12 +143,10 @@ export default {
 					    text: '',
 					    floating: true,
 					    enabled:false,
-					    
+
 					},
 					credits:{
 						enabled:false,
-						// href:'http://www.highcharts.com',
-						// text:'duan.com'
 					},
 				    colors: color,
 				    tooltip: {
@@ -182,26 +180,6 @@ export default {
 						data: this.data
 				    }]
 				});
-				// let idChart = this.id
-				// // Chart.defaults.global.legend.display = false;
-				// this.chart = new Chart(idChart,{
-				// 	type:'doughnut',
-				// 	data:{
-				// 		labels: ["Active","Cancelled","Complete","Delete","On-Hold","Pending","Queued"],
-				// 		datasets: [
-				// 			{
-				// 				data: this.data[0].data,
-				// 				backgroundColor: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
-				// 			}
-				// 		],
-				// 	},
-				// 	options:{
-				// 		onClick : clickFunction
-				// 	}
-				// })
-				// function clickFunction(d,i){
-				// 	console.log('click:',d)
-				// }
 			}
 			this.$emit('input',this.data);
 		}
