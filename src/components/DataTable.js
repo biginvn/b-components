@@ -96,6 +96,7 @@ export default {
             if (this.calcSum !== null) {this.autoCalc()}
             this.selectCell(this.editAPI, this.keyAPI)
             this.renderTable = true;
+            this.reRunTooltip()  
         }
     },
     updated() {
@@ -115,8 +116,15 @@ export default {
         }
         if (this.tableTfoot !== null && this.tableTfoot !== undefined) {this.autoTfoot()}
         if (this.calcSum !== null) {this.autoCalc()}
+        this.reRunTooltip()  
     },
     methods: {
+        reRunTooltip() {
+            let idTable = this.idTable
+            $('#' + idTable).on( 'draw.dt', function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            } );
+        },
         reRender() {
             let idTable = this.idTable
             this.bTable.destroy();
