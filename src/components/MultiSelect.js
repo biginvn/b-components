@@ -26,11 +26,11 @@ export default {
 			}
 		},
 		value(value){
-			if(value != null && value != '')
+			if(value != "" && value != null)
 				this.isActive = true
-			else
-				this.isActive = false
+			else this.isActive = false
 		}
+
 	},
 	props: {
         list: {
@@ -39,7 +39,6 @@ export default {
         value: {
 
         },
-        name : null,
         disabled: {
 
         },
@@ -77,8 +76,24 @@ export default {
 	},
 	methods : {
 		editQuery(){
-			// this.searchKeyword=null;
+			var indexThumb
+			var hi = this.value
+			this.list.filter(function(index) {
+				if (index.id == hi) {
+					indexThumb = index.thumbHtml
+				}
+			})
+			this.searchKeyword = indexThumb
 			return this.$emit('input', null)
+		},
+
+		filterQuerylist(){
+			this.list.filter(function(index, data) {
+				if (data.id == this.value)
+				return data.thumbHtml
+			alert('asd')
+			alert('data.thumbHtml')
+			})
 		},
 
 		closeDropdow(){
