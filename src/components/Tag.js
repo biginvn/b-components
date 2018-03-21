@@ -16,8 +16,16 @@ export default {
 		this.setDataDefault()
 		this.setTag(this.value)
 	},
-
+	watch: {
+		value(newValue){
+			this.tags = newValue;
+			updateUI();
+		}
+	},
 	methods:{
+		updateUI(){ // Recalculate with of input
+
+		},
 		setDataDefault(){
 			return this.tagPlaceholder = this.placeholder
 		},
@@ -89,7 +97,11 @@ export default {
 			}
 		},
 		keyhandler(event) {
-     	 	let regex = /^[0-9]$/g
+			let regex = /.*/g;
+			if (this.type == 'zipcode'){
+				regex = /^[0-9]$/g;
+			}
+
 	     	if(event.key.match(regex) == null && event.keyCode != 8 &&  event.keyCode != 189 ){
 	     	 	event.preventDefault();
 	     	}

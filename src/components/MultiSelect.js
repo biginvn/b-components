@@ -34,10 +34,10 @@ export default {
 	},
 	props: {
         list: {
-        	
+
         },
         value: {
-        	
+
         },
         name : null,
         disabled: {
@@ -73,7 +73,7 @@ export default {
 		},
 		listClasses () {
 			return (this.isExpanding ? "active" : "") + " b__multi__select__list"
-		}	
+		}
 	},
 	methods : {
 		editQuery(){
@@ -84,7 +84,7 @@ export default {
 		closeDropdow(){
 			if(this.searchList.length == 0){
 				this.isExpanding = false
-			}	
+			}
 		},
 
 		blurSearch(){
@@ -94,7 +94,7 @@ export default {
 		},
 
 		getSingleSelected(){
-			if(this.list == undefined)
+			if(this.list == undefined || this.list == null)
 				return;
 			let listSelected = this.list.filter( (item) => {
 				return item.id == this.selected

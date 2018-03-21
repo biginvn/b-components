@@ -8,11 +8,11 @@
 			</div>
 
 			<div class="selected single" v-if="isSingle">
-				<span 
-					class="thumb" 
+				<span
+					class="thumb"
 					v-if="getSingleSelected()!=null"
 					v-html="getSingleSelected().thumbHtml"
-					@click='editQuery()'	
+					@click='editQuery()'
 				>
 				</span>
 			</div>
@@ -20,8 +20,8 @@
 			<div class="input-control-wrap" v-if = "!isSingle || getSingleSelected() == null " style="width:100%;">
 				<input
 				:placeholder="placeholder"
-				type="text" 
-				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%" 
+				type="text"
+				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%"
 				@keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')"
 				@keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''"
 				class="input-control" @focus = "focusInputAction($event.target.value)" @input = "searchAction($event.target.value)" :value = "searchKeyword"
