@@ -30,6 +30,7 @@ export default {
 				this.isActive = true
 			else this.isActive = false
 		}
+		
 	},
 	props: {
         list: {
@@ -38,7 +39,6 @@ export default {
         value: {
         	
         },
-        name : null,
         disabled: {
 
         },
@@ -76,7 +76,24 @@ export default {
 	},
 	methods : {
 		editQuery(){
-			return this.$emit('input', null)
+			var indexThumb
+			var hi = this.value
+			this.list.filter(function(index) {
+				if (index.id == hi) {
+					indexThumb = index.thumbHtml
+				}
+			})
+			this.searchKeyword = indexThumb
+			return this.$emit('input', null)	
+		},
+
+		filterQuerylist(){
+			this.list.filter(function(index, data) {
+				if (data.id == this.value)
+				return data.thumbHtml
+			alert('asd')
+			alert('data.thumbHtml')
+			})
 		},
 
 		closeDropdow(){
@@ -92,8 +109,6 @@ export default {
 		},
 
 		getSingleSelected(){
-			if(this.list == undefined)
-				return;
 			let listSelected = this.list.filter( (item) => {
 				return item.id == this.selected
 			})
