@@ -9541,7 +9541,7 @@ module.exports = parse;
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
-	props: ['type', 'min', 'maxlength'],
+	props: ['type', 'min', 'maxlength', 'classParent'],
 	computed: {
 		classes() {
 			return (this.className ? this.className : '') + " b__input 2";
@@ -9549,6 +9549,9 @@ module.exports = parse;
 		typeComponent() {
 			if (this.type == undefined || this.type == null || this.type.length == 0) return 'text';
 			return this.type;
+		},
+		classesParent() {
+			return this.classParent ? this.classParent : '';
 		}
 	},
 	methods: {
@@ -44844,11 +44847,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_MultiSelect__["a" /* default */]);
+// 	required
+// oninvalid="this.setCustomValidity('The query field must not be blank')"
+// 			oninput="setCustomValidity('')"
 
 /***/ }),
 /* 284 */
@@ -45090,6 +45094,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TextField__ = __webpack_require__(21);
+//
 //
 //
 //
@@ -45705,6 +45710,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             this.selectCell(this.editAPI, this.keyAPI);
             this.renderTable = true;
+            this.reRunTooltip();
         }
     },
     updated() {
@@ -45725,8 +45731,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         if (this.calcSum !== null) {
             this.autoCalc();
         }
+        this.reRunTooltip();
     },
     methods: {
+        reRunTooltip() {
+            let idTable = this.idTable;
+            $('#' + idTable).on('draw.dt', function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        },
         reRender() {
             let idTable = this.idTable;
             this.bTable.destroy();
@@ -46642,13 +46655,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 		},
 		value(value) {
-			if (value != null && value != '') this.isActive = true;else this.isActive = false;
+			if (value != "" && value != null) this.isActive = true;else this.isActive = false;
 		}
+
 	},
 	props: {
 		list: {},
 		value: {},
-		name: null,
 		disabled: {},
 		singleDropdown: {},
 		disableIcon: {},
@@ -46675,8 +46688,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	methods: {
 		editQuery() {
-			// this.searchKeyword=null;
+			var indexThumb;
+			var hi = this.value;
+			this.list.filter(function (index) {
+				if (index.id == hi) {
+					indexThumb = index.thumbHtml;
+				}
+			});
+			this.searchKeyword = indexThumb;
 			return this.$emit('input', null);
+		},
+
+		filterQuerylist() {
+			this.list.filter(function (index, data) {
+				if (data.id == this.value) return data.thumbHtml;
+				alert('asd');
+				alert('data.thumbHtml');
+			});
 		},
 
 		closeDropdow() {
@@ -47532,13 +47560,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted() {
         this.initTinyMCE(this.value);
     },
-
     computed: {},
 
-    destroyed() {
-        if (document.querySelector('#' + this.id) != null) tinymce.get(this.id).remove();
+    beforeDestroy() {
+        tinymce.get(this.id).destroy();
     },
-
     watch: {
         value() {
             this.updateContent(this.value);
@@ -47547,9 +47573,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         singleImage() {},
         multipleImage() {}
     },
-
     methods: {
-
         initTinyMCEBasicMode(content) {
             var Vue = this;
             var readonly = this.checkDisabled();
@@ -47565,6 +47589,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 forced_root_block: '',
                 toolbar: toolbar,
                 menubar: false,
+                convert_urls: true,
+                remove_script_host: false,
+                relative_urls: false,
 
                 //Upload Fucntion & param
                 toolbar_items_size: 'small',
@@ -47574,7 +47601,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // images_upload_credentials: true,
                 image_title: true,
                 // enable automatic uploads of images represented by blob or data URIs
-                automatic_uploads: true,
+                automatic_uploads: false,
                 // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
                 // images_upload_url: 'postAcceptor.php',
                 // here we add custom filepicker only to Image dialog
@@ -47799,31 +47826,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.updateFloatLabel(content);
             if (this.mode == "advance") return this.initTinyMCEAdvanceMode(content);else return this.initTinyMCEBasicMode(content);
         },
-
         getContentOutput() {
             return this.contentOutPut = tinymce.get(this.id).getContent(data);
         },
-
         updateContent(data) {
             tinymce.get(this.id).setContent(data);
             return this.$emit('input', data);
         },
-
         checkDisabled() {
             if (this.disabled == "disabled") return 1;else return 0;
         },
-
         update(data) {
             this.$emit('input', data);
         },
-
         updateFloatLabel(value) {
             var isEmpty = value == undefined || value == null || value == 0 || value == '' ? true : false;
             if (!isEmpty) {
                 this.classLabel = 'active';
             } else this.classLabel = '';
         }
-
     }
 });
 
@@ -60844,7 +60865,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, "\n.addBorder{\n\tborder: 1px solid #0082d5 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?1ecee128"],"names":[],"mappings":";AAuDA;CACA,qCAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{addBorder : isExpanding}\">\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\n\t\t\t</div>\n\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\n\t\t\t\t<span\n\t\t\t\t\tclass=\"thumb\"\n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\n\t\t\t\t\t@click='editQuery()'\n\t\t\t\t>\n\t\t\t\t</span>\n\t\t\t</div>\n\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\n\t\t\t\t<input\n\t\t\t\t:placeholder=\"placeholder\"\n\t\t\t\ttype=\"text\"\n\t\t\t\tstyle=\"margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%\"\n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\n\t\t\t\tclass=\"input-control\" @focus = \"focusInputAction($event.target.value)\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\n\t\t\t\trequired\n\t\t\t\toninvalid=\"this.setCustomValidity('The query field must not be blank')\"\n    \t\t\toninput=\"setCustomValidity('')\"\n    \t\t\t@blur='closeDropdow()'\n\t\t\t></div>\n\n\t\t\t<div class=\"control\" @click=\"toggleList()\">\n\t\t\t\t<i class=\"fa fa-angle-down\" aria-hidden=\"true\" v-show=\"!isExpanding\"></i>\n\t\t\t\t<i class=\"fa fa-angle-up\" aria-hidden=\"true\" v-show=\"isExpanding\"></i>\n\t\t\t</div>\n\t\t</div>\n\t\t<input type=\"hidden\" :name=\"name\" :value=\"value\" class=\"mutiple-select-hidden-value\">\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\n\t\t\t<li v-show = \"searchList == undefined || searchList.length == 0\" class=\"not-found\">Not found</li>\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n</template>\n<script>\n\timport MultiSelect from './../../components/MultiSelect'\n\texport default MultiSelect\n</script>\n<style scope>\n\t.addBorder{\n\t\tborder: 1px solid #0082d5 !important;\n\t}\n</style>\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.addBorder{\n\tborder: 1px solid #0082d5 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?16ac4693"],"names":[],"mappings":";AAwDA;CACA,qCAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{addBorder : isExpanding}\">\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\n\t\t\t</div>\n\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\n\t\t\t\t<span\n\t\t\t\t\tclass=\"thumb\"\n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\n\t\t\t\t\t@click='editQuery()'\n\t\t\t\t>\n\t\t\t\t</span>\n\t\t\t</div>\n\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\n\t\t\t\t<input\n\t\t\t\t:placeholder=\"placeholder\"\n\t\t\t\ttype=\"text\"\n\t\t\t\tstyle=\"margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%\"\n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\n\t\t\t\tclass=\"input-control\" @focus = \"focusInputAction($event.target.value)\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\n\n    \t\t\t@blur='closeDropdow()'\n\t\t\t></div>\n\n\t\t\t<div class=\"control\" @click=\"toggleList()\">\n\t\t\t\t<i class=\"fa fa-angle-down\" aria-hidden=\"true\" v-show=\"!isExpanding\"></i>\n\t\t\t\t<i class=\"fa fa-angle-up\" aria-hidden=\"true\" v-show=\"isExpanding\"></i>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\n\t\t\t<li v-show = \"searchList.length == 0\" class=\"not-found\">Not found</li>\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n</template>\n<script>\n\timport MultiSelect from './../../components/MultiSelect'\n\texport default MultiSelect\n\t\t\t\t// \trequired\n\t\t\t\t// oninvalid=\"this.setCustomValidity('The query field must not be blank')\"\n    // \t\t\toninput=\"setCustomValidity('')\"\n</script>\n<style scope>\n\t.addBorder{\n\t\tborder: 1px solid #0082d5 !important;\n\t}\n</style>\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -64834,10 +64855,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "placeholder": _vm.placeholder,
-      "type": "text",
-      "required": "",
-      "oninvalid": "this.setCustomValidity('The query field must not be blank')",
-      "oninput": "setCustomValidity('')"
+      "type": "text"
     },
     domProps: {
       "value": _vm.searchKeyword
@@ -64895,16 +64913,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  })])], 2), _vm._v(" "), _c('input', {
-    staticClass: "mutiple-select-hidden-value",
-    attrs: {
-      "type": "hidden",
-      "name": _vm.name
-    },
-    domProps: {
-      "value": _vm.value
-    }
-  }), _vm._v(" "), _c('ul', {
+  })])], 2), _vm._v(" "), _c('ul', {
     class: [{
       addBorder: _vm.isExpanding
     }, _vm.listClasses]
@@ -64912,8 +64921,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.searchList == undefined || _vm.searchList.length == 0),
-      expression: "searchList == undefined || searchList.length == 0"
+      value: (_vm.searchList.length == 0),
+      expression: "searchList.length == 0"
     }],
     staticClass: "not-found"
   }, [_vm._v("Not found")]), _vm._v(" "), _vm._l((_vm.searchList), function(item, index) {
@@ -65858,7 +65867,8 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "b__components b-ios b-float-label"
+    staticClass: "b__components b-ios b-float-label",
+    class: _vm.classesParent
   }, [_c('label', {
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
@@ -65885,7 +65895,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "keyup": _vm.keyupEnter,
       "keypress": _vm.keyupEnter
     }
-  })])
+  }), _vm._v(" "), _vm._t("otherElements")], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
