@@ -80,15 +80,44 @@ export default {
                     parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
                 }
                 var fileEx = file.name.split('.').pop();
-                if (fileEx != "JPG" || fileEx != "JPEG" || fileEx != "PNG" ||  fileEx != "GIF" ||  fileEx != "BMP"){
-                    fileEx == "pdf" ? child.className += " dz-pdf" : child.className;
-                    fileEx == "doc" ? child.className += " dz-doc" : child.className;
-                    fileEx == "ppt" ? child.className += " dz-ppt" : child.className;
-                    fileEx == "xls" ? child.className += " dz-xls" : child.className;
-                    fileEx == "txt" ? child.className += " dz-txt" : child.className;
-                    fileEx == "csv" ? child.className += " dz-csv" : child.className;
-                    fileEx == "rtf" ? child.className += " dz-rtf" : child.className;
-                    fileEx == "zip" ? child.className += " dz-zip" : child.className;
+                if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" ||  fileEx == "gif" ||  fileEx == "bmp")
+                    return child.className += " dz-image"
+                switch(fileEx) {
+                    case "pdf":
+                        child.className += " dz-pdf"
+                        break;
+                    case "doc":
+                        child.className += " dz-doc"
+                        break;
+                    case "docx":
+                        child.className += " dz-doc"
+                        break;      
+                    case "ppt":
+                        child.className += " dz-ppt"
+                        break;
+                    case "xls":
+                        child.className += " dz-xls"
+                        break;
+                    case "xlsx":
+                        child.className += " dz-xls"
+                        break;
+                    case "txt":
+                        child.className += " dz-txt"
+                        break;
+                    case "csv":
+                        child.className += " dz-csv"
+                        break;
+                    case "rtf":
+                        child.className += " dz-rtf"
+                        break;
+                    case "zip":
+                        child.className += " dz-zip"
+                        break;
+                    case "rar":
+                        child.className += " dz-zip"
+                        break;
+                    default:
+                        child.className += " dz-file"
                 }
             })
             this.$emit('dropzone', this.dropzone)
