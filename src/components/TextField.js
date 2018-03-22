@@ -13,9 +13,9 @@ export default {
 			return this.type
 		},
 		classesParent() {
-			return (this.classParent?this.classParent:'')
-		}
-	},
+ 		 	 return (this.classParent?this.classParent:'')
+ 			}
+		},
 	methods : {
 		change (value) {
 			this.updateFloatLabel(value);
@@ -27,13 +27,20 @@ export default {
 		focus() {
 			this.$emit('focus')
 		},
-		keyup(value){
-			this.$emit('keyup', value)
-		},
+		// keyup(value){
+		// 	this.$emit('keyup', value)
+		// },
 		maxLength(){
 		   if (this.maxlength == undefined || this.maxlength== null)
 		    return
 		   return this.maxlength
-		}
+		},
+		keyupEnter: function(e) {
+			 var keyCode = e.keyCode || e.which;
+     		 if (keyCode === 13) {
+     		   e.preventDefault();
+     		   return false;
+     		 }   
+   		}
 	}
 }

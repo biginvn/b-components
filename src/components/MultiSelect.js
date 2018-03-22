@@ -26,16 +26,18 @@ export default {
 			}
 		},
 		value(value){
-			if(value != null)
+			if(value != "" && value != null)
 				this.isActive = true
+			else this.isActive = false
 		}
+
 	},
 	props: {
         list: {
-        	
+
         },
         value: {
-        	
+
         },
         disabled: {
 
@@ -73,6 +75,33 @@ export default {
 		}
 	},
 	methods : {
+
+		editQuery(){
+			var indexThumb
+			var getValue = this.value
+			this.list.filter(function(index) {
+				if (index.id == getValue) {
+					indexThumb = index.thumbHtml
+				}
+			})
+			this.searchKeyword = indexThumb
+			return this.$emit('input', null)
+		},
+
+		filterQuerylist(){
+			this.list.filter(function(index, data) {
+				if (data.id == this.value)
+				return data.thumbHtml
+			})
+		},
+
+		closeDropdow(){
+
+			if(this.searchList.length == 0){
+				this.isExpanding = false
+			}
+		},
+
 		blurSearch(){
 			if(this.searchList.length == 0){
 				this.searchKeyword = ""
@@ -80,6 +109,8 @@ export default {
 		},
 
 		getSingleSelected(){
+			if(this.list == undefined || this.list == null)
+				return;
 			let listSelected = this.list.filter( (item) => {
 				return item.id == this.selected
 			})
@@ -88,6 +119,7 @@ export default {
 				return listSelected[0]
 			return null
 		},
+
 		getSelectedList () { // Get selected with full information [ { id : .. , html : ... } ]
 			if (this.isSingle) return
 			let selected = []
@@ -98,15 +130,18 @@ export default {
 			})
         	return selected
 		},
+
 		toggleList () {
 			this.switchList(!this.isExpanding)
 		},
+
 		switchList (on = true) {
 			if (on)
 				this.isExpanding = true
 			else
 				this.isExpanding = false
 		},
+
 		toggleItem(id){
 			if (!this.isSingle){
 				let selectList = this.value == null ? [] : this.value;
@@ -148,6 +183,7 @@ export default {
 		hoverItem(index){ // Hover on item at (index) in searchList
 			// this
 		},
+
 		searchAction (keyword) {
 			this.searchKeyword = keyword
 			this.switchList(true)
@@ -164,10 +200,12 @@ export default {
 			})
 
 		},
+
 		focusInputAction (keyword) {
 			this.searchAction(keyword)
 			this.switchList(true)
 		},
+
 		keypressAction (keyName){
 			let pointerIndex = this.pointerIndex
 			switch (keyName) {

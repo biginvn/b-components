@@ -3,13 +3,11 @@ import Chart from 'chart.js'
 import Highcharts from 'highcharts'
 
 export default {
-	props:['type','id','data','mode'],
+	props:['type','id','data','mode', 'color'],
 
 	data(){
 		return {
 			chart:null,
-			
-			
 		}
 	},
 	computed : {
@@ -33,35 +31,30 @@ export default {
 				return null
 			return this.mode
 		},
-		
 	},
 	watch:{
 		chartData(val){
-			
-			this.initialize(this.type,this.id,this.data);
-			
+			this.initialize(this.type, this.id, val, this.color);
 		}
 	},
 	mounted(){
-		
-		this.initialize(this.type,this.id,this.data);	
-		
+		this.initialize(this.type, this.id, this.data, this.color);
 	},
 	methods:{
-		initialize(type,id,data){
+		initialize(type,id,data, color){
+			color = color != undefined && color != null ? color : [];
 			if(this.type === 'doughnut'){
 				if(this.mode === 'transferee'){
 					this.chart = Morris.Donut({
 				  	element: this.id,
 				    data: this.data,
 					hoverCallback: function(index, options, content) {
-				        console.log(content)
 				    },
 					formatter: function(t) {
 			            return t + "%"
 			        },
 			        resize: !0,
-			        colors:["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
+			        colors: color,
 					}).on('click', function (i,row){
 						window.open(row.link,'_blank');
 					});
@@ -70,7 +63,6 @@ export default {
 				  	element: this.id,
 				    data: this.data,
 					hoverCallback: function(index, options, content) {
-				        console.log(content)
 				    },
 					formatter: function(t) {
 			            return t + "%"
@@ -81,16 +73,15 @@ export default {
 						window.open(row.link,'_blank');
 					});
 				}
-				
 			}
 			else if(this.type === 'bar'){
-
 				let idChart = this.id
 				Chart.defaults.global.legend.display = true;
+				let labels = this.data.labels
 				this.chart = new Chart(idChart,{
 					type:this.type,
 					data:{
-						labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+						labels: labels,
 						datasets: [
 							{
 			                    label: "Initiated",
@@ -127,29 +118,24 @@ export default {
 				        legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
 				        responsive: true,
 				        legend: {
-				        
 				            position: 'right',
 				        },
 				        title: {
-				            display: true,
+				            display: false,
 				            text: 'Initiated & Completed Relocations by Month',
 				            position:'top',
-
 				        },
-
-
 				    }
 				})
 			}
-
 			else if(this.type === 'doughnutChart'){
-			
+
 				Highcharts.chart(this.id, {
 				    chart: {
 				        plotBackgroundColor: null,
 				        plotBorderWidth: null,
 				        plotShadow: false,
-				      
+
 				        type: 'pie',
 				        backgroundColor: 'transparent',
 				    },
@@ -157,16 +143,12 @@ export default {
 					    text: '',
 					    floating: true,
 					    enabled:false,
-					    
+
 					},
-					
 					credits:{
 						enabled:false,
-						// href:'http://www.highcharts.com',
-						
-						// text:'duan.com'
 					},
-				    colors: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
+				    colors: color,
 				    tooltip: {
 				        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
 				    },
@@ -184,54 +166,22 @@ export default {
 				        }
 				    },
 				    series: [{
-				        
 				        colorByPoint: true,
-				       
 				      	 point: {
 								events: {
 									click: function(e) {
 										//this.slice();
-										//console.log(e);
 				            			window.open( e.point.url,'_blank');
 										//window.location.href =;
 										e.preventDefault();
 									}
 								}
 							},
-							data: this.data
+						data: this.data
 				    }]
 				});
-
-				// let idChart = this.id
-				// // Chart.defaults.global.legend.display = false;
-				// this.chart = new Chart(idChart,{
-				// 	type:'doughnut',
-				// 	data:{
-				// 		labels: ["Active","Cancelled","Complete","Delete","On-Hold","Pending","Queued"],
-				// 		datasets: [
-				// 			{
-				// 				data: this.data[0].data,
-				// 				backgroundColor: ["#12afcb", "#ef5350", "#8bc34a", "#a9a9a9", "#ff9800", "#fec60d", "#f3f3f3"],
-
-				// 			}
-				// 		],
-						
-				// 	},
-				// 	options:{
-				// 		onClick : clickFunction
-				// 	}
-				// })
-
-				// function clickFunction(d,i){
-				// 	console.log('click:',d)
-				// }
-
-
 			}
-
 			this.$emit('input',this.data);
 		}
 	}
-	
-
 }

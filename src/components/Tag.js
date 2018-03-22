@@ -5,6 +5,7 @@ export default {
 	props: ['type'],
 	data(){
 		return {
+			tags: [],
 			newTag: '',
 			tagPlaceholder : '',
 			classLabel:''
@@ -15,14 +16,16 @@ export default {
 		this.setDataDefault()
 		this.setTag(this.value)
 	},
-
-	computed:{
-        tags(){
-        	return this.value ? this.value.map( item => item.toString() ) : []
-        },
-    },
-
+	watch: {
+		value(newValue){
+			this.tags = newValue;
+			updateUI();
+		}
+	},
 	methods:{
+		updateUI(){ // Recalculate with of input
+
+		},
 		setDataDefault(){
 			return this.tagPlaceholder = this.placeholder
 		},
@@ -69,10 +72,10 @@ export default {
 	        }
 	        this.tagChange();
 	        this.$emit('input', this.tags)
-	        
+
      	 },
       	updateChange(value) {
-      		
+
 			var isEmpty = value == undefined || value == '' || value.length == 0 ? true : false;
 			if (!isEmpty){
 				this.classLabel = 'active';
@@ -94,8 +97,11 @@ export default {
 			}
 		},
 		keyhandler(event) {
-			console.log(event);
-     	 	let regex = /^[0-9]$/g
+			let regex = /.*/g;
+			if (this.type == 'zipcode'){
+				regex = /^[0-9]$/g;
+			}
+
 	     	if(event.key.match(regex) == null && event.keyCode != 8 &&  event.keyCode != 189 ){
 	     	 	event.preventDefault();
 	     	}

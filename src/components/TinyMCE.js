@@ -20,16 +20,12 @@ export default {
     mounted() {
         this.initTinyMCE(this.value)
     },
-    
-
     computed: {
     },
 
-    destroyed(){
-        if(document.querySelector('#' + this.id) != null )
-            tinymce.get(this.id).remove()
+    beforeDestroy(){
+        tinymce.get(this.id).destroy()
     },
-
     watch:{
         value(){
             this.updateContent(this.value)
@@ -42,9 +38,7 @@ export default {
 
         }
     },
- 
     methods: {  
-
         initTinyMCEBasicMode(content){
             var Vue = this
             var readonly = this.checkDisabled()
@@ -60,7 +54,7 @@ export default {
                         readonly : readonly,
                         height : height,
                         plugins: [
-                            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
+                            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
                             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
                             "table",
                             "image code",
@@ -70,6 +64,9 @@ export default {
                         forced_root_block : '',
                         toolbar: toolbar,
                         menubar: false,
+                        convert_urls : true,
+                        remove_script_host : false,
+                        relative_urls : false,
 
                         //Upload Fucntion & param
                             toolbar_items_size: 'small',
@@ -79,7 +76,7 @@ export default {
                             // images_upload_credentials: true,
                             image_title: true, 
                             // enable automatic uploads of images represented by blob or data URIs
-                            automatic_uploads: true,
+                            automatic_uploads: false,
                             // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
                             // images_upload_url: 'postAcceptor.php',
                             // here we add custom filepicker only to Image dialog
@@ -168,7 +165,7 @@ export default {
                         selector: '#' + Vue.id,
                         readonly : readonly,
                         plugins: [
-                            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
+                            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
                             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
                             "table",
                             "image code",
@@ -327,27 +324,22 @@ export default {
             else
                 return this.initTinyMCEBasicMode(content)
         },
-
         getContentOutput(){
             return this.contentOutPut = tinymce.get(this.id).getContent(data)
         },
-
         updateContent(data){
             tinymce.get(this.id).setContent(data)
             return this.$emit('input', data)
         },
-
         checkDisabled(){
             if(this.disabled == "disabled")
                 return 1
             else
                 return 0
         },
-
         update(data) {
             this.$emit('input', data)
         },
-
         updateFloatLabel(value) {
             var isEmpty = value == undefined || value == null || value == 0 || value == '' ? true : false;
             if (!isEmpty) {
@@ -355,6 +347,5 @@ export default {
             } else
                 this.classLabel = ''
         },
-       
     }
 }
