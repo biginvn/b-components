@@ -21,13 +21,10 @@
 				<input
 				v-show="singleDropdown"
 				:placeholder="placeholder"
-<<<<<<< HEAD
 				type="text" 
 				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%;" 
-=======
 				type="text"
 				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%"
->>>>>>> 1d65a69cb51f7f51142481beed56458cda383a9a
 				@keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')"
 				@keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''"
 				class="input-control" @focus="$emit('removeRequired')" @input = "searchAction($event.target.value)" :value = "searchKeyword"
@@ -63,7 +60,6 @@
 	.addBorder{
 		border: 1px solid #0082d5 !important;
 	}
-<<<<<<< HEAD
 	.b__multi__select__control{
 		padding-top: 1px;
 	}
@@ -71,6 +67,3 @@
 		margin-left: 3px;
 	}
 </style>
-=======
-</style>
->>>>>>> 1d65a69cb51f7f51142481beed56458cda383a9a
