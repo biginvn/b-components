@@ -59344,6 +59344,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Combobox__["a" /* default */]);
@@ -59661,6 +59662,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_MultiSelect__ = __webpack_require__(423);
+//
+//
 //
 //
 //
@@ -60351,120 +60354,156 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-				data() {
-								return {
-												isExpanding: false,
-												searchKeyword: '',
-												pointerIndex: 0
-								};
-				},
-				props: {
-								list: {
-												required: true
-								},
-								id: {
-												required: true
-								},
-								value: {
-												required: true,
-												validator: function (value) {
-																return value == null || value instanceof String || !isNaN(value);
-												}
-								},
-								disabled: {
-												type: Boolean
-								},
-								disableIcon: {
-												type: Boolean
-								},
-								placeholder: {
-												type: String
-								},
-								label: {
-												type: String,
-												required: true
-								}
-				},
-				mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
-				created() {},
-				watch: {
-								value(newValue) {
-												// When model is updated we will update search keywords
-												let newId = newValue ? newValue : '';
-												let selectItem = this.list.filter(item => item.id.toString() === newValue.toString());
-												if (selectItem.length > 0) {
-																this.searchKeyword = selectItem[0].title;
-												}
-								}
-				},
-				computed: {
-								isActive() {
-												return this.value != null;
-								},
-								searchList() {
-												return this.list.filter(item => {
-																return item.title != undefined && item.title != null ? item.title.toUpperCase().match(new RegExp('.*' + this.searchKeyword.toUpperCase() + '.*')) : false;
-												});
-								}
-				},
-				methods: {
-								switchList(openList = false) {
-												this.isExpanding = openList;
-								},
-								selectItem(index) {
-												// index item of searchList
-												if (index == undefined || index == null) {
-																return;
-												}
-
-												if (index >= this.searchList.length) {
-																return;
-												}
-
-												this.pointerIndex = index;
-												let id = this.searchList[index].id;
-												this.$emit("input", id);
-								},
-								toggleItem(id) {
-												this.$emit("input", id);
-												this.switchList(); // Close list
-								},
-								hoverItem(index) {// Hover on item at (index) in searchList
-												// this
-								},
-								searchAction(event) {
-												this.searchKeyword = event.target.value ? event.target.value : '';
-												this.switchList(true); // Open dropdown list
-												this.$emit('search-keywords', this.searchKeyword);
-								},
-
-								keypressAction(keyName) {
-												let pointerIndex = this.pointerIndex;
-												switch (keyName) {
-																case 'ArrowDown':
-																				if (this.pointerIndex == null || this.pointerIndex >= this.searchList.length - 1) {
-																								pointerIndex = 0;
-																								break;
-																				}
-
-																				pointerIndex++;
-																				break;
-																case 'ArrowUp':
-																				if (this.pointerIndex == null || this.pointerIndex == 0) {
-																								pointerIndex = this.searchList.length - 1;
-																								break;
-																				}
-
-																				pointerIndex--;
-																				break;
-																case 'BackSpace':
-																				pointerIndex = null;
-																				if (this.value != null && this.value.length > 0 && this.searchKeyword.length == 0) this.value.splice(this.value.length - 1, 1);
-												}
-
-												this.pointerIndex = pointerIndex;
-								}
+	data() {
+		return {
+			isExpanding: false,
+			searchKeyword: '',
+			pointerIndex: 0,
+			selectedValue: null,
+			searchList: []
+		};
+	},
+	props: {
+		list: {
+			required: true
+		},
+		id: {
+			required: true
+		},
+		value: {
+			required: true,
+			validator: function (value) {
+				return value == null || value instanceof String || !isNaN(value);
+			}
+		},
+		disabled: {
+			type: Boolean
+		},
+		disableIcon: {
+			type: Boolean
+		},
+		placeholder: {
+			type: String
+		},
+		label: {
+			type: String,
+			required: true
+		}
+	},
+	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
+	created() {
+		this.searchList = JSON.parse(JSON.stringify(this.list));
+	},
+	watch: {
+		value(newValue) {
+			// When model is updated we will update search keywords
+			if (newValue == null) {
+				this.searchKeyword = '';
+				return;
+			}
+			let newId = newValue ? newValue : '';
+			let selectItem = this.list.filter(item => item.id.toString() === newValue.toString());
+			if (selectItem.length > 0) {
+				this.searchKeyword = selectItem[0].title;
+			}
+		}
+	},
+	computed: {
+		isActive() {
+			return this.value != null;
+		}
+	},
+	methods: {
+		focusCombobox(event) {
+			this.switchList(true);
+			$(event.target).select();
+		},
+		blurCombobox(event) {
+			// When blur outside input, always emit the selected value to model.
+			// If user CLICK on ITEM, the click event will update again new value to model.
+			// Close LIST after 500ms (waiting for CLICK event was handled)
+			this.$emit("input", this.selectedValue);
+			setTimeout(() => {
+				this.switchList(false);
+				if (this.selectedValue == null) {
+					this.searchList = JSON.parse(JSON.stringify(this.list));
 				}
+			}, 500);
+		},
+		switchList(openList = false) {
+			this.isExpanding = openList;
+		},
+		selectItem(index) {
+			// index item of searchList
+			if (index == undefined || index == null) {
+				return;
+			}
+
+			if (index >= this.searchList.length) {
+				return;
+			}
+
+			this.pointerIndex = index;
+			let id = this.searchList[index].id;
+			this.selectedValue = id;
+			this.searchKeyword = this.searchList[index].title;
+		},
+		toggleItem(id, index) {
+			this.selectedValue = id;
+			this.switchList(false); // Close list
+			this.$emit("input", this.selectedValue);
+			this.searchKeyword = this.searchList[index].title;
+		},
+		hoverItem(index) {// Hover on item at (index) in searchList
+			// this
+		},
+		searchAction(event) {
+			this.selectedValue = null;
+			this.searchKeyword = event.target.value ? event.target.value : '';
+			this.switchList(true); // Open dropdown list
+			this.$emit('search-keywords', this.searchKeyword);
+			this.searchList = this.list.filter(item => {
+				return item.title != undefined && item.title != null ? item.title.toUpperCase().match(new RegExp('.*' + this.searchKeyword.toUpperCase() + '.*')) : false;
+			});
+		},
+
+		keypressAction(keyName, event) {
+			let pointerIndex = this.pointerIndex;
+			this.selectedValue = null;
+			switch (keyName) {
+				case 'ArrowDown':
+					if (this.pointerIndex == null || this.pointerIndex >= this.searchList.length - 1) {
+						pointerIndex = 0;
+					} else {
+						pointerIndex++;
+					}
+					this.selectedValue = this.searchList[pointerIndex].id;
+					this.switchList(true);
+					break;
+				case 'ArrowUp':
+					if (this.pointerIndex == null || this.pointerIndex == 0) {
+						pointerIndex = this.searchList.length - 1;
+					} else {
+						pointerIndex--;
+					}
+					this.selectedValue = this.searchList[pointerIndex].id;
+					this.switchList(true);
+					break;
+				case 'Enter':
+					this.switchList(false);
+					break;
+				default:
+					pointerIndex = null;
+					this.selectedValue = null;
+			}
+
+			this.pointerIndex = pointerIndex;
+			this.selectItem(pointerIndex);
+			if (event != null) {
+				event.target.selectionStart = event.target.selectionEnd = event.target.value.length;
+			}
+		}
+	}
 
 });
 
@@ -61577,11 +61616,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	methods: {
+
 		editQuery() {
 			var indexThumb;
-			var hi = this.value;
+			var getValue = this.value;
 			this.list.filter(function (index) {
-				if (index.id == hi) {
+				if (index.id == getValue) {
 					indexThumb = index.thumbHtml;
 				}
 			});
@@ -61592,12 +61632,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		filterQuerylist() {
 			this.list.filter(function (index, data) {
 				if (data.id == this.value) return data.thumbHtml;
-				alert('asd');
-				alert('data.thumbHtml');
 			});
 		},
 
 		closeDropdow() {
+
 			if (this.searchList.length == 0) {
 				this.isExpanding = false;
 			}
@@ -61637,6 +61676,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		switchList(on = true) {
 			if (on) this.isExpanding = true;else this.isExpanding = false;
 		},
+
 		toggleItem(id) {
 			if (!this.isSingle) {
 				let selectList = this.value == null ? [] : this.value;
@@ -61673,6 +61713,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		hoverItem(index) {// Hover on item at (index) in searchList
 			// this
 		},
+
 		searchAction(keyword) {
 			this.searchKeyword = keyword;
 			this.switchList(true);
@@ -61687,10 +61728,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				return item.keywords.toLowerCase().match(regex);
 			});
 		},
+
 		focusInputAction(keyword) {
 			this.searchAction(keyword);
 			this.switchList(true);
 		},
+
 		keypressAction(keyName) {
 			let pointerIndex = this.pointerIndex;
 			switch (keyName) {
@@ -76068,7 +76111,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n.addBorder{\n\tborder: 1px solid #0082d5 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?f49d8382"],"names":[],"mappings":";AAwDA;CACA,qCAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\r\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\r\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{addBorder : isExpanding}\">\r\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\r\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\r\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\r\n\t\t\t\t<span\r\n\t\t\t\t\tclass=\"thumb\"\r\n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\r\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\r\n\t\t\t\t\t@click='editQuery()'\r\n\t\t\t\t>\r\n\t\t\t\t</span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\r\n\t\t\t\t<input\r\n\t\t\t\t:placeholder=\"placeholder\"\r\n\t\t\t\ttype=\"text\"\r\n\t\t\t\tstyle=\"margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%\"\r\n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\r\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\r\n\t\t\t\tclass=\"input-control\" @focus = \"focusInputAction($event.target.value)\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\r\n\r\n    \t\t\t@blur='closeDropdow()'\r\n\t\t\t></div>\r\n\r\n\t\t\t<div class=\"control\" @click=\"toggleList()\">\r\n\t\t\t\t<i class=\"fa fa-angle-down\" aria-hidden=\"true\" v-show=\"!isExpanding\"></i>\r\n\t\t\t\t<i class=\"fa fa-angle-up\" aria-hidden=\"true\" v-show=\"isExpanding\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\r\n\t\t\t<li v-show = \"searchList.length == 0\" class=\"not-found\">Not found</li>\r\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\r\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\r\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport MultiSelect from './../../components/MultiSelect'\r\n\texport default MultiSelect\r\n\t\t\t\t// \trequired\r\n\t\t\t\t// oninvalid=\"this.setCustomValidity('The query field must not be blank')\"\r\n    // \t\t\toninput=\"setCustomValidity('')\"\r\n</script>\r\n<style scope>\r\n\t.addBorder{\r\n\t\tborder: 1px solid #0082d5 !important;\r\n\t}\r\n</style>\r\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.addBorder{\n\tborder: 1px solid #0082d5 !important;\n}\n.b__multi__select__control{\n\tpadding-top: 1px;\n}\n.selected{\n\tmargin-left: 3px;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?0a1566ac"],"names":[],"mappings":";AA0DA;CACA,qCAAA;CACA;AACA;CACA,iBAAA;CACA;AACA;CACA,iBAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\r\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\r\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{addBorder : isExpanding}\">\r\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\r\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\r\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\r\n\t\t\t\t<span \r\n\t\t\t\t\tclass=\"thumb\" \r\n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\r\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\r\n\t\t\t\t\t@click='editQuery()'\t\r\n\t\t\t\t>\r\n\t\t\t\t</span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\r\n\t\t\t\t<input\r\n\t\t\t\tv-show=\"singleDropdown\"\r\n\t\t\t\t:placeholder=\"placeholder\"\r\n\t\t\t\ttype=\"text\" \r\n\t\t\t\tstyle=\"margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%;\" \r\n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\r\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\r\n\t\t\t\tclass=\"input-control\" @focus=\"focusInputAction($event.target.value);$emit('removeRequired')\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\r\n    \t\t\t@blur='closeDropdow()'\r\n    \t\t\tonClick=\"this.select()\"\r\n\t\t\t></div>\r\n\r\n\t\t\t<div class=\"control\" @click=\"toggleList()\">\r\n\t\t\t\t<i class=\"fa fa-angle-down\" aria-hidden=\"true\" v-show=\"!isExpanding\"></i>\r\n\t\t\t\t<i class=\"fa fa-angle-up\" aria-hidden=\"true\" v-show=\"isExpanding\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t\r\n\t\t<input type=\"hidden\" :name=\"name\" :value=\"value\" class=\"mutiple-select-hidden-value\">\r\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\r\n\t\t\t<li v-show = \"searchList == undefined || searchList.length == 0\" class=\"not-found\">Not found</li>\r\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\r\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\r\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport MultiSelect from './../../components/MultiSelect'\r\n\texport default MultiSelect\r\n\t\t\t\t// \trequired\r\n\t\t\t\t// oninvalid=\"this.setCustomValidity('The query field must not be blank')\"\r\n    // \t\t\toninput=\"setCustomValidity('')\"\r\n</script>\r\n<style scope>\r\n\t.addBorder{\r\n\t\tborder: 1px solid #0082d5 !important;\r\n\t}\r\n\t.b__multi__select__control{\r\n\t\tpadding-top: 1px;\r\n\t}\r\n\t.selected{\r\n\t\tmargin-left: 3px;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -76152,7 +76195,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"Combobox.vue","sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"Combobox.vue","sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -79988,6 +80031,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "width": "100%"
     }
   }, [_c('input', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.singleDropdown),
+      expression: "singleDropdown"
+    }],
     staticClass: "input-control",
     staticStyle: {
       "margin-left": "13px",
@@ -79999,7 +80048,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "placeholder": _vm.placeholder,
-      "type": "text"
+      "type": "text",
+      "onClick": "this.select()"
     },
     domProps: {
       "value": _vm.searchKeyword
@@ -80019,7 +80069,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.searchList.length > 0 && _vm.pointerIndex != null ? _vm.toggleItem(_vm.searchList[_vm.pointerIndex].id) : ''
       }],
       "focus": function($event) {
-        _vm.focusInputAction($event.target.value)
+        _vm.focusInputAction($event.target.value);
+        _vm.$emit('removeRequired')
       },
       "input": function($event) {
         _vm.searchAction($event.target.value)
@@ -80057,7 +80108,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  })])], 2), _vm._v(" "), _c('ul', {
+  })])], 2), _vm._v(" "), _c('input', {
+    staticClass: "mutiple-select-hidden-value",
+    attrs: {
+      "type": "hidden",
+      "name": _vm.name
+    },
+    domProps: {
+      "value": _vm.value
+    }
+  }), _vm._v(" "), _c('ul', {
     class: [{
       addBorder: _vm.isExpanding
     }, _vm.listClasses]
@@ -80065,8 +80125,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.searchList.length == 0),
-      expression: "searchList.length == 0"
+      value: (_vm.searchList == undefined || _vm.searchList.length == 0),
+      expression: "searchList == undefined || searchList.length == 0"
     }],
     staticClass: "not-found"
   }, [_vm._v("Not found")]), _vm._v(" "), _vm._l((_vm.searchList), function(item, index) {
@@ -81456,21 +81516,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "input": function($event) {
         _vm.searchAction($event)
       },
+      "blur": function($event) {
+        _vm.blurCombobox($event)
+      },
       "focus": function($event) {
-        _vm.switchList(true)
+        _vm.focusCombobox($event)
       },
       "keydown": [function($event) {
         if (!('button' in $event) && $event.keyCode !== 40) { return null; }
-        _vm.keypressAction('ArrowDown')
+        _vm.keypressAction('ArrowDown', $event)
       }, function($event) {
         if (!('button' in $event) && $event.keyCode !== 8) { return null; }
-        _vm.keypressAction('BackSpace')
+        _vm.keypressAction('BackSpace', null)
       }, function($event) {
         if (!('button' in $event) && $event.keyCode !== 38) { return null; }
-        _vm.keypressAction('ArrowUp')
+        $event.preventDefault();
+        _vm.keypressAction('ArrowUp', $event)
       }, function($event) {
         if (!('button' in $event) && $event.keyCode !== 13) { return null; }
-        _vm.selectItem(_vm.pointerIndex)
+        _vm.keypressAction('Enter')
       }]
     }
   }), _vm._v(" "), _c('ul', {
@@ -81493,7 +81557,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "click": function($event) {
-          _vm.toggleItem(item.id)
+          _vm.toggleItem(item.id, index)
         },
         "mouseover": function($event) {
           _vm.pointerIndex = index
@@ -81512,7 +81576,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "innerHTML": _vm._s(item.html)
       }
     })])
-  })], 2)])
+  })], 2), _vm._v(" "), _c('div', {
+    staticClass: "control",
+    on: {
+      "click": function($event) {
+        _vm.switchList(true)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-angle-down",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" "), _c('i', {
+    staticClass: "fa fa-angle-up",
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

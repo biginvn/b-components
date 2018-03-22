@@ -8,25 +8,26 @@
 			</div>
 
 			<div class="selected single" v-if="isSingle">
-				<span
-					class="thumb"
+				<span 
+					class="thumb" 
 					v-if="getSingleSelected()!=null"
 					v-html="getSingleSelected().thumbHtml"
-					@click='editQuery()'
+					@click='editQuery()'	
 				>
 				</span>
 			</div>
 
 			<div class="input-control-wrap" v-if = "!isSingle || getSingleSelected() == null " style="width:100%;">
 				<input
+				v-show="singleDropdown"
 				:placeholder="placeholder"
-				type="text"
-				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%"
+				type="text" 
+				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%;" 
 				@keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')"
 				@keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''"
-				class="input-control" @focus = "focusInputAction($event.target.value)" @input = "searchAction($event.target.value)" :value = "searchKeyword"
-
+				class="input-control" @focus="focusInputAction($event.target.value);$emit('removeRequired')" @input = "searchAction($event.target.value)" :value = "searchKeyword"
     			@blur='closeDropdow()'
+    			onClick="this.select()"
 			></div>
 
 			<div class="control" @click="toggleList()">
@@ -34,9 +35,10 @@
 				<i class="fa fa-angle-up" aria-hidden="true" v-show="isExpanding"></i>
 			</div>
 		</div>
-
+		
+		<input type="hidden" :name="name" :value="value" class="mutiple-select-hidden-value">
 		<ul v-bind:class="[{addBorder : isExpanding}, listClasses]">
-			<li v-show = "searchList.length == 0" class="not-found">Not found</li>
+			<li v-show = "searchList == undefined || searchList.length == 0" class="not-found">Not found</li>
 			<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }" v-for = "(item, index) in searchList" @click="toggleItem(item.id)">
 				<div class="icon" v-if = "!disableIcon">
 					<img :src="item.icon" class="icon-img">
@@ -56,5 +58,11 @@
 <style scope>
 	.addBorder{
 		border: 1px solid #0082d5 !important;
+	}
+	.b__multi__select__control{
+		padding-top: 1px;
+	}
+	.selected{
+		margin-left: 3px;
 	}
 </style>
