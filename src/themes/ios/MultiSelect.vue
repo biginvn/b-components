@@ -19,14 +19,15 @@
 
 			<div class="input-control-wrap" v-if = "!isSingle || getSingleSelected() == null " style="width:100%;">
 				<input
+				v-show="singleDropdown"
 				:placeholder="placeholder"
 				type="text" 
-				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%" 
+				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%;" 
 				@keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')"
 				@keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''"
-				class="input-control" @focus = "focusInputAction($event.target.value)" @input = "searchAction($event.target.value)" :value = "searchKeyword"
-
+				class="input-control" @focus="$emit('removeRequired')" @input = "searchAction($event.target.value)" :value = "searchKeyword"
     			@blur='closeDropdow()'
+    			onClick="this.select()"
 			></div>
 
 			<div class="control" @click="toggleList()">
@@ -56,5 +57,11 @@
 <style scope>
 	.addBorder{
 		border: 1px solid #0082d5 !important;
+	}
+	.b__multi__select__control{
+		padding-top: 1px;
+	}
+	.selected{
+		margin-left: 3px;
 	}
 </style>

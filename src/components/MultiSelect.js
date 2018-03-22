@@ -75,28 +75,28 @@ export default {
 		}	
 	},
 	methods : {
+
 		editQuery(){
 			var indexThumb
-			var hi = this.value
+			var getValue = this.value
 			this.list.filter(function(index) {
-				if (index.id == hi) {
+				if (index.id == getValue) {
 					indexThumb = index.thumbHtml
 				}
 			})
 			this.searchKeyword = indexThumb
-			return this.$emit('input', null)	
+			return this.$emit('input', null)
 		},
 
 		filterQuerylist(){
 			this.list.filter(function(index, data) {
 				if (data.id == this.value)
 				return data.thumbHtml
-			alert('asd')
-			alert('data.thumbHtml')
 			})
 		},
 
 		closeDropdow(){
+
 			if(this.searchList.length == 0){
 				this.isExpanding = false
 			}	
@@ -139,6 +139,7 @@ export default {
 			else
 				this.isExpanding = false
 		},
+
 		toggleItem(id){
 			if (!this.isSingle){
 				let selectList = this.value == null ? [] : this.value;
@@ -180,6 +181,7 @@ export default {
 		hoverItem(index){ // Hover on item at (index) in searchList
 			// this
 		},
+
 		searchAction (keyword) {
 			this.searchKeyword = keyword
 			this.switchList(true)
@@ -196,10 +198,12 @@ export default {
 			})
 
 		},
+
 		focusInputAction (keyword) {
 			this.searchAction(keyword)
 			this.switchList(true)
 		},
+
 		keypressAction (keyName){
 			let pointerIndex = this.pointerIndex
 			switch (keyName) {
