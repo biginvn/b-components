@@ -61591,6 +61591,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	props: {
 		list: {},
 		value: {},
+		name: null,
 		disabled: {},
 		singleDropdown: {},
 		disableIcon: {},
