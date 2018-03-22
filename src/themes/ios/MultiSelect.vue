@@ -8,11 +8,11 @@
 			</div>
 
 			<div class="selected single" v-if="isSingle">
-				<span 
-					class="thumb" 
+				<span
+					class="thumb"
 					v-if="getSingleSelected()!=null"
 					v-html="getSingleSelected().thumbHtml"
-					@click='editQuery()'	
+					@click='editQuery()'
 				>
 				</span>
 			</div>
@@ -21,8 +21,13 @@
 				<input
 				v-show="singleDropdown"
 				:placeholder="placeholder"
+<<<<<<< HEAD
 				type="text" 
 				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%;" 
+=======
+				type="text"
+				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%"
+>>>>>>> 1d65a69cb51f7f51142481beed56458cda383a9a
 				@keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')"
 				@keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''"
 				class="input-control" @focus="$emit('removeRequired')" @input = "searchAction($event.target.value)" :value = "searchKeyword"
@@ -35,9 +40,9 @@
 				<i class="fa fa-angle-up" aria-hidden="true" v-show="isExpanding"></i>
 			</div>
 		</div>
-
+		<input type="hidden" :name="name" :value="value" class="mutiple-select-hidden-value">
 		<ul v-bind:class="[{addBorder : isExpanding}, listClasses]">
-			<li v-show = "searchList.length == 0" class="not-found">Not found</li>
+			<li v-show = "searchList == undefined || searchList.length == 0" class="not-found">Not found</li>
 			<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }" v-for = "(item, index) in searchList" @click="toggleItem(item.id)">
 				<div class="icon" v-if = "!disableIcon">
 					<img :src="item.icon" class="icon-img">
@@ -58,6 +63,7 @@
 	.addBorder{
 		border: 1px solid #0082d5 !important;
 	}
+<<<<<<< HEAD
 	.b__multi__select__control{
 		padding-top: 1px;
 	}
@@ -65,3 +71,6 @@
 		margin-left: 3px;
 	}
 </style>
+=======
+</style>
+>>>>>>> 1d65a69cb51f7f51142481beed56458cda383a9a

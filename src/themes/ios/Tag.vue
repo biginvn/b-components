@@ -1,6 +1,5 @@
 <template>
 	<div class=" b-float-label">
-		
 		<div class="b__components b__component_input_tag_wrapper ">
 			<label :class="classLabel">{{ label }}</label>
 			<span v-for="(tag,index) in tags" class="b__component_input_tag">
