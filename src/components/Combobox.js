@@ -33,8 +33,7 @@ export default {
             type: String
         },
         label:{
-            type: String,
-            required: true
+            type: String
         }
     },
 	mixins: [baseComponent],
