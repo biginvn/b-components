@@ -27,7 +27,7 @@
 			</div>
 		</div>
 
-		<ul v-bind:class="[{addBorder : isExpanding}, listClasses]">
+		<ul a v-bind:class="[{addBorder : isExpanding}, listClasses]">
 			<li v-show = "searchList.length == 0" class="not-found">Not found</li>
 			<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }" v-for = "(item, index) in searchList" @click="toggleItem(item.id)">
 				<div class="icon" v-if = "!disableIcon">
