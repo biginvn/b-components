@@ -8,15 +8,20 @@ export default{
 			inputType	       : "suffix",
 			inputInterrupt     : ",",
 			inputTypeOutput    : "default",
-			inputRoundDecimal  : 0
+			inputRoundDecimal  : 0,
+			inputMaxLength     : 15,
 		}
 	},
 
 	mixins: [baseMixins],
 
-	props: ['affix', 'type', 'interrupt', 'type-output','rounding-decimal'],
+	props: ['affix', 'type', 'interrupt', 'type-output','rounding-decimal', 'max-length'],
 
 	created(){
+		if( this.maxLength != null && this.maxLength == undefined && this.maxLength <= this.inputMaxLength )
+			this.inputMaxLength = this.maxLength
+		if(this.maxLength <= this.inputMaxLength)
+			console.log("Exeption: Components Telerik Numerik props max-length must be <= 15 (interger format).")
 		this.initComponentData()
 	},
 
@@ -96,6 +101,8 @@ export default{
 		checkInputInvalid(string){
 			let arrayNumber = string.split("")
 			let lengthArr = arrayNumber.length
+			if( lengthArr > this.inputMaxLength )
+				return false
 			for( let i = 0; i < lengthArr; i++){
 				if( this.checkIsNumber(arrayNumber[i]) == false)
 					return false

@@ -59345,6 +59345,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Combobox__["a" /* default */]);
@@ -60386,8 +60387,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			type: String
 		},
 		label: {
-			type: String,
-			required: true
+			type: String
 		}
 	},
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
@@ -60395,6 +60395,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		this.searchList = JSON.parse(JSON.stringify(this.list));
 	},
 	watch: {
+		list(newList) {
+			this.searchList = JSON.parse(JSON.stringify(this.list));
+			this.searchKeyword = '';
+			this.selectedValue = null;
+			this.pointerIndex = 0;
+			this.switchList(false);
+		},
 		value(newValue) {
 			// When model is updated we will update search keywords
 			if (newValue == null) {
@@ -62273,15 +62280,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			inputType: "suffix",
 			inputInterrupt: ",",
 			inputTypeOutput: "default",
-			inputRoundDecimal: 0
+			inputRoundDecimal: 0,
+			inputMaxLength: 15
 		};
 	},
 
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
 
-	props: ['affix', 'type', 'interrupt', 'type-output', 'rounding-decimal'],
+	props: ['affix', 'type', 'interrupt', 'type-output', 'rounding-decimal', 'max-length'],
 
 	created() {
+		if (this.maxLength != null && this.maxLength == undefined) this.inputMaxLength = this.maxLength;
 		this.initComponentData();
 	},
 
@@ -62355,6 +62364,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		checkInputInvalid(string) {
 			let arrayNumber = string.split("");
 			let lengthArr = arrayNumber.length;
+			if (lengthArr > this.inputMaxLength) return false;
 			for (let i = 0; i < lengthArr; i++) {
 				if (this.checkIsNumber(arrayNumber[i]) == false) return false;
 			}
@@ -76154,7 +76164,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n.hasError{\n\tcolor: #f04134 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateAndTime.vue?57a87a5d"],"names":[],"mappings":";AAkBA;CACA,0BAAA;CACA","file":"DateAndTime.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 01/10/2017 -->\r\n<!-- Component: DateAndTime -->\r\n\r\n<template>\r\n\t<div class=\"b__datetime__picker b__components b-float-label\">\r\n\t\t<label :class=\"classLabel\">{{ label }}</label>\r\n      \t<input :id=\"id\" :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :class=\"classes\" :disabled=\"disabled\" @input=\"checkInputInvalid($event.target.value)\">\r\n\t</div>\r\n</template>\r\n\r\n<script>\r\n\timport DateAndTime from './../../components/DateAndTime'\r\n\texport default DateAndTime\r\n</script>\r\n\r\n<style>\r\n\t.hasError{\r\n\t\tcolor: #f04134 !important;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.hasError{\n\tcolor: #f04134 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateAndTime.vue?728014e4"],"names":[],"mappings":";AAkBA;CACA,0BAAA;CACA","file":"DateAndTime.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 01/10/2017 -->\r\n<!-- Component: DateAndTime -->\r\n\r\n<template>\r\n\t<div class=\"b__datetime__picker b__components b-float-label\">\r\n\t\t<label :class=\"classLabel\">{{ label }}</label>\r\n      \t<input @click=\"$emit('clickCon')\" :id=\"id\" :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :class=\"classes\" :disabled=\"disabled\" @input=\"checkInputInvalid($event.target.value)\">\r\n\t</div>\r\n</template>\r\n\r\n<script>\r\n\timport DateAndTime from './../../components/DateAndTime'\r\n\texport default DateAndTime\r\n</script>\r\n\r\n<style>\r\n\t.hasError{\r\n\t\tcolor: #f04134 !important;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -76196,7 +76206,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"Combobox.vue","sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"Combobox.vue","sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -80829,6 +80839,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "disabled": _vm.disabled
     },
     on: {
+      "click": function($event) {
+        _vm.$emit('clickCon')
+      },
       "input": function($event) {
         _vm.checkInputInvalid($event.target.value)
       }
@@ -81521,7 +81534,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.blurCombobox($event)
       },
       "focus": function($event) {
-        _vm.focusCombobox($event)
+        _vm.focusCombobox($event);
+        _vm.$emit('removeRequired')
       },
       "keydown": [function($event) {
         if (!('button' in $event) && $event.keyCode !== 40) { return null; }
