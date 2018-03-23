@@ -33,8 +33,7 @@ export default {
             type: String
         },
         label:{
-            type: String,
-            required: true
+            type: String
         }
     },
 	mixins: [baseComponent],
@@ -42,6 +41,10 @@ export default {
 		this.searchList = JSON.parse(JSON.stringify(this.list));
 	},
 	watch: {
+		list(newList){
+			this.searchList = JSON.parse(JSON.stringify(this.list));
+			this.switchList(false);
+		},
         value(newValue){ // When model is updated we will update search keywords
 			if(newValue == null){
 				this.searchKeyword = '';
