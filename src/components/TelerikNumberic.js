@@ -18,9 +18,9 @@ export default{
 	props: ['affix', 'type', 'interrupt', 'type-output','rounding-decimal', 'max-length'],
 
 	created(){
-		if( this.maxLength != null && this.maxLength == undefined && this.maxLength <= this.inputMaxLength )
-			this.inputMaxLength = this.maxLength
-		if(this.maxLength <= this.inputMaxLength)
+		if( parseInt(this.maxLength) != null && parseInt(this.maxLength) != undefined && parseInt(this.maxLength) <= this.inputMaxLength )
+			this.inputMaxLength = parseInt(this.maxLength)
+		if(parseInt(this.maxLength) <= this.inputMaxLength)
 			console.log("Exeption: Components Telerik Numerik props max-length must be <= 15 (interger format).")
 		this.initComponentData()
 	},

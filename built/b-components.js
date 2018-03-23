@@ -60397,9 +60397,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	watch: {
 		list(newList) {
 			this.searchList = JSON.parse(JSON.stringify(this.list));
-			this.searchKeyword = '';
-			this.selectedValue = null;
-			this.pointerIndex = 0;
 			this.switchList(false);
 		},
 		value(newValue) {
@@ -62290,7 +62287,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	props: ['affix', 'type', 'interrupt', 'type-output', 'rounding-decimal', 'max-length'],
 
 	created() {
-		if (this.maxLength != null && this.maxLength == undefined) this.inputMaxLength = this.maxLength;
+		if (parseInt(this.maxLength) != null && parseInt(this.maxLength) != undefined && parseInt(this.maxLength) <= this.inputMaxLength) this.inputMaxLength = parseInt(this.maxLength);
+		if (parseInt(this.maxLength) <= this.inputMaxLength) console.log("Exeption: Components Telerik Numerik props max-length must be <= 15 (interger format).");
 		this.initComponentData();
 	},
 
@@ -76122,7 +76120,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n.addBorder{\n\tborder: 1px solid #0082d5 !important;\n}\n.b__multi__select__control{\n\tpadding-top: 1px;\n}\n.selected{\n\tmargin-left: 3px;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?0a1566ac"],"names":[],"mappings":";AA0DA;CACA,qCAAA;CACA;AACA;CACA,iBAAA;CACA;AACA;CACA,iBAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\r\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\r\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{addBorder : isExpanding}\">\r\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\r\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\r\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\r\n\t\t\t\t<span \r\n\t\t\t\t\tclass=\"thumb\" \r\n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\r\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\r\n\t\t\t\t\t@click='editQuery()'\t\r\n\t\t\t\t>\r\n\t\t\t\t</span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\r\n\t\t\t\t<input\r\n\t\t\t\tv-show=\"singleDropdown\"\r\n\t\t\t\t:placeholder=\"placeholder\"\r\n\t\t\t\ttype=\"text\" \r\n\t\t\t\tstyle=\"margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%;\" \r\n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\r\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\r\n\t\t\t\tclass=\"input-control\" @focus=\"focusInputAction($event.target.value);$emit('removeRequired')\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\r\n    \t\t\t@blur='closeDropdow()'\r\n    \t\t\tonClick=\"this.select()\"\r\n\t\t\t></div>\r\n\r\n\t\t\t<div class=\"control\" @click=\"toggleList()\">\r\n\t\t\t\t<i class=\"fa fa-angle-down\" aria-hidden=\"true\" v-show=\"!isExpanding\"></i>\r\n\t\t\t\t<i class=\"fa fa-angle-up\" aria-hidden=\"true\" v-show=\"isExpanding\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t\r\n\t\t<input type=\"hidden\" :name=\"name\" :value=\"value\" class=\"mutiple-select-hidden-value\">\r\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\r\n\t\t\t<li v-show = \"searchList == undefined || searchList.length == 0\" class=\"not-found\">Not found</li>\r\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\r\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\r\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport MultiSelect from './../../components/MultiSelect'\r\n\texport default MultiSelect\r\n\t\t\t\t// \trequired\r\n\t\t\t\t// oninvalid=\"this.setCustomValidity('The query field must not be blank')\"\r\n    // \t\t\toninput=\"setCustomValidity('')\"\r\n</script>\r\n<style scope>\r\n\t.addBorder{\r\n\t\tborder: 1px solid #0082d5 !important;\r\n\t}\r\n\t.b__multi__select__control{\r\n\t\tpadding-top: 1px;\r\n\t}\r\n\t.selected{\r\n\t\tmargin-left: 3px;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.addBorder{\n\tborder: 1px solid #0082d5 !important;\n}\n.b__multi__select__control{\n\tpadding-top: 1px;\n}\n.selected{\n\tmargin-left: 3px;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?4c9ee94d"],"names":[],"mappings":";AA0DA;CACA,qCAAA;CACA;AACA;CACA,iBAAA;CACA;AACA;CACA,iBAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\r\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\r\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{addBorder : isExpanding}\">\r\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\r\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\r\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\r\n\t\t\t\t<span \r\n\t\t\t\t\tclass=\"thumb\" \r\n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\r\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\r\n\t\t\t\t\t@click='editQuery()'\t\r\n\t\t\t\t>\r\n\t\t\t\t</span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\r\n\t\t\t\t<input\r\n\t\t\t\tv-show=\"singleDropdown\"\r\n\t\t\t\t:placeholder=\"placeholder\"\r\n\t\t\t\ttype=\"text\" \r\n\t\t\t\tstyle=\"margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%;\" \r\n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\r\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\r\n\t\t\t\tclass=\"input-control\" @focus=\"focusInputAction($event.target.value);$emit('removeRequired')\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\r\n    \t\t\t@blur='closeDropdow()'\r\n    \t\t\tonClick=\"this.select()\"\r\n\t\t\t></div>\r\n\r\n\t\t\t<div class=\"control\" @click=\"toggleList()\">\r\n\t\t\t\t<i class=\"fa fa-angle-down\" aria-hidden=\"true\" v-show=\"!isExpanding\"></i>\r\n\t\t\t\t<i class=\"fa fa-angle-up\" aria-hidden=\"true\" v-show=\"isExpanding\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t\r\n\t\t<!-- <input type=\"hidden\" :name=\"name\" :value=\"value\" class=\"mutiple-select-hidden-value\"> -->\r\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\r\n\t\t\t<li v-show = \"searchList == undefined || searchList.length == 0\" class=\"not-found\">Not found</li>\r\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\r\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\r\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport MultiSelect from './../../components/MultiSelect'\r\n\texport default MultiSelect\r\n\t\t\t\t// \trequired\r\n\t\t\t\t// oninvalid=\"this.setCustomValidity('The query field must not be blank')\"\r\n    // \t\t\toninput=\"setCustomValidity('')\"\r\n</script>\r\n<style scope>\r\n\t.addBorder{\r\n\t\tborder: 1px solid #0082d5 !important;\r\n\t}\r\n\t.b__multi__select__control{\r\n\t\tpadding-top: 1px;\r\n\t}\r\n\t.selected{\r\n\t\tmargin-left: 3px;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -80119,16 +80117,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  })])], 2), _vm._v(" "), _c('input', {
-    staticClass: "mutiple-select-hidden-value",
-    attrs: {
-      "type": "hidden",
-      "name": _vm.name
-    },
-    domProps: {
-      "value": _vm.value
-    }
-  }), _vm._v(" "), _c('ul', {
+  })])], 2), _vm._v(" "), _c('ul', {
     class: [{
       addBorder: _vm.isExpanding
     }, _vm.listClasses]
