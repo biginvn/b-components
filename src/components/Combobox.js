@@ -43,9 +43,6 @@ export default {
 	watch: {
 		list(newList){
 			this.searchList = JSON.parse(JSON.stringify(this.list));
-			this.searchKeyword = '';
-			this.selectedValue = null;
-			this.pointerIndex = 0;
 			this.switchList(false);
 		},
         value(newValue){ // When model is updated we will update search keywords
