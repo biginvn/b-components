@@ -1,6 +1,8 @@
 import Vue from 'vue'
 // import axios from 'axios'
 import VueResource from 'vue-resource'
+import {ServerBTable, ClientBTable, Event} from './components/vue-tables-2'
+Vue.use(ServerBTable, {}, false, 'bootstrap3');
 Vue.use(VueResource)
 // Vue.use(axios)
 Vue.http.options.emulateJSON = true; 
@@ -38,6 +40,7 @@ import BJVectorMap from './themes/ios/JVectorMap.vue'
 import BModalMessage from './themes/ios/ModalMessage.vue'
 import BChart from './themes/ios/Chart.vue'
 import BDataTable from './themes/ios/DataTable.vue'
+// import BTable from './themes/ios/BTable2.vue'
 
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
@@ -68,4 +71,5 @@ Vue.component('BJVectorMap', BJVectorMap)
 Vue.component('BModalMessage', BModalMessage)
 Vue.component('BChart', BChart)
 Vue.component('BDataTable', BDataTable)
+// Vue.component('BTable', BTable)
 
