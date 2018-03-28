@@ -2,8 +2,8 @@
 
 module.exports = function () {
     return {
-        framework: 'bootstrap3',
-        table: 'table-bt-3 table-striped table-hover',
+        framework: 'bigin',
+        table: 'btable table dataTable table-striped table-hover',
         row: 'row',
         column: 'col-md-12',
         label: '',

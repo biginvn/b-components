@@ -43,10 +43,10 @@ module.exports = function () {
       columns: 'Columns'
     },
     sortIcon: {
-      is: 'glyphicon-sort',
-      base: 'glyphicon',
-      up: 'glyphicon-chevron-up',
-      down: 'glyphicon-chevron-down'
+      is: 'fa-sort sort-btable',
+      base: 'fa sorting',
+      up: 'fa-sort-asc',
+      down: 'fa-sort-desc'
     },
     sortingAlgorithm: function sortingAlgorithm(data, column) {
       return data.sort(this.getSortFn(column));

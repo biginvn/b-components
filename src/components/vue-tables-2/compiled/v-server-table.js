@@ -30,7 +30,7 @@ var _created = require('./mixins/created');
 var templateCompiler = require('./template-compiler');
 
 exports.install = function (Vue, globalOptions, useVuex) {
-  var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'bootstrap3';
+  var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'bigin';
   var template = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'default';
 
 
