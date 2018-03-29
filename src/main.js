@@ -1,9 +1,10 @@
 import Vue from 'vue'
 // import axios from 'axios'
-import VueResource from 'vue-resource'
-// import {ServerBTable, ClientBTable, Event} from 'vue-tables-2'
-// Vue.use(ServerBTable, {}, false, 'bootstrap3');
-// Vue.use(VueResource)
+// import VueResource from 'vue-resource'
+// import {ServerTable, ClientTable, Event} from 'vue-tables-2'
+// Vue.use(ServerTable, {}, false, 'bootstrap3');
+// Vue.use(ClientTable, {}, false, 'bootstrap3');
+Vue.use(VueResource)
 // Vue.use(axios)
 Vue.http.options.emulateJSON = true;
 Vue.http.options.xhr = {withCredentials: true};
