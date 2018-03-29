@@ -8,11 +8,13 @@
                 <span class="uk-text-middle">Attach file by dropping here or</span>
             </div>
         </div>
+
         <div class="b__components__dropzone" :id="id" v-show="(dropzoneTotalFile + inputTotalFile) >= parseInt(maxFile)">
             <div class="disabled-upload text-center">
                 <span class="uk-text-middle">Max File Uploaded...</span>
             </div>
         </div>
+        
         <div :class="id + '__preview__container'">
             <div :class="id + '__preview preview stuff'">
                 <div class="preview">
@@ -36,10 +38,12 @@
         </div>
     </div>
 </template>
+
 <script>
 import DropzoneUpload from './../../components/DropzoneUpload'
 export default DropzoneUpload
 </script>
+
 <style>
     .disabled-upload:hover .uk-text-middle:after{
         content: '(*Remove assets file to change new file.)';
@@ -52,4 +56,3 @@ export default DropzoneUpload
         cursor: help;
     }
 </style>
-

@@ -6,15 +6,14 @@ export default {
             dropzone: null,
             completedConfig : {},
             items : null,
-            totalInputFileSize : 0,  
+            totalInputFileSize : 0,
             totalDropzoneFileSize : 0,
-            totalFileSize : 0,
+            // totalFileSize : 0,
             dropzoneTotalFile : 0,
             inputTotalFile : 0,
         }
     },
-    components: {
-                
+    components: {           
     },
     mixins: [baseComponent],
     mounted() {
@@ -23,7 +22,9 @@ export default {
     },
     props: ['name', 'config', 'id', 'mode', 'max-file', 'max-size'],
     computed: {
-        
+        // totalFileSize(){
+        //     return this.totalFileSize = this.totalInputFileSize + this.totalDropzoneFileSize
+        // }
     },
     watch:{
         'dropzone.files'(value){
@@ -43,12 +44,12 @@ export default {
             if(value != undefined && value != undefined)
                 this.initDropzone()
         },
-        totalInputFileSize(value){
-            this.totalFileSize = this.totalInputFileSize + this.totalDropzoneFileSize
-        },
-        totalDropzoneFileSize(value){
-            this.totalFileSize = this.totalDropzoneFileSize + this.totalInputFileSize
-        },
+        // totalInputFileSize(){
+        //     this.totalFileSize = this.totalInputFileSize + this.totalDropzoneFileSize
+        // },
+        // totalDropzoneFileSize(){
+        //     this.totalFileSize = this.totalDropzoneFileSize + this.totalInputFileSize
+        // },
     },
     methods: {
         // upload() {  //rem by thien.nguyen
@@ -125,6 +126,7 @@ export default {
                 if(this.value.list != undefined && this.value.list != null)
                     this.prepareItems(this.value.list)
         },
+        
         configDropzone() {
             let config = {
                 thumbnailWidth : 80,
@@ -230,6 +232,7 @@ export default {
             var name = path.split('/').pop()
             return name = name.split('.').shift()
         },
+
         deleteThisItem(id){
             for(var i = 0; i < this.items.length; i++){
                 if( this.items[i].id  == id ){
@@ -240,6 +243,7 @@ export default {
             this.value.list = this.items
             this.$emit('input', this.value)
         },
+
         renderFileSize(size){
             let sizeLength = size.length
             let result = ""
@@ -253,6 +257,7 @@ export default {
             }
             return result
         },
+        
         caculateTotalDropzoneFileSize(listFile){
             this.totalDropzoneFileSize = 0
             let fileError = ""

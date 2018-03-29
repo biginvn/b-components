@@ -20,24 +20,30 @@ export default {
     mounted() {
         this.initTinyMCE(this.value)
     },
+
     computed: {
+        setConTent(){
+            tinymce.get(this.id).setContent(this.value)
+            return this.$emit('input', this.value)
+        }
     },
 
     beforeDestroy(){
         tinymce.get(this.id).destroy()
     },
+
     watch:{
         value(){
-            this.updateContent(this.value)
+            this.setConTent()
+            // this.updateContent(this.value)
             // tinymce.get(this.id).insertContent("hellowords") // insert content
         },
-        singleImage(){
-
-        },
-        multipleImage(){
-
-        }
+        // singleImage(){
+        // },
+        // multipleImage(){
+        // }
     },
+
     methods: {  
         initTinyMCEBasicMode(content){
             var Vue = this
@@ -327,10 +333,10 @@ export default {
         getContentOutput(){
             return this.contentOutPut = tinymce.get(this.id).getContent(data)
         },
-        updateContent(data){
-            tinymce.get(this.id).setContent(data)
-            return this.$emit('input', data)
-        },
+        // updateContent(data){
+        //     tinymce.get(this.id).setContent(data)
+        //     return this.$emit('input', data)
+        // },
         checkDisabled(){
             if(this.disabled == "disabled")
                 return 1

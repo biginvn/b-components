@@ -63758,6 +63758,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_DropzoneUpload__["a" /* default */]);
@@ -64257,11 +64260,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TinyMCE__ = __webpack_require__(470);
-//
-//
-//
-//
-//
 //
 //
 //
@@ -65318,7 +65316,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             items: null,
             totalInputFileSize: 0,
             totalDropzoneFileSize: 0,
-            totalFileSize: 0,
+            // totalFileSize : 0,
             dropzoneTotalFile: 0,
             inputTotalFile: 0
         };
@@ -65329,7 +65327,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         if (this.value != null && this.value != undefined) this.initDropzone();
     },
     props: ['name', 'config', 'id', 'mode', 'max-file', 'max-size'],
-    computed: {},
+    computed: {
+        // totalFileSize(){
+        //     return this.totalFileSize = this.totalInputFileSize + this.totalDropzoneFileSize
+        // }
+    },
     watch: {
         'dropzone.files'(value) {
             this.caculateTotalDropzoneFileSize(value);
@@ -65347,12 +65349,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         value(value) {
             if (value != undefined && value != undefined) this.initDropzone();
-        },
-        totalInputFileSize(value) {
-            this.totalFileSize = this.totalInputFileSize + this.totalDropzoneFileSize;
-        },
-        totalDropzoneFileSize(value) {
-            this.totalFileSize = this.totalDropzoneFileSize + this.totalInputFileSize;
         }
     },
     methods: {
@@ -65427,6 +65423,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$emit('dropzone', this.dropzone);
             if (this.value != undefined) if (this.value.list != undefined && this.value.list != null) this.prepareItems(this.value.list);
         },
+
         configDropzone() {
             let config = {
                 thumbnailWidth: 80,
@@ -65531,6 +65528,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var name = path.split('/').pop();
             return name = name.split('.').shift();
         },
+
         deleteThisItem(id) {
             for (var i = 0; i < this.items.length; i++) {
                 if (this.items[i].id == id) {
@@ -65541,6 +65539,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.value.list = this.items;
             this.$emit('input', this.value);
         },
+
         renderFileSize(size) {
             let sizeLength = size.length;
             let result = "";
@@ -65553,6 +65552,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             return result;
         },
+
         caculateTotalDropzoneFileSize(listFile) {
             this.totalDropzoneFileSize = 0;
             let fileError = "";
@@ -66748,19 +66748,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted() {
         this.initTinyMCE(this.value);
     },
-    computed: {},
+
+    computed: {
+        setConTent() {
+            tinymce.get(this.id).setContent(this.value);
+            return this.$emit('input', this.value);
+        }
+    },
 
     beforeDestroy() {
         tinymce.get(this.id).destroy();
     },
+
     watch: {
         value() {
-            this.updateContent(this.value);
+            this.setConTent();
+            // this.updateContent(this.value)
             // tinymce.get(this.id).insertContent("hellowords") // insert content
-        },
-        singleImage() {},
-        multipleImage() {}
+        }
     },
+
     methods: {
         initTinyMCEBasicMode(content) {
             var Vue = this;
@@ -67017,10 +67024,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getContentOutput() {
             return this.contentOutPut = tinymce.get(this.id).getContent(data);
         },
-        updateContent(data) {
-            tinymce.get(this.id).setContent(data);
-            return this.$emit('input', data);
-        },
+        // updateContent(data){
+        //     tinymce.get(this.id).setContent(data)
+        //     return this.$emit('input', data)
+        // },
         checkDisabled() {
             if (this.disabled == "disabled") return 1;else return 0;
         },
@@ -84327,7 +84334,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"TinyMCE.vue","sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"TinyMCE.vue","sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -84369,7 +84376,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DropzoneUpload.vue?290e27b4"],"names":[],"mappings":";AA2CA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA","file":"DropzoneUpload.vue","sourcesContent":["<template>\r\n    <div class=\"b__components b__dropzone_upload\">\r\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"(dropzoneTotalFile + inputTotalFile) < parseInt(maxFile) || maxFile == undefined\">\r\n            <div class=\"content\">\r\n                <div class=\"row\">\r\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\r\n                </div>\r\n                <span class=\"uk-text-middle\">Attach file by dropping here or</span>\r\n            </div>\r\n        </div>\r\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"(dropzoneTotalFile + inputTotalFile) >= parseInt(maxFile)\">\r\n            <div class=\"disabled-upload text-center\">\r\n                <span class=\"uk-text-middle\">Max File Uploaded...</span>\r\n            </div>\r\n        </div>\r\n        <div :class=\"id + '__preview__container'\">\r\n            <div :class=\"id + '__preview preview stuff'\">\r\n                <div class=\"preview\">\r\n                    <div class=\"dz-thumb\"><img data-dz-thumbnail /></div>\r\n                    <span class=\"dz-name\" data-dz-name></span>\r\n                    <span class=\"dz-size\" data-dz-size></span>\r\n                    <a href=\"#\" class=\"remove-archive\" target=\"_blank\" data-dz-remove><span><i class=\"fa fa-trash-o\"></i></span></a>\r\n                </div>\r\n            </div>\r\n            <div v-for= \"item in items\" class=\"preview\">\r\n                <!-- <a :href=\"item.path\"> -->\r\n                    <div :class=\"item.className\" style=\"animation: fadeOut;\">\r\n                        <img v-if=\"item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'\" data-dz-thumbnail=\"\" :src=\"item.path\">\r\n                        <img v-else data-dz-thumbnail=\"\">\r\n                        <a :href=\"item.path\"><span data-dz-name=\"\" class=\"dz-name\">{{ item.name }}</span></a>\r\n                        <strong><span class=\"dz-size\" data-dz-size>{{ item.filesize }}</span></strong>\r\n                        <a data-dz-remove=\"\" class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fa fa-trash-o\"></i></a>\r\n                    </div> \r\n                <!-- </a> -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n</template>\r\n<script>\r\nimport DropzoneUpload from './../../components/DropzoneUpload'\r\nexport default DropzoneUpload\r\n</script>\r\n<style>\r\n    .disabled-upload:hover .uk-text-middle:after{\r\n        content: '(*Remove assets file to change new file.)';\r\n\r\n    }\r\n    .disabled-upload{\r\n        animation: fadeIn;\r\n        animation-duration: 1s;\r\n        will-change: padding;\r\n        cursor: help;\r\n    }\r\n</style>\r\n\r\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DropzoneUpload.vue?08d51ea8"],"names":[],"mappings":";AA+CA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA","file":"DropzoneUpload.vue","sourcesContent":["<template>\r\n    <div class=\"b__components b__dropzone_upload\">\r\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"(dropzoneTotalFile + inputTotalFile) < parseInt(maxFile) || maxFile == undefined\">\r\n            <div class=\"content\">\r\n                <div class=\"row\">\r\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\r\n                </div>\r\n                <span class=\"uk-text-middle\">Attach file by dropping here or</span>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"(dropzoneTotalFile + inputTotalFile) >= parseInt(maxFile)\">\r\n            <div class=\"disabled-upload text-center\">\r\n                <span class=\"uk-text-middle\">Max File Uploaded...</span>\r\n            </div>\r\n        </div>\r\n        \r\n        <div :class=\"id + '__preview__container'\">\r\n            <div :class=\"id + '__preview preview stuff'\">\r\n                <div class=\"preview\">\r\n                    <div class=\"dz-thumb\"><img data-dz-thumbnail /></div>\r\n                    <span class=\"dz-name\" data-dz-name></span>\r\n                    <span class=\"dz-size\" data-dz-size></span>\r\n                    <a href=\"#\" class=\"remove-archive\" target=\"_blank\" data-dz-remove><span><i class=\"fa fa-trash-o\"></i></span></a>\r\n                </div>\r\n            </div>\r\n            <div v-for= \"item in items\" class=\"preview\">\r\n                <!-- <a :href=\"item.path\"> -->\r\n                    <div :class=\"item.className\" style=\"animation: fadeOut;\">\r\n                        <img v-if=\"item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'\" data-dz-thumbnail=\"\" :src=\"item.path\">\r\n                        <img v-else data-dz-thumbnail=\"\">\r\n                        <a :href=\"item.path\"><span data-dz-name=\"\" class=\"dz-name\">{{ item.name }}</span></a>\r\n                        <strong><span class=\"dz-size\" data-dz-size>{{ item.filesize }}</span></strong>\r\n                        <a data-dz-remove=\"\" class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fa fa-trash-o\"></i></a>\r\n                    </div> \r\n                <!-- </a> -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\nimport DropzoneUpload from './../../components/DropzoneUpload'\r\nexport default DropzoneUpload\r\n</script>\r\n\r\n<style>\r\n    .disabled-upload:hover .uk-text-middle:after{\r\n        content: '(*Remove assets file to change new file.)';\r\n\r\n    }\r\n    .disabled-upload{\r\n        animation: fadeIn;\r\n        animation-duration: 1s;\r\n        will-change: padding;\r\n        cursor: help;\r\n    }\r\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
