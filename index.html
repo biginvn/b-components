@@ -638,7 +638,7 @@
                         </figure>
                     </div>
                     <div class="col-md-12">
-                        <!-- <v-server-table :url="searchApi" ref="tableListContract" name="table-list-contract" id="table-list-contract" :columns="columns" :options="options_table">
+                        <v-server-table :url="searchApi" ref="tableListContract" name="table-list-contract" id="table-list-contract" :columns="columns" :options="options_table">
                             <div slot-scope="props" slot="owner">
                                 <router-link :to="'edit/'+ props.row._id" v-if="props.row.ref_owner" v-html="props.row.ref_owner.fullname"></router-link>
                                 <router-link :to="'edit/'+ props.row._id" v-else>-</router-link>
@@ -651,7 +651,7 @@
                                 <span v-if="props.row.ref_status" data-toggle="tooltip" data-placement="top" title="" aria-hidden="true" data-original-title="hello vn ahihi" class="label label-table" :class="getClassStatus(props.row.ref_status)" v-html="props.row.ref_status.name"></span>
                                 <span v-else><span data-toggle="tooltip" data-placement="top" title="" aria-hidden="true" data-original-title="hello vn ahihi" class="label label-table label-complete">TEST</span></span>
                             </div>
-                        </v-server-table> -->
+                        </v-server-table>
                     </div>
                 </div>
             </div>
@@ -1071,30 +1071,30 @@ var vm = new Vue({
         }
         ],
         listLoadingRemoteData:[],
-        // columns: ['owner','status','valuer','estimatedPrice','contractPrice','action'],
-        // options_table : {
-        //     headings: {
-        //         owner : 'Owner',
-        //         status : 'Status',
-        //         valuer : 'Valuer',
-        //         estimatedPrice : 'Estimated Price',
-        //         contractPrice : 'Contract Price',
-        //         action: 'Action',
-        //     },
-        //     templates : {
-        //         estimatedPrice : function(h, row){
-        //             return helper.formatTextIsEmpty(row.estimatedPrice)
-        //         },
-        //         contractPrice : function(h, row){
-        //             return helper.formatTextIsEmpty(row.contractPrice)
-        //         },
-        //     },
-        //     filterable : true,
-        //     sortable : ['owner', 'valuer'],
-        //     perPageValues : [],
-        //     params : {}
-        // },
-        // tableData: [],
+        columns: ['owner','status','valuer','estimatedPrice','contractPrice','action'],
+        options_table : {
+            headings: {
+                owner : 'Owner',
+                status : 'Status',
+                valuer : 'Valuer',
+                estimatedPrice : 'Estimated Price',
+                contractPrice : 'Contract Price',
+                action: 'Action',
+            },
+            templates : {
+                estimatedPrice : function(h, row){
+                    return helper.formatTextIsEmpty(row.estimatedPrice)
+                },
+                contractPrice : function(h, row){
+                    return helper.formatTextIsEmpty(row.contractPrice)
+                },
+            },
+            filterable : true,
+            sortable : ['owner', 'valuer'],
+            perPageValues : [],
+            params : {}
+        },
+        tableData: [],
     },
     method : {
 
