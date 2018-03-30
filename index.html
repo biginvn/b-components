@@ -638,17 +638,30 @@
                         </figure>
                     </div>
                     <div class="col-md-12">
-                      <v-client-table :columns="columns" :data="data" :options="options">
-                        <template scope="props" slot="uri">
-                            <a target="_blank" :href="props.row.uri" class="glyphicon glyphicon-eye-open"></a>
-                        </template>
-                        <template slot="name" scope="props">
-                            <div>The link to {{props.row.name}} is <a :href="props.row.uri">{{props.row.uri}}</a>
-                                {{props.row.name}}
+                        <div class="panel-border">
+                            <h4 class="mb-3 panel-heading">Client BTable (from vue-tables-2)</h4>
+                            <div class="panel-body">
+                                <v-client-table :columns="columns" :data="data" :options="options">
+                                   <template scope="props" slot="uri">
+                                        <a target="_blank" :href="props.row.uri" class="glyphicon glyphicon-eye-open"></a>
+                                    </template>
+                                    <template slot="name" scope="props">
+                                        <div>The link to {{props.row.name}} is <a :href="props.row.uri">{{props.row.uri}}</a>
+                                            {{props.row.name}}
+                                        </div>
+                                    </template>
+                                </v-client-table>
                             </div>
-                        </template>
-
-                      </v-client-table>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel-border">
+                            <h4 class="mb-3 panel-heading">Server BTable (from vue-tables-2)</h4>
+                            <div class="panel-body">
+                                <v-server-table url="https://api.github.com/users/matfish2/repos" :columns="columnsServer" :options="optionsServer">
+                                </v-server-table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1305,10 +1318,46 @@ var vm = new Vue({
             updated_at: "2015-04-24T01:46:50.391978",
             uri: "http://api.lobbyfacts.eu/api/1/country/217",
             id: 217
-          }],
-    },
-    method : {
+          }
+            ],
 
+            // Server Tabel
+            columnsServer: ['name', 'created_at', 'updated_at', 'pushed_at'],
+            tableData: [],
+            optionsServer: {
+                perPage:25,
+                perPageValues:[25],
+                    requestAdapter(data) {
+                    return {
+                      sort: data.orderBy ? data.orderBy : 'name',
+                      direction: data.ascending ? 'asc' : 'desc'
+
+                    }
+                  },
+                   responseAdapter(data) {
+                    return {
+                      data,
+                      count: data.length
+                    }
+                  },
+                  filterable: false,
+                  templates: {
+                    created_at(h, row) {
+                      return this.formatDate(row.created_at);
+                    },
+                    updated_at(h, row) {
+                      return this.formatDate(row.updated_at);
+                    },
+                    pushed_at(h, row) {
+                      return this.formatDate(row.pushed_at);
+                    }
+                  }
+            }
+    },
+    methods : {
+        formatDate(date) {
+          return moment(date).format('DD-MM-YYYY HH:mm:ss');
+        }
     },
 
     template: '#main-page'
