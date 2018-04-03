@@ -34,9 +34,8 @@ export default {
 
     watch:{
         value(){
-            // this.setConTent()
             this.updateContent(this.value)
-            tinymce.get(this.id).insertContent("hellowords") // insert content
+            // tinymce.get(this.id).insertContent("hellowords") // insert content
         },
         // singleImage(){
         // },
