@@ -73,3 +73,7 @@ Vue.component('BModalMessage', BModalMessage)
 Vue.component('BChart', BChart)
 Vue.component('BDataTable', BDataTable)
 Vue.component('BComboBox', BComboBox)
+
+export default {
+	Event: Event
+}
