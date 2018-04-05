@@ -22,10 +22,10 @@ export default {
     },
 
     computed: {
-        setConTent(){
-            tinymce.get(this.id).setContent(this.value)
-            return this.$emit('input', this.value)
-        }
+        // setConTent(){
+        //     tinymce.get(this.id).setContent(this.value)
+        //     return this.$emit('input', this.value)
+        // }
     },
 
     beforeDestroy(){
@@ -34,8 +34,7 @@ export default {
 
     watch:{
         value(){
-            this.setConTent()
-            // this.updateContent(this.value)
+            this.updateContent(this.value)
             // tinymce.get(this.id).insertContent("hellowords") // insert content
         },
         // singleImage(){
@@ -333,10 +332,10 @@ export default {
         getContentOutput(){
             return this.contentOutPut = tinymce.get(this.id).getContent(data)
         },
-        // updateContent(data){
-        //     tinymce.get(this.id).setContent(data)
-        //     return this.$emit('input', data)
-        // },
+        updateContent(data){
+            tinymce.get(this.id).setContent(data)
+            return this.$emit('input', data)
+        },
         checkDisabled(){
             if(this.disabled == "disabled")
                 return 1
