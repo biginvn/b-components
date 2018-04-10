@@ -1,6 +1,6 @@
 'use strict';
 
-import _vuePagination from '../pagination/'
+var _vuePagination = require('../pagination/');
 
 var _vuex = require('./state/vuex');
 
