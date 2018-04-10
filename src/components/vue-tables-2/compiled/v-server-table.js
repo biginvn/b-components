@@ -20,7 +20,7 @@ var _table = require('./table');
 
 var _table2 = _interopRequireDefault(_table);
 
-var _vuePagination = require('vue-pagination-2');
+import _vuePagination from '../pagination/'
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
