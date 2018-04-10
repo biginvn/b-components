@@ -29,15 +29,18 @@ export default {
     },
 
     beforeDestroy(){
-        tinymce.get(this.id).destroy()
+        if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined)
+            tinymce.get(this.id).destroy()
+        else return
     },
 
     watch:{
         value(){
-            this.updateContent(this.value)
+            setTimeout(this.updateContent(this.value),1500)
+                // this.updateContent(this.value)
             // tinymce.get(this.id).insertContent("hellowords") // insert content
         },
-        // singleImage(){
+        // singleImage(){par
         // },
         // multipleImage(){
         // }

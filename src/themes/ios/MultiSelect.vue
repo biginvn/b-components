@@ -22,7 +22,7 @@
 				v-show="singleDropdown"
 				:placeholder="placeholder"
 				type="text" 
-				style="margin-left: 13px; font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; width: 90%;" 
+				style="font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; left: 10px; width: 90%;" 
 				@keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')"
 				@keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''"
 				class="input-control" @focus="focusInputAction($event.target.value);$emit('removeRequired')" @input = "searchAction($event.target.value)" :value = "searchKeyword"
