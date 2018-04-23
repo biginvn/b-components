@@ -1,6 +1,9 @@
 import Vue from 'vue'
 // import axios from 'axios'
 import VueResource from 'vue-resource'
+import {ServerTable, ClientTable, Event} from './components/vue-tables-2/compiled/'
+Vue.use(ServerTable);
+Vue.use(ClientTable);
 Vue.use(VueResource)
 // Vue.use(axios)
 Vue.http.options.emulateJSON = true;
@@ -70,3 +73,7 @@ Vue.component('BModalMessage', BModalMessage)
 Vue.component('BChart', BChart)
 Vue.component('BDataTable', BDataTable)
 Vue.component('BComboBox', BComboBox)
+
+export default {
+	Event: Event
+}

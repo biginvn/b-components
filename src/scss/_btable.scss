@@ -1,0 +1,51 @@
+table.dataTable {
+	.sorting.sort-btable {
+		color: #ddd;
+	}
+}
+.status-counting-btable {
+	margin: 20px 0;
+}
+table.btable.dataTable {
+	overflow-x: auto;
+}
+.table-responsive {
+	overflow-x: hidden !important;
+}
+.btable-link-page.page-link.active {
+	color: #5f5f5f !important;
+	background: #f1f1f1 !important;
+}
+.pagination-btable {
+	.pagination {
+		.VuePagination__pagination-item {
+			a {
+				border: none;
+				margin: 0 1px 0 1px;
+			}
+		}
+	}
+}
+.pagination.VuePagination__pagination {
+	padding-left: 0;
+	margin: 20px 0;
+	border-radius: 4px;
+	float: right;
+}
+.VueTables {
+	.VuePagination {
+		margin: 0;
+		padding: 0;
+		.pagination-btable {
+			width: 100%;
+		}
+	}
+}
+
+table.dataTable.VueTables__table {
+	thead {
+		.sorting {
+			background: none;
+		}
+	}
+}

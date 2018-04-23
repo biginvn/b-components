@@ -20,25 +20,33 @@ export default {
     mounted() {
         this.initTinyMCE(this.value)
     },
+
     computed: {
+        // setConTent(){
+        //     tinymce.get(this.id).setContent(this.value)
+        //     return this.$emit('input', this.value)
+        // }
     },
 
     beforeDestroy(){
-        tinymce.get(this.id).destroy()
+        if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined)
+            tinymce.get(this.id).destroy()
+        else return
     },
+
     watch:{
-        value(){
-            this.updateContent(this.value)
+        value(val){
+            this.updateContent(val)
+                // this.updateContent(this.value)
             // tinymce.get(this.id).insertContent("hellowords") // insert content
         },
-        singleImage(){
-
-        },
-        multipleImage(){
-
-        }
     },
+
     methods: {  
+        insertSpecialContent(value)
+        {
+            tinymce.activeEditor.execCommand('mceInsertContent', false, value);
+        },
         initTinyMCEBasicMode(content){
             var Vue = this
             var readonly = this.checkDisabled()
@@ -135,7 +143,7 @@ export default {
                                 }
                             })
                             
-                            editor.on('blur', function (e) {
+                            editor.on('change', function (e) {
                               
                                 Vue.range = this.selection.getRng().startOffset;     // get range
 
@@ -318,6 +326,9 @@ export default {
         },
 
         initTinyMCE(content){
+            let element = tinymce.get(this.id)
+            if(element)
+                element.destroy()
             this.updateFloatLabel(content)
             if( this.mode == "advance" )
                 return this.initTinyMCEAdvanceMode(content)
@@ -325,10 +336,13 @@ export default {
                 return this.initTinyMCEBasicMode(content)
         },
         getContentOutput(){
-            return this.contentOutPut = tinymce.get(this.id).getContent(data)
+            // return this.contentOutPut = tinymce.get(this.id).getContent(data)
         },
         updateContent(data){
-            tinymce.get(this.id).setContent(data)
+            let content = tinymce.get(this.id).getContent()
+            if(content != data){
+                tinymce.get(this.id).setContent(data)
+            }
             return this.$emit('input', data)
         },
         checkDisabled(){
