@@ -19,7 +19,7 @@ export default {
 	watch: {
 		value(newValue){
 			this.tags = newValue;
-			updateUI();
+			this.updateUI();
 		}
 	},
 	methods:{
@@ -106,5 +106,9 @@ export default {
 	     	 	event.preventDefault();
 	     	}
     	},
+    	focusInputTag(){
+    		if(this.id != undefined)
+    			document.getElementById(this.id).focus();
+    	}
 	}
 }
