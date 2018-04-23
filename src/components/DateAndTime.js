@@ -80,9 +80,12 @@ export default {
         },
 
         setDate(date){
-            $("#" + this.id).data("DateTimePicker").date(date)
+            if(date)
+                $("#" + this.id).data("DateTimePicker").date(date)
+            else 
+                $("#" + this.id).data("DateTimePicker").date(null)
         },
-
+        
         checkInputInvalid(time){
             if( this.validationDateTime(time) == false ){
                 this.classLabel = "active hasError"
