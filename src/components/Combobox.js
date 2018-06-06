@@ -20,7 +20,7 @@ export default {
         value: {
             required: true,
             validator: function (value) {
-                return value == null || value instanceof String || !isNaN(value);
+                return value == null;
             }
         },
         disabled: {
