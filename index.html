@@ -220,7 +220,10 @@
                                 <h4 class="mb-3 panel-heading">Single Select</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-combo-box label="Combobox" id="b-combobox" :list="listComboxBox" v-model="input.singleSelect"></b-combo-box>
+                                        <b-combo-box label="Combobox" id="b-combobox" data-prefix="items" :list="listComboxBox" start-length-key="3" param-search="q" v-model="input.singleSelect" ajax-search-url="https://api.github.com/search/repositories" :format-list="{id: '{{id}}',
+            html: '<strong>{{name}}</strong>',
+            title: '{{full_name}}',
+            icon: '{{owner.avatar_url}}'}" ></b-combo-box>
                                         <!-- <b-multi-select :list="listMultiSelect" v-model="input.singleSelect" single-dropdown="true"></b-multi-select> -->
                                     </p>
                                     <p>{{ input.singleSelect }}</p>
