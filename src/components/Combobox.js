@@ -52,9 +52,13 @@ export default {
         	type: String,
 			default: null
 		},
-		paramSearch: {
+		keyNameSearch: {
         	type: String,
 			default: "key"
+		},
+		paramAjaxSearch: {
+        	type: Object,
+			default: null
 		}
     },
 	mixins: [baseComponent],
@@ -146,8 +150,8 @@ export default {
 			this.$emit('search-keywords', this.searchKeyword);
 			let searchKey = this.searchKeyword.trim();
 			if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "" && searchKey.length >= this.startLengthKey) {
-				let urlSearch = this.ajaxSearchUrl + "?" + this.paramSearch + "=" + searchKey;
-                this.$http.get(urlSearch).then(
+				let urlSearch = this.ajaxSearchUrl + "?" + this.keyNameSearch + "=" + searchKey;
+                this.$http.get(urlSearch, { params : this.paramAjaxSearch}).then(
                     (success) => {
                     	this.pointerIndex = null;
 						let dataList = success.body[this.dataPrefix];
