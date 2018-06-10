@@ -154,8 +154,10 @@ export default {
 
 		},
         switchList(openList = false){
-            this.isExpanding = openList;
-            this.isFocused = openList;
+            if (!this.disabled) {
+                this.isExpanding = openList;
+                this.isFocused = openList;
+            }
         },
 		selectItem(index){ // index item of searchList
 			if(index == undefined || index == null){

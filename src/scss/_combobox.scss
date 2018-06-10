@@ -36,7 +36,8 @@
         right: 0;
         z-index:1;
         max-height: 500px;
-        overflow: auto;
+        overflow: hidden;
+        overflow-y: scroll !important;
         &.custom-default-select {
             border: 1px solid #E8E8E8;
             /* border-top: 0; */
@@ -100,6 +101,9 @@
                 }
             }
         }
+    }
+    .list-search::-webkit-scrollbar {
+        width: 9px !important;
     }
     .list-search.active {
         display: block;

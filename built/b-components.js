@@ -50310,8 +50310,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}, 500);
 		},
 		switchList(openList = false) {
-			this.isExpanding = openList;
-			this.isFocused = openList;
+			if (!this.disabled) {
+				this.isExpanding = openList;
+				this.isFocused = openList;
+			}
 		},
 		selectItem(index) {
 			// index item of searchList
