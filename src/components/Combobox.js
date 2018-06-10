@@ -4,11 +4,13 @@ export default {
 	data () {
 		return {
 			isExpanding : false,
+            isFocused : false,
 			searchKeyword : '',
 			pointerIndex: 0,
 			selectedValue: null,
 			searchList: [],
 			searchListTotal: [],
+			selectedPointerIndex: 0,
             // value: null,
 		}
 	},
@@ -26,6 +28,9 @@ export default {
             //     return value == null;
             // }
         },
+		defaultValue: {
+        	default: null
+		},
         disabled: {
             type: Boolean
         },
@@ -77,23 +82,25 @@ export default {
             this.searchList = JSON.parse(JSON.stringify(this.list));
             this.searchListTotal = JSON.parse(JSON.stringify(this.list));
 		}
+
+        if (this.defaultValue !== null) {
+        	let value = this.defaultValue;
+            let selectItem = this.searchListTotal.filter( item => item.id.toString() === value.toString());
+            if (selectItem.length > 0){
+                this.searchKeyword = selectItem[0].title;
+                this.selectedValue = value;
+            }
+        }
 	},
 	watch: {
-        searchListTotal(newList){
-			// this.searchList = JSON.parse(JSON.stringify(this.list));
+        searchListTotal(){
 			this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
-            if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "") {
-                // this.switchList(true);
+            if (this.ajaxSearchUrl === null || this.ajaxSearchUrl === "") {
+                this.switchList(false);
             }
-			else this.switchList(false);
 		},
-		list(newList) {
-            if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "") {
-                // this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
-                // this.switchList(true);
-            }
-            else {
-                // this.searchList = JSON.parse(JSON.stringify(this.list));
+		list() {
+            if (this.ajaxSearchUrl === null || this.ajaxSearchUrl === "") {
                 this.searchListTotal = JSON.parse(JSON.stringify(this.list));
                 this.switchList(false);
             }
@@ -108,7 +115,19 @@ export default {
             if (selectItem.length > 0){
                 this.searchKeyword = selectItem[0].title;
             }
-        }
+        },
+		defaultValue(value) {
+        	if (value !== null) {
+                let selectItem = this.searchListTotal.filter( item => item.id.toString() === value.toString());
+                if (selectItem.length > 0){
+                    this.searchKeyword = selectItem[0].title;
+                    this.selectedValue = value;
+                }
+			}
+		},
+        selectedValue(val) {
+            this.$emit("input", val);
+		}
 	},
 	computed : {
         isActive(){
@@ -130,11 +149,13 @@ export default {
 				if(this.selectedValue == null){
 					this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
 				}
+                this.pointerIndex = this.selectedPointerIndex;
 			},500);
 
 		},
         switchList(openList = false){
             this.isExpanding = openList;
+            this.isFocused = openList;
         },
 		selectItem(index){ // index item of searchList
 			if(index == undefined || index == null){
@@ -152,8 +173,8 @@ export default {
 		},
 		toggleItem(id, index){
 			this.selectedValue = id;
+            this.selectedPointerIndex = index;
             this.switchList(false); // Close list
-			this.$emit("input", this.selectedValue);
 			this.searchKeyword = this.searchList[index].title;
 		},
 		hoverItem(index){ // Hover on item at (index) in searchList

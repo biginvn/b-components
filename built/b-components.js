@@ -50161,11 +50161,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data() {
 		return {
 			isExpanding: false,
+			isFocused: false,
 			searchKeyword: '',
 			pointerIndex: 0,
 			selectedValue: null,
 			searchList: [],
-			searchListTotal: []
+			searchListTotal: [],
+			selectedPointerIndex: 0
 			// value: null,
 		};
 	},
@@ -50182,6 +50184,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			// validator: function (value) {
 			//     return value == null;
 			// }
+		},
+		defaultValue: {
+			default: null
 		},
 		disabled: {
 			type: Boolean
@@ -50233,21 +50238,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.searchList = JSON.parse(JSON.stringify(this.list));
 			this.searchListTotal = JSON.parse(JSON.stringify(this.list));
 		}
+
+		if (this.defaultValue !== null) {
+			let value = this.defaultValue;
+			let selectItem = this.searchListTotal.filter(item => item.id.toString() === value.toString());
+			if (selectItem.length > 0) {
+				this.searchKeyword = selectItem[0].title;
+				this.selectedValue = value;
+			}
+		}
 	},
 	watch: {
-		searchListTotal(newList) {
-			// this.searchList = JSON.parse(JSON.stringify(this.list));
+		searchListTotal() {
 			this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
-			if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "") {
-				// this.switchList(true);
-			} else this.switchList(false);
+			if (this.ajaxSearchUrl === null || this.ajaxSearchUrl === "") {
+				this.switchList(false);
+			}
 		},
-		list(newList) {
-			if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "") {
-				// this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
-				// this.switchList(true);
-			} else {
-				// this.searchList = JSON.parse(JSON.stringify(this.list));
+		list() {
+			if (this.ajaxSearchUrl === null || this.ajaxSearchUrl === "") {
 				this.searchListTotal = JSON.parse(JSON.stringify(this.list));
 				this.switchList(false);
 			}
@@ -50263,6 +50272,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (selectItem.length > 0) {
 				this.searchKeyword = selectItem[0].title;
 			}
+		},
+		defaultValue(value) {
+			if (value !== null) {
+				let selectItem = this.searchListTotal.filter(item => item.id.toString() === value.toString());
+				if (selectItem.length > 0) {
+					this.searchKeyword = selectItem[0].title;
+					this.selectedValue = value;
+				}
+			}
+		},
+		selectedValue(val) {
+			this.$emit("input", val);
 		}
 	},
 	computed: {
@@ -50285,10 +50306,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				if (this.selectedValue == null) {
 					this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
 				}
+				this.pointerIndex = this.selectedPointerIndex;
 			}, 500);
 		},
 		switchList(openList = false) {
 			this.isExpanding = openList;
+			this.isFocused = openList;
 		},
 		selectItem(index) {
 			// index item of searchList
@@ -50307,8 +50330,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		toggleItem(id, index) {
 			this.selectedValue = id;
+			this.selectedPointerIndex = index;
 			this.switchList(false); // Close list
-			this.$emit("input", this.selectedValue);
 			this.searchKeyword = this.searchList[index].title;
 		},
 		hoverItem(index) {// Hover on item at (index) in searchList
@@ -78912,7 +78935,10 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "b__components b__combo__box"
+    staticClass: "b__components b__combo__box",
+    class: [{
+      'active-border': _vm.isFocused
+    }]
   }, [_c('label', {
     class: _vm.isActive ? 'active' : '',
     attrs: {
@@ -78921,6 +78947,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
     staticClass: "search-keywords",
     attrs: {
+      "disabled": _vm.disabled,
       "placeholder": _vm.label
     },
     domProps: {
@@ -78957,6 +78984,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       active: _vm.isExpanding
     }, 'list-search', {
       'custom-default-select': _vm.styleDefault
+    }, {
+      'active-border': _vm.isFocused
     }]
   }, [_c('li', {
     directives: [{
