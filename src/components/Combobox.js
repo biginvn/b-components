@@ -9,6 +9,7 @@ export default {
 			selectedValue: null,
 			searchList: [],
 			searchListTotal: [],
+            // value: null,
 		}
 	},
     props: {
@@ -20,9 +21,10 @@ export default {
         },
         value: {
             required: true,
-            validator: function (value) {
-                return value == null;
-            }
+			// I don't know validation for what? Current because this line make error, so i comment it
+            // validator: function (value) {
+            //     return value == null;
+            // }
         },
         disabled: {
             type: Boolean
@@ -80,6 +82,17 @@ export default {
                 // this.switchList(true);
             }
 			else this.switchList(false);
+		},
+		list(newList) {
+            if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "") {
+                // this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
+                // this.switchList(true);
+            }
+            else {
+                // this.searchList = JSON.parse(JSON.stringify(this.list));
+                this.searchListTotal = JSON.parse(JSON.stringify(this.list));
+                this.switchList(false);
+            }
 		},
         value(newValue){ // When model is updated we will update search keywords
 			if(newValue == null){
