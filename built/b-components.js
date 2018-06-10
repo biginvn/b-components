@@ -50189,6 +50189,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		disableIcon: {
 			type: Boolean
 		},
+		styleDefault: {
+			type: Boolean,
+			default: false
+		},
 		placeholder: {
 			type: String
 		},
@@ -78951,7 +78955,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('ul', {
     class: [{
       active: _vm.isExpanding
-    }, 'list-search']
+    }, 'list-search', {
+      'custom-default-select': _vm.styleDefault
+    }]
   }, [_c('li', {
     directives: [{
       name: "show",

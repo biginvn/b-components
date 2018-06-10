@@ -32,6 +32,10 @@ export default {
         disableIcon: {
             type: Boolean
         },
+        styleDefault: {
+            type: Boolean,
+            default: false
+        },
         placeholder: {
             type: String
         },
