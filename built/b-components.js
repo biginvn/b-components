@@ -50198,7 +50198,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			type: Boolean,
 			default: false
 		},
-		placeholder: {
+		inputPlacehoder: {
 			type: String
 		},
 		label: {
@@ -78948,7 +78948,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "search-keywords",
     attrs: {
       "disabled": _vm.disabled,
-      "placeholder": _vm.label
+      "placeholder": _vm.inputPlacehoder
     },
     domProps: {
       "value": _vm.searchKeyword

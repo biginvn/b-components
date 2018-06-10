@@ -41,7 +41,7 @@ export default {
             type: Boolean,
             default: false
         },
-        placeholder: {
+        inputPlacehoder: {
             type: String
         },
         label:{

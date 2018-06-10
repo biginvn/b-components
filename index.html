@@ -220,7 +220,7 @@
                                 <h4 class="mb-3 panel-heading">Single Select Local</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-combo-box :default-value=3 :style-default=true label="Combobox Local" id="b-combobox-local" :list="listComboxBox" v-model="input.singleSelect"></b-combo-box>
+                                        <b-combo-box input-placehoder="Select List"  :default-value=3 :style-default=true label="Combobox Local" id="b-combobox-local" :list="listComboxBox" v-model="input.singleSelect"></b-combo-box>
                                         <!-- <b-multi-select :list="listMultiSelect" v-model="input.singleSelect" single-dropdown="true"></b-multi-select> -->
                                     </p>
                                     <p>{{ input.singleSelect }}</p>
@@ -238,7 +238,7 @@
                                 <h4 class="mb-3 panel-heading">Single Select Ajax Search</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-combo-box label="Combobox Server" id="b-combobox-server" data-prefix="items" :list="listComboxBox" :start-length-key=3 key-name-search="q" v-model="input.singleSelectAjax" ajax-search-url="https://api.github.com/search/repositories" :format-list="{id: '{{id}}',
+                                        <b-combo-box input-placehoder="Select Ajax Search" label="Combobox Server" id="b-combobox-server" data-prefix="items" :list="listComboxBox" :start-length-key=3 key-name-search="q" v-model="input.singleSelectAjax" ajax-search-url="https://api.github.com/search/repositories" :format-list="{id: '{{id}}',
             html: '<strong>{{name}}</strong>',
             title: '{{full_name}}',
             icon: '{{owner.avatar_url}}'}" :param-ajax-search="{transferee_id: 3}"></b-combo-box>
