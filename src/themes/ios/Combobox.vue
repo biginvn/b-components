@@ -1,7 +1,7 @@
 <template>
 	<div class="b__components b__combo__box">
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
-		<input @input="searchAction($event)" @blur="blurCombobox($event)" @focus="focusCombobox($event);$emit('removeRequired')" :value="searchKeyword" class="search-keywords" @keydown.40="keypressAction('ArrowDown', $event)" @keydown.8="keypressAction('BackSpace', null)"
+		<input :placeholder="label" @input="searchAction($event)" @blur="blurCombobox($event)" @focus="focusCombobox($event);$emit('removeRequired')" :value="searchKeyword" class="search-keywords" @keydown.40="keypressAction('ArrowDown', $event)" @keydown.8="keypressAction('BackSpace', null)"
 		@keydown.prevent.38="keypressAction('ArrowUp', $event)" @keydown.13="keypressAction('Enter')" 
 		>
 		<ul :class="[{active : isExpanding}, 'list-search']">

@@ -95,7 +95,7 @@ export default {
 	},
 	computed : {
         isActive(){
-            return this.value != null;
+            return (this.value != null || (this.searchKeyword !== null && this.searchKeyword !== ''));
         }
 	},
 	methods : {

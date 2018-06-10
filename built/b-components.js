@@ -50251,7 +50251,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	computed: {
 		isActive() {
-			return this.value != null;
+			return this.value != null || this.searchKeyword !== null && this.searchKeyword !== '';
 		}
 	},
 	methods: {
@@ -78904,6 +78904,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
     staticClass: "search-keywords",
+    attrs: {
+      "placeholder": _vm.label
+    },
     domProps: {
       "value": _vm.searchKeyword
     },
