@@ -230,15 +230,18 @@ export default {
 		},
 
 		formatListHtml (str, data) {
-            let result = '';
-            let preStr = str.split("{{");
-            if (preStr.length > 0) {
-                let afterStr = preStr[1].split("}}");
-                let dataObj = this.resolve(data, afterStr[0]);
-                result = preStr[0] + dataObj + afterStr[1];
+			if (str !== null && str !== '') {
+                let result = '';
+                let preStr = str.split("{{");
+                if (preStr.length > 0) {
+                    let afterStr = preStr[1].split("}}");
+                    let dataObj = this.resolve(data, afterStr[0]);
+                    result = preStr[0] + dataObj + afterStr[1];
+                }
+                else result = eval(preStr);
+                return result;
 			}
-            else result = eval(preStr);
-            return result;
+			return str;
 		},
 
 		keypressAction (keyName, event){

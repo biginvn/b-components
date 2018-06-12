@@ -37,7 +37,7 @@
         z-index:1;
         max-height: 500px;
         overflow: hidden;
-        overflow-y: scroll !important;
+        overflow-y: auto !important;
         &.custom-default-select {
             border: 1px solid #E8E8E8;
             /* border-top: 0; */
