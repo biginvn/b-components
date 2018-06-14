@@ -115,7 +115,7 @@ module.exports = function () {
           {
             directives: [{
               name: 'show',
-              value: this.totalPages > 1
+              value: this.totalPages > 0
             }],
 
             'class': theme.list + ' VuePagination__pagination pull-right' },

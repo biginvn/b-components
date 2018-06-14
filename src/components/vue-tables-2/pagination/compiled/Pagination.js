@@ -131,8 +131,8 @@ module.exports = {
       var from = (this.page - 1) * this.perPage + 1;
       var to = this.page == this.totalPages ? this.records : from + this.perPage - 1;
       var i = Math.min(this.records == 1 ? 2 : this.totalPages == 1 ? 1 : 0, parts.length - 1);
-
-      return parts[i].replace('{count}', this.formatNumber(this.records)).replace('{from}', this.formatNumber(from)).replace('{to}', this.formatNumber(to));
+      return parts[0].replace('{count}', this.formatNumber(this.records)).replace('{from}', this.formatNumber(from)).replace('{to}', this.formatNumber(to));
+      
     }
   },
   methods: {

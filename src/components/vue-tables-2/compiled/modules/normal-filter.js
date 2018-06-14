@@ -14,8 +14,7 @@ module.exports = function (h) {
             { 'class': classes.input + ' ' + classes.small,
                 attrs: { type: 'text',
                     value: _this.query,
-                    placeholder: _this.display('filterPlaceholder'),
-
+                    // placeholder: _this.display('filterPlaceholder'),
                     id: id
                 },
                 on: {

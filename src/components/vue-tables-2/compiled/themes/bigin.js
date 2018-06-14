@@ -4,6 +4,7 @@ module.exports = function () {
     return {
         framework: 'bigin',
         table: 'btable table dataTable table-striped table-hover',
+        lhtPerpage : 'lht-perpage',
         row: 'row',
         column: 'col-md-12',
         label: '',

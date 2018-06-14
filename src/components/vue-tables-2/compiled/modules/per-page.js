@@ -5,11 +5,11 @@ module.exports = function (h) {
 
   return function (perpageValues, cls, id) {
 
-    return perpageValues.length > 1 ? h(
+    return perpageValues.length > 0 ? h(
       "select",
       { "class": cls,
-        attrs: { name: "limit",
-
+        attrs: { 
+          name: "limit",
           id: id
         },
         domProps: {

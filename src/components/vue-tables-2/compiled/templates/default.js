@@ -25,15 +25,15 @@ module.exports = function (h, modules, classes, slots) {
     ), modules.normalFilter(classes, filterId)]
   ) : '';
 
-  var perpage = perpageValues.length > 1 ? h(
+  var perpage = perpageValues.length > 0 ? h(
     'div',
     { 'class': 'VueTables__limit-field' },
     [h(
       'label',
-      { 'class': classes.label, attrs: { 'for': perpageId }
+      { 'class': classes.lhtPerpage, attrs: { 'for': perpageId}
       },
       [this.display('limit')]
-    ), modules.perPage(perpageValues, classes.select, perpageId)]
+    ), modules.perPage(perpageValues, classes.label, perpageId),this.display('entries')]
   ) : '';
 
   var dropdownPagination = this.opts.pagination && this.opts.pagination.dropdown ? h(
@@ -87,11 +87,11 @@ module.exports = function (h, modules, classes, slots) {
       { 'class': classes.column },
       [h(
         'div',
-        { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__search' },
+        { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__search' },
         [slots.beforeFilter, genericFilter, slots.afterFilter]
       ), h(
         'div',
-        { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__limit' },
+        { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__limit' },
         [slots.beforeLimit, perpage, slots.afterLimit]
       ), dropdownPagination, columnsDropdown]
     )]
