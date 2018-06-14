@@ -4,6 +4,9 @@
     border: 1px solid #e8e8e8;
     border-radius: 4px;
     padding: 5px 12px;
+    &.active-border {
+        border: 1px solid #0082d5 !important;
+    }
 
     .search-keywords {
         width: 100%;
@@ -31,10 +34,26 @@
         background-color: #FFF;
         left: 0;
         right: 0;
-        z-index:1;
+        z-index:9;
+        max-height: 500px;
+        overflow: hidden;
+        overflow-y: auto !important;
+        &.custom-default-select {
+            border: 1px solid #E8E8E8;
+            /* border-top: 0; */
+            background-color: #F0F0F0;
+            border-radius: 5px;
+            color: black;
+            font-weight: 400;
+        }
+        &.active-border {
+            border: 1px solid #0082d5 !important;
+        }
+        .not-found {
+            padding: 8px 10px;
+        }
         .list-item {
             padding: 8px 15px;
-
             &.active {
                 position: relative;
                 &:before {
@@ -52,6 +71,7 @@
             &:hover,
             &.hover {
                 background-color: map-get($colors, primary-light);
+                color: white;
             }
 
             &:hover {
@@ -81,6 +101,9 @@
                 }
             }
         }
+    }
+    .list-search::-webkit-scrollbar {
+        width: 9px !important;
     }
     .list-search.active {
         display: block;

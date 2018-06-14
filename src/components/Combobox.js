@@ -4,10 +4,14 @@ export default {
 	data () {
 		return {
 			isExpanding : false,
+            isFocused : false,
 			searchKeyword : '',
 			pointerIndex: 0,
 			selectedValue: null,
-			searchList: []
+			searchList: [],
+			searchListTotal: [],
+			selectedPointerIndex: 0,
+            // value: null,
 		}
 	},
     props: {
@@ -19,31 +23,87 @@ export default {
         },
         value: {
             required: true,
-            validator: function (value) {
-                return value == null;
-            }
+			// I don't know validation for what? Current because this line make error, so i comment it
+            // validator: function (value) {
+            //     return value == null;
+            // }
         },
+		defaultValue: {
+        	default: null
+		},
         disabled: {
             type: Boolean
         },
         disableIcon: {
             type: Boolean
         },
-        placeholder: {
+        styleDefault: {
+            type: Boolean,
+            default: false
+        },
+        inputPlacehoder: {
             type: String
         },
         label:{
             type: String
-        }
+        },
+		ajaxSearchUrl: {
+        	type: String,
+			default: null
+		},
+		startLengthKey: {
+        	type: Number,
+			default: 0
+		},
+		formatList: {
+			type: Object,
+			default: null
+		},
+		dataPrefix: {
+        	type: String,
+			default: null
+		},
+		keyNameSearch: {
+        	type: String,
+			default: "key"
+		},
+		paramAjaxSearch: {
+        	type: Object,
+			default: null
+		}
     },
 	mixins: [baseComponent],
 	created () {
-		this.searchList = JSON.parse(JSON.stringify(this.list));
+        if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "") {
+            this.searchListTotal = [];
+            this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
+		}
+		else {
+            this.searchList = JSON.parse(JSON.stringify(this.list));
+            this.searchListTotal = JSON.parse(JSON.stringify(this.list));
+		}
+
+        if (this.defaultValue !== null) {
+        	let value = this.defaultValue;
+            let selectItem = this.searchListTotal.filter( item => item.id.toString() === value.toString());
+            if (selectItem.length > 0){
+                this.searchKeyword = selectItem[0].title;
+                this.selectedValue = value;
+            }
+        }
 	},
 	watch: {
-		list(newList){
-			this.searchList = JSON.parse(JSON.stringify(this.list));
-			this.switchList(false);
+        searchListTotal(){
+			this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
+            if (this.ajaxSearchUrl === null || this.ajaxSearchUrl === "") {
+                this.switchList(false);
+            }
+		},
+		list() {
+            if (this.ajaxSearchUrl === null || this.ajaxSearchUrl === "") {
+                this.searchListTotal = JSON.parse(JSON.stringify(this.list));
+                this.switchList(false);
+            }
 		},
         value(newValue){ // When model is updated we will update search keywords
 			if(newValue == null){
@@ -51,15 +111,27 @@ export default {
 				return;
 			}
             let newId = newValue ? newValue : '';
-            let selectItem = this.list.filter( item => item.id.toString() === newValue.toString());
+            let selectItem = this.searchListTotal.filter( item => item.id.toString() === newValue.toString());
             if (selectItem.length > 0){
                 this.searchKeyword = selectItem[0].title;
             }
-        }
+        },
+		defaultValue(value) {
+        	if (value !== null) {
+                let selectItem = this.searchListTotal.filter( item => item.id.toString() === value.toString());
+                if (selectItem.length > 0){
+                    this.searchKeyword = selectItem[0].title;
+                    this.selectedValue = value;
+                }
+			}
+		},
+        selectedValue(val) {
+            this.$emit("input", val);
+		}
 	},
 	computed : {
         isActive(){
-            return this.value != null;
+            return (this.value != null || (this.searchKeyword !== null && this.searchKeyword !== ''));
         }
 	},
 	methods : {
@@ -75,13 +147,17 @@ export default {
 			setTimeout( () => {
 				this.switchList(false);
 				if(this.selectedValue == null){
-					this.searchList = JSON.parse(JSON.stringify(this.list));
+					this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
 				}
+                this.pointerIndex = this.selectedPointerIndex;
 			},500);
 
 		},
         switchList(openList = false){
-            this.isExpanding = openList;
+            if (!this.disabled) {
+                this.isExpanding = openList;
+                this.isFocused = openList;
+            }
         },
 		selectItem(index){ // index item of searchList
 			if(index == undefined || index == null){
@@ -99,21 +175,73 @@ export default {
 		},
 		toggleItem(id, index){
 			this.selectedValue = id;
+            this.selectedPointerIndex = index;
             this.switchList(false); // Close list
-			this.$emit("input", this.selectedValue);
 			this.searchKeyword = this.searchList[index].title;
 		},
 		hoverItem(index){ // Hover on item at (index) in searchList
 			// this
 		},
 		searchAction (event) {
+            let self = this;
 			this.selectedValue = null;
 			this.searchKeyword = event.target.value ? event.target.value : '';
 			this.switchList(true); // Open dropdown list
 			this.$emit('search-keywords', this.searchKeyword);
-			this.searchList = this.list.filter( item => {
-                return item.title != undefined && item.title != null ? item.title.toUpperCase().match(new RegExp('.*' + this.searchKeyword.toUpperCase() + '.*')) : false;
-            });
+			let searchKey = this.searchKeyword.trim();
+			if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "" && searchKey.length >= this.startLengthKey) {
+				let urlSearch = this.ajaxSearchUrl + "?" + this.keyNameSearch + "=" + searchKey;
+                this.$http.get(urlSearch, { params : this.paramAjaxSearch}).then(
+                    (success) => {
+                    	this.pointerIndex = null;
+						let dataList = success.body[this.dataPrefix];
+						this.searchListTotal = [];
+						dataList.map(data => {
+                            let tmp = {
+                                id: self.formatListHtml(self.formatList.id, data),
+                                html: self.formatListHtml(self.formatList.html, data),
+                                title: self.formatListHtml(self.formatList.title, data),
+                                icon: self.formatListHtml(self.formatList.icon, data)
+                            }
+                            this.searchListTotal.push(tmp);
+						});
+                        // this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
+                    },
+                    (response) => {
+
+                    }
+                )
+			}
+			else {
+                this.searchList = this.searchListTotal.filter( item => {
+                    return item.title != undefined && item.title != null ? item.title.toUpperCase().match(new RegExp('.*' + this.searchKeyword.toUpperCase() + '.*')) : false;
+                });
+			}
+		},
+
+        resolve(obj, path){
+			path = path.split('.');
+			let current = obj;
+			while(path.length) {
+				if(typeof current !== 'object') return undefined;
+				current = current[path.shift()];
+			}
+			return current;
+		},
+
+		formatListHtml (str, data) {
+			if (str !== null && str !== '') {
+                let result = '';
+                let preStr = str.split("{{");
+                if (preStr.length > 0) {
+                    let afterStr = preStr[1].split("}}");
+                    let dataObj = this.resolve(data, afterStr[0]);
+                    result = preStr[0] + dataObj + afterStr[1];
+                }
+                else result = eval(preStr);
+                return result;
+			}
+			return str;
 		},
 
 		keypressAction (keyName, event){
