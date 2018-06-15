@@ -29,9 +29,13 @@ export default {
     },
 
     beforeDestroy(){
-        if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined)
-            tinymce.get(this.id).destroy()
-        else return
+        try{
+            if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined)
+                tinymce.get(this.id).destroy()
+        }catch(ex)
+        {
+            return
+        }
     },
 
     watch:{
@@ -339,11 +343,26 @@ export default {
             // return this.contentOutPut = tinymce.get(this.id).getContent(data)
         },
         updateContent(data){
-            let content = tinymce.get(this.id).getContent()
-            if(content != data){
-                tinymce.get(this.id).setContent(data)
+            let self = this
+            let content = '';
+            try{
+                content = tinymce.get(this.id).getContent()
+            }catch(ex)
+            {
+                content = '';
             }
-            return this.$emit('input', data)
+            if(content != data){
+                try{
+                    tinymce.get(this.id).setContent(data)
+                }catch(ex)
+                {
+                    setTimeout(()=>{
+                        tinymce.get(self.id).setContent(data)
+                    },200)
+                }
+                
+            }
+            return self.$emit('input', data)
         },
         checkDisabled(){
             if(this.disabled == "disabled")
