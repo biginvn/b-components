@@ -13,7 +13,7 @@ export default {
 
     },
 
-    props : [ 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path'],
+    props : [ 'checkEdit','id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path'],
 
     mixins: [baseComponent],
 
@@ -44,6 +44,12 @@ export default {
                 // this.updateContent(this.value)
             // tinymce.get(this.id).insertContent("hellowords") // insert content
         },
+        checkEdit(abc){
+            if(abc == false){
+                tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
+            }
+            else tinymce.activeEditor.getBody().setAttribute('contenteditable', true)
+        }
     },
 
     methods: {  
@@ -132,6 +138,7 @@ export default {
                         //Upload Fucntion & param
 
                         init_instance_callback: function (editor) {
+                            tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
                             $('tr.mceFirst').css('z-index','1000')
                             if(content != null || content != undefined)
                                 this.setContent(content)
@@ -302,6 +309,7 @@ export default {
                             content: 'Test 2'
                             }],
                         init_instance_callback: function (editor) {
+                            tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
                             $('tr.mceFirst').css('z-index','1000')
                             if(content != null || content != undefined)
                                 this.setContent(content)
