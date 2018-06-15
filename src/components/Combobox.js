@@ -100,8 +100,8 @@ export default {
             }
 		},
 		list() {
+            this.searchListTotal = JSON.parse(JSON.stringify(this.list));
             if (this.ajaxSearchUrl === null || this.ajaxSearchUrl === "") {
-                this.searchListTotal = JSON.parse(JSON.stringify(this.list));
                 this.switchList(false);
             }
 		},

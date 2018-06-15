@@ -50256,8 +50256,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 		},
 		list() {
+			this.searchListTotal = JSON.parse(JSON.stringify(this.list));
 			if (this.ajaxSearchUrl === null || this.ajaxSearchUrl === "") {
-				this.searchListTotal = JSON.parse(JSON.stringify(this.list));
 				this.switchList(false);
 			}
 		},
@@ -50381,14 +50381,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 
 		formatListHtml(str, data) {
-			let result = '';
-			let preStr = str.split("{{");
-			if (preStr.length > 0) {
-				let afterStr = preStr[1].split("}}");
-				let dataObj = this.resolve(data, afterStr[0]);
-				result = preStr[0] + dataObj + afterStr[1];
-			} else result = eval(preStr);
-			return result;
+			if (str !== null && str !== '') {
+				let result = '';
+				let preStr = str.split("{{");
+				if (preStr.length > 0) {
+					let afterStr = preStr[1].split("}}");
+					let dataObj = this.resolve(data, afterStr[0]);
+					result = preStr[0] + dataObj + afterStr[1];
+				} else result = eval(preStr);
+				return result;
+			}
+			return str;
 		},
 
 		keypressAction(keyName, event) {
@@ -52420,7 +52423,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     components: {},
 
-    props: ['id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path'],
+    props: ['checkEdit', 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path'],
 
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
 
@@ -52436,7 +52439,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     beforeDestroy() {
-        if (tinymce.get(this.id) != null && tinymce.get(this.id) != undefined) tinymce.get(this.id).destroy();else return;
+        try {
+            if (tinymce.get(this.id) != null && tinymce.get(this.id) != undefined) tinymce.get(this.id).destroy();
+        } catch (ex) {
+            return;
+        }
     },
 
     watch: {
@@ -52444,6 +52451,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.updateContent(val);
             // this.updateContent(this.value)
             // tinymce.get(this.id).insertContent("hellowords") // insert content
+        },
+        checkEdit(abc) {
+            if (abc == false) {
+                tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
+            } else tinymce.activeEditor.getBody().setAttribute('contenteditable', true);
         }
     },
 
@@ -52521,6 +52533,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //Upload Fucntion & param
 
                 init_instance_callback: function (editor) {
+                    tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
                     $('tr.mceFirst').css('z-index', '1000');
                     if (content != null || content != undefined) this.setContent(content);
                     editor.on('keyup', function (e) {
@@ -52677,6 +52690,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     content: 'Test 2'
                 }],
                 init_instance_callback: function (editor) {
+                    tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
                     $('tr.mceFirst').css('z-index', '1000');
                     if (content != null || content != undefined) this.setContent(content);
                     editor.on('keyup', function (e) {
@@ -52709,11 +52723,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // return this.contentOutPut = tinymce.get(this.id).getContent(data)
         },
         updateContent(data) {
-            let content = tinymce.get(this.id).getContent();
-            if (content != data) {
-                tinymce.get(this.id).setContent(data);
+            let self = this;
+            let content = '';
+            try {
+                content = tinymce.get(this.id).getContent();
+            } catch (ex) {
+                content = '';
             }
-            return this.$emit('input', data);
+            if (content != data) {
+                try {
+                    tinymce.get(this.id).setContent(data);
+                } catch (ex) {
+                    setTimeout(() => {
+                        tinymce.get(self.id).setContent(data);
+                    }, 200);
+                }
+            }
+            return self.$emit('input', data);
         },
         checkDisabled() {
             if (this.disabled == "disabled") return 1;else return 0;
@@ -53166,13 +53192,14 @@ module.exports = function () {
       count: "Showing {from} to {to} of {count} records|{count} records|One record",
       first: 'First',
       last: 'Last',
-      filter: "Filter:",
+      filter: "Search:",
       filterPlaceholder: "Search query",
-      limit: "Records:",
+      limit: "Show",
+      entries: " entries",
       page: "Page:",
       noResults: "No matching records",
       filterBy: "Filter by {column}",
-      loading: 'Loading...',
+      loading: 'No matching records',
       defaultOption: 'Select {column}',
       columns: 'Columns'
     },
@@ -55229,8 +55256,7 @@ module.exports = function (h) {
         return h('input', { 'class': classes.input + ' ' + classes.small,
             attrs: { type: 'text',
                 value: _this.query,
-                placeholder: _this.display('filterPlaceholder'),
-
+                // placeholder: _this.display('filterPlaceholder'),
                 id: id
             },
             on: {
@@ -55295,9 +55321,9 @@ module.exports = function (h) {
 
   return function (perpageValues, cls, id) {
 
-    return perpageValues.length > 1 ? h("select", { "class": cls,
-      attrs: { name: "limit",
-
+    return perpageValues.length > 0 ? h("select", { "class": cls,
+      attrs: {
+        name: "limit",
         id: id
       },
       domProps: {
@@ -55681,8 +55707,8 @@ module.exports = function (h, modules, classes, slots) {
     attrs: { 'for': filterId },
     'class': classes.label }, [this.display('filter')]), modules.normalFilter(classes, filterId)]) : '';
 
-  var perpage = perpageValues.length > 1 ? h('div', { 'class': 'VueTables__limit-field' }, [h('label', { 'class': classes.label, attrs: { 'for': perpageId }
-  }, [this.display('limit')]), modules.perPage(perpageValues, classes.select, perpageId)]) : '';
+  var perpage = perpageValues.length > 0 ? h('div', { 'class': 'VueTables__limit-field' }, [h('label', { 'class': classes.lhtPerpage, attrs: { 'for': perpageId }
+  }, [this.display('limit')]), modules.perPage(perpageValues, classes.label, perpageId), this.display('entries')]) : '';
 
   var dropdownPagination = this.opts.pagination && this.opts.pagination.dropdown ? h('div', { 'class': 'VueTables__pagination-wrapper' }, [h('div', { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__dropdown-pagination',
     directives: [{
@@ -55699,7 +55725,7 @@ module.exports = function (h, modules, classes, slots) {
 
   var footerHeadings = this.opts.footerHeadings ? h('tfoot', null, [h('tr', null, [modules.headings(classes.right)])]) : '';
 
-  var tableTop = genericFilter || perpage || dropdownPagination || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit ? h('div', { 'class': classes.row }, [h('div', { 'class': classes.column }, [h('div', { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__search' }, [slots.beforeFilter, genericFilter, slots.afterFilter]), h('div', { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__limit' }, [slots.beforeLimit, perpage, slots.afterLimit]), dropdownPagination, columnsDropdown])]) : '';
+  var tableTop = genericFilter || perpage || dropdownPagination || columnsDropdown || slots.beforeFilter || slots.afterFilter || slots.beforeLimit || slots.afterLimit ? h('div', { 'class': classes.row }, [h('div', { 'class': classes.column }, [h('div', { 'class': classes.field + ' ' + classes.inline + ' ' + classes.right + ' VueTables__search' }, [slots.beforeFilter, genericFilter, slots.afterFilter]), h('div', { 'class': classes.field + ' ' + classes.inline + ' ' + classes.left + ' VueTables__limit' }, [slots.beforeLimit, perpage, slots.afterLimit]), dropdownPagination, columnsDropdown])]) : '';
 
   return h('div', { 'class': "VueTables VueTables--" + this.source }, [tableTop, slots.beforeTable, h('div', { 'class': 'table-responsive' }, [h('table', { 'class': 'VueTables__table ' + (this.opts.skin ? this.opts.skin : classes.table) }, [h('thead', null, [h('tr', null, [modules.headings(classes.right)]), slots.beforeFilters, modules.columnFilters(classes), slots.afterFilters]), footerHeadings, slots.beforeBody, h('tbody', null, [slots.prependBody, modules.rows(classes), slots.appendBody]), slots.afterBody])]), slots.afterTable, modules.pagination((0, _merge2.default)(classes.pagination, {
     wrapper: classes.row + ' ' + classes.column + ' ' + classes.contentCenter,
@@ -55759,6 +55785,7 @@ module.exports = function () {
     return {
         framework: 'bigin',
         table: 'btable table dataTable table-striped table-hover',
+        lhtPerpage: 'lht-perpage',
         row: 'row',
         column: 'col-md-12',
         label: '',
@@ -56443,8 +56470,7 @@ module.exports = {
       var from = (this.page - 1) * this.perPage + 1;
       var to = this.page == this.totalPages ? this.records : from + this.perPage - 1;
       var i = Math.min(this.records == 1 ? 2 : this.totalPages == 1 ? 1 : 0, parts.length - 1);
-
-      return parts[i].replace('{count}', this.formatNumber(this.records)).replace('{from}', this.formatNumber(from)).replace('{to}', this.formatNumber(to));
+      return parts[0].replace('{count}', this.formatNumber(this.records)).replace('{from}', this.formatNumber(from)).replace('{to}', this.formatNumber(to));
     }
   },
   methods: {
@@ -56634,7 +56660,7 @@ module.exports = function () {
     return h('div', { 'class': 'VuePagination ' + theme.wrapper }, [h('nav', { 'class': '' + theme.nav }, [h('ul', {
       directives: [{
         name: 'show',
-        value: this.totalPages > 1
+        value: this.totalPages > 0
       }],
 
       'class': theme.list + ' VuePagination__pagination pull-right' }, [h('li', { 'class': 'VuePagination__pagination-item ' + theme.item + ' ' + theme.prev + ' VuePagination__pagination-item-prev-page ' + this.allowedPageClass(this.page - 1) }, [h('a', { 'class': 'btable-prev-page ' + theme.link,
@@ -70453,7 +70479,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"TinyMCE.vue","sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .tiny-disable{\n\tpointer-events: none;\n\tbackground: red !important;\n} */\n/*  :disabled=\"(isEdit == false) ? 'disabled' : ''\"  */\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?2be6e502"],"names":[],"mappings":";;;;;;;;;;;;;;AAcA;;;IAGA;AACA,uDAAA","file":"TinyMCE.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__tinymce b-float-label b__input\">\n\t\t<div>\n\t\t\t<label :class=\"classLabel\">{{ label }}</label>\n\t\t\t<textarea :id=\"id\"></textarea>\n\t\t</div>\n\t</div>\n</template>\n<script>\n\timport TinyMCE from './../../components/TinyMCE'\n\texport default TinyMCE\n</script>\n\n<style type=\"text/css\">\n/* .tiny-disable{\n\tpointer-events: none;\n\tbackground: red !important;\n} */\n/*  :disabled=\"(isEdit == false) ? 'disabled' : ''\"  */\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -78178,9 +78204,7 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "b__components b__tinymce b-float-label b__input"
-  }, [_c('div', {
-    staticClass: "class"
-  }, [_c('label', {
+  }, [_c('div', [_c('label', {
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('textarea', {
     attrs: {
