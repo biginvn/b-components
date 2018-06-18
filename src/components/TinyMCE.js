@@ -140,7 +140,10 @@ export default {
                         //Upload Fucntion & param
 
                         init_instance_callback: function (editor) {
-                            tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
+                            if(Vue.checkEdit != undefined)
+                            {
+                                tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
+                            }
                             $('tr.mceFirst').css('z-index','1000')
                             if(content != null || content != undefined)
                                 this.setContent(content)
@@ -313,7 +316,10 @@ export default {
                             content: 'Test 2'
                             }],
                         init_instance_callback: function (editor) {
-                            tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
+                            if(Vue.checkEdit != undefined)
+                            {
+                                tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
+                            }
                             $('tr.mceFirst').css('z-index','1000')
                             if(content != null || content != undefined)
                                 this.setContent(content)
