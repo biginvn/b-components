@@ -97,7 +97,6 @@ export default {
 		},
 
 		closeDropdow(){
-
 			if(this.searchList.length == 0){
 				this.isExpanding = false
 			}

@@ -1,7 +1,7 @@
 <template>
 	<div class="b__components b__multi__select" @mouseleave = "switchList(false)" @click = "switchList(true)">
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
-		<div class="b__multi__select__control" v-bind:class="{addBorder : isExpanding}">
+		<div class="b__multi__select__control" v-bind:class="{ addBorder : isExpanding, multi: !singleDropdown }">
 			<div class="selected" v-if="!isSingle" v-for="item in getSelectedList()">
 				<span class="thumb" v-html="item.thumbHtml"></span>
 				<span class="close-item" @click = "toggleItem(item.id)"><i class="fa fa-times" aria-hidden="true"></i></span>
@@ -60,9 +60,17 @@
 		border: 1px solid #0082d5 !important;
 	}
 	.b__multi__select__control{
-		padding-top: 1px;
+		padding-top: 2px !important;
+/* 		max-height: 145px !important;
+		height: 100% !important;
+		overflow: scroll !important; */
 	}
 	.selected{
 		margin-left: 3px;
+	}
+	.multi{
+		max-height: 145px !important;
+		height: 100% !important;
+		overflow: scroll !important;
 	}
 </style>
