@@ -74,14 +74,8 @@ export default {
     },
 	mixins: [baseComponent],
 	created () {
-        if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "") {
-            this.searchListTotal = [];
-            this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
-		}
-		else {
-            this.searchList = JSON.parse(JSON.stringify(this.list));
-            this.searchListTotal = JSON.parse(JSON.stringify(this.list));
-		}
+		this.searchList = JSON.parse(JSON.stringify(this.list));
+		this.searchListTotal = JSON.parse(JSON.stringify(this.list));
 
         if (this.defaultValue !== null) {
         	let value = this.defaultValue;
@@ -108,6 +102,7 @@ export default {
         value(newValue){ // When model is updated we will update search keywords
 			if(newValue == null){
 				this.searchKeyword = '';
+				this.searchListTotal = [];
 				return;
 			}
             let newId = newValue ? newValue : '';
@@ -132,6 +127,14 @@ export default {
 	computed : {
         isActive(){
             return (this.value != null || (this.searchKeyword !== null && this.searchKeyword !== ''));
+        },
+        placeholderEmpty()
+        {
+        	if(this.searchKeyword.length >= this.startLengthKey)
+        		return 'Not Found';
+
+        	if(this.searchList.length == 0)
+        		return 'Please type at least ' + this.startLengthKey + ' characters';
         }
 	},
 	methods : {
@@ -230,7 +233,7 @@ export default {
 		},
 
 		formatListHtml (str, data) {
-			if (str !== null && str !== '') {
+            if (str !== null && str !== '') {
                 let result = '';
                 let preStr = str.split("{{");
                 if (preStr.length > 0) {
@@ -240,8 +243,8 @@ export default {
                 }
                 else result = eval(preStr);
                 return result;
-			}
-			return str;
+            }
+            return str;
 		},
 
 		keypressAction (keyName, event){
