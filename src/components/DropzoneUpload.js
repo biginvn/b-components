@@ -14,7 +14,7 @@ export default {
             supportTypes : []
         }
     },
-    components: {           
+    components: {
     },
     mixins: [baseComponent],
     mounted() {
@@ -110,7 +110,7 @@ export default {
                     parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
                 }
                 var fileEx = file.name.split('.').pop();
-                if (this.supportTypes.indexOf('.' + fileEx) === -1) {
+                if (this.supportTypes.length > 0 && this.supportTypes.indexOf('.' + fileEx) === -1) {
                     this.dropzone.removeFile(file);
                     alert('The selected file is not supported. The accepted file types are: ' + this.supportTypes.join(','))
                 }
@@ -161,14 +161,14 @@ export default {
                 if(this.value.list != undefined && this.value.list != null)
                     this.prepareItems(this.value.list)
         },
-        
+
         configDropzone() {
             let acceptedFiles = this.supportTypes.join(',')
             let config = {
                 thumbnailWidth : 80,
                 thumbnailHeight: 80,
                 parallelUploads: 1,
-                acceptedFiles : acceptedFiles,
+                acceptedFiles : (acceptedFiles) ? acceptedFiles : null,
                 autoQueue: false,
                 clickable: [`#${ this.id } .content`],
                 accept : (file, done) => { done() },
@@ -194,15 +194,15 @@ export default {
             }
             let items = [];
             for(let i=0; i < list.length; i++){
-                let listItem = list[i];   
-                let className 
+                let listItem = list[i];
+                let className
                 if( listItem.className != null || listItem.className != undefined )
                     className = listItem.className
                 else
                     className = this.getClassByPath(listItem.path)
-                let filesize = this.renderFileSize(listItem.filesize.replace(" ", "")) 
+                let filesize = this.renderFileSize(listItem.filesize.replace(" ", ""))
                 let item = {
-                    id         : listItem.id, 
+                    id         : listItem.id,
                     filesize   : filesize,
                     path       : listItem.path,
                     name       : (listItem.filename == null || listItem.filename == undefined) ? this.getNameByPath(listItem.path) : listItem.filename,
@@ -234,7 +234,7 @@ export default {
                     break;
                 case "docx":
                     itemClass += " dz-doc"
-                    break;      
+                    break;
                 case "ppt":
                     itemClass += " dz-ppt"
                     break;
@@ -294,7 +294,7 @@ export default {
             }
             return result
         },
-        
+
         caculateTotalDropzoneFileSize(listFile){
             this.totalDropzoneFileSize = 0
             let fileError = ""
