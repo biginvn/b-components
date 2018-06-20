@@ -110,7 +110,7 @@ export default {
                     parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
                 }
                 var fileEx = file.name.split('.').pop();
-                if (this.supportTypes.indexOf(fileEx) === -1) {
+                if (this.supportTypes.indexOf('.' + fileEx) === -1) {
                     this.dropzone.removeFile(file);
                     alert('The selected file is not supported. The accepted file types are: ' + this.supportTypes.join(','))
                 }
