@@ -220,7 +220,7 @@
                                 <h4 class="mb-3 panel-heading">Single Select Local</h4>
                                 <div class="panel-body">
                                     <p>
-                                        <b-combo-box input-placehoder="Select List"  :default-value=3 :style-default=true label="Combobox Local" id="b-combobox-local" :list="listComboxBox" v-model="input.singleSelect"></b-combo-box>
+                                        <b-combo-box input-placehoder="Select List"  :default-value=3 :style-default=true label="Combobox Local" id="b-combobox-local" :list="listComboxBox" v-model="input.singleSelect" :disabled=true></b-combo-box>
                                         <!-- <b-multi-select :list="listMultiSelect" v-model="input.singleSelect" single-dropdown="true"></b-multi-select> -->
                                     </p>
                                     <p>{{ input.singleSelect }}</p>
