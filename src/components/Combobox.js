@@ -22,7 +22,7 @@ export default {
             required: true
         },
         value: {
-            required: true,
+            required: false,
             // I don't know validation for what? Current because this line make error, so i comment it
             // validator: function (value) {
             //     return value == null;
