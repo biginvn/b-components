@@ -55,7 +55,7 @@
 				// oninvalid="this.setCustomValidity('The query field must not be blank')"
     // 			oninput="setCustomValidity('')"
 </script>
-<style scope>
+<style>
 	.addBorder{
 		border: 1px solid #0082d5 !important;
 	}
