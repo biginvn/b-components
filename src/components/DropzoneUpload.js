@@ -104,7 +104,7 @@ export default {
             })
             let Vue = this
             this.dropzone.on("addedfile", (file) => {
-                var parent = document.querySelectorAll('.preview:not(stuff)');
+                var parent = document.querySelectorAll('.' + this.id + '__preview__container .preview:not(stuff)');
                 for (var i = 0; i < parent.length ; i++) {
                     var child = parent[i].querySelector('.dz-thumb');
                     parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
