@@ -4,17 +4,15 @@
             <div class="content">
                 <div class="row">
                     <img v-if="completedConfig.publicPath" :src="completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'" class="icon-upload">
+                    <span class="uk-text-middle" v-html="parseDropzoneContent()"></span>
                 </div>
-                <span class="uk-text-middle">Attach file by dropping here or</span>
             </div>
         </div>
-
         <!-- <div class="b__components__dropzone" :id="id" v-show="(dropzoneTotalFile + inputTotalFile) >= parseInt(maxFile)">
             <div class="disabled-upload text-center">
                 <span class="uk-text-middle">Max File Uploaded...</span>
             </div>
         </div> -->
-        
         <div :class="id + '__preview__container'">
             <div :class="id + '__preview preview stuff'">
                 <div class="preview">

@@ -178,6 +178,7 @@ export default {
                 maxfilesexceeded: function(file) {
                     this.removeAllFiles();
                     this.addFile(file);
+                    this.$emit('validation-file-number', file)
                     alert('Upload file too specified number.')
                 },
             }
@@ -307,8 +308,16 @@ export default {
                     this.dropzone.removeFile(listFile[i])
                 }
             }
-            if( fileError != null &&  fileError != "")
+            if( fileError != null &&  fileError != ""){
+                this.$emit('validation-file-size', fileError)
                 alert("File: " + fileError + " removed because total size to large.")
+            }
         },
+
+        parseDropzoneContent(){
+            if(this.dropzoneContent == undefined || this.dropzoneContent == null)
+                return 'Attach file by dropping here or selecting one'
+            return this.dropzoneContent
+        }
     },
 }
