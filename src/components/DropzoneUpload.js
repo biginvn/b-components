@@ -316,7 +316,7 @@ export default {
 
         parseDropzoneContent(){
             if(this.dropzoneContent == undefined || this.dropzoneContent == null)
-                return 'Attach file by dropping here or selecting one'
+                return 'Attach file by dropping here or <span class="uk-link">selecting one</span>'
             return this.dropzoneContent
         }
     },
