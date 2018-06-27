@@ -1,15 +1,22 @@
 <template>
-	<div class="b__components b__combo__box "  :class="[{'active-border' : isFocused},{'combo_box_disable': disabled}]">
+	<div class="b__components b__combo__box "
+		 :class="[{'active-border' : isFocused},{'combo_box_disable': disabled}]">
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
-		<div v-show="showResult" class="result" @click="showInputSearch()">
+		<div v-show="showResult && isShowHtmlResult" class="result" @click="showInputSearch()">
 			<div class="icon" v-if = "!disableIcon">
 				<img :src="itemResult.icon" class="icon-img">
 			</div>
 			<div class="content" v-html="itemResult.html"></div>
 		</div>
-		<input v-show="!showResult" :disabled="disabled" :placeholder="inputPlacehoder" @input="searchAction($event)"
-			   @blur="blurCombobox($event)" @focus="focusCombobox($event);$emit('removeRequired')" :value="searchKeyword" class="search-keywords" @keydown.40="keypressAction('ArrowDown', $event)" @keydown.8="keypressAction('BackSpace', null)"
-		@keydown.prevent.38="keypressAction('ArrowUp', $event)" @keydown.13="keypressAction('Enter')" 
+
+		<!--remove action key down backspace: @keydown.8="keypressAction('BackSpace', null)" -->
+		<input :ref="'input-search-' + id" v-show="showInputSearchCombobox" :disabled="disabled"
+			   :placeholder="inputPlacehoder"
+			   @input="searchAction($event)" :id="'input-' + id"
+			   @blur="blurCombobox($event)" @focus="focusCombobox($event);$emit('removeRequired')"
+			   :value="searchKeyword" class="search-keywords" @keydown.40="keypressAction('ArrowDown', $event)"
+			   @keydown.8="keypressAction('BackSpace', null)"
+		@keydown.prevent.38="keypressAction('ArrowUp', $event)" @keydown.13="keypressAction('Enter')"
 		>
 		<ul :class="[{active : isExpanding}, 'list-search', {'custom-default-select' : styleDefault}, {'active-border' : isFocused}]">
 			<li v-show ="searchList.length == 0" class="not-found" v-html="placeholderEmpty"></li>

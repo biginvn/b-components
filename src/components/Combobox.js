@@ -10,7 +10,7 @@ export default {
             selectedValue: null,
             searchList: [],
             searchListTotal: [],
-            selectedPointerIndex: 0,
+            selectedPointerIndex: null,
             showResult: false,
             itemResult : {
                 id: null,
@@ -77,6 +77,10 @@ export default {
         paramAjaxSearch: {
             type: Object,
             default: null
+        },
+        isShowHtmlResult: {
+            type: Boolean,
+            default: false
         }
     },
     mixins: [baseComponent],
@@ -114,8 +118,8 @@ export default {
         },
         value(newValue){ // When model is updated we will update search keywords
             if(newValue == null){
-                this.searchKeyword = '';
-                this.searchListTotal = [];
+                // this.searchKeyword = '';
+                if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "") this.searchListTotal = [];
                 return;
             }
             let newId = newValue ? newValue : '';
@@ -134,10 +138,21 @@ export default {
             }
         },
         selectedValue(val) {
+            this.itemResult = Object.assign({}, this.searchList[this.pointerIndex]);
+            if (val === null) this.showResult = false
+            else {
+                this.showResult = true
+            }
+            this.selectedPointerIndex = val
             this.$emit("input", val);
         }
     },
     computed : {
+        showInputSearchCombobox() {
+            if (!this.isShowHtmlResult) return true
+            if (!this.showResult && this.isShowHtmlResult) return true
+            return false
+        },
         isActive(){
             return (this.value != null || (this.searchKeyword !== null && this.searchKeyword !== ''));
         },
@@ -152,8 +167,11 @@ export default {
     },
     methods : {
         showInputSearch() {
-          this.showResult = false
+            this.showResult = false
             this.switchList(true)
+            let ref = 'input-search-' + this.id
+            this.$nextTick(() => this.$refs[ref].focus())
+
         },
         focusCombobox(event){
             this.switchList(true);
@@ -163,21 +181,29 @@ export default {
             // When blur outside input, always emit the selected value to model.
             // If user CLICK on ITEM, the click event will update again new value to model.
             // Close LIST after 500ms (waiting for CLICK event was handled)
-            this.$emit("input", this.selectedValue);
             setTimeout( () => {
                 this.switchList(false);
                 if(this.selectedValue == null){
                     this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
+                    this.searchKeyword = ''
+                    this.showResult = false
                 }
-                this.pointerIndex = this.selectedPointerIndex;
-                this.showResult = true
+                else this.showResult = true
+                // this.pointerIndex = this.selectedPointerIndex;
+
             },500);
+            this.$emit("input", this.selectedValue);
 
         },
         switchList(openList = false){
             if (!this.disabled) {
                 this.isExpanding = openList;
                 this.isFocused = openList;
+                let val = this.selectedPointerIndex
+                if (openList && val !== null) {
+                    let selectItem = this.searchList.filter( item => item.id.toString() === val.toString());
+                    this.pointerIndex = this.searchList.indexOf(selectItem[0])
+                }
             }
         },
         selectItem(index){ // index item of searchList
@@ -196,11 +222,10 @@ export default {
         },
         toggleItem(id, index){
             this.selectedValue = id;
-            this.selectedPointerIndex = index;
+            // this.selectedPointerIndex = index;
             this.switchList(false); // Close list
-            this.itemResult = Object.assign({}, this.searchList[index]);
             this.searchKeyword = this.searchList[index].title;
-            this.showResult = true
+            // this.showResult = true
         },
         hoverItem(index){ // Hover on item at (index) in searchList
             // this
@@ -210,6 +235,7 @@ export default {
             this.selectedValue = null;
             this.searchKeyword = event.target.value ? event.target.value : '';
             this.switchList(true); // Open dropdown list
+            this.pointerIndex = null;
             this.$emit('search-keywords', this.searchKeyword);
             let searchKey = this.searchKeyword.trim();
             if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "" && searchKey.length >= this.startLengthKey) {
@@ -269,7 +295,7 @@ export default {
 
         keypressAction (keyName, event){
             let pointerIndex = this.pointerIndex;
-            this.selectedValue = null;
+            // this.selectedValue = null;
             switch (keyName) {
                 case 'ArrowDown':
                     if (this.pointerIndex == null || this.pointerIndex >= this.searchList.length - 1){
@@ -277,8 +303,8 @@ export default {
                     } else {
                         pointerIndex++;
                     }
-                    this.selectedValue = this.searchList[pointerIndex].id;
-                    this.switchList(true);
+                    // this.selectedValue = this.searchList[pointerIndex].id;
+                    // this.switchList(true);
                     break;
                 case 'ArrowUp':
                     if (this.pointerIndex == null || this.pointerIndex == 0){
@@ -286,23 +312,23 @@ export default {
                     } else {
                         pointerIndex--;
                     }
-                    this.selectedValue = this.searchList[pointerIndex].id;
-                    this.switchList(true);
+                    // this.selectedValue = this.searchList[pointerIndex].id;
+                    // this.switchList(true);
                     break;
                 case 'Enter':
+                    // this.selectedValue = this.searchList[pointerIndex].id;
                     this.switchList(false);
+                    this.selectItem(pointerIndex);
                     break;
                 default:
                     pointerIndex = null;
                     this.selectedValue = null;
             }
-
             this.pointerIndex = pointerIndex;
-            this.selectItem(pointerIndex);
             if(event!= null){
                 event.target.selectionStart = event.target.selectionEnd = event.target.value.length;
             }
         }
-    }
+    },
 
 }

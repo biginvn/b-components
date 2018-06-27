@@ -49158,6 +49158,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Combobox__["a" /* default */]);
@@ -50172,7 +50179,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             selectedValue: null,
             searchList: [],
             searchListTotal: [],
-            selectedPointerIndex: 0,
+            selectedPointerIndex: null,
             showResult: false,
             itemResult: {
                 id: null,
@@ -50238,6 +50245,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         paramAjaxSearch: {
             type: Object,
             default: null
+        },
+        isShowHtmlResult: {
+            type: Boolean,
+            default: false
         }
     },
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
@@ -50275,8 +50286,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         value(newValue) {
             // When model is updated we will update search keywords
             if (newValue == null) {
-                this.searchKeyword = '';
-                this.searchListTotal = [];
+                // this.searchKeyword = '';
+                if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "") this.searchListTotal = [];
                 return;
             }
             let newId = newValue ? newValue : '';
@@ -50295,10 +50306,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         selectedValue(val) {
+            this.itemResult = Object.assign({}, this.searchList[this.pointerIndex]);
+            if (val === null) this.showResult = false;else {
+                this.showResult = true;
+            }
+            this.selectedPointerIndex = val;
             this.$emit("input", val);
         }
     },
     computed: {
+        showInputSearchCombobox() {
+            if (!this.isShowHtmlResult) return true;
+            if (!this.showResult && this.isShowHtmlResult) return true;
+            return false;
+        },
         isActive() {
             return this.value != null || this.searchKeyword !== null && this.searchKeyword !== '';
         },
@@ -50312,6 +50333,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         showInputSearch() {
             this.showResult = false;
             this.switchList(true);
+            let ref = 'input-search-' + this.id;
+            this.$nextTick(() => this.$refs[ref].focus());
         },
         focusCombobox(event) {
             this.switchList(true);
@@ -50321,20 +50344,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // When blur outside input, always emit the selected value to model.
             // If user CLICK on ITEM, the click event will update again new value to model.
             // Close LIST after 500ms (waiting for CLICK event was handled)
-            this.$emit("input", this.selectedValue);
             setTimeout(() => {
                 this.switchList(false);
                 if (this.selectedValue == null) {
                     this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
-                }
-                this.pointerIndex = this.selectedPointerIndex;
-                this.showResult = true;
+                    this.searchKeyword = '';
+                    this.showResult = false;
+                } else this.showResult = true;
+                // this.pointerIndex = this.selectedPointerIndex;
             }, 500);
+            this.$emit("input", this.selectedValue);
         },
         switchList(openList = false) {
             if (!this.disabled) {
                 this.isExpanding = openList;
                 this.isFocused = openList;
+                let val = this.selectedPointerIndex;
+                if (openList && val !== null) {
+                    let selectItem = this.searchList.filter(item => item.id.toString() === val.toString());
+                    this.pointerIndex = this.searchList.indexOf(selectItem[0]);
+                }
             }
         },
         selectItem(index) {
@@ -50354,11 +50383,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         toggleItem(id, index) {
             this.selectedValue = id;
-            this.selectedPointerIndex = index;
+            // this.selectedPointerIndex = index;
             this.switchList(false); // Close list
-            this.itemResult = Object.assign({}, this.searchList[index]);
             this.searchKeyword = this.searchList[index].title;
-            this.showResult = true;
+            // this.showResult = true
         },
         hoverItem(index) {// Hover on item at (index) in searchList
             // this
@@ -50368,6 +50396,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.selectedValue = null;
             this.searchKeyword = event.target.value ? event.target.value : '';
             this.switchList(true); // Open dropdown list
+            this.pointerIndex = null;
             this.$emit('search-keywords', this.searchKeyword);
             let searchKey = this.searchKeyword.trim();
             if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "" && searchKey.length >= this.startLengthKey) {
@@ -50420,7 +50449,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         keypressAction(keyName, event) {
             let pointerIndex = this.pointerIndex;
-            this.selectedValue = null;
+            // this.selectedValue = null;
             switch (keyName) {
                 case 'ArrowDown':
                     if (this.pointerIndex == null || this.pointerIndex >= this.searchList.length - 1) {
@@ -50428,8 +50457,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     } else {
                         pointerIndex++;
                     }
-                    this.selectedValue = this.searchList[pointerIndex].id;
-                    this.switchList(true);
+                    // this.selectedValue = this.searchList[pointerIndex].id;
+                    // this.switchList(true);
                     break;
                 case 'ArrowUp':
                     if (this.pointerIndex == null || this.pointerIndex == 0) {
@@ -50437,19 +50466,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     } else {
                         pointerIndex--;
                     }
-                    this.selectedValue = this.searchList[pointerIndex].id;
-                    this.switchList(true);
+                    // this.selectedValue = this.searchList[pointerIndex].id;
+                    // this.switchList(true);
                     break;
                 case 'Enter':
+                    // this.selectedValue = this.searchList[pointerIndex].id;
                     this.switchList(false);
+                    this.selectItem(pointerIndex);
                     break;
                 default:
                     pointerIndex = null;
                     this.selectedValue = null;
             }
-
             this.pointerIndex = pointerIndex;
-            this.selectItem(pointerIndex);
             if (event != null) {
                 event.target.selectionStart = event.target.selectionEnd = event.target.value.length;
             }
@@ -70603,7 +70632,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n.combo_box_disable{\n\tborder:transparent !important;\n\tcursor: default !important;\n}\n.control-down{\n\tdisplay: none;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/Combobox.vue?f8e3d11e"],"names":[],"mappings":";AA8BA;CACA,8BAAA;CACA,2BAAA;CACA;AACA;CACA,cAAA;CACA","file":"Combobox.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__combo__box \"  :class=\"[{'active-border' : isFocused},{'combo_box_disable': disabled}]\">\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\n\t\t<div v-show=\"showResult\" class=\"result\" @click=\"showInputSearch()\">\n\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t<img :src=\"itemResult.icon\" class=\"icon-img\">\n\t\t\t</div>\n\t\t\t<div class=\"content\" v-html=\"itemResult.html\"></div>\n\t\t</div>\n\t\t<input v-show=\"!showResult\" :disabled=\"disabled\" :placeholder=\"inputPlacehoder\" @input=\"searchAction($event)\"\n\t\t\t   @blur=\"blurCombobox($event)\" @focus=\"focusCombobox($event);$emit('removeRequired')\" :value=\"searchKeyword\" class=\"search-keywords\" @keydown.40=\"keypressAction('ArrowDown', $event)\" @keydown.8=\"keypressAction('BackSpace', null)\"\n\t\t@keydown.prevent.38=\"keypressAction('ArrowUp', $event)\" @keydown.13=\"keypressAction('Enter')\" \n\t\t>\n\t\t<ul :class=\"[{active : isExpanding}, 'list-search', {'custom-default-select' : styleDefault}, {'active-border' : isFocused}]\">\n\t\t\t<li v-show =\"searchList.length == 0\" class=\"not-found\" v-html=\"placeholderEmpty\"></li>\n\t\t\t<li class=\"list-item\" :class=\"{'hover': index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id, index)\" @mouseover=\"pointerIndex=index\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\n\t\t\t</li>\n\t\t</ul>\n\t\t<div class=\"control\" @click=\"switchList(true)\" :class=\"[{'control-down':disabled}]\"><i aria-hidden=\"true\" class=\"fa fa-angle-down\" ></i> <i aria-hidden=\"true\" class=\"fa fa-angle-up\" style=\"display: none;\"></i></div>\n\t</div>\n</template>\n<script>\n\timport Combobox from '../../components/Combobox'\n\texport default Combobox\n</script>\n<style>\n.combo_box_disable{\n\tborder:transparent !important;\n\tcursor: default !important;\n}\n.control-down{\n\tdisplay: none;\n}\n</style>\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.combo_box_disable{\n\tborder:transparent !important;\n\tcursor: default !important;\n}\n.control-down{\n\tdisplay: none;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/Combobox.vue?3d167268"],"names":[],"mappings":";AAqCA;CACA,8BAAA;CACA,2BAAA;CACA;AACA;CACA,cAAA;CACA","file":"Combobox.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__combo__box \"\n\t\t :class=\"[{'active-border' : isFocused},{'combo_box_disable': disabled}]\">\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\n\t\t<div v-show=\"showResult && isShowHtmlResult\" class=\"result\" @click=\"showInputSearch()\">\n\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t<img :src=\"itemResult.icon\" class=\"icon-img\">\n\t\t\t</div>\n\t\t\t<div class=\"content\" v-html=\"itemResult.html\"></div>\n\t\t</div>\n\n\t\t<!--remove action key down backspace: @keydown.8=\"keypressAction('BackSpace', null)\" -->\n\t\t<input :ref=\"'input-search-' + id\" v-show=\"showInputSearchCombobox\" :disabled=\"disabled\"\n\t\t\t   :placeholder=\"inputPlacehoder\"\n\t\t\t   @input=\"searchAction($event)\" :id=\"'input-' + id\"\n\t\t\t   @blur=\"blurCombobox($event)\" @focus=\"focusCombobox($event);$emit('removeRequired')\"\n\t\t\t   :value=\"searchKeyword\" class=\"search-keywords\" @keydown.40=\"keypressAction('ArrowDown', $event)\"\n\t\t\t   @keydown.8=\"keypressAction('BackSpace', null)\"\n\t\t@keydown.prevent.38=\"keypressAction('ArrowUp', $event)\" @keydown.13=\"keypressAction('Enter')\"\n\t\t>\n\t\t<ul :class=\"[{active : isExpanding}, 'list-search', {'custom-default-select' : styleDefault}, {'active-border' : isFocused}]\">\n\t\t\t<li v-show =\"searchList.length == 0\" class=\"not-found\" v-html=\"placeholderEmpty\"></li>\n\t\t\t<li class=\"list-item\" :class=\"{'hover': index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id, index)\" @mouseover=\"pointerIndex=index\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\n\t\t\t</li>\n\t\t</ul>\n\t\t<div class=\"control\" @click=\"switchList(true)\" :class=\"[{'control-down':disabled}]\"><i aria-hidden=\"true\" class=\"fa fa-angle-down\" ></i> <i aria-hidden=\"true\" class=\"fa fa-angle-up\" style=\"display: none;\"></i></div>\n\t</div>\n</template>\n<script>\n\timport Combobox from '../../components/Combobox'\n\texport default Combobox\n</script>\n<style>\n.combo_box_disable{\n\tborder:transparent !important;\n\tcursor: default !important;\n}\n.control-down{\n\tdisplay: none;\n}\n</style>\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -79047,8 +79076,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.showResult),
-      expression: "showResult"
+      value: (_vm.showResult && _vm.isShowHtmlResult),
+      expression: "showResult && isShowHtmlResult"
     }],
     staticClass: "result",
     on: {
@@ -79072,13 +79101,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (!_vm.showResult),
-      expression: "!showResult"
+      value: (_vm.showInputSearchCombobox),
+      expression: "showInputSearchCombobox"
     }],
+    ref: 'input-search-' + _vm.id,
     staticClass: "search-keywords",
     attrs: {
       "disabled": _vm.disabled,
-      "placeholder": _vm.inputPlacehoder
+      "placeholder": _vm.inputPlacehoder,
+      "id": 'input-' + _vm.id
     },
     domProps: {
       "value": _vm.searchKeyword
