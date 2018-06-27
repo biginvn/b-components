@@ -11,6 +11,13 @@ export default {
             searchList: [],
             searchListTotal: [],
             selectedPointerIndex: 0,
+            showResult: false,
+            itemResult : {
+                id: null,
+                html: null,
+                title: null,
+                icon: null
+            }
             // value: null,
         }
     },
@@ -144,6 +151,10 @@ export default {
         }
     },
     methods : {
+        showInputSearch() {
+          this.showResult = false
+            this.switchList(true)
+        },
         focusCombobox(event){
             this.switchList(true);
             $(event.target).select();
@@ -159,6 +170,7 @@ export default {
                     this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
                 }
                 this.pointerIndex = this.selectedPointerIndex;
+                this.showResult = true
             },500);
 
         },
@@ -186,7 +198,9 @@ export default {
             this.selectedValue = id;
             this.selectedPointerIndex = index;
             this.switchList(false); // Close list
+            this.itemResult = Object.assign({}, this.searchList[index]);
             this.searchKeyword = this.searchList[index].title;
+            this.showResult = true
         },
         hoverItem(index){ // Hover on item at (index) in searchList
             // this
