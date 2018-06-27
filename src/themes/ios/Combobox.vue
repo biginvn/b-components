@@ -1,6 +1,7 @@
 <template>
-	<div class="b__components b__combo__box "
-		 :class="[{'active-border' : isFocused},{'combo_box_disable': disabled}]">
+	<div class="b__components b__combo__box"
+		 :class="[{'active-border' : isFocused},{'combo_box_disable': disabled}]" :null-placeholder="nullPlaceholder"
+		 :org-placeholder="orgPlaceholder">
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label.toUpperCase() }}</label>
 		<div v-show="showResult && isShowHtmlResult" class="result" @click="showInputSearch()">
 			<div class="icon" v-if = "!disableIcon">
@@ -11,7 +12,8 @@
 
 		<!--remove action key down backspace: @keydown.8="keypressAction('BackSpace', null)" -->
 		<input :ref="'input-search-' + id" v-show="showInputSearchCombobox" :disabled="disabled"
-			   :placeholder="inputPlacehoder"
+			   :placeholder="inputPlacehoder" :null-placeholder="nullPlaceholder"
+			   :org-placeholder="orgPlaceholder"
 			   @input="searchAction($event)" :id="'input-' + id"
 			   @blur="blurCombobox($event)" @focus="focusCombobox($event);$emit('removeRequired')"
 			   :value="searchKeyword" class="search-keywords" @keydown.40="keypressAction('ArrowDown', $event)"

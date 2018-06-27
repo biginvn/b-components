@@ -74,6 +74,14 @@ export default {
             type: String,
             default: "key"
         },
+        orgPlaceholder: {
+            type: String,
+            default: "-"
+        },
+        nullPlaceholder: {
+            type: String,
+            default: "-"
+        },
         paramAjaxSearch: {
             type: Object,
             default: null

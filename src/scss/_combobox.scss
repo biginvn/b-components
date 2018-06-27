@@ -11,13 +11,14 @@
         display: flex;
         align-items: center;
         &>.icon {
-            max-width: 45px;
+            width: 45px;
             float: left;
             margin-right: 15px;
             &>.icon-img {
                 width: 100%;
                 display: block;
                 border-radius: 50%;
+                height: 45px;
             }
         }
     }
