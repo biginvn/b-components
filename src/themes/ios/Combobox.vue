@@ -1,7 +1,7 @@
 <template>
 	<div class="b__components b__combo__box "
 		 :class="[{'active-border' : isFocused},{'combo_box_disable': disabled}]">
-		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
+		<label :for="id" :class="isActive ? 'active' : '' ">{{ label.toUpperCase() }}</label>
 		<div v-show="showResult && isShowHtmlResult" class="result" @click="showInputSearch()">
 			<div class="icon" v-if = "!disableIcon">
 				<img :src="itemResult.icon" class="icon-img">

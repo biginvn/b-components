@@ -101,6 +101,7 @@ export default {
                 this.searchKeyword = selectItem[0].title;
                 this.selectedValue = value;
             }
+            this.pointerIndex = this.searchListTotal.indexOf(selectItem[0])
         }
     },
     watch: {
@@ -135,6 +136,7 @@ export default {
                     this.searchKeyword = selectItem[0].title;
                     this.selectedValue = value;
                 }
+                this.pointerIndex = this.searchListTotal.indexOf(selectItem[0])
             }
         },
         selectedValue(val) {
