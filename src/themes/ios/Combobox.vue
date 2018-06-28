@@ -16,7 +16,7 @@
 			   :org-placeholder="orgPlaceholder"
 			   @input="searchAction($event)" :id="'input-' + id"
 			   @blur="blurCombobox($event)" @focus="focusCombobox($event);$emit('removeRequired')"
-			   :value="searchKeyword" class="search-keywords" @keydown.40="keypressAction('ArrowDown', $event)"
+			   :value="searchKeyword" class="search-keywords input__combobox" @keydown.40="keypressAction('ArrowDown', $event)"
 			   @keydown.8="keypressAction('BackSpace', null)"
 		@keydown.prevent.38="keypressAction('ArrowUp', $event)" @keydown.13="keypressAction('Enter')"
 		>
