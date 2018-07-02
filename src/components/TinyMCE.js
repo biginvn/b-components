@@ -46,9 +46,16 @@ export default {
         },
         checkEdit(abc){
             if(abc == false){
-                tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
+                tinymce.get(this.id).getBody().setAttribute('contenteditable', false)
+                // tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
             }
-            else tinymce.activeEditor.getBody().setAttribute('contenteditable', true)
+            else {
+                // console.log(tinymce.getInstanceById('vendor-activity-edit-content'))
+                // console.log(tinymce.get('vendor-activity-edit-content'))
+                tinymce.get(this.id).getBody().setAttribute('contenteditable', true)
+                // tinymce.activeEditor.getBody().setAttribute('contenteditable', true)
+                // alert(tinymce.get('vendor-activity-edit-content').getBody().getAttribute('contenteditable'))
+            }
         }
     },
 
