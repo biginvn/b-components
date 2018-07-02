@@ -45835,7 +45835,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Button.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Button.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Button.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -45875,7 +45875,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Chart.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Chart.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Chart.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -45915,7 +45915,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\CheckBox.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/CheckBox.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] CheckBox.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -45959,7 +45959,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Combobox.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Combobox.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Combobox.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46003,7 +46003,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\DataTable.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/DataTable.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DataTable.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46047,7 +46047,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\DateAndTime.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/DateAndTime.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DateAndTime.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46091,7 +46091,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\DateTimePicker.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/DateTimePicker.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DateTimePicker.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46135,7 +46135,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\DropzoneUpload.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/DropzoneUpload.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DropzoneUpload.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46175,7 +46175,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\JVectorMap.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/JVectorMap.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] JVectorMap.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46215,7 +46215,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\ListUpLoaded.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/ListUpLoaded.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ListUpLoaded.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46259,7 +46259,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Loader.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Loader.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Loader.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46299,7 +46299,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Modal.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Modal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Modal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46339,7 +46339,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\ModalMessage.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/ModalMessage.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ModalMessage.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46383,7 +46383,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\MultiSelect.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/MultiSelect.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] MultiSelect.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46423,7 +46423,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\NumericFormatted.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/NumericFormatted.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] NumericFormatted.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46463,7 +46463,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Radio.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Radio.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Radio.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46503,7 +46503,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Rating.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Rating.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Rating.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46543,7 +46543,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Select.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Select.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Select.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46583,7 +46583,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\ShowPassword.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/ShowPassword.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ShowPassword.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46623,7 +46623,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Switch.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Switch.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Switch.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46663,7 +46663,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Tag.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Tag.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Tag.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46703,7 +46703,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\TaskList.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/TaskList.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TaskList.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46743,7 +46743,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\TelerikNumberic.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/TelerikNumberic.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TelerikNumberic.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46783,7 +46783,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\TextField.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/TextField.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TextField.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46823,7 +46823,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Textarea.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Textarea.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Textarea.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46867,7 +46867,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\TinyMCE.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/TinyMCE.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TinyMCE.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46907,7 +46907,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Toggle.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Toggle.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Toggle.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46947,7 +46947,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\Upload.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Upload.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Upload.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46987,7 +46987,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "F:\\BIGIN\\Projects\\b-components\\src\\themes\\ios\\ZipCode.vue"
+Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/ZipCode.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ZipCode.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -49151,6 +49151,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Combobox__["a" /* default */]);
@@ -49279,8 +49295,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DropzoneUpload__ = __webpack_require__(348);
-//
-//
 //
 //
 //
@@ -50167,9 +50181,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             selectedValue: null,
             searchList: [],
             searchListTotal: [],
-            selectedPointerIndex: 0
-            // value: null,
-        };
+            selectedPointerIndex: null,
+            showResult: false,
+            itemResult: {
+                id: null,
+                html: null,
+                title: null,
+                icon: null
+                // value: null,
+            } };
     },
     props: {
         list: {
@@ -50179,7 +50199,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             required: true
         },
         value: {
-            required: true
+            required: false
             // I don't know validation for what? Current because this line make error, so i comment it
             // validator: function (value) {
             //     return value == null;
@@ -50224,9 +50244,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: String,
             default: "key"
         },
+        orgPlaceholder: {
+            type: String,
+            default: "-"
+        },
+        nullPlaceholder: {
+            type: String,
+            default: "-"
+        },
         paramAjaxSearch: {
             type: Object,
             default: null
+        },
+        isShowHtmlResult: {
+            type: Boolean,
+            default: false
         }
     },
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
@@ -50246,6 +50278,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.searchKeyword = selectItem[0].title;
                 this.selectedValue = value;
             }
+            this.pointerIndex = this.searchListTotal.indexOf(selectItem[0]);
         }
     },
     watch: {
@@ -50264,8 +50297,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         value(newValue) {
             // When model is updated we will update search keywords
             if (newValue == null) {
-                this.searchKeyword = '';
-                this.searchListTotal = [];
+                // this.searchKeyword = '';
+                if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "") this.searchListTotal = [];
                 return;
             }
             let newId = newValue ? newValue : '';
@@ -50281,13 +50314,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.searchKeyword = selectItem[0].title;
                     this.selectedValue = value;
                 }
+                this.pointerIndex = this.searchListTotal.indexOf(selectItem[0]);
             }
         },
         selectedValue(val) {
+            this.itemResult = Object.assign({}, this.searchList[this.pointerIndex]);
+            if (val === null) this.showResult = false;else {
+                this.showResult = true;
+            }
+            this.selectedPointerIndex = val;
             this.$emit("input", val);
         }
     },
     computed: {
+        showInputSearchCombobox() {
+            if (!this.isShowHtmlResult) return true;
+            if (!this.showResult && this.isShowHtmlResult) return true;
+            return false;
+        },
         isActive() {
             return this.value != null || this.searchKeyword !== null && this.searchKeyword !== '';
         },
@@ -50298,6 +50342,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
+        showInputSearch() {
+            this.showResult = false;
+            this.switchList(true);
+            let ref = 'input-search-' + this.id;
+            this.$nextTick(() => this.$refs[ref].focus());
+        },
         focusCombobox(event) {
             this.switchList(true);
             $(event.target).select();
@@ -50306,19 +50356,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // When blur outside input, always emit the selected value to model.
             // If user CLICK on ITEM, the click event will update again new value to model.
             // Close LIST after 500ms (waiting for CLICK event was handled)
-            this.$emit("input", this.selectedValue);
             setTimeout(() => {
                 this.switchList(false);
                 if (this.selectedValue == null) {
                     this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
-                }
-                this.pointerIndex = this.selectedPointerIndex;
+                    this.searchKeyword = '';
+                    this.showResult = false;
+                } else this.showResult = true;
+                // this.pointerIndex = this.selectedPointerIndex;
             }, 500);
+            this.$emit("input", this.selectedValue);
         },
         switchList(openList = false) {
             if (!this.disabled) {
                 this.isExpanding = openList;
                 this.isFocused = openList;
+                let val = this.selectedPointerIndex;
+                if (openList && val !== null) {
+                    let selectItem = this.searchList.filter(item => item.id.toString() === val.toString());
+                    this.pointerIndex = this.searchList.indexOf(selectItem[0]);
+                }
             }
         },
         selectItem(index) {
@@ -50338,9 +50395,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         toggleItem(id, index) {
             this.selectedValue = id;
-            this.selectedPointerIndex = index;
+            // this.selectedPointerIndex = index;
             this.switchList(false); // Close list
             this.searchKeyword = this.searchList[index].title;
+            // this.showResult = true
         },
         hoverItem(index) {// Hover on item at (index) in searchList
             // this
@@ -50350,6 +50408,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.selectedValue = null;
             this.searchKeyword = event.target.value ? event.target.value : '';
             this.switchList(true); // Open dropdown list
+            this.pointerIndex = null;
             this.$emit('search-keywords', this.searchKeyword);
             let searchKey = this.searchKeyword.trim();
             if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== "" && searchKey.length >= this.startLengthKey) {
@@ -50402,7 +50461,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         keypressAction(keyName, event) {
             let pointerIndex = this.pointerIndex;
-            this.selectedValue = null;
+            // this.selectedValue = null;
             switch (keyName) {
                 case 'ArrowDown':
                     if (this.pointerIndex == null || this.pointerIndex >= this.searchList.length - 1) {
@@ -50410,8 +50469,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     } else {
                         pointerIndex++;
                     }
-                    this.selectedValue = this.searchList[pointerIndex].id;
-                    this.switchList(true);
+                    // this.selectedValue = this.searchList[pointerIndex].id;
+                    // this.switchList(true);
                     break;
                 case 'ArrowUp':
                     if (this.pointerIndex == null || this.pointerIndex == 0) {
@@ -50419,19 +50478,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     } else {
                         pointerIndex--;
                     }
-                    this.selectedValue = this.searchList[pointerIndex].id;
-                    this.switchList(true);
+                    // this.selectedValue = this.searchList[pointerIndex].id;
+                    // this.switchList(true);
                     break;
                 case 'Enter':
+                    // this.selectedValue = this.searchList[pointerIndex].id;
                     this.switchList(false);
+                    this.selectItem(pointerIndex);
                     break;
                 default:
                     pointerIndex = null;
                     this.selectedValue = null;
             }
-
             this.pointerIndex = pointerIndex;
-            this.selectItem(pointerIndex);
             if (event != null) {
                 event.target.selectionStart = event.target.selectionEnd = event.target.value.length;
             }
@@ -51003,15 +51062,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             totalDropzoneFileSize: 0,
             // totalFileSize : 0,
             dropzoneTotalFile: 0,
-            inputTotalFile: 0
+            inputTotalFile: 0,
+            supportTypes: []
         };
     },
     components: {},
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
     mounted() {
+        if (this.supportFileType !== null) this.supportTypes = this.supportFileType.slice(0);
         if (this.value != null && this.value != undefined) this.initDropzone();
     },
-    props: ['name', 'config', 'id', 'mode', 'max-file', 'max-size'],
+    props: {
+        // ['name', 'config', 'id', 'mode', '', '']
+        name: {},
+        config: {},
+        id: {},
+        maxFile: {},
+        mode: {},
+        maxSize: {},
+        supportFileType: {
+            type: Object / Array,
+            default: null
+        }
+    },
     computed: {
         // totalFileSize(){
         //     return this.totalFileSize = this.totalInputFileSize + this.totalDropzoneFileSize
@@ -51034,7 +51107,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         value(value) {
             if (value != undefined && value != undefined) this.initDropzone();
+        },
+        supportFileType(value) {
+            if (value !== null) this.supportTypes = this.supportFileType.slice(0);
         }
+        // totalInputFileSize(){
+        //     this.totalFileSize = this.totalInputFileSize + this.totalDropzoneFileSize
+        // },
+        // totalDropzoneFileSize(){
+        //     this.totalFileSize = this.totalDropzoneFileSize + this.totalInputFileSize
+        // },
     },
     methods: {
         // upload() {  //rem by thien.nguyen
@@ -51060,49 +51142,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             let Vue = this;
             this.dropzone.on("addedfile", file => {
-                var parent = document.querySelectorAll('.preview:not(stuff)');
+                var parent = document.querySelectorAll('.' + this.id + '__preview__container .preview:not(stuff)');
                 for (var i = 0; i < parent.length; i++) {
                     var child = parent[i].querySelector('.dz-thumb');
                     parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
                 }
                 var fileEx = file.name.split('.').pop();
-                if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" || fileEx == "gif" || fileEx == "bmp") return child.className += " dz-image";
-                switch (fileEx) {
-                    case "pdf":
-                        child.className += " dz-pdf";
-                        break;
-                    case "doc":
-                        child.className += " dz-doc";
-                        break;
-                    case "docx":
-                        child.className += " dz-doc";
-                        break;
-                    case "ppt":
-                        child.className += " dz-ppt";
-                        break;
-                    case "xls":
-                        child.className += " dz-xls";
-                        break;
-                    case "xlsx":
-                        child.className += " dz-xls";
-                        break;
-                    case "txt":
-                        child.className += " dz-txt";
-                        break;
-                    case "csv":
-                        child.className += " dz-csv";
-                        break;
-                    case "rtf":
-                        child.className += " dz-rtf";
-                        break;
-                    case "zip":
-                        child.className += " dz-zip";
-                        break;
-                    case "rar":
-                        child.className += " dz-zip";
-                        break;
-                    default:
-                        child.className += " dz-file";
+                if (this.supportTypes.length > 0 && this.supportTypes.indexOf('.' + fileEx) === -1) {
+                    this.dropzone.removeFile(file);
+                    alert('The selected file is not supported. The accepted file types are: ' + this.supportTypes.join(','));
+                } else {
+                    if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" || fileEx == "gif" || fileEx == "bmp") return child.className += " dz-image";
+                    switch (fileEx) {
+                        case "pdf":
+                            child.className += " dz-pdf";
+                            break;
+                        case "doc":
+                            child.className += " dz-doc";
+                            break;
+                        case "docx":
+                            child.className += " dz-doc";
+                            break;
+                        case "ppt":
+                            child.className += " dz-ppt";
+                            break;
+                        case "xls":
+                            child.className += " dz-xls";
+                            break;
+                        case "xlsx":
+                            child.className += " dz-xls";
+                            break;
+                        case "txt":
+                            child.className += " dz-txt";
+                            break;
+                        case "csv":
+                            child.className += " dz-csv";
+                            break;
+                        case "rtf":
+                            child.className += " dz-rtf";
+                            break;
+                        case "zip":
+                            child.className += " dz-zip";
+                            break;
+                        case "rar":
+                            child.className += " dz-zip";
+                            break;
+                        default:
+                            child.className += " dz-file";
+                    }
                 }
             });
             this.$emit('dropzone', this.dropzone);
@@ -51110,10 +51197,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         configDropzone() {
+            let acceptedFiles = this.supportTypes.join(',');
             let config = {
                 thumbnailWidth: 80,
                 thumbnailHeight: 80,
                 parallelUploads: 1,
+                acceptedFiles: acceptedFiles ? acceptedFiles : null,
                 autoQueue: false,
                 clickable: [`#${this.id} .content`],
                 accept: (file, done) => {
@@ -51125,6 +51214,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 maxfilesexceeded: function (file) {
                     this.removeAllFiles();
                     this.addFile(file);
+                    this.$emit('validation-file-number', file);
                     alert('Upload file too specified number.');
                 }
             };
@@ -51249,7 +51339,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.dropzone.removeFile(listFile[i]);
                 }
             }
-            if (fileError != null && fileError != "") alert("File: " + fileError + " removed because total size to large.");
+            if (fileError != null && fileError != "") {
+                this.$emit('validation-file-size', fileError);
+                alert("File: " + fileError + " removed because total size to large.");
+            }
+        },
+
+        parseDropzoneContent() {
+            if (this.dropzoneContent == undefined || this.dropzoneContent == null) return 'Attach file by dropping here or <span class="uk-link">selecting one</span>';
+            return this.dropzoneContent;
         }
     }
 });
@@ -55530,81 +55628,81 @@ module.exports = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 exports.default = function (self) {
-    var _ref, _merge$recursive;
+  var _ref, _merge$recursive;
 
-    var extra = self.source == 'server' ? (_ref = {}, _defineProperty(_ref, self.name + '/SET_DATA', function undefined(state, response) {
+  var extra = self.source == 'server' ? (_ref = {}, _defineProperty(_ref, self.name + '/SET_DATA', function undefined(state, response) {
 
-        var data = self.opts.responseAdapter.call(self, response);
+    var data = self.opts.responseAdapter.call(self, response);
 
-        state.data = data.data;
-        state.count = parseInt(data.count);
-    }), _defineProperty(_ref, self.name + '/LOADING', function undefined(state, payload) {}), _defineProperty(_ref, self.name + '/LOADED', function undefined(state, payload) {}), _defineProperty(_ref, self.name + '/ERROR', function undefined(state, payload) {}), _ref) : _defineProperty({}, self.name + '/SET_COUNT', function undefined(state, count) {
-        state.count = count;
-    });
+    state.data = data.data;
+    state.count = parseInt(data.count);
+  }), _defineProperty(_ref, self.name + '/LOADING', function undefined(state, payload) {}), _defineProperty(_ref, self.name + '/LOADED', function undefined(state, payload) {}), _defineProperty(_ref, self.name + '/ERROR', function undefined(state, payload) {}), _ref) : _defineProperty({}, self.name + '/SET_COUNT', function undefined(state, count) {
+    state.count = count;
+  });
 
-    return _merge2.default.recursive(true, (_merge$recursive = {}, _defineProperty(_merge$recursive, self.name + '/PAGINATE', function undefined(state, page) {
-        state.page = page;
-        self.updateState('page', page);
+  return _merge2.default.recursive(true, (_merge$recursive = {}, _defineProperty(_merge$recursive, self.name + '/PAGINATE', function undefined(state, page) {
+    state.page = page;
+    self.updateState('page', page);
 
-        if (self.source == 'server') self.getData();
+    if (self.source == 'server') self.getData();
 
-        self.commit('PAGINATION', page);
-    }), _defineProperty(_merge$recursive, self.name + '/SET_FILTER', function undefined(state, filter) {
-        state.page = 1;
+    self.commit('PAGINATION', page);
+  }), _defineProperty(_merge$recursive, self.name + '/SET_FILTER', function undefined(state, filter) {
+    state.page = 1;
 
-        self.updateState('page', 1);
+    self.updateState('page', 1);
 
-        state.query = filter;
+    state.query = filter;
 
-        if (self.source == 'server') {
-            self.getData();
-        }
-    }), _defineProperty(_merge$recursive, self.name + '/PAGINATION', function undefined(state, page) {}), _defineProperty(_merge$recursive, self.name + '/SET_CUSTOM_FILTER', function undefined(state, _ref3) {
-        var filter = _ref3.filter,
-            value = _ref3.value;
+    if (self.source == 'server') {
+      self.getData();
+    }
+  }), _defineProperty(_merge$recursive, self.name + '/PAGINATION', function undefined(state, page) {}), _defineProperty(_merge$recursive, self.name + '/SET_CUSTOM_FILTER', function undefined(state, _ref3) {
+    var filter = _ref3.filter,
+        value = _ref3.value;
 
-        state.customQueries[filter] = value;
-        state.page = 1;
+    state.customQueries[filter] = value;
+    state.page = 1;
 
-        self.updateState('page', 1);
-        self.updateState('customQueries', state.customQueries);
+    self.updateState('page', 1);
+    self.updateState('customQueries', state.customQueries);
 
-        if (self.source == 'server') {
-            self.getData();
-        }
-    }), _defineProperty(_merge$recursive, self.name + '/SET_STATE', function undefined(state, _ref4) {
-        var page = _ref4.page,
-            query = _ref4.query,
-            customQueries = _ref4.customQueries,
-            limit = _ref4.limit,
-            orderBy = _ref4.orderBy;
+    if (self.source == 'server') {
+      self.getData();
+    }
+  }), _defineProperty(_merge$recursive, self.name + '/SET_STATE', function undefined(state, _ref4) {
+    var page = _ref4.page,
+        query = _ref4.query,
+        customQueries = _ref4.customQueries,
+        limit = _ref4.limit,
+        orderBy = _ref4.orderBy;
 
-        state.customQueries = customQueries;
-        state.query = query;
-        state.page = page;
-        state.limit = limit;
-        state.ascending = orderBy.ascending;
-        state.sortBy = orderBy.column;
-    }), _defineProperty(_merge$recursive, self.name + '/SET_LIMIT', function undefined(state, limit) {
-        state.page = 1;
-        self.updateState('page', 1);
+    state.customQueries = customQueries;
+    state.query = query;
+    state.page = page;
+    state.limit = limit;
+    state.ascending = orderBy.ascending;
+    state.sortBy = orderBy.column;
+  }), _defineProperty(_merge$recursive, self.name + '/SET_LIMIT', function undefined(state, limit) {
+    state.page = 1;
+    self.updateState('page', 1);
 
-        state.limit = limit;
+    state.limit = limit;
 
-        if (self.source == 'server') self.getData();
-    }), _defineProperty(_merge$recursive, self.name + '/SORT', function undefined(state, _ref5) {
-        var column = _ref5.column,
-            ascending = _ref5.ascending;
+    if (self.source == 'server') self.getData();
+  }), _defineProperty(_merge$recursive, self.name + '/SORT', function undefined(state, _ref5) {
+    var column = _ref5.column,
+        ascending = _ref5.ascending;
 
-        state.ascending = ascending;
-        state.sortBy = column;
+    state.ascending = ascending;
+    state.sortBy = column;
 
-        if (self.source == 'server') self.getData();
-    }), _defineProperty(_merge$recursive, self.name + '/SORTED', function undefined(state, data) {}), _defineProperty(_merge$recursive, self.name + '/ROW_CLICK', function undefined(state, row) {}), _defineProperty(_merge$recursive, self.name + '/FILTER', function undefined(state, row) {}), _defineProperty(_merge$recursive, self.name + '/LIMIT', function undefined(state, limit) {}), _merge$recursive), extra);
+    if (self.source == 'server') self.getData();
+  }), _defineProperty(_merge$recursive, self.name + '/SORTED', function undefined(state, data) {}), _defineProperty(_merge$recursive, self.name + '/ROW_CLICK', function undefined(state, row) {}), _defineProperty(_merge$recursive, self.name + '/FILTER', function undefined(state, row) {}), _defineProperty(_merge$recursive, self.name + '/LIMIT', function undefined(state, limit) {}), _merge$recursive), extra);
 };
 
 var _merge = __webpack_require__(5);
@@ -55612,15 +55710,15 @@ var _merge = __webpack_require__(5);
 var _merge2 = _interopRequireDefault(_merge);
 
 function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { default: obj };
+  return obj && obj.__esModule ? obj : { default: obj };
 }
 
 function _defineProperty(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
-    } else {
-        obj[key] = value;
-    }return obj;
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }return obj;
 }
 
 /***/ }),
@@ -70448,7 +70546,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, ".c-scrim {\r\n  position: fixed;\r\n  left: 0;\r\n  right: 0;\r\n  top: 0;\r\n  bottom: 0;\r\n  background-color: rgba(0, 0, 0, 0.541176);\r\n  opacity: 0;\r\n  transition: 200ms ease opacity;\r\n  will-change: opacity; }\r\n  .c-scrim--shown {\r\n    opacity: 1; }\r\n\r\n.c-datepicker {\r\n  min-height: 610px;\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 45%;\r\n  transform: translate(-50%, -50%);\r\n  background: white;\r\n  border: 0;\r\n  width: 300px;\r\n  text-align: center;\r\n  -webkit-tap-highlight-color: transparent;\r\n  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.25), 0 10px 18px rgba(0, 0, 0, 0.22);\r\n  border-radius: 2px;\r\n  opacity: 0;\r\n  will-change: opacity;\r\n  transition: 200ms ease-in-out opacity, 200ms ease-in-out top; }\r\n  .c-datepicker--open {\r\n    opacity: 1;\r\n    top: 50%; }\r\n\r\n.c-datepicker__header {\r\n  position: relative; }\r\n\r\n.c-datepicker__header-day {\r\n  height: 32px;\r\n  background: #0097a7;\r\n  color: white;\r\n  line-height: 32px;\r\n  font-size: 12px;\r\n  font-weight: 200;\r\n  letter-spacing: 0.3px; }\r\n\r\n.c-datepicker__header::after {\r\n  content: \"\";\r\n  display: table;\r\n  clear: both; }\r\n\r\n.c-datepicker__header-date {\r\n  background: #00bcd4;\r\n  height: 150px;\r\n  padding: 16px 0; }\r\n\r\n.rd-month-label {\r\n  height: 56px;\r\n  line-height: 56px;\r\n  font-size: 14px;\r\n  font-weight: 800; }\r\n\r\n.c-datepicker__back, .c-datepicker__next, .c-datepicker__toggle {\r\n  position: absolute;\r\n  border: 0;\r\n  background: white;\r\n  font-family: 'Material Icons';\r\n  text-rendering: optimizeLegibility;\r\n  font-feature-settings: \"liga\" 1;\r\n  font-style: normal;\r\n  text-transform: none;\r\n  line-height: 1;\r\n  font-size: 24px;\r\n  width: 56px;\r\n  height: 56px;\r\n  display: inline-block;\r\n  overflow: hidden;\r\n  -webkit-font-smoothing: antialiased;\r\n  cursor: pointer; }\r\n  .c-datepicker__back:focus, .c-datepicker__next:focus, .c-datepicker__toggle:focus {\r\n    outline: 0; }\r\n\r\n.c-datepicker__back {\r\n  left: 0; }\r\n\r\n.c-datepicker__next {\r\n  right: 0; }\r\n\r\n.c-datepicker__back:before {\r\n  content: 'chevron_left'; }\r\n\r\n.c-datepicker__next:after {\r\n  content: 'chevron_right'; }\r\n\r\n.c-datepicker--show-time:after {\r\n  content: 'access_time';\r\n  color: white;\r\n  visibility: visible; }\r\n\r\n.c-datepicker--show-calendar:after {\r\n  content: 'grid_on';\r\n  color: white;\r\n  visibility: visible; }\r\n\r\n.c-datepicker__header-date span {\r\n  display: block;\r\n  color: white;\r\n  margin: 0;\r\n  transition: opacity 100ms ease-in-out; }\r\n\r\n.c-datepicker__header-date__month {\r\n  cursor: pointer;\r\n  font-size: 24px;\r\n  opacity: 0.6; }\r\n\r\n.c-datepicker__header-date__day {\r\n  cursor: pointer;\r\n  font-size: 64px;\r\n  opacity: 0.6; }\r\n\r\n.c-datepicker__header-date__time {\r\n  font-size: 25px;\r\n  opacity: 0.6; }\r\n  .c-datepicker__header-date__time > span {\r\n    display: inline-block; }\r\n\r\n.c-datepicker__header-date__hours, .c-datepicker__header-date__minutes {\r\n  cursor: pointer; }\r\n\r\n.c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time {\r\n  opacity: 1; }\r\n  .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__hours, .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__minutes {\r\n    opacity: .6; }\r\n    .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__hours.active, .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__minutes.active {\r\n      opacity: 1; }\r\n\r\n.c-datepicker--show-calendar.is-selected ~ .c-datepicker__header .c-datepicker__header-date__month, .c-datepicker--show-calendar.is-selected ~ .c-datepicker__header .c-datepicker__header-date__day {\r\n  opacity: 1; }\r\n\r\n.modal-btns {\r\n  padding: 20px;\r\n  position: absolute;\r\n  bottom: 0;\r\n  right: 0; }\r\n\r\n.c-datepicker__day-body {\r\n  font-size: 12px;\r\n  color: rgba(0, 0, 0, 0.8);\r\n  width: 36px;\r\n  height: 36px;\r\n  cursor: pointer;\r\n  position: relative; }\r\n  .c-datepicker__day-body:hover {\r\n    /* color: white; */ }\r\n\r\n.c-datepicker__day--selected::after {\r\n  content: \"\";\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 50%;\r\n  width: 35px;\r\n  height: 35px;\r\n  border-radius: 50%;\r\n  transform: translate(-50%, -50%);\r\n  background: rgba(0, 0, 0, 0.05); }\r\n\r\n.c-datepicker__day-head {\r\n  color: rgba(0, 0, 0, 0.54);\r\n  font-size: 12px;\r\n  height: 36px; }\r\n\r\n.c-datepicker__day-head, c-datepicker__day-body {\r\n  -webkit-tap-highlight-color: transparent; }\r\n\r\n.modal-btns {\r\n  float: right; }\r\n\r\n.c-btn {\r\n  display: inline-block;\r\n  min-width: 56px;\r\n  cursor: pointer; }\r\n\r\n.rd-day-prev-month {\r\n  opacity: 0.1;\r\n  pointer-events: none; }\r\n\r\n.rd-day-next-month {\r\n  opacity: 0.1;\r\n  pointer-events: none; }\r\n\r\n.c-datepicker__calendar {\r\n  height: 300px; }\r\n\r\n.c-datepicker__date {\r\n  position: absolute;\r\n  left: 0;\r\n  right: 0; }\r\n\r\n.c-datepicker__days {\r\n  margin: 10px 20px; }\r\n\r\n.c-datepicker__header-toggle {\r\n  position: absolute;\r\n  top: 50%;\r\n  color: white;\r\n  cursor: pointer; }\r\n  .c-datepicker__header-toggle i {\r\n    font-size: 26px; }\r\n\r\n.c-datepicker__header-toggle--left {\r\n  left: 20px; }\r\n\r\n.c-datepicker__header-toggle--right {\r\n  right: 20px; }\r\n\r\n.c-datepicker__header-toggle--inactive {\r\n  opacity: 0.2; }\r\n\r\n.c-datepicker__toggle {\r\n  top: 170px;\r\n  width: 36px;\r\n  height: 30px;\r\n  visibility: hidden;\r\n  opacity: 0.5;\r\n  z-index: 1;\r\n  transition: opacity 200ms ease-in-out; }\r\n\r\n.c-datepicker__toggle--right {\r\n  right: 10px; }\r\n\r\n.c-datepicker__toggle--left {\r\n  left: 10px; }\r\n\r\n.c-datepicker__toggle.is-selected {\r\n  opacity: 1; }\r\n\r\n.c-datepicker--show-time.is-selected ~ .c-datepicker__calendar {\r\n  display: none; }\r\n\r\n.c-datepicker--show-calendar.is-selected ~ .c-datepicker__clock {\r\n  display: none; }\r\n\r\n.c-datepicker__clock {\r\n  position: relative;\r\n  /* [1] */\r\n  width: 200px;\r\n  height: 200px;\r\n  padding: 0;\r\n  border-radius: 50%;\r\n  list-style: none;\r\n  /* [2] */\r\n  font-size: 14px;\r\n  line-height: 50px;\r\n  padding: 160px 0 20px 0;\r\n  margin: 0 auto; }\r\n  .c-datepicker__clock .c-datepicker__clock__num {\r\n    display: block;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    width: 50px;\r\n    height: 50px;\r\n    margin: -25px;\r\n    z-index: 98; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1) {\r\n      transform: rotate(0deg) translate(100px) rotate(-0deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(270deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(270deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2) {\r\n      transform: rotate(30deg) translate(100px) rotate(-30deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(300deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(300deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3) {\r\n      transform: rotate(60deg) translate(100px) rotate(-60deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(330deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(330deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4) {\r\n      transform: rotate(90deg) translate(100px) rotate(-90deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(360deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(360deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5) {\r\n      transform: rotate(120deg) translate(100px) rotate(-120deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(390deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(390deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6) {\r\n      transform: rotate(150deg) translate(100px) rotate(-150deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(420deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(420deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7) {\r\n      transform: rotate(180deg) translate(100px) rotate(-180deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(450deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(450deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8) {\r\n      transform: rotate(210deg) translate(100px) rotate(-210deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(480deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(480deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9) {\r\n      transform: rotate(240deg) translate(100px) rotate(-240deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(510deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(510deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10) {\r\n      transform: rotate(270deg) translate(100px) rotate(-270deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(540deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(540deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11) {\r\n      transform: rotate(300deg) translate(100px) rotate(-300deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(570deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(570deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12) {\r\n      transform: rotate(330deg) translate(100px) rotate(-330deg); }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(600deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12):hover ~ .c-datepicker__clock-hands {\r\n      transform: translate(-50%, -50%) rotate(600deg); }\r\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\r\n        opacity: 1;\r\n        background: #00bcd4; }\r\n  .c-datepicker__clock::before {\r\n    content: \"\";\r\n    position: absolute;\r\n    top: 70px;\r\n    left: -20px;\r\n    width: 240px;\r\n    height: 240px;\r\n    background: rgba(0, 0, 0, 0.05);\r\n    border-radius: 50%; }\r\n\r\n.u-hover-ball-effect, .c-datepicker__day-body, .c-datepicker__clock__num, .c-datepicker__clock__am-pm-toggle label {\r\n  position: relative;\r\n  cursor: pointer; }\r\n  .u-hover-ball-effect:before, .c-datepicker__day-body:before, .c-datepicker__clock__num:before, .c-datepicker__clock__am-pm-toggle label:before {\r\n    content: \"\";\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    width: 0%;\r\n    height: 0%;\r\n    border-radius: 50%;\r\n    transform: translate(-50%, -50%);\r\n    transition: width 100ms ease-in-out, height 100ms ease-in-out; }\r\n  .u-hover-ball-effect:hover, .c-datepicker__day-body:hover, .c-datepicker__clock__num:hover, .c-datepicker__clock__am-pm-toggle label:hover {\r\n    color: white; }\r\n    .u-hover-ball-effect:hover:before, .c-datepicker__day-body:hover:before, .c-datepicker__clock__num:hover:before, .c-datepicker__clock__am-pm-toggle label:hover:before {\r\n      background: #00bcd4;\r\n      width: 35px;\r\n      height: 35px;\r\n      z-index: -1; }\r\n\r\n.c-datepicker__day-body--active:not(.hide-hand), .c-datepicker__clock__num--active:not(.hide-hand) {\r\n  color: white; }\r\n  .c-datepicker__day-body--active:not(.hide-hand):before, .c-datepicker__clock__num--active:not(.hide-hand):before {\r\n    background: #00bcd4;\r\n    width: 35px;\r\n    height: 35px;\r\n    z-index: -1; }\r\n\r\n.c-datepicker__clock-hands {\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%) rotate(180deg);\r\n  width: 10px;\r\n  height: 10px;\r\n  border-radius: 50%;\r\n  background: #0097a7; }\r\n\r\n.c-datepicker__hour-hand {\r\n  position: absolute;\r\n  opacity: 0;\r\n  height: 78px;\r\n  width: 2px;\r\n  background: #00bcd4;\r\n  left: 4px;\r\n  top: 10px; }\r\n\r\n.c-datepicker__clock__minutes {\r\n  display: none;\r\n  height: 200px;\r\n  margin: -69px 0 0 0;\r\n  width: 200px;\r\n  display: none; }\r\n  .c-datepicker__clock__minutes.active {\r\n    display: block; }\r\n\r\n.c-datepicker__clock__hours {\r\n  height: 200px;\r\n  margin: -69px 0 0 0;\r\n  width: 200px;\r\n  display: none; }\r\n  .c-datepicker__clock__hours.active {\r\n    display: block; }\r\n\r\n.c-datepicker__mask {\r\n  width: 127px;\r\n  height: 132px;\r\n  position: absolute;\r\n  top: 122px;\r\n  left: 37px;\r\n  z-index: 99; }\r\n  .c-datepicker__mask:after {\r\n    content: ' ';\r\n    width: 156px;\r\n    height: 70px;\r\n    display: block;\r\n    position: absolute;\r\n    top: 32px;\r\n    left: 0;\r\n    margin-left: -13px; }\r\n  .c-datepicker__mask:before {\r\n    content: ' ';\r\n    width: 75px;\r\n    height: 158px;\r\n    display: block;\r\n    position: absolute;\r\n    top: 6px;\r\n    left: 28px;\r\n    margin-top: -18px; }\r\n\r\n.c-datepicker__clock--show-minutes .c-datepicker__clock__minutes {\r\n  visibility: visible; }\r\n\r\n.c-datepicker__clock--show-minutes .c-datepicker__clock__hours {\r\n  visibility: hidden; }\r\n\r\n.c-datepicker__clock--show-hours .c-datepicker__clock__minutes {\r\n  visibility: hidden; }\r\n\r\n.c-datepicker__clock--show-hours .c-datepicker__clock__hours {\r\n  visibility: visible; }\r\n\r\n.c-datepicker__clock__am-pm-toggle {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 10px;\r\n  right: 10px;\r\n  height: 40px;\r\n  padding: 20px;\r\n  line-height: 40px; }\r\n  .c-datepicker__clock__am-pm-toggle label {\r\n    width: 40px;\r\n    position: absolute; }\r\n    .c-datepicker__clock__am-pm-toggle label:nth-child(1) {\r\n      left: 0; }\r\n    .c-datepicker__clock__am-pm-toggle label:nth-child(2) {\r\n      right: 0; }\r\n    .c-datepicker__clock__am-pm-toggle label.c-datepicker__toggle--checked::after {\r\n      content: \"\";\r\n      position: absolute;\r\n      left: 50%;\r\n      top: 50%;\r\n      width: 0%;\r\n      height: 0%;\r\n      border-radius: 50%;\r\n      transform: translate(-50%, -50%);\r\n      width: 36px;\r\n      height: 36px;\r\n      z-index: -1;\r\n      background: rgba(0, 0, 0, 0.05); }\r\n", ""]);
+exports.push([module.i, ".c-scrim {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.541176);\n  opacity: 0;\n  transition: 200ms ease opacity;\n  will-change: opacity; }\n  .c-scrim--shown {\n    opacity: 1; }\n\n.c-datepicker {\n  min-height: 610px;\n  position: fixed;\n  left: 50%;\n  top: 45%;\n  transform: translate(-50%, -50%);\n  background: white;\n  border: 0;\n  width: 300px;\n  text-align: center;\n  -webkit-tap-highlight-color: transparent;\n  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.25), 0 10px 18px rgba(0, 0, 0, 0.22);\n  border-radius: 2px;\n  opacity: 0;\n  will-change: opacity;\n  transition: 200ms ease-in-out opacity, 200ms ease-in-out top; }\n  .c-datepicker--open {\n    opacity: 1;\n    top: 50%; }\n\n.c-datepicker__header {\n  position: relative; }\n\n.c-datepicker__header-day {\n  height: 32px;\n  background: #0097a7;\n  color: white;\n  line-height: 32px;\n  font-size: 12px;\n  font-weight: 200;\n  letter-spacing: 0.3px; }\n\n.c-datepicker__header::after {\n  content: \"\";\n  display: table;\n  clear: both; }\n\n.c-datepicker__header-date {\n  background: #00bcd4;\n  height: 150px;\n  padding: 16px 0; }\n\n.rd-month-label {\n  height: 56px;\n  line-height: 56px;\n  font-size: 14px;\n  font-weight: 800; }\n\n.c-datepicker__back, .c-datepicker__next, .c-datepicker__toggle {\n  position: absolute;\n  border: 0;\n  background: white;\n  font-family: 'Material Icons';\n  text-rendering: optimizeLegibility;\n  font-feature-settings: \"liga\" 1;\n  font-style: normal;\n  text-transform: none;\n  line-height: 1;\n  font-size: 24px;\n  width: 56px;\n  height: 56px;\n  display: inline-block;\n  overflow: hidden;\n  -webkit-font-smoothing: antialiased;\n  cursor: pointer; }\n  .c-datepicker__back:focus, .c-datepicker__next:focus, .c-datepicker__toggle:focus {\n    outline: 0; }\n\n.c-datepicker__back {\n  left: 0; }\n\n.c-datepicker__next {\n  right: 0; }\n\n.c-datepicker__back:before {\n  content: 'chevron_left'; }\n\n.c-datepicker__next:after {\n  content: 'chevron_right'; }\n\n.c-datepicker--show-time:after {\n  content: 'access_time';\n  color: white;\n  visibility: visible; }\n\n.c-datepicker--show-calendar:after {\n  content: 'grid_on';\n  color: white;\n  visibility: visible; }\n\n.c-datepicker__header-date span {\n  display: block;\n  color: white;\n  margin: 0;\n  transition: opacity 100ms ease-in-out; }\n\n.c-datepicker__header-date__month {\n  cursor: pointer;\n  font-size: 24px;\n  opacity: 0.6; }\n\n.c-datepicker__header-date__day {\n  cursor: pointer;\n  font-size: 64px;\n  opacity: 0.6; }\n\n.c-datepicker__header-date__time {\n  font-size: 25px;\n  opacity: 0.6; }\n  .c-datepicker__header-date__time > span {\n    display: inline-block; }\n\n.c-datepicker__header-date__hours, .c-datepicker__header-date__minutes {\n  cursor: pointer; }\n\n.c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time {\n  opacity: 1; }\n  .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__hours, .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__minutes {\n    opacity: .6; }\n    .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__hours.active, .c-datepicker--show-time.is-selected ~ .c-datepicker__header .c-datepicker__header-date__time .c-datepicker__header-date__minutes.active {\n      opacity: 1; }\n\n.c-datepicker--show-calendar.is-selected ~ .c-datepicker__header .c-datepicker__header-date__month, .c-datepicker--show-calendar.is-selected ~ .c-datepicker__header .c-datepicker__header-date__day {\n  opacity: 1; }\n\n.modal-btns {\n  padding: 20px;\n  position: absolute;\n  bottom: 0;\n  right: 0; }\n\n.c-datepicker__day-body {\n  font-size: 12px;\n  color: rgba(0, 0, 0, 0.8);\n  width: 36px;\n  height: 36px;\n  cursor: pointer;\n  position: relative; }\n  .c-datepicker__day-body:hover {\n    /* color: white; */ }\n\n.c-datepicker__day--selected::after {\n  content: \"\";\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  width: 35px;\n  height: 35px;\n  border-radius: 50%;\n  transform: translate(-50%, -50%);\n  background: rgba(0, 0, 0, 0.05); }\n\n.c-datepicker__day-head {\n  color: rgba(0, 0, 0, 0.54);\n  font-size: 12px;\n  height: 36px; }\n\n.c-datepicker__day-head, c-datepicker__day-body {\n  -webkit-tap-highlight-color: transparent; }\n\n.modal-btns {\n  float: right; }\n\n.c-btn {\n  display: inline-block;\n  min-width: 56px;\n  cursor: pointer; }\n\n.rd-day-prev-month {\n  opacity: 0.1;\n  pointer-events: none; }\n\n.rd-day-next-month {\n  opacity: 0.1;\n  pointer-events: none; }\n\n.c-datepicker__calendar {\n  height: 300px; }\n\n.c-datepicker__date {\n  position: absolute;\n  left: 0;\n  right: 0; }\n\n.c-datepicker__days {\n  margin: 10px 20px; }\n\n.c-datepicker__header-toggle {\n  position: absolute;\n  top: 50%;\n  color: white;\n  cursor: pointer; }\n  .c-datepicker__header-toggle i {\n    font-size: 26px; }\n\n.c-datepicker__header-toggle--left {\n  left: 20px; }\n\n.c-datepicker__header-toggle--right {\n  right: 20px; }\n\n.c-datepicker__header-toggle--inactive {\n  opacity: 0.2; }\n\n.c-datepicker__toggle {\n  top: 170px;\n  width: 36px;\n  height: 30px;\n  visibility: hidden;\n  opacity: 0.5;\n  z-index: 1;\n  transition: opacity 200ms ease-in-out; }\n\n.c-datepicker__toggle--right {\n  right: 10px; }\n\n.c-datepicker__toggle--left {\n  left: 10px; }\n\n.c-datepicker__toggle.is-selected {\n  opacity: 1; }\n\n.c-datepicker--show-time.is-selected ~ .c-datepicker__calendar {\n  display: none; }\n\n.c-datepicker--show-calendar.is-selected ~ .c-datepicker__clock {\n  display: none; }\n\n.c-datepicker__clock {\n  position: relative;\n  /* [1] */\n  width: 200px;\n  height: 200px;\n  padding: 0;\n  border-radius: 50%;\n  list-style: none;\n  /* [2] */\n  font-size: 14px;\n  line-height: 50px;\n  padding: 160px 0 20px 0;\n  margin: 0 auto; }\n  .c-datepicker__clock .c-datepicker__clock__num {\n    display: block;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    width: 50px;\n    height: 50px;\n    margin: -25px;\n    z-index: 98; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1) {\n      transform: rotate(0deg) translate(100px) rotate(-0deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(270deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(270deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(1):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2) {\n      transform: rotate(30deg) translate(100px) rotate(-30deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(300deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(300deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(2):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3) {\n      transform: rotate(60deg) translate(100px) rotate(-60deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(330deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(330deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(3):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4) {\n      transform: rotate(90deg) translate(100px) rotate(-90deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(360deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(360deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(4):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5) {\n      transform: rotate(120deg) translate(100px) rotate(-120deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(390deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(390deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(5):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6) {\n      transform: rotate(150deg) translate(100px) rotate(-150deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(420deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(420deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(6):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7) {\n      transform: rotate(180deg) translate(100px) rotate(-180deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(450deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(450deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(7):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8) {\n      transform: rotate(210deg) translate(100px) rotate(-210deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(480deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(480deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(8):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9) {\n      transform: rotate(240deg) translate(100px) rotate(-240deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(510deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(510deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(9):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10) {\n      transform: rotate(270deg) translate(100px) rotate(-270deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(540deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(540deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(10):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11) {\n      transform: rotate(300deg) translate(100px) rotate(-300deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(570deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(570deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(11):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12) {\n      transform: rotate(330deg) translate(100px) rotate(-330deg); }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(600deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12).c-datepicker__clock__num--active:not(.hide-hand) ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n    .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12):hover ~ .c-datepicker__clock-hands {\n      transform: translate(-50%, -50%) rotate(600deg); }\n      .c-datepicker__clock .c-datepicker__clock__num:nth-of-type(12):hover ~ .c-datepicker__clock-hands .c-datepicker__hour-hand {\n        opacity: 1;\n        background: #00bcd4; }\n  .c-datepicker__clock::before {\n    content: \"\";\n    position: absolute;\n    top: 70px;\n    left: -20px;\n    width: 240px;\n    height: 240px;\n    background: rgba(0, 0, 0, 0.05);\n    border-radius: 50%; }\n\n.u-hover-ball-effect, .c-datepicker__day-body, .c-datepicker__clock__num, .c-datepicker__clock__am-pm-toggle label {\n  position: relative;\n  cursor: pointer; }\n  .u-hover-ball-effect:before, .c-datepicker__day-body:before, .c-datepicker__clock__num:before, .c-datepicker__clock__am-pm-toggle label:before {\n    content: \"\";\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    width: 0%;\n    height: 0%;\n    border-radius: 50%;\n    transform: translate(-50%, -50%);\n    transition: width 100ms ease-in-out, height 100ms ease-in-out; }\n  .u-hover-ball-effect:hover, .c-datepicker__day-body:hover, .c-datepicker__clock__num:hover, .c-datepicker__clock__am-pm-toggle label:hover {\n    color: white; }\n    .u-hover-ball-effect:hover:before, .c-datepicker__day-body:hover:before, .c-datepicker__clock__num:hover:before, .c-datepicker__clock__am-pm-toggle label:hover:before {\n      background: #00bcd4;\n      width: 35px;\n      height: 35px;\n      z-index: -1; }\n\n.c-datepicker__day-body--active:not(.hide-hand), .c-datepicker__clock__num--active:not(.hide-hand) {\n  color: white; }\n  .c-datepicker__day-body--active:not(.hide-hand):before, .c-datepicker__clock__num--active:not(.hide-hand):before {\n    background: #00bcd4;\n    width: 35px;\n    height: 35px;\n    z-index: -1; }\n\n.c-datepicker__clock-hands {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%) rotate(180deg);\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  background: #0097a7; }\n\n.c-datepicker__hour-hand {\n  position: absolute;\n  opacity: 0;\n  height: 78px;\n  width: 2px;\n  background: #00bcd4;\n  left: 4px;\n  top: 10px; }\n\n.c-datepicker__clock__minutes {\n  display: none;\n  height: 200px;\n  margin: -69px 0 0 0;\n  width: 200px;\n  display: none; }\n  .c-datepicker__clock__minutes.active {\n    display: block; }\n\n.c-datepicker__clock__hours {\n  height: 200px;\n  margin: -69px 0 0 0;\n  width: 200px;\n  display: none; }\n  .c-datepicker__clock__hours.active {\n    display: block; }\n\n.c-datepicker__mask {\n  width: 127px;\n  height: 132px;\n  position: absolute;\n  top: 122px;\n  left: 37px;\n  z-index: 99; }\n  .c-datepicker__mask:after {\n    content: ' ';\n    width: 156px;\n    height: 70px;\n    display: block;\n    position: absolute;\n    top: 32px;\n    left: 0;\n    margin-left: -13px; }\n  .c-datepicker__mask:before {\n    content: ' ';\n    width: 75px;\n    height: 158px;\n    display: block;\n    position: absolute;\n    top: 6px;\n    left: 28px;\n    margin-top: -18px; }\n\n.c-datepicker__clock--show-minutes .c-datepicker__clock__minutes {\n  visibility: visible; }\n\n.c-datepicker__clock--show-minutes .c-datepicker__clock__hours {\n  visibility: hidden; }\n\n.c-datepicker__clock--show-hours .c-datepicker__clock__minutes {\n  visibility: hidden; }\n\n.c-datepicker__clock--show-hours .c-datepicker__clock__hours {\n  visibility: visible; }\n\n.c-datepicker__clock__am-pm-toggle {\n  position: absolute;\n  top: 0;\n  left: 10px;\n  right: 10px;\n  height: 40px;\n  padding: 20px;\n  line-height: 40px; }\n  .c-datepicker__clock__am-pm-toggle label {\n    width: 40px;\n    position: absolute; }\n    .c-datepicker__clock__am-pm-toggle label:nth-child(1) {\n      left: 0; }\n    .c-datepicker__clock__am-pm-toggle label:nth-child(2) {\n      right: 0; }\n    .c-datepicker__clock__am-pm-toggle label.c-datepicker__toggle--checked::after {\n      content: \"\";\n      position: absolute;\n      left: 50%;\n      top: 50%;\n      width: 0%;\n      height: 0%;\n      border-radius: 50%;\n      transform: translate(-50%, -50%);\n      width: 36px;\n      height: 36px;\n      z-index: -1;\n      background: rgba(0, 0, 0, 0.05); }\n", ""]);
 
 // exports
 
@@ -70462,7 +70560,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n.addBorder{\n\t\tborder: 1px solid #0082d5 !important;\n}\n.b__multi__select__control{\n\t\tpadding-top: 2px !important;\n/* \t\tmax-height: 145px !important;\n\t\theight: 100% !important;\n\t\toverflow: scroll !important; */\n}\n.selected{\n\t\tmargin-left: 3px;\n}\n.multi{\n\t\tmax-height: 145px !important;\n\t\theight: 100% !important;\n\t\toverflow: scroll !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?7dcdf02f"],"names":[],"mappings":";AA0DA;EACA,qCAAA;CACA;AACA;EACA,4BAAA;AACA;;iCAEA;CACA;AACA;EACA,iBAAA;CACA;AACA;EACA,6BAAA;EACA,wBAAA;EACA,4BAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\r\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\r\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{ addBorder : isExpanding, multi: !singleDropdown }\">\r\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\r\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\r\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\r\n\t\t\t\t<span \r\n\t\t\t\t\tclass=\"thumb\" \r\n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\r\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\r\n\t\t\t\t\t@click='editQuery()'\t\r\n\t\t\t\t>\r\n\t\t\t\t</span>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\r\n\t\t\t\t<input\r\n\t\t\t\tv-show=\"singleDropdown\"\r\n\t\t\t\t:placeholder=\"placeholder\"\r\n\t\t\t\ttype=\"text\" \r\n\t\t\t\tstyle=\"font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; left: 10px; width: 90%;\" \r\n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\r\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\r\n\t\t\t\tclass=\"input-control\" @focus=\"focusInputAction($event.target.value);$emit('removeRequired')\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\r\n    \t\t\t@blur='closeDropdow()'\r\n    \t\t\tonClick=\"this.select()\"\r\n\t\t\t></div>\r\n\r\n\t\t\t<div class=\"control\" @click=\"toggleList()\">\r\n\t\t\t\t<i class=\"fa fa-angle-down\" aria-hidden=\"true\" v-show=\"!isExpanding\"></i>\r\n\t\t\t\t<i class=\"fa fa-angle-up\" aria-hidden=\"true\" v-show=\"isExpanding\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t\r\n\t\t<!-- <input type=\"hidden\" :name=\"name\" :value=\"value\" class=\"mutiple-select-hidden-value\"> -->\r\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\r\n\t\t\t<li v-show = \"searchList == undefined || searchList.length == 0\" class=\"not-found\">Not found</li>\r\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\r\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\r\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport MultiSelect from './../../components/MultiSelect'\r\n\texport default MultiSelect\r\n\t\t\t\t// \trequired\r\n\t\t\t\t// oninvalid=\"this.setCustomValidity('The query field must not be blank')\"\r\n    // \t\t\toninput=\"setCustomValidity('')\"\r\n</script>\r\n<style scope>\r\n\t.addBorder{\r\n\t\tborder: 1px solid #0082d5 !important;\r\n\t}\r\n\t.b__multi__select__control{\r\n\t\tpadding-top: 2px !important;\r\n/* \t\tmax-height: 145px !important;\r\n\t\theight: 100% !important;\r\n\t\toverflow: scroll !important; */\r\n\t}\r\n\t.selected{\r\n\t\tmargin-left: 3px;\r\n\t}\r\n\t.multi{\r\n\t\tmax-height: 145px !important;\r\n\t\theight: 100% !important;\r\n\t\toverflow: scroll !important;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.addBorder{\n\t\tborder: 1px solid #0082d5 !important;\n}\n.b__multi__select__control{\n\t\tpadding-top: 2px !important;\n/* \t\tmax-height: 145px !important;\n\t\theight: 100% !important;\n\t\toverflow: scroll !important; */\n}\n.selected{\n\t\tmargin-left: 3px;\n}\n.multi{\n\t\tmax-height: 145px !important;\n\t\theight: 100% !important;\n\t\toverflow: scroll !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?e5e39f28"],"names":[],"mappings":";AA0DA;EACA,qCAAA;CACA;AACA;EACA,4BAAA;AACA;;iCAEA;CACA;AACA;EACA,iBAAA;CACA;AACA;EACA,6BAAA;EACA,wBAAA;EACA,4BAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{ addBorder : isExpanding, multi: !singleDropdown }\">\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\n\t\t\t</div>\n\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\n\t\t\t\t<span \n\t\t\t\t\tclass=\"thumb\" \n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\n\t\t\t\t\t@click='editQuery()'\t\n\t\t\t\t>\n\t\t\t\t</span>\n\t\t\t</div>\n\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\n\t\t\t\t<input\n\t\t\t\tv-show=\"singleDropdown\"\n\t\t\t\t:placeholder=\"placeholder\"\n\t\t\t\ttype=\"text\" \n\t\t\t\tstyle=\"font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; left: 10px; width: 90%;\" \n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\n\t\t\t\tclass=\"input-control\" @focus=\"focusInputAction($event.target.value);$emit('removeRequired')\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\n    \t\t\t@blur='closeDropdow()'\n    \t\t\tonClick=\"this.select()\"\n\t\t\t></div>\n\n\t\t\t<div class=\"control\" @click=\"toggleList()\">\n\t\t\t\t<i class=\"fa fa-angle-down\" aria-hidden=\"true\" v-show=\"!isExpanding\"></i>\n\t\t\t\t<i class=\"fa fa-angle-up\" aria-hidden=\"true\" v-show=\"isExpanding\"></i>\n\t\t\t</div>\n\t\t</div>\n\t\t\n\t\t<!-- <input type=\"hidden\" :name=\"name\" :value=\"value\" class=\"mutiple-select-hidden-value\"> -->\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\n\t\t\t<li v-show = \"searchList == undefined || searchList.length == 0\" class=\"not-found\">Not found</li>\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n</template>\n<script>\n\timport MultiSelect from './../../components/MultiSelect'\n\texport default MultiSelect\n\t\t\t\t// \trequired\n\t\t\t\t// oninvalid=\"this.setCustomValidity('The query field must not be blank')\"\n    // \t\t\toninput=\"setCustomValidity('')\"\n</script>\n<style>\n\t.addBorder{\n\t\tborder: 1px solid #0082d5 !important;\n\t}\n\t.b__multi__select__control{\n\t\tpadding-top: 2px !important;\n/* \t\tmax-height: 145px !important;\n\t\theight: 100% !important;\n\t\toverflow: scroll !important; */\n\t}\n\t.selected{\n\t\tmargin-left: 3px;\n\t}\n\t.multi{\n\t\tmax-height: 145px !important;\n\t\theight: 100% !important;\n\t\toverflow: scroll !important;\n\t}\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -70476,7 +70574,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\nthead tr th {\r\n     border-top: none !important;\n}\r\n", "", {"version":3,"sources":["/./src/themes/ios/DataTable.vue?0a8fb316"],"names":[],"mappings":";AAkEA;KACA,4BAAA;CACA","file":"DataTable.vue","sourcesContent":["<template>\r\n    <div class=\"b-table-custom\">\r\n        <div v-if=\"hasSearchFilter\" class=\"panel\" :id=\"idSearch\" :class=\"classPanel\" :searchURL=\"searchURL\">\r\n            <div class=\"panel-body\">\r\n                <div class=\"panel panel-border\">\r\n                    <div class=\"panel-heading\">\r\n                        <h3 class=\"panel-title\">{{ titlePanel }}</h3>\r\n                    </div>\r\n                    <div class=\"panel-body\">\r\n                        <form class=\"search-list\">\r\n                            <div class=\"form-help\">\r\n                                <slot name=\"help\">\r\n\r\n                                </slot>\r\n                            </div>\r\n                            <div class=\"form-elements\">\r\n                                <!--Add input, select, ... at here-->\r\n                                <slot name=\"elements\">\r\n\r\n                                </slot>\r\n                            </div>\r\n                            <div class=\"form-actions\">\r\n                                <!--Add buttons for actions at here-->\r\n                                <slot name=\"actions\">\r\n                                    <button @click=\"searchFilter($event)\" type=\"button\" class=\"btn btn-success btn-rounded btn-search-list\">Search</button>\r\n                                    <button @click=\"resetSearchForm($event)\" type=\"button\" class=\"btn btn-default btn-rounded\">Clear</button>\r\n                                </slot>\r\n                            </div>\r\n                        </form>\r\n                    </div>\r\n                </div>\r\n                <div class=\"filter-actions\" :class=\"classFilter\">\r\n                    <!--Add buttons for action create/update,..-->\r\n                    <slot name=\"filter_actions\">\r\n\r\n                    </slot>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n\r\n        <table class=\"display table dataTable\" :editAPI=\"editAPI\" :keyAPI=\"keyAPI\" :id=\"idTable\" width=\"100%\" :static=\"static\" :tableData=\"tableData\" :tableColumn=\"tableColumn\" :otherOptions=\"otherOptions\" :calcSum=\"calcSum\" :tableTfoot=\"tableTfoot\">\r\n            <tbody>\r\n            </tbody>\r\n            <tfoot>\r\n            <tr>\r\n            </tr>\r\n            </tfoot>\r\n            <slot></slot>\r\n            <div class=\"overlay-table hidden\">\r\n                <div class=\"message-processing\">\r\n                    Please wait ...\r\n                    <i class=\"fa fa-spinner fa-spin fa-fw\"></i>\r\n                </div>\r\n            </div>\r\n        </table>\r\n\r\n    </div>\r\n</template>\r\n\r\n<script>\r\n    import DataTable from '../../components/DataTable'\r\n    export default DataTable\r\n</script>\r\n\r\n<style scope>\r\nthead tr th {\r\n     border-top: none !important;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\nthead tr th {\n     border-top: none !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DataTable.vue?37349d5a"],"names":[],"mappings":";AAkEA;KACA,4BAAA;CACA","file":"DataTable.vue","sourcesContent":["<template>\n    <div class=\"b-table-custom\">\n        <div v-if=\"hasSearchFilter\" class=\"panel\" :id=\"idSearch\" :class=\"classPanel\" :searchURL=\"searchURL\">\n            <div class=\"panel-body\">\n                <div class=\"panel panel-border\">\n                    <div class=\"panel-heading\">\n                        <h3 class=\"panel-title\">{{ titlePanel }}</h3>\n                    </div>\n                    <div class=\"panel-body\">\n                        <form class=\"search-list\">\n                            <div class=\"form-help\">\n                                <slot name=\"help\">\n\n                                </slot>\n                            </div>\n                            <div class=\"form-elements\">\n                                <!--Add input, select, ... at here-->\n                                <slot name=\"elements\">\n\n                                </slot>\n                            </div>\n                            <div class=\"form-actions\">\n                                <!--Add buttons for actions at here-->\n                                <slot name=\"actions\">\n                                    <button @click=\"searchFilter($event)\" type=\"button\" class=\"btn btn-success btn-rounded btn-search-list\">Search</button>\n                                    <button @click=\"resetSearchForm($event)\" type=\"button\" class=\"btn btn-default btn-rounded\">Clear</button>\n                                </slot>\n                            </div>\n                        </form>\n                    </div>\n                </div>\n                <div class=\"filter-actions\" :class=\"classFilter\">\n                    <!--Add buttons for action create/update,..-->\n                    <slot name=\"filter_actions\">\n\n                    </slot>\n                </div>\n            </div>\n        </div>\n\n\n        <table class=\"display table dataTable\" :editAPI=\"editAPI\" :keyAPI=\"keyAPI\" :id=\"idTable\" width=\"100%\" :static=\"static\" :tableData=\"tableData\" :tableColumn=\"tableColumn\" :otherOptions=\"otherOptions\" :calcSum=\"calcSum\" :tableTfoot=\"tableTfoot\">\n            <tbody>\n            </tbody>\n            <tfoot>\n            <tr>\n            </tr>\n            </tfoot>\n            <slot></slot>\n            <div class=\"overlay-table hidden\">\n                <div class=\"message-processing\">\n                    Please wait ...\n                    <i class=\"fa fa-spinner fa-spin fa-fw\"></i>\n                </div>\n            </div>\n        </table>\n\n    </div>\n</template>\n\n<script>\n    import DataTable from '../../components/DataTable'\n    export default DataTable\n</script>\n\n<style scope>\nthead tr th {\n     border-top: none !important;\n}\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -70490,7 +70588,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* .tiny-disable{\r\n\tpointer-events: none;\r\n\tbackground: red !important;\r\n} */\r\n/*  :disabled=\"(isEdit == false) ? 'disabled' : ''\"  */\r\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?0accee78"],"names":[],"mappings":";;;;;;;;;;;;;;AAcA;;;IAGA;AACA,uDAAA","file":"TinyMCE.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__tinymce b-float-label b__input\">\r\n\t\t<div>\r\n\t\t\t<label :class=\"classLabel\">{{ label }}</label>\r\n\t\t\t<textarea :id=\"id\"></textarea>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport TinyMCE from './../../components/TinyMCE'\r\n\texport default TinyMCE\r\n</script>\r\n\r\n<style type=\"text/css\">\r\n/* .tiny-disable{\r\n\tpointer-events: none;\r\n\tbackground: red !important;\r\n} */\r\n/*  :disabled=\"(isEdit == false) ? 'disabled' : ''\"  */\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .tiny-disable{\n\tpointer-events: none;\n\tbackground: red !important;\n} */\n/*  :disabled=\"(isEdit == false) ? 'disabled' : ''\"  */\n", "", {"version":3,"sources":["/./src/themes/ios/TinyMCE.vue?2be6e502"],"names":[],"mappings":";;;;;;;;;;;;;;AAcA;;;IAGA;AACA,uDAAA","file":"TinyMCE.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__tinymce b-float-label b__input\">\n\t\t<div>\n\t\t\t<label :class=\"classLabel\">{{ label }}</label>\n\t\t\t<textarea :id=\"id\"></textarea>\n\t\t</div>\n\t</div>\n</template>\n<script>\n\timport TinyMCE from './../../components/TinyMCE'\n\texport default TinyMCE\n</script>\n\n<style type=\"text/css\">\n/* .tiny-disable{\n\tpointer-events: none;\n\tbackground: red !important;\n} */\n/*  :disabled=\"(isEdit == false) ? 'disabled' : ''\"  */\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -70504,7 +70602,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n.hasError{\n\tcolor: #f04134 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateAndTime.vue?728014e4"],"names":[],"mappings":";AAkBA;CACA,0BAAA;CACA","file":"DateAndTime.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\r\n<!-- Contacts: thien.nguyen@bigin.vn -->\r\n<!-- Date: 01/10/2017 -->\r\n<!-- Component: DateAndTime -->\r\n\r\n<template>\r\n\t<div class=\"b__datetime__picker b__components b-float-label\">\r\n\t\t<label :class=\"classLabel\">{{ label }}</label>\r\n      \t<input @click=\"$emit('clickCon')\" :id=\"id\" :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :class=\"classes\" :disabled=\"disabled\" @input=\"checkInputInvalid($event.target.value)\">\r\n\t</div>\r\n</template>\r\n\r\n<script>\r\n\timport DateAndTime from './../../components/DateAndTime'\r\n\texport default DateAndTime\r\n</script>\r\n\r\n<style>\r\n\t.hasError{\r\n\t\tcolor: #f04134 !important;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.hasError{\n\tcolor: #f04134 !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateAndTime.vue?7e8d768e"],"names":[],"mappings":";AAkBA;CACA,0BAAA;CACA","file":"DateAndTime.vue","sourcesContent":["<!-- Author: Make By Thien Nguyen Developer -->\n<!-- Contacts: thien.nguyen@bigin.vn -->\n<!-- Date: 01/10/2017 -->\n<!-- Component: DateAndTime -->\n\n<template>\n\t<div class=\"b__datetime__picker b__components b-float-label\">\n\t\t<label :class=\"classLabel\">{{ label }}</label>\n      \t<input @click=\"$emit('clickCon')\" :id=\"id\" :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :class=\"classes\" :disabled=\"disabled\" @input=\"checkInputInvalid($event.target.value)\">\n\t</div>\n</template>\n\n<script>\n\timport DateAndTime from './../../components/DateAndTime'\n\texport default DateAndTime\n</script>\n\n<style>\n\t.hasError{\n\t\tcolor: #f04134 !important;\n\t}\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -70518,7 +70616,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n.loader {\r\n\tdisplay: block;\r\n\twidth: 5em;\r\n\tmargin: 10% auto;\n}\n@-webkit-keyframes rotate {\n0% {\r\n\t\t-webkit-transform: translateY(0%);\n}\n30% {\r\n\t\t-webkit-transform: translateY(-0.25em);\n}\n50% {\r\n\t\t-webkit-transform: translateY(0%);\n}\n70% {\r\n\t\t-webkit-transform: translateY(0.25em);\n}\n}\n.loader {\r\n\tdisplay: block;\n}\n.loader .inner1, .loader .inner2, .loader .inner3 {\r\n\tdisplay: inline-block;\r\n\tmargin: 0.125em;\r\n\twidth: 0.5em;\r\n\theight: 0.5em;\r\n\tborder: 1px solid lightgray;\r\n\tborder-radius: 1em;\r\n\tbackground-color: lightgray;\r\n\t-webkit-transform-origin: 50%;\r\n\t-webkit-animation-duration: 0.75s;\r\n\t-webkit-animation-name: rotate;\r\n\t-webkit-animation-iteration-count: infinite;\r\n\t-webkit-animation-timing-function: linear;\n}\n.loader .inner2 {\r\n\t-webkit-animation-delay: 0.1875s;\n}\n.loader .inner3 {\r\n\t-webkit-animation-delay: 0.375s;\n}\r\n\r\n", "", {"version":3,"sources":["/./src/themes/ios/Loader.vue?2197c0a5"],"names":[],"mappings":";AAcA;CACA,eAAA;CACA,WAAA;CACA,iBAAA;CACA;AAEA;AACA;EACA,kCAAA;CACA;AACA;EACA,uCAAA;CACA;AACA;EACA,kCAAA;CACA;AACA;EACA,sCAAA;CACA;CACA;AACA;CACA,eAAA;CACA;AACA;CACA,sBAAA;CACA,gBAAA;CACA,aAAA;CACA,cAAA;CACA,4BAAA;CACA,mBAAA;CACA,4BAAA;CACA,8BAAA;CACA,kCAAA;CACA,+BAAA;CACA,4CAAA;CACA,0CAAA;CACA;AACA;CACA,iCAAA;CACA;AACA;CACA,gCAAA;CACA","file":"Loader.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__loader\">\r\n\t\t<div class=\"b__components b__loader\">\r\n\t\t\t<div class=\"loader\">\r\n\t\t\t\t<span class=\"inner1\"></span>\r\n\t\t\t\t<span class=\"inner2\"></span>\r\n\t\t\t\t<span class=\"inner3\"></span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n<script>\r\n</script>\r\n<style>\r\n.loader {\r\n\tdisplay: block;\r\n\twidth: 5em;\r\n\tmargin: 10% auto;\r\n}\r\n\r\n@-webkit-keyframes rotate {\r\n\t0% {\r\n\t\t-webkit-transform: translateY(0%);\r\n\t}\r\n\t30% {\r\n\t\t-webkit-transform: translateY(-0.25em);\r\n\t}\r\n\t50% {\r\n\t\t-webkit-transform: translateY(0%);\r\n\t}\r\n\t70% {\r\n\t\t-webkit-transform: translateY(0.25em);\r\n\t}\r\n}\r\n.loader {\r\n\tdisplay: block;\r\n}\r\n.loader .inner1, .loader .inner2, .loader .inner3 {\r\n\tdisplay: inline-block;\r\n\tmargin: 0.125em;\r\n\twidth: 0.5em;\r\n\theight: 0.5em;\r\n\tborder: 1px solid lightgray;\r\n\tborder-radius: 1em;\r\n\tbackground-color: lightgray;\r\n\t-webkit-transform-origin: 50%;\r\n\t-webkit-animation-duration: 0.75s;\r\n\t-webkit-animation-name: rotate;\r\n\t-webkit-animation-iteration-count: infinite;\r\n\t-webkit-animation-timing-function: linear;\r\n}\r\n.loader .inner2 {\r\n\t-webkit-animation-delay: 0.1875s;\r\n}\r\n.loader .inner3 {\r\n\t-webkit-animation-delay: 0.375s;\r\n}\r\n\r\n</style>\r\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.loader {\n\tdisplay: block;\n\twidth: 5em;\n\tmargin: 10% auto;\n}\n@-webkit-keyframes rotate {\n0% {\n\t\t-webkit-transform: translateY(0%);\n}\n30% {\n\t\t-webkit-transform: translateY(-0.25em);\n}\n50% {\n\t\t-webkit-transform: translateY(0%);\n}\n70% {\n\t\t-webkit-transform: translateY(0.25em);\n}\n}\n.loader {\n\tdisplay: block;\n}\n.loader .inner1, .loader .inner2, .loader .inner3 {\n\tdisplay: inline-block;\n\tmargin: 0.125em;\n\twidth: 0.5em;\n\theight: 0.5em;\n\tborder: 1px solid lightgray;\n\tborder-radius: 1em;\n\tbackground-color: lightgray;\n\t-webkit-transform-origin: 50%;\n\t-webkit-animation-duration: 0.75s;\n\t-webkit-animation-name: rotate;\n\t-webkit-animation-iteration-count: infinite;\n\t-webkit-animation-timing-function: linear;\n}\n.loader .inner2 {\n\t-webkit-animation-delay: 0.1875s;\n}\n.loader .inner3 {\n\t-webkit-animation-delay: 0.375s;\n}\n\n", "", {"version":3,"sources":["/./src/themes/ios/Loader.vue?90afdba4"],"names":[],"mappings":";AAcA;CACA,eAAA;CACA,WAAA;CACA,iBAAA;CACA;AAEA;AACA;EACA,kCAAA;CACA;AACA;EACA,uCAAA;CACA;AACA;EACA,kCAAA;CACA;AACA;EACA,sCAAA;CACA;CACA;AACA;CACA,eAAA;CACA;AACA;CACA,sBAAA;CACA,gBAAA;CACA,aAAA;CACA,cAAA;CACA,4BAAA;CACA,mBAAA;CACA,4BAAA;CACA,8BAAA;CACA,kCAAA;CACA,+BAAA;CACA,4CAAA;CACA,0CAAA;CACA;AACA;CACA,iCAAA;CACA;AACA;CACA,gCAAA;CACA","file":"Loader.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__loader\">\n\t\t<div class=\"b__components b__loader\">\n\t\t\t<div class=\"loader\">\n\t\t\t\t<span class=\"inner1\"></span>\n\t\t\t\t<span class=\"inner2\"></span>\n\t\t\t\t<span class=\"inner3\"></span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</template>\n<script>\n</script>\n<style>\n.loader {\n\tdisplay: block;\n\twidth: 5em;\n\tmargin: 10% auto;\n}\n\n@-webkit-keyframes rotate {\n\t0% {\n\t\t-webkit-transform: translateY(0%);\n\t}\n\t30% {\n\t\t-webkit-transform: translateY(-0.25em);\n\t}\n\t50% {\n\t\t-webkit-transform: translateY(0%);\n\t}\n\t70% {\n\t\t-webkit-transform: translateY(0.25em);\n\t}\n}\n.loader {\n\tdisplay: block;\n}\n.loader .inner1, .loader .inner2, .loader .inner3 {\n\tdisplay: inline-block;\n\tmargin: 0.125em;\n\twidth: 0.5em;\n\theight: 0.5em;\n\tborder: 1px solid lightgray;\n\tborder-radius: 1em;\n\tbackground-color: lightgray;\n\t-webkit-transform-origin: 50%;\n\t-webkit-animation-duration: 0.75s;\n\t-webkit-animation-name: rotate;\n\t-webkit-animation-iteration-count: infinite;\n\t-webkit-animation-timing-function: linear;\n}\n.loader .inner2 {\n\t-webkit-animation-delay: 0.1875s;\n}\n.loader .inner3 {\n\t-webkit-animation-delay: 0.375s;\n}\n\n</style>\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -70532,7 +70630,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DropzoneUpload.vue?6f12876e"],"names":[],"mappings":";AA+CA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA","file":"DropzoneUpload.vue","sourcesContent":["<template>\r\n    <div class=\"b__components b__dropzone_upload\">\r\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"(dropzoneTotalFile + inputTotalFile) < parseInt(maxFile) || maxFile == undefined\">\r\n            <div class=\"content\">\r\n                <div class=\"row\">\r\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\r\n                </div>\r\n                <span class=\"uk-text-middle\">Attach file by dropping here or</span>\r\n            </div>\r\n        </div>\r\n\r\n        <!-- <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"(dropzoneTotalFile + inputTotalFile) >= parseInt(maxFile)\">\r\n            <div class=\"disabled-upload text-center\">\r\n                <span class=\"uk-text-middle\">Max File Uploaded...</span>\r\n            </div>\r\n        </div> -->\r\n        \r\n        <div :class=\"id + '__preview__container'\">\r\n            <div :class=\"id + '__preview preview stuff'\">\r\n                <div class=\"preview\">\r\n                    <div class=\"dz-thumb\"><img data-dz-thumbnail /></div>\r\n                    <span class=\"dz-name\" data-dz-name></span>\r\n                    <span class=\"dz-size\" data-dz-size></span>\r\n                    <a href=\"#\" class=\"remove-archive\" target=\"_blank\" data-dz-remove><span><i class=\"fa fa-trash-o\"></i></span></a>\r\n                </div>\r\n            </div>\r\n            <div v-for= \"item in items\" class=\"preview\">\r\n                <!-- <a :href=\"item.path\"> -->\r\n                    <div :class=\"item.className\" style=\"animation: fadeOut;\">\r\n                        <img v-if=\"item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'\" data-dz-thumbnail=\"\" :src=\"item.path\">\r\n                        <img v-else data-dz-thumbnail=\"\">\r\n                        <a :href=\"item.path\"><span data-dz-name=\"\" class=\"dz-name\">{{ item.name }}</span></a>\r\n                        <strong><span class=\"dz-size\" data-dz-size>{{ item.filesize }}</span></strong>\r\n                        <a data-dz-remove=\"\" class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fa fa-trash-o\"></i></a>\r\n                    </div> \r\n                <!-- </a> -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\nimport DropzoneUpload from './../../components/DropzoneUpload'\r\nexport default DropzoneUpload\r\n</script>\r\n\r\n<style>\r\n    .disabled-upload:hover .uk-text-middle:after{\r\n        content: '(*Remove assets file to change new file.)';\r\n\r\n    }\r\n    .disabled-upload{\r\n        animation: fadeIn;\r\n        animation-duration: 1s;\r\n        will-change: padding;\r\n        cursor: help;\r\n    }\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DropzoneUpload.vue?044baf76"],"names":[],"mappings":";AA6CA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA","file":"DropzoneUpload.vue","sourcesContent":["<template>\n    <div class=\"b__components b__dropzone_upload\">\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"(dropzoneTotalFile + inputTotalFile) < parseInt(maxFile) || maxFile == undefined\">\n            <div class=\"content\">\n                <div class=\"row\">\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\n                    <span class=\"uk-text-middle\" v-html=\"parseDropzoneContent()\"></span>\n                </div>\n            </div>\n        </div>\n        <!-- <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"(dropzoneTotalFile + inputTotalFile) >= parseInt(maxFile)\">\n            <div class=\"disabled-upload text-center\">\n                <span class=\"uk-text-middle\">Max File Uploaded...</span>\n            </div>\n        </div> -->\n        <div :class=\"id + '__preview__container'\">\n            <div :class=\"id + '__preview preview stuff'\">\n                <div class=\"preview\">\n                    <div class=\"dz-thumb\"><img data-dz-thumbnail /></div>\n                    <span class=\"dz-name\" data-dz-name></span>\n                    <span class=\"dz-size\" data-dz-size></span>\n                    <a href=\"#\" class=\"remove-archive\" target=\"_blank\" data-dz-remove><span><i class=\"fa fa-trash-o\"></i></span></a>\n                </div>\n            </div>\n            <div v-for= \"item in items\" class=\"preview\">\n                <!-- <a :href=\"item.path\"> -->\n                    <div :class=\"item.className\" style=\"animation: fadeOut;\">\n                        <img v-if=\"item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'\" data-dz-thumbnail=\"\" :src=\"item.path\">\n                        <img v-else data-dz-thumbnail=\"\">\n                        <a :href=\"item.path\"><span data-dz-name=\"\" class=\"dz-name\">{{ item.name }}</span></a>\n                        <strong><span class=\"dz-size\" data-dz-size>{{ item.filesize }}</span></strong>\n                        <a data-dz-remove=\"\" class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fa fa-trash-o\"></i></a>\n                    </div> \n                <!-- </a> -->\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport DropzoneUpload from './../../components/DropzoneUpload'\nexport default DropzoneUpload\n</script>\n\n<style>\n    .disabled-upload:hover .uk-text-middle:after{\n        content: '(*Remove assets file to change new file.)';\n\n    }\n    .disabled-upload{\n        animation: fadeIn;\n        animation-duration: 1s;\n        will-change: padding;\n        cursor: help;\n    }\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -70546,7 +70644,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n.combo_box_disable{\r\n\tborder:transparent !important;\r\n\tcursor: default !important;\n}\n.control-down{\r\n\tdisplay: none;\n}\r\n", "", {"version":3,"sources":["/./src/themes/ios/Combobox.vue?14b8b9ee"],"names":[],"mappings":";AAuBA;CACA,8BAAA;CACA,2BAAA;CACA;AACA;CACA,cAAA;CACA","file":"Combobox.vue","sourcesContent":["<template>\r\n\t<div class=\"b__components b__combo__box \"  :class=\"[{'active-border' : isFocused},{'combo_box_disable': disabled}]\">\r\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\r\n\t\t<input :disabled=\"disabled\" :placeholder=\"inputPlacehoder\" @input=\"searchAction($event)\" @blur=\"blurCombobox($event)\" @focus=\"focusCombobox($event);$emit('removeRequired')\" :value=\"searchKeyword\" class=\"search-keywords\" @keydown.40=\"keypressAction('ArrowDown', $event)\" @keydown.8=\"keypressAction('BackSpace', null)\"\r\n\t\t@keydown.prevent.38=\"keypressAction('ArrowUp', $event)\" @keydown.13=\"keypressAction('Enter')\" \r\n\t\t>\r\n\t\t<ul :class=\"[{active : isExpanding}, 'list-search', {'custom-default-select' : styleDefault}, {'active-border' : isFocused}]\">\r\n\t\t\t<li v-show =\"searchList.length == 0\" class=\"not-found\" v-html=\"placeholderEmpty\"></li>\r\n\t\t\t<li class=\"list-item\" :class=\"{'hover': index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id, index)\" @mouseover=\"pointerIndex=index\">\r\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\r\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t\t<div class=\"control\" @click=\"switchList(true)\" :class=\"[{'control-down':disabled}]\"><i aria-hidden=\"true\" class=\"fa fa-angle-down\" ></i> <i aria-hidden=\"true\" class=\"fa fa-angle-up\" style=\"display: none;\"></i></div>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport Combobox from '../../components/Combobox'\r\n\texport default Combobox\r\n</script>\r\n<style>\r\n.combo_box_disable{\r\n\tborder:transparent !important;\r\n\tcursor: default !important;\r\n}\r\n.control-down{\r\n\tdisplay: none;\r\n}\r\n</style>\r\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.combo_box_disable{\n\tborder:transparent !important;\n\tcursor: default !important;\n}\n.control-down{\n\tdisplay: none;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/Combobox.vue?d9ad06b4"],"names":[],"mappings":";AAuCA;CACA,8BAAA;CACA,2BAAA;CACA;AACA;CACA,cAAA;CACA","file":"Combobox.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__combo__box\"\n\t\t :class=\"[{'active-border' : isFocused},{'combo_box_disable': disabled}]\" :null-placeholder=\"nullPlaceholder\"\n\t\t :org-placeholder=\"orgPlaceholder\">\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label.toUpperCase() }}</label>\n\t\t<div v-show=\"showResult && isShowHtmlResult\" class=\"result\" @click=\"showInputSearch()\">\n\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t<img :src=\"itemResult.icon\" class=\"icon-img\">\n\t\t\t</div>\n\t\t\t<div class=\"content\" v-html=\"itemResult.html\"></div>\n\t\t</div>\n\n\t\t<!--remove action key down backspace: @keydown.8=\"keypressAction('BackSpace', null)\" -->\n\t\t<input :ref=\"'input-search-' + id\" v-show=\"showInputSearchCombobox\" :disabled=\"disabled\"\n\t\t\t   :placeholder=\"inputPlacehoder\" :null-placeholder=\"nullPlaceholder\"\n\t\t\t   :org-placeholder=\"orgPlaceholder\"\n\t\t\t   @input=\"searchAction($event)\" :id=\"'input-' + id\"\n\t\t\t   @blur=\"blurCombobox($event)\" @focus=\"focusCombobox($event);$emit('removeRequired')\"\n\t\t\t   :value=\"searchKeyword\" class=\"search-keywords input__combobox\" @keydown.40=\"keypressAction('ArrowDown', $event)\"\n\t\t\t   @keydown.8=\"keypressAction('BackSpace', null)\"\n\t\t@keydown.prevent.38=\"keypressAction('ArrowUp', $event)\" @keydown.13=\"keypressAction('Enter')\"\n\t\t>\n\t\t<ul :class=\"[{active : isExpanding}, 'list-search', {'custom-default-select' : styleDefault}, {'active-border' : isFocused}]\">\n\t\t\t<li v-show =\"searchList.length == 0\" class=\"not-found\" v-html=\"placeholderEmpty\"></li>\n\t\t\t<li class=\"list-item\" :class=\"{'hover': index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id, index)\" @mouseover=\"pointerIndex=index\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\n\t\t\t</li>\n\t\t</ul>\n\t\t<div class=\"control\" @click=\"switchList(true)\" :class=\"[{'control-down':disabled}]\"><i aria-hidden=\"true\" class=\"fa fa-angle-down\" ></i> <i aria-hidden=\"true\" class=\"fa fa-angle-up\" style=\"display: none;\"></i></div>\n\t</div>\n</template>\n<script>\n\timport Combobox from '../../components/Combobox'\n\texport default Combobox\n</script>\n<style>\n.combo_box_disable{\n\tborder:transparent !important;\n\tcursor: default !important;\n}\n.control-down{\n\tdisplay: none;\n}\n</style>\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -70560,7 +70658,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n.c-datepicker{\n    line-height: normal;\n    -webkit-font-smoothing:antialiased;\n    z-index: 1;\n}\n.c-datepicker__clock__hours, .c-datepicker__clock__minutes{\n    position: relative;\n}\n.c-datepicker__header-date {\n    height: 182px;\n}\n.c-scrim--shown{ z-index:1;\n}\n.c-datepicker-btn {\n\tcursor: pointer;\n}\n.c-datepicker__day--selected::after{\n\tbackground-color:rgb(1, 188, 212);\n\tz-index: -1;\n}\n.c-datepicker__day--selected.c-datepicker__day-body{\n\tcolor: #FFF;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateTimePicker.vue?48ffd720"],"names":[],"mappings":";AAgBA;IACA,oBAAA;IACA,mCAAA;IACA,WAAA;CACA;AACA;IACA,mBAAA;CACA;AACA;IACA,cAAA;CACA;AACA,iBAAA,UAAA;CAAA;AACA;CACA,gBAAA;CACA;AACA;CACA,kCAAA;CACA,YAAA;CACA;AACA;CACA,YAAA;CACA","file":"DateTimePicker.vue","sourcesContent":["<template>\r\n\t<div class=\"b__datetime__picker b__components b-float-label\">\r\n\t\t<label :class=\"classLabel\">{{ label }}</label>\r\n      \t<input :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :id=\"id\" :class=\"classes\" :disabled=\"disabled\" @input=\"change($event.target.value)\" @blur=\"onBlur\">\r\n\t\t<a class=\"c-datepicker-btn\" @click=\"togglePicker\">\r\n\t\t\t<span class=\"material-icon\"><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i></span>\r\n\t\t</a>\r\n\t</div>\r\n</template>\r\n<script>\r\n\timport DateTimePicker from './../../components/DateTimePicker'\r\n\timport '../../plugins/material-datetime-picker/material-datetime-picker.css'\r\n\texport default DateTimePicker\r\n</script>\r\n\r\n<style>\r\n\t.c-datepicker{\r\n\t    line-height: normal;\r\n\t    -webkit-font-smoothing:antialiased;\r\n\t    z-index: 1;\r\n\t}\r\n\t.c-datepicker__clock__hours, .c-datepicker__clock__minutes{\r\n\t    position: relative;\r\n\t}\r\n\t.c-datepicker__header-date {\r\n\t    height: 182px;\r\n\t}\r\n\t.c-scrim--shown{ z-index:1; }\r\n\t.c-datepicker-btn {\r\n\t\tcursor: pointer;\r\n\t}\r\n\t.c-datepicker__day--selected::after{\r\n\t\tbackground-color:rgb(1, 188, 212);\r\n\t\tz-index: -1;\r\n\t}\r\n\t.c-datepicker__day--selected.c-datepicker__day-body{\r\n\t\tcolor: #FFF;\r\n\t}\r\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.c-datepicker{\n    line-height: normal;\n    -webkit-font-smoothing:antialiased;\n    z-index: 1;\n}\n.c-datepicker__clock__hours, .c-datepicker__clock__minutes{\n    position: relative;\n}\n.c-datepicker__header-date {\n    height: 182px;\n}\n.c-scrim--shown{ z-index:1;\n}\n.c-datepicker-btn {\n\tcursor: pointer;\n}\n.c-datepicker__day--selected::after{\n\tbackground-color:rgb(1, 188, 212);\n\tz-index: -1;\n}\n.c-datepicker__day--selected.c-datepicker__day-body{\n\tcolor: #FFF;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DateTimePicker.vue?81d6569c"],"names":[],"mappings":";AAgBA;IACA,oBAAA;IACA,mCAAA;IACA,WAAA;CACA;AACA;IACA,mBAAA;CACA;AACA;IACA,cAAA;CACA;AACA,iBAAA,UAAA;CAAA;AACA;CACA,gBAAA;CACA;AACA;CACA,kCAAA;CACA,YAAA;CACA;AACA;CACA,YAAA;CACA","file":"DateTimePicker.vue","sourcesContent":["<template>\n\t<div class=\"b__datetime__picker b__components b-float-label\">\n\t\t<label :class=\"classLabel\">{{ label }}</label>\n      \t<input :placeholder=\"placeholder\" type=\"text\" ref=\"bInput\" :name=\"name\" :id=\"id\" :class=\"classes\" :disabled=\"disabled\" @input=\"change($event.target.value)\" @blur=\"onBlur\">\n\t\t<a class=\"c-datepicker-btn\" @click=\"togglePicker\">\n\t\t\t<span class=\"material-icon\"><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i></span>\n\t\t</a>\n\t</div>\n</template>\n<script>\n\timport DateTimePicker from './../../components/DateTimePicker'\n\timport '../../plugins/material-datetime-picker/material-datetime-picker.css'\n\texport default DateTimePicker\n</script>\n\n<style>\n\t.c-datepicker{\n\t    line-height: normal;\n\t    -webkit-font-smoothing:antialiased;\n\t    z-index: 1;\n\t}\n\t.c-datepicker__clock__hours, .c-datepicker__clock__minutes{\n\t    position: relative;\n\t}\n\t.c-datepicker__header-date {\n\t    height: 182px;\n\t}\n\t.c-scrim--shown{ z-index:1; }\n\t.c-datepicker-btn {\n\t\tcursor: pointer;\n\t}\n\t.c-datepicker__day--selected::after{\n\t\tbackground-color:rgb(1, 188, 212);\n\t\tz-index: -1;\n\t}\n\t.c-datepicker__day--selected.c-datepicker__day-body{\n\t\tcolor: #FFF;\n\t}\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -78753,9 +78851,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": _vm.completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'
     }
-  }) : _vm._e()]), _vm._v(" "), _c('span', {
-    staticClass: "uk-text-middle"
-  }, [_vm._v("Attach file by dropping here or")])])]), _vm._v(" "), _c('div', {
+  }) : _vm._e(), _vm._v(" "), _c('span', {
+    staticClass: "uk-text-middle",
+    domProps: {
+      "innerHTML": _vm._s(_vm.parseDropzoneContent())
+    }
+  })])])]), _vm._v(" "), _c('div', {
     class: _vm.id + '__preview__container'
   }, [_c('div', {
     class: _vm.id + '__preview preview stuff'
@@ -78972,22 +79073,61 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "b__components b__combo__box ",
+    staticClass: "b__components b__combo__box",
     class: [{
       'active-border': _vm.isFocused
     }, {
       'combo_box_disable': _vm.disabled
-    }]
+    }],
+    attrs: {
+      "null-placeholder": _vm.nullPlaceholder,
+      "org-placeholder": _vm.orgPlaceholder
+    }
   }, [_c('label', {
     class: _vm.isActive ? 'active' : '',
     attrs: {
       "for": _vm.id
     }
-  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
-    staticClass: "search-keywords",
+  }, [_vm._v(_vm._s(_vm.label.toUpperCase()))]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.showResult && _vm.isShowHtmlResult),
+      expression: "showResult && isShowHtmlResult"
+    }],
+    staticClass: "result",
+    on: {
+      "click": function($event) {
+        _vm.showInputSearch()
+      }
+    }
+  }, [(!_vm.disableIcon) ? _c('div', {
+    staticClass: "icon"
+  }, [_c('img', {
+    staticClass: "icon-img",
+    attrs: {
+      "src": _vm.itemResult.icon
+    }
+  })]) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "content",
+    domProps: {
+      "innerHTML": _vm._s(_vm.itemResult.html)
+    }
+  })]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.showInputSearchCombobox),
+      expression: "showInputSearchCombobox"
+    }],
+    ref: 'input-search-' + _vm.id,
+    staticClass: "search-keywords input__combobox",
     attrs: {
       "disabled": _vm.disabled,
-      "placeholder": _vm.inputPlacehoder
+      "placeholder": _vm.inputPlacehoder,
+      "null-placeholder": _vm.nullPlaceholder,
+      "org-placeholder": _vm.orgPlaceholder,
+      "id": 'input-' + _vm.id
     },
     domProps: {
       "value": _vm.searchKeyword
@@ -79243,7 +79383,7 @@ var content = __webpack_require__(538);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("086c5e7e", content, false, {});
+var update = __webpack_require__(12)("1ef2830e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79269,7 +79409,7 @@ var content = __webpack_require__(539);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("598b90c7", content, false, {});
+var update = __webpack_require__(12)("b0331b58", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79295,7 +79435,7 @@ var content = __webpack_require__(540);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("3cd46bee", content, false, {});
+var update = __webpack_require__(12)("00b7668a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79321,7 +79461,7 @@ var content = __webpack_require__(541);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("38442b59", content, false, {});
+var update = __webpack_require__(12)("5b6cdda6", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79347,7 +79487,7 @@ var content = __webpack_require__(542);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("19f5e9da", content, false, {});
+var update = __webpack_require__(12)("810146b4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79373,7 +79513,7 @@ var content = __webpack_require__(543);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("5a36d617", content, false, {});
+var update = __webpack_require__(12)("51c836ac", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79399,7 +79539,7 @@ var content = __webpack_require__(544);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("62e2e2b6", content, false, {});
+var update = __webpack_require__(12)("65bac778", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79425,7 +79565,7 @@ var content = __webpack_require__(545);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("40915d6c", content, false, {});
+var update = __webpack_require__(12)("5c9c5fdd", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags

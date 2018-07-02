@@ -1,23 +1,33 @@
 .b__components.b__dropzone_upload {
     .b__components__dropzone {
-        min-height: 20px;
+        min-height: 75px;
         cursor: pointer;
         margin-bottom: 10px;
         .content {
             text-align: center;
             cursor: pointer;
-            padding: 15px;
+            padding: 5px;
             border: 2px dashed #f3f3f3;
             background: #fafafa;
             color: #666;
             -webkit-animation: fadeIn;
             animation: fadeIn;
             animation-duration: 1s;
+            padding-left: 30%;
+            padding-right: 30%;
             .icon-upload{
-                width: 60px;
+                width: 30px;
+                margin-top: -5px;
             }
             p{
                 margin: 0;
+            }
+            .uk-text-middle{
+                .uk-link{
+                    color: #07D;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
             }
         }
 

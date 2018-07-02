@@ -104,7 +104,7 @@ export default {
             })
             let Vue = this
             this.dropzone.on("addedfile", (file) => {
-                var parent = document.querySelectorAll('.preview:not(stuff)');
+                var parent = document.querySelectorAll('.' + this.id + '__preview__container .preview:not(stuff)');
                 for (var i = 0; i < parent.length ; i++) {
                     var child = parent[i].querySelector('.dz-thumb');
                     parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
@@ -178,6 +178,7 @@ export default {
                 maxfilesexceeded: function(file) {
                     this.removeAllFiles();
                     this.addFile(file);
+                    this.$emit('validation-file-number', file)
                     alert('Upload file too specified number.')
                 },
             }
@@ -307,8 +308,16 @@ export default {
                     this.dropzone.removeFile(listFile[i])
                 }
             }
-            if( fileError != null &&  fileError != "")
+            if( fileError != null &&  fileError != ""){
+                this.$emit('validation-file-size', fileError)
                 alert("File: " + fileError + " removed because total size to large.")
+            }
         },
+
+        parseDropzoneContent(){
+            if(this.dropzoneContent == undefined || this.dropzoneContent == null)
+                return 'Attach file by dropping here or <span class="uk-link">selecting one</span>'
+            return this.dropzoneContent
+        }
     },
 }

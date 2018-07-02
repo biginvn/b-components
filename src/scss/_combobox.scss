@@ -3,9 +3,24 @@
     cursor: pointer;
     border: 1px solid #e8e8e8;
     border-radius: 4px;
-    padding: 5px 12px;
+    padding: 8px 12px 5px 12px;
     &.active-border {
         border: 1px solid #0082d5 !important;
+    }
+    .result {
+        display: flex;
+        align-items: center;
+        &>.icon {
+            width: 45px;
+            float: left;
+            margin-right: 15px;
+            &>.icon-img {
+                width: 100%;
+                display: block;
+                border-radius: 50%;
+                height: 45px;
+            }
+        }
     }
 
     .search-keywords {
@@ -18,8 +33,9 @@
     .control {
         position: absolute;
         right: 10px;
-        top: 5px;
-        cursor:pointer;
+        top: 50%;
+        cursor: pointer;
+        transform: translateY(-50%);
     }
 
     .list-search {
@@ -34,7 +50,7 @@
         background-color: #FFF;
         left: 0;
         right: 0;
-        z-index:9;
+        z-index:999;
         max-height: 500px;
         overflow: hidden;
         overflow-y: auto !important;
@@ -91,13 +107,14 @@
             }
 
             &>.icon {
-                max-width: 30px;
+                max-width: 45px;
                 float: left;
                 margin-right: 15px;
                 &>.icon-img {
                     width: 100%;
                     display: block;
                     border-radius: 50%;
+                    height: 45px;
                 }
             }
         }
