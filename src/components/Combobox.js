@@ -172,7 +172,7 @@ export default {
                 return 'Not Found';
 
             if(this.searchList.length == 0)
-                return 'Please type at least ' + this.startLengthKey + ' characters';
+                return 'Please type at least ' + this.startLengthKey + ' characters to search';
         }
     },
     methods : {

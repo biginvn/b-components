@@ -50338,7 +50338,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         placeholderEmpty() {
             if (this.searchKeyword.length >= this.startLengthKey) return 'Not Found';
 
-            if (this.searchList.length == 0) return 'Please type at least ' + this.startLengthKey + ' characters';
+            if (this.searchList.length == 0) return 'Please type at least ' + this.startLengthKey + ' characters to search';
         }
     },
     methods: {
