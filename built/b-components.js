@@ -52557,8 +52557,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         checkEdit(abc) {
             if (abc == false) {
-                tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
-            } else tinymce.activeEditor.getBody().setAttribute('contenteditable', true);
+                tinymce.get(this.id).getBody().setAttribute('contenteditable', false);
+                // tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
+            } else {
+                // console.log(tinymce.getInstanceById('vendor-activity-edit-content'))
+                // console.log(tinymce.get('vendor-activity-edit-content'))
+                tinymce.get(this.id).getBody().setAttribute('contenteditable', true);
+                // tinymce.activeEditor.getBody().setAttribute('contenteditable', true)
+                // alert(tinymce.get('vendor-activity-edit-content').getBody().getAttribute('contenteditable'))
+            }
         }
     },
 
@@ -52575,8 +52582,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 selector: '#' + Vue.id,
                 readonly: readonly,
                 height: height,
-                plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table", "autoresize", "image code"],
-                autoresize_max_height: 300,
+                plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table",
+                // "autoresize",
+                "image code"],
+                // autoresize_on_init: false,
+                // autoresize_max_height: 300,
                 force_br_newlines: true,
                 force_p_newlines: true,
                 forced_root_block: '',
@@ -52677,8 +52687,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             Vue.tinymce = tinymce.init(Object.assign({}, {
                 selector: '#' + Vue.id,
                 readonly: readonly,
-                plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table", "autoresize", "image code"],
-                autoresize_max_height: 300,
+                plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table",
+                // "autoresize",
+                "image code"],
+                // autoresize_on_init: false,
+                // autoresize_max_height: 300,
                 toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | table",
                 // toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
                 toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
