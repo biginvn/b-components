@@ -73,4 +73,10 @@
 		height: 100% !important;
 		overflow: scroll !important;
 	}
+	i.fa{
+		top: 50%;
+	    transform: translateY(-50%);
+	    position: absolute;
+	    right: 8px;
+	}
 </style>
