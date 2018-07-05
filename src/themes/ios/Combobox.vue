@@ -1,5 +1,5 @@
 <template>
-	<div class="b__components b__combo__box"
+	<div class="b__components b__combo__box" :id="id"
 		 :class="[{'active-border' : isFocused},{'combo_box_disable': disabled}]" :null-placeholder="nullPlaceholder"
 		 :org-placeholder="orgPlaceholder">
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label.toUpperCase() }}</label>

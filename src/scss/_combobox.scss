@@ -13,12 +13,12 @@
         &>.icon {
             width: 45px;
             float: left;
-            margin-right: 15px;
+            margin-right: 10px;
             &>.icon-img {
                 width: 100%;
                 display: block;
                 border-radius: 50%;
-                height: 45px;
+                max-height: 45px;
             }
         }
     }
@@ -109,12 +109,12 @@
             &>.icon {
                 max-width: 45px;
                 float: left;
-                margin-right: 15px;
+                margin-right: 10px;
                 &>.icon-img {
                     width: 100%;
                     display: block;
                     border-radius: 50%;
-                    height: 45px;
+                    max-height: 45px;
                 }
             }
         }
