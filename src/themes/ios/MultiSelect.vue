@@ -73,6 +73,7 @@
 		height: 100% !important;
 		overflow: scroll !important;
 	}
+	/* Pls don't write that, because it apply to all other elements icon with class fa
 	/*i.fa{*/
 		/*top: 50%;*/
 	    /*transform: translateY(-50%);*/
