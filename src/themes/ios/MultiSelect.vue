@@ -73,10 +73,11 @@
 		height: 100% !important;
 		overflow: scroll !important;
 	}
-	i.fa{
-		top: 50%;
-	    transform: translateY(-50%);
-	    position: absolute;
-	    right: 8px;
-	}
+	/* Pls don't write that, because it apply to all other elements icon with class fa
+	/*i.fa{*/
+		/*top: 50%;*/
+	    /*transform: translateY(-50%);*/
+	    /*position: absolute;*/
+	    /*right: 8px;*/
+	/*}*/
 </style>
