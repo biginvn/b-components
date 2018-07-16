@@ -40,8 +40,12 @@ module.exports = {
       type: Object
     }
   },
+  // watch : {
+  //           Page(){
+  //               alert('2')
+  //           },
+  //       },
   created: function created() {
-
     if (!this.vuex) return;
 
     if (!this.for) {
@@ -131,11 +135,29 @@ module.exports = {
       var from = (this.page - 1) * this.perPage + 1;
       var to = this.page == this.totalPages ? this.records : from + this.perPage - 1;
       var i = Math.min(this.records == 1 ? 2 : this.totalPages == 1 ? 1 : 0, parts.length - 1);
-      return parts[0].replace('{count}', this.formatNumber(this.records)).replace('{from}', this.formatNumber(from)).replace('{to}', this.formatNumber(to));
-      
+
+      return parts[i].replace('{count}', this.formatNumber(this.records)).replace('{from}', this.formatNumber(from)).replace('{to}', this.formatNumber(to));
     }
   },
   methods: {
+    setPageHoang: function setPageHoang() {
+      if (this.allowedPage(this.Page)) {
+        this.paginateHoang(this.Page);
+      }
+    },
+    paginateHoang: function paginateHoang(page) {
+      if (this.vuex) {
+        this.$store.commit(this.for + '/PAGINATE', page);
+      } else {
+        this.Page = page;
+      }
+
+      this.$emit('paginate', page);
+
+      if (this.for) {
+        bus.$emit('vue-pagination::' + this.for, page);
+      }
+    },
     setPage: function setPage(page) {
       if (this.allowedPage(page)) {
         this.paginate(page);
