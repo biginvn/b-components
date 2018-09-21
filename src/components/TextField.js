@@ -37,7 +37,8 @@ export default {
 		},
 		keyupEnter: function(e) {
 			 var keyCode = e.keyCode || e.which;
-     		  if (keyCode === 13 || keyCode === 45) {
+     		  //if (keyCode === 13 || keyCode === 45) {
+             if (keyCode === 13) {
      		   e.preventDefault();
      		   return false;
      		 }   
