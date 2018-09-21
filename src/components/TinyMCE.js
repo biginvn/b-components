@@ -71,7 +71,7 @@ export default {
             if( readonly == 1 )
                 var toolbar = false
             else
-                var toolbar = "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | table | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image code | preview | forecolor backcolor | pagebreak"
+                var toolbar = "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | table | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image code | preview | forecolor backcolor | pagebreak | lineheightselect"
             Vue.tinymce = tinymce.init(
                 Object.assign({},
                     {
@@ -84,6 +84,7 @@ export default {
                             "table",
                             // "autoresize",
                             "image code",
+                            "lineheight"
                         ],
                         // autoresize_on_init: false,
                         // autoresize_max_height: 300,
