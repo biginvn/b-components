@@ -78,6 +78,8 @@ export default {
                         selector: '#' + Vue.id,
                         readonly : readonly,
                         height : height,
+                        //custom value of lineheight
+                        lineheight_formats:'Single=120% 1.5=180% Double=240%',
                         plugins: [
                             "advlist autolink link image lists charmap print preview hr anchor pagebreak",
                             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
