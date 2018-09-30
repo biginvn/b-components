@@ -23,7 +23,6 @@ export default {
             this.initDropzone()
     },
     props: {
-        // ['name', 'config', 'id', 'mode', '', '']
         name: {
 
         },
@@ -47,11 +46,6 @@ export default {
             default: null
         }
     },
-    computed: {
-        // totalFileSize(){
-        //     return this.totalFileSize = this.totalInputFileSize + this.totalDropzoneFileSize
-        // }
-    },
     watch:{
         'dropzone.files'(value){
             this.caculateTotalDropzoneFileSize(value)
@@ -73,18 +67,8 @@ export default {
         supportFileType(value) {
             if (value !== null) this.supportTypes = this.supportFileType.slice(0)
         }
-        // totalInputFileSize(){
-        //     this.totalFileSize = this.totalInputFileSize + this.totalDropzoneFileSize
-        // },
-        // totalDropzoneFileSize(){
-        //     this.totalFileSize = this.totalDropzoneFileSize + this.totalInputFileSize
-        // },
     },
     methods: {
-        // upload() {  //rem by thien.nguyen
-        //     this.dropzone.enqueueFiles(this.dropzone.getFilesWithStatus(Dropzone.ADDED));
-        //     this.$emit('input', this.dropzone)
-        // },
         initDropzone(){
             this.configDropzone()
             this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
@@ -103,7 +87,7 @@ export default {
                 // document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "0"
             })
             let Vue = this
-            this.dropzone.on("addedfile", (file) => {
+            this.dropzone.on("addedfile", (file, xhr, formData) => {
                 var parent = document.querySelectorAll('.' + this.id + '__preview__container .preview:not(stuff)');
                 for (var i = 0; i < parent.length ; i++) {
                     var child = parent[i].querySelector('.dz-thumb');
@@ -161,7 +145,6 @@ export default {
                 if(this.value.list != undefined && this.value.list != null)
                     this.prepareItems(this.value.list)
         },
-
         configDropzone() {
             let acceptedFiles = this.supportTypes.join(',')
             let config = {

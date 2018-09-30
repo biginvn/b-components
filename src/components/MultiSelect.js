@@ -109,15 +109,19 @@ export default {
 		},
 
 		getSingleSelected(){
+
 			if(this.list == undefined || this.list == null)
 				return;
-			let listSelected = this.list.filter( (item) => {
-				return item.id == this.selected
-			})
+			if(Array.isArray(this.list))
+			{
+				let listSelected = this.list.filter( (item) => {
+					return item.id == this.selected
+				})
 
-			if (listSelected.length > 0)
-				return listSelected[0]
-			return null
+				if (listSelected.length > 0)
+					return listSelected[0]
+			}
+			return;
 		},
 
 		getSelectedList () { // Get selected with full information [ { id : .. , html : ... } ]

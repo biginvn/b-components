@@ -43,6 +43,8 @@ import BChart from './themes/ios/Chart.vue'
 import BDataTable from './themes/ios/DataTable.vue'
 import BComboBox from './themes/ios/Combobox.vue'
 
+import BDocumentAdhoc from './themes/ios/DocumentAdhoc.vue'
+
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
 Vue.component('BRadio', BRadio)
@@ -73,6 +75,9 @@ Vue.component('BModalMessage', BModalMessage)
 Vue.component('BChart', BChart)
 Vue.component('BDataTable', BDataTable)
 Vue.component('BComboBox', BComboBox)
+
+/* custom adhoc document with extends dropzone component upload */
+Vue.component('BDocumentAdhoc', BDocumentAdhoc)
 
 export default {
 	Event: Event

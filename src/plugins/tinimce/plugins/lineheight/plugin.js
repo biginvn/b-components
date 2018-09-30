@@ -55,7 +55,15 @@
                     });
                 },
                 onselect: function(e) {
-                    tinymce.activeEditor.formatter.apply('lineheight', {value : this.value()});
+
+                    var content = tinymce.activeEditor.getBody()//.getContent({ format: 'raw' })
+                    var selection = tinymce.activeEditor.selection.getContent()//get content of selection
+                    if(!selection)//if not select set selection is all node
+                    {
+                        tinymce.activeEditor.formatter.apply('lineheight', {value : this.value()}, content)
+                    }else{
+                        tinymce.activeEditor.formatter.apply('lineheight', {value : this.value()})
+                    }
                 }
             };
         });
