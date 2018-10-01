@@ -4,6 +4,21 @@ export default
 {
     components : { BRadio },
     mixins : [dropzoneUpload],
+    watch : {
+        items : {
+            handler: function (val, oldVal) {
+                var vm = this;
+                if(Array.isArray(val))
+                {
+                    val.forEach((item,index) => {
+                        vm.value.list[index].exportType = item.exportType
+                    })
+                }
+                
+            },
+            deep: true
+        }
+    },
     methods :{
         /* custom model items for document adhoc */
         prepareItems(list) {
@@ -30,7 +45,7 @@ export default
                     name       : (listItem.filename == null || listItem.filename == undefined) ? this.getNameByPath(listItem.path) : listItem.filename,
                     path       : listItem.path,
                     className  : className,
-                    exportType : listItem.export_type ? listItem.export_type : null,
+                    exportType : listItem.export_type ? listItem.export_type : 'docx',
                     is_active : listItem.is_active ? true : false
                 }
                 items.push(item);
