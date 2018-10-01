@@ -2,11 +2,11 @@ import dropzoneUpload from './DropzoneUpload.js'
 import BRadio from '../themes/ios/Radio.vue'
 export default 
 {
-	components : { BRadio },
-	mixins : [dropzoneUpload],
-	methods :{
-		/* custom model items for document adhoc */
-		prepareItems(list) {
+    components : { BRadio },
+    mixins : [dropzoneUpload],
+    methods :{
+        /* custom model items for document adhoc */
+        prepareItems(list) {
             if (list == undefined || list == null || list.length == 0){
                 if (this.default != undefined && this.default != null ){
                     this.items = [this.default]
@@ -58,13 +58,11 @@ export default
                 }
                 else {
 
-                	/* handle append export type after added file */
-                	var idExportTypeElement = Math.floor(Math.random() * 100000000000); // Create the remove button 
-	                // var removeButton = Dropzone.createElement('<p class="form-group document-type"> </p>'); 
-	                var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type"><div class="b__components b-radio" value="docx"><input name="${idExportTypeElement}" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" value="pdf"><input name="${idExportTypeElement}" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div></div>`);
-	                var d = file.previewElement.appendChild(exportTypeElement)
+                    /* handle append export type after added file */
+                    var idExportTypeElement = Math.floor(Math.random() * 100000); // Create the remove button 
+                    var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type export-type-upload"><div class="b__components b-radio"><input checked name="${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" ><input name="${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div></div>`);
+                    var d = file.previewElement.appendChild(exportTypeElement)
 
-	                /* handle append export type after added file */
                     if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" ||  fileEx == "gif" ||  fileEx == "bmp")
                         return child.className += " dz-image"
                     switch(fileEx) {
@@ -139,8 +137,8 @@ export default
         },
         customHtmlReview()
         {
-        	let html = '<div class="preview"><div class="dz-thumb"><img data-dz-thumbnail=""></div> <span data-dz-name="" class="dz-name"></span> <span data-dz-size="" class="dz-size dz-document-adhoc"></span> <a href="#" target="_blank" data-dz-remove="" class="remove-archive"><span><i class="fa fa-trash-o"></i></span></a></div>'
-        	return html;
+            let html = '<div class="preview"><div class="dz-thumb"><img data-dz-thumbnail=""></div> <span data-dz-name="" class="dz-name"></span> <span data-dz-size="" class="dz-size dz-document-adhoc"></span> <a href="#" target="_blank" data-dz-remove="" class="remove-archive"><span><i class="fa fa-trash-o"></i></span></a></div>'
+            return html;
         }
-	}
+    }
 }

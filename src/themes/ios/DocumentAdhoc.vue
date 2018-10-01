@@ -25,10 +25,10 @@
                     <strong><span class="dz-size dz-document-adhoc" data-dz-size>{{ item.filesize }}</span></strong>
                     <a data-dz-remove="" class="remove-archive" @click="deleteThisItem(item.id)"><i class="fa fa-trash-o"></i></a>
                 </div> 
-                <p class="form-group document-type">
+                <div class="form-group document-type">
                     <b-radio v-model="item.exportType" label="Docx" value="docx"></b-radio>
                     <b-radio v-model="item.exportType" label="Pdf" value="pdf"></b-radio>
-                </p>
+                </div>
             </div>
         </div>
     </div>
