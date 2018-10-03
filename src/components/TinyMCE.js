@@ -56,6 +56,11 @@ export default {
                 // tinymce.activeEditor.getBody().setAttribute('contenteditable', true)
                 // alert(tinymce.get('vendor-activity-edit-content').getBody().getAttribute('contenteditable'))
             }
+        },
+        disabled(value){
+            if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined)
+                tinymce.get(this.id).destroy()
+            this.initTinyMCE(this.value)
         }
     },
 
