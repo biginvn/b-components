@@ -2,7 +2,7 @@ import baseComponent from '../mixins/text-field-mixins'
 
 export default {
 	mixins : [baseComponent],
-	props	: ['type', 'min', 'maxlength', 'classParent'],
+	props	: ['type', 'min', 'maxlength', 'classParent', 'regex'],
 	computed : {
 		classes () {
 			return (this.className?this.className:'') + " b__input 2"
@@ -42,6 +42,17 @@ export default {
      		   e.preventDefault();
      		   return false;
      		 }   
-   		}
+   		},
+        keyDownRegex: function (e) {
+            let keyCharacter = e.key;
+            let pattern = new RegExp(this.regex);
+			if (this.regex !== undefined && this.regex !== null && this.regex !== '') {
+                let res = pattern.test(keyCharacter);
+                if (!res) {
+                    e.preventDefault();
+                    return false;
+				}
+			}
+        }
 	}
 }
