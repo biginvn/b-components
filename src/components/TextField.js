@@ -44,15 +44,20 @@ export default {
      		 }   
    		},
         keyDownRegex: function (e) {
-            let keyCharacter = e.key;
-            let pattern = new RegExp(this.regex);
-			if (this.regex !== undefined && this.regex !== null && this.regex !== '') {
-                let res = pattern.test(keyCharacter);
-                if (!res) {
-                    e.preventDefault();
-                    return false;
-				}
-			}
+			let keyCode = e.keyCode || e.which;
+			// alert(keyCode);
+            // Don't validate the input if below arrow, delete and backspace keys were pressed
+            if(keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) { // Left / Up / Right / Down Arrow, Delete keys;
+                let keyCharacter = e.key;
+                let pattern = new RegExp(this.regex);
+                if (this.regex !== undefined && this.regex !== null && this.regex !== '') {
+                    let res = pattern.test(keyCharacter);
+                    if (!res) {
+                        e.preventDefault();
+                        return false;
+                    }
+                }
+            }
         }
 	}
 }
