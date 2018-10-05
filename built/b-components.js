@@ -10834,7 +10834,21 @@ module.exports = function unique(arr) {
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
-	props: ['type', 'min', 'maxlength', 'classParent', 'regex'],
+	// props	: ['type', 'min', 'maxlength', 'classParent', 'regex', 'url', 'has-url', 'target-blank'],
+	props: {
+		type: {},
+		min: {},
+		maxlength: {},
+		classParent: {},
+		regex: {},
+		url: {},
+		hasUrl: {
+			default: false
+		},
+		targetBlank: {
+			default: true
+		}
+	},
 	computed: {
 		classes() {
 			return (this.className ? this.className : '') + " b__input 2";
@@ -10845,6 +10859,10 @@ module.exports = function unique(arr) {
 		},
 		classesParent() {
 			return this.classParent ? this.classParent : '';
+		},
+		hasLinkView() {
+			if (this.hasUrl && this.disabled) return true;
+			return false;
 		}
 	},
 	methods: {
@@ -50212,6 +50230,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TextField__["a" /* default */]);
@@ -79047,7 +79069,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "b__components b-ios b-float-label",
+    staticClass: "b__components b-ios b-float-label b-input-extend-custom",
     class: _vm.classesParent
   }, [_c('label', {
     class: _vm.classLabel
@@ -79062,7 +79084,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": _vm.name,
       "id": _vm.id,
       "disabled": _vm.disabled,
-      "regex": _vm.regex
+      "regex": _vm.regex,
+      "url": _vm.url
     },
     domProps: {
       "value": _vm.value
@@ -79077,7 +79100,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "keyup": _vm.keyupEnter,
       "keypress": _vm.keyupEnter
     }
-  }), _vm._v(" "), _vm._t("otherElements")], 2)
+  }), _vm._v(" "), (_vm.hasUrl) ? _c('div', {
+    staticClass: "link-name-area"
+  }, [_c('a', {
+    staticClass: "link-text-name",
+    attrs: {
+      "href": _vm.url,
+      "target": _vm.targetBlank ? '_blank' : ''
+    }
+  }, [_vm._v(_vm._s(_vm.value))])]) : _vm._e(), _vm._v(" "), _vm._t("otherElements")], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

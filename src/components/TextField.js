@@ -2,7 +2,21 @@ import baseComponent from '../mixins/text-field-mixins'
 
 export default {
 	mixins : [baseComponent],
-	props	: ['type', 'min', 'maxlength', 'classParent', 'regex'],
+	// props	: ['type', 'min', 'maxlength', 'classParent', 'regex', 'url', 'has-url', 'target-blank'],
+    props : {
+        type: {},
+        min: {},
+        maxlength: {},
+        classParent: {},
+        regex: {},
+        url: {},
+        hasUrl: {
+            default: false
+		},
+		targetBlank: {
+            default: true
+		}
+    },
 	computed : {
 		classes () {
 			return (this.className?this.className:'') + " b__input 2"
@@ -14,8 +28,12 @@ export default {
 		},
 		classesParent() {
  		 	 return (this.classParent?this.classParent:'')
- 			}
 		},
+        hasLinkView () {
+			if (this.hasUrl && this.disabled) return true;
+			return false
+        }
+	},
 	methods : {
 		change (value) {
 			this.updateFloatLabel(value);
