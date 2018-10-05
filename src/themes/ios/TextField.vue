@@ -1,5 +1,5 @@
 <template>
- <div class="b__components b-ios b-float-label b-input-extend-custom" :class="classesParent">
+ <div class="b__components b-ios b-float-label b-input-extend-custom" :class="(hasUrl ? 'has-link-view' : '') + classesParent">
   <label :class="classLabel">{{ label }}</label>
   <input
     :placeholder="placeholder" 

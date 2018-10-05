@@ -59,7 +59,18 @@
         pointer-events: auto;
         display: none;
     }
-    &.select-disabled {
+    &.select-disabled, &[always-disabled="true"] {
+        & > label {
+            &.active {
+                padding-left: 5px;
+                left: 10px;
+            }
+        }
+        select {
+            &.hyper-link-select-view {
+                opacity: 0 !important;
+            }
+        }
         .external-link-select {
             opacity: 1;
             display: block;
