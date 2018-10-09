@@ -106,13 +106,8 @@
         min-height: 33px;
         padding-right: 30px;
         height: 33px;
-        /*border-bottom: 1px solid map-get($colors, primary);*/
 
         &>.control {
-            /*position: absolute;
-            right: 10px;
-            bottom: 5px;
-            cursor: pointer;*/
             content: "\f078";
             display: inline-block;
             font: normal normal normal 14px/1 FontAwesome;

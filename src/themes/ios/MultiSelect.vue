@@ -30,9 +30,9 @@
     			onClick="this.select()"
 			></div>
 
-			<div class="control" @click="toggleList()">
-				<i class="fa fa-angle-down" aria-hidden="true" v-show="!isExpanding"></i>
-				<i class="fa fa-angle-up" aria-hidden="true" v-show="isExpanding"></i>
+			<div :class="isExpanding ? 'iconC iconD' : 'iconC'" @click="toggleList()">
+				<!-- <i class="fa fa-angle-down iconC" aria-hidden="true" v-show="!isExpanding"></i>
+				<i class="fa fa-angle-up iconC" aria-hidden="true" v-show="isExpanding"></i> -->
 			</div>
 		</div>
 		
@@ -51,9 +51,6 @@
 <script>
 	import MultiSelect from './../../components/MultiSelect'
 	export default MultiSelect
-				// 	required
-				// oninvalid="this.setCustomValidity('The query field must not be blank')"
-    // 			oninput="setCustomValidity('')"
 </script>
 <style>
 	.addBorder{
@@ -61,9 +58,6 @@
 	}
 	.b__multi__select__control{
 		padding-top: 2px !important;
-/* 		max-height: 145px !important;
-		height: 100% !important;
-		overflow: scroll !important; */
 	}
 	.selected{
 		margin-left: 3px;
@@ -73,11 +67,29 @@
 		height: 100% !important;
 		overflow: scroll !important;
 	}
-	/* Pls don't write that, because it apply to all other elements icon with class fa
-	/*i.fa{*/
-		/*top: 50%;*/
-	    /*transform: translateY(-50%);*/
-	    /*position: absolute;*/
-	    /*right: 8px;*/
-	/*}*/
+
+	.iconC::after{
+		content: "\f078";
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: absolute;
+        display: block;
+        padding-top: 11px;
+        top: 1px;
+        right: 6px;
+        height: calc(100% - 2px);
+        width: 12px;
+        font-size: 10px;
+        color: #74767d;
+        z-index: 2;
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+	}
+	.iconD::after{
+		transform: rotate(180deg);
+	}
 </style>
