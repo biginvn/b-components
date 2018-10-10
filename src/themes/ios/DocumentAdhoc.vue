@@ -22,12 +22,15 @@
                     <img v-if="item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'" data-dz-thumbnail="" :src="item.path">
                     <img v-else data-dz-thumbnail="">
                     <a :href="item.path"><span data-dz-name="" class="dz-name">{{ item.name }}</span></a>
-                    <strong><span class="dz-size dz-document-adhoc" data-dz-size>{{ item.filesize }}</span></strong>
+                    <strong>
+                        <span :class="item.isProcess? 'dz-size dz-document-adhoc' : 'dz-size dz-document-bonus'" data-dz-size>{{ item.filesize }}</span>
+                    </strong>
                     <a data-dz-remove="" class="remove-archive" @click="deleteThisItem(item.id)"><i class="fa fa-trash-o"></i></a>
                 </div> 
                 <div class="form-group document-type">
-                    <b-radio v-model="item.exportType" label="Docx" value="docx"></b-radio>
-                    <b-radio v-model="item.exportType" label="Pdf" value="pdf"></b-radio>
+                    <b-check-box v-model="item.isProcess" label="Document Process"></b-check-box>
+                    <b-radio v-model="item.exportType" label="Docx" value="docx" v-if="item.isProcess"></b-radio>
+                    <b-radio v-model="item.exportType" label="Pdf" value="pdf" v-if="item.isProcess"></b-radio>
                 </div>
             </div>
         </div>
@@ -37,6 +40,7 @@
 <script>
 import DocumentAdhoc from './../../components/DocumentAdhoc'
 export default DocumentAdhoc
+// <b-check-box v-model="" :bind-value="add.id" :id="add.value" :label="add.value"></b-check-box>
 </script>
 
 <style>
@@ -54,6 +58,9 @@ export default DocumentAdhoc
         text-align: center;
     }
     .dz-document-adhoc {
-        bottom: 39px !important ;
+        bottom: 60px !important ;
+    }
+    .dz-document-bonus {
+        bottom: 40px !important ;
     }
 </style>

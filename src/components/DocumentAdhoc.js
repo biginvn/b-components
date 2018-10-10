@@ -1,8 +1,9 @@
 import dropzoneUpload from './DropzoneUpload.js'
 import BRadio from '../themes/ios/Radio.vue'
+import BCheckbox from '../themes/ios/CheckBox.vue'
 export default 
 {
-    components : { BRadio },
+    components : { BRadio, BCheckbox },
     mixins : [dropzoneUpload],
     watch : {
         items : {
@@ -11,16 +12,29 @@ export default
                 if(Array.isArray(val))
                 {
                     val.forEach((item,index) => {
+                        if(!item.isProcess)
+                            item.exportType = 'docx';
+                        vm.value.list[index].isProcess = item.isProcess
                         vm.value.list[index].exportType = item.exportType
                     })
                 }
-                
             },
             deep: true
         }
     },
     methods :{
         /* custom model items for document adhoc */
+        deleteThisItem(id){
+            for(var i = 0; i < this.items.length; i++){
+                if( this.items[i].id  == id ){
+                    this.items[i].show = false
+                    this.items.splice(i, 1)
+                }
+            }
+            this.value.list = this.items;
+            this.value.removeIds.push(id);
+            this.$emit('input', this.value)
+        },
         prepareItems(list) {
             if (list == undefined || list == null || list.length == 0){
                 if (this.default != undefined && this.default != null ){
@@ -45,8 +59,8 @@ export default
                     name       : (listItem.filename == null || listItem.filename == undefined) ? this.getNameByPath(listItem.path) : listItem.filename,
                     path       : listItem.path,
                     className  : className,
-                    exportType : listItem.export_type ? listItem.export_type : 'docx',
-                    is_active : listItem.is_active ? true : false
+                    exportType : listItem.type_process ? listItem.type_process : 'docx',
+                    isProcess  : listItem.is_process ? true : false,
                 }
                 items.push(item);
             }
@@ -75,8 +89,21 @@ export default
 
                     /* handle append export type after added file */
                     var idExportTypeElement = Math.floor(Math.random() * 100000); // Create the remove button 
-                    var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type export-type-upload"><div class="b__components b-radio"><input checked name="${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" ><input name="${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div></div>`);
+                    var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type export-type-upload"><div class="b__components b-checkbox"><input name="is-process-${idExportTypeElement}" type="checkbox" class="checkbox__input"> <span class="checkbox__checkmark"></span> <label>Document Process</label></div><div class="b__components b-radio" style="display:none;"><input checked name="export-type-${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" style="display:none;" ><input name="export-type-${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div>`);
                     var d = file.previewElement.appendChild(exportTypeElement)
+
+                    /* register event js for review document */
+                    $(`input[name="is-process-${idExportTypeElement}"]`).change(function() {
+
+                        if ($(this).is(':checked') == true) {
+                            $(this).parent().siblings('.b-radio').css("display","");
+                            $(this).closest('.preview').find('.dz-size').removeClass('dz-document-bonus').addClass('dz-document-adhoc');
+                        }else{
+                            $(this).parent().siblings('.b-radio').css("display","none");
+                            $(this).closest('.preview').find('.dz-size').removeClass('dz-document-adhoc').addClass('dz-document-bonus');
+                        }
+                    });
+                    /* end register event js for review document */
 
                     if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" ||  fileEx == "gif" ||  fileEx == "bmp")
                         return child.className += " dz-image"
@@ -152,7 +179,7 @@ export default
         },
         customHtmlReview()
         {
-            let html = '<div class="preview"><div class="dz-thumb"><img data-dz-thumbnail=""></div> <span data-dz-name="" class="dz-name"></span> <span data-dz-size="" class="dz-size dz-document-adhoc"></span> <a href="#" target="_blank" data-dz-remove="" class="remove-archive"><span><i class="fa fa-trash-o"></i></span></a></div>'
+            let html = '<div class="preview"><div class="dz-thumb"><img data-dz-thumbnail=""></div> <span data-dz-name="" class="dz-name"></span> <span data-dz-size="" class="dz-size dz-document-bonus"></span> <a href="#" target="_blank" data-dz-remove="" class="remove-archive"><span><i class="fa fa-trash-o"></i></span></a></div>'
             return html;
         }
     }
