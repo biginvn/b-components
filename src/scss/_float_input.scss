@@ -74,4 +74,9 @@
             display: block;
         }
     }
+    &[always-disabled="true"] {
+        input.b__input {
+            padding-left: 15px !important;
+        }
+    }
 }
