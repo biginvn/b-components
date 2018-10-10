@@ -23,11 +23,11 @@
                     <img v-else data-dz-thumbnail="">
                     <a :href="item.path"><span data-dz-name="" class="dz-name">{{ item.name }}</span></a>
                     <strong>
-                        <span :class="item.isProcess? 'dz-size dz-document-adhoc' : 'dz-size dz-document-bonus'" data-dz-size>{{ item.filesize }}</span>
+                        <span :class="getClassSize(item)" data-dz-size>{{ item.filesize }}</span>
                     </strong>
                     <a data-dz-remove="" class="remove-archive" @click="deleteThisItem(item.id)"><i class="fa fa-trash-o"></i></a>
                 </div> 
-                <div class="form-group document-type">
+                <div class="form-group document-type" v-if="item.className == 'dz-thumb dz-doc show-option-document'">
                     <b-check-box v-model="item.isProcess" label="Document Process"></b-check-box>
                     <b-radio v-model="item.exportType" label="Docx" value="docx" v-if="item.isProcess"></b-radio>
                     <b-radio v-model="item.exportType" label="Pdf" value="pdf" v-if="item.isProcess"></b-radio>
@@ -62,5 +62,8 @@ export default DocumentAdhoc
     }
     .dz-document-bonus {
         bottom: 40px !important ;
+    }
+    .dz-document-none {
+        bottom: 5px !important ;
     }
 </style>

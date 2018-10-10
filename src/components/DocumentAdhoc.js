@@ -67,6 +67,50 @@ export default
             this.items = items
             return this.items
         },
+        getClassByPath(path){
+            var itemClass = "dz-thumb"
+            var fileEx = this.checkTypeFile(path)
+            if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" ||  fileEx == "gif" ||  fileEx == "bmp")
+                return itemClass += " dz-image"
+            switch(fileEx) {
+                case "pdf":
+                    itemClass += " dz-pdf"
+                    break;
+                case "doc":
+                    itemClass += " dz-doc"
+                    break;
+                case "docx":
+                    itemClass += " dz-doc show-option-document"
+                    break;
+                case "ppt":
+                    itemClass += " dz-ppt"
+                    break;
+                case "xls":
+                    itemClass += " dz-xls"
+                    break;
+                case "xlsx":
+                    itemClass += " dz-xls"
+                    break;
+                case "txt":
+                    itemClass += " dz-txt"
+                    break;
+                case "csv":
+                    itemClass += " dz-csv"
+                    break;
+                case "rtf":
+                    itemClass += " dz-rtf"
+                    break;
+                case "zip":
+                    itemClass += " dz-zip"
+                    break;
+                case "rar":
+                    itemClass += " dz-zip"
+                    break;
+                default:
+                    itemClass = itemClass + " dz-file"
+            }
+            return itemClass
+        },
         initDropzone(){
             this.configDropzone()
             this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
@@ -106,43 +150,53 @@ export default
                     /* end register event js for review document */
 
                     if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" ||  fileEx == "gif" ||  fileEx == "bmp")
-                        return child.className += " dz-image"
-                    switch(fileEx) {
-                        case "pdf":
-                            child.className += " dz-pdf"
-                            break;
-                        case "doc":
-                            child.className += " dz-doc"
-                            break;
-                        case "docx":
-                            child.className += " dz-doc"
-                            break;
-                        case "ppt":
-                            child.className += " dz-ppt"
-                            break;
-                        case "xls":
-                            child.className += " dz-xls"
-                            break;
-                        case "xlsx":
-                            child.className += " dz-xls"
-                            break;
-                        case "txt":
-                            child.className += " dz-txt"
-                            break;
-                        case "csv":
-                            child.className += " dz-csv"
-                            break;
-                        case "rtf":
-                            child.className += " dz-rtf"
-                            break;
-                        case "zip":
-                            child.className += " dz-zip"
-                            break;
-                        case "rar":
-                            child.className += " dz-zip"
-                            break;
-                        default:
-                            child.className += " dz-file"
+                        child.className += " dz-image"
+                    else
+                    {
+                        switch(fileEx) {
+                            case "pdf":
+                                child.className += " dz-pdf"
+                                break;
+                            case "doc":
+                                child.className += " dz-doc"
+                                break;
+                            case "docx":
+                                child.className += " dz-doc show-option-document"
+                                break;
+                            case "ppt":
+                                child.className += " dz-ppt"
+                                break;
+                            case "xls":
+                                child.className += " dz-xls"
+                                break;
+                            case "xlsx":
+                                child.className += " dz-xls"
+                                break;
+                            case "txt":
+                                child.className += " dz-txt"
+                                break;
+                            case "csv":
+                                child.className += " dz-csv"
+                                break;
+                            case "rtf":
+                                child.className += " dz-rtf"
+                                break;
+                            case "zip":
+                                child.className += " dz-zip"
+                                break;
+                            case "rar":
+                                child.className += " dz-zip"
+                                break;
+                            default:
+                                child.className += " dz-file"
+                        }
+                    }
+                        
+                    if(fileEx != 'docx')
+                    {
+                        let element = $(`input[name="is-process-${idExportTypeElement}"]`);
+                        element.closest('.preview').find('.export-type-upload').css("display","none");
+                        element.closest('.preview').find('.dz-size').removeClass('dz-document-bonus').addClass('dz-document-none');
                     }
                 }
 
@@ -181,6 +235,21 @@ export default
         {
             let html = '<div class="preview"><div class="dz-thumb"><img data-dz-thumbnail=""></div> <span data-dz-name="" class="dz-name"></span> <span data-dz-size="" class="dz-size dz-document-bonus"></span> <a href="#" target="_blank" data-dz-remove="" class="remove-archive"><span><i class="fa fa-trash-o"></i></span></a></div>'
             return html;
+        },
+        getClassSize(item)
+        {
+            let classSize = "";
+            if(item.isProcess)
+                classSize = 'dz-size dz-document-adhoc'
+            else
+            {
+                if(item.className == 'dz-thumb dz-doc show-option-document')
+                    classSize = 'dz-size dz-document-bonus'
+                else
+                    classSize = 'dz-size dz-document-none'
+
+            }
+            return classSize;
         }
     }
 }
