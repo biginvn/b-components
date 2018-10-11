@@ -6,15 +6,13 @@
         .content {
             text-align: center;
             cursor: pointer;
-            padding: 5px;
+            padding: 20px 30%;
             border: 2px dashed #f3f3f3;
             background: #fafafa;
             color: #666;
             -webkit-animation: fadeIn;
             animation: fadeIn;
             animation-duration: 1s;
-            padding-left: 30%;
-            padding-right: 30%;
             .icon-upload{
                 width: 30px;
                 margin-top: -5px;
@@ -58,15 +56,20 @@
             clear: both;
         }
         .preview {
-            width: 225px;
+            flex: 0 0 calc(33.333333% - 5px);
+            max-width: calc(33.333333% - 5px);
+            // width: 225px;
             border: 1px solid #dfdfdf;
             border-radius: 5px;
-            float: left;
             position: relative;
             -webkit-animation: fadeIn;
             animation: fadeIn;
             animation-duration: 1s;
-            margin: 2px !important;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            &:nth-child(3n + 1){
+                margin-right: 0;
+            }
             .dz-thumb {
                 width: 44px;
                 height: 55px;
@@ -131,30 +134,33 @@
                 max-width: 160px;
                 font-size: 10.5px;
                 position: absolute;
-                bottom: 7px;
+                // bottom: 7px;
+                top: 35px;
                 left: 50px;
             }
             .remove-archive {
                 position: absolute;
                 opacity: 0;
-                top: 70%;
-                left: 96%;
-                margin-left: -20px;
-                margin-top: -40px;
-                font-size: 13px;
+                top: -1px;
+                right: -1px;
+                bottom: -1px;
                 border-radius: 5px;
                 border: 1px solid #dfdfdf;
                 width: 30px;
-                height: 57px;
-                line-height: 27px;
                 text-align: center;
                 padding: 0;
-                padding-top: 16px;
                 cursor: pointer;
                 z-index: 9;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: all .3s ease;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
                 &:hover {
-                    background-color: gainsboro!important;
                     opacity: 1;
+                    background-color: gainsboro;
+                    text-decoration: none;
                     color: map-get($supportColors, grey-dark);
                 }
             }

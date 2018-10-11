@@ -133,18 +133,16 @@ export default
 
                     /* handle append export type after added file */
                     var idExportTypeElement = Math.floor(Math.random() * 100000); // Create the remove button 
-                    var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type export-type-upload"><div class="b__components b-checkbox"><input name="is-process-${idExportTypeElement}" type="checkbox" class="checkbox__input"> <span class="checkbox__checkmark"></span> <label>Document Process</label></div><div class="b__components b-radio" style="display:none;"><input checked name="export-type-${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" style="display:none;" ><input name="export-type-${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div>`);
+                    var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type export-type-upload"><div class="b__components b-checkbox"><input name="is-process-${idExportTypeElement}" type="checkbox" class="checkbox__input"> <span class="checkbox__checkmark"></span> <label>Document Process</label></div><div class="document-type-option"><div class="b__components b-radio" style="display:none;"><input checked name="export-type-${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" style="display:none;" ><input name="export-type-${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div></div>`);
                     var d = file.previewElement.appendChild(exportTypeElement)
 
                     /* register event js for review document */
                     $(`input[name="is-process-${idExportTypeElement}"]`).change(function() {
 
                         if ($(this).is(':checked') == true) {
-                            $(this).parent().siblings('.b-radio').css("display","");
-                            $(this).closest('.preview').find('.dz-size').removeClass('dz-document-bonus').addClass('dz-document-adhoc');
+                            $(this).parent().siblings().children('.b-radio').css("display","");
                         }else{
-                            $(this).parent().siblings('.b-radio').css("display","none");
-                            $(this).closest('.preview').find('.dz-size').removeClass('dz-document-adhoc').addClass('dz-document-bonus');
+                            $(this).parent().siblings().children('.b-radio').css("display","none");
                         }
                     });
                     /* end register event js for review document */
@@ -209,8 +207,6 @@ export default
         },
         configDropzone() {
             let acceptedFiles = this.supportTypes.join(',')
-            let vue = this;
-            $(document.querySelector(`.${this.id}__preview`)).html(vue.customHtmlReview());
             let config = {
                 thumbnailWidth : 80,
                 thumbnailHeight: 80,
@@ -230,26 +226,6 @@ export default
                 },
             }
             this.completedConfig  = Object.assign(config, this.config)
-        },
-        customHtmlReview()
-        {
-            let html = '<div class="preview"><div class="dz-thumb"><img data-dz-thumbnail=""></div> <span data-dz-name="" class="dz-name"></span> <span data-dz-size="" class="dz-size dz-document-bonus"></span> <a href="#" target="_blank" data-dz-remove="" class="remove-archive"><span><i class="fa fa-trash-o"></i></span></a></div>'
-            return html;
-        },
-        getClassSize(item)
-        {
-            let classSize = "";
-            if(item.isProcess)
-                classSize = 'dz-size dz-document-adhoc'
-            else
-            {
-                if(item.className == 'dz-thumb dz-doc show-option-document')
-                    classSize = 'dz-size dz-document-bonus'
-                else
-                    classSize = 'dz-size dz-document-none'
-
-            }
-            return classSize;
         }
     }
 }
