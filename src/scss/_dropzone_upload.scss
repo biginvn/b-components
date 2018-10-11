@@ -50,6 +50,8 @@
 
 
     & [class$="__preview__container"] {
+        display: flex;
+        flex-wrap: wrap;
         &:after {
             content: '';
             display: block;
@@ -116,12 +118,13 @@
             }
             .dz-name {
                 display: block;
-                text-align: center;
+                // text-align: center;
                 padding: 5px 0;
                 position: absolute;
                 top: 8px;
                 left: 48px;
-                max-width: 150px;
+                right: 0;
+                // max-width: 150px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 font-weight: bold;

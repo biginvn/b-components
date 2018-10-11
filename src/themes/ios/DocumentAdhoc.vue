@@ -8,7 +8,7 @@
                 </div>
             </div>
         </div>
-        <div :class="id + '__preview__container'" style="display: flex;  flex-wrap: wrap;">
+        <div :class="id + '__preview__container'">
             <div :class="id + '__preview preview stuff'">
                 <div class="preview">
                     <div class="dz-thumb">
@@ -20,12 +20,6 @@
                         <span><i class="fas fa-times"></i></span>
                     </a>
                 </div>
-                <!-- <div class="preview">
-                    <div class="dz-thumb"><img data-dz-thumbnail /></div>
-                    <span class="dz-name" data-dz-name></span>
-                    <span class="dz-size" data-dz-size></span>
-                    <a href="#" class="remove-archive" target="_blank" data-dz-remove><span><i class="fas fa-times"></i></span></a>
-                </div> -->
             </div>
             <div v-for= "item in items" class="preview">
                 <div :class="item.className" style="animation: fadeOut;">

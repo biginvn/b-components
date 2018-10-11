@@ -19,7 +19,7 @@
                     <div class="dz-thumb"><img data-dz-thumbnail /></div>
                     <span class="dz-name" data-dz-name></span>
                     <span class="dz-size" data-dz-size></span>
-                    <a href="#" class="remove-archive" target="_blank" data-dz-remove><span><i class="fa fa-trash-o"></i></span></a>
+                    <a href="#" class="remove-archive" target="_blank" data-dz-remove><span><i class="fas fa-times"></i></span></a>
                 </div>
             </div>
             <div v-for= "item in items" class="preview">
@@ -29,7 +29,7 @@
                         <img v-else data-dz-thumbnail="">
                         <a :href="item.path"><span data-dz-name="" class="dz-name">{{ item.name }}</span></a>
                         <strong><span class="dz-size" data-dz-size>{{ item.filesize }}</span></strong>
-                        <a data-dz-remove="" class="remove-archive" @click="deleteThisItem(item.id)"><i class="fa fa-trash-o"></i></a>
+                        <a data-dz-remove="" class="remove-archive" @click="deleteThisItem(item.id)"><i class="fas fa-times"></i></a>
                     </div> 
                 <!-- </a> -->
             </div>
