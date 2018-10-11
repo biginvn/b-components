@@ -55,6 +55,28 @@
             &:hover{
                 color: #464a4c;
             }
+        }
     }
+    .link-name-area {
+        line-height: 1.5;
+        font-weight: 600;
+        padding: 9px 13px 6px 15px!important;
+        font-size: 13px !important;
+        color: #444 !important;
+        pointer-events: auto;
+        display: none;
+    }
+    &.has-link-view.input-disabled, &.has-link-view[always-disabled="true"] {
+        input {
+            display: none;
+        }
+        .link-name-area {
+            display: block;
+        }
+    }
+    &[always-disabled="true"] {
+        input.b__input {
+            padding-left: 15px !important;
+        }
     }
 }
