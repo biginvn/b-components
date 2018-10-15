@@ -19,6 +19,7 @@
 
 			<div class="input-control-wrap" v-if = "!isSingle || getSingleSelected() == null " style="width:100%;">
 				<input
+				ref="inputSearch"
 				v-show="singleDropdown"
 				:placeholder="placeholder"
 				type="text" 
@@ -31,8 +32,6 @@
 			></div>
 
 			<div :class="isExpanding ? 'iconC iconD' : 'iconC'" @click="toggleList()">
-				<!-- <i class="fa fa-angle-down iconC" aria-hidden="true" v-show="!isExpanding"></i>
-				<i class="fa fa-angle-up iconC" aria-hidden="true" v-show="isExpanding"></i> -->
 			</div>
 		</div>
 		

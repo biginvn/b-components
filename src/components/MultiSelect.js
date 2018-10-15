@@ -14,6 +14,7 @@ export default {
 	mixins: [baseComponent],
 	created () {
 		this.searchList = this.list
+		this.setStatus();
 	},
 	watch:{
 		list(newList) {
@@ -25,8 +26,8 @@ export default {
 				this.$emit('search-keywords', '');
 			}
 		},
-		value(value){
-			if(value != "" && value != null)
+		value(val){
+			if(val != "" && val != null)
 				this.isActive = true
 			else this.isActive = false
 		}
@@ -36,9 +37,7 @@ export default {
         list: {
 
         },
-        value: {
-
-        },
+        value:null ,
         name : null,
         disabled: {
 
@@ -76,17 +75,29 @@ export default {
 		}
 	},
 	methods : {
-
-		editQuery(){
-			var indexThumb
+		setStatus(){
+			if(this.value != "" && this.value != null)
+				this.isActive = true
+			else {
+				this.isActive = false
+				this.placeholder = null
+			}
+		},
+		editQuery()
+		{
+			let self = this;
 			var getValue = this.value
 			this.list.filter(function(index) {
 				if (index.id == getValue) {
-					indexThumb = index.thumbHtml
+					return self.searchKeyword = index.thumbHtml
 				}
 			})
-			this.searchKeyword = indexThumb
-			return this.$emit('input', null)
+
+			this.$emit('input', null)
+			this.$nextTick(()=>{
+				if(this.$refs.inputSearch)
+					this.$refs.inputSearch.focus();
+			})
 		},
 
 		filterQuerylist(){
@@ -97,6 +108,9 @@ export default {
 		},
 
 		closeDropdow(){
+
+			if(!this.value)
+				this.searchKeyword = null
 			if(this.searchList.length == 0){
 				this.isExpanding = false
 			}
@@ -204,12 +218,10 @@ export default {
 			})
 
 		},
-
 		focusInputAction (keyword) {
 			this.searchAction(keyword)
 			this.switchList(true)
 		},
-
 		keypressAction (keyName){
 			let pointerIndex = this.pointerIndex
 			switch (keyName) {
