@@ -80,7 +80,6 @@ export default {
 				this.isActive = true
 			else {
 				this.isActive = false
-				this.placeholder = null
 			}
 		},
 		editQuery()
@@ -216,7 +215,6 @@ export default {
 				let regex = new RegExp('.*' + keyword.toLowerCase() +'.*')
 				return item.keywords.toLowerCase().match(regex)
 			})
-
 		},
 		focusInputAction (keyword) {
 			this.searchAction(keyword)
