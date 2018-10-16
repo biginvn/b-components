@@ -29,7 +29,7 @@
 				<div class="content" v-html="item.html"></div>
 			</li>
 		</ul>
-		<div class="control" @click="switchList(true)" :class="[{'control-down':disabled}]"><i aria-hidden="true" class="fa fa-angle-down" ></i> <i aria-hidden="true" class="fa fa-angle-up" style="display: none;"></i></div>
+		<div tabindex="0" @blur="blurCombobox($event)" class="control" @click="switchList(true)" :class="[{'control-down':disabled}]"><i aria-hidden="true" class="fa fa-angle-down" ></i> <i aria-hidden="true" class="fa fa-angle-up" style="display: none;"></i></div>
 	</div>
 </template>
 <script>
