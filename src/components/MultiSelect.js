@@ -106,8 +106,8 @@ export default {
 			})
 		},
 
-		closeDropdow(){
-
+		closeDropdow(event){
+			this.switchList(false);
 			if(!this.value)
 				this.searchKeyword = null
 			if(this.searchList.length == 0){

@@ -1,5 +1,5 @@
 <template>
-	<div class="b__components b__multi__select" @mouseleave = "switchList(false)" @click = "switchList(true)">
+	<div class="b__components b__multi__select" tabindex="0" @blur="closeDropdow($event)" @click = "switchList(true)">
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
 		<div class="b__multi__select__control" v-bind:class="{ addBorder : isExpanding, multi: !singleDropdown }">
 			<div class="selected" v-if="!isSingle" v-for="item in getSelectedList()">
