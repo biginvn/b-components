@@ -188,13 +188,14 @@ export default {
 					selectList = [id]
 					this.$emit('input', id)
 				}
-
-				this.switchList(true)
-
+				
 				// Reset search keyword at input field
 				this.searchKeyword = ''
 				this.focusInputAction('')
 
+				this.$nextTick(()=>{
+					this.switchList(false)
+				})
 			}
 		},
 		hoverItem(index){ // Hover on item at (index) in searchList

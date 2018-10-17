@@ -1,5 +1,5 @@
 <template>
-	<div class="b__components b__multi__select" @mouseleave = "switchList(false)" @click = "switchList(true)">
+	<div class="b__components b__multi__select" @focusout = "switchList(false)" @click = "switchList(true)">
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
 		<div class="b__multi__select__control" v-bind:class="{ addBorder : isExpanding, multi: !singleDropdown }">
 			<div class="selected" v-if="!isSingle" v-for="item in getSelectedList()">
@@ -65,5 +65,30 @@
 		max-height: 145px !important;
 		height: 100% !important;
 		overflow: scroll !important;
+	}
+
+	.iconC::after{
+		content: "\f078";
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: absolute;
+        display: block;
+        padding-top: 11px;
+        top: 1px;
+        right: 6px;
+        height: calc(100% - 2px);
+        width: 12px;
+        font-size: 10px;
+        color: #74767d;
+        z-index: 2;
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+	}
+	.iconD::after{
+		transform: rotate(180deg);
 	}
 </style>
