@@ -216,6 +216,17 @@ export default {
                 }
             }
         },
+
+        toggleArrowDropdown() {
+            this.switchList(!this.isExpanding);
+            if(this.selectedValue == null){
+                this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
+                this.searchKeyword = ''
+                this.showResult = false
+            }
+            else this.showResult = true
+            this.$emit("input", this.selectedValue);
+        },
         selectItem(index){ // index item of searchList
             if(index == undefined || index == null){
                 return;

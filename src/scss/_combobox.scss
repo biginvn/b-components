@@ -38,6 +38,10 @@
         top: 50%;
         cursor: pointer;
         transform: translateY(-50%);
+        color: #74767d;
+        z-index: 2;
+        font-weight: 600;
+        font-size: 13px;
     }
 
     .list-search {
