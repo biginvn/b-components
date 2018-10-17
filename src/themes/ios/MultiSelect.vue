@@ -63,7 +63,6 @@
 	}
 
 	.iconC::after{
-		content: "\f078";
 		display: inline-block;
 		font: normal normal normal 14px/1 FontAwesome;
 		text-rendering: auto;
@@ -87,7 +86,7 @@
 	.iconD::after{
 		transform: rotate(180deg);
 	}
-	
+
 	.multi{
 		max-height: 145px !important;
 		height: 100% !important;
