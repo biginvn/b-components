@@ -1,10 +1,10 @@
 <template>
-	<div class="b__components b__multi__select" @focusout = "switchList(false)" @click = "switchList(true)">
+	<div class="b__components b__multi__select" tabindex="0" @blur = "closeDropdow()" @click = "switchList(true)">
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
 		<div class="b__multi__select__control" v-bind:class="{ addBorder : isExpanding, multi: !singleDropdown }">
 			<div class="selected" v-if="!isSingle" v-for="item in getSelectedList()">
 				<span class="thumb" v-html="item.thumbHtml"></span>
-				<span class="close-item" @click = "toggleItem(item.id)"><i class="fa fa-times" aria-hidden="true"></i></span>
+				<span class="close-item" @mousedown = "toggleItem(item.id)"><i class="fa fa-times" aria-hidden="true"></i></span>
 			</div>
 
 			<div class="selected single" v-if="isSingle">
@@ -38,7 +38,7 @@
 		<!-- <input type="hidden" :name="name" :value="value" class="mutiple-select-hidden-value"> -->
 		<ul v-bind:class="[{addBorder : isExpanding}, listClasses]">
 			<li v-show = "searchList == undefined || searchList.length == 0" class="not-found">Not found</li>
-			<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }" v-for = "(item, index) in searchList" @click="toggleItem(item.id)">
+			<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }" v-for = "(item, index) in searchList" @mousedown="toggleItem(item.id)">
 				<div class="icon" v-if = "!disableIcon">
 					<img :src="item.icon" class="icon-img">
 				</div>
