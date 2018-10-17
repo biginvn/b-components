@@ -73,18 +73,11 @@ export default {
             this.configDropzone()
             this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
             let dropzoneComponent = this
-
-            // this.dropzone.on("totaluploadprogress", (progress) => {
-            //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%"
-            //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block"
-            // })
-
             this.dropzone.on("sending", (file) => {
                 document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1"
             })
 
             this.dropzone.on("queuecomplete", (progress) => {
-                // document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "0"
             })
             let Vue = this
             this.dropzone.on("addedfile", (file, xhr, formData) => {
@@ -262,6 +255,13 @@ export default {
                 }
             }
             this.value.list = this.items
+
+            /* add file added be removed */
+            if(Array.isArray(this.value.removeIds))
+            {
+                this.value.removeIds.push(id);
+            }
+
             this.$emit('input', this.value)
         },
 
