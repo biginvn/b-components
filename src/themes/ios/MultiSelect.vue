@@ -61,6 +61,33 @@
 	.selected{
 		margin-left: 3px;
 	}
+
+	.iconC::after{
+		content: "\f078";
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		position: absolute;
+		display: block;
+		padding-top: 11px;
+		top: 1px;
+		right: 6px;
+		height: calc(100% - 2px);
+		width: 12px;
+		color: #74767d;
+		z-index: 2;
+		content: "\f107";
+		font-family: 'Font Awesome 5 Free';
+		font-weight: 600;
+		font-size: 13px;
+	}
+
+	.iconD::after{
+		transform: rotate(180deg);
+	}
+	
 	.multi{
 		max-height: 145px !important;
 		height: 100% !important;
