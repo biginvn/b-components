@@ -31,7 +31,7 @@
     			onClick="this.select()"
 			></div>
 
-			<div :class="isExpanding ? 'iconC iconD' : 'iconC'" @click="toggleList()">
+			<div :class="isExpanding ? 'iconC iconD' : 'iconC'" @click="toggleList($event)">
 			</div>
 		</div>
 		

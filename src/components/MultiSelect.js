@@ -148,8 +148,9 @@ export default {
         	return selected
 		},
 
-		toggleList () {
-			this.switchList(!this.isExpanding)
+		toggleList (e) {
+            e.stopPropagation();
+            this.switchList(!this.isExpanding);
 		},
 
 		switchList (on = true) {
