@@ -10640,19 +10640,11 @@ module.exports = function unique(arr) {
             this.configDropzone();
             this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig);
             let dropzoneComponent = this;
-
-            // this.dropzone.on("totaluploadprogress", (progress) => {
-            //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.width = progress + "%"
-            //     document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.display = "block"
-            // })
-
             this.dropzone.on("sending", file => {
                 document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1";
             });
 
-            this.dropzone.on("queuecomplete", progress => {
-                // document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "0"
-            });
+            this.dropzone.on("queuecomplete", progress => {});
             let Vue = this;
             this.dropzone.on("addedfile", (file, xhr, formData) => {
                 var parent = document.querySelectorAll('.' + this.id + '__preview__container .preview:not(stuff)');
@@ -10824,6 +10816,12 @@ module.exports = function unique(arr) {
                 }
             }
             this.value.list = this.items;
+
+            /* add file added be removed */
+            if (Array.isArray(this.value.removeIds)) {
+                this.value.removeIds.push(id);
+            }
+
             this.$emit('input', this.value);
         },
 
@@ -52042,8 +52040,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			});
 		},
 
-		closeDropdow() {
-
+		closeDropdow(event) {
+			this.switchList(false);
 			if (!this.value) this.searchKeyword = null;
 			if (this.searchList.length == 0) {
 				this.isExpanding = false;
@@ -52080,7 +52078,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return selected;
 		},
 
-		toggleList() {
+		toggleList(e) {
+			e.stopPropagation();
 			this.switchList(!this.isExpanding);
 		},
 
@@ -71029,7 +71028,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n.addBorder{\n\t\tborder: 1px solid #0082d5 !important;\n}\n.b__multi__select__control{\n\t\tpadding-top: 2px !important;\n}\n.selected{\n\t\tmargin-left: 3px;\n}\n.multi{\n\t\tmax-height: 145px !important;\n\t\theight: 100% !important;\n\t\toverflow: scroll !important;\n}\n.iconC::after{\n\t\tcontent: \"\\F078\";\n        display: inline-block;\n        font: normal normal normal 14px/1 FontAwesome;\n        text-rendering: auto;\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: grayscale;\n        position: absolute;\n        display: block;\n        padding-top: 11px;\n        top: 1px;\n        right: 6px;\n        height: calc(100% - 2px);\n        width: 12px;\n        font-size: 10px;\n        color: #74767d;\n        z-index: 2;\n        content: \"\\F078\";\n        font-family: \"Font Awesome 5 Free\";\n        font-weight: 900;\n}\n.iconD::after{\n\t\ttransform: rotate(180deg);\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?78a09bd6"],"names":[],"mappings":";AAsDA;EACA,qCAAA;CACA;AACA;EACA,4BAAA;CACA;AACA;EACA,iBAAA;CACA;AACA;EACA,6BAAA;EACA,wBAAA;EACA,4BAAA;CACA;AAEA;EACA,iBAAA;QACA,sBAAA;QACA,8CAAA;QACA,qBAAA;QACA,oCAAA;QACA,mCAAA;QACA,mBAAA;QACA,eAAA;QACA,kBAAA;QACA,SAAA;QACA,WAAA;QACA,yBAAA;QACA,YAAA;QACA,gBAAA;QACA,eAAA;QACA,WAAA;QACA,iBAAA;QACA,mCAAA;QACA,iBAAA;CACA;AACA;EACA,0BAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__multi__select\" @mouseleave = \"switchList(false)\" @click = \"switchList(true)\">\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{ addBorder : isExpanding, multi: !singleDropdown }\">\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\n\t\t\t</div>\n\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\n\t\t\t\t<span \n\t\t\t\t\tclass=\"thumb\" \n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\n\t\t\t\t\t@click='editQuery()'\t\n\t\t\t\t>\n\t\t\t\t</span>\n\t\t\t</div>\n\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\n\t\t\t\t<input\n\t\t\t\tref=\"inputSearch\"\n\t\t\t\tv-show=\"singleDropdown\"\n\t\t\t\t:placeholder=\"placeholder\"\n\t\t\t\ttype=\"text\" \n\t\t\t\tstyle=\"font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; left: 10px; width: 90%;\" \n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\n\t\t\t\tclass=\"input-control\" @focus=\"focusInputAction($event.target.value);$emit('removeRequired')\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\n    \t\t\t@blur='closeDropdow()'\n    \t\t\tonClick=\"this.select()\"\n\t\t\t></div>\n\n\t\t\t<div :class=\"isExpanding ? 'iconC iconD' : 'iconC'\" @click=\"toggleList()\">\n\t\t\t</div>\n\t\t</div>\n\t\t\n\t\t<!-- <input type=\"hidden\" :name=\"name\" :value=\"value\" class=\"mutiple-select-hidden-value\"> -->\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\n\t\t\t<li v-show = \"searchList == undefined || searchList.length == 0\" class=\"not-found\">Not found</li>\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n</template>\n<script>\n\timport MultiSelect from './../../components/MultiSelect'\n\texport default MultiSelect\n</script>\n<style>\n\t.addBorder{\n\t\tborder: 1px solid #0082d5 !important;\n\t}\n\t.b__multi__select__control{\n\t\tpadding-top: 2px !important;\n\t}\n\t.selected{\n\t\tmargin-left: 3px;\n\t}\n\t.multi{\n\t\tmax-height: 145px !important;\n\t\theight: 100% !important;\n\t\toverflow: scroll !important;\n\t}\n\n\t.iconC::after{\n\t\tcontent: \"\\f078\";\n        display: inline-block;\n        font: normal normal normal 14px/1 FontAwesome;\n        text-rendering: auto;\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: grayscale;\n        position: absolute;\n        display: block;\n        padding-top: 11px;\n        top: 1px;\n        right: 6px;\n        height: calc(100% - 2px);\n        width: 12px;\n        font-size: 10px;\n        color: #74767d;\n        z-index: 2;\n        content: \"\\f078\";\n        font-family: \"Font Awesome 5 Free\";\n        font-weight: 900;\n\t}\n\t.iconD::after{\n\t\ttransform: rotate(180deg);\n\t}\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.addBorder{\n\tborder: 1px solid #0082d5 !important;\n}\n.b__multi__select__control{\n\tpadding-top: 2px !important;\n}\n.selected{\n\tmargin-left: 3px;\n}\n.iconC::after{\n\tcontent: \"\\F078\";\n\tdisplay: inline-block;\n\tfont: normal normal normal 14px/1 FontAwesome;\n\ttext-rendering: auto;\n\t-webkit-font-smoothing: antialiased;\n\t-moz-osx-font-smoothing: grayscale;\n\tposition: absolute;\n\tdisplay: block;\n\tpadding-top: 11px;\n\ttop: 1px;\n\tright: 6px;\n\theight: calc(100% - 2px);\n\twidth: 12px;\n\tcolor: #74767d;\n\tz-index: 2;\n\tcontent: \"\\F107\";\n\tfont-family: 'Font Awesome 5 Free';\n\tfont-weight: 600;\n\tfont-size: 13px;\n}\n.iconD::after{\n\ttransform: rotate(180deg);\n}\n.multi{\n\tmax-height: 145px !important;\n\theight: 100% !important;\n\toverflow: scroll !important;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?63d45abb"],"names":[],"mappings":";AAsDA;CACA,qCAAA;CACA;AACA;CACA,4BAAA;CACA;AACA;CACA,iBAAA;CACA;AAEA;CACA,iBAAA;CACA,sBAAA;CACA,8CAAA;CACA,qBAAA;CACA,oCAAA;CACA,mCAAA;CACA,mBAAA;CACA,eAAA;CACA,kBAAA;CACA,SAAA;CACA,WAAA;CACA,yBAAA;CACA,YAAA;CACA,eAAA;CACA,WAAA;CACA,iBAAA;CACA,mCAAA;CACA,iBAAA;CACA,gBAAA;CACA;AAEA;CACA,0BAAA;CACA;AAEA;CACA,6BAAA;CACA,wBAAA;CACA,4BAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__multi__select\" tabindex=\"0\" @blur=\"closeDropdow($event)\" @click = \"switchList(true)\">\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{ addBorder : isExpanding, multi: !singleDropdown }\">\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\n\t\t\t</div>\n\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\n\t\t\t\t<span \n\t\t\t\t\tclass=\"thumb\" \n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\n\t\t\t\t\t@click='editQuery()'\t\n\t\t\t\t>\n\t\t\t\t</span>\n\t\t\t</div>\n\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\n\t\t\t\t<input\n\t\t\t\tref=\"inputSearch\"\n\t\t\t\tv-show=\"singleDropdown\"\n\t\t\t\t:placeholder=\"placeholder\"\n\t\t\t\ttype=\"text\" \n\t\t\t\tstyle=\"font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; left: 10px; width: 90%;\" \n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\n\t\t\t\tclass=\"input-control\" @focus=\"focusInputAction($event.target.value);$emit('removeRequired')\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\n    \t\t\t@blur='closeDropdow()'\n    \t\t\tonClick=\"this.select()\"\n\t\t\t></div>\n\n\t\t\t<div :class=\"isExpanding ? 'iconC iconD' : 'iconC'\" @click=\"toggleList($event)\">\n\t\t\t</div>\n\t\t</div>\n\t\t\n\t\t<!-- <input type=\"hidden\" :name=\"name\" :value=\"value\" class=\"mutiple-select-hidden-value\"> -->\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\n\t\t\t<li v-show = \"searchList == undefined || searchList.length == 0\" class=\"not-found\">Not found</li>\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id)\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n</template>\n<script>\n\timport MultiSelect from './../../components/MultiSelect'\n\texport default MultiSelect\n</script>\n<style>\n\t.addBorder{\n\t\tborder: 1px solid #0082d5 !important;\n\t}\n\t.b__multi__select__control{\n\t\tpadding-top: 2px !important;\n\t}\n\t.selected{\n\t\tmargin-left: 3px;\n\t}\n\n\t.iconC::after{\n\t\tcontent: \"\\f078\";\n\t\tdisplay: inline-block;\n\t\tfont: normal normal normal 14px/1 FontAwesome;\n\t\ttext-rendering: auto;\n\t\t-webkit-font-smoothing: antialiased;\n\t\t-moz-osx-font-smoothing: grayscale;\n\t\tposition: absolute;\n\t\tdisplay: block;\n\t\tpadding-top: 11px;\n\t\ttop: 1px;\n\t\tright: 6px;\n\t\theight: calc(100% - 2px);\n\t\twidth: 12px;\n\t\tcolor: #74767d;\n\t\tz-index: 2;\n\t\tcontent: \"\\f107\";\n\t\tfont-family: 'Font Awesome 5 Free';\n\t\tfont-weight: 600;\n\t\tfont-size: 13px;\n\t}\n\n\t.iconD::after{\n\t\ttransform: rotate(180deg);\n\t}\n\t\n\t.multi{\n\t\tmax-height: 145px !important;\n\t\theight: 100% !important;\n\t\toverflow: scroll !important;\n\t}\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -78063,9 +78062,12 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "b__components b__multi__select",
+    attrs: {
+      "tabindex": "0"
+    },
     on: {
-      "mouseleave": function($event) {
-        _vm.switchList(false)
+      "blur": function($event) {
+        _vm.closeDropdow($event)
       },
       "click": function($event) {
         _vm.switchList(true)
@@ -78173,7 +78175,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: _vm.isExpanding ? 'iconC iconD' : 'iconC',
     on: {
       "click": function($event) {
-        _vm.toggleList()
+        _vm.toggleList($event)
       }
     }
   })], 2), _vm._v(" "), _c('ul', {

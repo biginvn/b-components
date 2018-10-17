@@ -106,8 +106,8 @@ export default {
 			})
 		},
 
-		closeDropdow(){
-
+		closeDropdow(event){
+			this.switchList(false);
 			if(!this.value)
 				this.searchKeyword = null
 			if(this.searchList.length == 0){
@@ -148,8 +148,9 @@ export default {
         	return selected
 		},
 
-		toggleList () {
-			this.switchList(!this.isExpanding)
+		toggleList (e) {
+            e.stopPropagation();
+            this.switchList(!this.isExpanding);
 		},
 
 		switchList (on = true) {
