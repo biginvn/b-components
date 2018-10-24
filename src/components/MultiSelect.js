@@ -14,6 +14,7 @@ export default {
 	mixins: [baseComponent],
 	created () {
 		this.searchList = this.list
+		this.setStatus();
 	},
 	watch:{
 		list(newList) {
@@ -25,8 +26,8 @@ export default {
 				this.$emit('search-keywords', '');
 			}
 		},
-		value(value){
-			if(value != "" && value != null)
+		value(val){
+			if(val != "" && val != null)
 				this.isActive = true
 			else this.isActive = false
 		}
@@ -36,9 +37,7 @@ export default {
         list: {
 
         },
-        value: {
-
-        },
+        value:null ,
         name : null,
         disabled: {
 
@@ -76,17 +75,28 @@ export default {
 		}
 	},
 	methods : {
-
-		editQuery(){
-			var indexThumb
+		setStatus(){
+			if(this.value != "" && this.value != null)
+				this.isActive = true
+			else {
+				this.isActive = false
+			}
+		},
+		editQuery()
+		{
+			let self = this;
 			var getValue = this.value
 			this.list.filter(function(index) {
 				if (index.id == getValue) {
-					indexThumb = index.thumbHtml
+					return self.searchKeyword = index.thumbHtml
 				}
 			})
-			this.searchKeyword = indexThumb
-			return this.$emit('input', null)
+
+			this.$emit('input', null)
+			this.$nextTick(()=>{
+				if(this.$refs.inputSearch)
+					this.$refs.inputSearch.focus();
+			})
 		},
 
 		filterQuerylist(){
@@ -96,7 +106,10 @@ export default {
 			})
 		},
 
-		closeDropdow(){
+		closeDropdow(event){
+			this.switchList(false);
+			if(!this.value)
+				this.searchKeyword = null
 			if(this.searchList.length == 0){
 				this.isExpanding = false
 			}
@@ -135,8 +148,9 @@ export default {
         	return selected
 		},
 
-		toggleList () {
-			this.switchList(!this.isExpanding)
+		toggleList (e) {
+            e.stopPropagation();
+            this.switchList(!this.isExpanding);
 		},
 
 		switchList (on = true) {
@@ -175,13 +189,14 @@ export default {
 					selectList = [id]
 					this.$emit('input', id)
 				}
-
-				this.switchList(true)
-
+				
 				// Reset search keyword at input field
 				this.searchKeyword = ''
 				this.focusInputAction('')
 
+				this.$nextTick(()=>{
+					this.switchList(false)
+				})
 			}
 		},
 		hoverItem(index){ // Hover on item at (index) in searchList
@@ -202,14 +217,11 @@ export default {
 				let regex = new RegExp('.*' + keyword.toLowerCase() +'.*')
 				return item.keywords.toLowerCase().match(regex)
 			})
-
 		},
-
 		focusInputAction (keyword) {
 			this.searchAction(keyword)
 			this.switchList(true)
 		},
-
 		keypressAction (keyName){
 			let pointerIndex = this.pointerIndex
 			switch (keyName) {

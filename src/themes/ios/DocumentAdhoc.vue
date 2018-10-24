@@ -11,10 +11,14 @@
         <div :class="id + '__preview__container'">
             <div :class="id + '__preview preview stuff'">
                 <div class="preview">
-                    <div class="dz-thumb"><img data-dz-thumbnail /></div>
-                    <span class="dz-name" data-dz-name></span>
-                    <span class="dz-size" data-dz-size></span>
-                    <a href="#" class="remove-archive" target="_blank" data-dz-remove><span><i class="fa fa-trash-o"></i></span></a>
+                    <div class="dz-thumb">
+                        <img data-dz-thumbnail="">
+                    </div> 
+                    <span data-dz-name="" class="dz-name"></span>
+                    <span data-dz-size="" class="dz-size"></span>
+                    <a href="#" target="_blank" data-dz-remove="" class="remove-archive">
+                        <span><i class="fas fa-times"></i></span>
+                    </a>
                 </div>
             </div>
             <div v-for= "item in items" class="preview">
@@ -23,14 +27,16 @@
                     <img v-else data-dz-thumbnail="">
                     <a :href="item.path"><span data-dz-name="" class="dz-name">{{ item.name }}</span></a>
                     <strong>
-                        <span :class="getClassSize(item)" data-dz-size>{{ item.filesize }}</span>
+                        <span class="dz-size" data-dz-size>{{ item.filesize }}</span>
                     </strong>
-                    <a data-dz-remove="" class="remove-archive" @click="deleteThisItem(item.id)"><i class="fa fa-trash-o"></i></a>
+                    <a data-dz-remove="" class="remove-archive" @click="deleteThisItem(item.id)"><i class="fas fa-times"></i></a>
                 </div> 
                 <div class="form-group document-type" v-if="item.className == 'dz-thumb dz-doc show-option-document'">
                     <b-check-box v-model="item.isProcess" label="Document Process"></b-check-box>
-                    <b-radio v-model="item.exportType" label="Docx" value="docx" v-if="item.isProcess"></b-radio>
-                    <b-radio v-model="item.exportType" label="Pdf" value="pdf" v-if="item.isProcess"></b-radio>
+                    <div class="document-type-option">
+                        <b-radio v-model="item.exportType" label="Docx" value="docx" v-if="item.isProcess"></b-radio>
+                        <b-radio v-model="item.exportType" label="Pdf" value="pdf" v-if="item.isProcess"></b-radio>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,7 +46,6 @@
 <script>
 import DocumentAdhoc from './../../components/DocumentAdhoc'
 export default DocumentAdhoc
-// <b-check-box v-model="" :bind-value="add.id" :id="add.value" :label="add.value"></b-check-box>
 </script>
 
 <style>
@@ -55,15 +60,11 @@ export default DocumentAdhoc
         cursor: help;
     }
     .document-type{
-        text-align: center;
+        margin: 10px 0 10px 20px;
     }
-    .dz-document-adhoc {
-        bottom: 60px !important ;
-    }
-    .dz-document-bonus {
-        bottom: 40px !important ;
-    }
-    .dz-document-none {
-        bottom: 5px !important ;
+    .document-type-option{
+        margin: 15px 30px 0px 30px;
+        display: flex;
+        justify-content: space-between;
     }
 </style>
