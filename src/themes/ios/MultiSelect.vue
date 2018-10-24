@@ -17,12 +17,12 @@
 				</span>
 			</div>
 
-			<div class="input-control-wrap" v-if = "!isSingle || getSingleSelected() == null " style="width:100%;">
+			<div class="search" v-if = "!isSingle || getSingleSelected() == null " style="width:100%;">
 				<input
 				v-show="singleDropdown"
 				:placeholder="placeholder"
 				type="text" 
-				style="font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; left: 10px; width: 90%;" 
+				
 				@keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')"
 				@keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''"
 				class="input-control" @focus="focusInputAction($event.target.value);$emit('removeRequired')" @input = "searchAction($event.target.value)" :value = "searchKeyword"
@@ -91,5 +91,17 @@
 	}
 	.iconD::after{
 		transform: rotate(180deg);
+	}
+	.search {
+	    display: inline-block;
+	    position: relative;
+	    /* background-color: #e0e0e0; */
+	    padding: 5px 32px 5px 10px;
+	    margin-right: 7px;
+	    margin-bottom: 5px;
+	    border-radius: 15px;
+	}
+	.search > input {
+		border: transparent;
 	}
 </style>
