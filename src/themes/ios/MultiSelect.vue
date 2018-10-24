@@ -1,10 +1,10 @@
 <template>
-	<div class="b__components b__multi__select" tabindex="0" @blur = "closeDropdow()" @click = "switchList(true)">
+	<div class="b__components b__multi__select" @mouseleave = "switchList(false)" @click = "switchList(true)">
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
 		<div class="b__multi__select__control" v-bind:class="{ addBorder : isExpanding, multi: !singleDropdown }">
 			<div class="selected" v-if="!isSingle" v-for="item in getSelectedList()">
 				<span class="thumb" v-html="item.thumbHtml"></span>
-				<span class="close-item" @mousedown = "toggleItem(item.id)"><i class="fa fa-times" aria-hidden="true"></i></span>
+				<span class="close-item" @click = "toggleItem(item.id)"><i class="fa fa-times" aria-hidden="true"></i></span>
 			</div>
 
 			<div class="selected single" v-if="isSingle">
@@ -17,13 +17,12 @@
 				</span>
 			</div>
 
-			<div class="search" v-if = "!isSingle || getSingleSelected() == null " style="width:100%;">
+			<div class="input-control-wrap" v-if = "!isSingle || getSingleSelected() == null " style="width:100%;">
 				<input
-				ref="inputSearch"
 				v-show="singleDropdown"
 				:placeholder="placeholder"
 				type="text" 
-				
+				style="font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; left: 10px; width: 90%;" 
 				@keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')"
 				@keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''"
 				class="input-control" @focus="focusInputAction($event.target.value);$emit('removeRequired')" @input = "searchAction($event.target.value)" :value = "searchKeyword"
@@ -31,14 +30,16 @@
     			onClick="this.select()"
 			></div>
 
-			<div :class="isExpanding ? 'iconC iconD' : 'iconC'" @click="toggleList($event)">
+			<div :class="isExpanding ? 'iconC iconD' : 'iconC'" @click="toggleList()">
+				<!-- <i class="fa fa-angle-down iconC" aria-hidden="true" v-show="!isExpanding"></i>
+				<i class="fa fa-angle-up iconC" aria-hidden="true" v-show="isExpanding"></i> -->
 			</div>
 		</div>
 		
 		<!-- <input type="hidden" :name="name" :value="value" class="mutiple-select-hidden-value"> -->
 		<ul v-bind:class="[{addBorder : isExpanding}, listClasses]">
 			<li v-show = "searchList == undefined || searchList.length == 0" class="not-found">Not found</li>
-			<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }" v-for = "(item, index) in searchList" @mousedown="toggleItem(item.id)">
+			<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }" v-for = "(item, index) in searchList" @click="toggleItem(item.id)">
 				<div class="icon" v-if = "!disableIcon">
 					<img :src="item.icon" class="icon-img">
 				</div>
@@ -61,32 +62,6 @@
 	.selected{
 		margin-left: 3px;
 	}
-
-	.iconC::after{
-		display: inline-block;
-		font: normal normal normal 14px/1 FontAwesome;
-		text-rendering: auto;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		position: absolute;
-		display: block;
-		padding-top: 11px;
-		top: 1px;
-		right: 6px;
-		height: calc(100% - 2px);
-		width: 12px;
-		color: #74767d;
-		z-index: 2;
-		content: "\f107";
-		font-family: 'Font Awesome 5 Free';
-		font-weight: 600;
-		font-size: 13px;
-	}
-
-	.iconD::after{
-		transform: rotate(180deg);
-	}
-
 	.multi{
 		max-height: 145px !important;
 		height: 100% !important;
@@ -116,17 +91,5 @@
 	}
 	.iconD::after{
 		transform: rotate(180deg);
-	}
-	.search {
-	    display: inline-block;
-	    position: relative;
-	    /* background-color: #e0e0e0; */
-	    padding: 5px 32px 5px 10px;
-	    margin-right: 7px;
-	    margin-bottom: 5px;
-	    border-radius: 15px;
-	}
-	.search > input {
-		border: transparent;
 	}
 </style>
