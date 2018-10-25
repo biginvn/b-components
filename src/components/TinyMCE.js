@@ -10,6 +10,20 @@ export default {
     },
     props : [ 'checkEdit','id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path'],
     mixins: [baseComponent],
+    beforeDestroy(){
+        try{
+            if(tinymceB.get(this.id) != null && tinymceB.get(this.id) != undefined)
+                tinymceB.get(this.id).destroy()
+        }catch(ex)
+        {
+            
+        }
+    },
+    mounted(){
+        this.callbackUpdateContent(this.value,()=>{
+            this.initTinyMCE(this.value);
+        });
+    },
     watch:{
         value(val){
             this.callbackUpdateContent(val,()=>{
@@ -31,7 +45,7 @@ export default {
         }
     },
 
-    methods: {
+    methods: { 
         callbackUpdateContent(newContent,callback)
         {
             let _tiny = tinymceB.get(this.id);
@@ -87,54 +101,54 @@ export default {
                         relative_urls : false,
 
                         //Upload Fucntion & param
-                        toolbar_items_size: 'small',
+                            toolbar_items_size: 'small',
 
-                        images_upload_url: Vue.images_upload_url,
-                        images_upload_base_path: Vue.images_upload_base_path,
-                        // images_upload_credentials: true,
-                        image_title: true,
-                        // enable automatic uploads of images represented by blob or data URIs
-                        automatic_uploads: false,
-                        // URL of our upload handler (for more details check: https://www.tinymceB.com/docs/configure/file-image-upload/#images_upload_url)
-                        // images_upload_url: 'postAcceptor.php',
-                        // here we add custom filepicker only to Image dialog
-                        file_picker_types: 'image',
-                        // and here's our custom image picker
-                        file_picker_callback : function(cb, value, meta) {
-                            if( Vue.images_upload_url == undefined || Vue.images_upload_url == null){
-                                var input = document.createElement('input');
-                                input.setAttribute('type', 'file');
-                                input.setAttribute('accept', 'image/*');
+                            images_upload_url: Vue.images_upload_url,
+                            images_upload_base_path: Vue.images_upload_base_path,
+                            // images_upload_credentials: true,
+                            image_title: true, 
+                            // enable automatic uploads of images represented by blob or data URIs
+                            automatic_uploads: false,
+                            // URL of our upload handler (for more details check: https://www.tinymceB.com/docs/configure/file-image-upload/#images_upload_url)
+                            // images_upload_url: 'postAcceptor.php',
+                            // here we add custom filepicker only to Image dialog
+                            file_picker_types: 'image', 
+                            // and here's our custom image picker
+                            file_picker_callback : function(cb, value, meta) {
+                                if( Vue.images_upload_url == undefined || Vue.images_upload_url == null){
+                                    var input = document.createElement('input');
+                                    input.setAttribute('type', 'file');
+                                    input.setAttribute('accept', 'image/*');
 
-                                // Note: In modern browsers input[type="file"] is functional without
-                                // even adding it to the DOM, but that might not be the case in some older
-                                // or quirky browsers like IE, so you might want to add it to the DOM
-                                // just in case, and visually hide it. And do not forget do remove it
-                                // once you do not need it anymore.
+                                    // Note: In modern browsers input[type="file"] is functional without 
+                                    // even adding it to the DOM, but that might not be the case in some older
+                                    // or quirky browsers like IE, so you might want to add it to the DOM
+                                    // just in case, and visually hide it. And do not forget do remove it
+                                    // once you do not need it anymore.
 
-                                input.onchange = function() {
-                                    var file = this.files[0];
+                                    input.onchange = function() {
+                                        var file = this.files[0];
+                                      
+                                        var reader = new FileReader();
+                                        reader.onload = function () {
+                                            // Note: Now we need to register the blob in TinyMCEs image blob
+                                            // registry. In the next release this part hopefully won't be
+                                            // necessary, as we are looking to handle it internally.
+                                            var id = 'blobid' + (new Date()).getTime();
+                                            var blobCache =  tinymceB.activeEditor.editorUpload.blobCache;
+                                            var base64 = reader.result.split(',')[1];
+                                            var blobInfo = blobCache.create(id, file, base64);
+                                            blobCache.add(blobInfo);
 
-                                    var reader = new FileReader();
-                                    reader.onload = function () {
-                                        // Note: Now we need to register the blob in TinyMCEs image blob
-                                        // registry. In the next release this part hopefully won't be
-                                        // necessary, as we are looking to handle it internally.
-                                        var id = 'blobid' + (new Date()).getTime();
-                                        var blobCache =  tinymceB.activeEditor.editorUpload.blobCache;
-                                        var base64 = reader.result.split(',')[1];
-                                        var blobInfo = blobCache.create(id, file, base64);
-                                        blobCache.add(blobInfo);
-
-                                        // call the callback and populate the Title field with the file name
-                                        cb(blobInfo.blobUri(), { title: file.name });
+                                            // call the callback and populate the Title field with the file name
+                                            cb(blobInfo.blobUri(), { title: file.name });
+                                        };
+                                        reader.readAsDataURL(file);
                                     };
-                                    reader.readAsDataURL(file);
-                                };
-                                input.click();
-                            }else
-                                return false
-                        },
+                                    input.click();
+                                }else
+                                    return false
+                            },
                         //Upload Fucntion & param
 
                         init_instance_callback: function (editor) {
@@ -156,19 +170,19 @@ export default {
                                     Vue.classLabel != ""
                                 }
                             })
-
+                            
                             editor.on('change', function (e) {
-
+                              
                                 Vue.range = this.selection.getRng().startOffset;     // get range
 
                                 Vue.$emit('range',Vue.range)
-
+                               
                                 this.contentOutPut = this.getContent()
                                 Vue.update(this.getContent())
                             })
 
                             editor.on('focus', function (e) {
-
+                                
                                 Vue.$emit('focus')
                             })
                         }
@@ -199,8 +213,8 @@ export default {
                         toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
                         toolbar3: "hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft",
                         content_css: [
-                            '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-                            '//www.tinymceB.com/css/codepen.min.css'],
+                                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                                '//www.tinymceB.com/css/codepen.min.css'],
 
                         menubar: true,
                         toolbar_items_size: 'small',
@@ -208,20 +222,20 @@ export default {
                         images_upload_url: Vue.images_upload_url,
                         images_upload_base_path: Vue.images_upload_base_path,
                         // images_upload_credentials: true,
-                        image_title: true,
+                        image_title: true, 
                         // enable automatic uploads of images represented by blob or data URIs
                         automatic_uploads: true,
                         // URL of our upload handler (for more details check: https://www.tinymceB.com/docs/configure/file-image-upload/#images_upload_url)
                         // images_upload_url: 'postAcceptor.php',
                         // here we add custom filepicker only to Image dialog
-                        file_picker_types: 'image',
+                        file_picker_types: 'image', 
                         // and here's our custom image picker
                         file_picker_callback: function(cb, value, meta) {
                             var input = document.createElement('input');
                             input.setAttribute('type', 'file');
                             input.setAttribute('accept', 'image/*');
 
-                            // Note: In modern browsers input[type="file"] is functional without
+                            // Note: In modern browsers input[type="file"] is functional without 
                             // even adding it to the DOM, but that might not be the case in some older
                             // or quirky browsers like IE, so you might want to add it to the DOM
                             // just in case, and visually hide it. And do not forget do remove it
@@ -229,7 +243,7 @@ export default {
 
                             input.onchange = function() {
                                 var file = this.files[0];
-
+                              
                                 var reader = new FileReader();
                                 reader.onload = function () {
                                     // Note: Now we need to register the blob in TinyMCEs image blob
@@ -253,41 +267,41 @@ export default {
                         style_formats: [{
                             title: 'Bold text',
                             inline: 'b'
-                        }, {
+                            }, {
                             title: 'Red text',
                             inline: 'span',
                             styles: {
                                 color: '#ff0000'
-                            }
-                        }, {
+                                }
+                            }, {
                             title: 'Red header',
                             block: 'h1',
                             styles: {
-                                color: '#ff0000'
+                              color: '#ff0000'
                             }
-                        }, {
+                            }, {
                             title: 'Example 1',
                             inline: 'span',
                             classes: 'example1'
-                        }, {
+                            }, {
                             title: 'Example 2',
                             inline: 'span',
                             classes: 'example2'
-                        }, {
+                            }, {
                             title: 'Table styles'
-                        }, {
+                            }, {
                             title: 'Table row 1',
                             selector: 'tr',
                             classes: 'tablerow1'
-                        }],
+                            }],
 
                         templates: [{
                             title: 'Test template 1',
                             content: 'Test 1'
-                        }, {
+                            }, {
                             title: 'Test template 2',
                             content: 'Test 2'
-                        }],
+                            }],
                         init_instance_callback: function (editor) {
                             if(Vue.checkEdit != undefined)
                             {
@@ -314,7 +328,7 @@ export default {
                                 Vue.$emit('focus')
                             })
                         }
-                    },
+                     },
                     this.tinyConfig ? this.tinyConfig : {}
                 )
             )
@@ -339,7 +353,7 @@ export default {
                 this.contentTinyMCE  = _tiny.getContent()
                 _tiny.setContent(newContent)
             }
-
+                
             return this.$emit('input', newContent)
         },
         checkDisabled(){
