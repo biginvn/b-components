@@ -19,7 +19,7 @@ export default {
             
         }
     },
-    mounted(){
+    created(){
         this.callbackUpdateContent(this.value,()=>{
             this.initTinyMCE(this.value);
         });
