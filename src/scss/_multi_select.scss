@@ -186,3 +186,15 @@
         }
     }
 }
+.b-disabled {
+    .b__components.b__multi__select {
+        & .b__multi__select__control {
+            .selected {
+                padding: 5px 10px 5px 10px;
+                .close-item {
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -1,73 +1,55 @@
 import baseComponent from '../mixins/text-field-mixins'
-
+import tinymceB from 'tinymce'
 export default {
     data() {
         return {
-            tinymce : null,
             contentOutPut : "",
-            range:null
+            range:null,
+            contentTinyMCE : "",
         }
     },
-
-    components: {
-
-    },
-
     props : [ 'checkEdit','id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path'],
-
     mixins: [baseComponent],
-
-    mounted() {
-        this.initTinyMCE(this.value)
-    },
-
-    computed: {
-        // setConTent(){
-        //     tinymce.get(this.id).setContent(this.value)
-        //     return this.$emit('input', this.value)
-        // }
-    },
-
-    beforeDestroy(){
-        try{
-            if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined)
-                tinymce.get(this.id).destroy()
-        }catch(ex)
-        {
-            return
-        }
-    },
-
     watch:{
         value(val){
-            this.updateContent(val)
-                // this.updateContent(this.value)
-            // tinymce.get(this.id).insertContent("hellowords") // insert content
+            this.callbackUpdateContent(val,()=>{
+                this.initTinyMCE(val);
+            });
         },
         checkEdit(abc){
             if(abc == false){
-                tinymce.get(this.id).getBody().setAttribute('contenteditable', false)
-                // tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
+                tinymceB.get(this.id).getBody().setAttribute('contenteditable', false)
             }
             else {
-                // console.log(tinymce.getInstanceById('vendor-activity-edit-content'))
-                // console.log(tinymce.get('vendor-activity-edit-content'))
-                tinymce.get(this.id).getBody().setAttribute('contenteditable', true)
-                // tinymce.activeEditor.getBody().setAttribute('contenteditable', true)
-                // alert(tinymce.get('vendor-activity-edit-content').getBody().getAttribute('contenteditable'))
+                tinymceB.get(this.id).getBody().setAttribute('contenteditable', true)
             }
         },
         disabled(value){
-            if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined)
-                tinymce.get(this.id).destroy()
+            if(tinymceB.get(this.id) != null && tinymceB.get(this.id) != undefined)
+                tinymceB.get(this.id).destroy()
             this.initTinyMCE(this.value)
         }
     },
 
-    methods: {  
+    methods: {
+        callbackUpdateContent(newContent,callback)
+        {
+            let _tiny = tinymceB.get(this.id);
+            if(_tiny)
+            {
+                this.contentTinyMCE  = _tiny.getContent()
+                if(this.contentTinyMCE != newContent)
+                    _tiny.setContent(newContent)
+            }else
+            {
+                callback();
+            }
+
+            return this.$emit('input', newContent)
+        },
         insertSpecialContent(value)
         {
-            tinymce.activeEditor.execCommand('mceInsertContent', false, value);
+            tinymceB.activeEditor.execCommand('mceInsertContent', false, value);
         },
         initTinyMCEBasicMode(content){
             var Vue = this
@@ -77,7 +59,7 @@ export default {
                 var toolbar = false
             else
                 var toolbar = "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | table | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image code | preview | forecolor backcolor | pagebreak | lineheightselect"
-            Vue.tinymce = tinymce.init(
+            tinymceB.init(
                 Object.assign({},
                     {
                         selector: '#' + Vue.id,
@@ -105,60 +87,60 @@ export default {
                         relative_urls : false,
 
                         //Upload Fucntion & param
-                            toolbar_items_size: 'small',
+                        toolbar_items_size: 'small',
 
-                            images_upload_url: Vue.images_upload_url,
-                            images_upload_base_path: Vue.images_upload_base_path,
-                            // images_upload_credentials: true,
-                            image_title: true, 
-                            // enable automatic uploads of images represented by blob or data URIs
-                            automatic_uploads: false,
-                            // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
-                            // images_upload_url: 'postAcceptor.php',
-                            // here we add custom filepicker only to Image dialog
-                            file_picker_types: 'image', 
-                            // and here's our custom image picker
-                            file_picker_callback : function(cb, value, meta) {
-                                if( Vue.images_upload_url == undefined || Vue.images_upload_url == null){
-                                    var input = document.createElement('input');
-                                    input.setAttribute('type', 'file');
-                                    input.setAttribute('accept', 'image/*');
+                        images_upload_url: Vue.images_upload_url,
+                        images_upload_base_path: Vue.images_upload_base_path,
+                        // images_upload_credentials: true,
+                        image_title: true,
+                        // enable automatic uploads of images represented by blob or data URIs
+                        automatic_uploads: false,
+                        // URL of our upload handler (for more details check: https://www.tinymceB.com/docs/configure/file-image-upload/#images_upload_url)
+                        // images_upload_url: 'postAcceptor.php',
+                        // here we add custom filepicker only to Image dialog
+                        file_picker_types: 'image',
+                        // and here's our custom image picker
+                        file_picker_callback : function(cb, value, meta) {
+                            if( Vue.images_upload_url == undefined || Vue.images_upload_url == null){
+                                var input = document.createElement('input');
+                                input.setAttribute('type', 'file');
+                                input.setAttribute('accept', 'image/*');
 
-                                    // Note: In modern browsers input[type="file"] is functional without 
-                                    // even adding it to the DOM, but that might not be the case in some older
-                                    // or quirky browsers like IE, so you might want to add it to the DOM
-                                    // just in case, and visually hide it. And do not forget do remove it
-                                    // once you do not need it anymore.
+                                // Note: In modern browsers input[type="file"] is functional without
+                                // even adding it to the DOM, but that might not be the case in some older
+                                // or quirky browsers like IE, so you might want to add it to the DOM
+                                // just in case, and visually hide it. And do not forget do remove it
+                                // once you do not need it anymore.
 
-                                    input.onchange = function() {
-                                        var file = this.files[0];
-                                      
-                                        var reader = new FileReader();
-                                        reader.onload = function () {
-                                            // Note: Now we need to register the blob in TinyMCEs image blob
-                                            // registry. In the next release this part hopefully won't be
-                                            // necessary, as we are looking to handle it internally.
-                                            var id = 'blobid' + (new Date()).getTime();
-                                            var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
-                                            var base64 = reader.result.split(',')[1];
-                                            var blobInfo = blobCache.create(id, file, base64);
-                                            blobCache.add(blobInfo);
+                                input.onchange = function() {
+                                    var file = this.files[0];
 
-                                            // call the callback and populate the Title field with the file name
-                                            cb(blobInfo.blobUri(), { title: file.name });
-                                        };
-                                        reader.readAsDataURL(file);
+                                    var reader = new FileReader();
+                                    reader.onload = function () {
+                                        // Note: Now we need to register the blob in TinyMCEs image blob
+                                        // registry. In the next release this part hopefully won't be
+                                        // necessary, as we are looking to handle it internally.
+                                        var id = 'blobid' + (new Date()).getTime();
+                                        var blobCache =  tinymceB.activeEditor.editorUpload.blobCache;
+                                        var base64 = reader.result.split(',')[1];
+                                        var blobInfo = blobCache.create(id, file, base64);
+                                        blobCache.add(blobInfo);
+
+                                        // call the callback and populate the Title field with the file name
+                                        cb(blobInfo.blobUri(), { title: file.name });
                                     };
-                                    input.click();
-                                }else
-                                    return false
-                            },
+                                    reader.readAsDataURL(file);
+                                };
+                                input.click();
+                            }else
+                                return false
+                        },
                         //Upload Fucntion & param
 
                         init_instance_callback: function (editor) {
                             if(Vue.checkEdit != undefined)
                             {
-                                tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
+                                tinymceB.activeEditor.getBody().setAttribute('contenteditable', false)
                             }
                             $('tr.mceFirst').css('z-index','1000')
                             if(content != null || content != undefined)
@@ -174,19 +156,19 @@ export default {
                                     Vue.classLabel != ""
                                 }
                             })
-                            
+
                             editor.on('change', function (e) {
-                              
+
                                 Vue.range = this.selection.getRng().startOffset;     // get range
 
                                 Vue.$emit('range',Vue.range)
-                               
+
                                 this.contentOutPut = this.getContent()
                                 Vue.update(this.getContent())
                             })
 
                             editor.on('focus', function (e) {
-                                
+
                                 Vue.$emit('focus')
                             })
                         }
@@ -195,11 +177,10 @@ export default {
                 )
             )
         },
-
         initTinyMCEAdvanceMode(content){
             var Vue = this
             var readonly = this.checkDisabled()
-            Vue.tinymce = tinymce.init(
+            tinymceB.init(
                 Object.assign({},
                     {
                         selector: '#' + Vue.id,
@@ -218,8 +199,8 @@ export default {
                         toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
                         toolbar3: "hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft",
                         content_css: [
-                                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-                                '//www.tinymce.com/css/codepen.min.css'],
+                            '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                            '//www.tinymceB.com/css/codepen.min.css'],
 
                         menubar: true,
                         toolbar_items_size: 'small',
@@ -227,20 +208,20 @@ export default {
                         images_upload_url: Vue.images_upload_url,
                         images_upload_base_path: Vue.images_upload_base_path,
                         // images_upload_credentials: true,
-                        image_title: true, 
+                        image_title: true,
                         // enable automatic uploads of images represented by blob or data URIs
                         automatic_uploads: true,
-                        // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
+                        // URL of our upload handler (for more details check: https://www.tinymceB.com/docs/configure/file-image-upload/#images_upload_url)
                         // images_upload_url: 'postAcceptor.php',
                         // here we add custom filepicker only to Image dialog
-                        file_picker_types: 'image', 
+                        file_picker_types: 'image',
                         // and here's our custom image picker
                         file_picker_callback: function(cb, value, meta) {
                             var input = document.createElement('input');
                             input.setAttribute('type', 'file');
                             input.setAttribute('accept', 'image/*');
 
-                            // Note: In modern browsers input[type="file"] is functional without 
+                            // Note: In modern browsers input[type="file"] is functional without
                             // even adding it to the DOM, but that might not be the case in some older
                             // or quirky browsers like IE, so you might want to add it to the DOM
                             // just in case, and visually hide it. And do not forget do remove it
@@ -248,14 +229,14 @@ export default {
 
                             input.onchange = function() {
                                 var file = this.files[0];
-                              
+
                                 var reader = new FileReader();
                                 reader.onload = function () {
                                     // Note: Now we need to register the blob in TinyMCEs image blob
                                     // registry. In the next release this part hopefully won't be
                                     // necessary, as we are looking to handle it internally.
                                     var id = 'blobid' + (new Date()).getTime();
-                                    var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                                    var blobCache =  tinymceB.activeEditor.editorUpload.blobCache;
                                     var base64 = reader.result.split(',')[1];
                                     var blobInfo = blobCache.create(id, file, base64);
                                     blobCache.add(blobInfo);
@@ -268,74 +249,49 @@ export default {
 
                             input.click();
                         },
-                        // images_upload_handler: function (blobInfo, success, failure) {
-                        //     var xhr, formData;
-                        //     xhr = new XMLHttpRequest();
-                        //     xhr.withCredentials = false;
-                        //     xhr.open('POST', 'postAcceptor.php');
-                        //     xhr.onload = function() {
-                        //       var json;
-
-                        //       if (xhr.status != 200) {
-                        //         failure('HTTP Error: ' + xhr.status);
-                        //         return;
-                        //       }
-                        //       json = JSON.parse(xhr.responseText);
-
-                        //       if (!json || typeof json.location != 'string') {
-                        //         failure('Invalid JSON: ' + xhr.responseText);
-                        //         return;
-                        //       }
-                        //       success(json.location);
-                        //     };
-                        //     formData = new FormData();
-                        //     formData.append('file', blobInfo.blob(), fileName(blobInfo));
-                        //     xhr.send(formData);
-                        // },
-
                         table_toolbar: "tableprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol",
                         style_formats: [{
                             title: 'Bold text',
                             inline: 'b'
-                            }, {
+                        }, {
                             title: 'Red text',
                             inline: 'span',
                             styles: {
                                 color: '#ff0000'
-                                }
-                            }, {
+                            }
+                        }, {
                             title: 'Red header',
                             block: 'h1',
                             styles: {
-                              color: '#ff0000'
+                                color: '#ff0000'
                             }
-                            }, {
+                        }, {
                             title: 'Example 1',
                             inline: 'span',
                             classes: 'example1'
-                            }, {
+                        }, {
                             title: 'Example 2',
                             inline: 'span',
                             classes: 'example2'
-                            }, {
+                        }, {
                             title: 'Table styles'
-                            }, {
+                        }, {
                             title: 'Table row 1',
                             selector: 'tr',
                             classes: 'tablerow1'
-                            }],
+                        }],
 
                         templates: [{
                             title: 'Test template 1',
                             content: 'Test 1'
-                            }, {
+                        }, {
                             title: 'Test template 2',
                             content: 'Test 2'
-                            }],
+                        }],
                         init_instance_callback: function (editor) {
                             if(Vue.checkEdit != undefined)
                             {
-                                tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
+                                tinymceB.activeEditor.getBody().setAttribute('contenteditable', false)
                             }
                             $('tr.mceFirst').css('z-index','1000')
                             if(content != null || content != undefined)
@@ -358,46 +314,33 @@ export default {
                                 Vue.$emit('focus')
                             })
                         }
-                     },
+                    },
                     this.tinyConfig ? this.tinyConfig : {}
                 )
             )
         },
-
         initTinyMCE(content){
-            let element = tinymce.get(this.id)
-            if(element)
-                element.destroy()
+            if(tinymceB.get(this.id))
+                tinymceB.get(this.id).destroy()
+            /* nextTick loaded event */
+
             this.updateFloatLabel(content)
             if( this.mode == "advance" )
                 return this.initTinyMCEAdvanceMode(content)
             else
                 return this.initTinyMCEBasicMode(content)
         },
-        getContentOutput(){
-            // return this.contentOutPut = tinymce.get(this.id).getContent(data)
-        },
-        updateContent(data){
-            let self = this
-            let content = '';
-            try{
-                content = tinymce.get(this.id).getContent()
-            }catch(ex)
+        updateContent(newContent)
+        {
+            let _tiny = tinymceB.get(this.id);
+            /* exists tiny */
+            if(_tiny)
             {
-                content = '';
+                this.contentTinyMCE  = _tiny.getContent()
+                _tiny.setContent(newContent)
             }
-            if(content != data){
-                try{
-                    tinymce.get(this.id).setContent(data)
-                }catch(ex)
-                {
-                    setTimeout(()=>{
-                        tinymce.get(self.id).setContent(data)
-                    },200)
-                }
-                
-            }
-            return self.$emit('input', data)
+
+            return this.$emit('input', newContent)
         },
         checkDisabled(){
             if(this.disabled == "disabled")
