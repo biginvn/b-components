@@ -10475,7 +10475,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/CheckBox.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/CheckBox.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] CheckBox.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -10515,7 +10515,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Radio.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Radio.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Radio.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46244,7 +46244,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Button.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Button.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Button.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46284,7 +46284,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Chart.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Chart.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Chart.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46328,7 +46328,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Combobox.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Combobox.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Combobox.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46372,7 +46372,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/DataTable.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/DataTable.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DataTable.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46416,7 +46416,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/DateAndTime.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/DateAndTime.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DateAndTime.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46460,7 +46460,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/DateTimePicker.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/DateTimePicker.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DateTimePicker.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46504,7 +46504,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/DocumentAdhoc.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/DocumentAdhoc.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DocumentAdhoc.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46548,7 +46548,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/DropzoneUpload.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/DropzoneUpload.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DropzoneUpload.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46588,7 +46588,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/JVectorMap.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/JVectorMap.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] JVectorMap.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46628,7 +46628,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/ListUpLoaded.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/ListUpLoaded.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ListUpLoaded.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46672,7 +46672,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Loader.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Loader.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Loader.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46712,7 +46712,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Modal.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Modal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Modal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46752,7 +46752,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/ModalMessage.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/ModalMessage.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ModalMessage.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46796,7 +46796,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/MultiSelect.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/MultiSelect.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] MultiSelect.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46836,7 +46836,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/NumericFormatted.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/NumericFormatted.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] NumericFormatted.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46876,7 +46876,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Rating.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Rating.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Rating.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46916,7 +46916,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Select.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Select.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Select.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46956,7 +46956,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/ShowPassword.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/ShowPassword.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ShowPassword.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46996,7 +46996,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Switch.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Switch.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Switch.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47036,7 +47036,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Tag.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Tag.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Tag.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47076,7 +47076,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/TaskList.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/TaskList.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TaskList.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47116,7 +47116,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/TelerikNumberic.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/TelerikNumberic.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TelerikNumberic.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47156,7 +47156,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/TextField.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/TextField.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TextField.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47196,7 +47196,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Textarea.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Textarea.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Textarea.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47240,7 +47240,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/TinyMCE.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/TinyMCE.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TinyMCE.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47280,7 +47280,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Toggle.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Toggle.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Toggle.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47320,7 +47320,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/Upload.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/Upload.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Upload.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47360,7 +47360,7 @@ var Component = __webpack_require__(3)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/anhpham/Documents/workspace/php/b-components/src/themes/ios/ZipCode.vue"
+Component.options.__file = "/Users/dinhnhung/Documents/ProjectBigin/b-components/src/themes/ios/ZipCode.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ZipCode.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -51955,223 +51955,224 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-	data() {
-		return {
-			isExpanding: false,
-			searchList: [],
-			pointerIndex: null, // Selecting index of list
-			hoverIndex: null, // Position of cursor is hovering select item
-			searchKeyword: '',
-			isActive: false
-		};
-	},
-	mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
-	created() {
-		this.searchList = this.list;
-		this.setStatus();
-	},
-	watch: {
-		list(newList) {
-			this.searchList = JSON.parse(JSON.stringify(newList));
-		},
-		resetSearchKeyWord() {
-			if (this.resetSearchKeyWord) {
-				this.searchKeyword = '';
-				this.$emit('search-keywords', '');
-			}
-		},
-		value(val) {
-			if (val != "" && val != null) this.isActive = true;else this.isActive = false;
-		}
+    data() {
+        return {
+            isExpanding: false,
+            searchList: [],
+            pointerIndex: null, // Selecting index of list
+            hoverIndex: null, // Position of cursor is hovering select item
+            searchKeyword: '',
+            isActive: false
+        };
+    },
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
+    created() {
+        this.searchList = this.list;
+        this.setStatus();
+    },
+    watch: {
+        list(newList) {
+            this.searchList = JSON.parse(JSON.stringify(newList));
+        },
+        resetSearchKeyWord() {
+            if (this.resetSearchKeyWord) {
+                this.searchKeyword = '';
+                this.$emit('search-keywords', '');
+            }
+        },
+        value(val) {
+            if (val != "" && val != null) this.isActive = true;else this.isActive = false;
+        }
 
-	},
-	props: {
-		list: {},
-		value: null,
-		name: null,
-		disabled: {},
-		singleDropdown: {},
-		disableIcon: {},
-		placeholder: {},
-		label: {},
-		id: {},
-		resetSearchKeyWord: {
-			type: Boolean,
-			default: false
-		}
-	},
-	// props : ['list', 'value', 'disabled', 'single-dropdown', 'disable-icon', 'placeholder'],
-	computed: {
-		selected() {
-			// Convert v-model to [] if it's null
-			return this.value ? this.value : this.isSingle ? null : [];
-		},
-		isSingle() {
-			return this.singleDropdown === "true" ? true : false;
-		},
-		listClasses() {
-			return (this.isExpanding ? "active" : "") + " b__multi__select__list";
-		}
-	},
-	methods: {
-		setStatus() {
-			if (this.value != "" && this.value != null) this.isActive = true;else {
-				this.isActive = false;
-			}
-		},
-		editQuery() {
-			let self = this;
-			var getValue = this.value;
-			this.list.filter(function (index) {
-				if (index.id == getValue) {
-					return self.searchKeyword = index.thumbHtml;
-				}
-			});
+    },
+    props: {
+        list: {},
+        value: null,
+        name: null,
+        disabled: {},
+        singleDropdown: {},
+        disableIcon: {},
+        placeholder: {},
+        label: {},
+        id: {},
+        resetSearchKeyWord: {
+            type: Boolean,
+            default: false
+        }
+    },
+    // props : ['list', 'value', 'disabled', 'single-dropdown', 'disable-icon', 'placeholder'],
+    computed: {
+        selected() {
+            // Convert v-model to [] if it's null
+            return this.value ? this.value : this.isSingle ? null : [];
+        },
+        isSingle() {
+            return this.singleDropdown === "true" ? true : false;
+        },
+        listClasses() {
+            return (this.isExpanding ? "active" : "") + " b__multi__select__list";
+        }
+    },
+    methods: {
+        setStatus() {
+            if (this.value != "" && this.value != null) this.isActive = true;else {
+                this.isActive = false;
+            }
+        },
+        editQuery() {
+            let self = this;
+            var getValue = this.value;
+            this.list.filter(function (index) {
+                if (index.id == getValue) {
+                    return self.searchKeyword = index.thumbHtml;
+                }
+            });
 
-			this.$emit('input', null);
-			this.$nextTick(() => {
-				if (this.$refs.inputSearch) this.$refs.inputSearch.focus();
-			});
-		},
+            this.$emit('input', null);
+            this.$nextTick(() => {
+                if (this.$refs.inputSearch) this.$refs.inputSearch.focus();
+            });
+        },
 
-		filterQuerylist() {
-			this.list.filter(function (index, data) {
-				if (data.id == this.value) return data.thumbHtml;
-			});
-		},
+        filterQuerylist() {
+            this.list.filter(function (index, data) {
+                if (data.id == this.value) return data.thumbHtml;
+            });
+        },
 
-		closeDropdow(event) {
-			this.switchList(false);
-			if (!this.value) this.searchKeyword = null;
-			if (this.searchList.length == 0) {
-				this.isExpanding = false;
-			}
-		},
+        closeDropdow(event) {
+            console.log('close dropdown');
+            this.switchList(false);
+            if (!this.value) this.searchKeyword = null;
+            if (this.searchList.length == 0) {
+                this.isExpanding = false;
+            }
+        },
 
-		blurSearch() {
-			if (this.searchList.length == 0) {
-				this.searchKeyword = "";
-			}
-		},
+        blurSearch() {
+            if (this.searchList.length == 0) {
+                this.searchKeyword = "";
+            }
+        },
 
-		getSingleSelected() {
+        getSingleSelected() {
 
-			if (this.list == undefined || this.list == null) return;
-			if (Array.isArray(this.list)) {
-				let listSelected = this.list.filter(item => {
-					return item.id == this.selected;
-				});
+            if (this.list == undefined || this.list == null) return;
+            if (Array.isArray(this.list)) {
+                let listSelected = this.list.filter(item => {
+                    return item.id == this.selected;
+                });
 
-				if (listSelected.length > 0) return listSelected[0];
-			}
-			return;
-		},
+                if (listSelected.length > 0) return listSelected[0];
+            }
+            return;
+        },
 
-		getSelectedList() {
-			// Get selected with full information [ { id : .. , html : ... } ]
-			if (this.isSingle) return;
-			let selected = [];
-			this.selected.forEach((id, index) => {
-				let item = this.list.find(value => value.id == id);
-				if (item != undefined) selected.push(item);
-			});
-			return selected;
-		},
+        getSelectedList() {
+            // Get selected with full information [ { id : .. , html : ... } ]
+            if (this.isSingle) return;
+            let selected = [];
+            this.selected.forEach((id, index) => {
+                let item = this.list.find(value => value.id == id);
+                if (item != undefined) selected.push(item);
+            });
+            return selected;
+        },
 
-		toggleList(e) {
-			e.stopPropagation();
-			this.switchList(!this.isExpanding);
-		},
+        toggleList(e) {
+            e.stopPropagation();
+            this.switchList(!this.isExpanding);
+        },
 
-		switchList(on = true) {
-			if (on) this.isExpanding = true;else this.isExpanding = false;
-		},
+        switchList(on = true) {
+            if (on) this.isExpanding = true;else this.isExpanding = false;
+        },
 
-		toggleItem(id) {
-			if (!this.isSingle) {
-				let selectList = this.value == null ? [] : this.value;
-				if (selectList.includes(id)) selectList.splice(selectList.indexOf(id), 1);else selectList.push(id);
+        toggleItem(id) {
+            if (!this.isSingle) {
+                let selectList = this.value == null ? [] : this.value;
+                if (selectList.includes(id)) selectList.splice(selectList.indexOf(id), 1);else selectList.push(id);
 
-				this.switchList(true);
+                this.switchList(true);
 
-				// Reset search keyword at input field
-				this.searchKeyword = '';
-				this.$el.querySelector('input.input-control').focus();
-				this.focusInputAction('');
+                // Reset search keyword at input field
+                this.searchKeyword = '';
+                this.$el.querySelector('input.input-control').focus();
+                this.focusInputAction('');
 
-				this.$emit('input', selectList);
-			} else {
-				let selectList = this.value == null ? [] : [this.value];
-				if (selectList.includes(id)) {
-					selectList.splice(selectList.indexOf(id), 1);
-					this.$emit('input', null);
-					if (this.$el.querySelector('input.input-control') != null) {
-						this.$el.querySelector('input.input-control').focus();
-					}
-				} else {
-					selectList = [id];
-					this.$emit('input', id);
-				}
+                this.$emit('input', selectList);
+            } else {
+                let selectList = this.value == null ? [] : [this.value];
+                if (selectList.includes(id)) {
+                    selectList.splice(selectList.indexOf(id), 1);
+                    this.$emit('input', null);
+                    if (this.$el.querySelector('input.input-control') != null) {
+                        this.$el.querySelector('input.input-control').focus();
+                    }
+                } else {
+                    selectList = [id];
+                    this.$emit('input', id);
+                }
 
-				// Reset search keyword at input field
-				this.searchKeyword = '';
-				this.focusInputAction('');
+                // Reset search keyword at input field
+                this.searchKeyword = '';
+                this.focusInputAction('');
 
-				this.$nextTick(() => {
-					this.switchList(false);
-				});
-			}
-		},
-		hoverItem(index) {// Hover on item at (index) in searchList
-			// this
-		},
+                this.$nextTick(() => {
+                    this.switchList(false);
+                });
+            }
+        },
+        hoverItem(index) {// Hover on item at (index) in searchList
+            // this
+        },
 
-		searchAction(keyword) {
-			this.searchKeyword = keyword;
-			this.switchList(true);
-			this.$emit('search-keywords', keyword);
-			if (keyword == undefined && keyword == null || keyword.length == 0) {
-				this.searchList = JSON.parse(JSON.stringify(this.list));
-				return;
-			}
-			this.searchList = this.list.filter((item, position) => {
-				if (item.keywords == undefined || item.keywords == null) return false;
-				let regex = new RegExp('.*' + keyword.toLowerCase() + '.*');
-				return item.keywords.toLowerCase().match(regex);
-			});
-		},
-		focusInputAction(keyword) {
-			this.searchAction(keyword);
-			this.switchList(true);
-		},
-		keypressAction(keyName) {
-			let pointerIndex = this.pointerIndex;
-			switch (keyName) {
-				case 'ArrowDown':
-					if (this.pointerIndex == null || this.pointerIndex >= this.searchList.length - 1) {
-						pointerIndex = 0;
-						break;
-					}
+        searchAction(keyword) {
+            this.searchKeyword = keyword;
+            this.switchList(true);
+            this.$emit('search-keywords', keyword);
+            if (keyword == undefined && keyword == null || keyword.length == 0) {
+                this.searchList = JSON.parse(JSON.stringify(this.list));
+                return;
+            }
+            this.searchList = this.list.filter((item, position) => {
+                if (item.keywords == undefined || item.keywords == null) return false;
+                let regex = new RegExp('.*' + keyword.toLowerCase() + '.*');
+                return item.keywords.toLowerCase().match(regex);
+            });
+        },
+        focusInputAction(keyword) {
+            this.searchAction(keyword);
+            this.switchList(true);
+        },
+        keypressAction(keyName) {
+            let pointerIndex = this.pointerIndex;
+            switch (keyName) {
+                case 'ArrowDown':
+                    if (this.pointerIndex == null || this.pointerIndex >= this.searchList.length - 1) {
+                        pointerIndex = 0;
+                        break;
+                    }
 
-					pointerIndex++;
-					break;
-				case 'ArrowUp':
-					if (this.pointerIndex == null || this.pointerIndex == 0) {
-						pointerIndex = this.searchList.length - 1;
-						break;
-					}
+                    pointerIndex++;
+                    break;
+                case 'ArrowUp':
+                    if (this.pointerIndex == null || this.pointerIndex == 0) {
+                        pointerIndex = this.searchList.length - 1;
+                        break;
+                    }
 
-					pointerIndex--;
-					break;
-				case 'BackSpace':
-					pointerIndex = null;
-					if (this.value != null && this.value.length > 0 && this.searchKeyword.length == 0) this.value.splice(this.value.length - 1, 1);
-			}
+                    pointerIndex--;
+                    break;
+                case 'BackSpace':
+                    pointerIndex = null;
+                    if (this.value != null && this.value.length > 0 && this.searchKeyword.length == 0) this.value.splice(this.value.length - 1, 1);
+            }
 
-			this.hoverItem(pointerIndex);
-			this.pointerIndex = pointerIndex;
-		}
-	}
+            this.hoverItem(pointerIndex);
+            this.pointerIndex = pointerIndex;
+        }
+    }
 
 });
 
@@ -52928,76 +52929,65 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(11);
+throw new Error("Cannot find module \"tinymce\"");
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
     data() {
         return {
-            tinymce: null,
             contentOutPut: "",
-            range: null
+            range: null,
+            contentTinyMCE: ""
         };
     },
-
-    components: {},
-
     props: ['checkEdit', 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path'],
-
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
-
-    mounted() {
-        this.initTinyMCE(this.value);
-    },
-
-    computed: {
-        // setConTent(){
-        //     tinymce.get(this.id).setContent(this.value)
-        //     return this.$emit('input', this.value)
-        // }
-    },
-
     beforeDestroy() {
         try {
-            if (tinymce.get(this.id) != null && tinymce.get(this.id) != undefined) tinymce.get(this.id).destroy();
-        } catch (ex) {
-            return;
-        }
+            if (__WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.get(this.id) != null && __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.get(this.id) != undefined) __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.get(this.id).destroy();
+        } catch (ex) {}
     },
-
+    mounted() {
+        this.callbackUpdateContent(this.value, () => {
+            this.initTinyMCE(this.value);
+        });
+    },
     watch: {
-        value(val) {
-            this.updateContent(val);
-            // this.updateContent(this.value)
-            // tinymce.get(this.id).insertContent("hellowords") // insert content
+        value(newVal) {
+            this.callbackUpdateContent(this.value, () => {
+                this.initTinyMCE(this.value);
+            });
         },
         checkEdit(abc) {
             if (abc == false) {
-                tinymce.get(this.id).getBody().setAttribute('contenteditable', false);
-                // tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
+                __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.get(this.id).getBody().setAttribute('contenteditable', false);
             } else {
-                // console.log(tinymce.getInstanceById('vendor-activity-edit-content'))
-                // console.log(tinymce.get('vendor-activity-edit-content'))
-                tinymce.get(this.id).getBody().setAttribute('contenteditable', true);
-                // tinymce.activeEditor.getBody().setAttribute('contenteditable', true)
-                // alert(tinymce.get('vendor-activity-edit-content').getBody().getAttribute('contenteditable'))
+                __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.get(this.id).getBody().setAttribute('contenteditable', true);
             }
-        },
-        disabled(value) {
-            if (tinymce.get(this.id) != null && tinymce.get(this.id) != undefined) tinymce.get(this.id).destroy();
-            this.initTinyMCE(this.value);
         }
     },
 
     methods: {
-        insertSpecialContent(value) {
-            tinymce.activeEditor.execCommand('mceInsertContent', false, value);
+        callbackUpdateContent(newContent, callback) {
+            let _tiny = __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.get(this.id);
+            if (_tiny) {
+                this.contentTinyMCE = _tiny.getContent();
+                if (this.contentTinyMCE != newContent) _tiny.setContent(newContent);
+            } else {
+                callback();
+            }
+
+            return this.$emit('input', newContent);
         },
-        initTinyMCEBasicMode(content) {
+        insertSpecialContent(value) {
+            __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.activeEditor.execCommand('mceInsertContent', false, value);
+        },
+        initTinyMCEBasicMode() {
             var Vue = this;
             var readonly = this.checkDisabled();
             var height = this.height == null || this.height == undefined ? "300" : this.height;
             if (readonly == 1) var toolbar = false;else var toolbar = "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | table | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image code | preview | forecolor backcolor | pagebreak | lineheightselect";
-            Vue.tinymce = tinymce.init(Object.assign({}, {
+            __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.init(Object.assign({}, {
                 selector: '#' + Vue.id,
                 readonly: readonly,
                 height: height,
@@ -53026,7 +53016,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 image_title: true,
                 // enable automatic uploads of images represented by blob or data URIs
                 automatic_uploads: false,
-                // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
+                // URL of our upload handler (for more details check: https://www.tinymceB.com/docs/configure/file-image-upload/#images_upload_url)
                 // images_upload_url: 'postAcceptor.php',
                 // here we add custom filepicker only to Image dialog
                 file_picker_types: 'image',
@@ -53052,7 +53042,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 // registry. In the next release this part hopefully won't be
                                 // necessary, as we are looking to handle it internally.
                                 var id = 'blobid' + new Date().getTime();
-                                var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                                var blobCache = __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.activeEditor.editorUpload.blobCache;
                                 var base64 = reader.result.split(',')[1];
                                 var blobInfo = blobCache.create(id, file, base64);
                                 blobCache.add(blobInfo);
@@ -53069,9 +53059,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 init_instance_callback: function (editor) {
                     if (Vue.checkEdit != undefined) {
-                        tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
+                        __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.activeEditor.getBody().setAttribute('contenteditable', false);
                     }
                     $('tr.mceFirst').css('z-index', '1000');
+
+                    let content = Vue.value;
+
                     if (content != null || content != undefined) this.setContent(content);
                     editor.on('keyup', function (e) {
                         if (e.which == 13) {
@@ -53101,11 +53094,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }, this.tinyConfig ? this.tinyConfig : {}));
         },
-
-        initTinyMCEAdvanceMode(content) {
+        initTinyMCEAdvanceMode() {
             var Vue = this;
             var readonly = this.checkDisabled();
-            Vue.tinymce = tinymce.init(Object.assign({}, {
+            __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.init(Object.assign({}, {
                 selector: '#' + Vue.id,
                 readonly: readonly,
                 plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table",
@@ -53117,7 +53109,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
                 toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
                 toolbar3: "hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-                content_css: ['//fonts.googleapis.com/css?family=Lato:300,300i,400,400i', '//www.tinymce.com/css/codepen.min.css'],
+                content_css: ['//fonts.googleapis.com/css?family=Lato:300,300i,400,400i', '//www.tinymceB.com/css/codepen.min.css'],
 
                 menubar: true,
                 toolbar_items_size: 'small',
@@ -53128,7 +53120,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 image_title: true,
                 // enable automatic uploads of images represented by blob or data URIs
                 automatic_uploads: true,
-                // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
+                // URL of our upload handler (for more details check: https://www.tinymceB.com/docs/configure/file-image-upload/#images_upload_url)
                 // images_upload_url: 'postAcceptor.php',
                 // here we add custom filepicker only to Image dialog
                 file_picker_types: 'image',
@@ -53153,7 +53145,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             // registry. In the next release this part hopefully won't be
                             // necessary, as we are looking to handle it internally.
                             var id = 'blobid' + new Date().getTime();
-                            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                            var blobCache = __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.activeEditor.editorUpload.blobCache;
                             var base64 = reader.result.split(',')[1];
                             var blobInfo = blobCache.create(id, file, base64);
                             blobCache.add(blobInfo);
@@ -53166,31 +53158,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     input.click();
                 },
-                // images_upload_handler: function (blobInfo, success, failure) {
-                //     var xhr, formData;
-                //     xhr = new XMLHttpRequest();
-                //     xhr.withCredentials = false;
-                //     xhr.open('POST', 'postAcceptor.php');
-                //     xhr.onload = function() {
-                //       var json;
-
-                //       if (xhr.status != 200) {
-                //         failure('HTTP Error: ' + xhr.status);
-                //         return;
-                //       }
-                //       json = JSON.parse(xhr.responseText);
-
-                //       if (!json || typeof json.location != 'string') {
-                //         failure('Invalid JSON: ' + xhr.responseText);
-                //         return;
-                //       }
-                //       success(json.location);
-                //     };
-                //     formData = new FormData();
-                //     formData.append('file', blobInfo.blob(), fileName(blobInfo));
-                //     xhr.send(formData);
-                // },
-
                 table_toolbar: "tableprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol",
                 style_formats: [{
                     title: 'Bold text',
@@ -53232,9 +53199,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }],
                 init_instance_callback: function (editor) {
                     if (Vue.checkEdit != undefined) {
-                        tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
+                        __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.activeEditor.getBody().setAttribute('contenteditable', false);
                     }
                     $('tr.mceFirst').css('z-index', '1000');
+
+                    let content = Vue.value;
                     if (content != null || content != undefined) this.setContent(content);
                     editor.on('keyup', function (e) {
                         if (this.getContent() != "") {
@@ -53255,34 +53224,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }, this.tinyConfig ? this.tinyConfig : {}));
         },
+        initTinyMCE() {
+            if (__WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.get(this.id)) __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.get(this.id).destroy();
 
-        initTinyMCE(content) {
-            let element = tinymce.get(this.id);
-            if (element) element.destroy();
-            this.updateFloatLabel(content);
-            if (this.mode == "advance") return this.initTinyMCEAdvanceMode(content);else return this.initTinyMCEBasicMode(content);
+            if (this.mode == "advance") this.initTinyMCEAdvanceMode();else this.initTinyMCEBasicMode();
+
+            /* nextTick loaded event */
+            this.updateFloatLabel(this.value);
         },
-        getContentOutput() {
-            // return this.contentOutPut = tinymce.get(this.id).getContent(data)
-        },
-        updateContent(data) {
-            let self = this;
-            let content = '';
-            try {
-                content = tinymce.get(this.id).getContent();
-            } catch (ex) {
-                content = '';
+        updateContent(newContent) {
+            let _tiny = __WEBPACK_IMPORTED_MODULE_1_tinymce___default.a.get(this.id);
+            /* exists tiny */
+            if (_tiny) {
+                this.contentTinyMCE = _tiny.getContent();
+                _tiny.setContent(newContent);
             }
-            if (content != data) {
-                try {
-                    tinymce.get(this.id).setContent(data);
-                } catch (ex) {
-                    setTimeout(() => {
-                        tinymce.get(self.id).setContent(data);
-                    }, 200);
-                }
-            }
-            return self.$emit('input', data);
+
+            return this.$emit('input', newContent);
         },
         checkDisabled() {
             if (this.disabled == "disabled") return 1;else return 0;
@@ -71030,7 +70988,7 @@ exports = module.exports = __webpack_require__(9)();
 
 
 // module
-exports.push([module.i, "\n.addBorder{\n\t\tborder: 1px solid #0082d5 !important;\n}\n.b__multi__select__control{\n\t\tpadding-top: 2px !important;\n}\n.selected{\n\t\tmargin-left: 3px;\n}\n.iconC::after{\n\t\tdisplay: inline-block;\n\t\tfont: normal normal normal 14px/1 FontAwesome;\n\t\ttext-rendering: auto;\n\t\t-webkit-font-smoothing: antialiased;\n\t\t-moz-osx-font-smoothing: grayscale;\n\t\tposition: absolute;\n\t\tdisplay: block;\n\t\tpadding-top: 11px;\n\t\ttop: 1px;\n\t\tright: 6px;\n\t\theight: calc(100% - 2px);\n\t\twidth: 12px;\n\t\tcolor: #74767d;\n\t\tz-index: 2;\n\t\tcontent: \"\\F107\";\n\t\tfont-family: 'Font Awesome 5 Free';\n\t\tfont-weight: 600;\n\t\tfont-size: 13px;\n}\n.iconD::after{\n\t\ttransform: rotate(180deg);\n}\n.multi{\n\t\tmax-height: 145px !important;\n\t\theight: 100% !important;\n\t\toverflow: scroll !important;\n}\n.iconC::after{\n\t\tcontent: \"\\F078\";\n        display: inline-block;\n        font: normal normal normal 14px/1 FontAwesome;\n        text-rendering: auto;\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: grayscale;\n        position: absolute;\n        display: block;\n        padding-top: 11px;\n        top: 1px;\n        right: 6px;\n        height: calc(100% - 2px);\n        width: 12px;\n        font-size: 10px;\n        color: #74767d;\n        z-index: 2;\n        content: \"\\F078\";\n        font-family: \"Font Awesome 5 Free\";\n        font-weight: 900;\n}\n.iconD::after{\n\t\ttransform: rotate(180deg);\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?aeaec7fc"],"names":[],"mappings":";AAsDA;EACA,qCAAA;CACA;AACA;EACA,4BAAA;CACA;AACA;EACA,iBAAA;CACA;AAEA;EACA,sBAAA;EACA,8CAAA;EACA,qBAAA;EACA,oCAAA;EACA,mCAAA;EACA,mBAAA;EACA,eAAA;EACA,kBAAA;EACA,SAAA;EACA,WAAA;EACA,yBAAA;EACA,YAAA;EACA,eAAA;EACA,WAAA;EACA,iBAAA;EACA,mCAAA;EACA,iBAAA;EACA,gBAAA;CACA;AAEA;EACA,0BAAA;CACA;AAEA;EACA,6BAAA;EACA,wBAAA;EACA,4BAAA;CACA;AAEA;EACA,iBAAA;QACA,sBAAA;QACA,8CAAA;QACA,qBAAA;QACA,oCAAA;QACA,mCAAA;QACA,mBAAA;QACA,eAAA;QACA,kBAAA;QACA,SAAA;QACA,WAAA;QACA,yBAAA;QACA,YAAA;QACA,gBAAA;QACA,eAAA;QACA,WAAA;QACA,iBAAA;QACA,mCAAA;QACA,iBAAA;CACA;AACA;EACA,0BAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__multi__select\" tabindex=\"0\" @blur = \"closeDropdow()\" @click = \"switchList(true)\">\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{ addBorder : isExpanding, multi: !singleDropdown }\">\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\n\t\t\t\t<span class=\"close-item\" @mousedown = \"toggleItem(item.id)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span>\n\t\t\t</div>\n\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\n\t\t\t\t<span \n\t\t\t\t\tclass=\"thumb\" \n\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\n\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\n\t\t\t\t\t@click='editQuery()'\t\n\t\t\t\t>\n\t\t\t\t</span>\n\t\t\t</div>\n\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\n\t\t\t\t<input\n\t\t\t\tref=\"inputSearch\"\n\t\t\t\tv-show=\"singleDropdown\"\n\t\t\t\t:placeholder=\"placeholder\"\n\t\t\t\ttype=\"text\" \n\t\t\t\tstyle=\"font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; left: 10px; width: 90%;\" \n\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\n\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\n\t\t\t\tclass=\"input-control\" @focus=\"focusInputAction($event.target.value);$emit('removeRequired')\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\n    \t\t\t@blur='closeDropdow()'\n    \t\t\tonClick=\"this.select()\"\n\t\t\t></div>\n\n\t\t\t<div :class=\"isExpanding ? 'iconC iconD' : 'iconC'\" @click=\"toggleList($event)\">\n\t\t\t</div>\n\t\t</div>\n\t\t\n\t\t<!-- <input type=\"hidden\" :name=\"name\" :value=\"value\" class=\"mutiple-select-hidden-value\"> -->\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\n\t\t\t<li v-show = \"searchList == undefined || searchList.length == 0\" class=\"not-found\">Not found</li>\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @mousedown=\"toggleItem(item.id)\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n</template>\n<script>\n\timport MultiSelect from './../../components/MultiSelect'\n\texport default MultiSelect\n</script>\n<style>\n\t.addBorder{\n\t\tborder: 1px solid #0082d5 !important;\n\t}\n\t.b__multi__select__control{\n\t\tpadding-top: 2px !important;\n\t}\n\t.selected{\n\t\tmargin-left: 3px;\n\t}\n\n\t.iconC::after{\n\t\tdisplay: inline-block;\n\t\tfont: normal normal normal 14px/1 FontAwesome;\n\t\ttext-rendering: auto;\n\t\t-webkit-font-smoothing: antialiased;\n\t\t-moz-osx-font-smoothing: grayscale;\n\t\tposition: absolute;\n\t\tdisplay: block;\n\t\tpadding-top: 11px;\n\t\ttop: 1px;\n\t\tright: 6px;\n\t\theight: calc(100% - 2px);\n\t\twidth: 12px;\n\t\tcolor: #74767d;\n\t\tz-index: 2;\n\t\tcontent: \"\\f107\";\n\t\tfont-family: 'Font Awesome 5 Free';\n\t\tfont-weight: 600;\n\t\tfont-size: 13px;\n\t}\n\n\t.iconD::after{\n\t\ttransform: rotate(180deg);\n\t}\n\n\t.multi{\n\t\tmax-height: 145px !important;\n\t\theight: 100% !important;\n\t\toverflow: scroll !important;\n\t}\n\n\t.iconC::after{\n\t\tcontent: \"\\f078\";\n        display: inline-block;\n        font: normal normal normal 14px/1 FontAwesome;\n        text-rendering: auto;\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: grayscale;\n        position: absolute;\n        display: block;\n        padding-top: 11px;\n        top: 1px;\n        right: 6px;\n        height: calc(100% - 2px);\n        width: 12px;\n        font-size: 10px;\n        color: #74767d;\n        z-index: 2;\n        content: \"\\f078\";\n        font-family: \"Font Awesome 5 Free\";\n        font-weight: 900;\n\t}\n\t.iconD::after{\n\t\ttransform: rotate(180deg);\n\t}\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.addBorder{\n\tborder: 1px solid #0082d5 !important;\n}\n.b__multi__select__control{\n\tpadding-top: 2px !important;\n}\n.selected{\n\tmargin-left: 3px;\n}\n.iconC::after{\n\tdisplay: inline-block;\n\tfont: normal normal normal 14px/1 FontAwesome;\n\ttext-rendering: auto;\n\t-webkit-font-smoothing: antialiased;\n\t-moz-osx-font-smoothing: grayscale;\n\tposition: absolute;\n\tdisplay: block;\n\tpadding-top: 11px;\n\ttop: 1px;\n\tright: 6px;\n\theight: calc(100% - 2px);\n\twidth: 12px;\n\tcolor: #74767d;\n\tz-index: 2;\n\tcontent: \"\\F107\";\n\tfont-family: 'Font Awesome 5 Free';\n\tfont-weight: 600;\n\tfont-size: 13px;\n}\n.iconD::after{\n\ttransform: rotate(180deg);\n}\n.multi{\n\tmax-height: 145px !important;\n\theight: 100% !important;\n\toverflow: scroll !important;\n}\n.iconC::after{\n\tcontent: \"\\F078\";\n\tdisplay: inline-block;\n\tfont: normal normal normal 14px/1 FontAwesome;\n\ttext-rendering: auto;\n\t-webkit-font-smoothing: antialiased;\n\t-moz-osx-font-smoothing: grayscale;\n\tposition: absolute;\n\tdisplay: block;\n\tpadding-top: 11px;\n\ttop: 1px;\n\tright: 6px;\n\theight: calc(100% - 2px);\n\twidth: 12px;\n\tfont-size: 10px;\n\tcolor: #74767d;\n\tz-index: 2;\n\tcontent: \"\\F078\";\n\tfont-family: \"Font Awesome 5 Free\";\n\tfont-weight: 900;\n}\n.iconD::after{\n\ttransform: rotate(180deg);\n}\n", "", {"version":3,"sources":["/./src/themes/ios/MultiSelect.vue?6a735620"],"names":[],"mappings":";AAsDA;CACA,qCAAA;CACA;AACA;CACA,4BAAA;CACA;AACA;CACA,iBAAA;CACA;AAEA;CACA,sBAAA;CACA,8CAAA;CACA,qBAAA;CACA,oCAAA;CACA,mCAAA;CACA,mBAAA;CACA,eAAA;CACA,kBAAA;CACA,SAAA;CACA,WAAA;CACA,yBAAA;CACA,YAAA;CACA,eAAA;CACA,WAAA;CACA,iBAAA;CACA,mCAAA;CACA,iBAAA;CACA,gBAAA;CACA;AAEA;CACA,0BAAA;CACA;AAEA;CACA,6BAAA;CACA,wBAAA;CACA,4BAAA;CACA;AAEA;CACA,iBAAA;CACA,sBAAA;CACA,8CAAA;CACA,qBAAA;CACA,oCAAA;CACA,mCAAA;CACA,mBAAA;CACA,eAAA;CACA,kBAAA;CACA,SAAA;CACA,WAAA;CACA,yBAAA;CACA,YAAA;CACA,gBAAA;CACA,eAAA;CACA,WAAA;CACA,iBAAA;CACA,mCAAA;CACA,iBAAA;CACA;AACA;CACA,0BAAA;CACA","file":"MultiSelect.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__multi__select\" tabindex=\"0\" @blur = \"closeDropdow()\" @click = \"switchList(true)\">\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label }}</label>\n\t\t<div class=\"b__multi__select__control\" v-bind:class=\"{ addBorder : isExpanding, multi: !singleDropdown }\">\n\t\t\t<div class=\"selected\" v-if=\"!isSingle\" v-for=\"item in getSelectedList()\">\n\t\t\t\t<span class=\"thumb\" v-html=\"item.thumbHtml\"></span>\n\t\t\t\t<span class=\"close-item\" @click = \"toggleItem(item.id)\"><i class=\"fas fa-times\" aria-hidden=\"true\"></i></span>\n\t\t\t</div>\n\n\t\t\t<div class=\"selected single\" v-if=\"isSingle\">\n\t\t\t\t<span\n\t\t\t\t\t\tclass=\"thumb\"\n\t\t\t\t\t\tv-if=\"getSingleSelected()!=null\"\n\t\t\t\t\t\tv-html=\"getSingleSelected().thumbHtml\"\n\t\t\t\t\t\t@click='editQuery()'\n\t\t\t\t>\n\t\t\t\t</span>\n\t\t\t</div>\n\n\t\t\t<div class=\"input-control-wrap\" v-if = \"!isSingle || getSingleSelected() == null \" style=\"width:100%;\">\n\t\t\t\t<input\n\t\t\t\t\t\tref=\"inputSearch\"\n\t\t\t\t\t\tv-show=\"singleDropdown\"\n\t\t\t\t\t\t:placeholder=\"placeholder\"\n\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\tstyle=\"font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; left: 10px; width: 90%;\"\n\t\t\t\t\t\t@keydown.40=\"keypressAction('ArrowDown')\" @keydown.8=\"keypressAction('BackSpace')\"\n\t\t\t\t\t\t@keydown.38=\"keypressAction('ArrowUp')\" @keydown.13=\"searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''\"\n\t\t\t\t\t\tclass=\"input-control\" @focus=\"focusInputAction($event.target.value);$emit('removeRequired')\" @input = \"searchAction($event.target.value)\" :value = \"searchKeyword\"\n\t\t\t\t\t\t@blur='closeDropdow()'\n\t\t\t\t\t\tonClick=\"this.select()\"\n\t\t\t\t></div>\n\n\t\t\t<div :class=\"isExpanding ? 'iconC iconD' : 'iconC'\" @click=\"toggleList($event)\">\n\t\t\t</div>\n\t\t</div>\n\n\t\t<!-- <input type=\"hidden\" :name=\"name\" :value=\"value\" class=\"mutiple-select-hidden-value\"> -->\n\t\t<ul v-bind:class=\"[{addBorder : isExpanding}, listClasses]\">\n\t\t\t<li v-show = \"searchList == undefined || searchList.length == 0\" class=\"not-found\">Not found</li>\n\t\t\t<li class=\"list-item\" :class=\"{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }\" v-for = \"(item, index) in searchList\" @mousedown=\"toggleItem(item.id)\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n</template>\n<script>\n    import MultiSelect from './../../components/MultiSelect'\n    export default MultiSelect\n</script>\n<style>\n\t.addBorder{\n\t\tborder: 1px solid #0082d5 !important;\n\t}\n\t.b__multi__select__control{\n\t\tpadding-top: 2px !important;\n\t}\n\t.selected{\n\t\tmargin-left: 3px;\n\t}\n\n\t.iconC::after{\n\t\tdisplay: inline-block;\n\t\tfont: normal normal normal 14px/1 FontAwesome;\n\t\ttext-rendering: auto;\n\t\t-webkit-font-smoothing: antialiased;\n\t\t-moz-osx-font-smoothing: grayscale;\n\t\tposition: absolute;\n\t\tdisplay: block;\n\t\tpadding-top: 11px;\n\t\ttop: 1px;\n\t\tright: 6px;\n\t\theight: calc(100% - 2px);\n\t\twidth: 12px;\n\t\tcolor: #74767d;\n\t\tz-index: 2;\n\t\tcontent: \"\\f107\";\n\t\tfont-family: 'Font Awesome 5 Free';\n\t\tfont-weight: 600;\n\t\tfont-size: 13px;\n\t}\n\n\t.iconD::after{\n\t\ttransform: rotate(180deg);\n\t}\n\n\t.multi{\n\t\tmax-height: 145px !important;\n\t\theight: 100% !important;\n\t\toverflow: scroll !important;\n\t}\n\n\t.iconC::after{\n\t\tcontent: \"\\f078\";\n\t\tdisplay: inline-block;\n\t\tfont: normal normal normal 14px/1 FontAwesome;\n\t\ttext-rendering: auto;\n\t\t-webkit-font-smoothing: antialiased;\n\t\t-moz-osx-font-smoothing: grayscale;\n\t\tposition: absolute;\n\t\tdisplay: block;\n\t\tpadding-top: 11px;\n\t\ttop: 1px;\n\t\tright: 6px;\n\t\theight: calc(100% - 2px);\n\t\twidth: 12px;\n\t\tfont-size: 10px;\n\t\tcolor: #74767d;\n\t\tz-index: 2;\n\t\tcontent: \"\\f078\";\n\t\tfont-family: \"Font Awesome 5 Free\";\n\t\tfont-weight: 900;\n\t}\n\t.iconD::after{\n\t\ttransform: rotate(180deg);\n\t}\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -78096,12 +78054,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }), _vm._v(" "), _c('span', {
       staticClass: "close-item",
       on: {
-        "mousedown": function($event) {
+        "click": function($event) {
           _vm.toggleItem(item.id)
         }
       }
     }, [_c('i', {
-      staticClass: "fa fa-times",
+      staticClass: "fas fa-times",
       attrs: {
         "aria-hidden": "true"
       }
