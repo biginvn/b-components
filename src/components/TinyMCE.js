@@ -1,5 +1,4 @@
 import baseComponent from '../mixins/text-field-mixins'
-import tinymceB from 'tinymce'
 export default {
     mixins: [baseComponent],
     data() {
@@ -12,13 +11,13 @@ export default {
     props : [ 'checkEdit','id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path'],
     beforeDestroy(){
         try{
-            if(tinymceB.get(this.id) != null && tinymceB.get(this.id) != undefined)
-                tinymceB.get(this.id).destroy()
+            if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined)
+                tinymce.get(this.id).destroy()
         }catch(ex){}
     },
     mounted(){
         this.callbackUpdateContent(this.value,()=>{
-            this.initTinyMCE(this.value);
+            this.initTinyMCE();
         });
     },
     watch:{
@@ -29,10 +28,10 @@ export default {
         },
         checkEdit(abc){
             if(abc == false){
-                tinymceB.get(this.id).getBody().setAttribute('contenteditable', false)
+                tinymce.get(this.id).getBody().setAttribute('contenteditable', false)
             }
             else {
-                tinymceB.get(this.id).getBody().setAttribute('contenteditable', true)
+                tinymce.get(this.id).getBody().setAttribute('contenteditable', true)
             }
         }
     },
@@ -40,7 +39,7 @@ export default {
     methods: { 
         callbackUpdateContent(newContent,callback)
         {
-            let _tiny = tinymceB.get(this.id);
+            let _tiny = tinymce.get(this.id);
             if(_tiny)
             {
                 this.contentTinyMCE  = _tiny.getContent()
@@ -55,7 +54,7 @@ export default {
         },
         insertSpecialContent(value)
         {
-            tinymceB.activeEditor.execCommand('mceInsertContent', false, value);
+            tinymce.activeEditor.execCommand('mceInsertContent', false, value);
         },
         initTinyMCEBasicMode(){
             var Vue = this
@@ -65,7 +64,7 @@ export default {
                 var toolbar = false
             else
                 var toolbar = "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | table | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image code | preview | forecolor backcolor | pagebreak | lineheightselect"
-            tinymceB.init(
+            tinymce.init(
                 Object.assign({},
                     {
                         selector: '#' + Vue.id,
@@ -101,7 +100,7 @@ export default {
                             image_title: true, 
                             // enable automatic uploads of images represented by blob or data URIs
                             automatic_uploads: false,
-                            // URL of our upload handler (for more details check: https://www.tinymceB.com/docs/configure/file-image-upload/#images_upload_url)
+                            // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
                             // images_upload_url: 'postAcceptor.php',
                             // here we add custom filepicker only to Image dialog
                             file_picker_types: 'image', 
@@ -127,7 +126,7 @@ export default {
                                             // registry. In the next release this part hopefully won't be
                                             // necessary, as we are looking to handle it internally.
                                             var id = 'blobid' + (new Date()).getTime();
-                                            var blobCache =  tinymceB.activeEditor.editorUpload.blobCache;
+                                            var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
                                             var base64 = reader.result.split(',')[1];
                                             var blobInfo = blobCache.create(id, file, base64);
                                             blobCache.add(blobInfo);
@@ -146,7 +145,7 @@ export default {
                         init_instance_callback: function (editor) {
                             if(Vue.checkEdit != undefined)
                             {
-                                tinymceB.activeEditor.getBody().setAttribute('contenteditable', false)
+                                tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
                             }
                             $('tr.mceFirst').css('z-index','1000')
 
@@ -189,7 +188,7 @@ export default {
         initTinyMCEAdvanceMode(){
             var Vue = this
             var readonly = this.checkDisabled()
-            tinymceB.init(
+            tinymce.init(
                 Object.assign({},
                     {
                         selector: '#' + Vue.id,
@@ -209,7 +208,7 @@ export default {
                         toolbar3: "hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft",
                         content_css: [
                                 '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-                                '//www.tinymceB.com/css/codepen.min.css'],
+                                '//www.tinymce.com/css/codepen.min.css'],
 
                         menubar: true,
                         toolbar_items_size: 'small',
@@ -220,7 +219,7 @@ export default {
                         image_title: true, 
                         // enable automatic uploads of images represented by blob or data URIs
                         automatic_uploads: true,
-                        // URL of our upload handler (for more details check: https://www.tinymceB.com/docs/configure/file-image-upload/#images_upload_url)
+                        // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
                         // images_upload_url: 'postAcceptor.php',
                         // here we add custom filepicker only to Image dialog
                         file_picker_types: 'image', 
@@ -245,7 +244,7 @@ export default {
                                     // registry. In the next release this part hopefully won't be
                                     // necessary, as we are looking to handle it internally.
                                     var id = 'blobid' + (new Date()).getTime();
-                                    var blobCache =  tinymceB.activeEditor.editorUpload.blobCache;
+                                    var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
                                     var base64 = reader.result.split(',')[1];
                                     var blobInfo = blobCache.create(id, file, base64);
                                     blobCache.add(blobInfo);
@@ -300,7 +299,7 @@ export default {
                         init_instance_callback: function (editor) {
                             if(Vue.checkEdit != undefined)
                             {
-                                tinymceB.activeEditor.getBody().setAttribute('contenteditable', false)
+                                tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
                             }
                             $('tr.mceFirst').css('z-index','1000')
 
@@ -331,8 +330,8 @@ export default {
             )
         },
         initTinyMCE(){
-            if(tinymceB.get(this.id))
-                tinymceB.get(this.id).destroy()
+            if(tinymce.get(this.id))
+                tinymce.get(this.id).destroy()
 
             if( this.mode == "advance" )
                 this.initTinyMCEAdvanceMode()
@@ -344,7 +343,7 @@ export default {
         },
         updateContent(newContent)
         {
-            let _tiny = tinymceB.get(this.id);
+            let _tiny = tinymce.get(this.id);
             /* exists tiny */
             if(_tiny)
             {
