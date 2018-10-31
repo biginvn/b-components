@@ -169,16 +169,16 @@ export default{
 				return this.valueTemp  = ""
 			}
 			string = this.checkValidateString(string)
-			string      	 = parseFloat(string).toFixed(this.inputRoundDecimal)
+			// string      	 = parseFloat(string).toFixed(this.inputRoundDecimal)
 			let beginString  = (string.split(".")[0] == null || string.split(".")[0] == undefined) ? "" : string.split(".")[0]
 			let endString    = (string.split(".")[1] == null || string.split(".")[1] == undefined) ? "" : string.split(".")[1]
 			let decimalPoint = (endString == "" || endString == null || endString == undefined) ? "" : "."
 			if(string == "" || string == null || string == undefined)
 				return this.inputValue = ""
 			if( this.inputType == "prefix"){
-				this.inputValue = this.inputAffix + this.interruptInput(parseInt(this.valueTemp)) + decimalPoint + endString 
+				this.inputValue = this.inputAffix + this.interruptInput(parseFloat(this.valueTemp)) + decimalPoint + endString 
 			}else{
-				this.inputValue = this.interruptInput(parseInt(this.valueTemp)) + decimalPoint + endString + this.inputAffix
+				this.inputValue = this.interruptInput(parseFloat(this.valueTemp)) + decimalPoint + endString + this.inputAffix
 			}
 		},	
 
