@@ -1,89 +1,84 @@
 import baseComponent from '../mixins/text-field-mixins'
-
 export default {
+    mixins: [baseComponent],
     data() {
         return {
-            tinymce : null,
             contentOutPut : "",
-            range:null
+            range:null,
+            contentTinyMCE : "",
         }
     },
-
-    components: {
-
-    },
-
     props : [ 'checkEdit','id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path'],
-
-    mixins: [baseComponent],
-
-    mounted() {
-        this.initTinyMCE(this.value)
-    },
-
-    computed: {
-        // setConTent(){
-        //     tinymce.get(this.id).setContent(this.value)
-        //     return this.$emit('input', this.value)
-        // }
-    },
-
     beforeDestroy(){
         try{
             if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined)
                 tinymce.get(this.id).destroy()
-        }catch(ex)
-        {
-            return
-        }
+        }catch(ex){}
     },
-
+    mounted(){
+        this.callbackUpdateContent(this.value,()=>{
+            this.initTinyMCE();
+        });
+    },
     watch:{
-        value(val){
-            this.updateContent(val)
-                // this.updateContent(this.value)
-            // tinymce.get(this.id).insertContent("hellowords") // insert content
+        value(newVal){
+            this.callbackUpdateContent(this.value,()=>{
+                this.initTinyMCE(this.value);
+            });
         },
         checkEdit(abc){
             if(abc == false){
                 tinymce.get(this.id).getBody().setAttribute('contenteditable', false)
-                // tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
             }
             else {
-                // console.log(tinymce.getInstanceById('vendor-activity-edit-content'))
-                // console.log(tinymce.get('vendor-activity-edit-content'))
                 tinymce.get(this.id).getBody().setAttribute('contenteditable', true)
-                // tinymce.activeEditor.getBody().setAttribute('contenteditable', true)
-                // alert(tinymce.get('vendor-activity-edit-content').getBody().getAttribute('contenteditable'))
             }
         }
     },
 
-    methods: {  
+    methods: { 
+        callbackUpdateContent(newContent,callback)
+        {
+            let _tiny = tinymce.get(this.id);
+            if(_tiny)
+            {
+                this.contentTinyMCE  = _tiny.getContent()
+                if(this.contentTinyMCE != newContent)
+                    _tiny.setContent(newContent)
+            }else
+            {
+                callback();
+            }
+
+            return this.$emit('input', newContent)
+        },
         insertSpecialContent(value)
         {
             tinymce.activeEditor.execCommand('mceInsertContent', false, value);
         },
-        initTinyMCEBasicMode(content){
+        initTinyMCEBasicMode(){
             var Vue = this
             var readonly = this.checkDisabled()
             var height = (this.height == null || this.height == undefined) ? "300" : this.height
             if( readonly == 1 )
                 var toolbar = false
             else
-                var toolbar = "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | table | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image code | preview | forecolor backcolor | pagebreak"
-            Vue.tinymce = tinymce.init(
+                var toolbar = "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | table | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image code | preview | forecolor backcolor | pagebreak | lineheightselect"
+            tinymce.init(
                 Object.assign({},
                     {
                         selector: '#' + Vue.id,
                         readonly : readonly,
                         height : height,
+                        //custom value of lineheight
+                        lineheight_formats:'Single=120% 1.5=180% Double=240%',
                         plugins: [
                             "advlist autolink link image lists charmap print preview hr anchor pagebreak",
                             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
                             "table",
                             // "autoresize",
                             "image code",
+                            "lineheight"
                         ],
                         // autoresize_on_init: false,
                         // autoresize_max_height: 300,
@@ -153,6 +148,9 @@ export default {
                                 tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
                             }
                             $('tr.mceFirst').css('z-index','1000')
+
+                            let content = Vue.value;
+
                             if(content != null || content != undefined)
                                 this.setContent(content)
                             editor.on('keyup', function (e) {
@@ -187,11 +185,10 @@ export default {
                 )
             )
         },
-
-        initTinyMCEAdvanceMode(content){
+        initTinyMCEAdvanceMode(){
             var Vue = this
             var readonly = this.checkDisabled()
-            Vue.tinymce = tinymce.init(
+            tinymce.init(
                 Object.assign({},
                     {
                         selector: '#' + Vue.id,
@@ -260,31 +257,6 @@ export default {
 
                             input.click();
                         },
-                        // images_upload_handler: function (blobInfo, success, failure) {
-                        //     var xhr, formData;
-                        //     xhr = new XMLHttpRequest();
-                        //     xhr.withCredentials = false;
-                        //     xhr.open('POST', 'postAcceptor.php');
-                        //     xhr.onload = function() {
-                        //       var json;
-
-                        //       if (xhr.status != 200) {
-                        //         failure('HTTP Error: ' + xhr.status);
-                        //         return;
-                        //       }
-                        //       json = JSON.parse(xhr.responseText);
-
-                        //       if (!json || typeof json.location != 'string') {
-                        //         failure('Invalid JSON: ' + xhr.responseText);
-                        //         return;
-                        //       }
-                        //       success(json.location);
-                        //     };
-                        //     formData = new FormData();
-                        //     formData.append('file', blobInfo.blob(), fileName(blobInfo));
-                        //     xhr.send(formData);
-                        // },
-
                         table_toolbar: "tableprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol",
                         style_formats: [{
                             title: 'Bold text',
@@ -330,6 +302,8 @@ export default {
                                 tinymce.activeEditor.getBody().setAttribute('contenteditable', false)
                             }
                             $('tr.mceFirst').css('z-index','1000')
+
+                            let content = Vue.value;
                             if(content != null || content != undefined)
                                 this.setContent(content)
                             editor.on('keyup', function (e) {
@@ -355,41 +329,29 @@ export default {
                 )
             )
         },
+        initTinyMCE(){
+            if(tinymce.get(this.id))
+                tinymce.get(this.id).destroy()
 
-        initTinyMCE(content){
-            let element = tinymce.get(this.id)
-            if(element)
-                element.destroy()
-            this.updateFloatLabel(content)
             if( this.mode == "advance" )
-                return this.initTinyMCEAdvanceMode(content)
+                this.initTinyMCEAdvanceMode()
             else
-                return this.initTinyMCEBasicMode(content)
+                this.initTinyMCEBasicMode()
+
+            /* nextTick loaded event */
+            this.updateFloatLabel(this.value)
         },
-        getContentOutput(){
-            // return this.contentOutPut = tinymce.get(this.id).getContent(data)
-        },
-        updateContent(data){
-            let self = this
-            let content = '';
-            try{
-                content = tinymce.get(this.id).getContent()
-            }catch(ex)
+        updateContent(newContent)
+        {
+            let _tiny = tinymce.get(this.id);
+            /* exists tiny */
+            if(_tiny)
             {
-                content = '';
+                this.contentTinyMCE  = _tiny.getContent()
+                _tiny.setContent(newContent)
             }
-            if(content != data){
-                try{
-                    tinymce.get(this.id).setContent(data)
-                }catch(ex)
-                {
-                    setTimeout(()=>{
-                        tinymce.get(self.id).setContent(data)
-                    },200)
-                }
                 
-            }
-            return self.$emit('input', data)
+            return this.$emit('input', newContent)
         },
         checkDisabled(){
             if(this.disabled == "disabled")

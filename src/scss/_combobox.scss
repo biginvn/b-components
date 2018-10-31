@@ -15,10 +15,12 @@
             float: left;
             margin-right: 10px;
             &>.icon-img {
-                width: 100%;
+                width: 45px;
                 display: block;
                 border-radius: 50%;
-                max-height: 45px;
+                height: 45px;
+                -o-object-fit: cover;
+                object-fit: cover;
             }
         }
     }
@@ -36,6 +38,10 @@
         top: 50%;
         cursor: pointer;
         transform: translateY(-50%);
+        color: #74767d;
+        z-index: 2;
+        font-weight: 600;
+        font-size: 13px;
     }
 
     .list-search {
@@ -111,10 +117,12 @@
                 float: left;
                 margin-right: 10px;
                 &>.icon-img {
-                    width: 100%;
+                    width: 45px;
                     display: block;
                     border-radius: 50%;
-                    max-height: 45px;
+                    height: 45px;
+                    -o-object-fit: cover;
+                    object-fit: cover;
                 }
             }
         }

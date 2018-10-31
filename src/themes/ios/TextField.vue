@@ -1,24 +1,30 @@
 <template>
- <div class="b__components b-ios b-float-label" :class="classesParent">
+ <div class="b__components b-ios b-float-label b-input-extend-custom" :class="(hasUrl ? 'has-link-view' : '') + classesParent">
   <label :class="classLabel">{{ label }}</label>
-  <input 
+  <input
     :placeholder="placeholder" 
     :type="typeComponent" 
     :min="min" 
     :maxlength="maxLength" 
     ref="bInput" 
-    :name="name" 
+    :name="name"
     :id="id" 
     :class="classes" 
     :value="value" 
-    :disabled="disabled" 
+    :disabled="disabled"
+    :regex="regex"
+    :url="url"
+    @keydown="keyDownRegex"
     @input="change($event.target.value)" 
     @blur="blur" 
     @focus="focus"
     @keyup="keyupEnter"
     @keypress="keyupEnter"
     >
-     <slot name="otherElements"></slot>
+  <div v-if="hasUrl" class="link-name-area">
+   <a class="link-text-name" :href="url" :target="targetBlank ? '_blank' : ''">{{ value }}</a>
+  </div>
+  <slot name="otherElements"></slot>
  </div>
 </template>
 <script>

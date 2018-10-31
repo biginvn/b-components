@@ -106,13 +106,8 @@
         min-height: 33px;
         padding-right: 30px;
         height: 33px;
-        /*border-bottom: 1px solid map-get($colors, primary);*/
 
         &>.control {
-            /*position: absolute;
-            right: 10px;
-            bottom: 5px;
-            cursor: pointer;*/
             content: "\f078";
             display: inline-block;
             font: normal normal normal 14px/1 FontAwesome;
@@ -126,10 +121,9 @@
             right: 6px;
             height: calc(100% - 2px);
             width: 12px;
-            font-size: 17x;
             color: #74767d;
             z-index: 2;
-            font-size: medium;
+            font-size: 13px;
         }
 
         &>.input-control-wrap {
@@ -187,6 +181,18 @@
                     font-size: 10px;
                     font-weight: 300;
                     color: #FFF;
+                }
+            }
+        }
+    }
+}
+.b-disabled {
+    .b__components.b__multi__select {
+        & .b__multi__select__control {
+            .selected {
+                padding: 5px 10px 5px 10px;
+                .close-item {
+                    display: none;
                 }
             }
         }

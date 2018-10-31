@@ -3,7 +3,7 @@
 		<div class="b__multi__select__control">
 			<div class="selected"  v-show="isShowingTag" v-for="(item,index) in list">
 				<span class="thumb" >{{item.thumbHtml}}</span>
-				<span class="close-item" @click.prevent.stop="remove(index)" ><i class="fa fa-times" aria-hidden="true"></i></span>
+				<span class="close-item" @click.prevent.stop="remove(index)" ><i class="fas fa-times" aria-hidden="true"></i></span>
 			</div>
 			<!-- <div class="selected single" v-if="isSingle">
 				<span class="thumb" v-if = "getSingleSelected()!=null" v-html="getSingleSelected().thumbHtml"></span>
