@@ -11,19 +11,20 @@ export default {
     props : [ 'checkEdit','id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path'],
     beforeDestroy(){
         try{
-            if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined)
+            if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined){
                 tinymce.get(this.id).destroy()
-        }catch(ex){}
+            }
+        }catch(ex){
+            console.log(ex)
+        }
     },
     mounted(){
-        this.callbackUpdateContent(this.value,()=>{
-            this.initTinyMCE();
-        });
+        this.initTinyMCE();
     },
     watch:{
         value(newVal){
-            this.callbackUpdateContent(this.value,()=>{
-                this.initTinyMCE(this.value);
+            this.callbackUpdateContent(()=>{
+                this.initTinyMCE();
             });
         },
         checkEdit(abc){
@@ -35,22 +36,19 @@ export default {
             }
         }
     },
-
     methods: { 
-        callbackUpdateContent(newContent,callback)
+        callbackUpdateContent(callback)
         {
             let _tiny = tinymce.get(this.id);
             if(_tiny)
             {
                 this.contentTinyMCE  = _tiny.getContent()
-                if(this.contentTinyMCE != newContent)
-                    _tiny.setContent(newContent)
-            }else
-            {
-                callback();
+                if(this.contentTinyMCE != this.value)
+                    _tiny.setContent(this.value)
             }
+            else   callback();
 
-            return this.$emit('input', newContent)
+            return this.$emit('input', this.value)
         },
         insertSpecialContent(value)
         {
@@ -330,8 +328,13 @@ export default {
             )
         },
         initTinyMCE(){
-            if(tinymce.get(this.id))
-                tinymce.get(this.id).destroy()
+            try{
+                if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined){
+                    tinymce.get(this.id).destroy()
+                }
+            }catch(ex){
+                console.log(ex)
+            }
 
             if( this.mode == "advance" )
                 this.initTinyMCEAdvanceMode()
@@ -340,18 +343,6 @@ export default {
 
             /* nextTick loaded event */
             this.updateFloatLabel(this.value)
-        },
-        updateContent(newContent)
-        {
-            let _tiny = tinymce.get(this.id);
-            /* exists tiny */
-            if(_tiny)
-            {
-                this.contentTinyMCE  = _tiny.getContent()
-                _tiny.setContent(newContent)
-            }
-                
-            return this.$emit('input', newContent)
         },
         checkDisabled(){
             if(this.disabled == "disabled")
