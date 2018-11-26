@@ -176,9 +176,9 @@ export default{
 			if(string == "" || string == null || string == undefined)
 				return this.inputValue = ""
 			if( this.inputType == "prefix"){
-				this.inputValue = this.inputAffix + this.interruptInput(parseFloat(this.valueTemp)) + decimalPoint + endString 
+				this.inputValue = this.inputAffix + this.interruptInput(this.valueTemp) + decimalPoint + endString 
 			}else{
-				this.inputValue = this.interruptInput(parseFloat(this.valueTemp)) + decimalPoint + endString + this.inputAffix
+				this.inputValue = this.interruptInput(this.valueTemp) + decimalPoint + endString + this.inputAffix
 			}
 		},	
 
