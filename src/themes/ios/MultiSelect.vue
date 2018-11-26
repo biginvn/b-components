@@ -90,7 +90,7 @@
 	.multi{
 		max-height: 145px !important;
 		height: 100% !important;
-		overflow: scroll !important;
+		/*overflow: scroll !important;*/
 	}
 
 	.iconC::after{
