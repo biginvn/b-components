@@ -1,5 +1,6 @@
 <template>
-	<div class="b__components b__multi__select" tabindex="0" @blur = "closeDropdow()" @click = "switchList(true)">
+	<div class="b-select b__components b__multi__select" tabindex="0" @blur = "closeDropdow()" @click = "switchList(true)">
+		<span class="placeholder show" v-if="!isActive && !isSingle">{{ placeholder }}</span>
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
 		<div class="b__multi__select__control" v-bind:class="{ addBorder : isExpanding, multi: !singleDropdown }">
 			<div class="selected" v-if="!isSingle" v-for="item in getSelectedList()">
@@ -90,7 +91,7 @@
 	.multi{
 		max-height: 145px !important;
 		height: 100% !important;
-		overflow: scroll !important;
+		/*overflow: scroll !important;*/
 	}
 
 	.iconC::after{

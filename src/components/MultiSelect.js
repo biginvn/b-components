@@ -163,7 +163,13 @@ export default {
 
         toggleItem(id){
             if (!this.isSingle){
-                let selectList = this.value == null ? [] : this.value;
+                let selectList = [];
+                
+                if(this.value){
+                    if(Array.isArray(this.value))
+                        selectList = this.value;
+                }
+                
                 if (selectList.includes(id))
                     selectList.splice(selectList.indexOf(id), 1)
                 else
