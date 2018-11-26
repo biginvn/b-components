@@ -19,7 +19,16 @@ export default {
         }
     },
     mounted(){
-        this.initTinyMCE();
+        try{
+            if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined){
+                tinymce.get(this.id).destroy()
+            }
+        }catch(ex){
+            console.log(ex)
+        }
+        this.$nextTick(()=>{
+            this.initTinyMCE();
+        })
     },
     watch:{
         value(newVal){
@@ -328,18 +337,12 @@ export default {
             )
         },
         initTinyMCE(){
-            try{
-                if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined){
-                    tinymce.get(this.id).destroy()
-                }
-            }catch(ex){
-                console.log(ex)
-            }
-
-            if( this.mode == "advance" )
-                this.initTinyMCEAdvanceMode()
-            else
-                this.initTinyMCEBasicMode()
+            this.$nextTick(()=>{
+                if( this.mode == "advance" )
+                    this.initTinyMCEAdvanceMode()
+                else
+                    this.initTinyMCEBasicMode()
+            })
 
             /* nextTick loaded event */
             this.updateFloatLabel(this.value)
