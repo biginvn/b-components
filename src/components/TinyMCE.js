@@ -32,9 +32,15 @@ export default {
     },
     watch:{
         value(newVal){
-            this.callbackUpdateContent(()=>{
-                this.initTinyMCE();
-            });
+            this.$nextTick(()=>{
+                let self = this;
+                setTimeout(()=>{
+                    self.callbackUpdateContent(()=>{
+                        self.initTinyMCE();
+                    });
+                },500)
+            })
+                    
         },
         checkEdit(abc){
             if(abc == false){
@@ -338,12 +344,14 @@ export default {
         },
         initTinyMCE(){
             this.$nextTick(()=>{
-                if( this.mode == "advance" )
-                    this.initTinyMCEAdvanceMode()
-                else
-                    this.initTinyMCEBasicMode()
+                let self = this;
+                setTimeout(()=>{
+                    if( self.mode == "advance" )
+                        self.initTinyMCEAdvanceMode()
+                    else
+                        self.initTinyMCEBasicMode()
+                },500)
             })
-
             /* nextTick loaded event */
             this.updateFloatLabel(this.value)
         },
