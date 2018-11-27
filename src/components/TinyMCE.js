@@ -38,7 +38,7 @@ export default {
                     self.callbackUpdateContent(()=>{
                         self.initTinyMCE();
                     });
-                },500)
+                },100)
             })
                     
         },
@@ -350,7 +350,7 @@ export default {
                         self.initTinyMCEAdvanceMode()
                     else
                         self.initTinyMCEBasicMode()
-                },500)
+                },100)
             })
             /* nextTick loaded event */
             this.updateFloatLabel(this.value)

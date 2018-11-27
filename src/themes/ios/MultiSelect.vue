@@ -1,5 +1,5 @@
 <template>
-	<div class="b-select b__components b__multi__select" tabindex="0" @blur = "closeDropdow()" @click = "switchList(true)">
+	<div class="b__components b__multi__select" tabindex="0" @blur = "closeDropdow()" @click = "switchList(true)">
 		<span class="placeholder show" v-if="!isActive && !isSingle">{{ placeholder }}</span>
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label }}</label>
 		<div class="b__multi__select__control" v-bind:class="{ addBorder : isExpanding, multi: !singleDropdown }">
@@ -57,7 +57,7 @@
 		border: 1px solid #0082d5 !important;
 	}
 	.b__multi__select__control{
-		padding-top: 2px !important;
+		padding-top: 8px !important;
 	}
 	.selected{
 		margin-left: 3px;
@@ -117,5 +117,12 @@
 	}
 	.iconD::after{
 		transform: rotate(180deg);
+	}
+
+	.b__multi__select.select-disabled .iconC{
+	    display: none;
+	}
+	.b__multi__select.select-disabled{
+	    border: none;
 	}
 </style>
