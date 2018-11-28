@@ -1,7 +1,7 @@
 import baseComponent from '../mixins/base-mixins'
 export default {
 	mixins : [baseComponent],
-	props : [ 'disabled', 'name', 'id', 'label', 'class-name', 'rate-max' ],
+	props : [ 'disabled', 'name', 'id', 'label', 'class-name', 'rate-max','class-disabled' ],
 	computed : {
 		listRate () {
 			if (this.rateMax == undefined || this.rateMax == null)
@@ -21,6 +21,11 @@ export default {
 			let classStar = (this.className ? this.className : '')
 			classStar += this.rate >= this.listRate.length ? ' full' : ''
 			return classStar + ' rating__input'
+		},
+		classDis (){
+			let disabled = (this.classDisabled ? this.classDisabled : '')
+			disabled += this.rate >= this.listRate.length ? ' full' : ''
+			return disabled
 		}
 	},
 	methods : {

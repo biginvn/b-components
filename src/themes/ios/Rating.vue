@@ -1,5 +1,5 @@
 <template>
-	<div class="b__components b-ios b-rating">
+	<div class="b__components b-ios b-rating" :class="classDis">
 		<ul :class="classes">
 			<li v-for = "item in listRate" :class="item <= rate ? 'active' : '' " @click="update(item)">
 				<i class="far fa-star" aria-hidden="true" v-show=" item > rate "></i>
