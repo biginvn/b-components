@@ -57,6 +57,9 @@
 		border: 1px solid #0082d5 !important;
 	}
 	.b__multi__select__control{
+		padding-top: 2px !important;
+	}
+	.b__multi__select__control.multi{
 		padding-top: 8px !important;
 	}
 	.selected{

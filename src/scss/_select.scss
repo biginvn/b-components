@@ -37,7 +37,7 @@
         pointer-events: none;
         z-index: 1;
         top: 5px;
-        left: 10px;
+        left: 8px;
         font-size: 14px;
         color: grey;
         opacity: 0;
@@ -59,23 +59,23 @@
         pointer-events: auto;
         display: none;
     }
-    &.select-disabled, &[always-disabled="true"] {
-        & > label {
-            &.active {
-                padding-left: 5px;
-                left: 10px;
-            }
-        }
-        select {
-            &.hyper-link-select-view {
-                opacity: 0 !important;
-            }
-        }
-        .external-link-select {
-            opacity: 1;
-            display: block;
-        }
-    }
+    // &.select-disabled, &[always-disabled="true"] {
+    //     & > label {
+    //         &.active {
+    //             padding-left: 5px;
+    //             left: 10px;
+    //         }
+    //     }
+    //     select {
+    //         &.hyper-link-select-view {
+    //             opacity: 0 !important;
+    //         }
+    //     }
+    //     .external-link-select {
+    //         opacity: 1;
+    //         display: block;
+    //     }
+    // }
     &:after{
         display: inline-block;
         font: normal normal normal 14px/1 FontAwesome;
@@ -103,7 +103,7 @@
         display: block;
         position: absolute;
         top: -6px;
-        left: 10px;
+        left: 6px;
         padding: 0 2px;
         font-size: 11px;
         font-weight: 400;
@@ -120,36 +120,3 @@
     }
 }
 
-.b__multi__select {
-    .placeholder {
-        position: absolute;
-        pointer-events: none;
-        z-index: 1;
-        top: 5px;
-        left: 10px;
-        font-size: 14px;
-        color: grey;
-        opacity: 0;
-        transition: all .2s ease-in-out;
-        &.show {
-            opacity: 1;
-        }
-    }
-    &.select-disabled, &[always-disabled="true"] {
-        & > label {
-            &.active {
-                padding-left: 5px;
-                left: 10px;
-            }
-        }
-        select {
-            &.hyper-link-select-view {
-                opacity: 0 !important;
-            }
-        }
-        .external-link-select {
-            opacity: 1;
-            display: block;
-        }
-    }
-}
