@@ -14,33 +14,19 @@ export default {
             if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined){
                 tinymce.get(this.id).destroy()
             }
-        }catch(ex){
-            console.log(ex)
-        }
+        }catch(ex){}
     },
     mounted(){
-        try{
-            if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined){
-                tinymce.get(this.id).destroy()
-            }
-        }catch(ex){
-            console.log(ex)
-        }
-        this.$nextTick(()=>{
-            this.initTinyMCE();
-        })
+        this.initTinyMCE();
     },
     watch:{
         value(newVal){
+            let self = this;
             this.$nextTick(()=>{
-                let self = this;
-                setTimeout(()=>{
-                    self.callbackUpdateContent(()=>{
-                        self.initTinyMCE();
-                    });
-                },100)
+                self.callbackUpdateContent(()=>{
+                    self.initTinyMCE();
+                });
             })
-                    
         },
         checkEdit(abc){
             if(abc == false){
@@ -343,6 +329,12 @@ export default {
             )
         },
         initTinyMCE(){
+            try{
+                if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined){
+                    tinymce.get(this.id).destroy()
+                }
+            }catch(ex){}
+            this.loadingContent();
             this.$nextTick(()=>{
                 let self = this;
                 setTimeout(()=>{
@@ -350,6 +342,11 @@ export default {
                         self.initTinyMCEAdvanceMode()
                     else
                         self.initTinyMCEBasicMode()
+
+                    self.$nextTick(()=>{
+                        self.loadingContent(false);
+                    })
+
                 },100)
             })
             /* nextTick loaded event */
@@ -371,5 +368,11 @@ export default {
             } else
                 this.classLabel = ''
         },
+        loadingContent(isLoad = true){
+            let options = { element : `.loading-tiny` };
+            if ("undefined" !== typeof ARCLoading) {
+                isLoad ? ARCLoading.open(options) : ARCLoading.close(options);
+            }
+        }
     }
 }
