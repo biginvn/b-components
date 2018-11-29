@@ -14,18 +14,19 @@ export default {
             if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined){
                 tinymce.get(this.id).destroy()
             }
-        }catch(ex){
-            console.log(ex)
-        }
+        }catch(ex){}
     },
     mounted(){
         this.initTinyMCE();
     },
     watch:{
         value(newVal){
-            this.callbackUpdateContent(()=>{
-                this.initTinyMCE();
-            });
+            let self = this;
+            this.$nextTick(()=>{
+                self.callbackUpdateContent(()=>{
+                    self.initTinyMCE();
+                });
+            })
         },
         checkEdit(abc){
             if(abc == false){
@@ -332,15 +333,22 @@ export default {
                 if(tinymce.get(this.id) != null && tinymce.get(this.id) != undefined){
                     tinymce.get(this.id).destroy()
                 }
-            }catch(ex){
-                console.log(ex)
-            }
+            }catch(ex){}
+            this.loadingContent();
+            this.$nextTick(()=>{
+                let self = this;
+                setTimeout(()=>{
+                    if( self.mode == "advance" )
+                        self.initTinyMCEAdvanceMode()
+                    else
+                        self.initTinyMCEBasicMode()
 
-            if( this.mode == "advance" )
-                this.initTinyMCEAdvanceMode()
-            else
-                this.initTinyMCEBasicMode()
+                    self.$nextTick(()=>{
+                        self.loadingContent(false);
+                    })
 
+                },100)
+            })
             /* nextTick loaded event */
             this.updateFloatLabel(this.value)
         },
@@ -360,5 +368,11 @@ export default {
             } else
                 this.classLabel = ''
         },
+        loadingContent(isLoad = true){
+            let options = { element : `.loading-tiny` };
+            if ("undefined" !== typeof ARCLoading) {
+                isLoad ? ARCLoading.open(options) : ARCLoading.close(options);
+            }
+        }
     }
 }

@@ -137,6 +137,9 @@ export default {
 
         initData(){
             this.input.defaultClassInput = this.classes
+        },
+        resetError(){
+             this.classLabel = "active"
         }
     }
 
