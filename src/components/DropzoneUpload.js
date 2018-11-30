@@ -73,6 +73,9 @@ export default {
         }
     },
     methods: {
+        // params: file upload by dropzone 
+        // desc: ref props call to method self 
+        // output: action remove files by input
         dropzoneRemoveFile(files = []){
             if(files)
                 this.dropzone.removeAllFiles(true);
