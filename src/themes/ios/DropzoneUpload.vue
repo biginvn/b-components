@@ -26,7 +26,7 @@
                 <!-- <a :href="item.path"> -->
                     <div :class="item.className" style="animation: fadeOut;">
                         <img v-if="item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'" data-dz-thumbnail="" :src="item.path" style="height: 45px;">
-                        <img v-else data-dz-thumbnail="" style="height: 45px;">
+                        <img v-else data-dz-thumbnail="">
                         <a :href="item.path" target="_blank"><span data-dz-name="" class="dz-name" data-toggle="tooltip" data-original-title="Download">{{ item.name }}</span></a>
                         <strong><span class="dz-size" data-dz-size>{{ item.filesize }}</span></strong>
                         <a data-dz-remove="" v-show="!disabled"  class="remove-archive" @click="deleteThisItem(item.id)"><i class="fas fa-times"></i></a>
