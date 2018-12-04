@@ -73,9 +73,6 @@ export default {
         }
     },
     methods: {
-        // params: file upload by dropzone 
-        // desc: ref props call to method self 
-        // output: action remove files by input
         dropzoneRemoveFile(files = []){
             if(files)
                 this.dropzone.removeAllFiles(true);
@@ -308,8 +305,7 @@ export default {
             }
             if( fileError != null &&  fileError != ""){
                 this.$emit('validation-file-size', fileError)
-                console.log("File: " + fileError + " removed because total size to large.")
-                // after emit and handle todo
+                alert("File: " + fileError + " removed because total size to large.")
             }
         },
 
