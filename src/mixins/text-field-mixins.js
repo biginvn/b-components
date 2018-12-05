@@ -7,7 +7,30 @@ export default {
         }
     },
     mixins: [baseMixins],
-    props: ['disabled', 'placeholder', 'label', 'class-name', 'name', 'id'],
+    // props: ['disabled', 'placeholder', 'label', 'class-name', 'name', 'id'],
+    props: {
+        'disabled' : {
+
+        },
+        'placeholder' : {
+
+        },
+        'label' : {
+
+        },
+        'class-name' : {
+
+        },
+        'name' : {
+
+        },
+        'id' : {
+
+        },
+        'nullPlaceholder' : {
+            default: "-",
+        }
+    },
     computed: {
         classes() {
             return (this.className ? this.className : '') + " b__input"
