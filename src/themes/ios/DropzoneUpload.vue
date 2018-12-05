@@ -1,6 +1,6 @@
 <template>
     <div class="b__components b__dropzone_upload">
-        <div class="b__components__dropzone" :id="id" v-show="((dropzoneTotalFile + inputTotalFile) < parseInt(maxFile)) && !disabled">
+        <div class="b__components__dropzone" :id="id" v-show="((dropzoneTotalFile + inputTotalFile) < parseInt(maxFile) || maxFile == undefined) && !disabled">
             <div class="content">
                 <div class="row">
                     <img v-if="completedConfig.publicPath" :src="completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'" class="icon-upload">
