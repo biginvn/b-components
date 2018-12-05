@@ -45,7 +45,7 @@
             background: transparent;
         }
         .pre-b-textarea {
-            padding: 0 !important;
+            padding: 0px 10px 10px 0px;
             font-size: 13px !important;
             color: #444 !important;
             pointer-events: auto !important;
@@ -54,6 +54,24 @@
             font-family: Montserrat,sans-serif;
             position: relative;
             max-height: 60px;
+            overflow: hidden;
+            &:hover {
+                overflow: auto;
+                padding-right: 0;
+                padding-bottom: 0;
+            }
+            &::-webkit-scrollbar {
+                width: 8px;
+                height: 8px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: #ccc;
+                border-radius: 8px;
+            }
+            &::-webkit-scrollbar-track {
+                background: #fff;
+                border-radius: 8px;
+            }
         }
     }
 }
