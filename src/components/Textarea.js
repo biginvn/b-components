@@ -17,6 +17,9 @@ export default {
         hasPreView: {
             // type: Boolean,
             default: false
+        },
+        nullPrePlaceholder: {
+            default: "-"
         }
     },
     watch : {
@@ -33,7 +36,7 @@ export default {
         },
         contentPreview() {
             if (this.value == null || this.value == '')
-                return this.nullPlaceholder;
+                return this.nullPrePlaceholder;
             return this.value;
         }
     },

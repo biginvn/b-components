@@ -27,9 +27,6 @@ export default {
         'id' : {
 
         },
-        'nullPlaceholder' : {
-            default: "-",
-        }
     },
     computed: {
         classes() {
