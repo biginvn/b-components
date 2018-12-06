@@ -5,7 +5,7 @@
 				  :disabled="disabled" :value="value" @input="change($event.target.value)">{{ text }}</textarea>
 		<div class="b-wrapper-pre" v-show="isViewPre">
 			<label class="label-pre" :class="classLabel">{{ label }}</label>
-			<pre class="pre-b-textarea" :placeholder="placeholder" :null-placeholder="nullPlaceholder" org-placeholder="placeholder">{{ contentPreview }}</pre>
+			<pre class="pre-b-textarea" :placeholder="placeholder">{{ contentPreview }}</pre>
 		</div>
 	</div>
 </template>
