@@ -26,12 +26,18 @@ export default{
     },
 
     mounted(){
-        this.watchDataValue(this.value)
+        if (this.value !== null)
+            this.watchDataValue(this.value.toString())
+        else
+            this.watchDataValue("")
     },
 
     watch: {
         value(){
-            this.watchDataValue(this.value)
+            if (this.value !== null)
+                this.watchDataValue(this.value.toString())
+            else
+                this.watchDataValue("")
         },
         affix(){
             if(this.affix != null || this.affix != undefined){
@@ -66,7 +72,6 @@ export default{
     },
 
     methods: {
-
         watchDataValue(value){
             if( value != null || value != undefined){
                 this.valueTemp  = value
