@@ -62,6 +62,9 @@ export default {
             type: Boolean,
             default: false
         },
+        orderColumn: {
+            type: Object/Array,
+        },
     },
     computed: {
         options() {
@@ -69,6 +72,7 @@ export default {
             this.optionsTable.data = this.tableData
             this.optionsTable.columns = this.tableColumn
             this.optionsTable = Object.assign(this.optionsTable, this.otherOptions)
+            this.optionsTable.order = [this.orderColumn]
             return this.optionsTable;
         },
     },
