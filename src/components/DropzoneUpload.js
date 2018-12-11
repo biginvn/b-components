@@ -41,6 +41,10 @@ export default {
         maxSize: {
 
         },
+        disabled : {
+            type : Boolean,
+            default : false
+        },
         supportFileType: {
             type: Object/Array,
             default: null
@@ -69,6 +73,15 @@ export default {
         }
     },
     methods: {
+        dropzoneRemoveFile(files = []){
+            if(files)
+                this.dropzone.removeAllFiles(true);
+            else{
+                for(let i = 0; i < files.length; i++){
+                    this.dropzone.removeFile(files[i]);
+                }
+            }
+        },
         initDropzone(){
             this.configDropzone()
             this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
@@ -76,7 +89,6 @@ export default {
             this.dropzone.on("sending", (file) => {
                 document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1"
             })
-
             this.dropzone.on("queuecomplete", (progress) => {
             })
             let Vue = this

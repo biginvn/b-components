@@ -42,7 +42,8 @@ export default {
             type: Boolean
         },
         disableIcon: {
-            type: Boolean
+            type: Boolean,
+            default: true
         },
         styleDefault: {
             type: Boolean,
