@@ -147,6 +147,11 @@ export default {
                 }
                 this.pointerIndex = this.searchListTotal.indexOf(selectItem[0])
             }
+            else {
+                this.searchKeyword = "";
+                this.selectedValue = null;
+                this.pointerIndex = 0;
+            }
         },
         selectedValue(val) {
             this.itemResult = Object.assign({}, this.searchList[this.pointerIndex]);
