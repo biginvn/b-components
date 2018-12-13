@@ -72,7 +72,9 @@ export default {
             this.optionsTable.data = this.tableData
             this.optionsTable.columns = this.tableColumn
             this.optionsTable = Object.assign(this.optionsTable, this.otherOptions)
-            this.optionsTable.order = [this.orderColumn]
+            if(this.orderColumn != undefined && this.orderColumn != null){
+                this.optionsTable.order = [this.orderColumn]
+            }
             return this.optionsTable;
         },
     },
