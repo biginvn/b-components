@@ -39,7 +39,7 @@
         </div>
 
 
-        <table class="display table dataTable" :editAPI="editAPI" :keyAPI="keyAPI" :id="idTable" width="100%" :static="static" :tableData="tableData" :tableColumn="tableColumn" :otherOptions="otherOptions" :calcSum="calcSum" :tableTfoot="tableTfoot">
+        <table class="display table dataTable" :editAPI="editAPI" :keyAPI="keyAPI" :id="idTable" width="100%" :static="static" :tableData="tableData" :tableColumn="tableColumn" :otherOptions="otherOptions" :calcSum="calcSum" :tableTfoot="tableTfoot" :orderColumn="orderColumn">
             <tbody>
             </tbody>
             <tfoot>

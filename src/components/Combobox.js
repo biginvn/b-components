@@ -42,7 +42,8 @@ export default {
             type: Boolean
         },
         disableIcon: {
-            type: Boolean
+            type: Boolean,
+            default: true
         },
         styleDefault: {
             type: Boolean,
@@ -89,6 +90,10 @@ export default {
         isShowHtmlResult: {
             type: Boolean,
             default: false
+        },
+        isResetWhenBlurOut: {
+            type: Boolean,
+            default: true
         }
     },
     mixins: [baseComponent],
@@ -146,6 +151,11 @@ export default {
                 }
                 this.pointerIndex = this.searchListTotal.indexOf(selectItem[0])
             }
+            else {
+                this.searchKeyword = "";
+                this.selectedValue = null;
+                this.pointerIndex = 0;
+            }
         },
         selectedValue(val) {
             this.itemResult = Object.assign({}, this.searchList[this.pointerIndex]);
@@ -195,7 +205,8 @@ export default {
                 this.switchList(false);
                 if(this.selectedValue == null){
                     this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
-                    this.searchKeyword = ''
+                    if (this.isResetWhenBlurOut)
+                        this.searchKeyword = ''
                     this.showResult = false
                 }
                 else this.showResult = true

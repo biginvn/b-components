@@ -149,16 +149,18 @@
             margin-right: 7px;
             margin-bottom: 5px;
             border-radius: 15px;
-            /*color: rgba(0, 0, 0, .87);*/
+            max-width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
 
             &.single {
                 background-color: transparent;
-                padding: 6px 30px 6px 10px;
                 display: block;
                 margin: 0;
                 font-size:12.5px;
                 padding:8px;
-                margin-left: 2px;
+                margin-left: 0;
                 .thumb {
                     width: 100%;
                     display: block;
@@ -229,6 +231,9 @@
         .external-link-select {
             opacity: 1;
             display: block;
+        }
+        .b__multi__select__control {
+            border: none;
         }
     }
 }
