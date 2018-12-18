@@ -62,7 +62,7 @@ export default {
             if( readonly == 1 )
                 var toolbar = false
             else
-                var toolbar = "cut copy paste | searchreplace | newdocument fullpage | bold italic underline strikethrough | table | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image code | preview | forecolor backcolor | pagebreak | lineheightselect"
+                var toolbar = "cut copy paste | searchreplace| bullist numlist | newdocument fullpage | bold italic underline strikethrough | table | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image code | preview | forecolor backcolor | pagebreak | lineheightselect"
             tinymce.init(
                 Object.assign({},
                     {
