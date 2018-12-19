@@ -65,6 +65,9 @@
         color: #444 !important;
         pointer-events: auto;
         display: none;
+        .link-text-name {
+            text-decoration: none;
+        }
     }
     &.has-link-view.input-disabled, &.has-link-view[always-disabled="true"] {
         input {

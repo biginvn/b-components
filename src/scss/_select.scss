@@ -49,33 +49,33 @@
     .external-link-select {
         position: absolute;
         z-index: 1;
-        left: 10px;
+        left: 8px;
         font-size: 13px;
         font-weight: 600;
         top: 10px;
-        padding-left: 5px !important;
         opacity: 0;
         transition: all .2s ease-in-out;
         pointer-events: auto;
         display: none;
     }
-    // &.select-disabled, &[always-disabled="true"] {
-    //     & > label {
-    //         &.active {
-    //             padding-left: 5px;
-    //             left: 10px;
-    //         }
-    //     }
-    //     select {
-    //         &.hyper-link-select-view {
-    //             opacity: 0 !important;
-    //         }
-    //     }
-    //     .external-link-select {
-    //         opacity: 1;
-    //         display: block;
-    //     }
-    // }
+     &.select-disabled, &[always-disabled="true"] {
+         //& > label {
+         //    &.active {
+         //        padding-left: 5px;
+         //        left: 10px;
+         //    }
+         //}
+         select {
+             &.hyper-link-select-view {
+                 opacity: 0 !important;
+             }
+         }
+         .external-link-select {
+             opacity: 1;
+             display: block;
+             text-decoration: none;
+         }
+     }
     &:after{
         display: inline-block;
         font: normal normal normal 14px/1 FontAwesome;
