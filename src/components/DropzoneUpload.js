@@ -65,8 +65,9 @@ export default {
             }
         },
         value(value){
-            if(value != undefined && value != undefined)
+            if(value != undefined && value != undefined) {
                 this.initDropzone()
+            }
         },
         supportFileType(value) {
             if (value !== null) this.supportTypes = this.supportFileType.slice(0)
@@ -84,67 +85,72 @@ export default {
         },
         initDropzone(){
             this.configDropzone()
-            this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
-            let dropzoneComponent = this
-            this.dropzone.on("sending", (file) => {
-                document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1"
-            })
-            this.dropzone.on("queuecomplete", (progress) => {
-            })
-            let Vue = this
-            this.dropzone.on("addedfile", (file, xhr, formData) => {
-                var parent = document.querySelectorAll('.' + this.id + '__preview__container .preview:not(stuff)');
-                for (var i = 0; i < parent.length ; i++) {
-                    var child = parent[i].querySelector('.dz-thumb');
-                    parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
-                }
-                var fileEx = file.name.split('.').pop();
-                if (this.supportTypes.length > 0 && this.supportTypes.indexOf('.' + fileEx) === -1) {
-                    this.dropzone.removeFile(file);
-                    alert('The selected file is not supported. The accepted file types are: ' + this.supportTypes.join(','))
-                }
-                else {
-                    if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" ||  fileEx == "gif" ||  fileEx == "bmp")
-                        return child.className += " dz-image"
-                    switch(fileEx) {
-                        case "pdf":
-                            child.className += " dz-pdf"
-                            break;
-                        case "doc":
-                            child.className += " dz-doc"
-                            break;
-                        case "docx":
-                            child.className += " dz-doc"
-                            break;
-                        case "ppt":
-                            child.className += " dz-ppt"
-                            break;
-                        case "xls":
-                            child.className += " dz-xls"
-                            break;
-                        case "xlsx":
-                            child.className += " dz-xls"
-                            break;
-                        case "txt":
-                            child.className += " dz-txt"
-                            break;
-                        case "csv":
-                            child.className += " dz-csv"
-                            break;
-                        case "rtf":
-                            child.className += " dz-rtf"
-                            break;
-                        case "zip":
-                            child.className += " dz-zip"
-                            break;
-                        case "rar":
-                            child.className += " dz-zip"
-                            break;
-                        default:
-                            child.className += " dz-file"
+            if (this.dropzone !== null) {
+                this.dropzoneRemoveFile(true)
+            }
+            else {
+                this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
+                let dropzoneComponent = this
+                this.dropzone.on("sending", (file) => {
+                    document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1"
+                })
+                this.dropzone.on("queuecomplete", (progress) => {
+                })
+                let Vue = this
+                this.dropzone.on("addedfile", (file, xhr, formData) => {
+                    var parent = document.querySelectorAll('.' + this.id + '__preview__container .preview:not(stuff)');
+                    for (var i = 0; i < parent.length ; i++) {
+                        var child = parent[i].querySelector('.dz-thumb');
+                        parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
                     }
-                }
-            })
+                    var fileEx = file.name.split('.').pop();
+                    if (this.supportTypes.length > 0 && this.supportTypes.indexOf('.' + fileEx) === -1) {
+                        this.dropzone.removeFile(file);
+                        alert('The selected file is not supported. The accepted file types are: ' + this.supportTypes.join(','))
+                    }
+                    else {
+                        if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" ||  fileEx == "gif" ||  fileEx == "bmp")
+                            return child.className += " dz-image"
+                        switch(fileEx) {
+                            case "pdf":
+                                child.className += " dz-pdf"
+                                break;
+                            case "doc":
+                                child.className += " dz-doc"
+                                break;
+                            case "docx":
+                                child.className += " dz-doc"
+                                break;
+                            case "ppt":
+                                child.className += " dz-ppt"
+                                break;
+                            case "xls":
+                                child.className += " dz-xls"
+                                break;
+                            case "xlsx":
+                                child.className += " dz-xls"
+                                break;
+                            case "txt":
+                                child.className += " dz-txt"
+                                break;
+                            case "csv":
+                                child.className += " dz-csv"
+                                break;
+                            case "rtf":
+                                child.className += " dz-rtf"
+                                break;
+                            case "zip":
+                                child.className += " dz-zip"
+                                break;
+                            case "rar":
+                                child.className += " dz-zip"
+                                break;
+                            default:
+                                child.className += " dz-file"
+                        }
+                    }
+                })
+            }
             this.$emit('dropzone', this.dropzone)
             if(this.value != undefined)
                 if(this.value.list != undefined && this.value.list != null)
