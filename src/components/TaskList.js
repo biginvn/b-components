@@ -12,7 +12,6 @@ export default {
     watch: {
         value() {
             if (this.value == undefined || this.value == null || this.value.length == 0) {
-                console.log('Array is NULL');
             };
         }
     },
@@ -57,7 +56,6 @@ export default {
                 }
             }, 500);
             this.$emit('input', self.task);
-            // console.log(JSON.stringify(self.task));
         },
         emptyTask() {
             this.task = [];
@@ -68,7 +66,6 @@ export default {
 
         },
         mouseover() {
-            console.log('hover')
         }
 
     }

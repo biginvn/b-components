@@ -107,7 +107,6 @@ export default {
         },
 
         closeDropdow(event){
-            console.log('close dropdown')
             this.switchList(false);
             if(!this.value)
                 this.searchKeyword = null

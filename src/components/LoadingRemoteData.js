@@ -63,7 +63,6 @@ export default {
 		callAjax(value){
 			
 	       		this.$http.post(this.url,{'name':value},  { timeout: 10000 }).then(function(response){
-	        		console.log(response.body);
 	        		this.searchList = response.body;
 	        	});
         	 	this.searchList = [{
