@@ -18,7 +18,7 @@
 				</span>
 			</div>
 
-			<div class="input-control-wrap" v-if = "!isSingle || getSingleSelected() == null " style="width:100%;">
+			<div class="input-control-wrap" v-if = "isSingle && getSingleSelected() == null " style="width:100%;">
 				<input
 						ref="inputSearch"
 						v-show="singleDropdown"
@@ -30,22 +30,36 @@
 						class="input-control" @focus="focusInputAction($event.target.value);$emit('removeRequired')" @input = "searchAction($event.target.value)" :value = "searchKeyword"
 						@blur='closeDropdow()'
 						onClick="this.select()"
-				></div>
+				>
+			</div>
 
 			<div :class="isExpanding ? 'iconC iconD' : 'iconC'" @click="toggleList($event)">
 			</div>
 		</div>
 
-		<!-- <input type="hidden" :name="name" :value="value" class="mutiple-select-hidden-value"> -->
-		<ul v-bind:class="[{addBorder : isExpanding}, listClasses]">
-			<li v-show = "searchList == undefined || searchList.length == 0" class="not-found">Not found</li>
-			<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }" v-for = "(item, index) in searchList" @mousedown="toggleItem(item.id)">
-				<div class="icon" v-if = "!disableIcon">
-					<img :src="item.icon" class="icon-img">
-				</div>
-				<div class="content" v-html="item.html"></div>
-			</li>
-		</ul>
+		<div class="dropdown-main" v-bind:class="[{addBorder : isExpanding}, listClasses]">
+			<div class="input-control-wrap" style="width:100%;"  v-if = "!isSingle">
+				<input
+						ref="inputSearch"
+						:placeholder="placeholder"
+						type="text"
+						@keydown.40="keypressAction('ArrowDown')"
+						@keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''"
+						class="form-control input-control" @focus="focusInputAction($event.target.value);$emit('removeRequired')" @input = "searchAction($event.target.value)" :value = "searchKeyword"
+						@blur='closeDropdow()'
+						onClick="this.select()"
+				>
+			</div>
+			<ul class="b__multi__select__list">
+				<li v-show = "searchList == undefined || searchList.length == 0" class="not-found">Not found</li>
+				<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }" v-for = "(item, index) in searchList" @mousedown="toggleItem(item.id)">
+					<div class="icon" v-if = "!disableIcon">
+						<img :src="item.icon" class="icon-img">
+					</div>
+					<div class="content" v-html="item.html"></div>
+				</li>
+			</ul>
+		</div>
 	</div>
 </template>
 <script>
@@ -53,6 +67,9 @@
     export default MultiSelect
 </script>
 <style>
+	.dropdown-main .input-control-wrap + ul{
+		padding-top: 40px;
+	}
 	.addBorder{
 		border: 1px solid #0082d5 !important;
 	}
@@ -123,9 +140,9 @@
 	}
 
 	.b__multi__select.select-disabled .iconC{
-	    display: none;
+		display: none;
 	}
 	.b__multi__select.select-disabled{
-	    border: none;
+		border: none;
 	}
 </style>

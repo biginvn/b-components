@@ -71,7 +71,7 @@ export default {
             return this.singleDropdown === "true" ? true : false
         },
         listClasses () {
-            return (this.isExpanding ? "active" : "") + " b__multi__select__list"
+            return (this.isExpanding ? "active" : "")
         }
     },
     methods : {
@@ -107,7 +107,6 @@ export default {
         },
 
         closeDropdow(event){
-            console.log('close dropdown')
             this.switchList(false);
             if(!this.value)
                 this.searchKeyword = null
@@ -164,12 +163,12 @@ export default {
         toggleItem(id){
             if (!this.isSingle){
                 let selectList = [];
-                
+
                 if(this.value){
                     if(Array.isArray(this.value))
                         selectList = this.value;
                 }
-                
+
                 if (selectList.includes(id))
                     selectList.splice(selectList.indexOf(id), 1)
                 else
