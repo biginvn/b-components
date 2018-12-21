@@ -236,8 +236,6 @@ export default {
 
         selectCell(editAPI, keyAPI) {
             let idTable = this.idTable
-            console.log('this.editAPI: ' + editAPI)
-            console.log('this.keyAPI: ' + keyAPI)
             $(document).click(function() {
                 $('td.selected_cell').removeClass('selected_cell')
 
