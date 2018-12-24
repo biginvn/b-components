@@ -52525,6 +52525,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TelerikNumberic__["a" /* default */]);
@@ -53509,8 +53510,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         selectCell(editAPI, keyAPI) {
             let idTable = this.idTable;
-            console.log('this.editAPI: ' + editAPI);
-            console.log('this.keyAPI: ' + keyAPI);
             $(document).click(function () {
                 $('td.selected_cell').removeClass('selected_cell');
             });
@@ -55006,9 +55005,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     watch: {
         value() {
-            if (this.value == undefined || this.value == null || this.value.length == 0) {
-                console.log('Array is NULL');
-            };
+            if (this.value == undefined || this.value == null || this.value.length == 0) {};
         }
     },
 
@@ -55052,7 +55049,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }, 500);
             this.$emit('input', self.task);
-            // console.log(JSON.stringify(self.task));
         },
         emptyTask() {
             this.task = [];
@@ -55061,9 +55057,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         changeStatusModal() {
             this.showModal = true;
         },
-        mouseover() {
-            console.log('hover');
-        }
+        mouseover() {}
 
     }
 });
@@ -55091,7 +55085,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__["a" /* default */]],
 
-    props: ['affix', 'type', 'interrupt', 'type-output', 'rounding-decimal', 'max-length'],
+    computed: {
+        maxIntNumber() {
+            // length int number
+            if (this.isDecimalNumber) return this.inputMaxLength - this.decimalNumbers - 1;
+            return parseInt(this.inputMaxLength);
+        }
+    },
+
+    props: {
+        affix: {},
+        type: {},
+        interrupt: {},
+        typeOutput: {},
+        maxLength: {
+            type: Number,
+            default: 15
+        },
+        roundingDecimal: {},
+        isDecimalNumber: {
+            type: Boolean,
+            default: false
+        },
+        regex: {
+            type: String,
+            default: "[0-9.]"
+        },
+        decimalNumbers: {
+            type: Number,
+            default: 2
+        }
+    },
+    // props: ['affix', 'type', 'interrupt', 'type-output','rounding-decimal', 'max-length'],
 
     created() {
         if (parseInt(this.maxLength) != null && parseInt(this.maxLength) != undefined && parseInt(this.maxLength) <= this.inputMaxLength) this.inputMaxLength = parseInt(this.maxLength);
@@ -55246,6 +55271,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         eventForcus(string) {
             this.inputValue = this.valueTemp;
+        },
+
+        keyDownRegex: function (e) {
+            if (this.isDecimalNumber) {
+                // e.preventDefault();
+                let keyCode = e.keyCode || e.which;
+                // Don't validate the input if below arrow, delete and backspace keys were pressed
+                if (keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) {
+                    // Left / Up / Right / Down Arrow, Delete keys
+                    let keyCharacter = e.key;
+                    let pattern = new RegExp(this.regex);
+                    if (this.regex !== undefined && this.regex !== null && this.regex !== '') {
+                        let res = pattern.test(keyCharacter);
+                        if (res) {
+                            if (this.inputValue !== "" && this.inputValue !== null && this.inputValue.includes(".")) {
+                                if (keyCode == 190) {
+                                    // Check if input "."
+                                    e.preventDefault();
+                                    return false;
+                                }
+                                let arrayValue = this.inputValue.split(".");
+                                let stringDecimal = arrayValue[1];
+                                if (stringDecimal.length >= this.decimalNumbers) {
+                                    e.preventDefault();
+                                    return false;
+                                }
+                            } else {
+                                if (this.inputValue.length >= this.maxIntNumber) {
+                                    if (keyCode != 190) {
+                                        // Check if input "."
+                                        e.preventDefault();
+                                        return false;
+                                    }
+                                }
+                            }
+                        } else {
+                            e.preventDefault();
+                            return false;
+                        }
+                    }
+                }
+            }
         }
 
     }
@@ -56188,7 +56255,6 @@ module.exports = {
   twoWay: true,
   bind: function bind(el, binding, vnode) {
     el.addEventListener('change', function (e) {
-      console.log("SELECT CHANGE");
       vnode.context[binding.value.name] = e.target.value;
       binding.value.cb.call(this, binding.value.params);
     });
@@ -79124,7 +79190,10 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "b__components b-select"
+    staticClass: "b__components b-select",
+    attrs: {
+      "disabled": _vm.disabled
+    }
   }, [_c('label', {
     class: _vm.isActive ? 'active' : '',
     attrs: {
@@ -79242,6 +79311,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": _vm.inputValue
     },
     on: {
+      "keydown": _vm.keyDownRegex,
       "input": function($event) {
         _vm.eventInput($event.target.value)
       },
