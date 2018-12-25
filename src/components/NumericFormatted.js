@@ -4,11 +4,37 @@ export default {
         return {
             mask: '',
             valueTemp: '',
-            error: false
+            error: false,
         }
     },
     mixins: [baseMixins],
-    props: ['affix', 'is_prefix', 'class-name'],
+    // props: ['affix', 'is_prefix', 'class-name'],
+    props : {
+        affix: {
+            type: String,
+            default: null
+        },
+        is_prefix: {
+            type: Boolean,
+            default: true
+        },
+        className: {
+            type: String,
+            required: false
+        },
+        maxValue: {
+            type: Number,
+            default: null
+        },
+        minValue: {
+            type: Number,
+            default: null
+        },
+        decimalNumber: {
+            type: Number,
+            default: 2
+        }
+    },
     mounted() {
         this.blur(this.value);
     },
@@ -16,12 +42,22 @@ export default {
         wrapClass () {
             let defaultClass = 'b__components b-ios b-float-label b__numeric';
             return ( this.error ? 'has-error ' : '' ) + defaultClass
+        },
+        maxValueNumber() {
+            if (this.affix == "%" && this.maxValue === null)
+                return 100;
+            return this.maxValue;
+        },
+        minValueNumber() {
+            if (this.minValue === null)
+                return 0;
+
+            return this.minValue;
         }
     },
     watch: {
         value() {
             this.blur(this.value);
-            this.mask == '0' ? this.mask = '' : this.mask;
         },
         is_prefix() {
             this.blur(this.value);
@@ -39,10 +75,15 @@ export default {
                 event.charCode == 46 ? event.preventDefault() : event.charCode;
             }
 
+            // Allow input "-" for negative number (only start of string):
+            if( event.target.value !== "" && this.minValueNumber < 0){
+                event.charCode == 45 ? event.preventDefault() : event.charCode;
+            }
+
             // Remove Alphabet
             if (charCode != 0) {
                 // 48 - 57
-                if (charCode < 46 || charCode > 57 || charCode == 47) {
+                if (charCode < 45 || charCode > 57 || charCode == 47 ) {
                     event.preventDefault();
                     return this.error = true;
                 }
@@ -64,16 +105,24 @@ export default {
             this.updateFloatLabel(mask);
         },
         focus() {
-            this.mask = this.value;
+            this.mask = (this.value === "" || this.value === null) ? "" : (Math.round(parseFloat(this.value) * 100) / 100);
         },
         blur(mask) {
             // Validation type Affix
-            this.affix == '$' || this.affix == '€' ? mask : mask = Math.trunc(mask).toString();
-            if (this.affix == '%') {
-                mask > 100 ? mask = '100' : mask;
+            if (mask === "" || mask === null) {
+                this.$emit("input", "");
+                return this.mask = "";
             }
+
+            if (this.maxValueNumber !== null)
+                parseFloat(mask) > this.maxValueNumber ? mask = this.maxValueNumber.toString() : mask;
+
+            if (this.minValueNumber !== null)
+                parseFloat(mask) < this.minValueNumber ? mask = this.minValueNumber.toString() : mask;
+
             mask = this.validateString(mask);
-            // Get String position
+
+            // Get String position of "."
             var pos = mask.indexOf('.');
             // Cut String to Forward & Behind  "432.11" => "432" & "11"
             if (pos > 0) {
@@ -88,35 +137,46 @@ export default {
                 behind = '0.' + behind;
                 mask = forward;
             } else {
-                if (mask == 0) {
-                    mask = '';
+                if (!this.validateIntegerFromString(mask)) { // Check value is integer
+                    this.$emit("input", "");
                 }
-                this.$emit("input", mask);
-                behind = 0;
+                else
+                    this.$emit("input", mask);
+                behind = null;
             }
 
             var n, number, $mask, $result;
-            n = parseFloat(mask) + parseFloat(behind);
+            if ((mask === "" && behind === null) || !this.validateIntegerFromString(mask))
+                n = null;
+            else {
+                if (behind === null)
+                    n = parseFloat(mask);
+                else
+                    n = parseFloat(mask) + parseFloat(behind);
+            }
+
             // Check Value is Null & Check Affix
             $mask = this.isNull(n);
-            if (this.is_prefix != undefined) {
-                if ($mask != '') {
-                    $result = this.is_prefix ? this.affix + ' ' + this.separator($mask) : this.separator($mask) + ' ' + this.affix
-                } else {
-                    $result = '';
-                }
-            } else {
-                if ($mask != '') {
+
+            if ($mask != '') {
+                if (this.affix !== null)
+                    $result = this.is_prefix ? this.affix + this.separator($mask) : this.separator($mask) + this.affix
+                else
                     $result = this.separator($mask)
-                } else {
-                    $result = '';
-                }
+            } else {
+                $result = '';
             }
+
             this.mask = $result;
+            this.updateFloatLabel(this.mask);
+        },
+        validateIntegerFromString(string) {
+            let isInt = /^[-]?\d+$/.test(string);
+            return isInt;
         },
         validateString(value){
             typeof(value) == 'number' ? value = value.toString() : value;
-            if( value == undefined || value == null || value == '0' ){
+            if( value === undefined || value === null){
                 value = '';
                 return value;
             }
@@ -127,17 +187,18 @@ export default {
             return value;
         },
         isNull(n) {
+            if (n === null)
+                return n = "";
             if (typeof(n) == 'number') {
-                if (n == undefined || n == null || n == 0 || isNaN(n)) {
+                if (n === undefined || n === null || isNaN(n)) {
                     return n = '';
                 } else {
-                    if (this.affix == '$' || this.affix == '€') {
-                        return n.toFixed(2);
+                    if (this.decimalNumber === 0) {
+                        return Math.round(n).toString();
                     }
-                    if (this.affix == '%' || this.affix == 'VND') {
-                        return Math.trunc(n);
+                    else {
+                        return n.toFixed(this.decimalNumber);
                     }
-                    return n;
                 }
             }
         }
