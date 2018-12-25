@@ -134,7 +134,8 @@ export default {
                 if (behind == undefined || behind == null || behind == '') {
                     mask = forward
                 }
-                this.$emit("input", mask);
+                this.$emit("input", this.isNull(parseFloat(mask)));
+
                 // If Value = 4321. return 4321.0
                 behind = '0.' + behind;
                 mask = forward;
@@ -170,6 +171,7 @@ export default {
             }
 
             this.mask = $result;
+
             this.updateFloatLabel(this.mask);
         },
         validateIntegerFromString(string) {
