@@ -69,6 +69,7 @@ export default {
     methods: {
         keypress(event) {
             var charCode = event.charCode;
+            let minCharCodeAllow = 46;
 
             // Prevent '..'
             if( event.target.value.includes('.') ){
@@ -78,12 +79,13 @@ export default {
             // Allow input "-" for negative number (only start of string):
             if( event.target.value !== "" && this.minValueNumber < 0){
                 event.charCode == 45 ? event.preventDefault() : event.charCode;
+                minCharCodeAllow = 45;
             }
 
             // Remove Alphabet
             if (charCode != 0) {
                 // 48 - 57
-                if (charCode < 45 || charCode > 57 || charCode == 47 ) {
+                if (charCode < minCharCodeAllow || charCode > 57 || charCode == 47 ) {
                     event.preventDefault();
                     return this.error = true;
                 }
