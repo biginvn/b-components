@@ -139,7 +139,21 @@ export default {
                 // If Value = 4321. return 4321.0
                 behind = '0.' + behind;
                 mask = forward;
-            } else {
+            }
+            else if (pos == 0) {
+                let behind = mask.substring(pos + 1); // 1 is the length of your "." marker
+                if (behind !== undefined && behind !== null && behind !== '') {
+                    mask = "0";
+                    behind = '0.' + behind;
+                    this.$emit("input", this.isNull(parseFloat(behind)));
+                }
+                else {
+                    mask = "";
+                    behind = null;
+                    this.$emit("input", mask);
+                }
+            }
+            else {
                 if (!this.validateIntegerFromString(mask)) { // Check value is integer
                     this.$emit("input", "");
                 }
