@@ -66,7 +66,7 @@ export default {
         },
         listItems() {
             let listItems = JSON.parse(JSON.stringify(this.list));
-            if (this.hasAllDefault) {
+            if (this.hasAllDefault && this.allDefault !== null) {
                 listItems.unshift(this.allDefault);
             }
             return listItems;
