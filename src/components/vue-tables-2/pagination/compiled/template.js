@@ -13,7 +13,7 @@ module.exports = function () {
 
       return h(
         'li',
-        { 'class': 'VuePagination__pagination-item ' + theme.item + ' ' + this.activeClass(page) },
+        { 'class': 'VuePagination__pagination-item ' + (page === '...' ? theme.disabled : '') + ' ' +theme.item + ' ' + (page !== '...' ? this.activeClass(page) : '') },
         [h(
           'a',
           { 'class': 'btable-link-page ' + theme.link + ' ' + this.activeClass(page),
