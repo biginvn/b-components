@@ -29,7 +29,7 @@ module.exports = function () {
     columnsDisplay: {},
     columnsDropdown: false,
     texts: {
-      count: "Showing {from} to {to} of {count} records|{count} records|One record",
+      count: "Showing {from} to {to} of {count} records|{count} records|1 record",
       first: 'First',
       last: 'Last',
       filter: "Search:",
