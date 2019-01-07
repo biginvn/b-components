@@ -277,6 +277,7 @@ function customRange(start, count, currentPage, totalPages)
       array.push(totalPages);
     }
   }
+  $(".page-link").blur();
   return array;
 }
 
