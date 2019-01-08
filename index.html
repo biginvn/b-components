@@ -98,6 +98,21 @@
                     <div class="col-md-6">
                         <figure class="wow animated bounceInLeft">
                             <div class="panel-border">
+                                <h4 class="mb-3 panel-heading">telephone-input</h4>
+                                <div class="panel-body">
+                                    <p>
+                                        <telephone-input :preferred-countries="['us', 'gb', 'ua']">
+                                        </telephone-input>
+                                    </p>
+                                    <p>{{ input.name }}</p>
+                                    <b-button type="button" class-name="button-primary" icon="<i class='fa fa-circle-thin'></i>" label="Update model" @click.native="input.name='Test'"></b-button>
+                                    <b-button type="button" label="Empty" class-name="button-solid button-danger" @click.native="input.name=''"></b-button>
+                                </div>
+                            </div>
+                        </figure>
+
+                        <figure class="wow animated bounceInLeft">
+                            <div class="panel-border">
                                 <h4 class="mb-3 panel-heading">Text Field</h4>
                                 <div class="panel-body">
                                     <p>
