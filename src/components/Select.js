@@ -21,8 +21,26 @@ export default {
         default: {},
         label: {},
         name: {},
+        hasAllDefault: {
+            type: Boolean,
+            default: false
+        },
+        allDefault: {
+            type: Object/Array,
+            default: function () {
+                return {
+                    "value": "All",
+                    "id"   : ""
+                }
+            }
+        },
         disabled: {},
-        list: {},
+        list: {
+            type: Object/Array,
+            default: function () {
+                return [];
+            }
+        },
         itemText: {},
         itemVal: {},
         itemUrl: {
@@ -46,8 +64,15 @@ export default {
             set(newValue) {
             }
         },
+        listItems() {
+            let listItems = JSON.parse(JSON.stringify(this.list));
+            if (this.hasAllDefault && this.allDefault !== null) {
+                listItems.unshift(this.allDefault);
+            }
+            return listItems;
+        },
         items() {
-            if (this.list == undefined || this.list == null || this.list.length == 0){
+            if (this.listItems == undefined || this.listItems == null || this.listItems.length == 0){
                 if (this.default != undefined && this.default != null ){
                     return [this.default];
                 }
@@ -55,8 +80,8 @@ export default {
             }
 
             let items = [];
-            for(let i=0; i< this.list.length; i++){
-                let listItem = this.list[i];
+            for(let i=0; i< this.listItems.length; i++){
+                let listItem = this.listItems[i];
                 let item = {
                     value : listItem[this.itemVal],
                     name : listItem[this.itemText],
@@ -93,16 +118,28 @@ export default {
             this.float()
         },
         float() {
-            if( this.$el== undefined || this.value == null || this.value.length == 0){
+            if (this.$el== undefined) {
                 this.isActive = false;
                 return;
+            }
+
+            if (!this.hasAllDefault) {
+                if (this.value == null || this.value.length == 0) {
+                    this.isActive = false;
+                    return;
+                }
+            }
+            else {
+                if (this.value == null || this.value.length == 0) {
+                    this.isActive = true;
+                    return;
+                }
             }
 
             if (this.isModelInList()){
                 this.isActive = true;
                 return;
             }
-
             this.isActive = false;
         },
         isModelInList() {

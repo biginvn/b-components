@@ -40,11 +40,6 @@ module.exports = {
       type: Object
     }
   },
-  // watch : {
-  //           Page(){
-  //               alert('2')
-  //           },
-  //       },
   created: function created() {
     if (!this.vuex) return;
 
@@ -100,7 +95,8 @@ module.exports = {
     pages: function pages() {
       if (!this.records) return [];
 
-      return range(this.paginationStart, this.pagesInCurrentChunk);
+      return customRange(this.paginationStart, this.pagesInCurrentChunk, this.page, this.totalPages);
+      // return range(this.paginationStart, this.pagesInCurrentChunk);
     },
     totalPages: function totalPages() {
       return this.records ? Math.ceil(this.records / this.perPage) : 1;
@@ -140,9 +136,9 @@ module.exports = {
     }
   },
   methods: {
-    setPageHoang: function setPageHoang() {
+    setPageHoang: function setPageHoang(searchPage = 1) {
       if (this.allowedPage(this.Page)) {
-        this.paginateHoang(this.Page);
+        this.paginateHoang(searchPage = 1);
       }
     },
     paginateHoang: function paginateHoang(page) {
@@ -237,6 +233,53 @@ module.exports = {
     bus.$destroy();
   }
 };
+
+function customRange(start, count, currentPage, totalPages)
+{
+  var pageRange  = 2;
+  var rangeStart = currentPage - pageRange;
+  var rangeEnd   = currentPage + pageRange;
+  var showPageNumbers = true;
+  var array = [];
+  var i;
+
+  if (rangeEnd > totalPages) {
+    rangeEnd   = totalPages;
+    rangeStart = totalPages - pageRange * 2;
+    rangeStart = rangeStart < 1 ? 1 : rangeStart;
+  }
+
+  if (rangeStart <= 1) {
+    rangeStart = 1;
+    rangeEnd   = Math.min(pageRange * 2 + 1, totalPages);
+  }
+
+  if (showPageNumbers) {
+    if (rangeStart <= 3) {
+      for (i = 1; i < rangeStart; i++) {
+        array.push(i)
+      }
+    } else {
+      array.push(1);
+      array.push('...');
+    }
+
+    for (i = rangeStart; i <= rangeEnd; i++) {
+      array.push(i)
+    }
+
+    if (rangeEnd >= totalPages - 2) {
+      for (i = rangeEnd + 1; i <= totalPages; i++) {
+        array.push(i);
+      }
+    } else {
+      array.push('...');
+      array.push(totalPages);
+    }
+  }
+  $(".page-link").blur();
+  return array;
+}
 
 function range(start, count) {
   return Array.apply(0, Array(count)).map(function (element, index) {

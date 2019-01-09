@@ -5,6 +5,6 @@
 	</div>
 </template>
 <script>
-	import NumbericFormatted from './../../components/NumericFormatted'
-	export default NumbericFormatted
+    import NumbericFormatted from './../../components/NumericFormatted'
+    export default NumbericFormatted
 </script>

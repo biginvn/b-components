@@ -15,7 +15,38 @@ export default{
 
     mixins: [baseMixins],
 
-    props: ['affix', 'type', 'interrupt', 'type-output','rounding-decimal', 'max-length'],
+    computed : {
+        maxIntNumber () { // length int number
+            if (this.isDecimalNumber)
+                return this.inputMaxLength - this.decimalNumbers - 1;
+            return parseInt(this.inputMaxLength);
+        },
+    },
+
+    props : {
+        affix: {},
+        type: {},
+        interrupt: {},
+        typeOutput: {},
+        maxLength: {
+            type: Number,
+            default: 15
+        },
+        roundingDecimal: {},
+        isDecimalNumber : {
+            type: Boolean,
+            default: false
+        },
+        regex: {
+            type: String,
+            default: "[0-9.]",
+        },
+        decimalNumbers: {
+            type: Number,
+            default: 2
+        }
+    },
+    // props: ['affix', 'type', 'interrupt', 'type-output','rounding-decimal', 'max-length'],
 
     created(){
         if( parseInt(this.maxLength) != null && parseInt(this.maxLength) != undefined && parseInt(this.maxLength) <= this.inputMaxLength )
@@ -201,6 +232,47 @@ export default{
         eventForcus(string){
             this.inputValue = this.valueTemp
         },
+
+        keyDownRegex: function (e) {
+            if (this.isDecimalNumber) {
+                // e.preventDefault();
+                let keyCode = e.keyCode || e.which;
+                // Don't validate the input if below arrow, delete and backspace keys were pressed
+                if(keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) { // Left / Up / Right / Down Arrow, Delete keys
+                    let keyCharacter = e.key;
+                    let pattern = new RegExp(this.regex);
+                    if (this.regex !== undefined && this.regex !== null && this.regex !== '') {
+                        let res = pattern.test(keyCharacter);
+                        if (res) {
+                            if (this.inputValue !== "" && this.inputValue !== null && this.inputValue.includes(".")) {
+                                if (keyCode == 190) {// Check if input "."
+                                    e.preventDefault();
+                                    return false;
+                                }
+                                let arrayValue = this.inputValue.split(".");
+                                let stringDecimal = arrayValue[1];
+                                if (stringDecimal.length >= this.decimalNumbers) {
+                                    e.preventDefault();
+                                    return false;
+                                }
+                            }
+                            else {
+                                if (this.inputValue.length >= this.maxIntNumber) {
+                                    if (keyCode != 190) {// Check if input "."
+                                        e.preventDefault();
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
+                        else {
+                            e.preventDefault();
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
 
     }
 }

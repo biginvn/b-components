@@ -4,7 +4,6 @@ module.exports = {
   twoWay: true,
   bind: function bind(el, binding, vnode) {
     el.addEventListener('change', function (e) {
-      console.log("SELECT CHANGE");
       vnode.context[binding.value.name] = e.target.value;
       binding.value.cb.call(this, binding.value.params);
     });
