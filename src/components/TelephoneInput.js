@@ -46,6 +46,12 @@ export default {
             type: String,
             default: '',
         },
+        countryCode: {
+            // Default country code, ie: 1
+            // Will override the current country of user
+            // type: Number,
+            default: null,
+        },
         enabledFlags: {
             type: Boolean,
             default: true
@@ -179,10 +185,10 @@ export default {
             }
         },
         activeCountry() {
-            this.$emit('updatePhoneCountry', this.activeCountry.iso2);
+            this.$emit('updatePhoneCountryCode', this.activeCountry.dialCode);
             this.phone = this.formatPhoneByNational(this.phone);
         },
-        defaultCountry() {
+        countryCode() {
             this.initializeCountry()
         }
     },
@@ -204,11 +210,21 @@ export default {
                 }
             }
             /**
-             * 2. Use the first country from preferred list (if available) or all countries list
+             * 2. Use default country if passed from parent
+             */
+            if (this.countryCode) {
+                const countryByCode = this.findCountryByCode(this.countryCode);
+                if (countryByCode) {
+                    this.activeCountry = countryByCode;
+                    return;
+                }
+            }
+            /**
+             * 3. Use the first country from preferred list (if available) or all countries list
              */
             this.activeCountry = this.findCountry(this.preferredCountries[0]) || this.filteredCountries[0];
             /**
-             * 3. Check if fetching country based on user's IP is allowed, set it as the default country
+             * 4. Check if fetching country based on user's IP is allowed, set it as the default country
              */
             if (!this.disabledFetchingCountry) {
                 getCountry().then((res) => {
@@ -226,6 +242,9 @@ export default {
         },
         findCountry(iso = '') {
             return allCountries.find(country => country.iso2 === iso.toUpperCase());
+        },
+        findCountryByCode(countryCode) {
+            return allCountries.find(country => country.dialCode.toString() === countryCode.toString() && country.priority === 0);
         },
         getItemClass(index, iso2) {
             const highlighted = this.selectedIndex === index;
