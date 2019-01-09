@@ -136,9 +136,9 @@ module.exports = {
     }
   },
   methods: {
-    setPageHoang: function setPageHoang() {
+    setPageHoang: function setPageHoang(searchPage = 1) {
       if (this.allowedPage(this.Page)) {
-        this.paginateHoang(this.Page);
+        this.paginateHoang(searchPage = 1);
       }
     },
     paginateHoang: function paginateHoang(page) {
