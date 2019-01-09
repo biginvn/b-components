@@ -178,6 +178,11 @@ export default {
                                 
                                 Vue.$emit('focus')
                             })
+                        },
+                        setup: function (editor) {
+                            editor.on('PreInit', function () {
+                                editor.parser.addNodeFilter('a', (nodes) => nodes.forEach(node => node.attr('target', '_blank')));
+                            });
                         }
                     },
                     this.tinyConfig ? this.tinyConfig : {}
