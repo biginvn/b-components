@@ -65679,7 +65679,7 @@ const getCountry = function () {
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    name: 'vue-tel-input',
+    name: 'b-telephone-input',
     props: {
         value: {
             type: String
@@ -70924,7 +70924,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BModalMessage', __WEBPACK
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BChart', __WEBPACK_IMPORTED_MODULE_29__themes_ios_Chart_vue___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BDataTable', __WEBPACK_IMPORTED_MODULE_30__themes_ios_DataTable_vue___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BComboBox', __WEBPACK_IMPORTED_MODULE_31__themes_ios_Combobox_vue___default.a);
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('TelephoneInput', __WEBPACK_IMPORTED_MODULE_33__themes_ios_TelephoneInput_vue___default.a);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BTelephoneInput', __WEBPACK_IMPORTED_MODULE_33__themes_ios_TelephoneInput_vue___default.a);
 
 /* custom adhoc document with extends dropzone component upload */
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('BDocumentAdhoc', __WEBPACK_IMPORTED_MODULE_32__themes_ios_DocumentAdhoc_vue___default.a);

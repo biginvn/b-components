@@ -3,7 +3,7 @@ import allCountries from '../assets/telephone-input/all-countries';
 import getCountry from '../assets/telephone-input/default-country';
 
 export default {
-    name: 'vue-tel-input',
+    name: 'b-telephone-input',
     props: {
         value: {
             type: String,
