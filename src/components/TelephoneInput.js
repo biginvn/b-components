@@ -14,6 +14,18 @@ export default {
             type: String,
             default: 'Enter a phone number',
         },
+        classesParent: {
+            type: String,
+            default: null,
+        },
+        idParent: {
+            type: String,
+            default: null,
+        },
+        label: {
+            type: String,
+            default: 'Number Phone',
+        },
         disabledFetchingCountry: {
             type: Boolean,
             default: false,
@@ -248,11 +260,15 @@ export default {
                 }
             }
             if (keyCode === 8) {
-                e.preventDefault();
                 let phoneTmp = (this.phone);
-                let cursorPosition = this.getPositionCursorInPhone(phoneTmp, e.target.selectionStart);
-                if (cursorPosition > 0)
-                    this.phone = this.removeCharacter(parseDigits(phoneTmp), cursorPosition - 1)
+                let cursorPositionStart = this.getPositionCursorInPhone(phoneTmp, e.target.selectionStart);
+                if (cursorPositionStart > 0) {
+                    if (e.target.selectionEnd == e.target.selectionStart) {
+                        e.preventDefault();
+                        this.phone = this.removeCharacter(parseDigits(phoneTmp), cursorPositionStart - 1)
+                        return;
+                    }
+                }
             }
         },
         getPositionCursorInPhone(str, currentCursorPosition) {

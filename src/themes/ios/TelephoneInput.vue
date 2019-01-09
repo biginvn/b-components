@@ -1,5 +1,6 @@
 <template>
-    <div class="vue-tel-input" :class="{ disabled: disabled }">
+    <div class="vue-tel-input b__components b-ios b-float-label b-input-extend-custom" :class="classesParent" :id="idParent">
+        <label>{{ label }}</label>
         <div
                 class="dropdown"
                 @click="toggleDropdown"
