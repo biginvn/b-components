@@ -1,8 +1,10 @@
 import { formatNumber, AsYouType, isValidNumber, parseDigits } from 'libphonenumber-js';
 import allCountries from '../assets/telephone-input/all-countries';
 import getCountry from '../assets/telephone-input/default-country';
+import baseComponent from '../mixins/base-mixins'
 
 export default {
+    mixins : [baseComponent],
     name: 'vue-tel-input',
     props: {
         value: {
@@ -11,6 +13,18 @@ export default {
         placeholder: {
             type: String,
             default: 'Enter a phone number',
+        },
+        classesParent: {
+            type: String,
+            default: null,
+        },
+        idParent: {
+            type: String,
+            default: null,
+        },
+        label: {
+            type: String,
+            default: 'Number Phone',
         },
         disabledFetchingCountry: {
             type: Boolean,
@@ -49,6 +63,10 @@ export default {
         ignoredCountries: {
             type: Array,
             default: () => [],
+        },
+        regex: {
+            type: String,
+            default: "[0-9]",
         },
     },
     mounted() {
@@ -152,8 +170,9 @@ export default {
             this.phone = this.value;
         },
         phone() {
-            const parseDigitPhone = new parseDigits();// eslint-disable-line
-            this.phone = parseDigitPhone(this.phone);
+            this.phone = parseDigits(this.phone);
+            const formatter = new AsYouType(this.activeCountry.iso2);// eslint-disable-line
+            this.phone = formatter.input(this.phone);
         }
     },
     methods: {
@@ -204,7 +223,7 @@ export default {
         },
         choose(country) {
             this.activeCountry = country;
-            this.$emit('onInput', this.response);
+            // this.$emit('onInput', this.response);
         },
         onInput() {
             this.$refs.input.setCustomValidity(this.response.isValid ? '' : this.invalidMsg);
@@ -212,7 +231,7 @@ export default {
             this.$emit('input', this.response.number);
 
             // Emit the response, includes phone, validity and country
-            this.$emit('onInput', this.response);
+            // this.$emit('onInput', this.response);
         },
         onBlur() {
             this.$emit('onBlur');
@@ -225,6 +244,38 @@ export default {
         },
         clickedOutside() {
             this.open = false;
+        },
+        keyDownPress(e) {
+            let keyCode = e.keyCode || e.which;
+            // Don't validate the input if below arrow, delete and backspace keys were pressed
+            if(keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) { // Left / Up / Right / Down Arrow, Delete keys;
+                let keyCharacter = e.key;
+                let pattern = new RegExp(this.regex);
+                if (this.regex !== undefined && this.regex !== null && this.regex !== '') {
+                    let res = pattern.test(keyCharacter);
+                    if (!res) {
+                        e.preventDefault();
+                        return false;
+                    }
+                }
+            }
+            if (keyCode === 8) {
+                let phoneTmp = (this.phone);
+                let cursorPositionStart = this.getPositionCursorInPhone(phoneTmp, e.target.selectionStart);
+                if (cursorPositionStart > 0) {
+                    if (e.target.selectionEnd == e.target.selectionStart) {
+                        e.preventDefault();
+                        this.phone = this.removeCharacter(parseDigits(phoneTmp), cursorPositionStart - 1)
+                        return;
+                    }
+                }
+            }
+        },
+        getPositionCursorInPhone(str, currentCursorPosition) {
+            // Ex: str = (0123) 456, and currentCursorPosition = 4
+            let partSlicePhone = str.slice(0, currentCursorPosition); // Get part phone after slice from cursor => partSlicePhone = (0123
+            let phoneNumber = parseDigits(partSlicePhone); // Get phone slice contains only number => phoneNumber = 0123
+            return currentCursorPosition - (partSlicePhone.length - phoneNumber.length); // Get the position of cursor in phone number => result = 3
         },
         keyboardNav(e) {
             if (e.keyCode === 40) {
