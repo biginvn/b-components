@@ -1,6 +1,6 @@
 <template>
     <div class="vue-tel-input b__components b-ios b-float-label b-input-extend-custom" :class="classesParent" :id="idParent">
-        <label>{{ label }}</label>
+        <label :class="classLabel">{{ label }}</label>
         <div
                 class="dropdown"
                 @click="toggleDropdown"
@@ -40,6 +40,7 @@
                 @input="onInput"
                 :required="required"
                 @keydown="keyDownPress"
+                class="b__input"
         >
     </div>
 </template>
@@ -90,7 +91,7 @@
         padding-left: 7px;
     }
     ul {
-        z-index: 9;
+        z-index: 99999;
         padding: 0;
         margin: 0;
         text-align: left;

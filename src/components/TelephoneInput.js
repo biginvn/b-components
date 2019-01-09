@@ -1,10 +1,8 @@
 import { formatNumber, AsYouType, isValidNumber, parseDigits } from 'libphonenumber-js';
 import allCountries from '../assets/telephone-input/all-countries';
 import getCountry from '../assets/telephone-input/default-country';
-import baseComponent from '../mixins/base-mixins'
 
 export default {
-    mixins : [baseComponent],
     name: 'vue-tel-input',
     props: {
         value: {
@@ -54,7 +52,7 @@ export default {
         },
         preferredCountries: {
             type: Array,
-            default: () => [],
+            default: () => ['us'],
         },
         onlyCountries: {
             type: Array,
@@ -68,9 +66,14 @@ export default {
             type: String,
             default: "[0-9]",
         },
+        isPreventAfterInputValidNumber: {
+            type: Boolean,
+            default: true
+        }
     },
     mounted() {
         this.initializeCountry();
+        this.updateLabel(this.phone)
     },
     created() {
         if (this.value) {
@@ -85,6 +88,7 @@ export default {
             selectedIndex: null,
             typeToFindInput: '',
             typeToFindTimer: null,
+            classLabel: '',
         };
     },
     computed: {
@@ -126,21 +130,18 @@ export default {
                 return '';
             }
             let phone = this.phone;
-            // if (this.mode === 'code') {
-            //     // If user manually type the country code
-            //     const formatter = new AsYouType();// eslint-disable-line
-            //     formatter.input(this.phone);
-            //
-            //     // Find inputted country in the countries list
-            //     this.activeCountry = this.findCountry(formatter.country) || this.activeCountry;
-            // } else if (this.mode === 'prefix') {
-            //     // Remove the first '0' if this is a '0' prefix number
-            //     // Ex: 0432421999
-            //     phone = this.phone.slice(1);
-            // }
-            // If user manually type the country code
-            const formatter = new AsYouType();// eslint-disable-line
-            formatter.input(this.phone);
+            if (this.mode === 'code') {
+                // If user manually type the country code
+                const formatter = new AsYouType();// eslint-disable-line
+                formatter.input(this.phone);
+
+                // Find inputted country in the countries list
+                this.activeCountry = this.findCountry(formatter.country) || this.activeCountry;
+            } else if (this.mode === 'prefix') {
+                // Remove the first '0' if this is a '0' prefix number
+                // Ex: 0432421999
+                // phone = this.phone.slice(1);
+            }
 
             return formatNumber(phone, this.activeCountry && this.activeCountry.iso2, 'NATIONAL');
         },
@@ -150,7 +151,8 @@ export default {
         response() {
             // If it is a valid number, returns the formatted value
             // Otherwise returns what it is
-            const number = this.state ? this.formattedResult : this.phone;
+            // const number = this.state ? this.formattedResult : this.phone;
+            const number = this.formattedResult;
             return {
                 number,
                 isValid: this.state,
@@ -170,12 +172,26 @@ export default {
             this.phone = this.value;
         },
         phone() {
-            this.phone = parseDigits(this.phone);
-            const formatter = new AsYouType(this.activeCountry.iso2);// eslint-disable-line
-            this.phone = formatter.input(this.phone);
+            this.phone = this.formatPhoneByNational(this.phone);
+            this.updateLabel(this.phone);
+            if (this.state) {
+                this.phone = this.formattedResult;
+            }
+        },
+        activeCountry() {
+            this.$emit('updatePhoneCountry', this.activeCountry.iso2);
+            this.phone = this.formatPhoneByNational(this.phone);
+        },
+        defaultCountry() {
+            this.initializeCountry()
         }
     },
     methods: {
+        formatPhoneByNational(phone) {
+            phone = parseDigits(phone);
+            const formatter = new AsYouType(this.activeCountry.iso2);// eslint-disable-line
+            return formatter.input(phone);
+        },
         initializeCountry() {
             /**
              * 1. Use default country if passed from parent
@@ -223,7 +239,6 @@ export default {
         },
         choose(country) {
             this.activeCountry = country;
-            // this.$emit('onInput', this.response);
         },
         onInput() {
             this.$refs.input.setCustomValidity(this.response.isValid ? '' : this.invalidMsg);
@@ -249,6 +264,11 @@ export default {
             let keyCode = e.keyCode || e.which;
             // Don't validate the input if below arrow, delete and backspace keys were pressed
             if(keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) { // Left / Up / Right / Down Arrow, Delete keys;
+                if (this.isPreventAfterInputValidNumber && this.response.isValid) {
+                    e.preventDefault();
+                    return false;
+                }
+
                 let keyCharacter = e.key;
                 let pattern = new RegExp(this.regex);
                 if (this.regex !== undefined && this.regex !== null && this.regex !== '') {
@@ -276,6 +296,12 @@ export default {
             let partSlicePhone = str.slice(0, currentCursorPosition); // Get part phone after slice from cursor => partSlicePhone = (0123
             let phoneNumber = parseDigits(partSlicePhone); // Get phone slice contains only number => phoneNumber = 0123
             return currentCursorPosition - (partSlicePhone.length - phoneNumber.length); // Get the position of cursor in phone number => result = 3
+        },
+        removeCharacter(str, char_pos)
+        {
+            let part1 = str.substring(0, char_pos);
+            let part2 = str.substring(char_pos + 1, str.length);
+            return (part1 + part2);
         },
         keyboardNav(e) {
             if (e.keyCode === 40) {
@@ -328,6 +354,13 @@ export default {
             this.selectedIndex = this.sortedCountries.map(c => c.iso2).indexOf(this.activeCountry.iso2);
             this.open = false;
         },
+        updateLabel(value) {
+            var isEmpty = value == undefined || value == null || value == 0 || value == '' ? true : false;
+            if (!isEmpty) {
+                this.classLabel = 'active'
+            } else
+                this.classLabel = ''
+        }
     },
     directives: {
         // Click-outside from BosNaufal: https://github.com/BosNaufal/vue-click-outside

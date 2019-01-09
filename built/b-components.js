@@ -62956,6 +62956,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TelephoneInput__["a" /* default */]);
@@ -65673,14 +65674,11 @@ const getCountry = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__ = __webpack_require__(656);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_telephone_input_all_countries__ = __webpack_require__(409);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_telephone_input_default_country__ = __webpack_require__(410);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_base_mixins__ = __webpack_require__(8);
-
 
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    mixins: [__WEBPACK_IMPORTED_MODULE_3__mixins_base_mixins__["a" /* default */]],
     name: 'vue-tel-input',
     props: {
         value: {
@@ -65730,7 +65728,7 @@ const getCountry = function () {
         },
         preferredCountries: {
             type: Array,
-            default: () => []
+            default: () => ['us']
         },
         onlyCountries: {
             type: Array,
@@ -65743,10 +65741,15 @@ const getCountry = function () {
         regex: {
             type: String,
             default: "[0-9]"
+        },
+        isPreventAfterInputValidNumber: {
+            type: Boolean,
+            default: true
         }
     },
     mounted() {
         this.initializeCountry();
+        this.updateLabel(this.phone);
     },
     created() {
         if (this.value) {
@@ -65760,7 +65763,8 @@ const getCountry = function () {
             open: false,
             selectedIndex: null,
             typeToFindInput: '',
-            typeToFindTimer: null
+            typeToFindTimer: null,
+            classLabel: ''
         };
     },
     computed: {
@@ -65800,21 +65804,18 @@ const getCountry = function () {
                 return '';
             }
             let phone = this.phone;
-            // if (this.mode === 'code') {
-            //     // If user manually type the country code
-            //     const formatter = new AsYouType();// eslint-disable-line
-            //     formatter.input(this.phone);
-            //
-            //     // Find inputted country in the countries list
-            //     this.activeCountry = this.findCountry(formatter.country) || this.activeCountry;
-            // } else if (this.mode === 'prefix') {
-            //     // Remove the first '0' if this is a '0' prefix number
-            //     // Ex: 0432421999
-            //     phone = this.phone.slice(1);
-            // }
-            // If user manually type the country code
-            const formatter = new __WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["a" /* AsYouType */](); // eslint-disable-line
-            formatter.input(this.phone);
+            if (this.mode === 'code') {
+                // If user manually type the country code
+                const formatter = new __WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["a" /* AsYouType */](); // eslint-disable-line
+                formatter.input(this.phone);
+
+                // Find inputted country in the countries list
+                this.activeCountry = this.findCountry(formatter.country) || this.activeCountry;
+            } else if (this.mode === 'prefix') {
+                // Remove the first '0' if this is a '0' prefix number
+                // Ex: 0432421999
+                // phone = this.phone.slice(1);
+            }
 
             return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["b" /* formatNumber */])(phone, this.activeCountry && this.activeCountry.iso2, 'NATIONAL');
         },
@@ -65824,7 +65825,8 @@ const getCountry = function () {
         response() {
             // If it is a valid number, returns the formatted value
             // Otherwise returns what it is
-            const number = this.state ? this.formattedResult : this.phone;
+            // const number = this.state ? this.formattedResult : this.phone;
+            const number = this.formattedResult;
             return {
                 number,
                 isValid: this.state,
@@ -65844,12 +65846,26 @@ const getCountry = function () {
             this.phone = this.value;
         },
         phone() {
-            this.phone = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["d" /* parseDigits */])(this.phone);
-            const formatter = new __WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["a" /* AsYouType */](this.activeCountry.iso2); // eslint-disable-line
-            this.phone = formatter.input(this.phone);
+            this.phone = this.formatPhoneByNational(this.phone);
+            this.updateLabel(this.phone);
+            if (this.state) {
+                this.phone = this.formattedResult;
+            }
+        },
+        activeCountry() {
+            this.$emit('updatePhoneCountry', this.activeCountry.iso2);
+            this.phone = this.formatPhoneByNational(this.phone);
+        },
+        defaultCountry() {
+            this.initializeCountry();
         }
     },
     methods: {
+        formatPhoneByNational(phone) {
+            phone = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["d" /* parseDigits */])(phone);
+            const formatter = new __WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["a" /* AsYouType */](this.activeCountry.iso2); // eslint-disable-line
+            return formatter.input(phone);
+        },
         initializeCountry() {
             /**
              * 1. Use default country if passed from parent
@@ -65895,7 +65911,6 @@ const getCountry = function () {
         },
         choose(country) {
             this.activeCountry = country;
-            // this.$emit('onInput', this.response);
         },
         onInput() {
             this.$refs.input.setCustomValidity(this.response.isValid ? '' : this.invalidMsg);
@@ -65922,6 +65937,11 @@ const getCountry = function () {
             // Don't validate the input if below arrow, delete and backspace keys were pressed
             if (keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) {
                 // Left / Up / Right / Down Arrow, Delete keys;
+                if (this.isPreventAfterInputValidNumber && this.response.isValid) {
+                    e.preventDefault();
+                    return false;
+                }
+
                 let keyCharacter = e.key;
                 let pattern = new RegExp(this.regex);
                 if (this.regex !== undefined && this.regex !== null && this.regex !== '') {
@@ -65949,6 +65969,11 @@ const getCountry = function () {
             let partSlicePhone = str.slice(0, currentCursorPosition); // Get part phone after slice from cursor => partSlicePhone = (0123
             let phoneNumber = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["d" /* parseDigits */])(partSlicePhone); // Get phone slice contains only number => phoneNumber = 0123
             return currentCursorPosition - (partSlicePhone.length - phoneNumber.length); // Get the position of cursor in phone number => result = 3
+        },
+        removeCharacter(str, char_pos) {
+            let part1 = str.substring(0, char_pos);
+            let part2 = str.substring(char_pos + 1, str.length);
+            return part1 + part2;
         },
         keyboardNav(e) {
             if (e.keyCode === 40) {
@@ -65998,6 +66023,12 @@ const getCountry = function () {
         reset() {
             this.selectedIndex = this.sortedCountries.map(c => c.iso2).indexOf(this.activeCountry.iso2);
             this.open = false;
+        },
+        updateLabel(value) {
+            var isEmpty = value == undefined || value == null || value == 0 || value == '' ? true : false;
+            if (!isEmpty) {
+                this.classLabel = 'active';
+            } else this.classLabel = '';
         }
     },
     directives: {
@@ -83522,7 +83553,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, "\n[data-v-30a58862] {\n    --border-radius: 2px;\n}\nli.last-preferred[data-v-30a58862] {\n    border-bottom: 1px solid #cacaca;\n}\n.iti-flag[data-v-30a58862] {\n    margin-right: 5px;\n    margin-left: 5px;\n}\n.dropdown-item .iti-flag[data-v-30a58862] {\n    display: inline-block;\n    margin-right: 5px;\n}\n.selection[data-v-30a58862] {\n    font-size: 0.8em;\n    display: flex;\n    align-items: center;\n}\n.vue-tel-input[data-v-30a58862] {\n    border-radius: 3px;\n    display: flex;\n    border: 1px solid #bbb;\n    text-align: left;\n}\n.vue-tel-input[data-v-30a58862]:focus-within {\n    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),\n    0 0 8px rgba(102, 175, 233, 0.6);\n    border-color: #66afe9;\n}\ninput[data-v-30a58862] {\n    border: none;\n    border-radius: 0 var(--border-radius) var(--border-radius) 0;\n    width: 100%;\n    outline: none;\n    padding-left: 7px;\n}\nul[data-v-30a58862] {\n    z-index: 9;\n    padding: 0;\n    margin: 0;\n    text-align: left;\n    list-style: none;\n    max-height: 200px;\n    overflow-y: scroll;\n    position: absolute;\n    top: 33px;\n    left: -1px;\n    background-color: #fff;\n    border: 1px solid #ccc;\n    width: 390px;\n}\n.dropdown[data-v-30a58862] {\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    position: relative;\n    padding: 7px;\n    cursor: pointer;\n}\n.dropdown.open[data-v-30a58862] {\n    background-color: #f3f3f3;\n}\n.dropdown[data-v-30a58862]:hover {\n    background-color: #f3f3f3;\n}\n.dropdown-arrow[data-v-30a58862] {\n    transform: scaleY(0.5);\n    display: inline-block;\n    color: #666;\n}\n.dropdown-item[data-v-30a58862] {\n    cursor: pointer;\n    padding: 4px 15px;\n}\n.dropdown-item.highlighted[data-v-30a58862] {\n    background-color: #f3f3f3;\n}\n.dropdown-menu.show[data-v-30a58862] {\n    max-height: 300px;\n    overflow: scroll;\n}\n.vue-tel-input.disabled .selection[data-v-30a58862],\n.vue-tel-input.disabled .dropdown[data-v-30a58862],\n.vue-tel-input.disabled input[data-v-30a58862] {\n    cursor: no-drop;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TelephoneInput.vue?3f7a6318"],"names":[],"mappings":";AAqDA;IACA,qBAAA;CACA;AAEA;IACA,iCAAA;CACA;AACA;IACA,kBAAA;IACA,iBAAA;CACA;AACA;IACA,sBAAA;IACA,kBAAA;CACA;AACA;IACA,iBAAA;IACA,cAAA;IACA,oBAAA;CACA;AACA;IACA,mBAAA;IACA,cAAA;IACA,uBAAA;IACA,iBAAA;CACA;AACA;IACA;qCACA;IACA,sBAAA;CACA;AACA;IACA,aAAA;IACA,6DAAA;IACA,YAAA;IACA,cAAA;IACA,kBAAA;CACA;AACA;IACA,WAAA;IACA,WAAA;IACA,UAAA;IACA,iBAAA;IACA,iBAAA;IACA,kBAAA;IACA,mBAAA;IACA,mBAAA;IACA,UAAA;IACA,WAAA;IACA,uBAAA;IACA,uBAAA;IACA,aAAA;CACA;AACA;IACA,cAAA;IACA,uBAAA;IACA,sBAAA;IACA,wBAAA;IACA,mBAAA;IACA,aAAA;IACA,gBAAA;CACA;AACA;IACA,0BAAA;CACA;AACA;IACA,0BAAA;CACA;AACA;IACA,uBAAA;IACA,sBAAA;IACA,YAAA;CACA;AACA;IACA,gBAAA;IACA,kBAAA;CACA;AACA;IACA,0BAAA;CACA;AACA;IACA,kBAAA;IACA,iBAAA;CACA;AACA;;;IAGA,gBAAA;CACA","file":"TelephoneInput.vue","sourcesContent":["<template>\n    <div class=\"vue-tel-input b__components b-ios b-float-label b-input-extend-custom\" :class=\"classesParent\" :id=\"idParent\">\n        <label>{{ label }}</label>\n        <div\n                class=\"dropdown\"\n                @click=\"toggleDropdown\"\n                v-click-outside=\"clickedOutside\"\n                :class=\"{open: open}\"\n                @keydown=\"keyboardNav\"\n                tabindex=\"0\"\n                @keydown.esc=\"reset\"\n        >\n      <span class=\"selection\">\n        <div class=\"iti-flag\" v-if=\"enabledFlags\" :class=\"activeCountry.iso2.toLowerCase()\"></div>\n        <span class=\"dropdown-arrow\">{{ open ? '▲' : '▼' }}</span>\n      </span>\n            <ul v-show=\"open\" ref=\"list\">\n                <li\n                        class=\"dropdown-item\"\n                        v-for=\"(pb, index) in sortedCountries\"\n                        :key=\"pb.iso2 + (pb.preferred ? '-preferred' : '')\"\n                        @click=\"choose(pb)\"\n                        :class=\"getItemClass(index, pb.iso2)\"\n                        @mousemove=\"selectedIndex = index\"\n                >\n                    <div class=\"iti-flag\" v-if=\"enabledFlags\" :class=\"pb.iso2.toLowerCase()\"></div>\n                    <strong>{{ pb.name }}</strong>\n                    <span>+{{ pb.dialCode }}</span>\n                </li>\n            </ul>\n        </div>\n        <input\n                ref=\"input\"\n                v-model=\"phone\"\n                type=\"tel\"\n                :placeholder=\"placeholder\"\n                :state=\"state\"\n                :disabled=\"disabled\"\n                @blur=\"onBlur\"\n                @input=\"onInput\"\n                :required=\"required\"\n                @keydown=\"keyDownPress\"\n        >\n    </div>\n</template>\n\n<script>\n    import TelephoneInput from '../../components/TelephoneInput'\n    export default TelephoneInput\n</script>\n\n<style src=\"../../assets/telephone-input/sprite.css\"></style>\n<style scoped>\n    :local {\n        --border-radius: 2px;\n    }\n\n    li.last-preferred {\n        border-bottom: 1px solid #cacaca;\n    }\n    .iti-flag {\n        margin-right: 5px;\n        margin-left: 5px;\n    }\n    .dropdown-item .iti-flag {\n        display: inline-block;\n        margin-right: 5px;\n    }\n    .selection {\n        font-size: 0.8em;\n        display: flex;\n        align-items: center;\n    }\n    .vue-tel-input {\n        border-radius: 3px;\n        display: flex;\n        border: 1px solid #bbb;\n        text-align: left;\n    }\n    .vue-tel-input:focus-within {\n        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),\n        0 0 8px rgba(102, 175, 233, 0.6);\n        border-color: #66afe9;\n    }\n    input {\n        border: none;\n        border-radius: 0 var(--border-radius) var(--border-radius) 0;\n        width: 100%;\n        outline: none;\n        padding-left: 7px;\n    }\n    ul {\n        z-index: 9;\n        padding: 0;\n        margin: 0;\n        text-align: left;\n        list-style: none;\n        max-height: 200px;\n        overflow-y: scroll;\n        position: absolute;\n        top: 33px;\n        left: -1px;\n        background-color: #fff;\n        border: 1px solid #ccc;\n        width: 390px;\n    }\n    .dropdown {\n        display: flex;\n        flex-direction: column;\n        align-content: center;\n        justify-content: center;\n        position: relative;\n        padding: 7px;\n        cursor: pointer;\n    }\n    .dropdown.open {\n        background-color: #f3f3f3;\n    }\n    .dropdown:hover {\n        background-color: #f3f3f3;\n    }\n    .dropdown-arrow {\n        transform: scaleY(0.5);\n        display: inline-block;\n        color: #666;\n    }\n    .dropdown-item {\n        cursor: pointer;\n        padding: 4px 15px;\n    }\n    .dropdown-item.highlighted {\n        background-color: #f3f3f3;\n    }\n    .dropdown-menu.show {\n        max-height: 300px;\n        overflow: scroll;\n    }\n    .vue-tel-input.disabled .selection,\n    .vue-tel-input.disabled .dropdown,\n    .vue-tel-input.disabled input {\n        cursor: no-drop;\n    }\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n[data-v-30a58862] {\n    --border-radius: 2px;\n}\nli.last-preferred[data-v-30a58862] {\n    border-bottom: 1px solid #cacaca;\n}\n.iti-flag[data-v-30a58862] {\n    margin-right: 5px;\n    margin-left: 5px;\n}\n.dropdown-item .iti-flag[data-v-30a58862] {\n    display: inline-block;\n    margin-right: 5px;\n}\n.selection[data-v-30a58862] {\n    font-size: 0.8em;\n    display: flex;\n    align-items: center;\n}\n.vue-tel-input[data-v-30a58862] {\n    border-radius: 3px;\n    display: flex;\n    border: 1px solid #bbb;\n    text-align: left;\n}\n.vue-tel-input[data-v-30a58862]:focus-within {\n    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),\n    0 0 8px rgba(102, 175, 233, 0.6);\n    border-color: #66afe9;\n}\ninput[data-v-30a58862] {\n    border: none;\n    border-radius: 0 var(--border-radius) var(--border-radius) 0;\n    width: 100%;\n    outline: none;\n    padding-left: 7px;\n}\nul[data-v-30a58862] {\n    z-index: 99999;\n    padding: 0;\n    margin: 0;\n    text-align: left;\n    list-style: none;\n    max-height: 200px;\n    overflow-y: scroll;\n    position: absolute;\n    top: 33px;\n    left: -1px;\n    background-color: #fff;\n    border: 1px solid #ccc;\n    width: 390px;\n}\n.dropdown[data-v-30a58862] {\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    position: relative;\n    padding: 7px;\n    cursor: pointer;\n}\n.dropdown.open[data-v-30a58862] {\n    background-color: #f3f3f3;\n}\n.dropdown[data-v-30a58862]:hover {\n    background-color: #f3f3f3;\n}\n.dropdown-arrow[data-v-30a58862] {\n    transform: scaleY(0.5);\n    display: inline-block;\n    color: #666;\n}\n.dropdown-item[data-v-30a58862] {\n    cursor: pointer;\n    padding: 4px 15px;\n}\n.dropdown-item.highlighted[data-v-30a58862] {\n    background-color: #f3f3f3;\n}\n.dropdown-menu.show[data-v-30a58862] {\n    max-height: 300px;\n    overflow: scroll;\n}\n.vue-tel-input.disabled .selection[data-v-30a58862],\n.vue-tel-input.disabled .dropdown[data-v-30a58862],\n.vue-tel-input.disabled input[data-v-30a58862] {\n    cursor: no-drop;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TelephoneInput.vue?aba3ddb4"],"names":[],"mappings":";AAsDA;IACA,qBAAA;CACA;AAEA;IACA,iCAAA;CACA;AACA;IACA,kBAAA;IACA,iBAAA;CACA;AACA;IACA,sBAAA;IACA,kBAAA;CACA;AACA;IACA,iBAAA;IACA,cAAA;IACA,oBAAA;CACA;AACA;IACA,mBAAA;IACA,cAAA;IACA,uBAAA;IACA,iBAAA;CACA;AACA;IACA;qCACA;IACA,sBAAA;CACA;AACA;IACA,aAAA;IACA,6DAAA;IACA,YAAA;IACA,cAAA;IACA,kBAAA;CACA;AACA;IACA,eAAA;IACA,WAAA;IACA,UAAA;IACA,iBAAA;IACA,iBAAA;IACA,kBAAA;IACA,mBAAA;IACA,mBAAA;IACA,UAAA;IACA,WAAA;IACA,uBAAA;IACA,uBAAA;IACA,aAAA;CACA;AACA;IACA,cAAA;IACA,uBAAA;IACA,sBAAA;IACA,wBAAA;IACA,mBAAA;IACA,aAAA;IACA,gBAAA;CACA;AACA;IACA,0BAAA;CACA;AACA;IACA,0BAAA;CACA;AACA;IACA,uBAAA;IACA,sBAAA;IACA,YAAA;CACA;AACA;IACA,gBAAA;IACA,kBAAA;CACA;AACA;IACA,0BAAA;CACA;AACA;IACA,kBAAA;IACA,iBAAA;CACA;AACA;;;IAGA,gBAAA;CACA","file":"TelephoneInput.vue","sourcesContent":["<template>\n    <div class=\"vue-tel-input b__components b-ios b-float-label b-input-extend-custom\" :class=\"classesParent\" :id=\"idParent\">\n        <label :class=\"classLabel\">{{ label }}</label>\n        <div\n                class=\"dropdown\"\n                @click=\"toggleDropdown\"\n                v-click-outside=\"clickedOutside\"\n                :class=\"{open: open}\"\n                @keydown=\"keyboardNav\"\n                tabindex=\"0\"\n                @keydown.esc=\"reset\"\n        >\n      <span class=\"selection\">\n        <div class=\"iti-flag\" v-if=\"enabledFlags\" :class=\"activeCountry.iso2.toLowerCase()\"></div>\n        <span class=\"dropdown-arrow\">{{ open ? '▲' : '▼' }}</span>\n      </span>\n            <ul v-show=\"open\" ref=\"list\">\n                <li\n                        class=\"dropdown-item\"\n                        v-for=\"(pb, index) in sortedCountries\"\n                        :key=\"pb.iso2 + (pb.preferred ? '-preferred' : '')\"\n                        @click=\"choose(pb)\"\n                        :class=\"getItemClass(index, pb.iso2)\"\n                        @mousemove=\"selectedIndex = index\"\n                >\n                    <div class=\"iti-flag\" v-if=\"enabledFlags\" :class=\"pb.iso2.toLowerCase()\"></div>\n                    <strong>{{ pb.name }}</strong>\n                    <span>+{{ pb.dialCode }}</span>\n                </li>\n            </ul>\n        </div>\n        <input\n                ref=\"input\"\n                v-model=\"phone\"\n                type=\"tel\"\n                :placeholder=\"placeholder\"\n                :state=\"state\"\n                :disabled=\"disabled\"\n                @blur=\"onBlur\"\n                @input=\"onInput\"\n                :required=\"required\"\n                @keydown=\"keyDownPress\"\n                class=\"b__input\"\n        >\n    </div>\n</template>\n\n<script>\n    import TelephoneInput from '../../components/TelephoneInput'\n    export default TelephoneInput\n</script>\n\n<style src=\"../../assets/telephone-input/sprite.css\"></style>\n<style scoped>\n    :local {\n        --border-radius: 2px;\n    }\n\n    li.last-preferred {\n        border-bottom: 1px solid #cacaca;\n    }\n    .iti-flag {\n        margin-right: 5px;\n        margin-left: 5px;\n    }\n    .dropdown-item .iti-flag {\n        display: inline-block;\n        margin-right: 5px;\n    }\n    .selection {\n        font-size: 0.8em;\n        display: flex;\n        align-items: center;\n    }\n    .vue-tel-input {\n        border-radius: 3px;\n        display: flex;\n        border: 1px solid #bbb;\n        text-align: left;\n    }\n    .vue-tel-input:focus-within {\n        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),\n        0 0 8px rgba(102, 175, 233, 0.6);\n        border-color: #66afe9;\n    }\n    input {\n        border: none;\n        border-radius: 0 var(--border-radius) var(--border-radius) 0;\n        width: 100%;\n        outline: none;\n        padding-left: 7px;\n    }\n    ul {\n        z-index: 99999;\n        padding: 0;\n        margin: 0;\n        text-align: left;\n        list-style: none;\n        max-height: 200px;\n        overflow-y: scroll;\n        position: absolute;\n        top: 33px;\n        left: -1px;\n        background-color: #fff;\n        border: 1px solid #ccc;\n        width: 390px;\n    }\n    .dropdown {\n        display: flex;\n        flex-direction: column;\n        align-content: center;\n        justify-content: center;\n        position: relative;\n        padding: 7px;\n        cursor: pointer;\n    }\n    .dropdown.open {\n        background-color: #f3f3f3;\n    }\n    .dropdown:hover {\n        background-color: #f3f3f3;\n    }\n    .dropdown-arrow {\n        transform: scaleY(0.5);\n        display: inline-block;\n        color: #666;\n    }\n    .dropdown-item {\n        cursor: pointer;\n        padding: 4px 15px;\n    }\n    .dropdown-item.highlighted {\n        background-color: #f3f3f3;\n    }\n    .dropdown-menu.show {\n        max-height: 300px;\n        overflow: scroll;\n    }\n    .vue-tel-input.disabled .selection,\n    .vue-tel-input.disabled .dropdown,\n    .vue-tel-input.disabled input {\n        cursor: no-drop;\n    }\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -99599,7 +99630,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": _vm.idParent
     }
-  }, [_c('label', [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('div', {
+  }, [_c('label', {
+    class: _vm.classLabel
+  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('div', {
     directives: [{
       name: "click-outside",
       rawName: "v-click-outside",
@@ -99660,6 +99693,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "phone"
     }],
     ref: "input",
+    staticClass: "b__input",
     attrs: {
       "type": "tel",
       "placeholder": _vm.placeholder,
