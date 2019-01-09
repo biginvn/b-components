@@ -38,6 +38,7 @@
                 @blur="onBlur"
                 @input="onInput"
                 :required="required"
+                @keydown="keyDownPress"
         >
     </div>
 </template>
@@ -88,7 +89,7 @@
         padding-left: 7px;
     }
     ul {
-        z-index: 1;
+        z-index: 9;
         padding: 0;
         margin: 0;
         text-align: left;
