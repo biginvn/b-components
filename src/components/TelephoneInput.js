@@ -80,10 +80,10 @@ export default {
             type: Boolean,
             default: true
         },
-        maxLengthDigits: {
-            type: Number,
-            default: 10
-        }
+        // maxLengthDigits: {
+        //     type: Number,
+        //     default: 10
+        // }
     },
     mounted() {
         this.initializeCountry();
@@ -296,11 +296,11 @@ export default {
                     return false;
                 }
 
-                let phoneDigits = parseDigits(this.phone);
-                if (this.maxLengthDigits <= phoneDigits.length ) {
-                    e.preventDefault();
-                    return false;
-                }
+                // let phoneDigits = parseDigits(this.phone);
+                // if (this.maxLengthDigits <= phoneDigits.length ) {
+                //     e.preventDefault();
+                //     return false;
+                // }
 
                 let keyCharacter = e.key;
                 let pattern = new RegExp(this.regex);

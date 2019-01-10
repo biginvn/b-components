@@ -65755,11 +65755,11 @@ const getCountry = function () {
         isPreventAfterInputValidNumber: {
             type: Boolean,
             default: true
-        },
-        maxLengthDigits: {
-            type: Number,
-            default: 10
         }
+        // maxLengthDigits: {
+        //     type: Number,
+        //     default: 10
+        // }
     },
     mounted() {
         this.initializeCountry();
@@ -65969,11 +65969,11 @@ const getCountry = function () {
                     return false;
                 }
 
-                let phoneDigits = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["d" /* parseDigits */])(this.phone);
-                if (this.maxLengthDigits <= phoneDigits.length) {
-                    e.preventDefault();
-                    return false;
-                }
+                // let phoneDigits = parseDigits(this.phone);
+                // if (this.maxLengthDigits <= phoneDigits.length ) {
+                //     e.preventDefault();
+                //     return false;
+                // }
 
                 let keyCharacter = e.key;
                 let pattern = new RegExp(this.regex);
