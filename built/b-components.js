@@ -65684,6 +65684,10 @@ const getCountry = function () {
         value: {
             type: String
         },
+        isValueModelInteger: {
+            type: Boolean,
+            default: false
+        },
         placeholder: {
             type: String,
             default: 'Enter a phone number'
@@ -65751,6 +65755,10 @@ const getCountry = function () {
         isPreventAfterInputValidNumber: {
             type: Boolean,
             default: true
+        },
+        maxLengthDigits: {
+            type: Number,
+            default: 10
         }
     },
     mounted() {
@@ -65831,10 +65839,13 @@ const getCountry = function () {
         response() {
             // If it is a valid number, returns the formatted value
             // Otherwise returns what it is
-            // const number = this.state ? this.formattedResult : this.phone;
-            const number = this.formattedResult;
+            const number = this.state ? this.formattedResult : this.phone;
+            const valueModel = this.isValueModelInteger ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["d" /* parseDigits */])(this.phone) : number;
+            // Emit input event in case v-model is used in the parent
+            this.$emit('input', valueModel);
             return {
                 number,
+                valueModel,
                 isValid: this.state,
                 country: this.activeCountry
             };
@@ -65933,11 +65944,8 @@ const getCountry = function () {
         },
         onInput() {
             this.$refs.input.setCustomValidity(this.response.isValid ? '' : this.invalidMsg);
-            // Emit input event in case v-model is used in the parent
-            this.$emit('input', this.response.number);
-
             // Emit the response, includes phone, validity and country
-            // this.$emit('onInput', this.response);
+            this.$emit('onInput', this.response);
         },
         onBlur() {
             this.$emit('onBlur');
@@ -65957,6 +65965,12 @@ const getCountry = function () {
             if (keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) {
                 // Left / Up / Right / Down Arrow, Delete keys;
                 if (this.isPreventAfterInputValidNumber && this.response.isValid) {
+                    e.preventDefault();
+                    return false;
+                }
+
+                let phoneDigits = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["d" /* parseDigits */])(this.phone);
+                if (this.maxLengthDigits <= phoneDigits.length) {
                     e.preventDefault();
                     return false;
                 }

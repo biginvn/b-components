@@ -8,6 +8,10 @@ export default {
         value: {
             type: String,
         },
+        isValueModelInteger: {
+            type: Boolean,
+            default: false,
+        },
         placeholder: {
             type: String,
             default: 'Enter a phone number',
@@ -75,6 +79,10 @@ export default {
         isPreventAfterInputValidNumber: {
             type: Boolean,
             default: true
+        },
+        maxLengthDigits: {
+            type: Number,
+            default: 10
         }
     },
     mounted() {
@@ -157,10 +165,13 @@ export default {
         response() {
             // If it is a valid number, returns the formatted value
             // Otherwise returns what it is
-            // const number = this.state ? this.formattedResult : this.phone;
-            const number = this.formattedResult;
+            const number = this.state ? this.formattedResult : this.phone;
+            const valueModel = (this.isValueModelInteger) ? parseDigits(this.phone) : number;
+            // Emit input event in case v-model is used in the parent
+            this.$emit('input', valueModel);
             return {
                 number,
+                valueModel,
                 isValid: this.state,
                 country: this.activeCountry,
             };
@@ -261,11 +272,8 @@ export default {
         },
         onInput() {
             this.$refs.input.setCustomValidity(this.response.isValid ? '' : this.invalidMsg);
-            // Emit input event in case v-model is used in the parent
-            this.$emit('input', this.response.number);
-
             // Emit the response, includes phone, validity and country
-            // this.$emit('onInput', this.response);
+            this.$emit('onInput', this.response);
         },
         onBlur() {
             this.$emit('onBlur');
@@ -284,6 +292,12 @@ export default {
             // Don't validate the input if below arrow, delete and backspace keys were pressed
             if(keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) { // Left / Up / Right / Down Arrow, Delete keys;
                 if (this.isPreventAfterInputValidNumber && this.response.isValid) {
+                    e.preventDefault();
+                    return false;
+                }
+
+                let phoneDigits = parseDigits(this.phone);
+                if (this.maxLengthDigits <= phoneDigits.length ) {
                     e.preventDefault();
                     return false;
                 }
