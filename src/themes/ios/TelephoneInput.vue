@@ -1,6 +1,6 @@
 <template>
-    <div class="vue-tel-input b__components b-ios b-float-label b-input-extend-custom" :class="classesParent" :id="idParent">
-        <label>{{ label }}</label>
+    <div class="b-tel-input b__components b-ios b-float-label b-input-extend-custom" :class="classesParent" :id="idParent">
+        <label :class="classLabel">{{ label }}</label>
         <div
                 class="dropdown"
                 @click="toggleDropdown"
@@ -40,6 +40,7 @@
                 @input="onInput"
                 :required="required"
                 @keydown="keyDownPress"
+                class="b__input"
         >
     </div>
 </template>
@@ -71,13 +72,25 @@
         display: flex;
         align-items: center;
     }
-    .vue-tel-input {
+    .b-tel-input {
         border-radius: 3px;
         display: flex;
         border: 1px solid #bbb;
         text-align: left;
     }
-    .vue-tel-input:focus-within {
+    .input-disabled.b-tel-input {
+        border: none;
+    }
+    .input-disabled.b-tel-input .dropdown-arrow {
+        display: none;
+    }
+    .input-disabled.b-tel-input input.b__input:disabled {
+        border: none;
+    }
+    .input-disabled.b-tel-input input.b__input {
+        border: none;
+    }
+    .b-tel-input:focus-within {
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
         0 0 8px rgba(102, 175, 233, 0.6);
         border-color: #66afe9;
@@ -90,7 +103,7 @@
         padding-left: 7px;
     }
     ul {
-        z-index: 9;
+        z-index: 99999;
         padding: 0;
         margin: 0;
         text-align: left;
@@ -135,9 +148,9 @@
         max-height: 300px;
         overflow: scroll;
     }
-    .vue-tel-input.disabled .selection,
-    .vue-tel-input.disabled .dropdown,
-    .vue-tel-input.disabled input {
+    .b-tel-input.disabled .selection,
+    .b-tel-input.disabled .dropdown,
+    .b-tel-input.disabled input {
         cursor: no-drop;
     }
 </style>
