@@ -65966,7 +65966,7 @@ const getCountry = function () {
             // Don't validate the input if below arrow, delete and backspace keys were pressed
             if (keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) {
                 // Left / Up / Right / Down Arrow, Delete keys;
-                if (this.isPreventAfterInputValidNumber && this.response.isValid) {
+                if (e.target.selectionEnd == e.target.selectionStart && this.isPreventAfterInputValidNumber && this.response.isValid) {
                     e.preventDefault();
                     return false;
                 }
