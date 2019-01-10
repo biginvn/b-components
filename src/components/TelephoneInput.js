@@ -194,6 +194,8 @@ export default {
             if (this.state) {
                 this.phone = this.formattedResult;
             }
+            // Emit input event in case v-model is used in the parent
+            this.$emit('input', (this.isValueModelInteger) ? parseDigits(this.phone) : this.phone);
         },
         activeCountry() {
             this.$emit('updatePhoneCountryCode', this.activeCountry.dialCode);

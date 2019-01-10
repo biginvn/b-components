@@ -65868,6 +65868,8 @@ const getCountry = function () {
             if (this.state) {
                 this.phone = this.formattedResult;
             }
+            // Emit input event in case v-model is used in the parent
+            this.$emit('input', this.isValueModelInteger ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["d" /* parseDigits */])(this.phone) : this.phone);
         },
         activeCountry() {
             this.$emit('updatePhoneCountryCode', this.activeCountry.dialCode);
