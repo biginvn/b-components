@@ -48,9 +48,17 @@ export default {
         },
         updateText (value) {
             this.text = value || '';
-            this.$el.querySelector('textarea').value=this.text
-            if (value == undefined || value == null)
-                this.$el.querySelector('textarea').value=''
+            if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) {//IF IE > 10 
+                console.log("You're using IE browser !");
+                this.$el.querySelector('textarea').value=this.text
+                if (value == undefined || value == null)
+                    this.$el.querySelector('textarea').value=''
+            }
+            else{
+                document.querySelector('textarea').value=this.text
+                if (value == undefined || value == null)
+                    document.querySelector('textarea').value=this.text
+            }
         }
     }
 }
