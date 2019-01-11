@@ -8,6 +8,10 @@ export default {
         value: {
             type: String,
         },
+        isValueModelInteger: {
+            type: Boolean,
+            default: false,
+        },
         placeholder: {
             type: String,
             default: 'Enter a phone number',
@@ -46,6 +50,12 @@ export default {
             type: String,
             default: '',
         },
+        countryCode: {
+            // Default country code, ie: 1
+            // Will override the current country of user
+            // type: Number,
+            default: null,
+        },
         enabledFlags: {
             type: Boolean,
             default: true
@@ -69,7 +79,11 @@ export default {
         isPreventAfterInputValidNumber: {
             type: Boolean,
             default: true
-        }
+        },
+        // maxLengthDigits: {
+        //     type: Number,
+        //     default: 10
+        // }
     },
     mounted() {
         this.initializeCountry();
@@ -151,10 +165,13 @@ export default {
         response() {
             // If it is a valid number, returns the formatted value
             // Otherwise returns what it is
-            // const number = this.state ? this.formattedResult : this.phone;
-            const number = this.formattedResult;
+            const number = this.state ? this.formattedResult : this.phone;
+            const valueModel = (this.isValueModelInteger) ? parseDigits(this.phone) : number;
+            // Emit input event in case v-model is used in the parent
+            this.$emit('input', valueModel);
             return {
                 number,
+                valueModel,
                 isValid: this.state,
                 country: this.activeCountry,
             };
@@ -177,12 +194,14 @@ export default {
             if (this.state) {
                 this.phone = this.formattedResult;
             }
+            // Emit input event in case v-model is used in the parent
+            this.$emit('input', (this.isValueModelInteger) ? parseDigits(this.phone) : this.phone);
         },
         activeCountry() {
-            this.$emit('updatePhoneCountry', this.activeCountry.iso2);
+            this.$emit('updatePhoneCountryCode', this.activeCountry.dialCode);
             this.phone = this.formatPhoneByNational(this.phone);
         },
-        defaultCountry() {
+        countryCode() {
             this.initializeCountry()
         }
     },
@@ -204,11 +223,21 @@ export default {
                 }
             }
             /**
-             * 2. Use the first country from preferred list (if available) or all countries list
+             * 2. Use default country if passed from parent
+             */
+            if (this.countryCode) {
+                const countryByCode = this.findCountryByCode(this.countryCode);
+                if (countryByCode) {
+                    this.activeCountry = countryByCode;
+                    return;
+                }
+            }
+            /**
+             * 3. Use the first country from preferred list (if available) or all countries list
              */
             this.activeCountry = this.findCountry(this.preferredCountries[0]) || this.filteredCountries[0];
             /**
-             * 3. Check if fetching country based on user's IP is allowed, set it as the default country
+             * 4. Check if fetching country based on user's IP is allowed, set it as the default country
              */
             if (!this.disabledFetchingCountry) {
                 getCountry().then((res) => {
@@ -227,6 +256,9 @@ export default {
         findCountry(iso = '') {
             return allCountries.find(country => country.iso2 === iso.toUpperCase());
         },
+        findCountryByCode(countryCode) {
+            return allCountries.find(country => country.dialCode.toString() === countryCode.toString() && country.priority === 0);
+        },
         getItemClass(index, iso2) {
             const highlighted = this.selectedIndex === index;
             const lastPreferred = index === this.preferredCountries.length - 1;
@@ -242,11 +274,8 @@ export default {
         },
         onInput() {
             this.$refs.input.setCustomValidity(this.response.isValid ? '' : this.invalidMsg);
-            // Emit input event in case v-model is used in the parent
-            this.$emit('input', this.response.number);
-
             // Emit the response, includes phone, validity and country
-            // this.$emit('onInput', this.response);
+            this.$emit('onInput', this.response);
         },
         onBlur() {
             this.$emit('onBlur');
@@ -264,10 +293,16 @@ export default {
             let keyCode = e.keyCode || e.which;
             // Don't validate the input if below arrow, delete and backspace keys were pressed
             if(keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) { // Left / Up / Right / Down Arrow, Delete keys;
-                if (this.isPreventAfterInputValidNumber && this.response.isValid) {
+                if ((e.target.selectionEnd == e.target.selectionStart) && this.isPreventAfterInputValidNumber && this.response.isValid) {
                     e.preventDefault();
                     return false;
                 }
+
+                // let phoneDigits = parseDigits(this.phone);
+                // if (this.maxLengthDigits <= phoneDigits.length ) {
+                //     e.preventDefault();
+                //     return false;
+                // }
 
                 let keyCharacter = e.key;
                 let pattern = new RegExp(this.regex);
