@@ -18,6 +18,11 @@ export default {
     },
     mounted(){
         this.initTinyMCE();
+        $(document).on('focusin', function(e) {
+          if ($(e.target).closest(".mce-window").length) {
+            e.stopImmediatePropagation();
+          }
+        }); //charm for tiny mce in modal :))
     },
     watch:{
         value(newVal){
@@ -81,14 +86,12 @@ export default {
                     ],
                     // images_upload_url: self.images_upload_url,
                     // images_upload_base_path: self.images_upload_base_path,
-
                     force_br_newlines : true,
                     force_p_newlines : true,
                     convert_urls : true,
                     remove_script_host : false,
                     relative_urls : false,
                     automatic_uploads : false,
-
                     image_title: true, 
                     file_picker_types: 'image',
                     images_upload_handler: function (blobInfo, success, failure) {
@@ -194,6 +197,14 @@ export default {
                         editor.on('focus', function (e) {
                             self.$emit('focus')
                         })
+
+                        $('#open').click(function() {
+                            $("#dialog").dialog({
+                                width: 800,
+                                modal: true
+                            });
+                        });
+
                     },
                     setup: function (editor) { // add attributes for tag a in editor viewmode to locate link after click
                         editor.on('PreInit', function () {
