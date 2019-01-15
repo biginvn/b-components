@@ -177,6 +177,7 @@ export default {
                     //Upload Fucntion & param
                     init_instance_callback: function (editor) {
                         // hook Tiny after init object and implement todo...
+                        $('#' + self.id + "_ifr").css("height", height);
                         if(self.checkEdit != undefined)
                         {
                             tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
