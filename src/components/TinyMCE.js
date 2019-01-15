@@ -73,7 +73,7 @@ export default {
             if( readonly == 1 )
                 var toolbar1 = false
             else
-                var toolbar1 = 'formatselect | bold italic strikethrough forecolor backcolor | link image| alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent lineheightselect | removeformat preview';
+                var toolbar1 = 'formatselect | bold italic strikethrough forecolor backcolor | link image| alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent lineheightselect | removeformat';
             tinymce.init(
                 Object.assign({},{
                     selector: '#' + self.id,
@@ -81,7 +81,7 @@ export default {
                     height : height,
                     lineheight_formats:'Single=75% 1.5=150% Double=200%',
                     theme: 'modern',
-                    plugins: "advlist anchor autolink autoresize autosave bbcode charmap code codesample colorpicker contextmenu directionality emoticons fullpage fullscreen help hr image imagetools importcss insertdatetime legacyoutput link lists nonbreaking noneditable pagebreak paste preview print save searchreplace tabfocus table template textcolor textpattern toc visualblocks visualchars wordcount",
+                    plugins: "advlist autolink autoresize autosave bbcode charmap code codesample colorpicker contextmenu directionality emoticons fullpage fullscreen help hr image imagetools importcss insertdatetime legacyoutput link lists nonbreaking noneditable pagebreak paste preview print save searchreplace tabfocus table template textcolor textpattern toc visualblocks visualchars wordcount",
                     toolbar1: toolbar1,
                     templates: (self.template == null || self.template == undefined) ? [] : self.template,
                     content_css: [
