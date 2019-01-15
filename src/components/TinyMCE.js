@@ -79,9 +79,9 @@ export default {
                     selector: '#' + self.id,
                     readonly : readonly,
                     height : height,
-                    lineheight_formats:'Single=75% 1.5=150% Double=200%',
+                    // lineheight_formats:'Single=75% 1.5=150% Double=200%',
                     theme: 'modern',
-                    plugins: "advlist autolink autoresize autosave bbcode charmap code codesample colorpicker contextmenu directionality emoticons fullscreen help hr image imagetools importcss insertdatetime legacyoutput link lists nonbreaking noneditable pagebreak paste preview print save searchreplace tabfocus table template textcolor textpattern toc visualblocks visualchars wordcount",
+                    plugins: "advlist autolink autoresize autosave bbcode charmap code codesample colorpicker contextmenu directionality emoticons fullscreen lineheight help hr image imagetools importcss insertdatetime legacyoutput link lists nonbreaking noneditable pagebreak paste preview print save searchreplace tabfocus table template textcolor textpattern toc visualblocks visualchars wordcount",
                     toolbar1: toolbar1,
                     templates: (self.template == null || self.template == undefined) ? [] : self.template,
                     content_css: [
