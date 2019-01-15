@@ -69,7 +69,7 @@ export default {
         initTinyEditor(){
             var self = this
             var readonly = this.checkDisabled()
-            var height = (this.height == null || this.height == undefined) ? "500" : this.height
+            var height = (this.height == null || this.height == undefined) ? "450" : this.height
             if( readonly == 1 )
                 var toolbar1 = false
             else
