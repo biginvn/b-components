@@ -84,8 +84,6 @@ export default {
                         'https://fonts.googleapis.com/css?family=Montserrat',
                         '//www.tinymce.com/css/codepen.min.css'
                     ],
-                    // images_upload_url: self.images_upload_url,
-                    // images_upload_base_path: self.images_upload_base_path,
                     force_br_newlines : true,
                     force_p_newlines : true,
                     convert_urls : true,
@@ -93,6 +91,7 @@ export default {
                     relative_urls : false,
                     automatic_uploads : false,
                     image_title: true, 
+                    default_link_target: "_blank",
                     file_picker_types: 'image',
                     images_upload_handler: function (blobInfo, success, failure) {
                         $(".mce-throbber").remove();
