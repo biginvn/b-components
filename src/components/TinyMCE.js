@@ -81,7 +81,7 @@ export default {
                     height : height,
                     // lineheight_formats:'Single=75% 1.5=150% Double=200%',
                     theme: 'modern',
-                    plugins: "advlist autolink autoresize autosave bbcode charmap code codesample colorpicker contextmenu directionality emoticons fullscreen lineheight help hr image imagetools importcss insertdatetime legacyoutput link lists nonbreaking noneditable pagebreak paste preview print save searchreplace tabfocus table template textcolor textpattern toc visualblocks visualchars wordcount",
+                    plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help lineheight',
                     toolbar1: toolbar1,
                     templates: (self.template == null || self.template == undefined) ? [] : self.template,
                     content_css: [
@@ -143,6 +143,11 @@ export default {
                     },
                     file_picker_callback : function(cb, value, meta) {
                         // hook Tiny after select file in upload image implement upload file base64 todo...
+                         // trigger upload server side
+                        $(".mce-widget.mce-btn.mce-browsebutton.mce-abs-layout-item.mce-first.mce-btn-has-text button").trigger('click');
+                        return;
+
+                        // upload type base64
                         var input = document.createElement('input');
                         input.setAttribute('type', 'file');
                         input.setAttribute('accept', 'image/*');
@@ -182,6 +187,8 @@ export default {
                         {
                             tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
                             tinymce.activeEditor.getBody().style.padding = "10px 0px 0px 0px";
+                            // tinymce.activeEditor.getBody().setAttribute('class', "arc-custom-editor-body");
+                            tinymce.activeEditor.getBody().setAttribute('style', "overflow-y: scroll !important; font-family: 'Open Sans',sans-serif !important; font-size: 15px !important;");
                         }
                         $('tr.mceFirst').css('z-index','1000')
 
@@ -228,7 +235,6 @@ export default {
                         //     editor.parser.addNodeFilter('a', (nodes) => nodes.forEach(node => node.attr('target', '_blank')));
                         // });
                         // hook Tiny after setup config and implement todo...
-
                     }
                 }, this.tinyConfig ? this.tinyConfig : {})
             )
