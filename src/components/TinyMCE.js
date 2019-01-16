@@ -183,12 +183,12 @@ export default {
                     init_instance_callback: function (editor) {
                         // hook Tiny after init object and implement todo...
                         $('#' + self.id + "_ifr").css("height", height);
+                        tinymce.activeEditor.getBody().setAttribute('class', "arc-custom-editor-body");
+                        tinymce.activeEditor.getBody().setAttribute('style', "overflow-y: scroll !important; font-family: 'Open Sans',sans-serif !important; font-size: 15px !important;");
                         if(self.checkEdit != undefined)
                         {
                             tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
                             tinymce.activeEditor.getBody().style.padding = "10px 0px 0px 0px";
-                            // tinymce.activeEditor.getBody().setAttribute('class', "arc-custom-editor-body");
-                            tinymce.activeEditor.getBody().setAttribute('style', "overflow-y: scroll !important; font-family: 'Open Sans',sans-serif !important; font-size: 15px !important;");
                         }
                         $('tr.mceFirst').css('z-index','1000')
 
