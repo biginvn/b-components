@@ -10,10 +10,10 @@
                 tabindex="0"
                 @keydown.esc="reset"
         >
-      <span class="selection">
+        <span class="selection">
         <div class="iti-flag" v-if="enabledFlags" :class="activeCountry.iso2.toLowerCase()"></div>
         <span class="dropdown-arrow">{{ open ? '▲' : '▼' }}</span>
-      </span>
+        </span>
             <ul v-show="open" ref="list">
                 <li
                         class="dropdown-item"
@@ -40,7 +40,7 @@
                 @input="onInput"
                 :required="required"
                 @keydown="keyDownPress"
-                class="b__input"
+                class="b__input uiFirefox"
         >
     </div>
 </template>
@@ -152,5 +152,10 @@
     .b-tel-input.disabled .dropdown,
     .b-tel-input.disabled input {
         cursor: no-drop;
+    }
+    @-moz-document url-prefix() {
+        .uiFirefox{
+            max-width: calc(100% - 54.3px);
+        }
     }
 </style>
