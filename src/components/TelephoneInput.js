@@ -144,11 +144,9 @@ export default {
                 return '';
             }
             let phone = this.phone;
+            const formatter = new AsYouType("US");// eslint-disable-line
+            formatter.input(this.phone);
             if (this.mode === 'code') {
-                // If user manually type the country code
-                const formatter = new AsYouType();// eslint-disable-line
-                formatter.input(this.phone);
-
                 // Find inputted country in the countries list
                 this.activeCountry = this.findCountry(formatter.country) || this.activeCountry;
             } else if (this.mode === 'prefix') {
@@ -157,7 +155,7 @@ export default {
                 // phone = this.phone.slice(1);
             }
 
-            return formatNumber(phone, this.activeCountry && this.activeCountry.iso2, 'NATIONAL');
+            return formatNumber(phone, "US", 'NATIONAL');
         },
         state() {
             return isValidNumber(this.formattedResult, this.activeCountry && this.activeCountry.iso2);
@@ -208,7 +206,7 @@ export default {
     methods: {
         formatPhoneByNational(phone) {
             phone = parseDigits(phone);
-            const formatter = new AsYouType(this.activeCountry.iso2);// eslint-disable-line
+            const formatter = new AsYouType("US");// eslint-disable-line
             return formatter.input(phone);
         },
         initializeCountry() {
