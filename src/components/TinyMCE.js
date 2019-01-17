@@ -79,7 +79,7 @@ export default {
                     selector: '#' + self.id,
                     readonly : readonly,
                     height : height,
-                    // lineheight_formats:'Single=75% 1.5=150% Double=200%',
+                    lineheight_formats:'Single=100% 1.5=150% Double=200%',
                     theme: 'modern',
                     plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help lineheight',
                     toolbar1: toolbar1,
@@ -184,7 +184,7 @@ export default {
                         // hook Tiny after init object and implement todo...
                         $('#' + self.id + "_ifr").css("height", height);
                         tinymce.activeEditor.getBody().setAttribute('class', "arc-custom-editor-body");
-                        tinymce.activeEditor.getBody().setAttribute('style', "overflow-y: scroll !important; font-family: 'Open Sans',sans-serif !important; font-size: 15px !important;");
+                        tinymce.activeEditor.getBody().setAttribute('style', "overflow-y: scroll !important; font-family: 'Open Sans',sans-serif !important; font-size: 15px !important; padding: 1.5em;");
                         if(self.checkEdit != undefined)
                         {
                             tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
