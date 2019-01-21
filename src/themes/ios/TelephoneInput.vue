@@ -1,6 +1,20 @@
 <template>
     <div class="b-tel-input b__components b-ios b-float-label b-input-extend-custom" :class="classesParent" :id="idParent">
         <label :class="classLabel">{{ label }}</label>
+        <ul v-show="open" ref="list">
+            <li
+                    class="dropdown-item"
+                    v-for="(pb, index) in sortedCountries"
+                    :key="pb.iso2 + (pb.preferred ? '-preferred' : '')"
+                    @click="choose(pb)"
+                    :class="getItemClass(index, pb.iso2)"
+                    @mousemove="selectedIndex = index"
+            >
+                <div class="iti-flag" v-if="enabledFlags" :class="pb.iso2.toLowerCase()"></div>
+                <strong>{{ pb.name }}</strong>
+                <span>+{{ pb.dialCode }}</span>
+            </li>
+        </ul>
         <div
                 class="dropdown"
                 @click="toggleDropdown"
@@ -14,20 +28,7 @@
         <div class="iti-flag" v-if="enabledFlags" :class="activeCountry.iso2.toLowerCase()"></div>
         <span class="dropdown-arrow">{{ open ? '▲' : '▼' }}</span>
         </span>
-            <ul v-show="open" ref="list">
-                <li
-                        class="dropdown-item"
-                        v-for="(pb, index) in sortedCountries"
-                        :key="pb.iso2 + (pb.preferred ? '-preferred' : '')"
-                        @click="choose(pb)"
-                        :class="getItemClass(index, pb.iso2)"
-                        @mousemove="selectedIndex = index"
-                >
-                    <div class="iti-flag" v-if="enabledFlags" :class="pb.iso2.toLowerCase()"></div>
-                    <strong>{{ pb.name }}</strong>
-                    <span>+{{ pb.dialCode }}</span>
-                </li>
-            </ul>
+
         </div>
         <input
                 ref="input"
@@ -40,7 +41,7 @@
                 @input="onInput"
                 :required="required"
                 @keydown="keyDownPress"
-                class="b__input uiFirefox"
+                class="b__input uiFirefox b-telephone-input"
         >
     </div>
 </template>
@@ -78,6 +79,11 @@
         border: 1px solid #bbb;
         text-align: left;
     }
+    .b-float-label input.b__input.b-telephone-input{
+        border: none;
+        border-left: 1px solid #bbbbbb;
+        border-radius: 0;
+    }
     .input-disabled.b-tel-input {
         border: none;
     }
@@ -113,9 +119,10 @@
         position: absolute;
         top: 33px;
         left: -1px;
+        right: -1px;
         background-color: #fff;
         border: 1px solid #ccc;
-        width: 390px;
+        max-width: unset!important;
     }
     .dropdown {
         display: flex;
@@ -139,7 +146,7 @@
     }
     .dropdown-item {
         cursor: pointer;
-        padding: 4px 15px;
+        padding: 4px 8px;
     }
     .dropdown-item.highlighted {
         background-color: #f3f3f3;
