@@ -65757,15 +65757,30 @@ const getCountry = function () {
         },
         maxLengthDigits: {
             type: Number,
+            default: 16
+        },
+        maxLengthStandardDigits: {
+            type: Number,
             default: 10
         },
-        customFormatNumber: {
+        customFormatNumberStandard: {
             type: Object / Array,
             default: function () {
                 return {
                     0: "(",
                     3: ") ",
                     6: "-"
+                };
+            }
+        },
+        customFormatNumberNotStandard: {
+            type: Object / Array,
+            default: function () {
+                return {
+                    0: "(",
+                    4: ") ",
+                    8: "-",
+                    12: "-"
                 };
             }
         },
@@ -65917,8 +65932,14 @@ const getCountry = function () {
         formatNumberByCustom(phone) {
             var numbers = phone.replace(/\D/g, ''),
                 phone = '';
-            for (var i = 0; i < numbers.length; i++) {
-                phone += (this.customFormatNumber[i] || '') + numbers[i];
+            if (numbers.length <= this.maxLengthStandardDigits) {
+                for (var i = 0; i < numbers.length; i++) {
+                    phone += (this.customFormatNumberStandard[i] || '') + numbers[i];
+                }
+            } else {
+                for (var i = 0; i < numbers.length; i++) {
+                    phone += (this.customFormatNumberNotStandard[i] || '') + numbers[i];
+                }
             }
             return phone;
         },
@@ -66018,7 +66039,7 @@ const getCountry = function () {
                     }
                 } else {
                     let phoneDigits = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["d" /* parseDigits */])(this.phone);
-                    if (e.target.selectionEnd == e.target.selectionStart && this.maxLengthDigits <= phoneDigits.length) {
+                    if (e.target.selectionEnd == e.target.selectionStart && this.isPreventAfterInputValidNumber && this.maxLengthDigits <= phoneDigits.length) {
                         e.preventDefault();
                         return false;
                     }

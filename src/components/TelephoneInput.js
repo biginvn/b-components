@@ -82,15 +82,30 @@ export default {
         },
         maxLengthDigits: {
             type: Number,
+            default: 16
+        },
+        maxLengthStandardDigits: {
+            type: Number,
             default: 10
         },
-        customFormatNumber: {
+        customFormatNumberStandard: {
             type: Object/Array,
             default: function () {
                 return {
                     0 : "(",
                     3 : ") ",
                     6 : "-",
+                }
+            }
+        },
+        customFormatNumberNotStandard: {
+            type: Object/Array,
+            default: function () {
+                return {
+                    0 : "(",
+                    4 : ") ",
+                    8 : "-",
+                    12 : "-",
                 }
             }
         },
@@ -246,8 +261,15 @@ export default {
         formatNumberByCustom(phone) {
             var numbers = phone.replace(/\D/g, ''),
                 phone = '';
-            for (var i = 0; i < numbers.length; i++) {
-                phone += (this.customFormatNumber[i] || '') + numbers[i];
+            if (numbers.length <= this.maxLengthStandardDigits) {
+                for (var i = 0; i < numbers.length; i++) {
+                    phone += (this.customFormatNumberStandard[i] || '') + numbers[i];
+                }
+            }
+            else {
+                for (var i = 0; i < numbers.length; i++) {
+                    phone += (this.customFormatNumberNotStandard[i] || '') + numbers[i];
+                }
             }
             return phone;
         },
@@ -349,7 +371,7 @@ export default {
                 }
                 else {
                     let phoneDigits = parseDigits(this.phone);
-                    if ((e.target.selectionEnd == e.target.selectionStart) && this.maxLengthDigits <= phoneDigits.length ) {
+                    if ((e.target.selectionEnd == e.target.selectionStart) && this.isPreventAfterInputValidNumber && this.maxLengthDigits <= phoneDigits.length ) {
                         e.preventDefault();
                         return false;
                     }
