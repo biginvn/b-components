@@ -82,7 +82,7 @@ export default {
         },
         maxLengthDigits: {
             type: Number,
-            default: 16
+            default: 15
         },
         maxLengthStandardDigits: {
             type: Number,
@@ -103,9 +103,9 @@ export default {
             default: function () {
                 return {
                     0 : "(",
-                    4 : ") ",
-                    8 : "-",
-                    12 : "-",
+                    3 : ") ",
+                    7 : "-",
+                    11 : "-",
                 }
             }
         },
