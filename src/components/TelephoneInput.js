@@ -80,10 +80,32 @@ export default {
             type: Boolean,
             default: true
         },
-        // maxLengthDigits: {
-        //     type: Number,
-        //     default: 10
-        // }
+        maxLengthDigits: {
+            type: Number,
+            default: 10
+        },
+        customFormatNumber: {
+            type: Object/Array,
+            default: function () {
+                return {
+                    0 : "(",
+                    3 : ") ",
+                    6 : "-",
+                }
+            }
+        },
+        useCustomFormatNumber: {
+            type: Boolean,
+            default: false
+        },
+        formatTypePhone: {
+            type: String,
+            default: "NATIONAL"
+        },
+        formatByDefaultCountry: {
+            type: String,
+            default: null
+        }
     },
     mounted() {
         this.initializeCountry();
@@ -106,6 +128,9 @@ export default {
         };
     },
     computed: {
+        formatCountryNumber() {
+            return (this.formatByDefaultCountry !== null) ? this.formatByDefaultCountry : this.activeCountry.iso2;
+        },
         mode() {
             if (!this.phone) {
                 return '';
@@ -139,23 +164,32 @@ export default {
             return [...preferredCountries, ...this.filteredCountries];
         },
         formattedResult() {
-            // Calculate phone number based on mode
-            if (!this.mode || !this.filteredCountries) {
-                return '';
-            }
-            let phone = this.phone;
-            const formatter = new AsYouType("US");// eslint-disable-line
-            formatter.input(this.phone);
-            if (this.mode === 'code') {
-                // Find inputted country in the countries list
-                this.activeCountry = this.findCountry(formatter.country) || this.activeCountry;
-            } else if (this.mode === 'prefix') {
-                // Remove the first '0' if this is a '0' prefix number
-                // Ex: 0432421999
-                // phone = this.phone.slice(1);
-            }
+            if (!this.useCustomFormatNumber)  {
+                // Calculate phone number based on mode
+                if (!this.mode || !this.filteredCountries) {
+                    return '';
+                }
+                let phone = this.phone;
+                let formatter = new AsYouType(); // eslint-disable-line
+                if (!this.useCustomFormatNumber) {
+                    formatter = new AsYouType(this.formatCountryNumber); // eslint-disable-line
+                }
+                formatter.input(this.phone);
 
-            return formatNumber(phone, "US", 'NATIONAL');
+                if (this.mode === 'code') {
+                    // Find inputted country in the countries list
+                    this.activeCountry = this.findCountry(formatter.country) || this.activeCountry;
+                } else if (this.mode === 'prefix') {
+                    // Remove the first '0' if this is a '0' prefix number
+                    // Ex: 0432421999
+                    phone = this.phone.slice(1);
+                }
+
+                return formatNumber(phone, this.formatCountryNumber, this.formatTypePhone);
+            }
+            else {
+                return this.formatNumberByCustom(this.phone);
+            }
         },
         state() {
             return isValidNumber(this.formattedResult, this.activeCountry && this.activeCountry.iso2);
@@ -164,7 +198,7 @@ export default {
             // If it is a valid number, returns the formatted value
             // Otherwise returns what it is
             const number = this.state ? this.formattedResult : this.phone;
-            const valueModel = (this.isValueModelInteger) ? parseDigits(this.phone) : number;
+            const valueModel = number;
             // Emit input event in case v-model is used in the parent
             this.$emit('input', valueModel);
             return {
@@ -187,13 +221,18 @@ export default {
             this.phone = this.value;
         },
         phone() {
-            this.phone = this.formatPhoneByNational(this.phone);
-            this.updateLabel(this.phone);
-            if (this.state) {
-                this.phone = this.formattedResult;
+            if (!this.useCustomFormatNumber)  {
+                this.phone = this.formatPhoneByNational(this.phone);
+                this.updateLabel(this.phone);
+                // if (this.state) {
+                //     this.phone = this.formattedResult;
+                // }
+            }
+            else {
+                this.phone = this.formatNumberByCustom(this.phone);
             }
             // Emit input event in case v-model is used in the parent
-            this.$emit('input', (this.isValueModelInteger) ? parseDigits(this.phone) : this.phone);
+            this.$emit('input', this.phone);
         },
         activeCountry() {
             this.$emit('updatePhoneCountryCode', this.activeCountry.dialCode);
@@ -204,9 +243,20 @@ export default {
         }
     },
     methods: {
+        formatNumberByCustom(phone) {
+            var numbers = phone.replace(/\D/g, ''),
+                phone = '';
+            for (var i = 0; i < numbers.length; i++) {
+                phone += (this.customFormatNumber[i] || '') + numbers[i];
+            }
+            return phone;
+        },
         formatPhoneByNational(phone) {
             phone = parseDigits(phone);
-            const formatter = new AsYouType("US");// eslint-disable-line
+            let formatter = new AsYouType(); // eslint-disable-line
+            if (!this.useCustomFormatNumber) {
+                formatter = new AsYouType(this.formatCountryNumber); // eslint-disable-line
+            }
             return formatter.input(phone);
         },
         initializeCountry() {
@@ -291,16 +341,19 @@ export default {
             let keyCode = e.keyCode || e.which;
             // Don't validate the input if below arrow, delete and backspace keys were pressed
             if(keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) { // Left / Up / Right / Down Arrow, Delete keys;
-                if ((e.target.selectionEnd == e.target.selectionStart) && this.isPreventAfterInputValidNumber && this.response.isValid) {
-                    e.preventDefault();
-                    return false;
+                if (!this.useCustomFormatNumber)  {
+                    if ((e.target.selectionEnd == e.target.selectionStart) && this.isPreventAfterInputValidNumber && this.response.isValid) {
+                        e.preventDefault();
+                        return false;
+                    }
                 }
-
-                // let phoneDigits = parseDigits(this.phone);
-                // if (this.maxLengthDigits <= phoneDigits.length ) {
-                //     e.preventDefault();
-                //     return false;
-                // }
+                else {
+                    let phoneDigits = parseDigits(this.phone);
+                    if ((e.target.selectionEnd == e.target.selectionStart) && this.maxLengthDigits <= phoneDigits.length ) {
+                        e.preventDefault();
+                        return false;
+                    }
+                }
 
                 let keyCharacter = e.key;
                 let pattern = new RegExp(this.regex);
