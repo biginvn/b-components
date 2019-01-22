@@ -62957,6 +62957,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_TelephoneInput__["a" /* default */]);
@@ -63053,8 +63054,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_TinyMCE__ = __webpack_require__(432);
-//
-//
 //
 //
 //
@@ -63188,7 +63187,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //    Order (if >1 country with same dial code),
 //    Area codes
 // ]
-const allCountries = [['Afghanistan (‫افغانستان‬‎)', 'af', '93'], ['Albania (Shqipëri)', 'al', '355'], ['Algeria (‫الجزائر‬‎)', 'dz', '213'], ['American Samoa', 'as', '1684'], ['Andorra', 'ad', '376'], ['Angola', 'ao', '244'], ['Anguilla', 'ai', '1264'], ['Antigua and Barbuda', 'ag', '1268'], ['Argentina', 'ar', '54'], ['Armenia (Հայաստան)', 'am', '374'], ['Aruba', 'aw', '297'], ['Australia', 'au', '61', 0], ['Austria (Österreich)', 'at', '43'], ['Azerbaijan (Azərbaycan)', 'az', '994'], ['Bahamas', 'bs', '1242'], ['Bahrain (‫البحرين‬‎)', 'bh', '973'], ['Bangladesh (বাংলাদেশ)', 'bd', '880'], ['Barbados', 'bb', '1246'], ['Belarus (Беларусь)', 'by', '375'], ['Belgium (België)', 'be', '32'], ['Belize', 'bz', '501'], ['Benin (Bénin)', 'bj', '229'], ['Bermuda', 'bm', '1441'], ['Bhutan (འབྲུག)', 'bt', '975'], ['Bolivia', 'bo', '591'], ['Bosnia and Herzegovina (Босна и Херцеговина)', 'ba', '387'], ['Botswana', 'bw', '267'], ['Brazil (Brasil)', 'br', '55'], ['British Indian Ocean Territory', 'io', '246'], ['British Virgin Islands', 'vg', '1284'], ['Brunei', 'bn', '673'], ['Bulgaria (България)', 'bg', '359'], ['Burkina Faso', 'bf', '226'], ['Burundi (Uburundi)', 'bi', '257'], ['Cambodia (កម្ពុជា)', 'kh', '855'], ['Cameroon (Cameroun)', 'cm', '237'], ['Canada', 'ca', '1', 1, ['204', '226', '236', '249', '250', '289', '306', '343', '365', '387', '403', '416', '418', '431', '437', '438', '450', '506', '514', '519', '548', '579', '581', '587', '604', '613', '639', '647', '672', '705', '709', '742', '778', '780', '782', '807', '819', '825', '867', '873', '902', '905']], ['Cape Verde (Kabu Verdi)', 'cv', '238'], ['Caribbean Netherlands', 'bq', '599', 1], ['Cayman Islands', 'ky', '1345'], ['Central African Republic (République centrafricaine)', 'cf', '236'], ['Chad (Tchad)', 'td', '235'], ['Chile', 'cl', '56'], ['China (中国)', 'cn', '86'], ['Christmas Island', 'cx', '61', 2], ['Cocos (Keeling) Islands', 'cc', '61', 1], ['Colombia', 'co', '57'], ['Comoros (‫جزر القمر‬‎)', 'km', '269'], ['Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)', 'cd', '243'], ['Congo (Republic) (Congo-Brazzaville)', 'cg', '242'], ['Cook Islands', 'ck', '682'], ['Costa Rica', 'cr', '506'], ['Côte d’Ivoire', 'ci', '225'], ['Croatia (Hrvatska)', 'hr', '385'], ['Cuba', 'cu', '53'], ['Curaçao', 'cw', '599', 0], ['Cyprus (Κύπρος)', 'cy', '357'], ['Czech Republic (Česká republika)', 'cz', '420'], ['Denmark (Danmark)', 'dk', '45'], ['Djibouti', 'dj', '253'], ['Dominica', 'dm', '1767'], ['Dominican Republic (República Dominicana)', 'do', '1', 2, ['809', '829', '849']], ['Ecuador', 'ec', '593'], ['Egypt (‫مصر‬‎)', 'eg', '20'], ['El Salvador', 'sv', '503'], ['Equatorial Guinea (Guinea Ecuatorial)', 'gq', '240'], ['Eritrea', 'er', '291'], ['Estonia (Eesti)', 'ee', '372'], ['Ethiopia', 'et', '251'], ['Falkland Islands (Islas Malvinas)', 'fk', '500'], ['Faroe Islands (Føroyar)', 'fo', '298'], ['Fiji', 'fj', '679'], ['Finland (Suomi)', 'fi', '358', 0], ['France', 'fr', '33'], ['French Guiana (Guyane française)', 'gf', '594'], ['French Polynesia (Polynésie française)', 'pf', '689'], ['Gabon', 'ga', '241'], ['Gambia', 'gm', '220'], ['Georgia (საქართველო)', 'ge', '995'], ['Germany (Deutschland)', 'de', '49'], ['Ghana (Gaana)', 'gh', '233'], ['Gibraltar', 'gi', '350'], ['Greece (Ελλάδα)', 'gr', '30'], ['Greenland (Kalaallit Nunaat)', 'gl', '299'], ['Grenada', 'gd', '1473'], ['Guadeloupe', 'gp', '590', 0], ['Guam', 'gu', '1671'], ['Guatemala', 'gt', '502'], ['Guernsey', 'gg', '44', 1], ['Guinea (Guinée)', 'gn', '224'], ['Guinea-Bissau (Guiné Bissau)', 'gw', '245'], ['Guyana', 'gy', '592'], ['Haiti', 'ht', '509'], ['Honduras', 'hn', '504'], ['Hong Kong (香港)', 'hk', '852'], ['Hungary (Magyarország)', 'hu', '36'], ['Iceland (Ísland)', 'is', '354'], ['India (भारत)', 'in', '91'], ['Indonesia', 'id', '62'], ['Iran (‫ایران‬‎)', 'ir', '98'], ['Iraq (‫العراق‬‎)', 'iq', '964'], ['Ireland', 'ie', '353'], ['Isle of Man', 'im', '44', 2], ['Israel (‫ישראל‬‎)', 'il', '972'], ['Italy (Italia)', 'it', '39', 0], ['Jamaica', 'jm', '1876'], ['Japan (日本)', 'jp', '81'], ['Jersey', 'je', '44', 3], ['Jordan (‫الأردن‬‎)', 'jo', '962'], ['Kazakhstan (Казахстан)', 'kz', '7', 1], ['Kenya', 'ke', '254'], ['Kiribati', 'ki', '686'], ['Kosovo', 'xk', '383'], ['Kuwait (‫الكويت‬‎)', 'kw', '965'], ['Kyrgyzstan (Кыргызстан)', 'kg', '996'], ['Laos (ລາວ)', 'la', '856'], ['Latvia (Latvija)', 'lv', '371'], ['Lebanon (‫لبنان‬‎)', 'lb', '961'], ['Lesotho', 'ls', '266'], ['Liberia', 'lr', '231'], ['Libya (‫ليبيا‬‎)', 'ly', '218'], ['Liechtenstein', 'li', '423'], ['Lithuania (Lietuva)', 'lt', '370'], ['Luxembourg', 'lu', '352'], ['Macau (澳門)', 'mo', '853'], ['Macedonia (FYROM) (Македонија)', 'mk', '389'], ['Madagascar (Madagasikara)', 'mg', '261'], ['Malawi', 'mw', '265'], ['Malaysia', 'my', '60'], ['Maldives', 'mv', '960'], ['Mali', 'ml', '223'], ['Malta', 'mt', '356'], ['Marshall Islands', 'mh', '692'], ['Martinique', 'mq', '596'], ['Mauritania (‫موريتانيا‬‎)', 'mr', '222'], ['Mauritius (Moris)', 'mu', '230'], ['Mayotte', 'yt', '262', 1], ['Mexico (México)', 'mx', '52'], ['Micronesia', 'fm', '691'], ['Moldova (Republica Moldova)', 'md', '373'], ['Monaco', 'mc', '377'], ['Mongolia (Монгол)', 'mn', '976'], ['Montenegro (Crna Gora)', 'me', '382'], ['Montserrat', 'ms', '1664'], ['Morocco (‫المغرب‬‎)', 'ma', '212', 0], ['Mozambique (Moçambique)', 'mz', '258'], ['Myanmar (Burma) (မြန်မာ)', 'mm', '95'], ['Namibia (Namibië)', 'na', '264'], ['Nauru', 'nr', '674'], ['Nepal (नेपाल)', 'np', '977'], ['Netherlands (Nederland)', 'nl', '31'], ['New Caledonia (Nouvelle-Calédonie)', 'nc', '687'], ['New Zealand', 'nz', '64'], ['Nicaragua', 'ni', '505'], ['Niger (Nijar)', 'ne', '227'], ['Nigeria', 'ng', '234'], ['Niue', 'nu', '683'], ['Norfolk Island', 'nf', '672'], ['North Korea (조선 민주주의 인민 공화국)', 'kp', '850'], ['Northern Mariana Islands', 'mp', '1670'], ['Norway (Norge)', 'no', '47', 0], ['Oman (‫عُمان‬‎)', 'om', '968'], ['Pakistan (‫پاکستان‬‎)', 'pk', '92'], ['Palau', 'pw', '680'], ['Palestine (‫فلسطين‬‎)', 'ps', '970'], ['Panama (Panamá)', 'pa', '507'], ['Papua New Guinea', 'pg', '675'], ['Paraguay', 'py', '595'], ['Peru (Perú)', 'pe', '51'], ['Philippines', 'ph', '63'], ['Poland (Polska)', 'pl', '48'], ['Portugal', 'pt', '351'], ['Puerto Rico', 'pr', '1', 3, ['787', '939']], ['Qatar (‫قطر‬‎)', 'qa', '974'], ['Réunion (La Réunion)', 're', '262', 0], ['Romania (România)', 'ro', '40'], ['Russia (Россия)', 'ru', '7', 0], ['Rwanda', 'rw', '250'], ['Saint Barthélemy', 'bl', '590', 1], ['Saint Helena', 'sh', '290'], ['Saint Kitts and Nevis', 'kn', '1869'], ['Saint Lucia', 'lc', '1758'], ['Saint Martin (Saint-Martin (partie française))', 'mf', '590', 2], ['Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)', 'pm', '508'], ['Saint Vincent and the Grenadines', 'vc', '1784'], ['Samoa', 'ws', '685'], ['San Marino', 'sm', '378'], ['São Tomé and Príncipe (São Tomé e Príncipe)', 'st', '239'], ['Saudi Arabia (‫المملكة العربية السعودية‬‎)', 'sa', '966'], ['Senegal (Sénégal)', 'sn', '221'], ['Serbia (Србија)', 'rs', '381'], ['Seychelles', 'sc', '248'], ['Sierra Leone', 'sl', '232'], ['Singapore', 'sg', '65'], ['Sint Maarten', 'sx', '1721'], ['Slovakia (Slovensko)', 'sk', '421'], ['Slovenia (Slovenija)', 'si', '386'], ['Solomon Islands', 'sb', '677'], ['Somalia (Soomaaliya)', 'so', '252'], ['South Africa', 'za', '27'], ['South Korea (대한민국)', 'kr', '82'], ['South Sudan (‫جنوب السودان‬‎)', 'ss', '211'], ['Spain (España)', 'es', '34'], ['Sri Lanka (ශ්‍රී ලංකාව)', 'lk', '94'], ['Sudan (‫السودان‬‎)', 'sd', '249'], ['Suriname', 'sr', '597'], ['Svalbard and Jan Mayen', 'sj', '47', 1], ['Swaziland', 'sz', '268'], ['Sweden (Sverige)', 'se', '46'], ['Switzerland (Schweiz)', 'ch', '41'], ['Syria (‫سوريا‬‎)', 'sy', '963'], ['Taiwan (台灣)', 'tw', '886'], ['Tajikistan', 'tj', '992'], ['Tanzania', 'tz', '255'], ['Thailand (ไทย)', 'th', '66'], ['Timor-Leste', 'tl', '670'], ['Togo', 'tg', '228'], ['Tokelau', 'tk', '690'], ['Tonga', 'to', '676'], ['Trinidad and Tobago', 'tt', '1868'], ['Tunisia (‫تونس‬‎)', 'tn', '216'], ['Turkey (Türkiye)', 'tr', '90'], ['Turkmenistan', 'tm', '993'], ['Turks and Caicos Islands', 'tc', '1649'], ['Tuvalu', 'tv', '688'], ['U.S. Virgin Islands', 'vi', '1340'], ['Uganda', 'ug', '256'], ['Ukraine (Україна)', 'ua', '380'], ['United Arab Emirates (‫الإمارات العربية المتحدة‬‎)', 'ae', '971'], ['United Kingdom', 'gb', '44', 0], ['United States', 'us', '1', 0], ['Uruguay', 'uy', '598'], ['Uzbekistan (Oʻzbekiston)', 'uz', '998'], ['Vanuatu', 'vu', '678'], ['Vatican City (Città del Vaticano)', 'va', '39', 1], ['Venezuela', 've', '58'], ['Vietnam (Việt Nam)', 'vn', '84'], ['Wallis and Futuna (Wallis-et-Futuna)', 'wf', '681'], ['Western Sahara (‫الصحراء الغربية‬‎)', 'eh', '212', 1], ['Yemen (‫اليمن‬‎)', 'ye', '967'], ['Zambia', 'zm', '260'], ['Zimbabwe', 'zw', '263'], ['Åland Islands', 'ax', '358', 1]];
+const allCountries = [['Afghanistan', 'af', '93'], ['Albania', 'al', '355'], ['Algeria', 'dz', '213'], ['American Samoa', 'as', '1684'], ['Andorra', 'ad', '376'], ['Angola', 'ao', '244'], ['Anguilla', 'ai', '1264'], ['Antigua and Barbuda', 'ag', '1268'], ['Argentina', 'ar', '54'], ['Armenia', 'am', '374'], ['Aruba', 'aw', '297'], ['Australia', 'au', '61', 0], ['Austria', 'at', '43'], ['Azerbaijan', 'az', '994'], ['Bahamas', 'bs', '1242'], ['Bahrain', 'bh', '973'], ['Bangladesh', 'bd', '880'], ['Barbados', 'bb', '1246'], ['Belarus', 'by', '375'], ['Belgium', 'be', '32'], ['Belize', 'bz', '501'], ['Benin', 'bj', '229'], ['Bermuda', 'bm', '1441'], ['Bhutan', 'bt', '975'], ['Bolivia', 'bo', '591'], ['Bosnia and Herzegovina', 'ba', '387'], ['Botswana', 'bw', '267'], ['Brazil', 'br', '55'], ['British Indian Ocean Territory', 'io', '246'], ['British Virgin Islands', 'vg', '1284'], ['Brunei', 'bn', '673'], ['Bulgaria', 'bg', '359'], ['Burkina Faso', 'bf', '226'], ['Burundi', 'bi', '257'], ['Cambodia', 'kh', '855'], ['Cameroon', 'cm', '237'], ['Canada', 'ca', '1', 1, ['204', '226', '236', '249', '250', '289', '306', '343', '365', '387', '403', '416', '418', '431', '437', '438', '450', '506', '514', '519', '548', '579', '581', '587', '604', '613', '639', '647', '672', '705', '709', '742', '778', '780', '782', '807', '819', '825', '867', '873', '902', '905']], ['Cape Verde', 'cv', '238'], ['Caribbean Netherlands', 'bq', '599', 1], ['Cayman Islands', 'ky', '1345'], ['Central African Republic', 'cf', '236'], ['Chad', 'td', '235'], ['Chile', 'cl', '56'], ['China', 'cn', '86'], ['Christmas Island', 'cx', '61', 2], ['Cocos Islands', 'cc', '61', 1], ['Colombia', 'co', '57'], ['Comoros', 'km', '269'], ['Congo', 'cd', '243'], ['Congo', 'cg', '242'], ['Cook Islands', 'ck', '682'], ['Costa Rica', 'cr', '506'], ['Côte d’Ivoire', 'ci', '225'], ['Croatia', 'hr', '385'], ['Cuba', 'cu', '53'], ['Curaçao', 'cw', '599', 0], ['Cyprus', 'cy', '357'], ['Czech Republic', 'cz', '420'], ['Denmark', 'dk', '45'], ['Djibouti', 'dj', '253'], ['Dominica', 'dm', '1767'], ['Dominican Republic', 'do', '1', 2, ['809', '829', '849']], ['Ecuador', 'ec', '593'], ['Egypt', 'eg', '20'], ['El Salvador', 'sv', '503'], ['Equatorial Guinea', 'gq', '240'], ['Eritrea', 'er', '291'], ['Estonia', 'ee', '372'], ['Ethiopia', 'et', '251'], ['Falkland Islands', 'fk', '500'], ['Faroe Islands', 'fo', '298'], ['Fiji', 'fj', '679'], ['Finland', 'fi', '358', 0], ['France', 'fr', '33'], ['French Guiana', 'gf', '594'], ['French Polynesia', 'pf', '689'], ['Gabon', 'ga', '241'], ['Gambia', 'gm', '220'], ['Georgia', 'ge', '995'], ['Germany', 'de', '49'], ['Ghana', 'gh', '233'], ['Gibraltar', 'gi', '350'], ['Greece', 'gr', '30'], ['Greenland', 'gl', '299'], ['Grenada', 'gd', '1473'], ['Guadeloupe', 'gp', '590', 0], ['Guam', 'gu', '1671'], ['Guatemala', 'gt', '502'], ['Guernsey', 'gg', '44', 1], ['Guinea', 'gn', '224'], ['Guinea-Bissau', 'gw', '245'], ['Guyana', 'gy', '592'], ['Haiti', 'ht', '509'], ['Honduras', 'hn', '504'], ['Hong Kong', 'hk', '852'], ['Hungary', 'hu', '36'], ['Iceland', 'is', '354'], ['India', 'in', '91'], ['Indonesia', 'id', '62'], ['Iran', 'ir', '98'], ['Iraq', 'iq', '964'], ['Ireland', 'ie', '353'], ['Isle of Man', 'im', '44', 2], ['Israel', 'il', '972'], ['Italy', 'it', '39', 0], ['Jamaica', 'jm', '1876'], ['Japan', 'jp', '81'], ['Jersey', 'je', '44', 3], ['Jordan', 'jo', '962'], ['Kazakhstan', 'kz', '7', 1], ['Kenya', 'ke', '254'], ['Kiribati', 'ki', '686'], ['Kosovo', 'xk', '383'], ['Kuwait', 'kw', '965'], ['Kyrgyzstan', 'kg', '996'], ['Laos', 'la', '856'], ['Latvia', 'lv', '371'], ['Lebanon', 'lb', '961'], ['Lesotho', 'ls', '266'], ['Liberia', 'lr', '231'], ['Libya', 'ly', '218'], ['Liechtenstein', 'li', '423'], ['Lithuania', 'lt', '370'], ['Luxembourg', 'lu', '352'], ['Macau', 'mo', '853'], ['Macedonia', 'mk', '389'], ['Madagascar', 'mg', '261'], ['Malawi', 'mw', '265'], ['Malaysia', 'my', '60'], ['Maldives', 'mv', '960'], ['Mali', 'ml', '223'], ['Malta', 'mt', '356'], ['Marshall Islands', 'mh', '692'], ['Martinique', 'mq', '596'], ['Mauritania', 'mr', '222'], ['Mauritius', 'mu', '230'], ['Mayotte', 'yt', '262', 1], ['Mexico', 'mx', '52'], ['Micronesia', 'fm', '691'], ['Moldova', 'md', '373'], ['Monaco', 'mc', '377'], ['Mongolia', 'mn', '976'], ['Montenegro', 'me', '382'], ['Montserrat', 'ms', '1664'], ['Morocco', 'ma', '212', 0], ['Mozambique', 'mz', '258'], ['Myanmar', 'mm', '95'], ['Namibia', 'na', '264'], ['Nauru', 'nr', '674'], ['Nepal', 'np', '977'], ['Netherlands', 'nl', '31'], ['New Caledonia', 'nc', '687'], ['New Zealand', 'nz', '64'], ['Nicaragua', 'ni', '505'], ['Niger', 'ne', '227'], ['Nigeria', 'ng', '234'], ['Niue', 'nu', '683'], ['Norfolk Island', 'nf', '672'], ['North Korea', 'kp', '850'], ['Northern Mariana Islands', 'mp', '1670'], ['Norway', 'no', '47', 0], ['Oman', 'om', '968'], ['Pakistan', 'pk', '92'], ['Palau', 'pw', '680'], ['Palestine', 'ps', '970'], ['Panama', 'pa', '507'], ['Papua New Guinea', 'pg', '675'], ['Paraguay', 'py', '595'], ['Peru', 'pe', '51'], ['Philippines', 'ph', '63'], ['Poland', 'pl', '48'], ['Portugal', 'pt', '351'], ['Puerto Rico', 'pr', '1', 3, ['787', '939']], ['Qatar', 'qa', '974'], ['Réunion', 're', '262', 0], ['Romania', 'ro', '40'], ['Russia', 'ru', '7', 0], ['Rwanda', 'rw', '250'], ['Saint Barthélemy', 'bl', '590', 1], ['Saint Helena', 'sh', '290'], ['Saint Kitts and Nevis', 'kn', '1869'], ['Saint Lucia', 'lc', '1758'], ['Saint Martin', 'mf', '590', 2], ['Saint Pierre and Miquelon', 'pm', '508'], ['Saint Vincent and the Grenadines', 'vc', '1784'], ['Samoa', 'ws', '685'], ['San Marino', 'sm', '378'], ['São Tomé and Príncipe', 'st', '239'], ['Saudi Arabia', 'sa', '966'], ['Senegal', 'sn', '221'], ['Serbia', 'rs', '381'], ['Seychelles', 'sc', '248'], ['Sierra Leone', 'sl', '232'], ['Singapore', 'sg', '65'], ['Sint Maarten', 'sx', '1721'], ['Slovakia', 'sk', '421'], ['Slovenia', 'si', '386'], ['Solomon Islands', 'sb', '677'], ['Somalia', 'so', '252'], ['South Africa', 'za', '27'], ['South Korea', 'kr', '82'], ['South Sudan', 'ss', '211'], ['Spain', 'es', '34'], ['Sri Lanka', 'lk', '94'], ['Sudan', 'sd', '249'], ['Suriname', 'sr', '597'], ['Svalbard and Jan Mayen', 'sj', '47', 1], ['Swaziland', 'sz', '268'], ['Sweden', 'se', '46'], ['Switzerland', 'ch', '41'], ['Syria', 'sy', '963'], ['Taiwan', 'tw', '886'], ['Tajikistan', 'tj', '992'], ['Tanzania', 'tz', '255'], ['Thailand', 'th', '66'], ['Timor-Leste', 'tl', '670'], ['Togo', 'tg', '228'], ['Tokelau', 'tk', '690'], ['Tonga', 'to', '676'], ['Trinidad and Tobago', 'tt', '1868'], ['Tunisia', 'tn', '216'], ['Turkey', 'tr', '90'], ['Turkmenistan', 'tm', '993'], ['Turks and Caicos Islands', 'tc', '1649'], ['Tuvalu', 'tv', '688'], ['U.S. Virgin Islands', 'vi', '1340'], ['Uganda', 'ug', '256'], ['Ukraine', 'ua', '380'], ['United Arab Emirates', 'ae', '971'], ['United Kingdom', 'gb', '44', 0], ['United States', 'us', '1', 0], ['Uruguay', 'uy', '598'], ['Uzbekistan', 'uz', '998'], ['Vanuatu', 'vu', '678'], ['Vatican City', 'va', '39', 1], ['Venezuela', 've', '58'], ['Vietnam', 'vn', '84'], ['Wallis and Futuna', 'wf', '681'], ['Western Sahara', 'eh', '212', 1], ['Yemen', 'ye', '967'], ['Zambia', 'zm', '260'], ['Zimbabwe', 'zw', '263'], ['Åland Islands', 'ax', '358', 1]];
 
 /* harmony default export */ __webpack_exports__["a"] = (allCountries.map(country => ({
   name: country[0],
@@ -65755,11 +65754,33 @@ const getCountry = function () {
         isPreventAfterInputValidNumber: {
             type: Boolean,
             default: true
+        },
+        maxLengthDigits: {
+            type: Number,
+            default: 10
+        },
+        customFormatNumber: {
+            type: Object / Array,
+            default: function () {
+                return {
+                    0: "(",
+                    3: ") ",
+                    6: "-"
+                };
+            }
+        },
+        useCustomFormatNumber: {
+            type: Boolean,
+            default: false
+        },
+        formatTypePhone: {
+            type: String,
+            default: "NATIONAL"
+        },
+        formatByDefaultCountry: {
+            type: String,
+            default: null
         }
-        // maxLengthDigits: {
-        //     type: Number,
-        //     default: 10
-        // }
     },
     mounted() {
         this.initializeCountry();
@@ -65782,6 +65803,9 @@ const getCountry = function () {
         };
     },
     computed: {
+        formatCountryNumber() {
+            return this.formatByDefaultCountry !== null ? this.formatByDefaultCountry : this.activeCountry.iso2;
+        },
         mode() {
             if (!this.phone) {
                 return '';
@@ -65813,25 +65837,31 @@ const getCountry = function () {
             return [...preferredCountries, ...this.filteredCountries];
         },
         formattedResult() {
-            // Calculate phone number based on mode
-            if (!this.mode || !this.filteredCountries) {
-                return '';
-            }
-            let phone = this.phone;
-            if (this.mode === 'code') {
-                // If user manually type the country code
-                const formatter = new __WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["a" /* AsYouType */](); // eslint-disable-line
+            if (!this.useCustomFormatNumber) {
+                // Calculate phone number based on mode
+                if (!this.mode || !this.filteredCountries) {
+                    return '';
+                }
+                let phone = this.phone;
+                let formatter = new __WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["a" /* AsYouType */](); // eslint-disable-line
+                if (!this.useCustomFormatNumber) {
+                    formatter = new __WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["a" /* AsYouType */](this.formatCountryNumber); // eslint-disable-line
+                }
                 formatter.input(this.phone);
 
-                // Find inputted country in the countries list
-                this.activeCountry = this.findCountry(formatter.country) || this.activeCountry;
-            } else if (this.mode === 'prefix') {
-                // Remove the first '0' if this is a '0' prefix number
-                // Ex: 0432421999
-                // phone = this.phone.slice(1);
-            }
+                if (this.mode === 'code') {
+                    // Find inputted country in the countries list
+                    this.activeCountry = this.findCountry(formatter.country) || this.activeCountry;
+                } else if (this.mode === 'prefix') {
+                    // Remove the first '0' if this is a '0' prefix number
+                    // Ex: 0432421999
+                    phone = this.phone.slice(1);
+                }
 
-            return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["b" /* formatNumber */])(phone, this.activeCountry && this.activeCountry.iso2, 'NATIONAL');
+                return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["b" /* formatNumber */])(phone, this.formatCountryNumber, this.formatTypePhone);
+            } else {
+                return this.formatNumberByCustom(this.phone);
+            }
         },
         state() {
             return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["c" /* isValidNumber */])(this.formattedResult, this.activeCountry && this.activeCountry.iso2);
@@ -65840,7 +65870,7 @@ const getCountry = function () {
             // If it is a valid number, returns the formatted value
             // Otherwise returns what it is
             const number = this.state ? this.formattedResult : this.phone;
-            const valueModel = this.isValueModelInteger ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["d" /* parseDigits */])(this.phone) : number;
+            const valueModel = number;
             // Emit input event in case v-model is used in the parent
             this.$emit('input', valueModel);
             return {
@@ -65863,13 +65893,17 @@ const getCountry = function () {
             this.phone = this.value;
         },
         phone() {
-            this.phone = this.formatPhoneByNational(this.phone);
-            this.updateLabel(this.phone);
-            if (this.state) {
-                this.phone = this.formattedResult;
+            if (!this.useCustomFormatNumber) {
+                this.phone = this.formatPhoneByNational(this.phone);
+                this.updateLabel(this.phone);
+                // if (this.state) {
+                //     this.phone = this.formattedResult;
+                // }
+            } else {
+                this.phone = this.formatNumberByCustom(this.phone);
             }
             // Emit input event in case v-model is used in the parent
-            this.$emit('input', this.isValueModelInteger ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["d" /* parseDigits */])(this.phone) : this.phone);
+            this.$emit('input', this.phone);
         },
         activeCountry() {
             this.$emit('updatePhoneCountryCode', this.activeCountry.dialCode);
@@ -65880,9 +65914,20 @@ const getCountry = function () {
         }
     },
     methods: {
+        formatNumberByCustom(phone) {
+            var numbers = phone.replace(/\D/g, ''),
+                phone = '';
+            for (var i = 0; i < numbers.length; i++) {
+                phone += (this.customFormatNumber[i] || '') + numbers[i];
+            }
+            return phone;
+        },
         formatPhoneByNational(phone) {
             phone = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["d" /* parseDigits */])(phone);
-            const formatter = new __WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["a" /* AsYouType */](this.activeCountry.iso2); // eslint-disable-line
+            let formatter = new __WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["a" /* AsYouType */](); // eslint-disable-line
+            if (!this.useCustomFormatNumber) {
+                formatter = new __WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["a" /* AsYouType */](this.formatCountryNumber); // eslint-disable-line
+            }
             return formatter.input(phone);
         },
         initializeCountry() {
@@ -65966,16 +66011,18 @@ const getCountry = function () {
             // Don't validate the input if below arrow, delete and backspace keys were pressed
             if (keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) {
                 // Left / Up / Right / Down Arrow, Delete keys;
-                if (e.target.selectionEnd == e.target.selectionStart && this.isPreventAfterInputValidNumber && this.response.isValid) {
-                    e.preventDefault();
-                    return false;
+                if (!this.useCustomFormatNumber) {
+                    if (e.target.selectionEnd == e.target.selectionStart && this.isPreventAfterInputValidNumber && this.response.isValid) {
+                        e.preventDefault();
+                        return false;
+                    }
+                } else {
+                    let phoneDigits = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_libphonenumber_js__["d" /* parseDigits */])(this.phone);
+                    if (e.target.selectionEnd == e.target.selectionStart && this.maxLengthDigits <= phoneDigits.length) {
+                        e.preventDefault();
+                        return false;
+                    }
                 }
-
-                // let phoneDigits = parseDigits(this.phone);
-                // if (this.maxLengthDigits <= phoneDigits.length ) {
-                //     e.preventDefault();
-                //     return false;
-                // }
 
                 let keyCharacter = e.key;
                 let pattern = new RegExp(this.regex);
@@ -66430,7 +66477,7 @@ const getCountry = function () {
             contentTinyMCE: ""
         };
     },
-    props: ['checkEdit', 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'mode', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path'],
+    props: ['checkEdit', 'id', 'label', 'name', 'disabled', 'class-name', 'content', 'tiny-config', 'single-image', 'multiple-image', 'width', 'height', 'images_upload_url', 'images_upload_base_path', 'template'],
     beforeDestroy() {
         try {
             if (tinymce.get(this.id) != null && tinymce.get(this.id) != undefined) {
@@ -66440,6 +66487,16 @@ const getCountry = function () {
     },
     mounted() {
         this.initTinyMCE();
+        $(document).on('focusin', function (e) {
+            if ($(e.target).closest(".mce-window").length) {
+                e.stopImmediatePropagation();
+            }
+        }); //charm for tiny mce in modal :))
+        $.widget("ui.dialog", $.ui.dialog, {
+            _allowInteraction: function (event) {
+                return !!$(event.target).closest(".mce-container").length || this._super(event);
+            }
+        }); //charm for tiny mce in modal :))
     },
     watch: {
         value(newVal) {
@@ -66471,155 +66528,81 @@ const getCountry = function () {
         insertSpecialContent(value) {
             tinymce.activeEditor.execCommand('mceInsertContent', false, value);
         },
-        initTinyMCEBasicMode() {
-            var Vue = this;
+
+        initTinyEditor() {
+            var self = this;
             var readonly = this.checkDisabled();
-            var height = this.height == null || this.height == undefined ? "300" : this.height;
-            if (readonly == 1) var toolbar = false;else var toolbar = "cut copy paste | searchreplace| bullist numlist | newdocument fullpage | bold italic underline strikethrough | table | alignleft aligncenter alignright alignjustify |  outdent indent blockquote | undo redo | link unlink image code | preview | forecolor backcolor | pagebreak | lineheightselect";
+            var height = this.height == null || this.height == undefined ? "450" : this.height;
+            if (readonly == 1) var toolbar1 = false;else var toolbar1 = 'formatselect | bold italic strikethrough forecolor backcolor | link image| alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent lineheightselect | removeformat';
             tinymce.init(Object.assign({}, {
-                selector: '#' + Vue.id,
+                selector: '#' + self.id,
                 readonly: readonly,
                 height: height,
-                //custom value of lineheight
-                lineheight_formats: 'Single=120% 1.5=180% Double=240%',
-                plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table",
-                // "autoresize",
-                "image code", "lineheight"],
-                // autoresize_on_init: false,
-                // autoresize_max_height: 300,
+                lineheight_formats: 'Single=100% 1.5=150% Double=200%',
+                theme: 'modern',
+                plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help lineheight',
+                toolbar1: toolbar1,
+                templates: self.template == null || self.template == undefined ? [] : self.template,
+                content_css: ['https://fonts.googleapis.com/css?family=Montserrat', '//www.tinymce.com/css/codepen.min.css'],
+                // images_upload_url: self.images_upload_url,
+                // images_upload_base_path: self.images_upload_base_path,
+                // target_list: [
+                //     {title: 'None', value: ''},
+                //     {title: 'Same page', value: '_self'},
+                //     {title: 'New page', value: '_blank'},
+                //     {title: 'LIghtbox', value: '_lightbox'}
+                // ],
+                default_link_target: "_blank",
                 force_br_newlines: true,
                 force_p_newlines: true,
-                forced_root_block: '',
-                toolbar: toolbar,
-                menubar: false,
                 convert_urls: true,
                 remove_script_host: false,
                 relative_urls: false,
-
-                //Upload Fucntion & param
-                toolbar_items_size: 'small',
-
-                images_upload_url: Vue.images_upload_url,
-                images_upload_base_path: Vue.images_upload_base_path,
-                // images_upload_credentials: true,
-                image_title: true,
-                // enable automatic uploads of images represented by blob or data URIs
                 automatic_uploads: false,
-                // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
-                // images_upload_url: 'postAcceptor.php',
-                // here we add custom filepicker only to Image dialog
-                file_picker_types: 'image',
-                // and here's our custom image picker
-                file_picker_callback: function (cb, value, meta) {
-                    if (Vue.images_upload_url == undefined || Vue.images_upload_url == null) {
-                        var input = document.createElement('input');
-                        input.setAttribute('type', 'file');
-                        input.setAttribute('accept', 'image/*');
-
-                        // Note: In modern browsers input[type="file"] is functional without 
-                        // even adding it to the DOM, but that might not be the case in some older
-                        // or quirky browsers like IE, so you might want to add it to the DOM
-                        // just in case, and visually hide it. And do not forget do remove it
-                        // once you do not need it anymore.
-
-                        input.onchange = function () {
-                            var file = this.files[0];
-
-                            var reader = new FileReader();
-                            reader.onload = function () {
-                                // Note: Now we need to register the blob in TinyMCEs image blob
-                                // registry. In the next release this part hopefully won't be
-                                // necessary, as we are looking to handle it internally.
-                                var id = 'blobid' + new Date().getTime();
-                                var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-                                var base64 = reader.result.split(',')[1];
-                                var blobInfo = blobCache.create(id, file, base64);
-                                blobCache.add(blobInfo);
-
-                                // call the callback and populate the Title field with the file name
-                                cb(blobInfo.blobUri(), { title: file.name });
-                            };
-                            reader.readAsDataURL(file);
-                        };
-                        input.click();
-                    } else return false;
-                },
-                //Upload Fucntion & param
-
-                init_instance_callback: function (editor) {
-                    if (Vue.checkEdit != undefined) {
-                        tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
-                    }
-                    $('tr.mceFirst').css('z-index', '1000');
-
-                    let content = Vue.value;
-
-                    if (content != null || content != undefined) this.setContent(content);
-                    editor.on('keyup', function (e) {
-                        if (e.which == 13) {
-                            Vue.$emit('event', e.which);
-                        }
-                        if (this.getContent() != "") {
-                            if (Vue.classLabel != "active") Vue.classLabel = "active";
-                        } else {
-                            Vue.classLabel != "";
-                        }
-                    });
-
-                    editor.on('change', function (e) {
-
-                        Vue.range = this.selection.getRng().startOffset; // get range
-
-                        Vue.$emit('range', Vue.range);
-
-                        this.contentOutPut = this.getContent();
-                        Vue.update(this.getContent());
-                    });
-
-                    editor.on('focus', function (e) {
-
-                        Vue.$emit('focus');
-                    });
-                },
-                setup: function (editor) {
-                    editor.on('PreInit', function () {
-                        editor.parser.addNodeFilter('a', nodes => nodes.forEach(node => node.attr('target', '_blank')));
-                    });
-                }
-            }, this.tinyConfig ? this.tinyConfig : {}));
-        },
-        initTinyMCEAdvanceMode() {
-            var Vue = this;
-            var readonly = this.checkDisabled();
-            tinymce.init(Object.assign({}, {
-                selector: '#' + Vue.id,
-                readonly: readonly,
-                plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "table",
-                // "autoresize",
-                "image code"],
-                // autoresize_on_init: false,
-                // autoresize_max_height: 300,
-                toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | table",
-                // toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-                toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-                toolbar3: "hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-                content_css: ['//fonts.googleapis.com/css?family=Lato:300,300i,400,400i', '//www.tinymce.com/css/codepen.min.css'],
-
-                menubar: true,
-                toolbar_items_size: 'small',
-
-                images_upload_url: Vue.images_upload_url,
-                images_upload_base_path: Vue.images_upload_base_path,
-                // images_upload_credentials: true,
                 image_title: true,
-                // enable automatic uploads of images represented by blob or data URIs
-                automatic_uploads: true,
-                // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
-                // images_upload_url: 'postAcceptor.php',
-                // here we add custom filepicker only to Image dialog
                 file_picker_types: 'image',
-                // and here's our custom image picker
+                images_upload_handler: function (blobInfo, success, failure) {
+                    // hook Tiny after select file in upload image implement upload file server side todo...
+                    // remove tiny basic loading when upload request. that real: we must be change css in class "mce-throbber" to another svf
+                    $(".mce-throbber").remove();
+                    var svgLogo = '<div class="logo-loader"><svg viewBox="0 0 400 400"><path class="path-1" d="M76.78,283.74v3.13H78.7c-.65-1-1.29-2.08-1.92-3.13Z" /><path class="path-2" d="M78.16,286.87h.55c-.66-1-1.3-2.1-1.93-3.15v1c.45.74.91,1.46,1.38,2.19Z" /><path class="path-2" d="M80.63,289.78H80.1a151.82,151.82,0,0,0,45.7,43.7,150,150,0,0,1-45.17-43.7Z" /><path class="path-2" d="M215.05,270.53h3.33l8.41,19.25h-3.46l-1.84-4.34h-9.71l-1.84,4.34h-3.38l8.49-19.25Zm25.69,0h15.43v2.91h-6.11v16.34h-3.24V273.44h-6.08v-2.91Zm39.19-154.79c1.81,1.72,4.74,2,5.91,4.61.22.49,1.08.69,1.64,1,.18-.56.34-1.13.53-1.68.59-1.64,1.12-3.3,1.8-4.89s1.65-3.13,2.3-4.76c.47-1.16,1-1.81,2.35-1.56,2.55.47,4.52-.6,6.27-2.37s4-.38,5.9-.07c2.26.36,3.38-.13,3.37-2.14a2.61,2.61,0,0,0-.56-1.54c-1.2-1.5-2.05-3-1.61-5.08.16-.75-.89-1.76-1.61-3.06a12.51,12.51,0,0,1,1.35.89,148.38,148.38,0,0,1,29.15,37.29c.7,1.28.46,3.08,1.15,4.37,1.6,3,1.38,6.94,4.73,9,.39.24.56,1,.68,1.53.35,1.7.59,3.42,1,5.11.23,1,.81,1.76-.31,3-.85.92-.6,2.9-.79,4.42s-.89,1.37-2.05.54c.12.72.2,1.23.29,1.77h-2.55c2.65,3.64,5.07,7.05,4.25,11.74-1.43-.48-2.84-1-4.29-1.42s-2.16.39-2,1.9c.28,2.3.22,4.64.39,7,.13,1.87.4,3.73.63,5.6,0,.15.26.3.43.41l3.31,2.12,2.43-.63c1-.27,2-3.08,1.89-4.66a11.15,11.15,0,0,1,.21-3.31c.37-1.65.93-3.25,1.44-5l1.07.71c.31-.46.63-.95,1-1.43a61,61,0,0,1,5.21,15.17,150.72,150.72,0,1,0-281.24,88.9v-1.17c-2.14-3.92-4.15-8-6-12.13-27.18-62.43-8.83-132.6,38.58-173.29l-2,2.35,1.21.69c-2.88,2.45-5.84,4.77-8.57,7.34a10.64,10.64,0,0,0-3.53,7.4c0,.58.74,1.19,1.29,2-2.3,4.29-7.53,6.39-10,10.78l.68.65c2.82-2.29,5.74-4.49,8.43-6.92,3.12-2.79,6-5.81,9-8.73.16-.14.35-.37.52-.36,3.19.21,5.17-2.56,8-3.25,3.46-.84,6.38.74,7.36,4.19.33,1.12,1.32,2,1.73,3.16a20.06,20.06,0,0,1,.73,3.64c.59,3.5,1.22,7,1.69,10.5.27,2,.25,4.08.34,6.12a11.33,11.33,0,0,0-.12,1.27c.89,4.79-.49,9.41-1.43,14-.7,3.38-2.74,6.47-4,9.74a50.94,50.94,0,0,0-1.58,5.46c-.11.41.06.92-.12,1.27-1.94,3.86-.59,7.51.64,11.18a2.74,2.74,0,0,1,.09,1.27,14,14,0,0,0,.85,7.92,3.75,3.75,0,0,0,1.5,1.76c3,1.57,5.14,3.63,5.3,7.26a3.75,3.75,0,0,0,.66,2,12.54,12.54,0,0,0,1.92,1.78l1.67-2.09c1.56,0,1.95,1.4,1.91,2.49-.09,2.42,1.13,4.21,2.29,6.06,1,1.57,2,3,3.07,4.56.08.12.28.21.29.31.07,3.39,3,5,4.63,7.34,1.79,2.67,3.38,5.31,2.34,8.88-.29,1,.69,2.87,1.65,3.65,4.73,3.86,10.34,6.22,15.9,8.6a6.66,6.66,0,0,0,5.36,0,4,4,0,0,1,3.14.68c1.44,1,2.59,2.41,4,3.55a5.35,5.35,0,0,0,1.92.88c2.49.75,5.26,1,7.41,2.29a12.84,12.84,0,0,1,4.29,5.2,4.64,4.64,0,0,0,2.63,2.7c.83.32,1.44,1.22,2.18,1.81.52.41,1.13,1.09,1.64,1a6.91,6.91,0,0,1,4.87,1.59c1.68,1.23,2.08.9,2.75-1.09a10,10,0,0,1,1.71-2.31c.49.35,1.12.56,1.33,1,1.76,3.42,3.51,7,2.57,10.88a8.92,8.92,0,0,1-5.15,5.91c-.87.37-2,.46-1.41,2.05.21.57-.39,1.56-.82,2.23-1.54,2.38-1.27,3.54,1.25,4.85-2.93,1.88-3.41,2.93-2.79,6.42a1.32,1.32,0,0,0,.79.88c3.48.76,4.15,4,5.83,6.41,2.62,3.69,5.1,7.49,7.91,11,.89,1.11,2.67,1.51,4,2.25,1.85,1,3.72,2,5.51,3.1a2.15,2.15,0,0,1,.93,1.54c-.21,4.85-.54,9.68-.83,14.53a58.63,58.63,0,0,1-.44,6.5c-.38,2.18-1.21,4.28-1.79,6.43a11.14,11.14,0,0,0-.35,2.23,6.27,6.27,0,0,0,.13,1.94c.23.8.47,2,1,2.22,1.77.72,1.44,2.05,1,3.16-1.13,3-.42,4.92,2.42,5.89,3.06-.38,6.08-.86,9.08-1.42-.59-.21-1.24-.53-1.93-.74,1.53-1.17,2.71-2,3.81-3,.09-.08-.38-.81-.08-1.09.46-1.64.93-3.27,1.42-5a23.85,23.85,0,0,0,2.47-.15c.54-.08,1.41-.29,1.51-.63,1-3.32,4.23-2.58,6.46-3.5,2.06-.84,3.55-1.89,4-4.17a1.82,1.82,0,0,1,1.29-1.13c3.51-.33,5.05-3,6.86-5.47a13.69,13.69,0,0,1,3.17-3.14c2.05-1.41,3.91-2.74,4.11-5.58a4.55,4.55,0,0,1,1.6-2.77,64.07,64.07,0,0,1,6.21-4.49,4.8,4.8,0,0,1,2.95-1c2.26.44,3.37-1.09,4.31-2.39a33,33,0,0,0,5.43-12.59c.57-2.63,2.94-4.91,4.62-7.26.9-1.27,2.12-2.31,3.08-3.55,1.63-2.09,1.59-4.47.73-6.83-.14-.4-1-.54-1.52-.8-1.17-.56-2.35-1.1-3.52-1.67s-2.41-1.59-3.71-1.77a68.16,68.16,0,0,0-7.16-.22,4.34,4.34,0,0,1-1-.16v15.58h-3.25V273a30,30,0,0,1-5.29-2.44c-1.21-.75-1.64-2.78-2.38-4.25-.41-.82-.75-1.68-1.12-2.52-1.8-4-4.74-5.82-9.1-5.29-2.9.35-4.9-.85-6.53-3.06a3.42,3.42,0,0,0-.89-.89c-2.26-1.43-4.53-2.84-6.8-4.25-.36-.23-.91-.35-1.06-.67-.88-1.87-2.34-1.43-3.62-.81-1.46.69-2.61,1.22-4.31.23-1-.59-2.62-.11-4-.11-1.79-3.89-5.07-1.33-7.9-1.68l.81-2.09c-1.2.07-2.49-.25-3,.23-1.63,1.62-3.76,1.46-5.63,2.17a8.71,8.71,0,0,0-3.1,2.61c-1.07,1.21-1.93,2.61-3,4.09-2.8-3.31-5.6-3.22-8.73-1.53a3.91,3.91,0,0,1-2.5-.24c-2.56-.79-4.21-4.31-3.5-6.87.59-2.1,1-4.27,1.37-6.41.21-1.16-1.7-2.53-3.8-2.6-2.82-.09-5.65,0-8.31,0,.15-1.44.26-2.59.38-3.75,0-.14,0-.37.05-.41,2.74-1.67,1.64-5.06,3.23-7.26a8,8,0,0,0,.71-2.72,8.11,8.11,0,0,0-2.29-.43,23.89,23.89,0,0,0-5.41.89c-.74.24-1.18,1.47-1.72,2.28-.82,1.26-1.33,2.89-2.46,3.73-2.64,2-8,1.49-9.9-1.13s-4.6-5.53-3.3-9.59c.71-2.19,1.16-4.46,1.68-6.71a6,6,0,0,0,0-1.69c-.24-3.73,1.13-5.72,4.66-6.8a4.51,4.51,0,0,0,1.36-.6c2.89-2.24,5.67-1.65,8.7-.13,1.34.68,3.14.45,5,.67-.26-.61-.37-.92-.51-1.19-.83-1.62-.26-2.67,1.53-2.68s3.4.11,5.11.16a.78.78,0,0,1,.21,0c1.79.64,3.35,2.76,5.55.93.73,1.29,2.08,2.59,2.06,3.87-.06,3.42,1.76,6,3.09,8.88.11.23,2.08.11,2.34-.34a6.48,6.48,0,0,0,.81-5.64,39.62,39.62,0,0,1-1.46-9.17c-.17-2.73,2.24-3.68,4.15-4.89.81-.51,1.55-1.13,2.33-1.68,1.9-1.35,3.9-2.57,5.67-4.08a7,7,0,0,0,2.32-3.29c.41-1.59.25-3.09,1.47-4.69,2.06-2.7,3.24-6.07,5.09-9,.56-.9,2-1.37,3.18-1.69,1.42-.39,3-.34,4.42-.64a9.82,9.82,0,0,0,2.23-1.18c-2.57-1.11-1.57-2.57-.92-3.79a4.06,4.06,0,0,1,1.89-1.65c2.78-1.2,5.62-2.25,8.51-3.38-.45.57-1.2,1.11-1.22,1.69a4,4,0,0,0,.71,2.74,2.53,2.53,0,0,0,2.46-.35c1.32-1.61,3.12-1.94,4.89-2.6a72.85,72.85,0,0,0,6.64-3.15l-2.4-3.43a16.91,16.91,0,0,1-.94,2.07c-1.07,1.7-2.72,1.42-4.17.83-2.09-.86-2.84-2.5-2.28-4.38a10.76,10.76,0,0,1,.86-2.14c1-1.88.17-3.47-2-3.5a25.45,25.45,0,0,0-3.2.31,3.37,3.37,0,0,1,4.18-2.76c2.31.32,4.59,1,6.91,1.16s5,.55,6.89-1.78c.55-.66,1.82-.73,3-1.16a45.18,45.18,0,0,1-2.28,5.29,46.85,46.85,0,0,1-3.47,4.46c1.51.2,2.88.28,4.19.58s2.47,1,3.74,1.18a7.29,7.29,0,0,0,2.36-.38,8.85,8.85,0,0,0,.66,2.08c.22.41.89.57,1.36.85.08-.55.37-1.16.21-1.61-.38-1-1.21-1.85-1.44-2.86a12,12,0,0,1,.12-3.16l-3.55-.42.36-.45-1.5-2.55a5.79,5.79,0,0,1,.87-1.11c2.23-2.06,1.47-4.77,1.58-7.26,0-.46-.72-1-1.16-1.43-.29-.29-1-.47-1-.71-.1-3.87-4.3-4-5.9-6.58-.63-1-2.13-1.37-1-3.08.37-.55-.25-1.86-.57-2.76-1-2.86-2.08-5.7-3.19-8.53a6,6,0,0,0-1.06-1.35,21.69,21.69,0,0,1-2.76,4,7,7,0,0,1-3.83,2c-1.12.08-2.41-3.29-2.11-4.69.23-1,.53-2,.88-3.41-3-.4-4-3.29-6.06-4.58-2.28-1.44-5.4-1.53-8.18-2.1a1.46,1.46,0,0,0-1.16.8,18.46,18.46,0,0,0-.94,4.81c0,1.36.13,2.47-1.13,3.35a5.3,5.3,0,0,0-1.74,1.85,2.49,2.49,0,0,0-.07,2.08c3,4.51,1.93,7.78-3.37,9.47a13.25,13.25,0,0,0-2.24.68,1.78,1.78,0,0,0-.81,1.27c0,2.37.36,4.78.05,7.1-.13.93-1.63,1.68-2.53,2.55l-2-3a3.42,3.42,0,0,1-.53-3.71,18.58,18.58,0,0,0,1.09-4.51c.05-.4-.51-.94-.88-1.33-.15-.17-.54-.15-.82-.15-3.9-.09-6.43-2.46-9-5a7.87,7.87,0,0,0-7.14-2.47v-5.37c-.74-.13-1.42-.24-2.55-.41.74-1.6,1.11-3.29,2.11-4.42,2.79-3.08,5.65-6.15,10-7.26,1.18-.3,2.14-1.49,3.19-2.28.28-.22.58-.72.78-.67,3.61.82,5.28-2,7.44-3.92.07-.07.25,0,.92,0l-2.9,4.59c.49.65,1.06,1.38,1.84,2.4a25.28,25.28,0,0,0,2.63-1.5c1.27-.91,2.22-1.21,3.31.39a1.69,1.69,0,0,0,2.72.4c-1-1.38-2.09-2.64-3-4s-3.39-1.81-2.54-4.47a10.07,10.07,0,0,0,7.38-.54c2.37-1,2.23-2.1,1.45-3.82,2.83-1.61,3-2.09,1.07-4.7l7.73.83c.29.66.88,2,1.37,3.07a40.51,40.51,0,0,1,3.88,3.87,1.61,1.61,0,0,1-.81,2.72,6.83,6.83,0,0,0-2,1.23,10.1,10.1,0,0,0-1.31,1.7c.12.28.23.56.35.85a35.26,35.26,0,0,0-5.08-.51A6.73,6.73,0,0,0,231.53,96c-.21.11-.3,1-.19,1a8,8,0,0,0,2.44,1,20.16,20.16,0,0,0,3.3,0,5.2,5.2,0,0,1,4.4,3.64c.08.46.07,1.14.36,1.32,2.56,1.61,5.17,3.13,7.79,4.65.2.12.52,0,1.27,0l-3.47-4.78.24-.34,5,3.16c1.66-1.59,1.47-3.5-.45-5.67A16.33,16.33,0,0,1,250,96.87a1.53,1.53,0,0,1,2.16-1.73,21.17,21.17,0,0,1,2,2.61c.61.8,1.26,1.56,2.23,2.76.31-1.23.46-1.8.65-2.53.31,0,.79.08,1.09-.11a21.42,21.42,0,0,0,1.89-1.56c-.43-.49-.83-1-1.3-1.44-1.94-1.87-3.95-3.67-5.81-5.63a2,2,0,0,1,0-1.95c1.77-1.64.47-2.94-.63-3.68-1.42-1-3-1.58-3.65-3.33a1.14,1.14,0,0,0-.83-.61c-2.68-.19-3.75-2.67-4.06-4.32-.61-3.28-3.2-2.9-5.09-3.64-1.54-.61-3.36-.43-5-.77-.63-.14-1.11-.91-1.75-1.15-3.14-1.15-8.27.66-10.05,3.47-1.61,2.54-1,4.24,1.81,5.28.54.2,1.42.84,1.35,1.1a5.1,5.1,0,0,1-1.21,2.55,44.47,44.47,0,0,1-4.36,3.27,5.49,5.49,0,0,1,.16-2A2.31,2.31,0,0,0,218.26,80a7.3,7.3,0,0,1-1.57-1.19V72.1c1.08-.54,2-1.36,3.91-1.15,1.57.18,3.34-1.44,5-2.27,0-.28-.05-.56-.08-.84-2.34-.3-4.9-1.33-7-.7s-3.38,3-5.3,4.76c.56-1.84,1-3.32,1.48-4.82-4.07-1.41-5.4-1.07-5.56,1.59-.13,0-.27.15-.39.13-.94-.19-1.87-.4-2.82-.6.42.83.82,1.67,1.25,2.5.34.68.72,1.34,1.13,2.11l3.08-.74a39.62,39.62,0,0,0-2.93,4.64c-.21.44.78,1.44,1.31,2.33-1.77,3.26-1.77,3.26-4.4,2.14l3.29-.66-1.9-3.63L202.72,79l.69.88a9.58,9.58,0,0,0-1.58.75,7.62,7.62,0,0,1-9.35-.73c-.15-.15-.34-.36-.33-.53.16-2.29-1.42-2-2.91-1.87l.12-.72c1,.16,2.09.26,3.11.51a36.32,36.32,0,0,0,4,1.11c.48.06,1.05-.87,1.63-1.27a4.16,4.16,0,0,1,1.37-.67,19.73,19.73,0,0,1,2.33-.3c-1.14-1.62-1.95-2.76-2.7-3.81a21.12,21.12,0,0,1,2.5-4,16.67,16.67,0,0,1,3.63-2.21c-.07-.27-.14-.54-.22-.81-1.9.2-4,0-5.68.7a14.61,14.61,0,0,0-3.78,3.14c0,.28,0,.56,0,.84l-.55-.3c.2-.17.4-.35.59-.54l.12-2.57-2,.57c-.45-.28-1.16-1-1.9-1.07-1.15,0-1.4-.64-1.39-1.47,0-1.46-.71-1.8-2-1.81s-2.46-.43-3.7-.45c-4.78-.06-7.93,3.85-12.2,4.81.08,1,.14,1.74.22,2.86l7.07-1.92c-.29.7,0,2.11-1.46,2.58.32.43.59,1.15,1,1.21,1.18.19,2.41.1,3.61.19.79.06,1.57.25,2.36.38l-.06.61c-1.53-.11-3.06-.23-4.59-.33a2.88,2.88,0,0,0-1.06,0c-1.1.43-2.17.94-3.25,1.42L179,77c-.16.83.22,1.67,1.95,1.4,2.12-.32,4.25-.5,6-.69-.61.92-1.43,2.17-2.38,3.63-1.27-1.78-2.73-1.92-4.57-1.41a16.49,16.49,0,0,1-4.22.07V79.4a4.25,4.25,0,0,0,1.2-.22,13.73,13.73,0,0,0,1.59-1.06c-.56-.63-1.08-1.75-1.7-1.81a11.88,11.88,0,0,1-6.1-2.5c-1.38-1-3.68-.84-5.76-1.22V71.11c-.29-.06-.55-.2-.69-.13-3,1.64-6.54,1.43-9.71,2.58a49.26,49.26,0,0,1-6.3,1.49c-4.83-2.4-9.9-2.71-15.67-1.52,32.48-17.43,66.35-22.43,102-15.41-.32.05-.73,0-.94.17-.48.42-1.08.9-1.2,1.46-.07.32.61,1,1.08,1.21a22.22,22.22,0,0,0,2.85.81c-.77,1.46-2.63,2-5.26,1.36-1.61-.39-3.17-1-4.77-1.47-.89-.27-1.81-.42-2.73-.63-.12.31-.25.61-.38.9l3.26,1.79-1.38,2.52a22,22,0,0,0,3,1.3c3,.84,6.15,1.51,9.2,2.35a5,5,0,0,0,4.91-1.25c-3.39-3.4-8.58-1.32-12.12-4.39a15.78,15.78,0,0,1,2.77.21c3.29.83,6.53,1.84,9.83,2.58.71.15,1.65-.52,2.42-.92.47-.25.82-1,1.25-1,4.72-.19,9.52-1.31,14.07,1a7.69,7.69,0,0,1,2.67,1.8l-8.52-1.78-.18.5c.22.23.4.59.66.66,1.41.42,2.46.93,2.1,2.79-.09.44.65,1.34,1.2,1.56,3.1,1.28,6.36,2.23,9.36,3.71,1.15.56,1.95,2.11,2.58,3.38,1,2,2.2,3.82,2,6.35-.16,1.7.18,3.46-.14,5.26a2.16,2.16,0,0,0,2.19,2.4,3.64,3.64,0,0,1,2,1.29c-2.67,0-5,3.12-3.91,5.63,1.55,3.59,3.42,7,5,10.61.47,1,.34,2.38.77,3.47a6.59,6.59,0,0,0,1.7,2Z" /><path class="path-2" d="M332.27,147.88c.26.93.62,2.16.92,3.41a10.86,10.86,0,0,0,.45,2.13,1.71,1.71,0,0,0,1.53-.1,5.64,5.64,0,0,0,.79-2.27,29.84,29.84,0,0,0,.14-3h0c-.75-.71-1.48-1.42-2.1-2l-1.73,1.83Z" /><path class="path-2" d="M336.13,148.08v0h0l0,0Z" /><path class="path-2" d="M321.21,120.91a6.62,6.62,0,0,0-.46-2.2c-1.69-2.71-4.07-3.32-7.61-1.74a43.53,43.53,0,0,0,5,4.12c.73.44,2.05-.09,3.1-.18Z" /><path class="path-2" d="M338.26,151.52c-.41,1.86-.75,3.34.81,4.63l-1,1.79,4.52.27c-.45-1.43-.9-2.66-1.22-3.92-.93-3.71-4-6.46-4.42-10.49-.13-1.39-1.52-2.65-2.34-4a2.79,2.79,0,0,0-.55.13c.21,1.1.36,2.24.65,3.34.42,1.6.94,3.18,1.4,4.76a2.79,2.79,0,0,1,2.14,3.46Z" /><path class="path-2" d="M344.21,262.43a150.27,150.27,0,0,0,11.29-57.31c0-1.82-.05-3.64-.11-5.45-.05.81-.11,1.62-.2,2.44-.5-3.65-3.47-6-2.7-9.69.15-.75-.78-2.43-1.3-2.47-1.58-.12-3.56-.14-4.74.7-2.22,1.6-3,1.92-4.76.56a40.09,40.09,0,0,0-3.08,5,13.43,13.43,0,0,0-1,4.86,7.08,7.08,0,0,1-2.78,5.64,11.41,11.41,0,0,0-2.87,4.05,55.67,55.67,0,0,0-3.42,8.91c-.45,1.72.31,3.72.15,5.55-.22,2.59-.78,5.16-1.19,7.73s-.86,4.82,1.33,7.09c1.25,1.29,1.33,3.69,2.07,5.53a28.63,28.63,0,0,0,1.8,3.36c.09.18.35.25.48.4.86.93,1.57,2.39,2.58,2.62.83.19,1.92-1.42,3-1.63,2.67-.5,4.19-2.38,5.88-4.13a7.16,7.16,0,0,1,1.53-.91c.1,1,.17,1.73.26,2.64l1.95-.79c-.52,1.94-1,3.49-1.35,5.06-.87,3.44-1.73,6.88-2.8,10.25Z" /><path class="path-2" d="M125.8,333.48c.89.55,1.79,1.1,2.68,1.63-.9-.53-1.79-1.09-2.68-1.63Z" /><path class="path-2" d="M215.43,225.73a11,11,0,0,0-1.42-.95c-3-1.39-6.09-2.68-9.09-4.13-1.91-.93-3.7-2.14-6-1.94-.05,0-.11-.09-.17-.12-2-.85-5.33,0-7.09,2.06,1.33-.18,2.65,0,3.5-.56,1.58-1,2.1.79,2.93.82,4.11.1,7.11,2.61,10.53,4.4-.36.45-.73.91-1.46,1.8,3-.18,5.47-.35,8-.51.1-.29.19-.57.28-.87Z" /><path class="path-2" d="M251.74,147.4c.19-.31.37-.61.55-.93l-4.71-2.69-.48.81,4.64,2.81Z" /><path class="path-2" d="M239.74,87.27c-2.19-.75-3-.37-3.56,1.68,2.36,1.07,3.33.61,3.56-1.68Z" /><path class="path-2" d="M205.42,231.51l4.83.64.12-1.2-4.81-.53c-.05.36-.09.73-.14,1.09Z" /><path class="path-2" d="M229.11,230a10.66,10.66,0,0,0-10.41-2.8c.1.83.24,1.83.4,3h-4.37c0,.16-.06.32-.08.49l6.15,1.24,8.31-1.94Z" /><polygon class="path-2" points="216.62 274 212.99 282.55 220.25 282.55 216.62 274 216.62 274" /><path class="path-3" d="M146,273.36a6.82,6.82,0,1,0,6.85,6.79,6.84,6.84,0,0,0-6.85-6.79Z" /><path class="path-3" d="M352.92,289.78h-3.19L339.47,276v13.81h-3.25V270.53h3.19l10.32,13.83V270.53h3.19v19.25Zm-45.93.14a9.85,9.85,0,0,1-10.2-9.77c0-5.52,4.45-9.7,10.2-9.7s10.2,4.2,10.2,9.7a9.85,9.85,0,0,1-10.2,9.77Zm-29.23-.14h-3.25V270.53h3.25v19.25Zm-21.59-16.34h-6.11v16.34h-3.24V273.44h-6.08v-2.91h15.43v2.91Zm-32.84,16.34-1.84-4.34h-9.71l-1.84,4.34h-3.38l8.49-19.25h3.33l8.41,19.25Zm-40.46.14a9.77,9.77,0,0,1-10-9.79c0-5.48,4.43-9.68,10.13-9.68a10.58,10.58,0,0,1,7.31,3l-1.9,2.36a7.53,7.53,0,0,0-5.36-2.45,6.78,6.78,0,1,0,0,13.56,8,8,0,0,0,5.36-2.28l1.93,2.14a10.91,10.91,0,0,1-7.46,3.17Zm1.27-77h12.13c12.87,0,18.33,5.21,21.67,20.67,2.48,11,4.64,17.91,6.37,23.5l.51,1.64H184.14V212.94Zm0-57.64a78.84,78.84,0,0,1,14.09-1.05c15,0,23.94,7.54,23.94,20.19,0,12.39-9.61,20.73-23.91,20.73H184.14V155.3ZM146,289.92a9.86,9.86,0,0,1-10.21-9.77c0-5.52,4.46-9.7,10.21-9.7s10.2,4.2,10.2,9.7a9.86,9.86,0,0,1-10.2,9.77ZM63.09,258.75l9.49-31.36H111l10,31.36Zm55.62,31H107.14V270.53h3.24v16.31h8.33v2.94Zm-31.1,0H73.53V270.53H87.28v2.91H76.78v5.23h9.4v2.89h-9.4v5.31H87.61v2.91Zm-37.32,0L46.77,284a8.34,8.34,0,0,1-.88,0H41.33v5.8H38.08V270.53h7.81c4.92,0,7.76,2.39,7.76,6.57,0,3.08-1.43,5.25-4,6.24L54,289.78ZM85.64,180.27c1.1-3.66,2.1-7.83,3.06-11.86.93-3.88,1.81-7.55,2.68-10.39h.05c.81,2.63,1.67,6,2.57,9.47,1.11,4.31,2.26,8.77,3.53,12.78L107,209.62H76.33l9.31-29.35Zm266.6,78.48a5.66,5.66,0,0,0,.47-.6,2.77,2.77,0,0,1,.6-.67l.14-.07L349.75,239l-.25.11c-5.63,2.64-14.88,4.27-24.14,4.27-26.07,0-42.27-16.8-42.27-43.83,0-27.57,16.27-44.69,42.45-44.69a58.9,58.9,0,0,1,23.78,4.66l.23.1,5-18.14-.16-.08c-4.83-2.52-15.52-5.46-29.75-5.46-18.39,0-35,6.26-46.67,17.64-12.19,11.87-18.64,28.41-18.64,47.85,0,27.13,12.9,48.47,34.57,57.33H248.17c-2.26-5.69-5.49-18.33-8.89-31.89-3.32-12.74-9.56-21.43-17.57-24.51v-.25c10.48-3.82,22.64-14.13,22.64-30.7,0-10.45-3.55-19-10.26-24.58-7.83-6.6-20.49-9.81-38.71-9.81a229.79,229.79,0,0,0-34.62,2.53l-.17,0V258.75H145.24l-38.67-118.5H77.87L39.73,258.75H19v40.89H372V258.75Z" /><path class="path-3" d="M307,273.36a6.82,6.82,0,1,0,6.84,6.79,6.83,6.83,0,0,0-6.84-6.79Z" /><path class="path-3" d="M45.89,273.44H41.33v7.62h4.56c3,0,4.68-1.26,4.68-3.88s-1.71-3.74-4.68-3.74Z" /><polygon class="path-3" points="212.99 282.55 220.25 282.55 216.62 274 212.99 282.55 212.99 282.55" /></svg></div>';
+                    var elLoading = "<div class=\"mce-throbber page-loader arc-auto arc-loading-plugin\"> " + svgLogo + " </div>";
+                    if ($('.mce-container.mce-panel.mce-floatpanel.mce-window.mce-in')) $('.mce-container.mce-panel.mce-floatpanel.mce-window.mce-in').append(elLoading);
+                    // remove tiny basic loading when upload request. that real: we must be change css in class 
+                    setTimeout(function () {
+                        var xhr, formData;
+                        xhr = new XMLHttpRequest();
+                        xhr.withCredentials = false;
+                        xhr.open('POST', self.images_upload_url);
+                        xhr.onload = function () {
+                            var json;
+                            if (xhr.status != 200) {
+                                failure('HTTP Error: ' + xhr.status);
+                                return;
+                            }
+
+                            json = JSON.parse(xhr.responseText);
+
+                            if (!json || typeof json.location != 'string') {
+                                failure('Invalid JSON: ' + xhr.responseText);
+                                return;
+                            }
+                            success(json.location);
+                            $(".mce-throbber").remove();
+                            // $("#mce-modal-block").remove();
+                        };
+                        formData = new FormData();
+                        formData.append('file', blobInfo.blob(), blobInfo.filename());
+                        xhr.send(formData);
+                    }, 1000); // must be settimeout function to has loading.https://www.tiny.cloud/docs/demo/local-upload/
+                },
                 file_picker_callback: function (cb, value, meta) {
+                    // hook Tiny after select file in upload image implement upload file base64 todo...
+                    // trigger upload server side
+                    $(".mce-widget.mce-btn.mce-browsebutton.mce-abs-layout-item.mce-first.mce-btn-has-text button").trigger('click');
+                    return;
+
+                    // upload type base64
                     var input = document.createElement('input');
                     input.setAttribute('type', 'file');
                     input.setAttribute('accept', 'image/*');
@@ -66632,7 +66615,6 @@ const getCountry = function () {
 
                     input.onchange = function () {
                         var file = this.files[0];
-
                         var reader = new FileReader();
                         reader.onload = function () {
                             // Note: Now we need to register the blob in TinyMCEs image blob
@@ -66643,81 +66625,71 @@ const getCountry = function () {
                             var base64 = reader.result.split(',')[1];
                             var blobInfo = blobCache.create(id, file, base64);
                             blobCache.add(blobInfo);
-
+                            console.log(file.name);
+                            console.log(blobInfo.blobUri());
                             // call the callback and populate the Title field with the file name
                             cb(blobInfo.blobUri(), { title: file.name });
                         };
                         reader.readAsDataURL(file);
                     };
-
                     input.click();
                 },
-                table_toolbar: "tableprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol",
-                style_formats: [{
-                    title: 'Bold text',
-                    inline: 'b'
-                }, {
-                    title: 'Red text',
-                    inline: 'span',
-                    styles: {
-                        color: '#ff0000'
-                    }
-                }, {
-                    title: 'Red header',
-                    block: 'h1',
-                    styles: {
-                        color: '#ff0000'
-                    }
-                }, {
-                    title: 'Example 1',
-                    inline: 'span',
-                    classes: 'example1'
-                }, {
-                    title: 'Example 2',
-                    inline: 'span',
-                    classes: 'example2'
-                }, {
-                    title: 'Table styles'
-                }, {
-                    title: 'Table row 1',
-                    selector: 'tr',
-                    classes: 'tablerow1'
-                }],
-
-                templates: [{
-                    title: 'Test template 1',
-                    content: 'Test 1'
-                }, {
-                    title: 'Test template 2',
-                    content: 'Test 2'
-                }],
+                //Upload Fucntion & param
                 init_instance_callback: function (editor) {
-                    if (Vue.checkEdit != undefined) {
+                    // hook Tiny after init object and implement todo...
+                    $('#' + self.id + "_ifr").css("height", height);
+                    tinymce.activeEditor.getBody().setAttribute('class', "arc-custom-editor-body");
+                    tinymce.activeEditor.getBody().setAttribute('style', "overflow-y: scroll !important; font-family: 'Open Sans',sans-serif !important; font-size: 15px !important; padding: 1.5em;");
+                    if (self.checkEdit != undefined) {
                         tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
+                        tinymce.activeEditor.getBody().style.padding = "10px 0px 0px 0px";
                     }
                     $('tr.mceFirst').css('z-index', '1000');
 
-                    let content = Vue.value;
+                    let content = self.value;
+
                     if (content != null || content != undefined) this.setContent(content);
                     editor.on('keyup', function (e) {
+                        if (e.which == 13) {
+                            self.$emit('event', e.which);
+                        }
                         if (this.getContent() != "") {
-                            if (Vue.classLabel != "active") Vue.classLabel = "active";
+                            if (self.classLabel != "active") self.classLabel = "active";
                         } else {
-                            Vue.classLabel != "";
+                            self.classLabel != "";
                         }
                     });
-                    editor.on('blur', function (e) {
-                        this.contentOutPut = this.getContent();
 
-                        Vue.update(this.getContent());
+                    editor.on('change', function (e) {
+
+                        self.range = this.selection.getRng().startOffset; // get range
+
+                        self.$emit('range', self.range);
+
+                        this.contentOutPut = this.getContent();
+                        self.update(this.getContent());
                     });
 
                     editor.on('focus', function (e) {
-                        Vue.$emit('focus');
+                        self.$emit('focus');
                     });
+
+                    $('#open').click(function () {
+                        $("#dialog").dialog({
+                            width: 800,
+                            modal: true
+                        });
+                    });
+                },
+                setup: function (editor) {// add attributes for tag a in editor viewmode to locate link after click
+                    // editor.on('PreInit', function () {
+                    //     editor.parser.addNodeFilter('a', (nodes) => nodes.forEach(node => node.attr('target', '_blank')));
+                    // });
+                    // hook Tiny after setup config and implement todo...
                 }
             }, this.tinyConfig ? this.tinyConfig : {}));
         },
+
         initTinyMCE() {
             try {
                 if (tinymce.get(this.id) != null && tinymce.get(this.id) != undefined) {
@@ -66728,8 +66700,7 @@ const getCountry = function () {
             this.$nextTick(() => {
                 let self = this;
                 setTimeout(() => {
-                    if (self.mode == "advance") self.initTinyMCEAdvanceMode();else self.initTinyMCEBasicMode();
-
+                    self.initTinyEditor();
                     self.$nextTick(() => {
                         self.loadingContent(false);
                     });
@@ -68088,7 +68059,7 @@ module.exports = function () {
   this.page = 1;
 
   if (!this.opts.pagination.dropdown) {
-    this.$refs.pagination.setPageHoang(parseInt(this.searchPage));
+    this.$refs.pagination.setPageHoang(parseInt(this.searchPage != null || !this.searchPage ? this.searchPage : 1));
   }
 };
 
@@ -83593,7 +83564,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, "\n[data-v-30a58862] {\n    --border-radius: 2px;\n}\nli.last-preferred[data-v-30a58862] {\n    border-bottom: 1px solid #cacaca;\n}\n.iti-flag[data-v-30a58862] {\n    margin-right: 5px;\n    margin-left: 5px;\n}\n.dropdown-item .iti-flag[data-v-30a58862] {\n    display: inline-block;\n    margin-right: 5px;\n}\n.selection[data-v-30a58862] {\n    font-size: 0.8em;\n    display: flex;\n    align-items: center;\n}\n.b-tel-input[data-v-30a58862] {\n    border-radius: 3px;\n    display: flex;\n    border: 1px solid #bbb;\n    text-align: left;\n}\n.input-disabled.b-tel-input[data-v-30a58862] {\n    border: none;\n}\n.input-disabled.b-tel-input .dropdown-arrow[data-v-30a58862] {\n    display: none;\n}\n.input-disabled.b-tel-input input.b__input[data-v-30a58862]:disabled {\n    border: none;\n}\n.input-disabled.b-tel-input input.b__input[data-v-30a58862] {\n    border: none;\n}\n.b-tel-input[data-v-30a58862]:focus-within {\n    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),\n    0 0 8px rgba(102, 175, 233, 0.6);\n    border-color: #66afe9;\n}\ninput[data-v-30a58862] {\n    border: none;\n    border-radius: 0 var(--border-radius) var(--border-radius) 0;\n    width: 100%;\n    outline: none;\n    padding-left: 7px;\n}\nul[data-v-30a58862] {\n    z-index: 99999;\n    padding: 0;\n    margin: 0;\n    text-align: left;\n    list-style: none;\n    max-height: 200px;\n    overflow-y: scroll;\n    position: absolute;\n    top: 33px;\n    left: -1px;\n    background-color: #fff;\n    border: 1px solid #ccc;\n    width: 390px;\n}\n.dropdown[data-v-30a58862] {\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    position: relative;\n    padding: 7px;\n    cursor: pointer;\n}\n.dropdown.open[data-v-30a58862] {\n    background-color: #f3f3f3;\n}\n.dropdown[data-v-30a58862]:hover {\n    background-color: #f3f3f3;\n}\n.dropdown-arrow[data-v-30a58862] {\n    transform: scaleY(0.5);\n    display: inline-block;\n    color: #666;\n}\n.dropdown-item[data-v-30a58862] {\n    cursor: pointer;\n    padding: 4px 15px;\n}\n.dropdown-item.highlighted[data-v-30a58862] {\n    background-color: #f3f3f3;\n}\n.dropdown-menu.show[data-v-30a58862] {\n    max-height: 300px;\n    overflow: scroll;\n}\n.b-tel-input.disabled .selection[data-v-30a58862],\n.b-tel-input.disabled .dropdown[data-v-30a58862],\n.b-tel-input.disabled input[data-v-30a58862] {\n    cursor: no-drop;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TelephoneInput.vue?1f7007bb"],"names":[],"mappings":";AAsDA;IACA,qBAAA;CACA;AAEA;IACA,iCAAA;CACA;AACA;IACA,kBAAA;IACA,iBAAA;CACA;AACA;IACA,sBAAA;IACA,kBAAA;CACA;AACA;IACA,iBAAA;IACA,cAAA;IACA,oBAAA;CACA;AACA;IACA,mBAAA;IACA,cAAA;IACA,uBAAA;IACA,iBAAA;CACA;AACA;IACA,aAAA;CACA;AACA;IACA,cAAA;CACA;AACA;IACA,aAAA;CACA;AACA;IACA,aAAA;CACA;AACA;IACA;qCACA;IACA,sBAAA;CACA;AACA;IACA,aAAA;IACA,6DAAA;IACA,YAAA;IACA,cAAA;IACA,kBAAA;CACA;AACA;IACA,eAAA;IACA,WAAA;IACA,UAAA;IACA,iBAAA;IACA,iBAAA;IACA,kBAAA;IACA,mBAAA;IACA,mBAAA;IACA,UAAA;IACA,WAAA;IACA,uBAAA;IACA,uBAAA;IACA,aAAA;CACA;AACA;IACA,cAAA;IACA,uBAAA;IACA,sBAAA;IACA,wBAAA;IACA,mBAAA;IACA,aAAA;IACA,gBAAA;CACA;AACA;IACA,0BAAA;CACA;AACA;IACA,0BAAA;CACA;AACA;IACA,uBAAA;IACA,sBAAA;IACA,YAAA;CACA;AACA;IACA,gBAAA;IACA,kBAAA;CACA;AACA;IACA,0BAAA;CACA;AACA;IACA,kBAAA;IACA,iBAAA;CACA;AACA;;;IAGA,gBAAA;CACA","file":"TelephoneInput.vue","sourcesContent":["<template>\n    <div class=\"b-tel-input b__components b-ios b-float-label b-input-extend-custom\" :class=\"classesParent\" :id=\"idParent\">\n        <label :class=\"classLabel\">{{ label }}</label>\n        <div\n                class=\"dropdown\"\n                @click=\"toggleDropdown\"\n                v-click-outside=\"clickedOutside\"\n                :class=\"{open: open}\"\n                @keydown=\"keyboardNav\"\n                tabindex=\"0\"\n                @keydown.esc=\"reset\"\n        >\n      <span class=\"selection\">\n        <div class=\"iti-flag\" v-if=\"enabledFlags\" :class=\"activeCountry.iso2.toLowerCase()\"></div>\n        <span class=\"dropdown-arrow\">{{ open ? '▲' : '▼' }}</span>\n      </span>\n            <ul v-show=\"open\" ref=\"list\">\n                <li\n                        class=\"dropdown-item\"\n                        v-for=\"(pb, index) in sortedCountries\"\n                        :key=\"pb.iso2 + (pb.preferred ? '-preferred' : '')\"\n                        @click=\"choose(pb)\"\n                        :class=\"getItemClass(index, pb.iso2)\"\n                        @mousemove=\"selectedIndex = index\"\n                >\n                    <div class=\"iti-flag\" v-if=\"enabledFlags\" :class=\"pb.iso2.toLowerCase()\"></div>\n                    <strong>{{ pb.name }}</strong>\n                    <span>+{{ pb.dialCode }}</span>\n                </li>\n            </ul>\n        </div>\n        <input\n                ref=\"input\"\n                v-model=\"phone\"\n                type=\"tel\"\n                :placeholder=\"placeholder\"\n                :state=\"state\"\n                :disabled=\"disabled\"\n                @blur=\"onBlur\"\n                @input=\"onInput\"\n                :required=\"required\"\n                @keydown=\"keyDownPress\"\n                class=\"b__input\"\n        >\n    </div>\n</template>\n\n<script>\n    import TelephoneInput from '../../components/TelephoneInput'\n    export default TelephoneInput\n</script>\n\n<style src=\"../../assets/telephone-input/sprite.css\"></style>\n<style scoped>\n    :local {\n        --border-radius: 2px;\n    }\n\n    li.last-preferred {\n        border-bottom: 1px solid #cacaca;\n    }\n    .iti-flag {\n        margin-right: 5px;\n        margin-left: 5px;\n    }\n    .dropdown-item .iti-flag {\n        display: inline-block;\n        margin-right: 5px;\n    }\n    .selection {\n        font-size: 0.8em;\n        display: flex;\n        align-items: center;\n    }\n    .b-tel-input {\n        border-radius: 3px;\n        display: flex;\n        border: 1px solid #bbb;\n        text-align: left;\n    }\n    .input-disabled.b-tel-input {\n        border: none;\n    }\n    .input-disabled.b-tel-input .dropdown-arrow {\n        display: none;\n    }\n    .input-disabled.b-tel-input input.b__input:disabled {\n        border: none;\n    }\n    .input-disabled.b-tel-input input.b__input {\n        border: none;\n    }\n    .b-tel-input:focus-within {\n        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),\n        0 0 8px rgba(102, 175, 233, 0.6);\n        border-color: #66afe9;\n    }\n    input {\n        border: none;\n        border-radius: 0 var(--border-radius) var(--border-radius) 0;\n        width: 100%;\n        outline: none;\n        padding-left: 7px;\n    }\n    ul {\n        z-index: 99999;\n        padding: 0;\n        margin: 0;\n        text-align: left;\n        list-style: none;\n        max-height: 200px;\n        overflow-y: scroll;\n        position: absolute;\n        top: 33px;\n        left: -1px;\n        background-color: #fff;\n        border: 1px solid #ccc;\n        width: 390px;\n    }\n    .dropdown {\n        display: flex;\n        flex-direction: column;\n        align-content: center;\n        justify-content: center;\n        position: relative;\n        padding: 7px;\n        cursor: pointer;\n    }\n    .dropdown.open {\n        background-color: #f3f3f3;\n    }\n    .dropdown:hover {\n        background-color: #f3f3f3;\n    }\n    .dropdown-arrow {\n        transform: scaleY(0.5);\n        display: inline-block;\n        color: #666;\n    }\n    .dropdown-item {\n        cursor: pointer;\n        padding: 4px 15px;\n    }\n    .dropdown-item.highlighted {\n        background-color: #f3f3f3;\n    }\n    .dropdown-menu.show {\n        max-height: 300px;\n        overflow: scroll;\n    }\n    .b-tel-input.disabled .selection,\n    .b-tel-input.disabled .dropdown,\n    .b-tel-input.disabled input {\n        cursor: no-drop;\n    }\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n[data-v-30a58862] {\n    --border-radius: 2px;\n}\nli.last-preferred[data-v-30a58862] {\n    border-bottom: 1px solid #cacaca;\n}\n.iti-flag[data-v-30a58862] {\n    margin-right: 5px;\n    margin-left: 5px;\n}\n.dropdown-item .iti-flag[data-v-30a58862] {\n    display: inline-block;\n    margin-right: 5px;\n}\n.selection[data-v-30a58862] {\n    font-size: 0.8em;\n    display: flex;\n    align-items: center;\n}\n.b-tel-input[data-v-30a58862] {\n    border-radius: 3px;\n    display: flex;\n    border: 1px solid #bbb;\n    text-align: left;\n}\n.b-float-label input.b__input.b-telephone-input[data-v-30a58862]{\n    border: none;\n    border-left: 1px solid #bbbbbb;\n    border-radius: 0;\n}\n.input-disabled.b-tel-input[data-v-30a58862] {\n    border: none;\n}\n.input-disabled.b-tel-input .dropdown-arrow[data-v-30a58862] {\n    display: none;\n}\n.input-disabled.b-tel-input input.b__input[data-v-30a58862]:disabled {\n    border: none;\n}\n.input-disabled.b-tel-input input.b__input[data-v-30a58862] {\n    border: none;\n}\n.b-tel-input[data-v-30a58862]:focus-within {\n    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),\n    0 0 8px rgba(102, 175, 233, 0.6);\n    border-color: #66afe9;\n}\ninput[data-v-30a58862] {\n    border: none;\n    border-radius: 0 var(--border-radius) var(--border-radius) 0;\n    width: 100%;\n    outline: none;\n    padding-left: 7px;\n}\nul[data-v-30a58862] {\n    z-index: 99999;\n    padding: 0;\n    margin: 0;\n    text-align: left;\n    list-style: none;\n    max-height: 200px;\n    overflow-y: scroll;\n    position: absolute;\n    top: 33px;\n    left: -1px;\n    right: -1px;\n    background-color: #fff;\n    border: 1px solid #ccc;\n    max-width: unset!important;\n}\n.dropdown[data-v-30a58862] {\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    position: relative;\n    padding: 7px;\n    cursor: pointer;\n}\n.dropdown.open[data-v-30a58862] {\n    background-color: #f3f3f3;\n}\n.dropdown[data-v-30a58862]:hover {\n    background-color: #f3f3f3;\n}\n.dropdown-arrow[data-v-30a58862] {\n    transform: scaleY(0.5);\n    display: inline-block;\n    color: #666;\n}\n.dropdown-item[data-v-30a58862] {\n    cursor: pointer;\n    padding: 4px 8px;\n}\n.dropdown-item.highlighted[data-v-30a58862] {\n    background-color: #f3f3f3;\n}\n.dropdown-menu.show[data-v-30a58862] {\n    max-height: 300px;\n    overflow: scroll;\n}\n.b-tel-input.disabled .selection[data-v-30a58862],\n.b-tel-input.disabled .dropdown[data-v-30a58862],\n.b-tel-input.disabled input[data-v-30a58862] {\n    cursor: no-drop;\n}\n@-moz-document url-prefix() {\n.uiFirefox{\n        max-width: calc(100% - 54.3px);\n}\n}\n", "", {"version":3,"sources":["/./src/themes/ios/TelephoneInput.vue?6c099f7b"],"names":[],"mappings":";AAuDA;IACA,qBAAA;CACA;AAEA;IACA,iCAAA;CACA;AACA;IACA,kBAAA;IACA,iBAAA;CACA;AACA;IACA,sBAAA;IACA,kBAAA;CACA;AACA;IACA,iBAAA;IACA,cAAA;IACA,oBAAA;CACA;AACA;IACA,mBAAA;IACA,cAAA;IACA,uBAAA;IACA,iBAAA;CACA;AACA;IACA,aAAA;IACA,+BAAA;IACA,iBAAA;CACA;AACA;IACA,aAAA;CACA;AACA;IACA,cAAA;CACA;AACA;IACA,aAAA;CACA;AACA;IACA,aAAA;CACA;AACA;IACA;qCACA;IACA,sBAAA;CACA;AACA;IACA,aAAA;IACA,6DAAA;IACA,YAAA;IACA,cAAA;IACA,kBAAA;CACA;AACA;IACA,eAAA;IACA,WAAA;IACA,UAAA;IACA,iBAAA;IACA,iBAAA;IACA,kBAAA;IACA,mBAAA;IACA,mBAAA;IACA,UAAA;IACA,WAAA;IACA,YAAA;IACA,uBAAA;IACA,uBAAA;IACA,2BAAA;CACA;AACA;IACA,cAAA;IACA,uBAAA;IACA,sBAAA;IACA,wBAAA;IACA,mBAAA;IACA,aAAA;IACA,gBAAA;CACA;AACA;IACA,0BAAA;CACA;AACA;IACA,0BAAA;CACA;AACA;IACA,uBAAA;IACA,sBAAA;IACA,YAAA;CACA;AACA;IACA,gBAAA;IACA,iBAAA;CACA;AACA;IACA,0BAAA;CACA;AACA;IACA,kBAAA;IACA,iBAAA;CACA;AACA;;;IAGA,gBAAA;CACA;AACA;AACA;QACA,+BAAA;CACA;CACA","file":"TelephoneInput.vue","sourcesContent":["<template>\n    <div class=\"b-tel-input b__components b-ios b-float-label b-input-extend-custom\" :class=\"classesParent\" :id=\"idParent\">\n        <label :class=\"classLabel\">{{ label }}</label>\n        <ul v-show=\"open\" ref=\"list\">\n            <li\n                    class=\"dropdown-item\"\n                    v-for=\"(pb, index) in sortedCountries\"\n                    :key=\"pb.iso2 + (pb.preferred ? '-preferred' : '')\"\n                    @click=\"choose(pb)\"\n                    :class=\"getItemClass(index, pb.iso2)\"\n                    @mousemove=\"selectedIndex = index\"\n            >\n                <div class=\"iti-flag\" v-if=\"enabledFlags\" :class=\"pb.iso2.toLowerCase()\"></div>\n                <strong>{{ pb.name }}</strong>\n                <span>+{{ pb.dialCode }}</span>\n            </li>\n        </ul>\n        <div\n                class=\"dropdown\"\n                @click=\"toggleDropdown\"\n                v-click-outside=\"clickedOutside\"\n                :class=\"{open: open}\"\n                @keydown=\"keyboardNav\"\n                tabindex=\"0\"\n                @keydown.esc=\"reset\"\n        >\n        <span class=\"selection\">\n        <div class=\"iti-flag\" v-if=\"enabledFlags\" :class=\"activeCountry.iso2.toLowerCase()\"></div>\n        <span class=\"dropdown-arrow\">{{ open ? '▲' : '▼' }}</span>\n        </span>\n\n        </div>\n        <input\n                ref=\"input\"\n                v-model=\"phone\"\n                type=\"tel\"\n                :placeholder=\"placeholder\"\n                :state=\"state\"\n                :disabled=\"disabled\"\n                @blur=\"onBlur\"\n                @input=\"onInput\"\n                :required=\"required\"\n                @keydown=\"keyDownPress\"\n                class=\"b__input uiFirefox b-telephone-input\"\n        >\n    </div>\n</template>\n\n<script>\n    import TelephoneInput from '../../components/TelephoneInput'\n    export default TelephoneInput\n</script>\n\n<style src=\"../../assets/telephone-input/sprite.css\"></style>\n<style scoped>\n    :local {\n        --border-radius: 2px;\n    }\n\n    li.last-preferred {\n        border-bottom: 1px solid #cacaca;\n    }\n    .iti-flag {\n        margin-right: 5px;\n        margin-left: 5px;\n    }\n    .dropdown-item .iti-flag {\n        display: inline-block;\n        margin-right: 5px;\n    }\n    .selection {\n        font-size: 0.8em;\n        display: flex;\n        align-items: center;\n    }\n    .b-tel-input {\n        border-radius: 3px;\n        display: flex;\n        border: 1px solid #bbb;\n        text-align: left;\n    }\n    .b-float-label input.b__input.b-telephone-input{\n        border: none;\n        border-left: 1px solid #bbbbbb;\n        border-radius: 0;\n    }\n    .input-disabled.b-tel-input {\n        border: none;\n    }\n    .input-disabled.b-tel-input .dropdown-arrow {\n        display: none;\n    }\n    .input-disabled.b-tel-input input.b__input:disabled {\n        border: none;\n    }\n    .input-disabled.b-tel-input input.b__input {\n        border: none;\n    }\n    .b-tel-input:focus-within {\n        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),\n        0 0 8px rgba(102, 175, 233, 0.6);\n        border-color: #66afe9;\n    }\n    input {\n        border: none;\n        border-radius: 0 var(--border-radius) var(--border-radius) 0;\n        width: 100%;\n        outline: none;\n        padding-left: 7px;\n    }\n    ul {\n        z-index: 99999;\n        padding: 0;\n        margin: 0;\n        text-align: left;\n        list-style: none;\n        max-height: 200px;\n        overflow-y: scroll;\n        position: absolute;\n        top: 33px;\n        left: -1px;\n        right: -1px;\n        background-color: #fff;\n        border: 1px solid #ccc;\n        max-width: unset!important;\n    }\n    .dropdown {\n        display: flex;\n        flex-direction: column;\n        align-content: center;\n        justify-content: center;\n        position: relative;\n        padding: 7px;\n        cursor: pointer;\n    }\n    .dropdown.open {\n        background-color: #f3f3f3;\n    }\n    .dropdown:hover {\n        background-color: #f3f3f3;\n    }\n    .dropdown-arrow {\n        transform: scaleY(0.5);\n        display: inline-block;\n        color: #666;\n    }\n    .dropdown-item {\n        cursor: pointer;\n        padding: 4px 8px;\n    }\n    .dropdown-item.highlighted {\n        background-color: #f3f3f3;\n    }\n    .dropdown-menu.show {\n        max-height: 300px;\n        overflow: scroll;\n    }\n    .b-tel-input.disabled .selection,\n    .b-tel-input.disabled .dropdown,\n    .b-tel-input.disabled input {\n        cursor: no-drop;\n    }\n    @-moz-document url-prefix() {\n        .uiFirefox{\n            max-width: calc(100% - 54.3px);\n        }\n    }\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -99672,7 +99643,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('label', {
     class: _vm.classLabel
-  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('ul', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.open),
+      expression: "open"
+    }],
+    ref: "list"
+  }, _vm._l((_vm.sortedCountries), function(pb, index) {
+    return _c('li', {
+      key: pb.iso2 + (pb.preferred ? '-preferred' : ''),
+      staticClass: "dropdown-item",
+      class: _vm.getItemClass(index, pb.iso2),
+      on: {
+        "click": function($event) {
+          _vm.choose(pb)
+        },
+        "mousemove": function($event) {
+          _vm.selectedIndex = index
+        }
+      }
+    }, [(_vm.enabledFlags) ? _c('div', {
+      staticClass: "iti-flag",
+      class: pb.iso2.toLowerCase()
+    }) : _vm._e(), _vm._v(" "), _c('strong', [_vm._v(_vm._s(pb.name))]), _vm._v(" "), _c('span', [_vm._v("+" + _vm._s(pb.dialCode))])])
+  }), 0), _vm._v(" "), _c('div', {
     directives: [{
       name: "click-outside",
       rawName: "v-click-outside",
@@ -99700,32 +99696,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: _vm.activeCountry.iso2.toLowerCase()
   }) : _vm._e(), _vm._v(" "), _c('span', {
     staticClass: "dropdown-arrow"
-  }, [_vm._v(_vm._s(_vm.open ? '▲' : '▼'))])]), _vm._v(" "), _c('ul', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.open),
-      expression: "open"
-    }],
-    ref: "list"
-  }, _vm._l((_vm.sortedCountries), function(pb, index) {
-    return _c('li', {
-      key: pb.iso2 + (pb.preferred ? '-preferred' : ''),
-      staticClass: "dropdown-item",
-      class: _vm.getItemClass(index, pb.iso2),
-      on: {
-        "click": function($event) {
-          _vm.choose(pb)
-        },
-        "mousemove": function($event) {
-          _vm.selectedIndex = index
-        }
-      }
-    }, [(_vm.enabledFlags) ? _c('div', {
-      staticClass: "iti-flag",
-      class: pb.iso2.toLowerCase()
-    }) : _vm._e(), _vm._v(" "), _c('strong', [_vm._v(_vm._s(pb.name))]), _vm._v(" "), _c('span', [_vm._v("+" + _vm._s(pb.dialCode))])])
-  }), 0)]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.open ? '▲' : '▼'))])])]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -99733,7 +99704,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "phone"
     }],
     ref: "input",
-    staticClass: "b__input",
+    staticClass: "b__input uiFirefox b-telephone-input",
     attrs: {
       "type": "tel",
       "placeholder": _vm.placeholder,
@@ -100091,14 +100062,14 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "b__components b__tinymce b-float-label b__input loading-tiny"
-  }, [_c('div', [_c('label', {
+    staticClass: "b__components b__tinymcev4 b-float-label b__input loading-tiny"
+  }, [_c('label', {
     class: _vm.classLabel
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('textarea', {
     attrs: {
       "id": _vm.id
     }
-  })])])
+  })])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
