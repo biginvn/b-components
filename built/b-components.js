@@ -66554,7 +66554,7 @@ const getCountry = function () {
             var self = this;
             var readonly = this.checkDisabled();
             var height = this.height == null || this.height == undefined ? "450" : this.height;
-            if (readonly == 1) var toolbar1 = false;else var toolbar1 = 'formatselect | bold italic strikethrough forecolor backcolor | link image| alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent lineheightselect | removeformat';
+            if (readonly == 1) var toolbar1 = false;else var toolbar1 = 'undo redo formatselect | bold italic strikethrough | link image | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent pagebreak lineheightselect';
             tinymce.init(Object.assign({}, {
                 selector: '#' + self.id,
                 readonly: readonly,
@@ -66563,6 +66563,7 @@ const getCountry = function () {
                 theme: 'modern',
                 plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help lineheight',
                 toolbar1: toolbar1,
+                menubar: 'edit insert view format table tools help',
                 templates: self.template == null || self.template == undefined ? [] : self.template,
                 content_css: ['https://fonts.googleapis.com/css?family=Montserrat', '//www.tinymce.com/css/codepen.min.css'],
                 // images_upload_url: self.images_upload_url,
@@ -66582,6 +66583,7 @@ const getCountry = function () {
                 automatic_uploads: false,
                 image_title: true,
                 file_picker_types: 'image',
+                advlist_number_styles: "lower-alpha,lower-greek,lower-roman,upper-alpha,upper-roman,default",
                 images_upload_handler: function (blobInfo, success, failure) {
                     // hook Tiny after select file in upload image implement upload file server side todo...
                     // remove tiny basic loading when upload request. that real: we must be change css in class "mce-throbber" to another svf
