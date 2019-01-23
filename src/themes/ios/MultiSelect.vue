@@ -144,6 +144,9 @@
 	.b__multi__select.select-disabled{
 		border: none;
 	}
+	.b__components.b__multi__select.select-disabled .b__multi__select__control.multi{
+		border: 1px solid #dfdfdf !important;
+	}
 	.b__components.b__multi__select.select-disabled .b__multi__select__control .selected{
 		padding: 5px 10px 5px 10px;
 	}
