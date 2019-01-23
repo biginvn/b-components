@@ -259,19 +259,23 @@ export default {
     },
     methods: {
         formatNumberByCustom(phone) {
-            var numbers = phone.replace(/\D/g, ''),
+            if(phone != null){
+                var numbers = phone.replace(/\D/g, ''),
                 phone = '';
-            if (numbers.length <= this.maxLengthStandardDigits) {
-                for (var i = 0; i < numbers.length; i++) {
-                    phone += (this.customFormatNumberStandard[i] || '') + numbers[i];
+                if (numbers.length <= this.maxLengthStandardDigits) {
+                    for (var i = 0; i < numbers.length; i++) {
+                        phone += (this.customFormatNumberStandard[i] || '') + numbers[i];
+                    }
                 }
-            }
-            else {
-                for (var i = 0; i < numbers.length; i++) {
-                    phone += (this.customFormatNumberNotStandard[i] || '') + numbers[i];
+                else {
+                    for (var i = 0; i < numbers.length; i++) {
+                        phone += (this.customFormatNumberNotStandard[i] || '') + numbers[i];
+                    }
                 }
+                return phone;
+            }else{
+                return '';
             }
-            return phone;
         },
         formatPhoneByNational(phone) {
             phone = parseDigits(phone);
