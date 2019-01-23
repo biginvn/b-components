@@ -145,7 +145,7 @@
 		border: none;
 	}
 	.b__components.b__multi__select.select-disabled .b__multi__select__control .selected{
-		padding: 6px 10px 5px 10px;
+		padding: 5px 10px 5px 10px;
 	}
 	.b__components.b__multi__select.select-disabled .b__multi__select__control .selected .close-item{
 		display: none;
