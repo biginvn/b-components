@@ -138,11 +138,16 @@
 	.iconD::after{
 		transform: rotate(180deg);
 	}
-
 	.b__multi__select.select-disabled .iconC{
 		display: none;
 	}
 	.b__multi__select.select-disabled{
 		border: none;
+	}
+	.b__components.b__multi__select.select-disabled .b__multi__select__control .selected{
+		padding: 6px 10px 5px 10px;
+	}
+	.b__components.b__multi__select.select-disabled .b__multi__select__control .selected .close-item{
+		display: none;
 	}
 </style>
