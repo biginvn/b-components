@@ -54,12 +54,13 @@ export default {
 		   return this.maxlength
 		},
 		keyupEnter: function(e) {
-			 var keyCode = e.keyCode || e.which;
+			var keyCode = e.keyCode || e.which;
      		  //if (keyCode === 13 || keyCode === 45) {
-             if (keyCode === 13) {
-     		   e.preventDefault();
-     		   return false;
-     		 }   
+            if (keyCode === 13) {
+     		   	e.preventDefault();
+                this.$emit('keyup-enter');
+     		   	return false;
+     		}   
    		},
         keyDownRegex: function (e) {
 			let keyCode = e.keyCode || e.which;
