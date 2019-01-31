@@ -18,7 +18,6 @@
     @input="change($event.target.value)" 
     @blur="blur" 
     @focus="focus"
-    @keyup="keyupEnter"
     @keypress="keyupEnter"
     >
   <div v-if="hasUrl" class="link-name-area">
