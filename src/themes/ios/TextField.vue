@@ -5,7 +5,7 @@
     :placeholder="placeholder" 
     :type="typeComponent" 
     :min="min" 
-    :maxlength="maxLength" 
+    :maxlength="maxLength()" 
     ref="bInput" 
     :name="name"
     :id="id" 
