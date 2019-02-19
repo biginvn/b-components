@@ -83,6 +83,9 @@ export default {
                     theme: 'modern',
                     plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help lineheight',
                     toolbar1: toolbar1,
+                    table_default_attributes: {
+                        // border: '1'
+                    },
                     menubar: 'edit insert view format table tools help',
                     templates: (self.template == null || self.template == undefined) ? [] : self.template,
                     content_css: [
@@ -232,12 +235,14 @@ export default {
                         });
 
                     },
-                    setup: function (editor) { // add attributes for tag a in editor viewmode to locate link after click
-                        // editor.on('PreInit', function () {
-                        //     editor.parser.addNodeFilter('a', (nodes) => nodes.forEach(node => node.attr('target', '_blank')));
-                        // });
-                        // hook Tiny after setup config and implement todo...
-                    }
+                    // Comment Setup to get default style of button underline, strikethrough
+
+                    // setup: function (editor) { // add attributes for tag a in editor viewmode to locate link after click
+                    //     // editor.on('PreInit', function () {
+                    //     //     editor.parser.addNodeFilter('a', (nodes) => nodes.forEach(node => node.attr('target', '_blank')));
+                    //     // });
+                    //     // hook Tiny after setup config and implement todo...
+                    // }
                 }, this.tinyConfig ? this.tinyConfig : {})
             )
         },
