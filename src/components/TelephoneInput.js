@@ -140,6 +140,7 @@ export default {
             typeToFindInput: '',
             typeToFindTimer: null,
             classLabel: '',
+            ctrlDown: false
         };
     },
     computed: {
@@ -261,7 +262,7 @@ export default {
         formatNumberByCustom(phone) {
             if(phone != null){
                 var numbers = phone.replace(/\D/g, ''),
-                phone = '';
+                    phone = '';
                 if (numbers.length <= this.maxLengthStandardDigits) {
                     for (var i = 0; i < numbers.length; i++) {
                         phone += (this.customFormatNumberStandard[i] || '') + numbers[i];
@@ -364,7 +365,18 @@ export default {
             this.open = false;
         },
         keyDownPress(e) {
+            let ctrlKey = 17,
+                cmdKey = 91,
+                vKey = 86,
+                cKey = 67,
+                xKey = 88;
+
             let keyCode = e.keyCode || e.which;
+
+            // Detect when user press Ctrl C or Ctrl V:
+            if (keyCode == ctrlKey || keyCode == cmdKey) this.ctrlDown = true;
+            if (this.ctrlDown && (keyCode == vKey || keyCode == cKey || keyCode == xKey)) return;
+
             // Don't validate the input if below arrow, delete and backspace keys were pressed
             if(keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) { // Left / Up / Right / Down Arrow, Delete keys;
                 if (!this.useCustomFormatNumber)  {
@@ -402,6 +414,12 @@ export default {
                     }
                 }
             }
+        },
+        keyUpPress(e) {
+            let ctrlKey = 17,
+                cmdKey = 91;
+            let keyCode = e.keyCode || e.which;
+            if (keyCode == ctrlKey || keyCode == cmdKey) this.ctrlDown = false;
         },
         getPositionCursorInPhone(str, currentCursorPosition) {
             // Ex: str = (0123) 456, and currentCursorPosition = 4
