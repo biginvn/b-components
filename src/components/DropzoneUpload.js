@@ -49,7 +49,15 @@ export default {
             type: Object/Array,
             default: null
         },
+        customMsgValidateNumber:{
+            type : Boolean,
+            default : false
+        },
         customMsgValidateSize:{
+            type : Boolean,
+            default : false
+        },
+        customMsgValidateType:{
             type : Boolean,
             default : false
         }
@@ -110,7 +118,9 @@ export default {
                     var fileEx = file.name.split('.').pop();
                     if (this.supportTypes.length > 0 && this.supportTypes.indexOf('.' + fileEx) === -1) {
                         this.dropzone.removeFile(file);
-                        alert('The selected file is not supported. The accepted file types are: ' + this.supportTypes.join(','))
+                        this.$emit('validation-file-type', this.supportTypes.join(','))
+                        if(!this.customMsgValidateType)
+                            alert('The selected file is not supported. The accepted file types are: ' + this.supportTypes.join(','))
                     }
                     else {
                         if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" ||  fileEx == "gif" ||  fileEx == "bmp")
@@ -177,7 +187,8 @@ export default {
                     this.removeAllFiles();
                     this.addFile(file);
                     this.$emit('validation-file-number', file)
-                    alert('Upload file too specified number.')
+                    if(!this.customMsgValidateType)
+                        alert('Upload file too specified number.')
                 },
             }
             this.completedConfig  = Object.assign(config, this.config)
