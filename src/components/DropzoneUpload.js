@@ -48,6 +48,10 @@ export default {
         supportFileType: {
             type: Object/Array,
             default: null
+        },
+        customMsgValidateSize:{
+            type : Boolean,
+            default : false
         }
     },
     watch:{
@@ -311,7 +315,8 @@ export default {
             }
             if( fileError != null &&  fileError != ""){
                 this.$emit('validation-file-size', fileError)
-                alert("File: " + fileError + " removed because total size to large.")
+                if(!this.customMsgValidateSize)
+                    alert("File: " + fileError + " removed because total size to large.")
             }
         },
 
