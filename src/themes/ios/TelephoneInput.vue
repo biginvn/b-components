@@ -41,6 +41,7 @@
                 @input="onInput"
                 :required="required"
                 @keydown="keyDownPress"
+                @keyup="keyUpPress"
                 class="b__input uiFirefox b-telephone-input"
         >
     </div>
