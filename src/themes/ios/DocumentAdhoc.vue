@@ -10,7 +10,7 @@
         </div>
         <div :class="id + '__preview__container'">
             <div :class="id + '__preview preview stuff'">
-                <div class="preview">
+                <div class="preview" style="height: 100%;">
                     <div class="dz-thumb">
                         <img data-dz-thumbnail="">
                     </div> 
