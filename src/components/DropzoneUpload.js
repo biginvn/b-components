@@ -118,7 +118,7 @@ export default {
                     var fileEx = file.name.split('.').pop();
                     if (this.supportTypes.length > 0 && this.supportTypes.indexOf('.' + fileEx) === -1) {
                         this.dropzone.removeFile(file);
-                        this.$emit('validation-file-type', this.supportTypes.join(','))
+                        this.$emit('validation-file-type', this.supportTypes.join(', '))
                         if(!this.customMsgValidateType)
                             alert('The selected file is not supported. The accepted file types are: ' + this.supportTypes.join(','))
                     }
