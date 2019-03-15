@@ -53,10 +53,13 @@ export default {
         },
         checkEdit(abc){
             if(abc == false){
-                tinymce.get(this.id).getBody().setAttribute('contenteditable', false)
+                // tinymce.get(this.id).getBody().setAttribute('contenteditable', false)
+                // console.log(tinymce.get(this.id));
+                tinymce.activeEditor.setMode('readonly')
             }
             else {
-                tinymce.get(this.id).getBody().setAttribute('contenteditable', true)
+                // tinymce.get(this.id).getBody().setAttribute('contenteditable', true)
+                tinymce.activeEditor.setMode('code')
             }
         }
     },
@@ -83,8 +86,9 @@ export default {
             var self = this
             var readonly = this.checkDisabled()
             var height = (this.height == null || this.height == undefined) ? "450" : this.height
-            if( readonly == 1 )
+            if( readonly == 1 ){
                 var toolbar1 = false
+            }
             else
                 var toolbar1 = 'undo redo formatselect | bold italic strikethrough | link image | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent pagebreak lineheightselect';
             tinymce.init(
@@ -94,7 +98,7 @@ export default {
                     height : height,
                     lineheight_formats:'Single=100% 1.5=150% Double=200%',
                     theme: 'silver',
-                    plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help',
+                    plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help noneditable',
                     // plugins: 'advlist lineheight autolink',
                     toolbar1: toolbar1,
                     table_default_attributes: {
@@ -114,6 +118,7 @@ export default {
                     //     {title: 'New page', value: '_blank'},
                     //     {title: 'LIghtbox', value: '_lightbox'}
                     // ],
+                    noneditable_editable_class: "mceEditable",
                     default_link_target: "_blank",
                     force_br_newlines : true,
                     force_p_newlines : true,
@@ -282,7 +287,7 @@ export default {
                                 modal: true
                             });
                         });
-
+                     
                     },
                     // Comment Setup to get default style of button underline, strikethrough
 
@@ -292,8 +297,12 @@ export default {
                     //     // });
                     //     // hook Tiny after setup config and implement todo...
                     // }
+                    
                 }, this.tinyConfig ? this.tinyConfig : {})
             )
+            if(this.checkEdit == false){
+                tinymce.activeEditor.setMode('readonly')
+            }
         },
 
         initTinyMCE(){
@@ -316,8 +325,10 @@ export default {
             this.updateFloatLabel(this.value)
         },
         checkDisabled(){
-            if(this.disabled == "disabled")
+            if(this.disabled == "disabled"){
+                // tinymce.get(this.id).hide();  
                 return 1
+            }
             else
                 return 0
         },
