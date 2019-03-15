@@ -124,6 +124,7 @@ export default {
                     image_title: true, 
                     file_picker_types: 'image',
                     advlist_number_styles: "lower-alpha,lower-greek,lower-roman,upper-alpha,upper-roman,default",
+                    content_style:"#tinymce > p {margin-block-start: 0em;margin-block-end: 0em;margin-inline-start: 0px;margin-inline-end: 0px;}",
                     images_upload_handler: function (blobInfo, success, failure) {
                         // hook Tiny after select file in upload image implement upload file server side todo...
                         // remove tiny basic loading when upload request. that real: we must be change css in class "mce-throbber" to another svf
@@ -237,7 +238,7 @@ export default {
                         // hook Tiny after init object and implement todo...
                         $('#' + self.id + "_ifr").css("height", height);
                         tinymce.activeEditor.getBody().setAttribute('class', "arc-custom-editor-body");
-                        tinymce.activeEditor.getBody().setAttribute('style', "overflow-y: scroll !important; font-family: 'Open Sans',sans-serif !important; font-size: 15px !important; padding: 1.5em;");
+                        tinymce.activeEditor.getBody().setAttribute('style', "overflow-y: scroll !important; font-family: 'Open Sans',sans-serif !important; font-size: 15px !important; padding: 0.5em;");
                         if(self.checkEdit != undefined)
                         {
                             tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
