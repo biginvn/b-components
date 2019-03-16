@@ -55,6 +55,7 @@ export default {
             if(abc == false){
                 // tinymce.get(this.id).getBody().setAttribute('contenteditable', false)
                 // console.log(tinymce.get(this.id));
+                tinymce.activeEditor.setMode('code')
                 tinymce.activeEditor.setMode('readonly')
             }
             else {
@@ -85,6 +86,7 @@ export default {
         initTinyEditor(){
             var self = this
             var readonly = this.checkDisabled()
+            let readonlyMode = this.checkReadOnly()
             var height = (this.height == null || this.height == undefined) ? "450" : this.height
             if( readonly == 1 ){
                 var toolbar1 = false
@@ -94,7 +96,6 @@ export default {
             tinymce.init(
                 Object.assign({},{
                     selector: '#' + self.id,
-                    readonly : readonly,
                     height : height,
                     lineheight_formats:'Single=100% 1.5=150% Double=200%',
                     theme: 'silver',
@@ -241,7 +242,7 @@ export default {
                     //Upload Fucntion & param
                     init_instance_callback: function (editor) {
                         // hook Tiny after init object and implement todo...
-                        $('#' + self.id + "_ifr").css("height", height);
+                        // $('#' + self.id + "_ifr").css("height", height);
                         tinymce.activeEditor.getBody().setAttribute('class', "arc-custom-editor-body");
                         tinymce.activeEditor.getBody().setAttribute('style', "overflow-y: scroll !important; font-family: 'Open Sans',sans-serif !important; font-size: 15px !important; padding: 0.5em;");
                         if(self.checkEdit != undefined)
@@ -289,6 +290,7 @@ export default {
                         });
                      
                     },
+                    readonly : readonlyMode,
                     // Comment Setup to get default style of button underline, strikethrough
 
                     // setup: function (editor) { // add attributes for tag a in editor viewmode to locate link after click
@@ -300,7 +302,8 @@ export default {
                     
                 }, this.tinyConfig ? this.tinyConfig : {})
             )
-            if(this.checkEdit == false){
+            if(this.checkEdit != undefined && this.checkEdit == false){
+                tinymce.activeEditor.setMode('code')
                 tinymce.activeEditor.setMode('readonly')
             }
         },
@@ -327,6 +330,14 @@ export default {
         checkDisabled(){
             if(this.disabled == "disabled"){
                 // tinymce.get(this.id).hide();  
+                return 1
+            }
+            else
+                return 0
+        },
+        checkReadOnly(){
+            if(this.checkEdit != undefined && (!this.checkEdit || this.disabled == "disabled")){
+                // tinymce.get(this.id).hide();
                 return 1
             }
             else
