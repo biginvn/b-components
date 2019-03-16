@@ -57,6 +57,7 @@ export default {
                 // console.log(tinymce.get(this.id));
                 tinymce.activeEditor.setMode('code')
                 tinymce.activeEditor.setMode('readonly')
+                tinymce.activeEditor.getBody().style.padding = "0px 25px 25px";
             }
             else {
                 // tinymce.get(this.id).getBody().setAttribute('contenteditable', true)
@@ -96,11 +97,12 @@ export default {
             tinymce.init(
                 Object.assign({},{
                     selector: '#' + self.id,
-                    height : height,
+                    // height : height,
                     lineheight_formats:'Single=100% 1.5=150% Double=200%',
                     theme: 'silver',
                     plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help noneditable',
                     // plugins: 'advlist lineheight autolink',
+                    // plugins: 'print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount tinymcespellchecker a11ychecker imagetools textpattern help formatpainter permanentpen pageembed tinycomments mentions linkchecker',
                     toolbar1: toolbar1,
                     table_default_attributes: {
                         // border: '1'
@@ -248,7 +250,7 @@ export default {
                         if(self.checkEdit != undefined)
                         {
                             tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
-                            tinymce.activeEditor.getBody().style.padding = "10px 0px 0px 0px";
+                            tinymce.activeEditor.getBody().style.padding = "0px 25px 25px";
                         }
                         $('tr.mceFirst').css('z-index','1000')
 
@@ -302,10 +304,10 @@ export default {
                     
                 }, this.tinyConfig ? this.tinyConfig : {})
             )
-            if(this.checkEdit != undefined && this.checkEdit == false){
-                tinymce.activeEditor.setMode('code')
-                tinymce.activeEditor.setMode('readonly')
-            }
+            // if(this.checkEdit != undefined && this.checkEdit == false){
+            //     tinymce.activeEditor.setMode('code')
+            //     tinymce.activeEditor.setMode('readonly')
+            // }
         },
 
         initTinyMCE(){
