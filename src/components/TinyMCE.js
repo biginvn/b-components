@@ -242,7 +242,7 @@ export default {
                     //Upload Fucntion & param
                     init_instance_callback: function (editor) {
                         // hook Tiny after init object and implement todo...
-                        $('#' + self.id + "_ifr").css("height", height);
+                        // $('#' + self.id + "_ifr").css("height", height);
                         tinymce.activeEditor.getBody().setAttribute('class', "arc-custom-editor-body");
                         tinymce.activeEditor.getBody().setAttribute('style', "overflow-y: scroll !important; font-family: 'Open Sans',sans-serif !important; font-size: 15px !important; padding: 0.5em;");
                         if(self.checkEdit != undefined)
