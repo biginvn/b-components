@@ -66584,6 +66584,7 @@ const getCountry = function () {
             if (abc == false) {
                 // tinymce.get(this.id).getBody().setAttribute('contenteditable', false)
                 // console.log(tinymce.get(this.id));
+                tinymce.activeEditor.setMode('code');
                 tinymce.activeEditor.setMode('readonly');
             } else {
                 // tinymce.get(this.id).getBody().setAttribute('contenteditable', true)
@@ -66608,13 +66609,13 @@ const getCountry = function () {
         initTinyEditor() {
             var self = this;
             var readonly = this.checkDisabled();
+            let readonlyMode = this.checkReadOnly();
             var height = this.height == null || this.height == undefined ? "450" : this.height;
             if (readonly == 1) {
                 var toolbar1 = false;
             } else var toolbar1 = 'undo redo formatselect | bold italic strikethrough | link image | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent pagebreak lineheightselect';
             tinymce.init(Object.assign({}, {
                 selector: '#' + self.id,
-                readonly: readonly,
                 height: height,
                 lineheight_formats: 'Single=100% 1.5=150% Double=200%',
                 theme: 'silver',
@@ -66800,7 +66801,8 @@ const getCountry = function () {
                             modal: true
                         });
                     });
-                }
+                },
+                readonly: readonlyMode
                 // Comment Setup to get default style of button underline, strikethrough
 
                 // setup: function (editor) { // add attributes for tag a in editor viewmode to locate link after click
@@ -66811,7 +66813,8 @@ const getCountry = function () {
                 // }
 
             }, this.tinyConfig ? this.tinyConfig : {}));
-            if (this.checkEdit == false) {
+            if (this.checkEdit != undefined && this.checkEdit == false) {
+                tinymce.activeEditor.setMode('code');
                 tinymce.activeEditor.setMode('readonly');
             }
         },
@@ -66838,6 +66841,12 @@ const getCountry = function () {
         checkDisabled() {
             if (this.disabled == "disabled") {
                 // tinymce.get(this.id).hide();  
+                return 1;
+            } else return 0;
+        },
+        checkReadOnly() {
+            if (this.checkEdit != undefined && (!this.checkEdit || this.disabled == "disabled")) {
+                // tinymce.get(this.id).hide();
                 return 1;
             } else return 0;
         },
