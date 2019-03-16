@@ -196,12 +196,12 @@ export default {
                 else
                     className = this.getClassByPath(listItem.path)
                 let filesize = this.renderFileSize(listItem.filesize.replace(" ", ""))
+                let fileName = (listItem.filename != undefined && listItem.filename != null) ? listItem.filename : ((listItem.name == undefined || listItem.name == null) ? this.getNameByPath(listItem.path) : listItem.name);
                 let item = {
                     id         : listItem.id,
                     filesize   : filesize,
                     path       : listItem.path,
-                    name       : (listItem.filename == null || listItem.filename == undefined) ? this.getNameByPath(listItem.path) : listItem.filename,
-                    path       : listItem.path,
+                    name       : fileName,
                     className  : className,
                 }
                 items.push(item);

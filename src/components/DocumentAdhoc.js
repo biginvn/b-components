@@ -52,13 +52,14 @@ export default
                 else
                     className = this.getClassByPath(listItem.path)
                 let filesize = this.renderFileSize(listItem.filesize.replace(" ", ""))
+                let fileName = (listItem.filename != undefined && listItem.filename != null) ? listItem.filename : ((listItem.name == undefined || listItem.name == null) ? this.getNameByPath(listItem.path) : listItem.name);
                 let typeProcess = listItem.exportType ? listItem.exportType : (listItem.type_process ? listItem.type_process : 'docx');
                 let isProcess = listItem.isProcess ? listItem.isProcess : (listItem.is_process ? listItem.is_process : false);
                 let item = {
                     id         : listItem.id,
                     filesize   : filesize,
                     path       : listItem.path,
-                    name       : (listItem.filename == null || listItem.filename == undefined) ? this.getNameByPath(listItem.path) : listItem.filename,
+                    name       : fileName,
                     className  : className,
                     exportType : typeProcess,
                     isProcess  : isProcess,
