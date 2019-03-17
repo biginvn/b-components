@@ -56,8 +56,8 @@ export default {
                 // tinymce.get(this.id).getBody().setAttribute('contenteditable', false)
                 // console.log(tinymce.get(this.id));
                 tinymce.get(this.id).setMode('code')
-                tinymce.get(this.id).getBody().style.padding = "0px 25px 25px";
                 tinymce.get(this.id).setMode('readonly')
+                tinymce.get(this.id).getBody().style.padding = "0px 25px 25px";
             }
             else {
                 // tinymce.get(this.id).getBody().setAttribute('contenteditable', true)
