@@ -55,13 +55,13 @@ export default {
             if(abc == false){
                 // tinymce.get(this.id).getBody().setAttribute('contenteditable', false)
                 // console.log(tinymce.get(this.id));
-                tinymce.activeEditor.setMode('code')
-                tinymce.activeEditor.setMode('readonly')
-                tinymce.activeEditor.getBody().style.padding = "0px 25px 25px";
+                tinymce.get(this.id).setMode('code')
+                tinymce.get(this.id).getBody().style.padding = "0px 25px 25px";
+                tinymce.get(this.id).setMode('readonly')
             }
             else {
                 // tinymce.get(this.id).getBody().setAttribute('contenteditable', true)
-                tinymce.activeEditor.setMode('code')
+                tinymce.get(this.id).setMode('code')
             }
         }
     },
@@ -81,7 +81,7 @@ export default {
         },
         insertSpecialContent(value)
         {
-            tinymce.activeEditor.execCommand('mceInsertContent', false, value);
+            tinymce.get(this.id).execCommand('mceInsertContent', false, value);
         },
 
         initTinyEditor(){
@@ -202,7 +202,7 @@ export default {
                                 // registry. In the next release this part hopefully won't be
                                 // necessary, as we are looking to handle it internally.
                                 var id = 'blobid' + (new Date()).getTime();
-                                var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                                var blobCache =  tinymce.get(this.id).editorUpload.blobCache;
                                 var base64 = reader.result.split(',')[1];
                                 var blobInfo = blobCache.create(id, file, base64);
                                 blobCache.add(blobInfo);
@@ -245,12 +245,12 @@ export default {
                     init_instance_callback: function (editor) {
                         // hook Tiny after init object and implement todo...
                         // $('#' + self.id + "_ifr").css("height", height);
-                        tinymce.activeEditor.getBody().setAttribute('class', "arc-custom-editor-body");
-                        tinymce.activeEditor.getBody().setAttribute('style', "overflow-y: scroll !important; font-family: 'Open Sans',sans-serif !important; font-size: 15px !important; padding: 0.5em;");
+                        tinymce.get(this.id).getBody().setAttribute('class', "arc-custom-editor-body");
+                        tinymce.get(this.id).getBody().setAttribute('style', "overflow-y: scroll !important; font-family: 'Open Sans',sans-serif !important; font-size: 15px !important; padding: 0.5em;");
                         if(self.checkEdit != undefined)
                         {
-                            tinymce.activeEditor.getBody().setAttribute('contenteditable', false);
-                            tinymce.activeEditor.getBody().style.padding = "0px 25px 25px";
+                            tinymce.get(this.id).getBody().setAttribute('contenteditable', false);
+                            tinymce.get(this.id).getBody().style.padding = "0px 25px 25px";
                         }
                         $('tr.mceFirst').css('z-index','1000')
 
@@ -305,8 +305,8 @@ export default {
                 }, this.tinyConfig ? this.tinyConfig : {})
             )
             // if(this.checkEdit != undefined && this.checkEdit == false){
-            //     tinymce.activeEditor.setMode('code')
-            //     tinymce.activeEditor.setMode('readonly')
+            //     tinymce.get(this.id).setMode('code')
+            //     tinymce.get(this.id).setMode('readonly')
             // }
         },
 
