@@ -60,6 +60,10 @@ export default {
         customMsgValidateType:{
             type : Boolean,
             default : false
+        },
+        adhocDocuments:{
+            type: Object/Array,
+            default: null
         }
     },
     watch:{
@@ -318,7 +322,8 @@ export default {
             for(let i = 0; i < listFile.length; i++){
                 if(listFile[i].accepted == true)
                     this.totalDropzoneFileSize = this.totalDropzoneFileSize + listFile[i].size/1024
-                if( this.maxSize != undefined && (this.totalInputFileSize + this.totalDropzoneFileSize) >= this.maxSize){
+                let totalFileSize = (this.adhocDocuments.length == 0 || this.adhocDocuments == null || this.adhocDocuments == undefined) ? this.totalInputFileSize + this.totalDropzoneFileSize : this.totalInputFileSize + this.totalDropzoneFileSize +this.calculateTotalAdhocDocumentFileSize(this.adhocDocuments);
+                if( this.maxSize != undefined && totalFileSize >= this.maxSize){
                     fileError = fileError + listFile[i].name + " "
                     this.totalDropzoneFileSize = this.totalDropzoneFileSize - listFile[i].size/1024
                     this.dropzone.removeFile(listFile[i])
@@ -329,6 +334,20 @@ export default {
                 if(!this.customMsgValidateSize)
                     alert("File: " + fileError + " removed because total size to large.")
             }
+        },
+        calculateTotalAdhocDocumentFileSize(files){
+            let adhocDocumentsFileSize = 0;
+            for(var j=0; j < files.length; j++){
+                let filesize = files[j].filesize.replace(" ", "");
+                let sizeLength = filesize.length
+                if(filesize.slice(sizeLength - 2, sizeLength).toLowerCase() == 'mb' || filesize.slice(sizeLength - 2, sizeLength).toLowerCase() == 'kb'){
+                    adhocDocumentsFileSize = adhocDocumentsFileSize + parseInt(filesize.slice(0, sizeLength - 2));
+                }
+                else{
+                    adhocDocumentsFileSize = adhocDocumentsFileSize + parseInt(filesize/1024)
+                }
+            }
+            return adhocDocumentsFileSize;
         },
 
         parseDropzoneContent(){
