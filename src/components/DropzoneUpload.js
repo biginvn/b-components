@@ -68,10 +68,13 @@ export default {
     },
     watch:{
         'dropzone.files'(value){
-            this.caculateTotalDropzoneFileSize(value)
-            this.value.dropzone = this.dropzone
-            this.dropzoneTotalFile = this.dropzone.files.length
-            this.$emit('input', this.value)
+            if(this.validateFileSize(value)){
+                this.caculateTotalDropzoneFileSize(value)
+                this.value.dropzone = this.dropzone
+                this.dropzoneTotalFile = this.dropzone.files.length
+                this.$emit('input', this.value)
+            }
+            
         },
         'value.list'(value){ // edit by thien nguyen
             this.totalInputFileSize = 0
@@ -81,6 +84,7 @@ export default {
             }
         },
         value(value){
+            // console.log(value);
             if(value != undefined && value != undefined) {
                 this.initDropzone()
             }
@@ -322,7 +326,7 @@ export default {
             for(let i = 0; i < listFile.length; i++){
                 if(listFile[i].accepted == true)
                     this.totalDropzoneFileSize = this.totalDropzoneFileSize + listFile[i].size/1024
-                let totalFileSize = (this.adhocDocuments.length == 0 || this.adhocDocuments == null || this.adhocDocuments == undefined) ? this.totalInputFileSize + this.totalDropzoneFileSize : this.totalInputFileSize + this.totalDropzoneFileSize +this.calculateTotalAdhocDocumentFileSize(this.adhocDocuments);
+                let totalFileSize = (this.adhocDocuments == null || this.adhocDocuments == undefined) ? this.totalInputFileSize + this.totalDropzoneFileSize : this.totalInputFileSize + this.totalDropzoneFileSize +this.calculateTotalAdhocDocumentFileSize(this.adhocDocuments);
                 if( this.maxSize != undefined && totalFileSize >= this.maxSize){
                     fileError = fileError + listFile[i].name + " "
                     this.totalDropzoneFileSize = this.totalDropzoneFileSize - listFile[i].size/1024
@@ -349,11 +353,24 @@ export default {
             }
             return adhocDocumentsFileSize;
         },
-
         parseDropzoneContent(){
             if(this.dropzoneContent == undefined || this.dropzoneContent == null)
                 return 'Attach file by dropping here or <span class="uk-link">selecting one</span>'
             return this.dropzoneContent
+        },
+        validateFileSize(files){
+            let fileError = ""
+            for (var k =0; k < files.length;k++) {
+                if(parseInt(files[k].size/1024) > this.maxSize/2){
+                    if(!this.customMsgValidateSize)
+                        alert('File size is greater than 10MB')
+                    fileError = fileError + files[k].name + " "
+                    this.$emit('validate-file-size', fileError)
+                    this.dropzone.removeFile(files[k]);
+                    return false;
+                }
+            }
+            return true;
         }
     },
 }
