@@ -60,14 +60,21 @@ export default {
         customMsgValidateType:{
             type : Boolean,
             default : false
+        },
+        adhocDocuments:{
+            type: Object/Array,
+            default: null
         }
     },
     watch:{
         'dropzone.files'(value){
-            this.caculateTotalDropzoneFileSize(value)
-            this.value.dropzone = this.dropzone
-            this.dropzoneTotalFile = this.dropzone.files.length
-            this.$emit('input', this.value)
+            if(this.validateFileSize(value)){
+                this.caculateTotalDropzoneFileSize(value)
+                this.value.dropzone = this.dropzone
+                this.dropzoneTotalFile = this.dropzone.files.length
+                this.$emit('input', this.value)
+            }
+            
         },
         'value.list'(value){ // edit by thien nguyen
             this.totalInputFileSize = 0
@@ -77,6 +84,7 @@ export default {
             }
         },
         value(value){
+            // console.log(value);
             if(value != undefined && value != undefined) {
                 this.initDropzone()
             }
@@ -318,7 +326,8 @@ export default {
             for(let i = 0; i < listFile.length; i++){
                 if(listFile[i].accepted == true)
                     this.totalDropzoneFileSize = this.totalDropzoneFileSize + listFile[i].size/1024
-                if( this.maxSize != undefined && (this.totalInputFileSize + this.totalDropzoneFileSize) >= this.maxSize){
+                let totalFileSize = (this.adhocDocuments == null || this.adhocDocuments == undefined) ? this.totalInputFileSize + this.totalDropzoneFileSize : this.totalInputFileSize + this.totalDropzoneFileSize +this.calculateTotalAdhocDocumentFileSize(this.adhocDocuments);
+                if( this.maxSize != undefined && totalFileSize >= this.maxSize){
                     fileError = fileError + listFile[i].name + " "
                     this.totalDropzoneFileSize = this.totalDropzoneFileSize - listFile[i].size/1024
                     this.dropzone.removeFile(listFile[i])
@@ -330,11 +339,38 @@ export default {
                     alert("File: " + fileError + " removed because total size to large.")
             }
         },
-
+        calculateTotalAdhocDocumentFileSize(files){
+            let adhocDocumentsFileSize = 0;
+            for(var j=0; j < files.length; j++){
+                let filesize = files[j].filesize.replace(" ", "");
+                let sizeLength = filesize.length
+                if(filesize.slice(sizeLength - 2, sizeLength).toLowerCase() == 'mb' || filesize.slice(sizeLength - 2, sizeLength).toLowerCase() == 'kb'){
+                    adhocDocumentsFileSize = adhocDocumentsFileSize + parseInt(filesize.slice(0, sizeLength - 2));
+                }
+                else{
+                    adhocDocumentsFileSize = adhocDocumentsFileSize + parseInt(filesize/1024)
+                }
+            }
+            return adhocDocumentsFileSize;
+        },
         parseDropzoneContent(){
             if(this.dropzoneContent == undefined || this.dropzoneContent == null)
                 return 'Attach file by dropping here or <span class="uk-link">selecting one</span>'
             return this.dropzoneContent
+        },
+        validateFileSize(files){
+            let fileError = ""
+            for (var k =0; k < files.length;k++) {
+                if(parseInt(files[k].size/1024) > this.maxSize/2){
+                    if(!this.customMsgValidateSize)
+                        alert('File size is greater than 10MB')
+                    fileError = fileError + files[k].name + " "
+                    this.$emit('validate-file-size', fileError)
+                    this.dropzone.removeFile(files[k]);
+                    return false;
+                }
+            }
+            return true; 
         }
     },
 }
