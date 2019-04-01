@@ -185,7 +185,7 @@ export default {
                         // upload type base64
                         var input = document.createElement('input');
                         input.setAttribute('type', 'file');
-                        input.setAttribute('accept', 'image/*');
+                        input.setAttribute('accept', 'image/jpg,image/png,image/jpeg');
 
                         // Note: In modern browsers input[type="file"] is functional without
                         // even adding it to the DOM, but that might not be the case in some older
