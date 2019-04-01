@@ -206,11 +206,11 @@ export default {
                                 // Note: Now we need to register the blob in TinyMCEs image blob
                                 // registry. In the next release this part hopefully won't be
                                 // necessary, as we are looking to handle it internally.
-                                var id = 'blobid' + (new Date()).getTime();
-                                var blobCache =  tinymce.get(this.id).editorUpload.blobCache;
-                                var base64 = reader.result.split(',')[1];
-                                var blobInfo = blobCache.create(id, file, base64);
-                                blobCache.add(blobInfo);
+                                    // var id = 'blobid' + (new Date()).getTime();
+                                    // var blobCache =  tinymce.get(this.id).editorUpload.blobCache;
+                                    // var base64 = reader.result.split(',')[1];
+                                    // var blobInfo = blobCache.create(id, file, base64);
+                                    // blobCache.add(blobInfo);
                                 // call the callback and populate the Title field with the file name
 
                                 // setTimeout(function() {
