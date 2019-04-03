@@ -35,6 +35,7 @@ export default {
             if ($(e.target).closest(".tox-dialog").length) {
                 e.stopImmediatePropagation();
             }
+            $('.tox-dropzone button input').attr({'accept':'image/jpg,image/png,image/jpeg'})
         }); //charm for tiny mce in modal :))
         $.widget("ui.dialog", $.ui.dialog, {
             _allowInteraction: function(event) {

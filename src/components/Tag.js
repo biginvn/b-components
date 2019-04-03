@@ -91,6 +91,9 @@ export default {
 			if( arrayTag.length == 0 ){
 				this.tags = []
 				this.tagPlaceholder = this.placeholder
+				this.$nextTick(function(){
+                    $('.b__component_input_tag_wrapper label').removeClass('active');
+                })
 			}
 			for( let i = 0; i < arrayTag.length; i++ ){
 				this.addNewTag(arrayTag[i])
