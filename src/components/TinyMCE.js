@@ -35,6 +35,7 @@ export default {
             if ($(e.target).closest(".tox-dialog").length) {
                 e.stopImmediatePropagation();
             }
+            $('.tox-dropzone button input').attr({'accept':'image/jpg,image/png,image/jpeg'})
         }); //charm for tiny mce in modal :))
         $.widget("ui.dialog", $.ui.dialog, {
             _allowInteraction: function(event) {
@@ -185,7 +186,7 @@ export default {
                         // upload type base64
                         var input = document.createElement('input');
                         input.setAttribute('type', 'file');
-                        input.setAttribute('accept', 'image/*');
+                        input.setAttribute('accept', 'image/jpg,image/png,image/jpeg');
 
                         // Note: In modern browsers input[type="file"] is functional without
                         // even adding it to the DOM, but that might not be the case in some older
@@ -206,11 +207,11 @@ export default {
                                 // Note: Now we need to register the blob in TinyMCEs image blob
                                 // registry. In the next release this part hopefully won't be
                                 // necessary, as we are looking to handle it internally.
-                                var id = 'blobid' + (new Date()).getTime();
-                                var blobCache =  tinymce.get(this.id).editorUpload.blobCache;
-                                var base64 = reader.result.split(',')[1];
-                                var blobInfo = blobCache.create(id, file, base64);
-                                blobCache.add(blobInfo);
+                                    // var id = 'blobid' + (new Date()).getTime();
+                                    // var blobCache =  tinymce.get(this.id).editorUpload.blobCache;
+                                    // var base64 = reader.result.split(',')[1];
+                                    // var blobInfo = blobCache.create(id, file, base64);
+                                    // blobCache.add(blobInfo);
                                 // call the callback and populate the Title field with the file name
 
                                 // setTimeout(function() {
