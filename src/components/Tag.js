@@ -20,6 +20,13 @@ export default {
 		value(newValue){
 			this.tags = newValue;
 			this.updateUI();
+		},
+		tags(val){
+			if(val.length == 0){
+				this.$nextTick(function(){
+                    $('.b__component_input_tag_wrapper label').removeClass('active');
+                })
+			}
 		}
 	},
 	methods:{
