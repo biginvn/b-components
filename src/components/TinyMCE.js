@@ -148,33 +148,37 @@ export default {
                         // if($('.tox-dialog'))
                         //     $('.tox-dialog').append(elLoading);
                         // remove tiny basic loading when upload request. that real: we must be change css in class
-                        setTimeout(function() {
-                            var xhr, formData;
-                            xhr = new XMLHttpRequest();
-                            xhr.withCredentials = false;
-                            xhr.open('POST', self.images_upload_url);
-                            xhr.onload = function() {
-                                var json;
-                                if (xhr.status != 200) {
-                                    failure('HTTP Error: ' + xhr.status);
-                                    return;
-                                }
+                        if(blobInfo.blob().type != 'image/gif'){
+                            setTimeout(function() {
+                                var xhr, formData;
+                                xhr = new XMLHttpRequest();
+                                xhr.withCredentials = false;
+                                xhr.open('POST', self.images_upload_url);
+                                xhr.onload = function() {
+                                    var json;
+                                    if (xhr.status != 200) {
+                                        failure('HTTP Error: ' + xhr.status);
+                                        return;
+                                    }
 
-                                json = JSON.parse(xhr.responseText);
+                                    json = JSON.parse(xhr.responseText);
 
-                                if (!json || typeof json.location != 'string') {
-                                    failure('Invalid JSON: ' + xhr.responseText);
-                                    return;
-                                }
-                                // $(".tox-dialog__busy-spinner").remove();
-                                success(json.location);
-                                // $("#mce-modal-block").remove();
-                            };
-                            console.log(blobInfo.blob())
-                            formData = new FormData();
-                            formData.append('file', blobInfo.blob(), blobInfo.filename());
-                            xhr.send(formData);
-                        }, 1000); // must be settimeout function to has loading.https://www.tiny.cloud/docs/demo/local-upload/
+                                    if (!json || typeof json.location != 'string') {
+                                        failure('Invalid JSON: ' + xhr.responseText);
+                                        return;
+                                    }
+                                    // $(".tox-dialog__busy-spinner").remove();
+                                    success(json.location);
+                                    // $("#mce-modal-block").remove();
+                                };
+                                // console.log(blobInfo.blob())
+                                formData = new FormData();
+                                formData.append('file', blobInfo.blob(), blobInfo.filename());
+                                xhr.send(formData);
+                            }, 1000); // must be settimeout function to has loading.https://www.tiny.cloud/docs/demo/local-upload/
+                        }else{
+                            $('.tox-dialog__busy-spinner').remove();
+                        }
                     },
                     file_picker_callback : function(cb, value, meta) {
                         // hook Tiny after select file in upload image implement upload file base64 todo...
