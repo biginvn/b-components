@@ -362,7 +362,7 @@ export default {
         validateFileSize(files){
             let fileError = ""
             for (var k =0; k < files.length;k++) {
-                if(parseInt(files[k].size/1024) > this.maxSize/2){
+                if(parseInt(files[k].size/1024) > 10240){
                     if(!this.customMsgValidateSize)
                         alert('File size is greater than 10MB')
                     fileError = fileError + files[k].name + " "
