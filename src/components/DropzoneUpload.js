@@ -338,6 +338,7 @@ export default {
                 if(!this.customMsgValidateSize)
                     alert("File: " + fileError + " removed because total size to large.")
             }
+            this.$emit('total-file-size', (this.adhocDocuments == null || this.adhocDocuments == undefined) ? this.totalInputFileSize + this.totalDropzoneFileSize : this.totalInputFileSize + this.totalDropzoneFileSize +this.calculateTotalAdhocDocumentFileSize(this.adhocDocuments))
         },
         calculateTotalAdhocDocumentFileSize(files){
             let adhocDocumentsFileSize = 0;
