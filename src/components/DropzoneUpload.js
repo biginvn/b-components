@@ -338,6 +338,7 @@ export default {
                 if(!this.customMsgValidateSize)
                     alert("File: " + fileError + " removed because total size to large.")
             }
+            this.$emit('total-file-size', (this.adhocDocuments == null || this.adhocDocuments == undefined) ? this.totalInputFileSize + this.totalDropzoneFileSize : this.totalInputFileSize + this.totalDropzoneFileSize +this.calculateTotalAdhocDocumentFileSize(this.adhocDocuments))
         },
         calculateTotalAdhocDocumentFileSize(files){
             let adhocDocumentsFileSize = 0;
@@ -361,7 +362,7 @@ export default {
         validateFileSize(files){
             let fileError = ""
             for (var k =0; k < files.length;k++) {
-                if(parseInt(files[k].size/1024) > this.maxSize/2){
+                if(parseInt(files[k].size/1024) > 10240){
                     if(!this.customMsgValidateSize)
                         alert('File size is greater than 10MB')
                     fileError = fileError + files[k].name + " "
