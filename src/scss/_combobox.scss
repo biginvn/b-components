@@ -110,6 +110,7 @@
 
             &>.content {
                 float: left;
+                max-width: calc(100% - 55px);
             }
 
             &>.icon {
