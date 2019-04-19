@@ -116,13 +116,22 @@ export default {
                     this.$emit('validation-file-type', this.supportTypes.join(', '));
                     return this.handleNotification('error', `${this.messages.supportTypes.content} ${this.supportTypes.join(',')}`, this.messages.supportTypes.title);
                 }
-                if(this.maxFileSizeExceeded(file) === true)
-                    return item.className += this.renderHTMLFileType(fileEx);
+                if(this.maxFileSizeExceeded(file) !== true)
+                    return;
+
+                item.className += this.renderHTMLFileType(fileEx);
+                this.afterAddedFile(file);
             })
             this.$emit('dropzone', this.dropzone)
             if(this.value && Array.isArray(this.value.list))
                 this.prepareItems(this.value.list);
         },
+        /**
+         * [afterAddedFile description]
+         * @param  {[type]} file [description]
+         * @return {[type]}      [description]
+         */
+        afterAddedFile(file){},
         /**
          * Set base config dropzone
          * @return {[type]} [description]
