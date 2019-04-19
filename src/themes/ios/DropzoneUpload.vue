@@ -4,7 +4,7 @@
             <div class="content">
                 <div class="row">
                     <img v-if="completedConfig.publicPath" :src="completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'" class="icon-upload">
-                    <span class="uk-text-middle" v-html="parseDropzoneContent()"></span>
+                    <span class="uk-text-middle" v-html="dropzoneContent"></span>
                 </div>
             </div>
         </div>
