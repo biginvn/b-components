@@ -51,7 +51,7 @@ export default
             return this.items
         },
         afterAddedFile(file){
-            var fileEx = _this.getExtension(file.name);
+            var fileEx = this.getExtension(file.name);
             /* handle append export type after added file */
             var idExportTypeElement = Math.floor(Math.random() * 100000); // Create the remove button 
             var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type export-type-upload"><div class="b__components b-checkbox"><input name="is-process-${idExportTypeElement}" type="checkbox" class="checkbox__input"> <span class="checkbox__checkmark"></span> <label>Document Process</label></div><div class="document-type-option"><div class="b__components b-radio" style="display:none;"><input checked name="export-type-${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" style="display:none;" ><input name="export-type-${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div></div>`);
