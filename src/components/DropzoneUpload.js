@@ -301,7 +301,7 @@ export default {
                 })
             }
 
-            if(this.adhocDocuments && Array.isArray(this.adhocDocuments)){
+            if(Array.isArray(this.adhocDocuments)){
                 this.adhocDocuments.forEach((adhoc) => {
                     currentFileSize += parseInt(adhoc.filesize);
                 })
