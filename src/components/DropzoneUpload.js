@@ -300,6 +300,11 @@ export default {
                     currentFileSize += parseInt(file.size);
                 })
             }
+
+            this.adhocDocuments.forEach((adhoc) => {
+                currentFileSize += parseInt(adhoc.filesize);
+            })
+            
             return currentFileSize;
         }
     }

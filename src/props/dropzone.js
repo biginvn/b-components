@@ -62,21 +62,11 @@ var baseProps = {
         	return fileTypes;
         }
     },
-    customMsgValidateNumber:{
-        type : Boolean,
-        default : false
-    },
-    customMsgValidateSize:{
-        type : Boolean,
-        default : false
-    },
-    customMsgValidateType:{
-        type : Boolean,
-        default : false
-    },
     adhocDocuments:{
         type: Object/Array,
-        default: null
+        default: function(){
+            return [];
+        }
     },
     dropzoneContent:{
         type: String,
