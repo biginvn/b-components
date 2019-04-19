@@ -96,7 +96,7 @@ export default {
          * @return {[type]} [description]
          */
         initDropzone(){
-            if (this.dropzone !== null)
+            if (this.dropzone)
                 return this.dropzoneRemoveFile()
             this.configDropzone()
             this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
@@ -301,10 +301,11 @@ export default {
                 })
             }
 
-            this.adhocDocuments.forEach((adhoc) => {
-                currentFileSize += parseInt(adhoc.filesize);
-            })
-            
+            if(this.adhocDocuments && Array.isArray(this.adhocDocuments)){
+                this.adhocDocuments.forEach((adhoc) => {
+                    currentFileSize += parseInt(adhoc.filesize);
+                })
+            }
             return currentFileSize;
         }
     }
