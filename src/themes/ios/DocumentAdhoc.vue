@@ -1,6 +1,6 @@
 <template>
     <div class="b__components b__dropzone_upload">
-        <div class="b__components__dropzone" :id="id" v-show="(dropzoneTotalFile + inputTotalFile) < parseInt(maxFile) || maxFile == undefined">
+        <div class="b__components__dropzone" :id="id" v-show="totalFileSize && !disabled">
             <div class="content">
                 <div class="row">
                     <img v-if="completedConfig.publicPath" :src="completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'" class="icon-upload">
@@ -27,7 +27,7 @@
                     <img v-else data-dz-thumbnail="">
                     <a :href="item.path"><span data-dz-name="" class="dz-name">{{ item.name }}</span></a>
                     <strong>
-                        <span class="dz-size" data-dz-size>{{ item.filesize }}</span>
+                        <span class="dz-size" data-dz-size>{{ renderFileSize(item.filesize) }}</span>
                     </strong>
                     <a data-dz-remove="" class="remove-archive" @click="deleteThisItem(item.id)"><i class="fas fa-times"></i></a>
                 </div> 
