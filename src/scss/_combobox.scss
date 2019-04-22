@@ -10,17 +10,34 @@
     .result {
         display: flex;
         align-items: center;
-        &>.icon {
-            width: 45px;
-            float: left;
-            margin-right: 10px;
-            &>.icon-img {
+        width: calc(100% - 15px);
+        .item-result-combobox {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: calc(100% - 15px);
+            &.url-item-combobox {
+                color: #444;
+                font-weight: 600;
+                text-decoration: none;
+                pointer-events: visible;
+                &:hover {
+                    color: #337ab7;
+                    text-decoration: underline;
+                }
+            }
+            .icon {
                 width: 45px;
-                display: block;
-                border-radius: 50%;
-                height: 45px;
-                -o-object-fit: cover;
-                object-fit: cover;
+                float: left;
+                margin-right: 10px;
+                .icon-img {
+                    width: 45px;
+                    display: block;
+                    border-radius: 50%;
+                    height: 45px;
+                    -o-object-fit: cover;
+                    object-fit: cover;
+                }
             }
         }
     }

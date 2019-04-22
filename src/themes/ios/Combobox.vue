@@ -4,10 +4,18 @@
 		 :org-placeholder="orgPlaceholder">
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label.toUpperCase() }}</label>
 		<div v-show="showResult && isShowHtmlResult" class="result" @click="showInputSearch()">
-			<div class="icon" v-if = "!disableIcon">
-				<img :src="itemResult.icon" class="icon-img">
+			<a v-if="hasUrl" :href="itemResult.url" target="_blank" class="url-item-combobox item-result-combobox">
+				<div class="icon" v-if = "!disableIcon">
+					<img :src="itemResult.icon" class="icon-img">
+				</div>
+				<div class="content" v-html="itemResult.html"></div>
+			</a>
+			<div v-else class="item-result-combobox">
+				<div class="icon" v-if = "!disableIcon">
+					<img :src="itemResult.icon" class="icon-img">
+				</div>
+				<div class="content" v-html="itemResult.html"></div>
 			</div>
-			<div class="content" v-html="itemResult.html"></div>
 		</div>
 
 		<!--remove action key down backspace: @keydown.8="keypressAction('BackSpace', null)" -->
@@ -18,7 +26,7 @@
 			   @blur="blurCombobox($event)" @focus="focusCombobox($event);$emit('removeRequired')"
 			   :value="searchKeyword" class="search-keywords input__combobox" @keydown.40="keypressAction('ArrowDown', $event)"
 			   @keydown.8="keypressAction('BackSpace', null)"
-		@keydown.prevent.38="keypressAction('ArrowUp', $event)" @keydown.13="keypressAction('Enter')"
+			   @keydown.prevent.38="keypressAction('ArrowUp', $event)" @keydown.13="keypressAction('Enter')"
 		>
 		<ul :class="[{active : isExpanding}, 'list-search', {'custom-default-select' : styleDefault}, {'active-border' : isFocused}]">
 			<li v-show ="searchList.length == 0" class="not-found" v-html="placeholderEmpty"></li>
@@ -37,12 +45,12 @@
 	export default Combobox
 </script>
 <style>
-.combo_box_disable{
-	border:transparent !important;
-	cursor: default !important;
-}
-.control-down{
-	display: none;
-}
+	.combo_box_disable{
+		border:transparent !important;
+		cursor: default !important;
+	}
+	.control-down{
+		display: none;
+	}
 </style>
 <!-- test push -->
