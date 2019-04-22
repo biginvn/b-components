@@ -96,7 +96,7 @@ export default {
          * @return {[type]} [description]
          */
         initDropzone(){
-            if (this.dropzone !== null)
+            if (this.dropzone)
                 return this.dropzoneRemoveFile()
             this.configDropzone()
             this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
@@ -116,13 +116,22 @@ export default {
                     this.$emit('validation-file-type', this.supportTypes.join(', '));
                     return this.handleNotification('error', `${this.messages.supportTypes.content} ${this.supportTypes.join(',')}`, this.messages.supportTypes.title);
                 }
-                if(this.maxFileSizeExceeded(file) === true)
-                    return item.className += this.renderHTMLFileType(fileEx);
+                if(this.maxFileSizeExceeded(file) !== true)
+                    return;
+
+                item.className += this.renderHTMLFileType(fileEx);
+                this.afterAddedFile(file);
             })
             this.$emit('dropzone', this.dropzone)
             if(this.value && Array.isArray(this.value.list))
                 this.prepareItems(this.value.list);
         },
+        /**
+         * [afterAddedFile description]
+         * @param  {[type]} file [description]
+         * @return {[type]}      [description]
+         */
+        afterAddedFile(file){},
         /**
          * Set base config dropzone
          * @return {[type]} [description]
@@ -289,6 +298,12 @@ export default {
             if(this.dropzone && Array.isArray(this.dropzone.files)){
                 this.dropzone.files.forEach((file) => {
                     currentFileSize += parseInt(file.size);
+                })
+            }
+
+            if(Array.isArray(this.adhocDocuments)){
+                this.adhocDocuments.forEach((adhoc) => {
+                    currentFileSize += parseInt(adhoc.filesize);
                 })
             }
             return currentFileSize;

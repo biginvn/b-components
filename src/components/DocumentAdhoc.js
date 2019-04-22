@@ -50,56 +50,27 @@ export default
             this.items = items
             return this.items
         },
-        initDropzone(){
-            this.configDropzone()
-            this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig)
-            let _this = this
-            this.dropzone.on("sending", (file, xhr, formData) => {
-                document.querySelector(`#${_this.id} + .total-progress .progress`).style.opacity = "1"
-            })
+        afterAddedFile(file){
+            var fileEx = this.getExtension(file.name);
+            /* handle append export type after added file */
+            var idExportTypeElement = Math.floor(Math.random() * 100000); // Create the remove button 
+            var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type export-type-upload"><div class="b__components b-checkbox"><input name="is-process-${idExportTypeElement}" type="checkbox" class="checkbox__input"> <span class="checkbox__checkmark"></span> <label>Document Process</label></div><div class="document-type-option"><div class="b__components b-radio" style="display:none;"><input checked name="export-type-${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" style="display:none;" ><input name="export-type-${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div></div>`);
+            var d = file.previewElement.appendChild(exportTypeElement)
+            /* register event js for review document */
+            $(`input[name="is-process-${idExportTypeElement}"]`).change(function() {
 
-            this.dropzone.on("addedfile", (file) => {
-                var parent = document.querySelectorAll('.' + this.id + '__preview__container .preview:not(stuff)');
-                for (var i = 0; i < parent.length ; i++) {
-                    var item = parent[i].querySelector('.dz-thumb');
-                    parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
+                if ($(this).is(':checked') == true) {
+                    $(this).parent().siblings().children('.b-radio').css("display","");
+                }else{
+                    $(this).parent().siblings().children('.b-radio').css("display","none");
                 }
-                var fileEx = _this.getExtension(file.name);
-                if(_this.supportTypes.indexOf(`.${fileEx}`) === -1){
-                    _this.dropzone.removeFile(file);
-                    _this.$emit('validation-file-type', _this.supportTypes.join(', '));
-                    return _this.handleNotification('error', `${_this.messages.supportTypes.content} ${_this.supportTypes.join(',')}`, _this.messages.supportTypes.title);
-                }
-
-                if(_this.maxFileSizeExceeded(file) !== true)
-                    return;
-
-                item.className += _this.renderHTMLFileType(fileEx);
-                /* handle append export type after added file */
-                var idExportTypeElement = Math.floor(Math.random() * 100000); // Create the remove button 
-                var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type export-type-upload"><div class="b__components b-checkbox"><input name="is-process-${idExportTypeElement}" type="checkbox" class="checkbox__input"> <span class="checkbox__checkmark"></span> <label>Document Process</label></div><div class="document-type-option"><div class="b__components b-radio" style="display:none;"><input checked name="export-type-${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" style="display:none;" ><input name="export-type-${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div></div>`);
-                var d = file.previewElement.appendChild(exportTypeElement)
-                /* register event js for review document */
-                $(`input[name="is-process-${idExportTypeElement}"]`).change(function() {
-
-                    if ($(this).is(':checked') == true) {
-                        $(this).parent().siblings().children('.b-radio').css("display","");
-                    }else{
-                        $(this).parent().siblings().children('.b-radio').css("display","none");
-                    }
-                });
-                /* end register event js for review document */
-                item.className += _this.renderHTMLFileType(fileEx);
-                if(fileEx != 'docx'){
-                    let element = $(`input[name="is-process-${idExportTypeElement}"]`);
-                    element.closest('.preview').find('.export-type-upload').css("display","none");
-                    element.closest('.preview').find('.dz-size').removeClass('dz-document-bonus').addClass('dz-document-none');
-                }
-            })
-
-            this.$emit('dropzone', this.dropzone)
-            if(this.value && Array.isArray(this.value.list))
-                this.prepareItems(this.value.list);
+            });
+            /* end register event js for review document */
+            if(fileEx != 'docx'){
+                let element = $(`input[name="is-process-${idExportTypeElement}"]`);
+                element.closest('.preview').find('.export-type-upload').css("display","none");
+                element.closest('.preview').find('.dz-size').removeClass('dz-document-bonus').addClass('dz-document-none');
+            }
         },
         configDropzone() {
             let acceptedFiles = this.supportTypes.join(',')
