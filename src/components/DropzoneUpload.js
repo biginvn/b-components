@@ -1,5 +1,5 @@
 import baseComponent from '../mixins/base-mixins';
-import { Props , Variables } from '../props/dropzone';
+import { Props , Variables, FileTypes } from '../props/dropzone';
 
 export default {
     mixins: [baseComponent],
@@ -9,7 +9,31 @@ export default {
         }
     },
     props: {
-        ...JSON.parse(JSON.stringify(Props))
+        ...JSON.parse(JSON.stringify(Props)),
+        disabled : {
+            type : Boolean,
+            default : false
+        },
+        supportFileType: {
+            type: Object/Array,
+            default: function () { return FileTypes }
+        },
+        adhocDocuments:{
+            type: Object/Array,
+            default: function () { return [] }
+        },
+        dropzoneContent:{
+            type: String,
+            default: 'Attach file by dropping here or <span class="uk-link">selecting one</span>'
+        },
+        maxSizePerFile:{
+            type: Number,
+            default: 10240
+        },
+        unitBytes:{
+            type: Number,
+            default: 1000
+        }
     },
     mounted() {
         this.initDropzone()
@@ -17,7 +41,8 @@ export default {
     computed: {
         supportTypes(){ return [...this.supportFileType]},
         totalFileSize(){
-            if(this.maxSize) return !(parseInt(this.getCurrentFileSize()/this.unitBytes) > this.maxSize);
+            if(this.maxFile) return (parseInt(this.maxFile) > this.totalFiles());
+            if(this.maxSize) return !(parseInt(this.getCurrentFileSize()/this.unitBytes) >= this.maxSize);
             return true;
         }
     },
@@ -33,6 +58,18 @@ export default {
         }
     },
     methods: {
+        /** 
+         * [totalFiles description]
+         * @return {[type]} [description]
+         */
+        totalFiles(){
+            var total = 0;
+            if(this.dropzone)
+                total += parseInt(this.dropzone.files.length);
+            if(Array.isArray(this.items))
+                total += parseInt(this.items.length);
+            return total;
+        },      
         /** 
          * Render html icon for file by extension
          * @param  {[type]} fileEx [extionsion]
@@ -54,7 +91,7 @@ export default {
                 toastr.clear();
                 toastr.options = {
                     closeButton: true,
-                    positionClass: 'toast-bottom-right',
+                    positionClass: 'toast-top-right',
                     onclick: null,
                     showDuration: 1000,
                     hideDuration: 1000,
@@ -137,7 +174,8 @@ export default {
          * @return {[type]} [description]
          */
         configDropzone() {
-            let acceptedFiles = this.supportTypes.join(',')
+            let acceptedFiles = this.supportTypes.join(',');
+            let _this = this;
             let config = {
                 thumbnailWidth : 80,
                 thumbnailHeight: 80,
@@ -152,8 +190,8 @@ export default {
                 maxfilesexceeded: function(file) {
                     this.removeAllFiles();
                     this.addFile(file);
-                    this.$emit('validation-file-number', file);
-                    this.handleNotification('error', `${this.messages.maxFile.content} ${this.maxFile} file(s)`, this.messages.maxFile.title);
+                    _this.$emit('validation-file-number', file);
+                    _this.handleNotification('error', `${this.messages.maxFile.content} ${this.maxFile} file(s)`, this.messages.maxFile.title);
                 },
             }
             this.completedConfig  = Object.assign(config, this.config)
@@ -270,14 +308,14 @@ export default {
          */
         maxFileSizeExceeded(file){
             if(parseInt(file.size/this.unitBytes) > this.maxSizePerFile){
-                this.handleNotification('error', `${this.messages.maxSize.content} ${this.renderFileSize(this.maxSizePerFile)}`, this.messages.maxSize.title);
+                this.handleNotification('error', `${this.messages.maxSize.content} ${this.renderFileSize(this.maxSizePerFile * 1000)}`, this.messages.maxSize.title);
                 this.$emit('validate-file-size', file.name);
                 this.dropzone.removeFile(file);
                 return false;
             }
             if(this.maxSize){
                 if(parseInt(this.getCurrentFileSize()/this.unitBytes) > parseInt(this.maxSize)){
-                    this.handleNotification('error', `${this.messages.maxTotalSize.content} ${this.renderFileSize(this.maxSize)}`, this.messages.maxTotalSize.title);
+                    this.handleNotification('error', `${this.messages.maxTotalSize.content} ${this.renderFileSize(this.maxSize * 1000)}`, this.messages.maxTotalSize.title);
                     this.$emit('validation-file-size', file.name)
                     this.dropzone.removeFile(file);
                     return false;
@@ -301,7 +339,7 @@ export default {
                 })
             }
 
-            if(Array.isArray(this.adhocDocuments)){
+            if(this.adhocDocuments && Array.isArray(this.adhocDocuments)){
                 this.adhocDocuments.forEach((adhoc) => {
                     currentFileSize += parseInt(adhoc.filesize);
                 })
