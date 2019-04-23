@@ -46,40 +46,12 @@ var variables = {
 }
 
 var baseProps = {
-	name: {},
+    name: {},
     config: {},
     id: {},
     maxFile: {},
     mode: {},
-    maxSize: {},
-    disabled : {
-        type : Boolean,
-        default : false
-    },
-    supportFileType: {
-        type: Array,
-        default: function(){
-        	return fileTypes;
-        }
-    },
-    adhocDocuments:{
-        type: Object/Array,
-        default: function(){
-            return [];
-        }
-    },
-    dropzoneContent:{
-        type: String,
-        default: 'Attach file by dropping here or <span class="uk-link">selecting one</span>'
-    },
-    maxSizePerFile:{
-        type: Number,
-        default: 10240
-    },
-    unitBytes:{
-        type: Number,
-        default: 1000
-    }
+    maxSize: {}
 }
 
-export { baseProps as Props , variables as Variables }
+export { baseProps as Props , variables as Variables, fileTypes as FileTypes }
