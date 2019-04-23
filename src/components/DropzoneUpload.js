@@ -41,7 +41,8 @@ export default {
     computed: {
         supportTypes(){ return [...this.supportFileType]},
         totalFileSize(){
-            if(this.maxSize) return !(parseInt(this.getCurrentFileSize()/this.unitBytes) > this.maxSize);
+            if(this.maxFile) return (parseInt(this.maxFile) > this.totalFiles());
+            if(this.maxSize) return !(parseInt(this.getCurrentFileSize()/this.unitBytes) >= this.maxSize);
             return true;
         }
     },
@@ -57,6 +58,14 @@ export default {
         }
     },
     methods: {
+        totalFiles(){
+            var total = 0;
+            if(this.dropzone)
+                total += parseInt(this.dropzone.files.length);
+            if(Array.isArray(this.items))
+                total += parseInt(this.items.length);
+            return total;
+        },      
         /** 
          * Render html icon for file by extension
          * @param  {[type]} fileEx [extionsion]
@@ -78,7 +87,7 @@ export default {
                 toastr.clear();
                 toastr.options = {
                     closeButton: true,
-                    positionClass: 'toast-bottom-right',
+                    positionClass: 'toast-top-right',
                     onclick: null,
                     showDuration: 1000,
                     hideDuration: 1000,
@@ -161,7 +170,8 @@ export default {
          * @return {[type]} [description]
          */
         configDropzone() {
-            let acceptedFiles = this.supportTypes.join(',')
+            let acceptedFiles = this.supportTypes.join(',');
+            let _this = this;
             let config = {
                 thumbnailWidth : 80,
                 thumbnailHeight: 80,
@@ -176,8 +186,8 @@ export default {
                 maxfilesexceeded: function(file) {
                     this.removeAllFiles();
                     this.addFile(file);
-                    this.$emit('validation-file-number', file);
-                    this.handleNotification('error', `${this.messages.maxFile.content} ${this.maxFile} file(s)`, this.messages.maxFile.title);
+                    _this.$emit('validation-file-number', file);
+                    _this.handleNotification('error', `${this.messages.maxFile.content} ${this.maxFile} file(s)`, this.messages.maxFile.title);
                 },
             }
             this.completedConfig  = Object.assign(config, this.config)
