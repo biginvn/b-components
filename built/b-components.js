@@ -64114,54 +64114,27 @@ const getCountry = function () {
             this.items = items;
             return this.items;
         },
-        initDropzone() {
-            this.configDropzone();
-            this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig);
-            let _this = this;
-            this.dropzone.on("sending", (file, xhr, formData) => {
-                document.querySelector(`#${_this.id} + .total-progress .progress`).style.opacity = "1";
-            });
+        afterAddedFile(file) {
+            var fileEx = this.getExtension(file.name);
+            /* handle append export type after added file */
+            var idExportTypeElement = Math.floor(Math.random() * 100000); // Create the remove button 
+            var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type export-type-upload"><div class="b__components b-checkbox"><input name="is-process-${idExportTypeElement}" type="checkbox" class="checkbox__input"> <span class="checkbox__checkmark"></span> <label>Document Process</label></div><div class="document-type-option"><div class="b__components b-radio" style="display:none;"><input checked name="export-type-${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" style="display:none;" ><input name="export-type-${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div></div>`);
+            var d = file.previewElement.appendChild(exportTypeElement);
+            /* register event js for review document */
+            $(`input[name="is-process-${idExportTypeElement}"]`).change(function () {
 
-            this.dropzone.on("addedfile", file => {
-                var parent = document.querySelectorAll('.' + this.id + '__preview__container .preview:not(stuff)');
-                for (var i = 0; i < parent.length; i++) {
-                    var item = parent[i].querySelector('.dz-thumb');
-                    parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
-                }
-                var fileEx = _this.getExtension(file.name);
-                if (_this.supportTypes.indexOf(`.${fileEx}`) === -1) {
-                    _this.dropzone.removeFile(file);
-                    _this.$emit('validation-file-type', _this.supportTypes.join(', '));
-                    return _this.handleNotification('error', `${_this.messages.supportTypes.content} ${_this.supportTypes.join(',')}`, _this.messages.supportTypes.title);
-                }
-
-                if (_this.maxFileSizeExceeded(file) !== true) return;
-
-                item.className += _this.renderHTMLFileType(fileEx);
-                /* handle append export type after added file */
-                var idExportTypeElement = Math.floor(Math.random() * 100000); // Create the remove button 
-                var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type export-type-upload"><div class="b__components b-checkbox"><input name="is-process-${idExportTypeElement}" type="checkbox" class="checkbox__input"> <span class="checkbox__checkmark"></span> <label>Document Process</label></div><div class="document-type-option"><div class="b__components b-radio" style="display:none;"><input checked name="export-type-${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" style="display:none;" ><input name="export-type-${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div></div>`);
-                var d = file.previewElement.appendChild(exportTypeElement);
-                /* register event js for review document */
-                $(`input[name="is-process-${idExportTypeElement}"]`).change(function () {
-
-                    if ($(this).is(':checked') == true) {
-                        $(this).parent().siblings().children('.b-radio').css("display", "");
-                    } else {
-                        $(this).parent().siblings().children('.b-radio').css("display", "none");
-                    }
-                });
-                /* end register event js for review document */
-                item.className += _this.renderHTMLFileType(fileEx);
-                if (fileEx != 'docx') {
-                    let element = $(`input[name="is-process-${idExportTypeElement}"]`);
-                    element.closest('.preview').find('.export-type-upload').css("display", "none");
-                    element.closest('.preview').find('.dz-size').removeClass('dz-document-bonus').addClass('dz-document-none');
+                if ($(this).is(':checked') == true) {
+                    $(this).parent().siblings().children('.b-radio').css("display", "");
+                } else {
+                    $(this).parent().siblings().children('.b-radio').css("display", "none");
                 }
             });
-
-            this.$emit('dropzone', this.dropzone);
-            if (this.value && Array.isArray(this.value.list)) this.prepareItems(this.value.list);
+            /* end register event js for review document */
+            if (fileEx != 'docx') {
+                let element = $(`input[name="is-process-${idExportTypeElement}"]`);
+                element.closest('.preview').find('.export-type-upload').css("display", "none");
+                element.closest('.preview').find('.dz-size').removeClass('dz-document-bonus').addClass('dz-document-none');
+            }
         },
         configDropzone() {
             let acceptedFiles = this.supportTypes.join(',');
@@ -66232,14 +66205,14 @@ const getCountry = function () {
             var height = this.height == null || this.height == undefined ? "450" : this.height;
             if (readonly == 1) {
                 var toolbar1 = false;
-            } else var toolbar1 = 'undo redo formatselect | bold italic strikethrough | link image | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent pagebreak lineheightselect';
+            } else var toolbar1 = 'undo redo formatselect | bold italic strikethrough | link image | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent pagebreak line-height-select';
             tinymce.init(Object.assign({}, {
                 selector: '#' + self.id,
                 // height : height,
                 lineheight_formats: 'Single=100% 1.5=150% Double=200%',
                 theme: 'silver',
-                plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help noneditable',
-                // plugins: 'advlist lineheight autolink',
+                plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help noneditable line-height',
+                // plugins: 'advlist line-height autolink',
                 // plugins: 'print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount tinymcespellchecker a11ychecker imagetools textpattern help formatpainter permanentpen pageembed tinycomments mentions linkchecker',
                 toolbar1: toolbar1,
                 table_default_attributes: {
@@ -83368,7 +83341,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n.document-type{\n    margin: 10px 0 10px 20px;\n}\n.document-type-option{\n    margin: 15px 30px 0px 30px;\n    display: flex;\n    justify-content: space-between;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DocumentAdhoc.vue?18dbe650"],"names":[],"mappings":";AAmDA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA;AACA;IACA,yBAAA;CACA;AACA;IACA,2BAAA;IACA,cAAA;IACA,+BAAA;CACA","file":"DocumentAdhoc.vue","sourcesContent":["<template>\n    <div class=\"b__components b__dropzone_upload\">\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"totalFileSize && !disabled\">\n            <div class=\"content\">\n                <div class=\"row\">\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\n                    <span class=\"uk-text-middle\" v-html=\"parseDropzoneContent()\"></span>\n                </div>\n            </div>\n        </div>\n        <div :class=\"id + '__preview__container'\">\n            <div :class=\"id + '__preview preview stuff'\">\n                <div class=\"preview\" style=\"height: 100%;\">\n                    <div class=\"dz-thumb\">\n                        <img data-dz-thumbnail=\"\">\n                    </div> \n                    <span data-dz-name=\"\" class=\"dz-name\"></span>\n                    <span data-dz-size=\"\" class=\"dz-size\"></span>\n                    <a href=\"#\" target=\"_blank\" data-dz-remove=\"\" class=\"remove-archive\">\n                        <span><i class=\"fas fa-times\"></i></span>\n                    </a>\n                </div>\n            </div>\n            <div v-for= \"item in items\" class=\"preview\">\n                <div :class=\"item.className\" style=\"animation: fadeOut;\">\n                    <img v-if=\"item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'\" data-dz-thumbnail=\"\" :src=\"item.path\">\n                    <img v-else data-dz-thumbnail=\"\">\n                    <a :href=\"item.path\"><span data-dz-name=\"\" class=\"dz-name\">{{ item.name }}</span></a>\n                    <strong>\n                        <span class=\"dz-size\" data-dz-size>{{ renderFileSize(item.filesize) }}</span>\n                    </strong>\n                    <a data-dz-remove=\"\" class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fas fa-times\"></i></a>\n                </div> \n                <div class=\"form-group document-type\" v-if=\"item.className == 'dz-thumb dz-doc show-option-document'\">\n                    <b-check-box v-model=\"item.isProcess\" label=\"Document Process\"></b-check-box>\n                    <div class=\"document-type-option\">\n                        <b-radio v-model=\"item.exportType\" label=\"Docx\" value=\"docx\" v-if=\"item.isProcess\"></b-radio>\n                        <b-radio v-model=\"item.exportType\" label=\"Pdf\" value=\"pdf\" v-if=\"item.isProcess\"></b-radio>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport DocumentAdhoc from './../../components/DocumentAdhoc'\nexport default DocumentAdhoc\n</script>\n\n<style>\n    .disabled-upload:hover .uk-text-middle:after{\n        content: '(*Remove assets file to change new file.)';\n\n    }\n    .disabled-upload{\n        animation: fadeIn;\n        animation-duration: 1s;\n        will-change: padding;\n        cursor: help;\n    }\n    .document-type{\n        margin: 10px 0 10px 20px;\n    }\n    .document-type-option{\n        margin: 15px 30px 0px 30px;\n        display: flex;\n        justify-content: space-between;\n    }\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n.document-type{\n    margin: 10px 0 10px 20px;\n}\n.document-type-option{\n    margin: 15px 30px 0px 30px;\n    display: flex;\n    justify-content: space-between;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DocumentAdhoc.vue?13fced08"],"names":[],"mappings":";AAmDA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA;AACA;IACA,yBAAA;CACA;AACA;IACA,2BAAA;IACA,cAAA;IACA,+BAAA;CACA","file":"DocumentAdhoc.vue","sourcesContent":["<template>\n    <div class=\"b__components b__dropzone_upload\">\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"totalFileSize && !disabled\">\n            <div class=\"content\">\n                <div class=\"row\">\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\n                    <span class=\"uk-text-middle\" v-html=\"dropzoneContent\"></span>\n                </div>\n            </div>\n        </div>\n        <div :class=\"id + '__preview__container'\">\n            <div :class=\"id + '__preview preview stuff'\">\n                <div class=\"preview\" style=\"height: 100%;\">\n                    <div class=\"dz-thumb\">\n                        <img data-dz-thumbnail=\"\">\n                    </div> \n                    <span data-dz-name=\"\" class=\"dz-name\"></span>\n                    <span data-dz-size=\"\" class=\"dz-size\"></span>\n                    <a href=\"#\" target=\"_blank\" data-dz-remove=\"\" class=\"remove-archive\">\n                        <span><i class=\"fas fa-times\"></i></span>\n                    </a>\n                </div>\n            </div>\n            <div v-for= \"item in items\" class=\"preview\">\n                <div :class=\"item.className\" style=\"animation: fadeOut;\">\n                    <img v-if=\"item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'\" data-dz-thumbnail=\"\" :src=\"item.path\">\n                    <img v-else data-dz-thumbnail=\"\">\n                    <a :href=\"item.path\"><span data-dz-name=\"\" class=\"dz-name\">{{ item.name }}</span></a>\n                    <strong>\n                        <span class=\"dz-size\" data-dz-size>{{ renderFileSize(item.filesize) }}</span>\n                    </strong>\n                    <a data-dz-remove=\"\" class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fas fa-times\"></i></a>\n                </div> \n                <div class=\"form-group document-type\" v-if=\"item.className == 'dz-thumb dz-doc show-option-document'\">\n                    <b-check-box v-model=\"item.isProcess\" label=\"Document Process\"></b-check-box>\n                    <div class=\"document-type-option\">\n                        <b-radio v-model=\"item.exportType\" label=\"Docx\" value=\"docx\" v-if=\"item.isProcess\"></b-radio>\n                        <b-radio v-model=\"item.exportType\" label=\"Pdf\" value=\"pdf\" v-if=\"item.isProcess\"></b-radio>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport DocumentAdhoc from './../../components/DocumentAdhoc'\nexport default DocumentAdhoc\n</script>\n\n<style>\n    .disabled-upload:hover .uk-text-middle:after{\n        content: '(*Remove assets file to change new file.)';\n\n    }\n    .disabled-upload{\n        animation: fadeIn;\n        animation-duration: 1s;\n        will-change: padding;\n        cursor: help;\n    }\n    .document-type{\n        margin: 10px 0 10px 20px;\n    }\n    .document-type-option{\n        margin: 15px 30px 0px 30px;\n        display: flex;\n        justify-content: space-between;\n    }\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -83382,7 +83355,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DropzoneUpload.vue?5f0e1c81"],"names":[],"mappings":";AAsCA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA","file":"DropzoneUpload.vue","sourcesContent":["<template>\n    <div class=\"b__components b__dropzone_upload\">\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"totalFileSize && !disabled\">\n            <div class=\"content\">\n                <div class=\"row\">\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\n                    <span class=\"uk-text-middle\" v-html=\"parseDropzoneContent()\"></span>\n                </div>\n            </div>\n        </div>\n        <div :class=\"id + '__preview__container'\">\n            <div :class=\"id + '__preview preview stuff'\">\n                <div class=\"preview\">\n                    <div class=\"dz-thumb\"><img data-dz-thumbnail /></div>\n                    <span class=\"dz-name\" data-dz-name></span>\n                    <span class=\"dz-size\" data-dz-size></span>\n                    <a href=\"#\" class=\"remove-archive\" target=\"_blank\" data-dz-remove><span><i class=\"fas fa-times\"></i></span></a>\n                </div>\n            </div>\n            <div v-for= \"item in items\" class=\"preview\">\n                <div :class=\"item.className\" style=\"animation: fadeOut;\">\n                    <img v-if=\"item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'\" data-dz-thumbnail=\"\" :src=\"item.path\" style=\"height: 45px;\">\n                    <img v-else data-dz-thumbnail=\"\">\n                    <a :href=\"item.path\" target=\"_blank\"><span data-dz-name=\"\" class=\"dz-name\" data-toggle=\"tooltip\" data-original-title=\"Download\">{{ item.name }}</span></a>\n                    <strong><span class=\"dz-size\" data-dz-size>{{ renderFileSize(item.filesize) }}</span></strong>\n                    <a data-dz-remove=\"\" v-show=\"!disabled\"  class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fas fa-times\"></i></a>\n                </div> \n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport DropzoneUpload from './../../components/DropzoneUpload'\nexport default DropzoneUpload\n</script>\n\n<style>\n    .disabled-upload:hover .uk-text-middle:after{\n        content: '(*Remove assets file to change new file.)';\n\n    }\n    .disabled-upload{\n        animation: fadeIn;\n        animation-duration: 1s;\n        will-change: padding;\n        cursor: help;\n    }\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DropzoneUpload.vue?0f5e95b1"],"names":[],"mappings":";AAsCA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA","file":"DropzoneUpload.vue","sourcesContent":["<template>\n    <div class=\"b__components b__dropzone_upload\">\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"totalFileSize && !disabled\">\n            <div class=\"content\">\n                <div class=\"row\">\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\n                    <span class=\"uk-text-middle\" v-html=\"dropzoneContent\"></span>\n                </div>\n            </div>\n        </div>\n        <div :class=\"id + '__preview__container'\">\n            <div :class=\"id + '__preview preview stuff'\">\n                <div class=\"preview\">\n                    <div class=\"dz-thumb\"><img data-dz-thumbnail /></div>\n                    <span class=\"dz-name\" data-dz-name></span>\n                    <span class=\"dz-size\" data-dz-size></span>\n                    <a href=\"#\" class=\"remove-archive\" target=\"_blank\" data-dz-remove><span><i class=\"fas fa-times\"></i></span></a>\n                </div>\n            </div>\n            <div v-for= \"item in items\" class=\"preview\">\n                <div :class=\"item.className\" style=\"animation: fadeOut;\">\n                    <img v-if=\"item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'\" data-dz-thumbnail=\"\" :src=\"item.path\" style=\"height: 45px;\">\n                    <img v-else data-dz-thumbnail=\"\">\n                    <a :href=\"item.path\" target=\"_blank\"><span data-dz-name=\"\" class=\"dz-name\" data-toggle=\"tooltip\" data-original-title=\"Download\">{{ item.name }}</span></a>\n                    <strong><span class=\"dz-size\" data-dz-size>{{ renderFileSize(item.filesize) }}</span></strong>\n                    <a data-dz-remove=\"\" v-show=\"!disabled\"  class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fas fa-times\"></i></a>\n                </div> \n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport DropzoneUpload from './../../components/DropzoneUpload'\nexport default DropzoneUpload\n</script>\n\n<style>\n    .disabled-upload:hover .uk-text-middle:after{\n        content: '(*Remove assets file to change new file.)';\n\n    }\n    .disabled-upload{\n        animation: fadeIn;\n        animation-duration: 1s;\n        will-change: padding;\n        cursor: help;\n    }\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -100418,7 +100391,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }) : _vm._e(), _vm._v(" "), _c('span', {
     staticClass: "uk-text-middle",
     domProps: {
-      "innerHTML": _vm._s(_vm.parseDropzoneContent())
+      "innerHTML": _vm._s(_vm.dropzoneContent)
     }
   })])])]), _vm._v(" "), _c('div', {
     class: _vm.id + '__preview__container'
@@ -100579,7 +100552,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }) : _vm._e(), _vm._v(" "), _c('span', {
     staticClass: "uk-text-middle",
     domProps: {
-      "innerHTML": _vm._s(_vm.parseDropzoneContent())
+      "innerHTML": _vm._s(_vm.dropzoneContent)
     }
   })])])]), _vm._v(" "), _c('div', {
     class: _vm.id + '__preview__container'
