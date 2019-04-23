@@ -16,7 +16,8 @@ export default {
                 id: null,
                 html: null,
                 title: null,
-                icon: null
+                icon: null,
+                url: null
             }
             // value: null,
         }
@@ -44,6 +45,10 @@ export default {
         disableIcon: {
             type: Boolean,
             default: true
+        },
+        hasUrl: {
+            type: Boolean,
+            default: false
         },
         styleDefault: {
             type: Boolean,
@@ -187,11 +192,12 @@ export default {
     },
     methods : {
         showInputSearch() {
-            this.showResult = false
-            this.switchList(true)
-            let ref = 'input-search-' + this.id
-            this.$nextTick(() => this.$refs[ref].focus())
-
+            if (!this.hasUrl) {
+                this.showResult = false
+                this.switchList(true)
+                let ref = 'input-search-' + this.id
+                this.$nextTick(() => this.$refs[ref].focus())
+            }
         },
         focusCombobox(event){
             this.switchList(true);
@@ -282,7 +288,8 @@ export default {
                                 id: self.formatListHtml(self.formatList.id, data),
                                 html: self.formatListHtml(self.formatList.html, data),
                                 title: self.formatListHtml(self.formatList.title, data),
-                                icon: self.formatListHtml(self.formatList.icon, data)
+                                icon: self.formatListHtml(self.formatList.icon, data),
+                                url: self.formatListHtml(self.formatList.url, data),
                             }
                             this.searchListTotal.push(tmp);
                         });
