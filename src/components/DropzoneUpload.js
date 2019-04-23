@@ -54,7 +54,7 @@ export default {
                 toastr.clear();
                 toastr.options = {
                     closeButton: true,
-                    positionClass: 'toast-bottom-right',
+                    positionClass: 'toast-top-right',
                     onclick: null,
                     showDuration: 1000,
                     hideDuration: 1000,
@@ -270,14 +270,14 @@ export default {
          */
         maxFileSizeExceeded(file){
             if(parseInt(file.size/this.unitBytes) > this.maxSizePerFile){
-                this.handleNotification('error', `${this.messages.maxSize.content} ${this.renderFileSize(this.maxSizePerFile)}`, this.messages.maxSize.title);
+                this.handleNotification('error', `${this.messages.maxSize.content} ${this.renderFileSize(this.maxSizePerFile * 1000)}`, this.messages.maxSize.title);
                 this.$emit('validate-file-size', file.name);
                 this.dropzone.removeFile(file);
                 return false;
             }
             if(this.maxSize){
                 if(parseInt(this.getCurrentFileSize()/this.unitBytes) > parseInt(this.maxSize)){
-                    this.handleNotification('error', `${this.messages.maxTotalSize.content} ${this.renderFileSize(this.maxSize)}`, this.messages.maxTotalSize.title);
+                    this.handleNotification('error', `${this.messages.maxTotalSize.content} ${this.renderFileSize(this.maxSize * 1000)}`, this.messages.maxTotalSize.title);
                     this.$emit('validation-file-size', file.name)
                     this.dropzone.removeFile(file);
                     return false;
