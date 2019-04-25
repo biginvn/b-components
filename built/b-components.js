@@ -20963,321 +20963,9 @@ var objectKeys = Object.keys || function (obj) {
 
 /***/ }),
 /* 73 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__ = __webpack_require__(8);
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    data() {
-        return {
-            dropzone: null,
-            completedConfig: {},
-            items: null,
-            totalInputFileSize: 0,
-            totalDropzoneFileSize: 0,
-            // totalFileSize : 0,
-            dropzoneTotalFile: 0,
-            inputTotalFile: 0,
-            supportTypes: []
-        };
-    },
-    components: {},
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_base_mixins__["a" /* default */]],
-    mounted() {
-        if (this.supportFileType !== null) this.supportTypes = this.supportFileType.slice(0);
-        if (this.value != null && this.value != undefined) this.initDropzone();
-    },
-    props: {
-        name: {},
-        config: {},
-        id: {},
-        maxFile: {},
-        mode: {},
-        maxSize: {},
-        disabled: {
-            type: Boolean,
-            default: false
-        },
-        supportFileType: {
-            type: Object / Array,
-            default: null
-        },
-        customMsgValidateNumber: {
-            type: Boolean,
-            default: false
-        },
-        customMsgValidateSize: {
-            type: Boolean,
-            default: false
-        },
-        customMsgValidateType: {
-            type: Boolean,
-            default: false
-        }
-    },
-    watch: {
-        'dropzone.files'(value) {
-            this.caculateTotalDropzoneFileSize(value);
-            this.value.dropzone = this.dropzone;
-            this.dropzoneTotalFile = this.dropzone.files.length;
-            this.$emit('input', this.value);
-        },
-        'value.list'(value) {
-            // edit by thien nguyen
-            this.totalInputFileSize = 0;
-            if (value != undefined) {
-                this.prepareItems(value);
-                this.inputTotalFile = value.length;
-            }
-        },
-        value(value) {
-            if (value != undefined && value != undefined) {
-                this.initDropzone();
-            }
-        },
-        supportFileType(value) {
-            if (value !== null) this.supportTypes = this.supportFileType.slice(0);
-        }
-    },
-    methods: {
-        dropzoneRemoveFile(files = []) {
-            if (files) this.dropzone.removeAllFiles(true);else {
-                for (let i = 0; i < files.length; i++) {
-                    this.dropzone.removeFile(files[i]);
-                }
-            }
-        },
-        initDropzone() {
-            this.configDropzone();
-            if (this.dropzone !== null) {
-                this.dropzoneRemoveFile(true);
-            } else {
-                this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig);
-                let dropzoneComponent = this;
-                this.dropzone.on("sending", file => {
-                    document.querySelector(`#${dropzoneComponent.id} + .total-progress .progress`).style.opacity = "1";
-                });
-                this.dropzone.on("queuecomplete", progress => {});
-                let Vue = this;
-                this.dropzone.on("addedfile", (file, xhr, formData) => {
-                    var parent = document.querySelectorAll('.' + this.id + '__preview__container .preview:not(stuff)');
-                    for (var i = 0; i < parent.length; i++) {
-                        var child = parent[i].querySelector('.dz-thumb');
-                        parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
-                    }
-                    var fileEx = file.name.split('.').pop();
-                    if (this.supportTypes.length > 0 && this.supportTypes.indexOf('.' + fileEx) === -1) {
-                        this.dropzone.removeFile(file);
-                        this.$emit('validation-file-type', this.supportTypes.join(', '));
-                        if (!this.customMsgValidateType) alert('The selected file is not supported. The accepted file types are: ' + this.supportTypes.join(','));
-                    } else {
-                        if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" || fileEx == "gif" || fileEx == "bmp") return child.className += " dz-image";
-                        switch (fileEx) {
-                            case "pdf":
-                                child.className += " dz-pdf";
-                                break;
-                            case "doc":
-                                child.className += " dz-doc";
-                                break;
-                            case "docx":
-                                child.className += " dz-doc";
-                                break;
-                            case "ppt":
-                                child.className += " dz-ppt";
-                                break;
-                            case "xls":
-                                child.className += " dz-xls";
-                                break;
-                            case "xlsx":
-                                child.className += " dz-xls";
-                                break;
-                            case "txt":
-                                child.className += " dz-txt";
-                                break;
-                            case "csv":
-                                child.className += " dz-csv";
-                                break;
-                            case "rtf":
-                                child.className += " dz-rtf";
-                                break;
-                            case "zip":
-                                child.className += " dz-zip";
-                                break;
-                            case "rar":
-                                child.className += " dz-zip";
-                                break;
-                            default:
-                                child.className += " dz-file";
-                        }
-                    }
-                });
-            }
-            this.$emit('dropzone', this.dropzone);
-            if (this.value != undefined) if (this.value.list != undefined && this.value.list != null) this.prepareItems(this.value.list);
-        },
-        configDropzone() {
-            let acceptedFiles = this.supportTypes.join(',');
-            let config = {
-                thumbnailWidth: 80,
-                thumbnailHeight: 80,
-                parallelUploads: 1,
-                acceptedFiles: acceptedFiles ? acceptedFiles : null,
-                autoQueue: false,
-                clickable: [`#${this.id} .content`],
-                accept: (file, done) => {
-                    done();
-                },
-                previewTemplate: document.querySelector(`.${this.id}__preview`).innerHTML,
-                previewsContainer: `.${this.id}__preview__container`,
-                maxFiles: this.maxFile == undefined ? null : this.maxFile,
-                maxfilesexceeded: function (file) {
-                    this.removeAllFiles();
-                    this.addFile(file);
-                    this.$emit('validation-file-number', file);
-                    if (!this.customMsgValidateType) alert('Upload file too specified number.');
-                }
-            };
-            this.completedConfig = Object.assign(config, this.config);
-        },
-
-        prepareItems(list) {
-            // this to down write by thien nguyen
-            if (list == undefined || list == null || list.length == 0) {
-                if (this.default != undefined && this.default != null) {
-                    this.items = [this.default];
-                    return [this.default];
-                }
-                return [{ id: '', path: '' }];
-            }
-            let items = [];
-            for (let i = 0; i < list.length; i++) {
-                let listItem = list[i];
-                let className;
-                if (listItem.className != null || listItem.className != undefined) className = listItem.className;else className = this.getClassByPath(listItem.path);
-                let filesize = this.renderFileSize(listItem.filesize.replace(" ", ""));
-                let fileName = listItem.filename != undefined && listItem.filename != null ? listItem.filename : listItem.name == undefined || listItem.name == null ? this.getNameByPath(listItem.path) : listItem.name;
-                let item = {
-                    id: listItem.id,
-                    filesize: filesize,
-                    path: listItem.path,
-                    name: fileName,
-                    className: className
-                };
-                items.push(item);
-            }
-            this.items = items;
-            return this.items;
-        },
-
-        checkTypeFile(path) {
-            var pathEx = path.split('.').pop().toLowerCase();
-            return pathEx;
-        },
-
-        getClassByPath(path) {
-            var itemClass = "dz-thumb";
-            var fileEx = this.checkTypeFile(path);
-            if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" || fileEx == "gif" || fileEx == "bmp") return itemClass += " dz-image";
-            switch (fileEx) {
-                case "pdf":
-                    itemClass += " dz-pdf";
-                    break;
-                case "doc":
-                    itemClass += " dz-doc";
-                    break;
-                case "docx":
-                    itemClass += " dz-doc";
-                    break;
-                case "ppt":
-                    itemClass += " dz-ppt";
-                    break;
-                case "xls":
-                    itemClass += " dz-xls";
-                    break;
-                case "xlsx":
-                    itemClass += " dz-xls";
-                    break;
-                case "txt":
-                    itemClass += " dz-txt";
-                    break;
-                case "csv":
-                    itemClass += " dz-csv";
-                    break;
-                case "rtf":
-                    itemClass += " dz-rtf";
-                    break;
-                case "zip":
-                    itemClass += " dz-zip";
-                    break;
-                case "rar":
-                    itemClass += " dz-zip";
-                    break;
-                default:
-                    itemClass = itemClass + " dz-file";
-            }
-            return itemClass;
-        },
-
-        getNameByPath(path) {
-            var name = path.split('/').pop();
-            return name = name.split('.').shift();
-        },
-
-        deleteThisItem(id) {
-            for (var i = 0; i < this.items.length; i++) {
-                if (this.items[i].id == id) {
-                    this.items[i].show = false;
-                    this.items.splice(i, 1);
-                }
-            }
-            this.value.list = this.items;
-
-            /* add file added be removed */
-            if (Array.isArray(this.value.removeIds)) {
-                this.value.removeIds.push(id);
-            }
-
-            this.$emit('input', this.value);
-        },
-
-        renderFileSize(size) {
-            let sizeLength = size.length;
-            let result = "";
-            if (size.slice(sizeLength - 2, sizeLength).toLowerCase() == 'mb' || size.slice(sizeLength - 2, sizeLength).toLowerCase() == 'kb') {
-                result = size;
-                this.totalInputFileSize = this.totalInputFileSize + parseInt(size.slice(0, sizeLength - 2));
-            } else {
-                result = parseInt(size / 1024) + ' KB';
-                this.totalInputFileSize = this.totalInputFileSize + parseInt(size / 1024);
-            }
-            return result;
-        },
-
-        caculateTotalDropzoneFileSize(listFile) {
-            this.totalDropzoneFileSize = 0;
-            let fileError = "";
-            for (let i = 0; i < listFile.length; i++) {
-                if (listFile[i].accepted == true) this.totalDropzoneFileSize = this.totalDropzoneFileSize + listFile[i].size / 1024;
-                if (this.maxSize != undefined && this.totalInputFileSize + this.totalDropzoneFileSize >= this.maxSize) {
-                    fileError = fileError + listFile[i].name + " ";
-                    this.totalDropzoneFileSize = this.totalDropzoneFileSize - listFile[i].size / 1024;
-                    this.dropzone.removeFile(listFile[i]);
-                }
-            }
-            if (fileError != null && fileError != "") {
-                this.$emit('validation-file-size', fileError);
-                if (!this.customMsgValidateSize) alert("File: " + fileError + " removed because total size to large.");
-            }
-        },
-
-        parseDropzoneContent() {
-            if (this.dropzoneContent == undefined || this.dropzoneContent == null) return 'Attach file by dropping here or <span class="uk-link">selecting one</span>';
-            return this.dropzoneContent;
-        }
-    }
-});
+throw new Error("Module build failed: SyntaxError: Unexpected token (8:12)\n\n\u001b[0m \u001b[90m  6 | \u001b[39m    data() {\n \u001b[90m  7 | \u001b[39m        \u001b[36mreturn\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  8 | \u001b[39m            \u001b[33m...\u001b[39m\u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mparse(\u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mstringify(\u001b[33mVariables\u001b[39m))\n \u001b[90m    | \u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  9 | \u001b[39m        }\n \u001b[90m 10 | \u001b[39m    }\u001b[33m,\u001b[39m\n \u001b[90m 11 | \u001b[39m    props\u001b[33m:\u001b[39m {\u001b[0m\n");
 
 /***/ }),
 /* 74 */
@@ -62263,6 +61951,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_Combobox__["a" /* default */]);
@@ -62447,13 +62143,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DropzoneUpload__ = __webpack_require__(73);
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DropzoneUpload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_DropzoneUpload__);
 //
 //
 //
@@ -62488,7 +62178,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_DropzoneUpload__["a" /* default */]);
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__components_DropzoneUpload__["default"]);
 
 /***/ }),
 /* 387 */
@@ -63473,7 +63163,8 @@ const getCountry = function () {
                 id: null,
                 html: null,
                 title: null,
-                icon: null
+                icon: null,
+                url: null
                 // value: null,
             } };
     },
@@ -63500,6 +63191,10 @@ const getCountry = function () {
         disableIcon: {
             type: Boolean,
             default: true
+        },
+        hasUrl: {
+            type: Boolean,
+            default: false
         },
         styleDefault: {
             type: Boolean,
@@ -63638,10 +63333,12 @@ const getCountry = function () {
     },
     methods: {
         showInputSearch() {
-            this.showResult = false;
-            this.switchList(true);
-            let ref = 'input-search-' + this.id;
-            this.$nextTick(() => this.$refs[ref].focus());
+            if (!this.hasUrl) {
+                this.showResult = false;
+                this.switchList(true);
+                let ref = 'input-search-' + this.id;
+                this.$nextTick(() => this.$refs[ref].focus());
+            }
         },
         focusCombobox(event) {
             this.switchList(true);
@@ -63727,7 +63424,8 @@ const getCountry = function () {
                             id: self.formatListHtml(self.formatList.id, data),
                             html: self.formatListHtml(self.formatList.html, data),
                             title: self.formatListHtml(self.formatList.title, data),
-                            icon: self.formatListHtml(self.formatList.icon, data)
+                            icon: self.formatListHtml(self.formatList.icon, data),
+                            url: self.formatListHtml(self.formatList.url, data)
                         };
                         this.searchListTotal.push(tmp);
                     });
@@ -64362,6 +64060,7 @@ const getCountry = function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__DropzoneUpload_js__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__DropzoneUpload_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__DropzoneUpload_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__themes_ios_Radio_vue__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__themes_ios_Radio_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__themes_ios_Radio_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__themes_ios_CheckBox_vue__ = __webpack_require__(69);
@@ -64371,7 +64070,7 @@ const getCountry = function () {
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     components: { BRadio: __WEBPACK_IMPORTED_MODULE_1__themes_ios_Radio_vue___default.a, BCheckbox: __WEBPACK_IMPORTED_MODULE_2__themes_ios_CheckBox_vue___default.a },
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__DropzoneUpload_js__["a" /* default */]],
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__DropzoneUpload_js__["default"]],
     watch: {
         items: {
             handler: function (val, oldVal) {
@@ -64387,179 +64086,55 @@ const getCountry = function () {
             deep: true
         }
     },
+    mounted() {
+        /* add prefix support adhoc docx */
+        this.fileTypes.others.docx = ' dz-doc show-option-document';
+    },
     methods: {
-        /* custom model items for document adhoc */
-        deleteThisItem(id) {
-            for (var i = 0; i < this.items.length; i++) {
-                if (this.items[i].id == id) {
-                    this.items[i].show = false;
-                    this.items.splice(i, 1);
-                }
-            }
-            this.value.list = this.items;
-            this.value.removeIds.push(id);
-            this.$emit('input', this.value);
-        },
-        prepareItems(list) {
-            if (list == undefined || list == null || list.length == 0) {
-                if (this.default != undefined && this.default != null) {
-                    this.items = [this.default];
-                    return [this.default];
-                }
-                return [{ id: '', path: '' }];
-            }
+        prepareItems(files) {
             let items = [];
-            for (let i = 0; i < list.length; i++) {
-                let listItem = list[i];
-                let className;
-                if (listItem.className != null || listItem.className != undefined) className = listItem.className;else className = this.getClassByPath(listItem.path);
-                let filesize = this.renderFileSize(listItem.filesize.replace(" ", ""));
-                let fileName = listItem.filename != undefined && listItem.filename != null ? listItem.filename : listItem.name == undefined || listItem.name == null ? this.getNameByPath(listItem.path) : listItem.name;
-                let typeProcess = listItem.exportType ? listItem.exportType : listItem.type_process ? listItem.type_process : 'docx';
-                let isProcess = listItem.isProcess ? listItem.isProcess : listItem.is_process ? listItem.is_process : false;
-                let item = {
-                    id: listItem.id,
-                    filesize: filesize,
-                    path: listItem.path,
+            let _this = this;
+            let className, fileSize, fileName, typeProcess, isProcess;
+            files.forEach((file, index) => {
+                className = file.className ? file.className : _this.getClassByPath(file.path);
+                fileSize = file.filesize.replace(" ", "");
+                fileName = file.filename ? file.filename : file.name ? file.name : _this.getNameByPath(file.path);
+                typeProcess = file.exportType ? file.exportType : file.type_process ? file.type_process : 'docx';
+                isProcess = file.isProcess ? file.isProcess : file.is_process ? file.is_process : false;
+                items.push({
+                    id: file.id,
+                    filesize: fileSize,
+                    path: file.path,
                     name: fileName,
                     className: className,
                     exportType: typeProcess,
                     isProcess: isProcess
-                };
-                items.push(item);
-            }
+                });
+            });
             this.items = items;
             return this.items;
         },
-        getClassByPath(path) {
-            var itemClass = "dz-thumb";
-            var fileEx = this.checkTypeFile(path);
-            if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" || fileEx == "gif" || fileEx == "bmp") return itemClass += " dz-image";
-            switch (fileEx) {
-                case "pdf":
-                    itemClass += " dz-pdf";
-                    break;
-                case "doc":
-                    itemClass += " dz-doc";
-                    break;
-                case "docx":
-                    itemClass += " dz-doc show-option-document";
-                    break;
-                case "ppt":
-                    itemClass += " dz-ppt";
-                    break;
-                case "xls":
-                    itemClass += " dz-xls";
-                    break;
-                case "xlsx":
-                    itemClass += " dz-xls";
-                    break;
-                case "txt":
-                    itemClass += " dz-txt";
-                    break;
-                case "csv":
-                    itemClass += " dz-csv";
-                    break;
-                case "rtf":
-                    itemClass += " dz-rtf";
-                    break;
-                case "zip":
-                    itemClass += " dz-zip";
-                    break;
-                case "rar":
-                    itemClass += " dz-zip";
-                    break;
-                default:
-                    itemClass = itemClass + " dz-file";
-            }
-            return itemClass;
-        },
-        initDropzone() {
-            this.configDropzone();
-            this.dropzone = new Dropzone(`#${this.id}`, this.completedConfig);
-            let Vue = this;
-            this.dropzone.on("sending", (file, xhr, formData) => {
-                document.querySelector(`#${Vue.id} + .total-progress .progress`).style.opacity = "1";
-            });
-            this.dropzone.on("addedfile", file => {
-                var parent = document.querySelectorAll('.' + this.id + '__preview__container .preview:not(stuff)');
-                for (var i = 0; i < parent.length; i++) {
-                    var child = parent[i].querySelector('.dz-thumb');
-                    parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
-                }
-                var fileEx = file.name.split('.').pop();
-                if (this.supportTypes.length > 0 && this.supportTypes.indexOf('.' + fileEx) === -1) {
-                    this.dropzone.removeFile(file);
-                    this.$emit('validation-file-type', this.supportTypes.join(', '));
-                    if (!this.customMsgValidateType) alert('The selected file is not supported. The accepted file types are: ' + this.supportTypes.join(','));
+        afterAddedFile(file) {
+            var fileEx = this.getExtension(file.name);
+            /* handle append export type after added file */
+            var idExportTypeElement = Math.floor(Math.random() * 100000); // Create the remove button 
+            var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type export-type-upload"><div class="b__components b-checkbox"><input name="is-process-${idExportTypeElement}" type="checkbox" class="checkbox__input"> <span class="checkbox__checkmark"></span> <label>Document Process</label></div><div class="document-type-option"><div class="b__components b-radio" style="display:none;"><input checked name="export-type-${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" style="display:none;" ><input name="export-type-${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div></div>`);
+            var d = file.previewElement.appendChild(exportTypeElement);
+            /* register event js for review document */
+            $(`input[name="is-process-${idExportTypeElement}"]`).change(function () {
+
+                if ($(this).is(':checked') == true) {
+                    $(this).parent().siblings().children('.b-radio').css("display", "");
                 } else {
-
-                    /* handle append export type after added file */
-                    var idExportTypeElement = Math.floor(Math.random() * 100000); // Create the remove button 
-                    var exportTypeElement = Dropzone.createElement(`<div class="form-group document-type export-type-upload"><div class="b__components b-checkbox"><input name="is-process-${idExportTypeElement}" type="checkbox" class="checkbox__input"> <span class="checkbox__checkmark"></span> <label>Document Process</label></div><div class="document-type-option"><div class="b__components b-radio" style="display:none;"><input checked name="export-type-${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" style="display:none;" ><input name="export-type-${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div></div>`);
-                    var d = file.previewElement.appendChild(exportTypeElement);
-
-                    /* register event js for review document */
-                    $(`input[name="is-process-${idExportTypeElement}"]`).change(function () {
-
-                        if ($(this).is(':checked') == true) {
-                            $(this).parent().siblings().children('.b-radio').css("display", "");
-                        } else {
-                            $(this).parent().siblings().children('.b-radio').css("display", "none");
-                        }
-                    });
-                    /* end register event js for review document */
-
-                    if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "png" || fileEx == "gif" || fileEx == "bmp") child.className += " dz-image";else {
-                        switch (fileEx) {
-                            case "pdf":
-                                child.className += " dz-pdf";
-                                break;
-                            case "doc":
-                                child.className += " dz-doc";
-                                break;
-                            case "docx":
-                                child.className += " dz-doc show-option-document";
-                                break;
-                            case "ppt":
-                                child.className += " dz-ppt";
-                                break;
-                            case "xls":
-                                child.className += " dz-xls";
-                                break;
-                            case "xlsx":
-                                child.className += " dz-xls";
-                                break;
-                            case "txt":
-                                child.className += " dz-txt";
-                                break;
-                            case "csv":
-                                child.className += " dz-csv";
-                                break;
-                            case "rtf":
-                                child.className += " dz-rtf";
-                                break;
-                            case "zip":
-                                child.className += " dz-zip";
-                                break;
-                            case "rar":
-                                child.className += " dz-zip";
-                                break;
-                            default:
-                                child.className += " dz-file";
-                        }
-                    }
-
-                    if (fileEx != 'docx') {
-                        let element = $(`input[name="is-process-${idExportTypeElement}"]`);
-                        element.closest('.preview').find('.export-type-upload').css("display", "none");
-                        element.closest('.preview').find('.dz-size').removeClass('dz-document-bonus').addClass('dz-document-none');
-                    }
+                    $(this).parent().siblings().children('.b-radio').css("display", "none");
                 }
             });
-
-            this.$emit('dropzone', this.dropzone);
-            if (this.value != undefined) if (this.value.list != undefined && this.value.list != null) this.prepareItems(this.value.list);
+            /* end register event js for review document */
+            if (fileEx != 'docx') {
+                let element = $(`input[name="is-process-${idExportTypeElement}"]`);
+                element.closest('.preview').find('.export-type-upload').css("display", "none");
+                element.closest('.preview').find('.dz-size').removeClass('dz-document-bonus').addClass('dz-document-none');
+            }
         },
         configDropzone() {
             let acceptedFiles = this.supportTypes.join(',');
@@ -64580,7 +64155,7 @@ const getCountry = function () {
                     this.removeAllFiles();
                     this.addFile(file);
                     this.$emit('validation-file-number', file);
-                    if (!this.customMsgValidateType) alert('Upload file too specified number.');
+                    this.handleNotification('error', `${this.messages.maxFile.content} ${this.maxFile} file(s)`, this.messages.maxFile.title);
                 }
             };
             this.completedConfig = Object.assign(config, this.config);
@@ -65517,6 +65092,13 @@ const getCountry = function () {
 		value(newValue) {
 			this.tags = newValue;
 			this.updateUI();
+		},
+		tags(val) {
+			if (val.length == 0) {
+				this.$nextTick(function () {
+					$('.b__component_input_tag_wrapper label').removeClass('active');
+				});
+			}
 		}
 	},
 	methods: {
@@ -65586,6 +65168,9 @@ const getCountry = function () {
 			if (arrayTag.length == 0) {
 				this.tags = [];
 				this.tagPlaceholder = this.placeholder;
+				this.$nextTick(function () {
+					$('.b__component_input_tag_wrapper label').removeClass('active');
+				});
 			}
 			for (let i = 0; i < arrayTag.length; i++) {
 				this.addNewTag(arrayTag[i]);
@@ -66564,6 +66149,7 @@ const getCountry = function () {
             if ($(e.target).closest(".tox-dialog").length) {
                 e.stopImmediatePropagation();
             }
+            $('.tox-dropzone button input').attr({ 'accept': 'image/jpg,image/png,image/jpeg' });
         }); //charm for tiny mce in modal :))
         $.widget("ui.dialog", $.ui.dialog, {
             _allowInteraction: function (event) {
@@ -66619,14 +66205,14 @@ const getCountry = function () {
             var height = this.height == null || this.height == undefined ? "450" : this.height;
             if (readonly == 1) {
                 var toolbar1 = false;
-            } else var toolbar1 = 'undo redo formatselect | bold italic strikethrough | link image | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent pagebreak lineheightselect';
+            } else var toolbar1 = 'undo redo formatselect | bold italic strikethrough | link image | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent pagebreak line-height-select';
             tinymce.init(Object.assign({}, {
                 selector: '#' + self.id,
                 // height : height,
                 lineheight_formats: 'Single=100% 1.5=150% Double=200%',
                 theme: 'silver',
-                plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help noneditable',
-                // plugins: 'advlist lineheight autolink',
+                plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help noneditable line-height',
+                // plugins: 'advlist line-height autolink',
                 // plugins: 'print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount tinymcespellchecker a11ychecker imagetools textpattern help formatpainter permanentpen pageembed tinycomments mentions linkchecker',
                 toolbar1: toolbar1,
                 table_default_attributes: {
@@ -66664,33 +66250,37 @@ const getCountry = function () {
                     // if($('.tox-dialog'))
                     //     $('.tox-dialog').append(elLoading);
                     // remove tiny basic loading when upload request. that real: we must be change css in class
-                    setTimeout(function () {
-                        var xhr, formData;
-                        xhr = new XMLHttpRequest();
-                        xhr.withCredentials = false;
-                        xhr.open('POST', self.images_upload_url);
-                        xhr.onload = function () {
-                            var json;
-                            if (xhr.status != 200) {
-                                failure('HTTP Error: ' + xhr.status);
-                                return;
-                            }
+                    if (blobInfo.blob().type != 'image/gif') {
+                        setTimeout(function () {
+                            var xhr, formData;
+                            xhr = new XMLHttpRequest();
+                            xhr.withCredentials = false;
+                            xhr.open('POST', self.images_upload_url);
+                            xhr.onload = function () {
+                                var json;
+                                if (xhr.status != 200) {
+                                    failure('HTTP Error: ' + xhr.status);
+                                    return;
+                                }
 
-                            json = JSON.parse(xhr.responseText);
+                                json = JSON.parse(xhr.responseText);
 
-                            if (!json || typeof json.location != 'string') {
-                                failure('Invalid JSON: ' + xhr.responseText);
-                                return;
-                            }
-                            // $(".tox-dialog__busy-spinner").remove();
-                            success(json.location);
-                            // $("#mce-modal-block").remove();
-                        };
-                        console.log(blobInfo.blob());
-                        formData = new FormData();
-                        formData.append('file', blobInfo.blob(), blobInfo.filename());
-                        xhr.send(formData);
-                    }, 1000); // must be settimeout function to has loading.https://www.tiny.cloud/docs/demo/local-upload/
+                                if (!json || typeof json.location != 'string') {
+                                    failure('Invalid JSON: ' + xhr.responseText);
+                                    return;
+                                }
+                                // $(".tox-dialog__busy-spinner").remove();
+                                success(json.location);
+                                // $("#mce-modal-block").remove();
+                            };
+                            // console.log(blobInfo.blob())
+                            formData = new FormData();
+                            formData.append('file', blobInfo.blob(), blobInfo.filename());
+                            xhr.send(formData);
+                        }, 1000); // must be settimeout function to has loading.https://www.tiny.cloud/docs/demo/local-upload/
+                    } else {
+                        $('.tox-dialog__busy-spinner').remove();
+                    }
                 },
                 file_picker_callback: function (cb, value, meta) {
                     // hook Tiny after select file in upload image implement upload file base64 todo...
@@ -66702,7 +66292,7 @@ const getCountry = function () {
                     // upload type base64
                     var input = document.createElement('input');
                     input.setAttribute('type', 'file');
-                    input.setAttribute('accept', 'image/*');
+                    input.setAttribute('accept', 'image/jpg,image/png,image/jpeg');
 
                     // Note: In modern browsers input[type="file"] is functional without
                     // even adding it to the DOM, but that might not be the case in some older
@@ -66722,11 +66312,11 @@ const getCountry = function () {
                             // Note: Now we need to register the blob in TinyMCEs image blob
                             // registry. In the next release this part hopefully won't be
                             // necessary, as we are looking to handle it internally.
-                            var id = 'blobid' + new Date().getTime();
-                            var blobCache = tinymce.get(this.id).editorUpload.blobCache;
-                            var base64 = reader.result.split(',')[1];
-                            var blobInfo = blobCache.create(id, file, base64);
-                            blobCache.add(blobInfo);
+                            // var id = 'blobid' + (new Date()).getTime();
+                            // var blobCache =  tinymce.get(this.id).editorUpload.blobCache;
+                            // var base64 = reader.result.split(',')[1];
+                            // var blobInfo = blobCache.create(id, file, base64);
+                            // blobCache.add(blobInfo);
                             // call the callback and populate the Title field with the file name
 
                             // setTimeout(function() {
@@ -83751,7 +83341,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n.document-type{\n    margin: 10px 0 10px 20px;\n}\n.document-type-option{\n    margin: 15px 30px 0px 30px;\n    display: flex;\n    justify-content: space-between;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DocumentAdhoc.vue?f7fef0f4"],"names":[],"mappings":";AAmDA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA;AACA;IACA,yBAAA;CACA;AACA;IACA,2BAAA;IACA,cAAA;IACA,+BAAA;CACA","file":"DocumentAdhoc.vue","sourcesContent":["<template>\n    <div class=\"b__components b__dropzone_upload\">\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"(dropzoneTotalFile + inputTotalFile) < parseInt(maxFile) || maxFile == undefined\">\n            <div class=\"content\">\n                <div class=\"row\">\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\n                    <span class=\"uk-text-middle\" v-html=\"parseDropzoneContent()\"></span>\n                </div>\n            </div>\n        </div>\n        <div :class=\"id + '__preview__container'\">\n            <div :class=\"id + '__preview preview stuff'\">\n                <div class=\"preview\" style=\"height: 100%;\">\n                    <div class=\"dz-thumb\">\n                        <img data-dz-thumbnail=\"\">\n                    </div> \n                    <span data-dz-name=\"\" class=\"dz-name\"></span>\n                    <span data-dz-size=\"\" class=\"dz-size\"></span>\n                    <a href=\"#\" target=\"_blank\" data-dz-remove=\"\" class=\"remove-archive\">\n                        <span><i class=\"fas fa-times\"></i></span>\n                    </a>\n                </div>\n            </div>\n            <div v-for= \"item in items\" class=\"preview\">\n                <div :class=\"item.className\" style=\"animation: fadeOut;\">\n                    <img v-if=\"item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'\" data-dz-thumbnail=\"\" :src=\"item.path\">\n                    <img v-else data-dz-thumbnail=\"\">\n                    <a :href=\"item.path\"><span data-dz-name=\"\" class=\"dz-name\">{{ item.name }}</span></a>\n                    <strong>\n                        <span class=\"dz-size\" data-dz-size>{{ item.filesize }}</span>\n                    </strong>\n                    <a data-dz-remove=\"\" class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fas fa-times\"></i></a>\n                </div> \n                <div class=\"form-group document-type\" v-if=\"item.className == 'dz-thumb dz-doc show-option-document'\">\n                    <b-check-box v-model=\"item.isProcess\" label=\"Document Process\"></b-check-box>\n                    <div class=\"document-type-option\">\n                        <b-radio v-model=\"item.exportType\" label=\"Docx\" value=\"docx\" v-if=\"item.isProcess\"></b-radio>\n                        <b-radio v-model=\"item.exportType\" label=\"Pdf\" value=\"pdf\" v-if=\"item.isProcess\"></b-radio>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport DocumentAdhoc from './../../components/DocumentAdhoc'\nexport default DocumentAdhoc\n</script>\n\n<style>\n    .disabled-upload:hover .uk-text-middle:after{\n        content: '(*Remove assets file to change new file.)';\n\n    }\n    .disabled-upload{\n        animation: fadeIn;\n        animation-duration: 1s;\n        will-change: padding;\n        cursor: help;\n    }\n    .document-type{\n        margin: 10px 0 10px 20px;\n    }\n    .document-type-option{\n        margin: 15px 30px 0px 30px;\n        display: flex;\n        justify-content: space-between;\n    }\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n.document-type{\n    margin: 10px 0 10px 20px;\n}\n.document-type-option{\n    margin: 15px 30px 0px 30px;\n    display: flex;\n    justify-content: space-between;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DocumentAdhoc.vue?13fced08"],"names":[],"mappings":";AAmDA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA;AACA;IACA,yBAAA;CACA;AACA;IACA,2BAAA;IACA,cAAA;IACA,+BAAA;CACA","file":"DocumentAdhoc.vue","sourcesContent":["<template>\n    <div class=\"b__components b__dropzone_upload\">\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"totalFileSize && !disabled\">\n            <div class=\"content\">\n                <div class=\"row\">\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\n                    <span class=\"uk-text-middle\" v-html=\"dropzoneContent\"></span>\n                </div>\n            </div>\n        </div>\n        <div :class=\"id + '__preview__container'\">\n            <div :class=\"id + '__preview preview stuff'\">\n                <div class=\"preview\" style=\"height: 100%;\">\n                    <div class=\"dz-thumb\">\n                        <img data-dz-thumbnail=\"\">\n                    </div> \n                    <span data-dz-name=\"\" class=\"dz-name\"></span>\n                    <span data-dz-size=\"\" class=\"dz-size\"></span>\n                    <a href=\"#\" target=\"_blank\" data-dz-remove=\"\" class=\"remove-archive\">\n                        <span><i class=\"fas fa-times\"></i></span>\n                    </a>\n                </div>\n            </div>\n            <div v-for= \"item in items\" class=\"preview\">\n                <div :class=\"item.className\" style=\"animation: fadeOut;\">\n                    <img v-if=\"item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'\" data-dz-thumbnail=\"\" :src=\"item.path\">\n                    <img v-else data-dz-thumbnail=\"\">\n                    <a :href=\"item.path\"><span data-dz-name=\"\" class=\"dz-name\">{{ item.name }}</span></a>\n                    <strong>\n                        <span class=\"dz-size\" data-dz-size>{{ renderFileSize(item.filesize) }}</span>\n                    </strong>\n                    <a data-dz-remove=\"\" class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fas fa-times\"></i></a>\n                </div> \n                <div class=\"form-group document-type\" v-if=\"item.className == 'dz-thumb dz-doc show-option-document'\">\n                    <b-check-box v-model=\"item.isProcess\" label=\"Document Process\"></b-check-box>\n                    <div class=\"document-type-option\">\n                        <b-radio v-model=\"item.exportType\" label=\"Docx\" value=\"docx\" v-if=\"item.isProcess\"></b-radio>\n                        <b-radio v-model=\"item.exportType\" label=\"Pdf\" value=\"pdf\" v-if=\"item.isProcess\"></b-radio>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport DocumentAdhoc from './../../components/DocumentAdhoc'\nexport default DocumentAdhoc\n</script>\n\n<style>\n    .disabled-upload:hover .uk-text-middle:after{\n        content: '(*Remove assets file to change new file.)';\n\n    }\n    .disabled-upload{\n        animation: fadeIn;\n        animation-duration: 1s;\n        will-change: padding;\n        cursor: help;\n    }\n    .document-type{\n        margin: 10px 0 10px 20px;\n    }\n    .document-type-option{\n        margin: 15px 30px 0px 30px;\n        display: flex;\n        justify-content: space-between;\n    }\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -83765,7 +83355,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DropzoneUpload.vue?267d086a"],"names":[],"mappings":";AA6CA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA","file":"DropzoneUpload.vue","sourcesContent":["<template>\n    <div class=\"b__components b__dropzone_upload\">\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"((dropzoneTotalFile + inputTotalFile) < parseInt(maxFile) || maxFile == undefined) && !disabled\">\n            <div class=\"content\">\n                <div class=\"row\">\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\n                    <span class=\"uk-text-middle\" v-html=\"parseDropzoneContent()\"></span>\n                </div>\n            </div>\n        </div>\n        <!-- <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"(dropzoneTotalFile + inputTotalFile) >= parseInt(maxFile)\">\n            <div class=\"disabled-upload text-center\">\n                <span class=\"uk-text-middle\">Max File Uploaded...</span>\n            </div>\n        </div> -->\n        <div :class=\"id + '__preview__container'\">\n            <div :class=\"id + '__preview preview stuff'\">\n                <div class=\"preview\">\n                    <div class=\"dz-thumb\"><img data-dz-thumbnail /></div>\n                    <span class=\"dz-name\" data-dz-name></span>\n                    <span class=\"dz-size\" data-dz-size></span>\n                    <a href=\"#\" class=\"remove-archive\" target=\"_blank\" data-dz-remove><span><i class=\"fas fa-times\"></i></span></a>\n                </div>\n            </div>\n            <div v-for= \"item in items\" class=\"preview\">\n                <!-- <a :href=\"item.path\"> -->\n                    <div :class=\"item.className\" style=\"animation: fadeOut;\">\n                        <img v-if=\"item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'\" data-dz-thumbnail=\"\" :src=\"item.path\" style=\"height: 45px;\">\n                        <img v-else data-dz-thumbnail=\"\">\n                        <a :href=\"item.path\" target=\"_blank\"><span data-dz-name=\"\" class=\"dz-name\" data-toggle=\"tooltip\" data-original-title=\"Download\">{{ item.name }}</span></a>\n                        <strong><span class=\"dz-size\" data-dz-size>{{ item.filesize }}</span></strong>\n                        <a data-dz-remove=\"\" v-show=\"!disabled\"  class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fas fa-times\"></i></a>\n                    </div> \n                <!-- </a> -->\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport DropzoneUpload from './../../components/DropzoneUpload'\nexport default DropzoneUpload\n</script>\n\n<style>\n    .disabled-upload:hover .uk-text-middle:after{\n        content: '(*Remove assets file to change new file.)';\n\n    }\n    .disabled-upload{\n        animation: fadeIn;\n        animation-duration: 1s;\n        will-change: padding;\n        cursor: help;\n    }\n</style>"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.disabled-upload:hover .uk-text-middle:after{\n    content: '(*Remove assets file to change new file.)';\n}\n.disabled-upload{\n    animation: fadeIn;\n    animation-duration: 1s;\n    will-change: padding;\n    cursor: help;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/DropzoneUpload.vue?0f5e95b1"],"names":[],"mappings":";AAsCA;IACA,qDAAA;CAEA;AACA;IACA,kBAAA;IACA,uBAAA;IACA,qBAAA;IACA,aAAA;CACA","file":"DropzoneUpload.vue","sourcesContent":["<template>\n    <div class=\"b__components b__dropzone_upload\">\n        <div class=\"b__components__dropzone\" :id=\"id\" v-show=\"totalFileSize && !disabled\">\n            <div class=\"content\">\n                <div class=\"row\">\n                    <img v-if=\"completedConfig.publicPath\" :src=\"completedConfig.publicPath + '/assets/images/svg-cloud-icon.svg'\" class=\"icon-upload\">\n                    <span class=\"uk-text-middle\" v-html=\"dropzoneContent\"></span>\n                </div>\n            </div>\n        </div>\n        <div :class=\"id + '__preview__container'\">\n            <div :class=\"id + '__preview preview stuff'\">\n                <div class=\"preview\">\n                    <div class=\"dz-thumb\"><img data-dz-thumbnail /></div>\n                    <span class=\"dz-name\" data-dz-name></span>\n                    <span class=\"dz-size\" data-dz-size></span>\n                    <a href=\"#\" class=\"remove-archive\" target=\"_blank\" data-dz-remove><span><i class=\"fas fa-times\"></i></span></a>\n                </div>\n            </div>\n            <div v-for= \"item in items\" class=\"preview\">\n                <div :class=\"item.className\" style=\"animation: fadeOut;\">\n                    <img v-if=\"item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'\" data-dz-thumbnail=\"\" :src=\"item.path\" style=\"height: 45px;\">\n                    <img v-else data-dz-thumbnail=\"\">\n                    <a :href=\"item.path\" target=\"_blank\"><span data-dz-name=\"\" class=\"dz-name\" data-toggle=\"tooltip\" data-original-title=\"Download\">{{ item.name }}</span></a>\n                    <strong><span class=\"dz-size\" data-dz-size>{{ renderFileSize(item.filesize) }}</span></strong>\n                    <a data-dz-remove=\"\" v-show=\"!disabled\"  class=\"remove-archive\" @click=\"deleteThisItem(item.id)\"><i class=\"fas fa-times\"></i></a>\n                </div> \n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport DropzoneUpload from './../../components/DropzoneUpload'\nexport default DropzoneUpload\n</script>\n\n<style>\n    .disabled-upload:hover .uk-text-middle:after{\n        content: '(*Remove assets file to change new file.)';\n\n    }\n    .disabled-upload{\n        animation: fadeIn;\n        animation-duration: 1s;\n        will-change: padding;\n        cursor: help;\n    }\n</style>"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -83779,7 +83369,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, "\n.combo_box_disable{\n\tborder:transparent !important;\n\tcursor: default !important;\n}\n.control-down{\n\tdisplay: none;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/Combobox.vue?5ec81b82"],"names":[],"mappings":";AAuCA;CACA,8BAAA;CACA,2BAAA;CACA;AACA;CACA,cAAA;CACA","file":"Combobox.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__combo__box\" :id=\"id\"\n\t\t :class=\"[{'active-border' : isFocused},{'combo_box_disable': disabled}]\" :null-placeholder=\"nullPlaceholder\"\n\t\t :org-placeholder=\"orgPlaceholder\">\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label.toUpperCase() }}</label>\n\t\t<div v-show=\"showResult && isShowHtmlResult\" class=\"result\" @click=\"showInputSearch()\">\n\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t<img :src=\"itemResult.icon\" class=\"icon-img\">\n\t\t\t</div>\n\t\t\t<div class=\"content\" v-html=\"itemResult.html\"></div>\n\t\t</div>\n\n\t\t<!--remove action key down backspace: @keydown.8=\"keypressAction('BackSpace', null)\" -->\n\t\t<input :ref=\"'input-search-' + id\" v-show=\"showInputSearchCombobox\" :disabled=\"disabled\"\n\t\t\t   :placeholder=\"inputPlacehoder\" :null-placeholder=\"nullPlaceholder\"\n\t\t\t   :org-placeholder=\"orgPlaceholder\"\n\t\t\t   @input=\"searchAction($event)\" :id=\"'input-' + id\"\n\t\t\t   @blur=\"blurCombobox($event)\" @focus=\"focusCombobox($event);$emit('removeRequired')\"\n\t\t\t   :value=\"searchKeyword\" class=\"search-keywords input__combobox\" @keydown.40=\"keypressAction('ArrowDown', $event)\"\n\t\t\t   @keydown.8=\"keypressAction('BackSpace', null)\"\n\t\t@keydown.prevent.38=\"keypressAction('ArrowUp', $event)\" @keydown.13=\"keypressAction('Enter')\"\n\t\t>\n\t\t<ul :class=\"[{active : isExpanding}, 'list-search', {'custom-default-select' : styleDefault}, {'active-border' : isFocused}]\">\n\t\t\t<li v-show =\"searchList.length == 0\" class=\"not-found\" v-html=\"placeholderEmpty\"></li>\n\t\t\t<li class=\"list-item\" :class=\"{'hover': index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id, index)\" @mouseover=\"pointerIndex=index\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\n\t\t\t</li>\n\t\t</ul>\n\t\t<div tabindex=\"0\" @blur=\"blurCombobox($event)\" class=\"control\" @click=\"toggleArrowDropdown()\" :class=\"[{'control-down':disabled}]\"><i aria-hidden=\"true\" class=\"fa fa-angle-down\" ></i> <i aria-hidden=\"true\" class=\"fa fa-angle-up\" style=\"display: none;\"></i></div>\n\t</div>\n</template>\n<script>\n\timport Combobox from '../../components/Combobox'\n\texport default Combobox\n</script>\n<style>\n.combo_box_disable{\n\tborder:transparent !important;\n\tcursor: default !important;\n}\n.control-down{\n\tdisplay: none;\n}\n</style>\n<!-- test push -->"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\n.combo_box_disable{\n\tborder:transparent !important;\n\tcursor: default !important;\n}\n.control-down{\n\tdisplay: none;\n}\n", "", {"version":3,"sources":["/./src/themes/ios/Combobox.vue?481ad701"],"names":[],"mappings":";AA+CA;CACA,8BAAA;CACA,2BAAA;CACA;AACA;CACA,cAAA;CACA","file":"Combobox.vue","sourcesContent":["<template>\n\t<div class=\"b__components b__combo__box\" :id=\"id\"\n\t\t :class=\"[{'active-border' : isFocused},{'combo_box_disable': disabled}]\" :null-placeholder=\"nullPlaceholder\"\n\t\t :org-placeholder=\"orgPlaceholder\">\n\t\t<label :for=\"id\" :class=\"isActive ? 'active' : '' \">{{ label.toUpperCase() }}</label>\n\t\t<div v-show=\"showResult && isShowHtmlResult\" class=\"result\" @click=\"showInputSearch()\">\n\t\t\t<a v-if=\"hasUrl\" :href=\"itemResult.url\" target=\"_blank\" class=\"url-item-combobox item-result-combobox\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"itemResult.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"itemResult.html\"></div>\n\t\t\t</a>\n\t\t\t<div v-else class=\"item-result-combobox\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"itemResult.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"itemResult.html\"></div>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<!--remove action key down backspace: @keydown.8=\"keypressAction('BackSpace', null)\" -->\n\t\t<input :ref=\"'input-search-' + id\" v-show=\"showInputSearchCombobox\" :disabled=\"disabled\"\n\t\t\t   :placeholder=\"inputPlacehoder\" :null-placeholder=\"nullPlaceholder\"\n\t\t\t   :org-placeholder=\"orgPlaceholder\"\n\t\t\t   @input=\"searchAction($event)\" :id=\"'input-' + id\"\n\t\t\t   @blur=\"blurCombobox($event)\" @focus=\"focusCombobox($event);$emit('removeRequired')\"\n\t\t\t   :value=\"searchKeyword\" class=\"search-keywords input__combobox\" @keydown.40=\"keypressAction('ArrowDown', $event)\"\n\t\t\t   @keydown.8=\"keypressAction('BackSpace', null)\"\n\t\t\t   @keydown.prevent.38=\"keypressAction('ArrowUp', $event)\" @keydown.13=\"keypressAction('Enter')\"\n\t\t>\n\t\t<ul :class=\"[{active : isExpanding}, 'list-search', {'custom-default-select' : styleDefault}, {'active-border' : isFocused}]\">\n\t\t\t<li v-show =\"searchList.length == 0\" class=\"not-found\" v-html=\"placeholderEmpty\"></li>\n\t\t\t<li class=\"list-item\" :class=\"{'hover': index == pointerIndex }\" v-for = \"(item, index) in searchList\" @click=\"toggleItem(item.id, index)\" @mouseover=\"pointerIndex=index\">\n\t\t\t\t<div class=\"icon\" v-if = \"!disableIcon\">\n\t\t\t\t\t<img :src=\"item.icon\" class=\"icon-img\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"content\" v-html=\"item.html\"></div>\n\t\t\t</li>\n\t\t</ul>\n\t\t<div tabindex=\"0\" @blur=\"blurCombobox($event)\" class=\"control\" @click=\"toggleArrowDropdown()\" :class=\"[{'control-down':disabled}]\"><i aria-hidden=\"true\" class=\"fa fa-angle-down\" ></i> <i aria-hidden=\"true\" class=\"fa fa-angle-up\" style=\"display: none;\"></i></div>\n\t</div>\n</template>\n<script>\n\timport Combobox from '../../components/Combobox'\n\texport default Combobox\n</script>\n<style>\n\t.combo_box_disable{\n\t\tborder:transparent !important;\n\t\tcursor: default !important;\n\t}\n\t.control-down{\n\t\tdisplay: none;\n\t}\n</style>\n<!-- test push -->"],"sourceRoot":"webpack://"}]);
 
 // exports
 
@@ -100782,8 +100372,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: ((_vm.dropzoneTotalFile + _vm.inputTotalFile) < parseInt(_vm.maxFile) || _vm.maxFile == undefined),
-      expression: "(dropzoneTotalFile + inputTotalFile) < parseInt(maxFile) || maxFile == undefined"
+      value: (_vm.totalFileSize && !_vm.disabled),
+      expression: "totalFileSize && !disabled"
     }],
     staticClass: "b__components__dropzone",
     attrs: {
@@ -100801,7 +100391,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }) : _vm._e(), _vm._v(" "), _c('span', {
     staticClass: "uk-text-middle",
     domProps: {
-      "innerHTML": _vm._s(_vm.parseDropzoneContent())
+      "innerHTML": _vm._s(_vm.dropzoneContent)
     }
   })])])]), _vm._v(" "), _c('div', {
     class: _vm.id + '__preview__container'
@@ -100838,7 +100428,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "data-dz-size": ""
       }
-    }, [_vm._v(_vm._s(item.filesize))])]), _vm._v(" "), _c('a', {
+    }, [_vm._v(_vm._s(_vm.renderFileSize(item.filesize)))])]), _vm._v(" "), _c('a', {
       staticClass: "remove-archive",
       attrs: {
         "data-dz-remove": ""
@@ -100943,8 +100533,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (((_vm.dropzoneTotalFile + _vm.inputTotalFile) < parseInt(_vm.maxFile) || _vm.maxFile == undefined) && !_vm.disabled),
-      expression: "((dropzoneTotalFile + inputTotalFile) < parseInt(maxFile) || maxFile == undefined) && !disabled"
+      value: (_vm.totalFileSize && !_vm.disabled),
+      expression: "totalFileSize && !disabled"
     }],
     staticClass: "b__components__dropzone",
     attrs: {
@@ -100962,7 +100552,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }) : _vm._e(), _vm._v(" "), _c('span', {
     staticClass: "uk-text-middle",
     domProps: {
-      "innerHTML": _vm._s(_vm.parseDropzoneContent())
+      "innerHTML": _vm._s(_vm.dropzoneContent)
     }
   })])])]), _vm._v(" "), _c('div', {
     class: _vm.id + '__preview__container'
@@ -101005,7 +100595,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "data-dz-size": ""
       }
-    }, [_vm._v(_vm._s(item.filesize))])]), _vm._v(" "), _c('a', {
+    }, [_vm._v(_vm._s(_vm.renderFileSize(item.filesize)))])]), _vm._v(" "), _c('a', {
       directives: [{
         name: "show",
         rawName: "v-show",
@@ -101222,6 +100812,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.showInputSearch()
       }
     }
+  }, [(_vm.hasUrl) ? _c('a', {
+    staticClass: "url-item-combobox item-result-combobox",
+    attrs: {
+      "href": _vm.itemResult.url,
+      "target": "_blank"
+    }
   }, [(!_vm.disableIcon) ? _c('div', {
     staticClass: "icon"
   }, [_c('img', {
@@ -101234,7 +100830,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.itemResult.html)
     }
-  })]), _vm._v(" "), _c('input', {
+  })]) : _c('div', {
+    staticClass: "item-result-combobox"
+  }, [(!_vm.disableIcon) ? _c('div', {
+    staticClass: "icon"
+  }, [_c('img', {
+    staticClass: "icon-img",
+    attrs: {
+      "src": _vm.itemResult.icon
+    }
+  })]) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "content",
+    domProps: {
+      "innerHTML": _vm._s(_vm.itemResult.html)
+    }
+  })])]), _vm._v(" "), _c('input', {
     directives: [{
       name: "show",
       rawName: "v-show",
