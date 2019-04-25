@@ -150,7 +150,6 @@ export default {
         file_picker_callback(callback, value, meta)
         {
             var _this = this;
-            console.log('picker:' + _this.images_upload_url);
             $('.tox-dropzone .tox-button ').trigger('click')
             var input = document.createElement('input');
             input.setAttribute('type', 'file');
@@ -179,7 +178,6 @@ export default {
                             return;
                         }
                         $(".tox-dialog__busy-spinner").remove();
-                        success(json.location);
                     };
                     formData = new FormData();
                     formData.append('file',file, file.name);
@@ -204,7 +202,6 @@ export default {
                 return;
             }
             var _this = this;
-            console.log('upload:' + _this.images_upload_url);
             setTimeout(function() {
                 var xhr, formData;
                 xhr = new XMLHttpRequest();
