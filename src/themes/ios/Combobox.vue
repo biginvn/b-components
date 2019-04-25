@@ -4,7 +4,7 @@
 		 :org-placeholder="orgPlaceholder">
 		<label :for="id" :class="isActive ? 'active' : '' ">{{ label.toUpperCase() }}</label>
 		<div v-show="showResult && isShowHtmlResult" class="result" @click="showInputSearch()">
-			<a v-if="hasUrl" :href="itemResult.url" target="_blank" class="url-item-combobox item-result-combobox">
+			<a v-if="hasUrl && itemResult.url" :href="itemResult.url" target="_blank" class="url-item-combobox item-result-combobox">
 				<div class="icon" v-if = "!disableIcon">
 					<img :src="itemResult.icon" class="icon-img">
 				</div>
