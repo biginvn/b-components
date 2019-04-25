@@ -8,9 +8,7 @@ export default {
             ...JSON.parse(JSON.stringify(Variables))
         }
     },
-    props: {
-        ...JSON.parse(JSON.stringify(Props))
-    },
+    props: [...JSON.parse(JSON.stringify(Props))],
     computed: {
         isDisabled(){ return (this.disabled == "disabled") ? 1 : 0 },
         isReadOnly(){ return ((this.checkEdit != undefined) && (!this.checkEdit || this.disabled == "disabled")) ? 1 : 0 }
@@ -152,6 +150,7 @@ export default {
         file_picker_callback(callback, value, meta)
         {
             var _this = this;
+            console.log('picker:' + _this.images_upload_url);
             $('.tox-dropzone .tox-button ').trigger('click')
             var input = document.createElement('input');
             input.setAttribute('type', 'file');
@@ -205,6 +204,7 @@ export default {
                 return;
             }
             var _this = this;
+            console.log('upload:' + _this.images_upload_url);
             setTimeout(function() {
                 var xhr, formData;
                 xhr = new XMLHttpRequest();
