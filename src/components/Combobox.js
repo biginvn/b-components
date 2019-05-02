@@ -285,11 +285,11 @@ export default {
                         this.searchListTotal = [];
                         dataList.map(data => {
                             let tmp = {
-                                id: self.formatListHtml(self.formatList.id, data),
-                                html: self.formatListHtml(self.formatList.html, data),
-                                title: self.formatListHtml(self.formatList.title, data),
-                                icon: self.formatListHtml(self.formatList.icon, data),
-                                url: self.formatListHtml(self.formatList.url, data),
+                                id: (self.formatList.id) ? self.formatListHtml(self.formatList.id, data) : null,
+                                html: (self.formatList.html) ? self.formatListHtml(self.formatList.html, data) : null,
+                                title: (self.formatList.title) ? self.formatListHtml(self.formatList.title, data) : null,
+                                icon: (self.formatList.icon) ? self.formatListHtml(self.formatList.icon, data) : null,
+                                url: (self.formatList.url) ? self.formatListHtml(self.formatList.url, data) : null,
                             }
                             this.searchListTotal.push(tmp);
                         });
