@@ -22,7 +22,7 @@ export default
             deep: true
         }
     },
-    mounted(){
+    created(){
         /* add prefix support adhoc docx */
         this.fileTypes.others.docx = ' dz-doc show-option-document';
     },

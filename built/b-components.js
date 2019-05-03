@@ -11005,54 +11005,6 @@ var PLUS_CHARS = '+\uFF0B';
 
 /***/ }),
 /* 16 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_mixins__ = __webpack_require__(8);
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    data() {
-        return {
-            classLabel: ''
-        };
-    },
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__base_mixins__["a" /* default */]],
-    // props: ['disabled', 'placeholder', 'label', 'class-name', 'name', 'id'],
-    props: {
-        'disabled': {},
-        'placeholder': {},
-        'label': {},
-        'class-name': {},
-        'name': {},
-        'id': {}
-    },
-    computed: {
-        classes() {
-            return (this.className ? this.className : '') + " b__input";
-        }
-    },
-    mounted() {
-        this.updateFloatLabel(this.value);
-    },
-    watch: {
-        value(newValue) {
-            // Detect when value change will update float label
-            this.updateFloatLabel(newValue);
-        }
-    },
-    methods: {
-        updateFloatLabel(value) {
-            var isEmpty = value == undefined || value == null || value == 0 || value == '' ? true : false;
-            if (!isEmpty) {
-                this.classLabel = 'active';
-            } else this.classLabel = '';
-        }
-    }
-});
-
-/***/ }),
-/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11102,7 +11054,7 @@ module.exports = {
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11116,7 +11068,7 @@ module.exports.Rectangle = __webpack_require__(582);
 
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11682,6 +11634,54 @@ function extractCountryCallingCode(number, country, metadata) {
 	return {};
 }
 //# sourceMappingURL=parse_.js.map
+
+/***/ }),
+/* 19 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_mixins__ = __webpack_require__(8);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data() {
+        return {
+            classLabel: ''
+        };
+    },
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__base_mixins__["a" /* default */]],
+    // props: ['disabled', 'placeholder', 'label', 'class-name', 'name', 'id'],
+    props: {
+        'disabled': {},
+        'placeholder': {},
+        'label': {},
+        'class-name': {},
+        'name': {},
+        'id': {}
+    },
+    computed: {
+        classes() {
+            return (this.className ? this.className : '') + " b__input";
+        }
+    },
+    mounted() {
+        this.updateFloatLabel(this.value);
+    },
+    watch: {
+        value(newValue) {
+            // Detect when value change will update float label
+            this.updateFloatLabel(newValue);
+        }
+    },
+    methods: {
+        updateFloatLabel(value) {
+            var isEmpty = value == undefined || value == null || value == 0 || value == '' ? true : false;
+            if (!isEmpty) {
+                this.classLabel = 'active';
+            } else this.classLabel = '';
+        }
+    }
+});
 
 /***/ }),
 /* 20 */
@@ -13659,7 +13659,7 @@ function objectToString(o) {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = parsePhoneNumber;
 /* harmony export (immutable) */ __webpack_exports__["b"] = sort_out_arguments;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parse___ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parse___ = __webpack_require__(18);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -14494,7 +14494,7 @@ function endsWith(string, substring) {
 /* harmony export (immutable) */ __webpack_exports__["b"] = sort_out_arguments;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__isViablePhoneNumber__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getNumberType___ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__parse___ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__parse___ = __webpack_require__(18);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
@@ -15483,7 +15483,7 @@ module.exports = Array.isArray || function (arr) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PhoneNumber__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__parse___ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__parse___ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__format___ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__getNumberType___ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__parseIncompletePhoneNumber__ = __webpack_require__(60);
@@ -16622,7 +16622,7 @@ ParseError.prototype.constructor = ParseError;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__findNumbers_parsePreCandidate__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__findNumbers_isValidPreCandidate__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__findNumbers_isValidCandidate__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__parse___ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__parse___ = __webpack_require__(18);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -17143,7 +17143,7 @@ function searchPhoneNumbers(arg_1, arg_2, arg_3, arg_4) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhoneNumberSearch; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__extension__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__parse___ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__parse___ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__findNumbers_parsePreCandidate__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__findNumbers_isValidPreCandidate__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__findNumbers_isValidCandidate__ = __webpack_require__(102);
@@ -20972,7 +20972,7 @@ throw new Error("Module build failed: SyntaxError: Unexpected token (8:12)\n\n\u
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(19);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -35092,7 +35092,7 @@ function isInvalidPunctuationSymbol(character) {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = formatNumber;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__format___ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__parse___ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__parse___ = __webpack_require__(18);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
@@ -35218,7 +35218,7 @@ function isValidNumberForRegion(input, country) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = parseNumber;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parse___ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parse___ = __webpack_require__(18);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -63830,7 +63830,7 @@ const getCountry = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(0);
@@ -63977,7 +63977,7 @@ const getCountry = function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_material_datetime_picker__ = __webpack_require__(659);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_text_field_mixins__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_text_field_mixins__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(0);
@@ -64087,7 +64087,7 @@ const getCountry = function () {
             deep: true
         }
     },
-    mounted() {
+    created() {
         /* add prefix support adhoc docx */
         this.fileTypes.others.docx = ' dz-doc show-option-document';
     },
@@ -64635,7 +64635,7 @@ const getCountry = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(19);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data() {
@@ -65071,7 +65071,7 @@ const getCountry = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(19);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -65798,7 +65798,7 @@ const getCountry = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(19);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data() {
@@ -66054,7 +66054,7 @@ const getCountry = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_text_field_mixins__ = __webpack_require__(19);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -66110,9 +66110,8 @@ const getCountry = function () {
 
 /***/ }),
 /* 432 */
-/***/ (function(module, __webpack_exports__) {
+/***/ (function(module, exports) {
 
-"use strict";
 throw new Error("Module build failed: SyntaxError: Unexpected token (8:12)\n\n\u001b[0m \u001b[90m  6 | \u001b[39m    data() {\n \u001b[90m  7 | \u001b[39m        \u001b[36mreturn\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  8 | \u001b[39m            \u001b[33m...\u001b[39m\u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mparse(\u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mstringify(\u001b[33mVariables\u001b[39m))\n \u001b[90m    | \u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  9 | \u001b[39m        }\n \u001b[90m 10 | \u001b[39m    }\u001b[33m,\u001b[39m\n \u001b[90m 11 | \u001b[39m    props\u001b[33m:\u001b[39m [\u001b[33m...\u001b[39m\u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mparse(\u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mstringify(\u001b[33mProps\u001b[39m))]\u001b[33m,\u001b[39m\u001b[0m\n");
 
 /***/ }),
@@ -72290,13 +72289,13 @@ Chart.Animation = __webpack_require__(91);
 Chart.animationService = __webpack_require__(92);
 Chart.defaults = __webpack_require__(4);
 Chart.Element = __webpack_require__(12);
-Chart.elements = __webpack_require__(18);
+Chart.elements = __webpack_require__(17);
 Chart.Interaction = __webpack_require__(93);
 Chart.layouts = __webpack_require__(24);
 Chart.platform = __webpack_require__(96);
 Chart.plugins = __webpack_require__(94);
 Chart.Scale = __webpack_require__(25);
-Chart.scaleService = __webpack_require__(17);
+Chart.scaleService = __webpack_require__(16);
 Chart.Ticks = __webpack_require__(26);
 Chart.Tooltip = __webpack_require__(95);
 
@@ -72531,7 +72530,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(4);
-var elements = __webpack_require__(18);
+var elements = __webpack_require__(17);
 var helpers = __webpack_require__(2);
 
 defaults._set('bar', {
@@ -73019,7 +73018,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(4);
-var elements = __webpack_require__(18);
+var elements = __webpack_require__(17);
 var helpers = __webpack_require__(2);
 
 defaults._set('bubble', {
@@ -73199,7 +73198,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(4);
-var elements = __webpack_require__(18);
+var elements = __webpack_require__(17);
 var helpers = __webpack_require__(2);
 
 defaults._set('doughnut', {
@@ -73507,7 +73506,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(4);
-var elements = __webpack_require__(18);
+var elements = __webpack_require__(17);
 var helpers = __webpack_require__(2);
 
 defaults._set('line', {
@@ -73858,7 +73857,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(4);
-var elements = __webpack_require__(18);
+var elements = __webpack_require__(17);
 var helpers = __webpack_require__(2);
 
 defaults._set('polarArea', {
@@ -74120,7 +74119,7 @@ module.exports = function(Chart) {
 
 
 var defaults = __webpack_require__(4);
-var elements = __webpack_require__(18);
+var elements = __webpack_require__(17);
 var helpers = __webpack_require__(2);
 
 defaults._set('radar', {
@@ -74346,7 +74345,7 @@ var Interaction = __webpack_require__(93);
 var layouts = __webpack_require__(24);
 var platform = __webpack_require__(96);
 var plugins = __webpack_require__(94);
-var scaleService = __webpack_require__(17);
+var scaleService = __webpack_require__(16);
 var Tooltip = __webpack_require__(95);
 
 module.exports = function(Chart) {
@@ -75646,7 +75645,7 @@ module.exports = function(Chart) {
 var color = __webpack_require__(97);
 var defaults = __webpack_require__(4);
 var helpers = __webpack_require__(2);
-var scaleService = __webpack_require__(17);
+var scaleService = __webpack_require__(16);
 
 module.exports = function() {
 
@@ -77951,7 +77950,7 @@ module.exports.title = __webpack_require__(591);
 
 
 var defaults = __webpack_require__(4);
-var elements = __webpack_require__(18);
+var elements = __webpack_require__(17);
 var helpers = __webpack_require__(2);
 
 defaults._set('global', {
@@ -79112,7 +79111,7 @@ module.exports = {
 
 
 var Scale = __webpack_require__(25);
-var scaleService = __webpack_require__(17);
+var scaleService = __webpack_require__(16);
 
 module.exports = function() {
 
@@ -79255,7 +79254,7 @@ module.exports = function() {
 
 var defaults = __webpack_require__(4);
 var helpers = __webpack_require__(2);
-var scaleService = __webpack_require__(17);
+var scaleService = __webpack_require__(16);
 var Ticks = __webpack_require__(26);
 
 module.exports = function(Chart) {
@@ -79658,7 +79657,7 @@ module.exports = function(Chart) {
 
 var helpers = __webpack_require__(2);
 var Scale = __webpack_require__(25);
-var scaleService = __webpack_require__(17);
+var scaleService = __webpack_require__(16);
 var Ticks = __webpack_require__(26);
 
 /**
@@ -80014,7 +80013,7 @@ module.exports = function(Chart) {
 
 var defaults = __webpack_require__(4);
 var helpers = __webpack_require__(2);
-var scaleService = __webpack_require__(17);
+var scaleService = __webpack_require__(16);
 var Ticks = __webpack_require__(26);
 
 module.exports = function(Chart) {
@@ -80556,7 +80555,7 @@ moment = typeof moment === 'function' ? moment : window.moment;
 var defaults = __webpack_require__(4);
 var helpers = __webpack_require__(2);
 var Scale = __webpack_require__(25);
-var scaleService = __webpack_require__(17);
+var scaleService = __webpack_require__(16);
 
 // Integer constants are from the ES6 spec.
 var MIN_INTEGER = Number.MIN_SAFE_INTEGER || -9007199254740991;
@@ -85922,7 +85921,7 @@ function isPossibleNumber(arg_1, arg_2, arg_3, arg_4) {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = isValidNumberForRegion;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__isViablePhoneNumber__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__parse___ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__parse___ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isValidNumberForRegion___ = __webpack_require__(107);
 
 
