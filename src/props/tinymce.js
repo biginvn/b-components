@@ -13,7 +13,6 @@ var tinyConfig = {
     lineheight_formats:'Single=100% 1.5=150% Double=200%',
     theme: 'silver',
     plugins: 'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help noneditable line-height',
-    table_default_attributes: {},
     menubar: 'edit insert view format table tools help',
     content_css: [
         'https://fonts.googleapis.com/css?family=Montserrat',
