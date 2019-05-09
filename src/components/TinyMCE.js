@@ -38,14 +38,12 @@ export default {
             return this.$emit('input', newContent)
         },
         checkEdit(isEdit){
-            tinymce.get(this.id).setMode('code')
-            // $('.tox-menubar').removeClass('d-none');
-            // $('.tox-toolbar').removeClass('d-none');
             if(isEdit == false) {
                 tinymce.get(this.id).setMode('readonly');
-                // $('.tox-menubar').addClass('d-none');
-                // $('.tox-toolbar').addClass('d-none');
             }
+            else
+                tinymce.get(this.id).setMode('code');
+
             this.$nextTick(function(){
                 tinymce.get(this.id).getBody().style.padding = "25px";
             })
