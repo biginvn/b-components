@@ -1,0 +1,8 @@
+.tox .tox-tbtn--disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.tox-editor-container *:disabled {
+  pointer-events: none;
+}
