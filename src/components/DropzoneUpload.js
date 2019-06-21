@@ -214,7 +214,8 @@ export default {
                     filesize   : fileSize,
                     path       : file.path,
                     name       : fileName,
-                    className  : className
+                    className  : className,
+                    media_id : file.media_id
                 })
             })
             this.items = items

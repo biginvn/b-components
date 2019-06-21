@@ -44,7 +44,8 @@ export default
                     name       : fileName,
                     className  : className,
                     exportType : typeProcess,
-                    isProcess  : isProcess
+                    isProcess  : isProcess,
+                    media_id : file.media_id
                 })
             })
             this.items = items
