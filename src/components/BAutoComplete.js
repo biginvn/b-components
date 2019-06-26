@@ -1,22 +1,20 @@
 import caretCoordinates from '../assets/caret-coordinates/caret-coordinates';
+import baseComponent from '../mixins/text-field-mixins'
 
 export default {
+    mixins : [baseComponent],
     props: {
         items: {
             type: Array,
             default: () => [],
         },
-        placeholder: {
-            type: String,
-            default: "Input any character ...",
-        },
-        label: {
-            type: String,
-            default: 'Auto Complete',
-        },
         splitCharacter: {
             type: String,
             default: ' ',
+        },
+        defaultValue: {
+            type: String,
+            default: null,
         },
         textarea: {
             type: Boolean,
@@ -33,7 +31,6 @@ export default {
     },
     data() {
         return {
-            id: 'input-' + parseInt(Math.random() * 1000),
             inputValue: "",
             searchMatch: [],
             selectedIndex: 0,
@@ -42,8 +39,11 @@ export default {
         };
     },
     mounted() {
+        if (this.defaultValue)
+            this.inputValue = this.defaultValue;
+
         const _self = this;
-        document.querySelector('#' + this.id)
+        document.querySelector(`.autocomplete-input`)
             .addEventListener('input', function() {
                 const caret = caretCoordinates(this, this.selectionEnd);
 
@@ -58,6 +58,9 @@ export default {
             });
     },
     computed: {
+        classes () {
+            return (this.className?this.className:'') + " b__input 2"
+        },
         listToSearch() {
             if (typeof this.items !== "undefined" && this.items.length > 0) {
                 return this.items;
@@ -73,10 +76,11 @@ export default {
         }
     },
     watch: {
-        inputValue() {
+        inputValue(value) {
             this.focus();
             this.selectedIndex = 0;
             this.wordIndex = this.inputSplitted.length - 1;
+            this.$emit('input', value);
         }
     },
     methods: {
@@ -89,6 +93,11 @@ export default {
             currentWords[this.wordIndex] = currentWords[this.wordIndex].replace(this.currentWord, word + this.splitCharacter);
             this.wordIndex += 1;
             this.inputValue = currentWords.join(this.splitCharacter).replace(/__br__\s/g, '\n');
+        },
+        resetFormatInputValue() {
+            var replace = `${this.splitCharacter.trim()}\\s*$`;
+            var re = new RegExp(replace,"g");
+            this.inputValue = this.inputValue.replace(re, "");
         },
         moveDown() {
             if (this.selectedIndex < this.searchMatch.length - 1) {
@@ -122,6 +131,7 @@ export default {
                     this.selectedIndex = -1;
                 }
                 this.clickedChooseItem = false;
+                this.resetFormatInputValue()
             }, 100);
         },
         focus() {
@@ -137,6 +147,10 @@ export default {
             ) {
                 this.searchMatch = [];
             }
-        }
+        },
+        change (value) {
+            this.updateFloatLabel(value);
+            this.$emit('input', value);
+        },
     }
 }

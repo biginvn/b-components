@@ -1,24 +1,6 @@
 // AUTOCOPMPLETE SCSS
 .autocomplete {
   position: relative;
-  label {
-    display: block;
-
-    margin-bottom: 5px;
-
-    font-size: 14px;
-    font-weight: 100;
-  }
-  &-input {
-    padding: 7px 10px;
-    width: 93%;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    outline: none;
-    &:focus {
-      border-color: #000;
-    }
-  }
   &-list {
     position: absolute;
     z-index: 2;
