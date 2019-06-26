@@ -1,9 +1,9 @@
 <template>
     <div class="b__components b-ios b-float-label b-input-extend-custom b-autocomplete autocomplete">
         <label :class="classLabel">{{label}}</label>
-        <textarea v-if="textarea" :splitCharacter="splitCharacter" :id="id" @input="change($event.target.value)" :class="classes" :rows="rows" :cols="cols" class="autocomplete-input" :placeholder="placeholder" @focusout="focusout" @focus="focus" @keydown.13="chooseItem" @keydown.tab="chooseItem" @keydown.40="moveDown" @keydown.38="moveUp" v-model="inputValue"
+        <textarea v-if="textarea" :splitCharacter="splitCharacter" :id="id" @blur="blur" @input="change($event.target.value)" :class="classes" :rows="rows" :cols="cols" class="autocomplete-input" :placeholder="placeholder" @focusout="focusout" @focus="focus" @keydown.13="chooseItem" @keydown.tab="chooseItem" @keydown.40="moveDown" @keydown.38="moveUp" v-model="inputValue"
                   type="text"></textarea>
-        <input v-else :id="id" @input="change($event.target.value)" class="autocomplete-input" :class="classes" :placeholder="placeholder" @focusout="focusout" @focus="focus" @keydown.13="chooseItem" @keydown.tab="chooseItem" @keydown.40="moveDown" @keydown.38="moveUp" v-model="inputValue" type="text">
+        <input v-else :id="id" @blur="blur" @input="change($event.target.value)" class="autocomplete-input" :class="classes" :placeholder="placeholder" @focusout="focusout" @focus="focus" @keydown.13="chooseItem" @keydown.tab="chooseItem" @keydown.40="moveDown" @keydown.38="moveUp" v-model="inputValue" type="text">
         <ul :class="{
         'autocomplete-list': true,
         [id+'-list']: true

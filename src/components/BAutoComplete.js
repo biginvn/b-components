@@ -81,6 +81,10 @@ export default {
             this.selectedIndex = 0;
             this.wordIndex = this.inputSplitted.length - 1;
             this.$emit('input', value);
+        },
+        defaultValue(value) {
+            if (value)
+                this.inputValue = this.defaultValue;
         }
     },
     methods: {
@@ -147,6 +151,9 @@ export default {
             ) {
                 this.searchMatch = [];
             }
+        },
+        blur() {
+            this.resetFormatInputValue()
         },
         change (value) {
             this.updateFloatLabel(value);
