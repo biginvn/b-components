@@ -116,6 +116,7 @@ export default {
         selectItem(index) {
             this.selectedIndex = index;
             this.chooseItem();
+            this.focusout();
         },
         chooseItem(e) {
             this.clickedChooseItem = true;
