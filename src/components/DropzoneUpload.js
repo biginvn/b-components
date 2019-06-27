@@ -206,7 +206,7 @@ export default {
             let _this = this;
             let className, fileSize, fileName;
             files.forEach((file, index) => {
-                className = file.className ? file.className : _this.getClassByPath(file.path);
+                className = file.className ? file.className : _this.getClassByPath(file.real_filename);
                 fileSize  = file.filesize.replace(" ", "");
                 fileName  = file.filename ? file.filename : ( file.name ? file.name : _this.getNameByPath(file.path));
                 items.push({
@@ -214,7 +214,8 @@ export default {
                     filesize   : fileSize,
                     path       : file.path,
                     name       : fileName,
-                    className  : className
+                    className  : className,
+                    media_id : file.media_id
                 })
             })
             this.items = items

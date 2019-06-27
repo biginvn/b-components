@@ -25,7 +25,9 @@
                 <div :class="item.className" style="animation: fadeOut;">
                     <img v-if="item.className == 'dz-thumb' || item.className == 'dz-thumb dz-image'" data-dz-thumbnail="" :src="item.path">
                     <img v-else data-dz-thumbnail="">
-                    <a :href="item.path"><span data-dz-name="" class="dz-name">{{ item.name }}</span></a>
+                    <a href="javascript:void(0)" class="b-download-media" :data-id="item.media_id">
+                        <span data-dz-name="" class="dz-name">{{ item.name }}</span>
+                    </a>
                     <strong>
                         <span class="dz-size" data-dz-size>{{ renderFileSize(item.filesize) }}</span>
                     </strong>

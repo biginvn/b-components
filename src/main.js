@@ -42,9 +42,9 @@ import BModalMessage from './themes/ios/ModalMessage.vue'
 import BChart from './themes/ios/Chart.vue'
 import BDataTable from './themes/ios/DataTable.vue'
 import BComboBox from './themes/ios/Combobox.vue'
-
 import BDocumentAdhoc from './themes/ios/DocumentAdhoc.vue'
 import BTelephoneInput from './themes/ios/TelephoneInput.vue'
+import BAutoComplete from './themes/ios/BAutoComplete.vue'
 
 Vue.component('BTextField', BTextField)
 Vue.component('BCheckBox', BCheckBox)
@@ -77,6 +77,7 @@ Vue.component('BChart', BChart)
 Vue.component('BDataTable', BDataTable)
 Vue.component('BComboBox', BComboBox)
 Vue.component('BTelephoneInput', BTelephoneInput)
+Vue.component('BAutoComplete', BAutoComplete)
 
 /* custom adhoc document with extends dropzone component upload */
 Vue.component('BDocumentAdhoc', BDocumentAdhoc)

@@ -32,7 +32,7 @@ export default
             let _this = this;
             let className, fileSize, fileName, typeProcess, isProcess;
             files.forEach((file, index) => {
-                className   = file.className ? file.className : _this.getClassByPath(file.path);
+                className   = file.className ? file.className : _this.getClassByPath(file.real_filename);
                 fileSize    = file.filesize.replace(" ", "");
                 fileName    = file.filename ? file.filename : ( file.name ? file.name : _this.getNameByPath(file.path));
                 typeProcess = file.exportType ? file.exportType : (file.type_process ? file.type_process : 'docx');
@@ -44,7 +44,8 @@ export default
                     name       : fileName,
                     className  : className,
                     exportType : typeProcess,
-                    isProcess  : isProcess
+                    isProcess  : isProcess,
+                    media_id : file.media_id
                 })
             })
             this.items = items
