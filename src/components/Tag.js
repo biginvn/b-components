@@ -100,6 +100,7 @@ export default {
 				this.classLabel = '';
 		},
 		onPaste(tag){
+			tag = tag.split(' ').join(',');
 			tag = tag.split(',');
 			this.setTag(tag);
 		},
