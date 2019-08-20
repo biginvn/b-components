@@ -29,6 +29,10 @@ export default {
 		}
 	},
 	methods:{
+		isANumber( n ) {
+		    var numStr = /^-?(\d+\.?\d*)$|(\d*\.?\d+)$/;
+		    return numStr.test( n.toString() );
+		},
 		/**
 		 * [setDataDefault description]
 		 */
@@ -49,9 +53,10 @@ export default {
 		addNewTag(tag){
 			if(tag!= undefined && tag!=null)
 				tag = tag.toString()
+			else
+				tag = '';
 
-			let regex = /^[0-9]+\-*[0-9]+$/g
-			if(tag != undefined && tag != null && !tag.match(regex) && this.type == 'zipcode'){}
+			if(!this.isANumber(tag) && this.type == 'zipcode'){}
 			else{
 				if(tag && this.tags.indexOf(tag.toString()) === -1){
 					this.updateChange(tag);
