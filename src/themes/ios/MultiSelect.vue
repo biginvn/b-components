@@ -52,7 +52,7 @@
 			</div>
 			<ul class="b__multi__select__list">
 				<li v-show = "searchList == undefined || searchList.length == 0" class="not-found">Not found</li>
-				<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex }" v-for = "(item, index) in searchList" @mousedown="toggleItem(item.id)">
+				<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(item.id)) || ( isSingle && selected == item.id ) , 'hover' : index == pointerIndex, 'main-vendor': item.main_vendor }" v-for = "(item, index) in searchList" @mousedown="toggleItem(item.id)">
 					<div class="icon" v-if = "!disableIcon">
 						<img :src="item.icon" class="icon-img">
 					</div>
