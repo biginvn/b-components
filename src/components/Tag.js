@@ -19,59 +19,48 @@ export default {
 	watch: {
 		value(newValue){
 			this.tags = newValue;
+			this.updateUI();
 		},
 		tags(val){
 			if(val.length == 0){
 				this.$nextTick(function(){
-                    $('.b__component_input_tag_wrapper label').removeClass('active');
+                    $(this.$el).find('.b__component_input_tag_wrapper label').removeClass('active');
                 })
 			}
 		}
 	},
 	methods:{
-		/**
-		 * [setDataDefault description]
-		 */
+		updateUI(){ // Recalculate with of input
+
+		},
 		setDataDefault(){
 			return this.tagPlaceholder = this.placeholder
 		},
-		/**
-		 * [focusNewTag description]
-		 * @return {[type]} [description]
-		 */
+
 		focusNewTag(){
 			this.$el.queySelector('.new_tag').focus();
 		},
-		/**
-		 * [addNewTag description]
-		 * @param {[type]} tag [description]
-		 */
 		addNewTag(tag){
 			if(tag!= undefined && tag!=null)
 				tag = tag.toString()
 
 			let regex = /^[0-9]+\-*[0-9]+$/g
-			if(tag != undefined && tag != null && !tag.match(regex) && this.type == 'zipcode'){}
-			else{
-				if(tag && this.tags.indexOf(tag.toString()) === -1){
-					this.updateChange(tag);
-					this.tags.push(tag);
-					this.tagChange();
-				}
-				this.tagPlaceholder = '';
+			if(tag!= undefined && tag!=null && !tag.match(regex) && this.type == 'zipcode') return
+
+			if(tag && this.tags.indexOf(tag.toString()) === -1){
+				this.updateChange(tag);
+				this.tags.push(tag);
+				this.tagChange();
 			}
 			this.$emit('input',this.tags);
+			this.tagPlaceholder = '';
 			this.newTag = '';
 		},
-		/**
-		 * [remove description]
-		 * @param  {[type]} index [description]
-		 * @return {[type]}       [description]
-		 */
 		remove(index){
 			this.tags.splice(index,1);
 			if(this.tags.length == 0){
 	        	this.updateChange(this.tags);
+	        	// this.tagPlaceholder = this.placeholder;
 	        }
 			this.tagChange();
 			this.$emit('input', this.tags)
@@ -90,18 +79,21 @@ export default {
 	        }
 	        this.tagChange();
 	        this.$emit('input', this.tags)
+
      	 },
       	updateChange(value) {
+
 			var isEmpty = value == undefined || value == '' || value.length == 0 ? true : false;
 			if (!isEmpty){
 				this.classLabel = 'active';
+				// $(this.$el).find('.b__component_input_tag_wrapper label').addClass('active');
 			}
-			else
+			else{
 				this.classLabel = '';
+				// $(this.$el).find('.b__component_input_tag_wrapper label').removeClass('active');
+			}
 		},
 		onPaste(tag){
-			tag = tag.split('\t').join(',');
-			tag = tag.split(' ').join(',');
 			tag = tag.split(',');
 			this.setTag(tag);
 		},
@@ -110,7 +102,7 @@ export default {
 				this.tags = []
 				this.tagPlaceholder = this.placeholder
 				this.$nextTick(function(){
-                    $('.b__component_input_tag_wrapper label').removeClass('active');
+                    $(this.$el).find('.b__component_input_tag_wrapper label').removeClass('active');
                 })
 			}
 			for( let i = 0; i < arrayTag.length; i++ ){
