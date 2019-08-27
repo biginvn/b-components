@@ -83,8 +83,10 @@ export default {
                 this.classLabel = '';
         },
         onPaste(tag){
+            if(this.type == 'zipcode'){
+                tag = tag.split(' ').join(',');
+            }
             tag = tag.split('\t').join(',');
-            tag = tag.split(' ').join(',');
             tag = tag.split(',');
             this.setTag(tag);
         },
