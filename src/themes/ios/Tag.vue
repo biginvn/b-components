@@ -15,3 +15,8 @@
 	import InputTag from './../../components/Tag'
 	export default InputTag
 </script>
+<style>
+	.b__components.b__component_input_tag_wrapper.select-disabled .b__component_input_tag .remove{
+		display: none;
+	}
+</style>
