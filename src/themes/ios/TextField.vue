@@ -14,6 +14,7 @@
     :disabled="disabled"
     :regex="regex"
     :url="url"
+    :autocomplete="autocomplete"
     @keydown="keyDownRegex"
     @input="change($event.target.value)" 
     @blur="blur" 
