@@ -179,7 +179,7 @@ export default {
             return false
         },
         isActive(){
-            return (this.value != null || (this.searchKeyword !== null && this.searchKeyword !== ''));
+            return ((this.value !== null && this.value !== '') || (this.searchKeyword !== null && this.searchKeyword !== ''));
         },
         placeholderEmpty()
         {
