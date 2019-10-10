@@ -260,10 +260,10 @@ export default {
         },
         toggleItem(id, index){
             this.selectedValue = id;
-            // this.selectedPointerIndex = index;
-            this.switchList(false); // Close list
-            this.searchKeyword = this.searchList[index].title;
-            // this.showResult = true
+            this.$nextTick(() => {
+                 this.switchList(false); // Close list
+                this.searchKeyword = this.searchList[index].title;
+            })
         },
         hoverItem(index){ // Hover on item at (index) in searchList
             // this
