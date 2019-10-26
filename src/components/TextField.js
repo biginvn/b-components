@@ -9,7 +9,8 @@ export default {
         maxlength: {},
         classParent: {},
         regex: {},
-        url: {},
+		url: {},
+		autocomplete:{},
         hasUrl: {
             default: false
 		},
