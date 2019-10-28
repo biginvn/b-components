@@ -67,17 +67,21 @@ export default {
      		}   
    		},
         keyDownRegex: function (e) {
-			let keyCode = e.keyCode || e.which;
-        	
-        	if(this.type=='number' && this.negative == 'false' && (keyCode == 189 || keyCode==86)){
-        		e.preventDefault()
-        		return false
-        	}
-			// alert(keyCode);
+        	let keyCode = e.keyCode || e.which;
+
+        	let pattern = new RegExp(this.regex);
+            if (this.regex !== undefined && this.regex !== null && this.regex !== '') {
+            	const value = $(e.target).val() + e.key
+                let res = pattern.test(value);
+                if (!res && keyCode != 8 && keyCode != 37 && keyCode != 39) {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+
             // Don't validate the input if below arrow, delete and backspace keys were pressed
             if(keyCode != 37 && keyCode != 38 && keyCode != 39 && keyCode != 40 && keyCode != 46 && keyCode != 8) { // Left / Up / Right / Down Arrow, Delete keys;
                 let keyCharacter = e.key;
-                let pattern = new RegExp(this.regex);
                 if (this.regex !== undefined && this.regex !== null && this.regex !== '') {
                     let res = pattern.test(keyCharacter);
                     if (!res) {
