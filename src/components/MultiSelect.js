@@ -60,7 +60,8 @@ export default {
         resetSearchKeyWord: {
             type: Boolean,
             default: false
-        }
+        },
+        hasSelectAll: false
     },
     // props : ['list', 'value', 'disabled', 'single-dropdown', 'disable-icon', 'placeholder'],
     computed : {
@@ -255,6 +256,13 @@ export default {
 
             this.hoverItem(pointerIndex)
             this.pointerIndex = pointerIndex
+        },
+        selectAll(){
+            let list = this.searchList.map(elem => elem.id)
+            this.searchKeyword = ''
+            this.$el.querySelector('input.input-control').focus()
+            this.focusInputAction('')
+            this.$emit('input', list)
         }
     }
 
