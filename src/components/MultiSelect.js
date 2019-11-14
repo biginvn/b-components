@@ -163,6 +163,7 @@ export default {
 
         toggleItem(id){
             if (!this.isSingle){
+                id = parseInt(id)
                 let selectList = [];
 
                 if(this.value){
@@ -181,7 +182,7 @@ export default {
                 this.searchKeyword = ''
                 this.$el.querySelector('input.input-control').focus()
                 this.focusInputAction('')
-
+                
                 this.$emit('input', selectList)
             } else {
                 let selectList = this.value == null ? [] : [this.value];
@@ -258,7 +259,7 @@ export default {
             this.pointerIndex = pointerIndex
         },
         selectAll(){
-            let list = this.searchList.map(elem => elem.id)
+            let list = this.searchList.map(elem => parseInt(elem.id))
             this.searchKeyword = ''
             this.$el.querySelector('input.input-control').focus()
             this.focusInputAction('')
