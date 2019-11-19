@@ -20,6 +20,7 @@
     @blur="blur" 
     @focus="focus"
     @keypress="keyupEnter"
+    :negative="negative"
     >
   <div v-if="hasUrl" class="link-name-area">
    <a class="link-text-name" :href="url" :target="targetBlank ? '_blank' : ''">{{ value }}</a>
