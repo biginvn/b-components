@@ -129,8 +129,8 @@ export default {
             editor.on('change', function (e) {
                 _this.range = this.selection.getRng().startOffset;     // get range
                 _this.$emit('range',_this.range)
-                this.contentOutPut = this.getContent()
-                _this.$emit('input', this.getContent());
+                this.contentOutPut = _this.strip_single_tag(this.getContent())
+                _this.$emit('input', this.contentOutPut);
             })
 
             editor.on('focus', function (e) {
@@ -143,6 +143,10 @@ export default {
                     modal: true
                 });
             });
+        },
+        strip_single_tag(str)
+        {
+            return str.replace(/(?:\<pre[\S\s]*?\>)([\S\s]*?)(?:\<\/pre\>)/, str.match(/(?:\<pre[\S\s]*?\>)([\S\s]*?)(?:\<\/pre\>)/)[1].replace(/\n/g, '<br/>'));
         },
         /**
          * Register hook action custom file picker to those dialogs
