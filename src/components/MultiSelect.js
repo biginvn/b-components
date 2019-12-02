@@ -66,7 +66,7 @@ export default {
     // props : ['list', 'value', 'disabled', 'single-dropdown', 'disable-icon', 'placeholder'],
     computed : {
         selected () { // Convert v-model to [] if it's null
-            return this.value ? this.value : (this.isSingle ? null : [])
+            return this.value ? this.value.map(item => parseInt(item)) : (this.isSingle ? null : [])
         },
         isSingle(){
             return this.singleDropdown === "true" ? true : false
@@ -141,11 +141,16 @@ export default {
         getSelectedList () { // Get selected with full information [ { id : .. , html : ... } ]
             if (this.isSingle) return
             let selected = []
+            console.log('aa', this.selected)
             this.selected.forEach( (id, index) => {
                 let item = this.list.find((value) => value.id == id)
+                item.id = parseInt(item.id)
                 if (item != undefined)
                     selected.push(item)
             })
+            console.log(selected)
+            // selected = selected.map(elem => parseInt(elem.id))
+            // console.log(selected)
             return selected
         },
 
@@ -168,7 +173,7 @@ export default {
 
                 if(this.value){
                     if(Array.isArray(this.value))
-                        selectList = this.value;
+                        selectList = this.value.map(item => parseInt(item))
                 }
 
                 if (selectList.includes(id))
