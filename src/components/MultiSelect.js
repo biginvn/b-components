@@ -66,7 +66,11 @@ export default {
     // props : ['list', 'value', 'disabled', 'single-dropdown', 'disable-icon', 'placeholder'],
     computed : {
         selected () { // Convert v-model to [] if it's null
-            return this.value ? this.value.map(item => parseInt(item)) : (this.isSingle ? null : [])
+            let val = this.value ? this.value : (this.isSingle ? null : [])
+            if(Array.isArray(val)){
+                val = val.map(item => parseInt(item))
+            }
+            return val
         },
         isSingle(){
             return this.singleDropdown === "true" ? true : false
