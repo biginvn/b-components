@@ -129,7 +129,7 @@ export default {
             editor.on('change', function (e) {
                 _this.range = this.selection.getRng().startOffset;     // get range
                 _this.$emit('range',_this.range)
-                this.contentOutPut = _this.strip_single_tag(this.getContent())
+                this.contentOutPut = this.getContent() //_this.strip_single_tag(this.getContent())
                 _this.$emit('input', this.contentOutPut);
             })
 
