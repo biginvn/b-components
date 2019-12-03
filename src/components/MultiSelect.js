@@ -67,8 +67,12 @@ export default {
     computed : {
         selected () { // Convert v-model to [] if it's null
             let val = this.value ? this.value : (this.isSingle ? null : [])
-            if(Array.isArray(val)){
-                val = val.map(item => parseInt(item))
+            if(Array.isArray(val) ){
+                // val = val.map(item => !!item ? parseInt(item) : 0)
+                val = val.map(function(item){
+                    if(item === "") return item
+                    return parseInt(item)
+                })
             }
             return val
         },
@@ -145,14 +149,14 @@ export default {
         getSelectedList () { // Get selected with full information [ { id : .. , html : ... } ]
             if (this.isSingle) return
             let selected = []
-            console.log('aa', this.selected)
+            // console.log('aa', this.selected)
             this.selected.forEach( (id, index) => {
                 let item = this.list.find((value) => value.id == id)
                 item.id = parseInt(item.id)
                 if (item != undefined)
                     selected.push(item)
             })
-            console.log(selected)
+            // console.log(selected)
             // selected = selected.map(elem => parseInt(elem.id))
             // console.log(selected)
             return selected
