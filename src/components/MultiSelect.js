@@ -73,6 +73,10 @@ export default {
                     if(item === "") return item
                     return parseInt(item)
                 })
+
+                val = val.filter(function (el) {
+                    return el != null && el != '';
+                });
             }
             return val
         },
