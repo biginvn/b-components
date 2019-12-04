@@ -63,22 +63,21 @@ export default {
         },
         hasSelectAll: false
     },
-    // props : ['list', 'value', 'disabled', 'single-dropdown', 'disable-icon', 'placeholder'],
     computed : {
         selected () { // Convert v-model to [] if it's null
-            let val = this.value ? this.value : (this.isSingle ? null : [])
-            if(Array.isArray(val) ){
-                // val = val.map(item => !!item ? parseInt(item) : 0)
-                val = val.map(function(item){
-                    if(item === "") return item
-                    return parseInt(item)
+            let selected = this.value ? this.value : (this.isSingle ? null : [])
+
+            if (Array.isArray(selected)) {
+
+                selected = selected.filter( el => {
+                    return !!el || parseInt(el) === 0;
                 })
 
-                val = val.filter(function (el) {
-                    return el != null && el != '';
-                });
+                selected = selected.map( el => {
+                    return parseInt(el)
+                })
             }
-            return val
+            return selected
         },
         isSingle(){
             return this.singleDropdown === "true" ? true : false
