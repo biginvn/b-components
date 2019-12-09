@@ -146,6 +146,9 @@ export default {
                 for (var i = 0; i < parent.length ; i++) {
                     var item = parent[i].querySelector('.dz-thumb');
                     parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
+                    let size = parent[i].querySelector('.dz-size').innerHTML
+                    size = size.replace("null", "B")
+                    parent[i].querySelector('.dz-size').innerHTML = size
                 }
                 var fileEx = this.getExtension(file.name);
                 if(this.supportTypes.indexOf(`.${fileEx}`) === -1){
@@ -299,7 +302,8 @@ export default {
          */
         renderFileSize(size){
             let formated = this.humanFileSize(size, true);
-            return `${formated.value} ${formated.unit}`;
+            const unit = (formated.unit===null) ? '' : formated.unit
+            return `${formated.value} ${unit}`;
         },
         /** 
          * Validation filesize per file and total current files
