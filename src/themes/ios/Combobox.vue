@@ -20,6 +20,7 @@
 
 		<!--remove action key down backspace: @keydown.8="keypressAction('BackSpace', null)" -->
 		<input :ref="'input-search-' + id" v-show="showInputSearchCombobox" :disabled="disabled"
+			   autocomplete="new-password"
 			   :placeholder="inputPlacehoder" :null-placeholder="nullPlaceholder"
 			   :org-placeholder="orgPlaceholder"
 			   @input="searchAction($event)" :id="'input-' + id"
