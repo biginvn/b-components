@@ -93,7 +93,8 @@ export default {
             return word.replace(regex, '<mark>$1</mark>');
         },
         setWord(word) {
-            let currentWords = this.inputValue.replace(/(\r\n|\n|\r)/gm, '__br__ ').split(this.splitCharacter);
+            let inputValueReplace = this.inputValue.replace(';', ',')
+            let currentWords = inputValueReplace.replace(/(\r\n|\n|\r)/gm, '__br__ ').split(this.splitCharacter);
             currentWords[this.wordIndex] = currentWords[this.wordIndex].replace(this.currentWord, word + this.splitCharacter);
             this.wordIndex += 1;
             this.inputValue = currentWords.join(this.splitCharacter).replace(/__br__\s/g, '\n');
