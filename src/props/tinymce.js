@@ -29,7 +29,7 @@ var tinyConfig = {
     image_title: true,
     file_picker_types: 'image',
     advlist_number_styles: "lower-alpha,lower-greek,lower-roman,upper-alpha,upper-roman,default",
-    content_style:"#tinymce > p {margin-block-start: 0em;margin-block-end: 0em;margin-inline-start: 0px;margin-inline-end: 0px;}",
+    //content_style:"#tinymce > p {margin-block-start: 0em;margin-block-end: 0em;margin-inline-start: 0px;margin-inline-end: 0px;}",
 }
 
 
