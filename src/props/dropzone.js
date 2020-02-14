@@ -42,7 +42,8 @@ var variables = {
             title: 'Validation Max Total File Size',
             content: 'The dropzone upload support max total filesize: '
         }
-    }
+    },
+    showFileSizeWarning: true
 }
 
 var baseProps = {

@@ -318,6 +318,12 @@ export default {
                 this.dropzone.removeFile(file);
                 return false;
             }
+
+            if(parseInt(this.getCurrentFileSize()/this.unitBytes) > 6000 && this.showFileSizeWarning){
+                this.$emit('warning-total-file-size', file.name)
+                this.showFileSizeWarning = false
+            }
+
             if(this.maxSize){
                 if(parseInt(this.getCurrentFileSize()/this.unitBytes) > parseInt(this.maxSize)){
                     this.handleNotification('error', `${this.messages.maxTotalSize.content} ${this.renderFileSize(this.maxSize * 1000)}`, this.messages.maxTotalSize.title);
