@@ -33,6 +33,10 @@ export default {
         unitBytes:{
             type: Number,
             default: 1000
+        },
+        clickView:{
+            type: Function,
+            default: function () { return }
         }
     },
     mounted() {
@@ -149,6 +153,10 @@ export default {
                     let size = parent[i].querySelector('.dz-size').innerHTML
                     size = size.replace("null", "B")
                     parent[i].querySelector('.dz-size').innerHTML = size
+
+                    parent[i].querySelector('.dz-thumb').addEventListener('click', event => {
+                        this.clickView(event.path[0].alt)
+                    })
                 }
                 var fileEx = this.getExtension(file.name);
                 if(this.supportTypes.indexOf(`.${fileEx}`) === -1){
