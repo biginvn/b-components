@@ -101,6 +101,7 @@ export default {
             this.setTag(tag);
         },
         setTag(arrayTag){
+            if(arrayTag === undefined) return
             if( arrayTag.length == 0 ){
                 this.tags = []
                 this.tagPlaceholder = this.placeholder
