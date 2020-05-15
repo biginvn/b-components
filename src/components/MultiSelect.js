@@ -198,7 +198,7 @@ export default {
                 }
 
                 if (itemSelected && this.selectAllId && itemSelected.id == this.selectAllId){
-                    selectList = selectList.filter(item => item == this.selectAllId || item == 0)
+                    selectList = selectList.filter(item => item == this.selectAllId)
                 }
 
                 if (selectList.includes(id))
