@@ -39,7 +39,7 @@
     "vue-template-compiler": "^2.3.3",
     "vuetify": "^0.15.5",
     "webpack": "^2.7.0",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
