@@ -61,7 +61,10 @@ export default {
             type: Boolean,
             default: false
         },
-        hasSelectAll: false
+        hasSelectAll: false,
+        selectAllId: {
+            type: Number
+        }
     },
     computed : {
         selected () { // Convert v-model to [] if it's null
@@ -178,6 +181,13 @@ export default {
         },
 
         toggleItem(id){
+
+            const itemSelected = this.searchList.find(item => item.id == id)
+
+            if (itemSelected && itemSelected.disabled){
+                return
+            }
+
             if (!this.isSingle){
                 id = parseInt(id)
                 let selectList = [];
@@ -187,18 +197,21 @@ export default {
                         selectList = this.value.map(item => parseInt(item))
                 }
 
+                if (itemSelected && this.selectAllId && itemSelected.id == this.selectAllId){
+                    selectList = selectList.filter(item => item == this.selectAllId)
+                }
+
                 if (selectList.includes(id))
                     selectList.splice(selectList.indexOf(id), 1)
                 else
                     selectList.push(id)
-
                 this.switchList(true)
 
                 // Reset search keyword at input field
                 this.searchKeyword = ''
                 this.$el.querySelector('input.input-control').focus()
                 this.focusInputAction('')
-                
+
                 this.$emit('input', selectList)
             } else {
                 let selectList = this.value == null ? [] : [this.value];

@@ -80,10 +80,12 @@ export default {
         },
 
         setDate(date){
-            if(date)
-                $("#" + this.id).data("DateTimePicker").date(date)
-            else 
-                $("#" + this.id).data("DateTimePicker").date(null)
+            if($("#" + this.id).length){
+                if(date)
+                    $("#" + this.id).data("DateTimePicker").date(date)
+                else 
+                    $("#" + this.id).data("DateTimePicker").date(null)
+            }
         },
         
         checkInputInvalid(time){

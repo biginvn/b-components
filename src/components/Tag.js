@@ -38,8 +38,18 @@ export default {
             if(tag!= undefined && tag!=null)
                 tag = tag.toString()
 
-            let regex = /^[0-9]+\-*[0-9]+$/g
-            if(tag != undefined && tag != null && !tag.match(regex) && this.type == 'zipcode'){}
+            let regex = ''
+            switch(this.type) {
+                case 'zipcode':
+                    regex = /^[0-9]+\-*[0-9]+$/g
+                    break;
+                case 'email':
+                    regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/g
+                    break;
+                default:
+            }
+
+            if(tag != undefined && tag != null && !tag.match(regex) && ['zipcode', 'email'].includes(this.type)){}
             else{
                 if(tag && this.tags.indexOf(tag.toString()) === -1){
                     this.updateChange(tag);
@@ -91,6 +101,7 @@ export default {
             this.setTag(tag);
         },
         setTag(arrayTag){
+            if(arrayTag === undefined) return
             if( arrayTag.length == 0 ){
                 this.tags = []
                 this.tagPlaceholder = this.placeholder

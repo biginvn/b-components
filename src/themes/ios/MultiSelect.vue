@@ -53,10 +53,21 @@
 			<ul class="b__multi__select__list">
 				<li v-show = "searchList == undefined || searchList.length == 0" class="not-found">Not found</li>
 				<li @mousedown="selectAll()" v-show="hasSelectAll && !isSingle && searchList != undefined && searchList.length != 0" class="list-item select-all-option">All Service</li>
-				<li class="list-item" :class="{ 'active' : (!isSingle && selected.includes(parseInt(item.id))) || ( isSingle && selected == parseInt(item.id) ) , 'hover' : index == pointerIndex, 'main-vendor': item.main_vendor }" v-for = "(item, index) in searchList" @mousedown="toggleItem(item.id)">
+				<li
+					v-for = "(item, index) in searchList"
+					class="list-item"
+					:class="{
+						'active' : (!isSingle && selected.includes(parseInt(item.id))) || ( isSingle && selected == parseInt(item.id) ) ,
+						'hover' : index == pointerIndex,
+						'main-vendor': item.main_vendor,
+						'disabled': item.disabled
+					}"
+					@mousedown="toggleItem(item.id)">
+
 					<div class="icon" v-if = "!disableIcon">
 						<img :src="item.icon" class="icon-img">
 					</div>
+
 					<div class="content" v-html="item.html"></div>
 				</li>
 			</ul>
