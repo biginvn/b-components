@@ -33,6 +33,10 @@ export default {
         decimalNumber: {
             type: Number,
             default: 2
+        },
+        withSeparator: {
+            type: Boolean,
+            default: true
         }
     },
     mounted() {
@@ -201,8 +205,7 @@ export default {
             return value;
         },
         separator(value) {
-            value = this.validateString(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            return value;
+            return this.withSeparator ? this.validateString(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : value
         },
         isNull(n) {
             if (n === null)
