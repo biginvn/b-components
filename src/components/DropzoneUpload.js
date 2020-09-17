@@ -1,5 +1,5 @@
 import baseComponent from '../mixins/base-mixins';
-import { Props , Variables, FileTypes } from '../props/dropzone';
+import { Props, Variables, FileTypes } from '../props/dropzone';
 
 export default {
     mixins: [baseComponent],
@@ -10,76 +10,88 @@ export default {
     },
     props: {
         ...JSON.parse(JSON.stringify(Props)),
-        disabled : {
-            type : Boolean,
-            default : false
+        disabled: {
+            type: Boolean,
+            default: false
         },
         supportFileType: {
-            type: Object/Array,
-            default: function () { return FileTypes }
+            type: Object / Array,
+            default: function() { return FileTypes }
         },
-        adhocDocuments:{
-            type: Object/Array,
-            default: function () { return [] }
+        adhocDocuments: {
+            type: Object / Array,
+            default: function() { return [] }
         },
-        dropzoneContent:{
+        dropzoneContent: {
             type: String,
             default: 'Attach file by dropping here or <span class="uk-link">selecting one</span>'
         },
-        maxSizePerFile:{
+        maxSizePerFile: {
             type: Number,
             default: 10240
         },
-        unitBytes:{
+        unitBytes: {
             type: Number,
             default: 1000
         },
-        clickView:{
+        clickView: {
             type: Function,
-            default: function () { return }
+            default: function() { return }
         }
     },
     mounted() {
         this.initDropzone()
     },
     computed: {
-        supportTypes(){ return [...this.supportFileType]},
-        totalFileSize(){
-            if(this.maxFile) return (parseInt(this.maxFile) > this.totalFiles());
-            if(this.maxSize) return !(parseInt(this.getCurrentFileSize()/this.unitBytes) >= this.maxSize);
+        supportTypes() { return [...this.supportFileType] },
+        totalFileSize() {
+            if (this.maxFile) return (parseInt(this.maxFile) > this.totalFiles());
+            if (this.maxSize) return !(parseInt(this.getCurrentFileSize() / this.unitBytes) >= this.maxSize);
             return true;
         }
     },
-    watch:{
-        'dropzone.files'(value){
+    watch: {
+        'dropzone.files'(value) {
             this.value.dropzone = this.dropzone
             this.$emit('input', this.value)
         },
-        'value.list'(files){
-            if(Array.isArray(files))
+        'value.list'(files) {
+            if (Array.isArray(files))
                 return this.prepareItems(files);
             return this.prepareItems([]);
+        },
+        disabled(value) {
+            this.setStyleRemoveArchive()
         }
     },
     methods: {
+        /**
+         * @inheritDoc
+         */
+        setStyleRemoveArchive() {
+            this.$nextTick(() => {
+                var style = { display: this.disabled ? 'none' : '' }
+                $(`.${this.id}__preview__container .preview .remove-archive`).css(style)
+            })
+        },
         /** 
          * [totalFiles description]
          * @return {[type]} [description]
          */
-        totalFiles(){
+        totalFiles() {
             var total = 0;
-            if(this.dropzone)
+            if (this.dropzone)
                 total += parseInt(this.dropzone.files.length);
-            if(Array.isArray(this.items))
+            if (Array.isArray(this.items))
                 total += parseInt(this.items.length);
             return total;
-        },      
+        },
         /** 
          * Render html icon for file by extension
          * @param  {[type]} fileEx [extionsion]
          * @return {[type]}        [description]
          */
-        renderHTMLFileType(fileEx){
+        renderHTMLFileType(fileEx) {
             let formated = this.fileTypes.others[fileEx];
             return formated ? formated : this.fileTypes.default;
         },
@@ -90,8 +102,8 @@ export default {
          * @param  {[type]} messageHeader [description]
          * @return {[type]}               [description]
          */
-        handleNotification(messageType, message, messageHeader){
-            if( typeof toastr === 'object'){
+        handleNotification(messageType, message, messageHeader) {
+            if (typeof toastr === 'object') {
                 toastr.clear();
                 toastr.options = {
                     closeButton: true,
@@ -114,10 +126,10 @@ export default {
          * @param  {Boolean} files [description]
          * @return {[type]}        [description]
          */
-        dropzoneRemoveFile(files = false){
-            if(!files) return this.dropzone.removeAllFiles(true);
-            if(Array.isArray(files))
-                for(let i = 0; i < files.length; i++){
+        dropzoneRemoveFile(files = false) {
+            if (!files) return this.dropzone.removeAllFiles(true);
+            if (Array.isArray(files))
+                for (let i = 0; i < files.length; i++) {
                     this.dropzone.removeFile(files[i]);
                 }
         },
@@ -125,8 +137,8 @@ export default {
          * [clearDropzone description]
          * @return {[type]} [description]
          */
-        clearDropzone(){
-            if(this.dropzone)
+        clearDropzone() {
+            if (this.dropzone)
                 this.dropzoneRemoveFile();
             this.value.list = this.items = [];
             this.value.removeIds = [];
@@ -136,7 +148,7 @@ export default {
          * Init dropzone object
          * @return {[type]} [description]
          */
-        initDropzone(){
+        initDropzone() {
             if (this.dropzone)
                 return this.dropzoneRemoveFile()
             this.configDropzone()
@@ -147,7 +159,7 @@ export default {
             this.dropzone.on("queuecomplete", (progress) => {})
             this.dropzone.on("addedfile", (file, xhr, formData) => {
                 var parent = document.querySelectorAll('.' + this.id + '__preview__container .preview:not(stuff)');
-                for (var i = 0; i < parent.length ; i++) {
+                for (var i = 0; i < parent.length; i++) {
                     var item = parent[i].querySelector('.dz-thumb');
                     parent[i].querySelector('.dz-thumb').style.animation = "fadeOut";
                     let size = parent[i].querySelector('.dz-size').innerHTML
@@ -159,19 +171,19 @@ export default {
                     })
                 }
                 var fileEx = this.getExtension(file.name);
-                if(this.supportTypes.indexOf(`.${fileEx}`) === -1){
+                if (this.supportTypes.indexOf(`.${fileEx}`) === -1) {
                     this.dropzone.removeFile(file);
                     this.$emit('validation-file-type', this.supportTypes.join(', '));
                     return this.handleNotification('error', `${this.messages.supportTypes.content} ${this.supportTypes.join(',')}`, this.messages.supportTypes.title);
                 }
-                if(this.maxFileSizeExceeded(file) !== true)
+                if (this.maxFileSizeExceeded(file) !== true)
                     return;
 
                 item.className += this.renderHTMLFileType(fileEx);
                 this.afterAddedFile(file);
             })
             this.$emit('dropzone', this.dropzone)
-            if(this.value && Array.isArray(this.value.list))
+            if (this.value && Array.isArray(this.value.list))
                 this.prepareItems(this.value.list);
         },
         /**
@@ -179,7 +191,7 @@ export default {
          * @param  {[type]} file [description]
          * @return {[type]}      [description]
          */
-        afterAddedFile(file){},
+        afterAddedFile(file) {},
         /**
          * Set base config dropzone
          * @return {[type]} [description]
@@ -188,13 +200,13 @@ export default {
             let acceptedFiles = this.supportTypes.join(',');
             let _this = this;
             let config = {
-                thumbnailWidth : 80,
+                thumbnailWidth: 80,
                 thumbnailHeight: 80,
                 parallelUploads: 1,
-                acceptedFiles : (acceptedFiles) ? acceptedFiles : null,
+                acceptedFiles: (acceptedFiles) ? acceptedFiles : null,
                 autoQueue: false,
                 clickable: [`#${ this.id } .content`],
-                accept : (file, done) => { done() },
+                accept: (file, done) => { done() },
                 previewTemplate: document.querySelector(`.${this.id}__preview`).innerHTML,
                 previewsContainer: `.${this.id}__preview__container`,
                 maxFiles: (this.maxFile == undefined) ? null : this.maxFile,
@@ -205,7 +217,7 @@ export default {
                     _this.handleNotification('error', `${this.messages.maxFile.content} ${this.maxFile} file(s)`, this.messages.maxFile.title);
                 },
             }
-            this.completedConfig  = Object.assign(config, this.config)
+            this.completedConfig = Object.assign(config, this.config)
         },
         /**
          * Parse old file to dropzone items
@@ -218,15 +230,15 @@ export default {
             let className, fileSize, fileName;
             files.forEach((file, index) => {
                 className = file.className ? file.className : _this.getClassByPath(file.real_filename);
-                fileSize  = file.filesize.replace(" ", "");
-                fileName  = file.filename ? file.filename : ( file.name ? file.name : _this.getNameByPath(file.path));
+                fileSize = file.filesize.replace(" ", "");
+                fileName = file.filename ? file.filename : (file.name ? file.name : _this.getNameByPath(file.path));
                 items.push({
-                    id         : file.id,
-                    filesize   : fileSize,
-                    path       : file.path,
-                    name       : fileName,
-                    className  : className,
-                    media_id : file.media_id
+                    id: file.id,
+                    filesize: fileSize,
+                    path: file.path,
+                    name: fileName,
+                    className: className,
+                    media_id: file.media_id
                 })
             })
             this.items = items
@@ -237,7 +249,7 @@ export default {
          * @param  {[string]} path [description]
          * @return {[string]}      [description]
          */
-        getExtension(path){
+        getExtension(path) {
             return path.split('.').pop().toLowerCase();
         },
         /**
@@ -245,7 +257,7 @@ export default {
          * @param  {[string]} path [description]
          * @return {[string]}      [description]
          */
-        getClassByPath(path){
+        getClassByPath(path) {
             var formated = "dz-thumb";
             var fileEx = this.getExtension(path);
             return formated += this.renderHTMLFileType(fileEx);
@@ -255,7 +267,7 @@ export default {
          * @param  {[string]} path [description]
          * @return {[string]}      [description]
          */
-        getNameByPath(path){
+        getNameByPath(path) {
             var name = path.split('/').pop()
             return name = name.split('.').shift()
         },
@@ -264,12 +276,12 @@ export default {
          * @param  {[integer]} id [description]
          * @return {[integer]}    [description]
          */
-        deleteThisItem(id){
-            this.items = this.items.filter(function( item ) {
+        deleteThisItem(id) {
+            this.items = this.items.filter(function(item) {
                 return item.id !== id;
             });
             this.value.list = this.items
-            if(Array.isArray(this.value.removeIds)){
+            if (Array.isArray(this.value.removeIds)) {
                 this.value.removeIds.push(id);
             }
             this.$emit('input', this.value)
@@ -281,22 +293,20 @@ export default {
          * @param  {Number}  tofixed [description]
          * @return {[object]}          [description]
          */
-        humanFileSize(bytes, si = false, tofixed = 1){
+        humanFileSize(bytes, si = false, tofixed = 1) {
             var thresh = si ? this.unitBytes : 1024;
-            if(Math.abs(bytes) < thresh) {
+            if (Math.abs(bytes) < thresh) {
                 return {
                     value: bytes,
                     unit: 'B'
                 };
             }
-            var units = si
-                ? ['kB','MB','GB','TB','PB','EB','ZB','YB']
-                : ['KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB'];
+            var units = si ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'] : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
             var u = -1;
             do {
                 bytes /= thresh;
                 ++u;
-            } while(Math.abs(bytes) >= thresh && u < units.length - 1);
+            } while (Math.abs(bytes) >= thresh && u < units.length - 1);
 
             return {
                 value: bytes.toFixed(tofixed),
@@ -308,9 +318,9 @@ export default {
          * @param  {[type]} size [description]
          * @return {[type]}      [description]
          */
-        renderFileSize(size){
+        renderFileSize(size) {
             let formated = this.humanFileSize(size, true);
-            const unit = (formated.unit===null) ? '' : formated.unit
+            const unit = (formated.unit === null) ? '' : formated.unit
             return `${formated.value} ${unit}`;
         },
         /** 
@@ -319,21 +329,21 @@ export default {
          * @author  TrinhLe
          * @return {[boolean]}
          */
-        maxFileSizeExceeded(file){
-            if(parseInt(file.size/this.unitBytes) > this.maxSizePerFile){
+        maxFileSizeExceeded(file) {
+            if (parseInt(file.size / this.unitBytes) > this.maxSizePerFile) {
                 this.handleNotification('error', `${this.messages.maxSize.content} ${this.renderFileSize(this.maxSizePerFile * 1000)}`, this.messages.maxSize.title);
                 this.$emit('validate-file-size', file.name);
                 this.dropzone.removeFile(file);
                 return false;
             }
 
-            if(parseInt(this.getCurrentFileSize()/this.unitBytes) > 6000 && this.showFileSizeWarning){
+            if (parseInt(this.getCurrentFileSize() / this.unitBytes) > 6000 && this.showFileSizeWarning) {
                 this.$emit('warning-total-file-size', file.name)
                 this.showFileSizeWarning = false
             }
 
-            if(this.maxSize){
-                if(parseInt(this.getCurrentFileSize()/this.unitBytes) > parseInt(this.maxSize)){
+            if (this.maxSize) {
+                if (parseInt(this.getCurrentFileSize() / this.unitBytes) > parseInt(this.maxSize)) {
                     this.handleNotification('error', `${this.messages.maxTotalSize.content} ${this.renderFileSize(this.maxSize * 1000)}`, this.messages.maxTotalSize.title);
                     this.$emit('validation-file-size', file.name)
                     this.dropzone.removeFile(file);
@@ -346,19 +356,19 @@ export default {
          * Helper get total current filesize (Bytes)
          * @return {[type]} [description]
          */
-        getCurrentFileSize(){
+        getCurrentFileSize() {
             let currentFileSize = 0.00;
-            if(Array.isArray(this.items))
+            if (Array.isArray(this.items))
                 this.items.forEach((item) => {
                     currentFileSize += parseInt(item.filesize);
                 })
-            if(this.dropzone && Array.isArray(this.dropzone.files)){
+            if (this.dropzone && Array.isArray(this.dropzone.files)) {
                 this.dropzone.files.forEach((file) => {
                     currentFileSize += parseInt(file.size);
                 })
             }
 
-            if(this.adhocDocuments && Array.isArray(this.adhocDocuments)){
+            if (this.adhocDocuments && Array.isArray(this.adhocDocuments)) {
                 this.adhocDocuments.forEach((adhoc) => {
                     currentFileSize += parseInt(adhoc.filesize);
                 })
