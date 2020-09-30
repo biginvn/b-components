@@ -4,7 +4,7 @@
         <select :placeholder="placeholder" :name="name" :id="id" :disabled="disabled" @change="update($event.target.value)" v-model="selected" class="b__select_element" :class="{className, 'hyper-link-select-view': isHyperLinkView}">
             <option v-for="item in items" :value="item.value">{{ item.name }}</option>
         </select>
-        <span :class="{'show': !isActive, 'required' : required}" class="placeholder">{{ placeholder }}</span>
+        <span :class="{show: !isActive, 'placeholder-required': required}" class="placeholder">{{ placeholder }}</span>
         <a v-if="isHyperLinkView" class="external-link-select" :href="externalLink" :target="targetBlank ? '_blank' : ''">{{ externalName }}</a>
     </div>
 </template>
@@ -16,5 +16,9 @@ export default Select
 .required:after {
     content: " *";
     color: red;
+}
+
+.placeholder-required:after {
+    content: " *";
 }
 </style>
