@@ -38,6 +38,10 @@ export default {
         },
         negative: {
             default: true
+        },
+        required: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
