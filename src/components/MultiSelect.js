@@ -1,22 +1,22 @@
 import baseComponent from '../mixins/base-mixins'
 
 export default {
-    data () {
+    data() {
         return {
-            isExpanding : false,
-            searchList : [],
-            pointerIndex : null, // Selecting index of list
-            hoverIndex : null, // Position of cursor is hovering select item
-            searchKeyword : '',
-            isActive : false,
+            isExpanding: false,
+            searchList: [],
+            pointerIndex: null, // Selecting index of list
+            hoverIndex: null, // Position of cursor is hovering select item
+            searchKeyword: '',
+            isActive: false,
         }
     },
     mixins: [baseComponent],
-    created () {
+    created() {
         this.searchList = this.list
         this.setStatus();
     },
-    watch:{
+    watch: {
         list(newList) {
             this.searchList = JSON.parse(JSON.stringify(newList))
         },
@@ -26,8 +26,8 @@ export default {
                 this.$emit('search-keywords', '');
             }
         },
-        value(val){
-            if(val != "" && val != null)
+        value(val) {
+            if (val != "" && val != null)
                 this.isActive = true
             else this.isActive = false
         }
@@ -37,8 +37,8 @@ export default {
         list: {
 
         },
-        value:null ,
-        name : null,
+        value: null,
+        name: null,
         disabled: {
 
         },
@@ -51,13 +51,17 @@ export default {
         placeholder: {
 
         },
-        label:{
+        label: {
 
         },
-        id:{
+        id: {
 
         },
         resetSearchKeyWord: {
+            type: Boolean,
+            default: false
+        },
+        required: {
             type: Boolean,
             default: false
         },
@@ -66,39 +70,38 @@ export default {
             type: Number
         }
     },
-    computed : {
-        selected () { // Convert v-model to [] if it's null
+    computed: {
+        selected() { // Convert v-model to [] if it's null
             let selected = this.value ? this.value : (this.isSingle ? null : [])
 
             if (Array.isArray(selected)) {
 
-                selected = selected.filter( el => {
+                selected = selected.filter(el => {
                     return !!el || parseInt(el) === 0;
                 })
 
-                selected = selected.map( el => {
+                selected = selected.map(el => {
                     return parseInt(el)
                 })
             }
             return selected
         },
-        isSingle(){
+        isSingle() {
             return this.singleDropdown === "true" ? true : false
         },
-        listClasses () {
+        listClasses() {
             return (this.isExpanding ? "active" : "")
         }
     },
-    methods : {
-        setStatus(){
-            if(this.value != "" && this.value != null)
+    methods: {
+        setStatus() {
+            if (this.value != "" && this.value != null)
                 this.isActive = true
             else {
                 this.isActive = false
             }
         },
-        editQuery()
-        {
+        editQuery() {
             let self = this;
             var getValue = this.value
             this.list.filter(function(index) {
@@ -108,41 +111,40 @@ export default {
             })
 
             this.$emit('input', null)
-            this.$nextTick(()=>{
-                if(this.$refs.inputSearch)
+            this.$nextTick(() => {
+                if (this.$refs.inputSearch)
                     this.$refs.inputSearch.focus();
             })
         },
 
-        filterQuerylist(){
+        filterQuerylist() {
             this.list.filter(function(index, data) {
                 if (data.id == this.value)
                     return data.thumbHtml
             })
         },
 
-        closeDropdow(event){
+        closeDropdow(event) {
             this.switchList(false);
-            if(!this.value)
+            if (!this.value)
                 this.searchKeyword = null
-            if(this.searchList.length == 0){
+            if (this.searchList.length == 0) {
                 this.isExpanding = false
             }
         },
 
-        blurSearch(){
-            if(this.searchList.length == 0){
+        blurSearch() {
+            if (this.searchList.length == 0) {
                 this.searchKeyword = ""
             }
         },
 
-        getSingleSelected(){
+        getSingleSelected() {
 
-            if(this.list == undefined || this.list == null)
+            if (this.list == undefined || this.list == null)
                 return;
-            if(Array.isArray(this.list))
-            {
-                let listSelected = this.list.filter( (item) => {
+            if (Array.isArray(this.list)) {
+                let listSelected = this.list.filter((item) => {
                     return item.id == this.selected
                 })
 
@@ -152,11 +154,11 @@ export default {
             return;
         },
 
-        getSelectedList () { // Get selected with full information [ { id : .. , html : ... } ]
+        getSelectedList() { // Get selected with full information [ { id : .. , html : ... } ]
             if (this.isSingle) return
             let selected = []
             // console.log('aa', this.selected)
-            this.selected.forEach( (id, index) => {
+            this.selected.forEach((id, index) => {
                 let item = this.list.find((value) => value.id == id)
                 item.id = parseInt(item.id)
                 if (item != undefined)
@@ -168,36 +170,36 @@ export default {
             return selected
         },
 
-        toggleList (e) {
+        toggleList(e) {
             e.stopPropagation();
             this.switchList(!this.isExpanding);
         },
 
-        switchList (on = true) {
+        switchList(on = true) {
             if (on)
                 this.isExpanding = true
             else
                 this.isExpanding = false
         },
 
-        toggleItem(id){
+        toggleItem(id) {
 
             const itemSelected = this.searchList.find(item => item.id == id)
 
-            if (itemSelected && itemSelected.disabled){
+            if (itemSelected && itemSelected.disabled) {
                 return
             }
 
-            if (!this.isSingle){
+            if (!this.isSingle) {
                 id = parseInt(id)
                 let selectList = [];
 
-                if(this.value){
-                    if(Array.isArray(this.value))
+                if (this.value) {
+                    if (Array.isArray(this.value))
                         selectList = this.value.map(item => parseInt(item))
                 }
 
-                if (itemSelected && this.selectAllId && itemSelected.id == this.selectAllId){
+                if (itemSelected && this.selectAllId && itemSelected.id == this.selectAllId) {
                     selectList = selectList.filter(item => item == this.selectAllId)
                 }
 
@@ -215,14 +217,13 @@ export default {
                 this.$emit('input', selectList)
             } else {
                 let selectList = this.value == null ? [] : [this.value];
-                if (selectList.includes(id)){
+                if (selectList.includes(id)) {
                     selectList.splice(selectList.indexOf(id), 1)
                     this.$emit('input', null)
-                    if(this.$el.querySelector('input.input-control') != null){
+                    if (this.$el.querySelector('input.input-control') != null) {
                         this.$el.querySelector('input.input-control').focus()
                     }
-                }
-                else{
+                } else {
                     selectList = [id]
                     this.$emit('input', id)
                 }
@@ -231,39 +232,39 @@ export default {
                 this.searchKeyword = ''
                 this.focusInputAction('')
 
-                this.$nextTick(()=>{
+                this.$nextTick(() => {
                     this.switchList(false)
                 })
             }
         },
-        hoverItem(index){ // Hover on item at (index) in searchList
+        hoverItem(index) { // Hover on item at (index) in searchList
             // this
         },
 
-        searchAction (keyword) {
+        searchAction(keyword) {
             this.searchKeyword = keyword
             this.switchList(true)
             this.$emit('search-keywords', keyword);
-            if(keyword == undefined && keyword == null || keyword.length == 0) {
+            if (keyword == undefined && keyword == null || keyword.length == 0) {
                 this.searchList = JSON.parse(JSON.stringify(this.list))
                 return
             }
-            this.searchList = this.list.filter( (item, position) => {
+            this.searchList = this.list.filter((item, position) => {
                 if (item.keywords == undefined || item.keywords == null)
                     return false
-                let regex = new RegExp('.*' + keyword.toLowerCase() +'.*')
+                let regex = new RegExp('.*' + keyword.toLowerCase() + '.*')
                 return item.keywords.toLowerCase().match(regex)
             })
         },
-        focusInputAction (keyword) {
+        focusInputAction(keyword) {
             this.searchAction(keyword)
             this.switchList(true)
         },
-        keypressAction (keyName){
+        keypressAction(keyName) {
             let pointerIndex = this.pointerIndex
             switch (keyName) {
                 case 'ArrowDown':
-                    if (this.pointerIndex == null || this.pointerIndex >= this.searchList.length - 1){
+                    if (this.pointerIndex == null || this.pointerIndex >= this.searchList.length - 1) {
                         pointerIndex = 0
                         break
                     }
@@ -271,8 +272,8 @@ export default {
                     pointerIndex++
                     break
                 case 'ArrowUp':
-                    if (this.pointerIndex == null || this.pointerIndex == 0){
-                        pointerIndex = this.searchList.length-1
+                    if (this.pointerIndex == null || this.pointerIndex == 0) {
+                        pointerIndex = this.searchList.length - 1
                         break
                     }
 
@@ -281,13 +282,13 @@ export default {
                 case 'BackSpace':
                     pointerIndex = null
                     if (this.value != null && this.value.length > 0 && this.searchKeyword.length == 0)
-                        this.value.splice(this.value.length-1,1)
+                        this.value.splice(this.value.length - 1, 1)
             }
 
             this.hoverItem(pointerIndex)
             this.pointerIndex = pointerIndex
         },
-        selectAll(){
+        selectAll() {
             let list = this.searchList.map(elem => parseInt(elem.id))
             this.searchKeyword = ''
             this.$el.querySelector('input.input-control').focus()
