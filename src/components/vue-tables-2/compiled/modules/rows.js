@@ -44,6 +44,7 @@ module.exports = function (h) {
     var recordCount = (_this.Page - 1) * _this.limit;
     var currentGroup;
     var groupSlot;
+    var columnClass;
 
     data.map(function (row, index) {
 
@@ -89,10 +90,10 @@ module.exports = function (h) {
 
       _this.allColumns.map(function (column) {
         var rowTemplate = _this.$scopedSlots && _this.$scopedSlots[column];
-
+        columnClass = _this.opts.columnClassCallback ? _this.opts.columnClassCallback({ row, column, index }) : '';
         columns.push(h(
           'td',
-          { 'class': _this.columnClass(column) },
+          { 'class': columnClass + ' ' + _this.columnClass(column) },
           [rowTemplate ? rowTemplate({ row: row, column: column, index: index }) : _this.render(row, column, index, h)]
         ));
       });
