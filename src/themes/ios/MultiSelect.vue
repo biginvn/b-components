@@ -43,7 +43,7 @@
 import MultiSelect from './../../components/MultiSelect'
 export default MultiSelect
 </script>
-<style scoped>
+<style>
 .required:after {
     content: " *";
     color: red;
