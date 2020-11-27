@@ -47,7 +47,7 @@ export default {
     computed: {
         maxValueNumber() {
             if (this.maxValue === null) {
-                return this.affix == '%' ? 100 : 999999999999999
+                return this.affix == '%' ? 100 : Math.pow(10, 14)
             }
             return this.maxValue;
         },
