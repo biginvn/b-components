@@ -40,9 +40,12 @@ export default {
         checkEdit(isEdit){
             if(isEdit == false) {
                 tinymce.get(this.id).setMode('readonly');
+                tinymce.get(this.id).readonly = 1
             }
-            else
+            else{
                 tinymce.get(this.id).setMode('code');
+                tinymce.get(this.id).readonly = 0
+            }
 
             this.$nextTick(function(){
                 tinymce.get(this.id).getBody().style.padding = "25px";
