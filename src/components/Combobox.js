@@ -147,7 +147,9 @@ export default {
                 this.searchKeyword = selectItem[0].title;
             }
         },
-        defaultValue(value) {
+        async defaultValue(value) {
+            await this.$nextTick()
+
             if (value !== null) {
                 let selectItem = this.searchListTotal.filter( item => item.id.toString() === value.toString());
                 if (selectItem.length > 0){
