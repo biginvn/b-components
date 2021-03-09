@@ -12,14 +12,14 @@
                 </span>
             </div>
             <div class="input-control-wrap" v-if="isSingle && getSingleSelected() == null " style="width:100%;">
-                <input ref="inputSearch" v-show="singleDropdown" :placeholder="placeholder" type="text" style="font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; left: 10px; width: 90%;" @keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')" @keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''" class="input-control" @focus="focusInputAction($event.target.value);$emit('removeRequired')" @input="searchAction($event.target.value)" :value="searchKeyword" @blur='closeDropdow()' onClick="this.select()">
+                <input ref="inputSearch" v-show="singleDropdown" :placeholder="placeholder" type="text" style="font-family: 'Open Sans',sans-serif; font-size: 14px; position: absolute; top: 5px; left: 10px; width: 90%;" @keydown.40="keypressAction('ArrowDown')" @keydown.8="keypressAction('BackSpace')" @keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''" class="input-control" @focus="focusInputAction($event.target.value);$emit('removeRequired')" @input="searchAction($event.target.value)" :value="searchKeyword" @blur='closeDropdow()' onClick="this.select()" autocomplete="new-password">
             </div>
             <div :class="isExpanding ? 'iconC iconD' : 'iconC'" @click="toggleList($event)">
             </div>
         </div>
         <div class="dropdown-main" v-bind:class="[{addBorder : isExpanding}, listClasses]">
             <div class="input-control-wrap" style="width:100%;" v-if="!isSingle">
-                <input ref="inputSearch" :placeholder="placeholder" type="text" @keydown.40="keypressAction('ArrowDown')" @keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''" class="form-control input-control" @focus="focusInputAction($event.target.value);$emit('removeRequired')" @input="searchAction($event.target.value)" :value="searchKeyword" @blur='closeDropdow()' onClick="this.select()">
+                <input ref="inputSearch" :placeholder="placeholder" type="text" @keydown.40="keypressAction('ArrowDown')" @keydown.38="keypressAction('ArrowUp')" @keydown.13="searchList.length > 0 && pointerIndex!=null ? toggleItem(searchList[pointerIndex].id) : ''" class="form-control input-control" @focus="focusInputAction($event.target.value);$emit('removeRequired')" @input="searchAction($event.target.value)" :value="searchKeyword" @blur='closeDropdow()' onClick="this.select()" autocomplete="new-password">
             </div>
             <ul class="b__multi__select__list">
                 <li v-show="searchList == undefined || searchList.length == 0" class="not-found">Not found</li>

@@ -12,6 +12,7 @@
                @keydown.tab="chooseItem"
                @keydown.40="moveDown"
                @keydown.38="moveUp"
+               :disabled="disabled"
                v-model="inputValue" type="text">
         <ul :class="{
         'autocomplete-list': true,

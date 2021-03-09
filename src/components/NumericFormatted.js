@@ -46,8 +46,9 @@ export default {
     },
     computed: {
         maxValueNumber() {
-            if (this.affix == "%" && this.maxValue === null)
-                return 100;
+            if (this.maxValue === null) {
+                return this.affix == '%' ? 100 : Math.pow(10, 14)
+            }
             return this.maxValue;
         },
         minValueNumber() {
