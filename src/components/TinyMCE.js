@@ -262,7 +262,7 @@ export default {
                     init_instance_callback: this.init_instance_callback,
                     readonly : this.isReadOnly,
                     mobile: {
-                        theme: 'mobile'
+                        theme: 'silver',
                     },
                 }, this.tinyConfig ? this.tinyConfig : {})
             );
