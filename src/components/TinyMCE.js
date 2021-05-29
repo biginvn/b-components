@@ -263,6 +263,7 @@ export default {
                     readonly : this.isReadOnly,
                     mobile: {
                         theme: 'silver',
+                        toolbar1: this.isDisabled ? false : this.toolbar1,
                     },
                 }, this.tinyConfig ? this.tinyConfig : {})
             );
