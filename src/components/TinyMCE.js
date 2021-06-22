@@ -261,6 +261,10 @@ export default {
                     file_picker_callback : this.file_picker_callback,
                     init_instance_callback: this.init_instance_callback,
                     readonly : this.isReadOnly,
+                    mobile: {
+                        theme: 'silver',
+                        toolbar1: this.isDisabled ? false : this.toolbar1,
+                    },
                 }, this.tinyConfig ? this.tinyConfig : {})
             );
             return new Promise((resolve) => resolve());
