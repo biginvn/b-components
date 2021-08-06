@@ -152,18 +152,14 @@ export default {
         this.searchKeyword = selectItem[0].title
       }
     },
-    async defaultValue(value) {
-      await this.$nextTick()
-
+    defaultValue(value) {
       if (value !== null) {
-        let selectItem = this.searchListTotal.filter(
+        let selectItem = this.searchList.filter(
           item => item.id.toString() === value.toString()
         )
-        if (selectItem.length > 0) {
-          this.searchKeyword = selectItem[0].title
-          this.selectedValue = value
-        }
-        this.pointerIndex = this.searchListTotal.indexOf(selectItem[0])
+        this.pointerIndex = this.searchList.indexOf(selectItem[0])
+        this.searchKeyword = selectItem.length > 0 ? selectItem[0].title : ''
+        this.selectedValue = value
       } else {
         this.searchKeyword = ''
         this.selectedValue = null
@@ -171,13 +167,16 @@ export default {
       }
     },
     selectedValue(val) {
-      this.itemResult = Object.assign({}, this.searchList[this.pointerIndex])
-      if (val === null) this.showResult = false
-      else {
-        this.showResult = true
-      }
-      this.selectedPointerIndex = val
       this.$emit('input', val)
+
+      this.$nextTick(() => {
+        this.itemResult = Object.assign({}, this.searchList[this.pointerIndex])
+        if (val == null || val === '' || val === 0) this.showResult = false
+        else {
+          this.showResult = true
+        }
+        this.selectedPointerIndex = val
+      })
     },
   },
   computed: {
