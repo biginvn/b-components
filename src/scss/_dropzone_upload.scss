@@ -1,177 +1,175 @@
 .b__components.b__dropzone_upload {
-    .b__components__dropzone {
-        min-height: 75px;
-        cursor: pointer;
-        margin-bottom: 10px;
-        .content {
-            text-align: center;
-            cursor: pointer;
-            padding: 20px 20%;
-            border: 2px dashed #f3f3f3;
-            background: #fafafa;
-            color: #666;
-            -webkit-animation: fadeIn;
-            animation: fadeIn;
-            animation-duration: 1s;
-            .icon-upload{
-                width: 30px;
-                margin-top: -5px;
-            }
-            p{
-                margin: 0;
-            }
-            .uk-text-middle{
-                .uk-link{
-                    color: #07D;
-                    text-decoration: none;
-                    cursor: pointer;
-                }
-            }
+  .b__components__dropzone {
+    min-height: 75px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    .content {
+      text-align: center;
+      cursor: pointer;
+      padding: 20px 20%;
+      border: 2px dashed #f3f3f3;
+      background: #fafafa;
+      color: #666;
+      -webkit-animation: fadeIn;
+      animation: fadeIn;
+      animation-duration: 1s;
+      .icon-upload {
+        width: 30px;
+        margin-top: -5px;
+      }
+      p {
+        margin: 0;
+      }
+      .uk-text-middle {
+        .uk-link {
+          color: #07d;
+          text-decoration: none;
+          cursor: pointer;
         }
-
-        &+.total-progress {
-            .progress {
-                margin: 20px 0;
-                background-color: map-get($colors, primary);
-                border-radius: 0;
-                display: none;
-                transition: all 1s;
-                height: 5px;
-                border-radius: 10px;
-                -webkit-animation: fadeIn;
-                animation: fadeIn;
-                animation-duration: 1s;
-            }
-        }
+      }
     }
-    .stuff {
+
+    & + .total-progress {
+      .progress {
+        margin: 20px 0;
+        background-color: map-get($colors, primary);
+        border-radius: 0;
         display: none;
+        transition: all 1s;
+        height: 5px;
+        border-radius: 10px;
+        -webkit-animation: fadeIn;
+        animation: fadeIn;
+        animation-duration: 1s;
+      }
     }
+  }
+  .stuff {
+    display: none;
+  }
 
-
-    & [class$="__preview__container"] {
+  & [class$='__preview__container'] {
+    display: flex;
+    flex-wrap: wrap;
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .preview {
+      flex: 0 0 calc(33.333333% - 5px);
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: calc(33.333333% - 5px);
+      max-width: calc(33.333333% - 5px);
+      // width: 225px;
+      border: 1px solid #dfdfdf;
+      border-radius: 5px;
+      position: relative;
+      -webkit-animation: fadeIn;
+      animation: fadeIn;
+      animation-duration: 1s;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      &:nth-child(3n + 1) {
+        margin-right: 0;
+      }
+      .dz-thumb {
+        width: 44px;
+        height: 55px;
+        background-image: url(./assets/images/office-icon.svg);
+        background-size: 97px 250px;
+        background-position: 0 89px;
+        overflow: hidden;
+        border-radius: 5px;
+        transition: 0.3s all;
+        img {
+          width: 100%;
+          margin: 5px 5px 5px 5px;
+          object-fit: cover;
+        }
+      }
+      .dz-pdf {
+        background-position: 0 0;
+      }
+      .dz-doc {
+        background-position: -51px 0px;
+      }
+      .dz-ppt {
+        background-position: -2px -49px;
+      }
+      .dz-xls {
+        background-position: -51px -49px;
+      }
+      .dz-txt {
+        background-position: -2px -98px;
+      }
+      .dz-csv {
+        background-position: -51px -97px;
+      }
+      .dz-rtf {
+        background-position: -2px -146px;
+      }
+      .dz-zip {
+        background-position: -51px -147px;
+      }
+      .dz-file {
+        background-position: -2px -194px;
+      }
+      .dz-image {
+        background-image: none !important;
+      }
+      .dz-name {
+        display: block;
+        // text-align: center;
+        padding: 5px 0;
+        position: absolute;
+        top: 8px;
+        left: 48px;
+        right: 0;
+        // max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: bold;
+        color: map-get($colors, primary);
+        white-space: nowrap;
+      }
+      .dz-size {
+        text-align: center;
+        display: block;
+        max-width: 160px;
+        font-size: 10.5px;
+        position: absolute;
+        // bottom: 7px;
+        top: 35px;
+        left: 50px;
+      }
+      .remove-archive {
+        position: absolute;
+        opacity: 0;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        border-radius: 5px;
+        border: 1px solid #dfdfdf;
+        width: 30px;
+        text-align: center;
+        padding: 0;
+        cursor: pointer;
+        z-index: 9;
         display: flex;
-        flex-wrap: wrap;
-        &:after {
-            content: '';
-            display: block;
-            clear: both;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        &:hover {
+          opacity: 1;
+          background-color: gainsboro;
+          text-decoration: none;
+          color: map-get($supportColors, grey-dark);
         }
-        .preview {
-            flex: 0 0 calc(33.333333% - 5px);
-            flex-grow: 0;
-            flex-shrink: 0;
-            flex-basis: calc(33.333333% - 5px);
-            max-width: calc(33.333333% - 5px);
-            // width: 225px;
-            border: 1px solid #dfdfdf;
-            border-radius: 5px;
-            position: relative;
-            -webkit-animation: fadeIn;
-            animation: fadeIn;
-            animation-duration: 1s;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            &:nth-child(3n + 1){
-                margin-right: 0;
-            }
-            .dz-thumb {
-                width: 44px;
-                height: 55px;
-                background-image: url(./assets/images/office-icon.svg);
-                background-size: 97px 250px;
-                background-position: 0 89px;
-                overflow: hidden;
-                border-radius: 5px;
-                transition: .3s all;
-                img {
-                    width: 100%;
-                    margin: 5px 5px 5px 5px;
-                    object-fit: cover;
-                }
-            }
-            .dz-pdf {
-                background-position: 0 0;
-            }
-            .dz-doc {
-                background-position: -51px 0px;
-            }
-            .dz-ppt {
-                background-position: -2px -49px;
-            }
-            .dz-xls {
-                background-position: -51px -49px;
-            }
-            .dz-txt {
-                background-position: -2px -98px;
-            }
-            .dz-csv {
-                background-position: -51px -97px;
-            }
-            .dz-rtf {
-                background-position: -2px -146px;
-            }
-            .dz-zip {
-                background-position: -51px -147px;
-            }
-            .dz-file {
-                background-position: -2px -194px;
-            }
-            .dz-image {
-                background-image: none !important;
-            }
-            .dz-name {
-                display: block;
-                // text-align: center;
-                padding: 5px 0;
-                position: absolute;
-                top: 8px;
-                left: 48px;
-                right: 0;
-                // max-width: 150px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                font-weight: bold;
-                color: map-get($colors, primary);
-                white-space: nowrap;
-            }
-            .dz-size {
-                text-align: center;
-                display: block;
-                max-width: 160px;
-                font-size: 10.5px;
-                position: absolute;
-                // bottom: 7px;
-                top: 35px;
-                left: 50px;
-            }
-            .remove-archive {
-                position: absolute;
-                opacity: 0;
-                top: -1px;
-                right: -1px;
-                bottom: -1px;
-                border-radius: 5px;
-                border: 1px solid #dfdfdf;
-                width: 30px;
-                text-align: center;
-                padding: 0;
-                cursor: pointer;
-                z-index: 9;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transition: all .3s ease;
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-                &:hover {
-                    opacity: 1;
-                    background-color: gainsboro;
-                    text-decoration: none;
-                    color: map-get($supportColors, grey-dark);
-                }
-            }
-        }
+      }
     }
+  }
 }
-

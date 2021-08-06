@@ -2,272 +2,274 @@ $width: 20px;
 $height: 25px;
 
 .toggle__input {
-    display: none; // add default box-sizing for this scope
-    &,
-    &:after,
-    &:before,
-    & *,
-    & *:after,
-    & *:before,
-    &+.toggle__btn {
-        box-sizing: border-box;
-       
-        padding-top: 3px;
-        position: relative;
-        border-radius: 20px;
-        &::selection {
-            background: none;
-        }
-    }
+  display: none; // add default box-sizing for this scope
+  &,
+  &:after,
+  &:before,
+  & *,
+  & *:after,
+  & *:before,
+  & + .toggle__btn {
+    box-sizing: border-box;
 
-    +.toggle__btn {
-        outline: 0;
-        display: block;
-        width: 6em;
-        height: 2em;
-        position: relative;
-        cursor: pointer;
-        user-select: none;
-        .toggle__off,
-        .toggle__on {
-            position: relative;
-            display: block;
-            content: "";
-            width: 50%;
-            height: 100%;
-        }
-
-        .toggle__on {
-            left: 0;
-        }
-
-        .toggle__off {
-            display: none;
-        }
-    }
-}
-.b-toggle{
+    padding-top: 3px;
+    position: relative;
     border-radius: 20px;
+    &::selection {
+      background: none;
+    }
+  }
+
+  + .toggle__btn {
+    outline: 0;
+    display: block;
+    width: 6em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    .toggle__off,
+    .toggle__on {
+      position: relative;
+      display: block;
+      content: '';
+      width: 50%;
+      height: 100%;
+    }
+
+    .toggle__on {
+      left: 0;
+    }
+
+    .toggle__off {
+      display: none;
+    }
+  }
+}
+.b-toggle {
+  border-radius: 20px;
 }
 
 /* Themes */
 
 .toggle__circle {
-    +.toggle__btn {
-        overflow: hidden;
-        backface-visibility: hidden;
-        transition: all .2s ease;
-        background: #f1f1f1;
-        border-color: #e5e5e5;
+  + .toggle__btn {
+    overflow: hidden;
+    backface-visibility: hidden;
+    transition: all 0.2s ease;
+    background: #f1f1f1;
+    border-color: #e5e5e5;
+    border-radius: 20px;
+    width: 106px !important;
+    height: 32px !important;
+    .toggle__icon {
+      width: $width;
+      height: $height;
+      background-color: map-get($colors, primary);
+      position: absolute;
+      top: 0;
+      z-index: 1;
+      transition: all 0.2s ease-in-out;
+    }
+    .toggle__off,
+    .toggle__on {
+      display: inline-block;
+      transition: all 0.2s ease;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      line-height: 2em;
+      // font-weight: bold;
+      color: #333;
+      // text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
+    }
+
+    .toggle__on {
+      left: 100%;
+      color: #fff;
+      .toggle-handle {
+        position: absolute;
+        margin: 0 auto;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 100%;
+        width: 0;
+        top: -4px;
+        right: 90px;
+        // -webkit-transition: .4s;
+        // transition: all 2s ease;
         border-radius: 20px;
-         width: 106px!important;
-        height: 32px!important;
-        .toggle__icon {
-            width: $width;
-            height: $height;
-            background-color: map-get($colors, primary);
-            position: absolute;
-            top: 0;
-            z-index: 1;
-            transition: all .2s ease-in-out;
-        }
-        .toggle__off,
-        .toggle__on {
-            display: inline-block;
-            transition: all .2s ease;
-            width: 100%;
-            text-align: center;
-            position: absolute;
-            line-height: 2em;
-            // font-weight: bold;
-            color: #333;
-            // text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
-        }
-
-        .toggle__on {
-            left: 100%;
-             color: #fff;
-            .toggle-handle {
-                position: absolute;
-                margin: 0 auto;
-                padding-top: 0;
-                padding-bottom: 0;
-                height: 100%;
-                width: 0;
-                top: -4px;
-                right: 90px;
-                // -webkit-transition: .4s;
-                // transition: all 2s ease;
-                border-radius: 20px;
-            }
-        }
-
-        .toggle__off {
-            left: 0;
-
-            .toggle-handle {
-                position: absolute;
-                margin: 0 auto;
-                padding-top: 0;
-                padding-bottom: 0;
-                height: 100%;
-                width: 0;
-                left: 90px;
-                top: -4px;
-                border-radius: 20px;
-             
-            }
-        }
-
-        &:active {
-            background: #a9a9a9;
-            .toggle__off {
-                left: -10%;
-            }
-        }
+      }
     }
 
-    &:checked+.toggle__btn {
-        background: #86d993;
-        .toggle__off {
-            left: -100%;
-        }
+    .toggle__off {
+      left: 0;
 
-        .toggle__on {
-            left: 0;
-        }
-
-        &:active .toggle__on {
-            left: 10%;
-        }
+      .toggle-handle {
+        position: absolute;
+        margin: 0 auto;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 100%;
+        width: 0;
+        left: 90px;
+        top: -4px;
+        border-radius: 20px;
+      }
     }
+
+    &:active {
+      background: #a9a9a9;
+      .toggle__off {
+        left: -10%;
+      }
+    }
+  }
+
+  &:checked + .toggle__btn {
+    background: #86d993;
+    .toggle__off {
+      left: -100%;
+    }
+
+    .toggle__on {
+      left: 0;
+    }
+
+    &:active .toggle__on {
+      left: 10%;
+    }
+  }
 }
 
 .toggle__skewed {
-    +.toggle__btn {
-        overflow: hidden;
-        transform: skew(-10deg);
-        backface-visibility: hidden;
-        transition: all .2s ease;
-        background: #a9a9a9;
-        .toggle__off,
-        .toggle__on {
-            transform: skew(10deg);
-            display: inline-block;
-            transition: all .2s ease;
-            width: 100%;
-            text-align: center;
-            position: absolute;
-            line-height: 2em;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
-        }
-
-        .toggle__on {
-            left: 100%;
-        }
-
-        .toggle__off {
-            left: 0;
-        }
-
-        &:active {
-            background: #a9a9a9;
-            .toggle__off {
-                left: -10%;
-            }
-        }
+  + .toggle__btn {
+    overflow: hidden;
+    transform: skew(-10deg);
+    backface-visibility: hidden;
+    transition: all 0.2s ease;
+    background: #a9a9a9;
+    .toggle__off,
+    .toggle__on {
+      transform: skew(10deg);
+      display: inline-block;
+      transition: all 0.2s ease;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      line-height: 2em;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
     }
 
-    &:checked+.toggle__btn {
-        background: #86d993;
-        .toggle__off {
-            left: -100%;
-        }
-
-        .toggle__on {
-            left: 0;
-        }
-
-        &:active .toggle__on {
-            left: 10%;
-        }
+    .toggle__on {
+      left: 100%;
     }
+
+    .toggle__off {
+      left: 0;
+    }
+
+    &:active {
+      background: #a9a9a9;
+      .toggle__off {
+        left: -10%;
+      }
+    }
+  }
+
+  &:checked + .toggle__btn {
+    background: #86d993;
+    .toggle__off {
+      left: -100%;
+    }
+
+    .toggle__on {
+      left: 0;
+    }
+
+    &:active .toggle__on {
+      left: 10%;
+    }
+  }
 }
 
 .toggle__flip {
-    +.toggle__btn {
-        padding: 2px;
-        transition: all .2s ease;
-        font-family: "Font Awesome 5 Free";
-        perspective: 100px;
-        .toggle__off,
-        .toggle__on {
-            display: inline-block;
-            transition: all .4s ease;
-            width: 100%;
-            text-align: center;
-            position: absolute;
-            line-height: 2em;
-            font-weight: bold;
-            color: #fff;
-            position: absolute;
-            top: 0;
-            left: 0;
-            backface-visibility: hidden;
-        }
-
-        .toggle__off {
-            content: attr(data-tg-on);
-            background: #a9a9a9;
-            transform: rotateY(-180deg);
-        }
-
-        .toggle__on {
-            background: #FF3A19;
-            content: attr(data-tg-off);
-        }
-
-        &:active .toggle__off {
-            transform: rotateY(-20deg);
-        }
+  + .toggle__btn {
+    padding: 2px;
+    transition: all 0.2s ease;
+    font-family: 'Font Awesome 5 Free';
+    perspective: 100px;
+    .toggle__off,
+    .toggle__on {
+      display: inline-block;
+      transition: all 0.4s ease;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      line-height: 2em;
+      font-weight: bold;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      backface-visibility: hidden;
     }
 
-    &:checked+.toggle__btn {
-        .toggle__on {
-            transform: rotateY(180deg);
-        }
-
-        .toggle__off {
-            transform: rotateY(0);
-            left: 0;
-        }
-
-        &:active .toggle__on {
-            transform: rotateY(20deg);
-        }
+    .toggle__off {
+      content: attr(data-tg-on);
+      background: #a9a9a9;
+      transform: rotateY(-180deg);
     }
+
+    .toggle__on {
+      background: #ff3a19;
+      content: attr(data-tg-off);
+    }
+
+    &:active .toggle__off {
+      transform: rotateY(-20deg);
+    }
+  }
+
+  &:checked + .toggle__btn {
+    .toggle__on {
+      transform: rotateY(180deg);
+    }
+
+    .toggle__off {
+      transform: rotateY(0);
+      left: 0;
+    }
+
+    &:active .toggle__on {
+      transform: rotateY(20deg);
+    }
+  }
 }
-
-
 
 /* Style*/
-.toggle__danger:checked+.toggle__btn,.toggle__danger+.toggle__btn .toggle__on{
-    background: #f04134!important;
+.toggle__danger:checked + .toggle__btn,
+.toggle__danger + .toggle__btn .toggle__on {
+  background: #f04134 !important;
 }
 
-.toggle__success:checked+.toggle__btn,.toggle__success+.toggle__btn .toggle__on{
-    background: #00a854!important;
+.toggle__success:checked + .toggle__btn,
+.toggle__success + .toggle__btn .toggle__on {
+  background: #00a854 !important;
 }
 
-.toggle__warn:checked+.toggle__btn,.toggle__warn+.toggle__btn .toggle__on{
-    background: #ffbf00!important;
+.toggle__warn:checked + .toggle__btn,
+.toggle__warn + .toggle__btn .toggle__on {
+  background: #ffbf00 !important;
 }
 
-.toggle__primary:checked+.toggle__btn,.toggle__primary+.toggle__btn .toggle__on{
-    background: #108ee9!important;
+.toggle__primary:checked + .toggle__btn,
+.toggle__primary + .toggle__btn .toggle__on {
+  background: #108ee9 !important;
 }
-.toggle__purple:checked+.toggle__btn,.toggle__purple+.toggle__btn .toggle__on{
-    background: #7a6fbe!important;
+.toggle__purple:checked + .toggle__btn,
+.toggle__purple + .toggle__btn .toggle__on {
+  background: #7a6fbe !important;
 }

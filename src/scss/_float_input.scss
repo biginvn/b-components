@@ -1,85 +1,86 @@
 .b-float-label {
+  position: relative;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  label {
+    position: absolute;
+    margin: 0;
+    opacity: 0;
+    top: 0px;
+    left: 6px;
+    height: 15px;
+    font-size: 11px;
+    color: #1976d2;
+    padding: 0px 2px;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+  }
+  label.active {
+    opacity: 1;
+    top: -8px;
+    z-index: 1;
+  }
+  input.b__input {
+    width: 100%;
+    outline: 0;
+    line-height: 1.5;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 1px solid #dfdfdf;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    padding: 6px 15px;
     position: relative;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    label {
-        position: absolute;
-        margin: 0;
-        opacity: 0; 
-        top: 0px;
-        left: 6px;
-        height: 15px;
-        font-size: 11px;
-        color: #1976d2;
-        padding: 0px 2px;
-        background-color: #fff;
-        transition: all .2s ease-in-out;
+    &:disabled {
+      border-color: whitesmoke;
+      color: #c5c5c5;
+      cursor: no-drop;
     }
-    label.active{
-        opacity: 1;
-        top: -8px; 
-        z-index: 1;
+    + .add_on {
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: rgba(32, 34, 35, 0.41);
+      text-align: center;
+      border-radius: 0.25rem;
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      &:hover {
+        color: #464a4c;
+      }
     }
-    input.b__input {
-        width: 100%;
-        outline: 0;
-        line-height: 1.5;
-        font-size: 14px;
-        border-radius: 3px;
-        border: 1px solid #dfdfdf;
-        background-color: #fff;
-        box-sizing: border-box;
-        transition: all .2s ease-in-out;
-        padding: 6px 15px;
-        position: relative;
-        &:disabled {
-            border-color: whitesmoke;
-            color: #c5c5c5;
-            cursor: no-drop;
-        }
-        +.add_on{
-            cursor: pointer;
-            position: absolute;
-            right: 0;
-            top: 0;
-            padding: .5rem .75rem;
-            margin-bottom: 0;
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 1.20;
-            color: rgba(32,34,35,0.41);
-            text-align: center;
-            border-radius: .25rem;
-            transition: all .3s cubic-bezier(.645,.045,.355,1);
-            &:hover{
-                color: #464a4c;
-            }
-        }
+  }
+  .link-name-area {
+    line-height: 1.5;
+    font-weight: 600;
+    padding: 9px 13px 6px 8px !important;
+    font-size: 13px !important;
+    color: #444 !important;
+    pointer-events: auto;
+    display: none;
+    .link-text-name {
+      text-decoration: none;
+    }
+  }
+  &.has-link-view.input-disabled,
+  &.has-link-view[always-disabled='true'] {
+    input {
+      display: none;
     }
     .link-name-area {
-        line-height: 1.5;
-        font-weight: 600;
-        padding: 9px 13px 6px 8px !important;
-        font-size: 13px !important;
-        color: #444 !important;
-        pointer-events: auto;
-        display: none;
-        .link-text-name {
-            text-decoration: none;
-        }
+      display: block;
     }
-    &.has-link-view.input-disabled, &.has-link-view[always-disabled="true"] {
-        input {
-            display: none;
-        }
-        .link-name-area {
-            display: block;
-        }
-    }
-    // &[always-disabled="true"] {
-    //     input.b__input {
-    //         padding-left: 15px !important;
-    //     }
-    // }
+  }
+  // &[always-disabled="true"] {
+  //     input.b__input {
+  //         padding-left: 15px !important;
+  //     }
+  // }
 }

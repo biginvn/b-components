@@ -1,20 +1,21 @@
-.b__components{
-	-webkit-font-smoothing: antialiased;
-	&.has-error {
-		label {
-			color : map-get($colors, danger);
-		}
-		input.b__input {
-			border-color : map-get($colors, danger);
-			&:focus{
-				border: 1px solid map-get($colors, danger)!important;
-			}
-		}
-	}
-	textarea, select, input.b__input{
-		&:focus{
-			border: 1px solid #0082d5;
-		}
-	}
+.b__components {
+  -webkit-font-smoothing: antialiased;
+  &.has-error {
+    label {
+      color: map-get($colors, danger);
+    }
+    input.b__input {
+      border-color: map-get($colors, danger);
+      &:focus {
+        border: 1px solid map-get($colors, danger) !important;
+      }
+    }
+  }
+  textarea,
+  select,
+  input.b__input {
+    &:focus {
+      border: 1px solid #0082d5;
+    }
+  }
 }
-

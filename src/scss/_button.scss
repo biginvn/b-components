@@ -1,76 +1,73 @@
 .b__components {
-	&.b__button {
-	    display: inline-block;
-	    & > .b__button__control {
-	    	position: relative;
-	        border-width: 1px;
-		    border-style: solid;
-		    color: #fff;
-		    padding: 5px 15px;
-		    border-radius: 4px;
-		    cursor: pointer;
-		    transition: all .3s cubic-bezier(.645,.045,.355,1);
-		    &:focus {
-		    	outline: none;
-		    }
-		    & > i {
-			    margin-right: 7px;
-			}
+  &.b__button {
+    display: inline-block;
+    & > .b__button__control {
+      position: relative;
+      border-width: 1px;
+      border-style: solid;
+      color: #fff;
+      padding: 5px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      &:focus {
+        outline: none;
+      }
+      & > i {
+        margin-right: 7px;
+      }
 
-			&.clicked-animate:after {
-			    content: "";
-			    position: absolute;
-			    top: -1px;
-			    left: -1px;
-			    bottom: -1px;
-			    right: -1px;
-			    border-radius: inherit;
-			    border: 0 solid transparent;
-			    opacity: .5;
-			    animation: buttonEffect .5s;
-			    display: block;
-			}			
-
-		}
-	}
+      &.clicked-animate:after {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        bottom: -1px;
+        right: -1px;
+        border-radius: inherit;
+        border: 0 solid transparent;
+        opacity: 0.5;
+        animation: buttonEffect 0.5s;
+        display: block;
+      }
+    }
+  }
 }
 
-@each $key,$value in $colors {
-	$splitSelector : split-str($key, '-');
-	
-	@if length($splitSelector) == 1  {
+@each $key, $value in $colors {
+  $splitSelector: split-str($key, '-');
 
-		.b__components.b__button > .b__button__control.button-#{$key} {
-			background-color: $value;
-			border-color : $value;
+  @if length($splitSelector) == 1 {
+    .b__components.b__button > .b__button__control.button-#{$key} {
+      background-color: $value;
+      border-color: $value;
 
-			&.button-solid {
-				background-color: transparent;
-				color : $value;
-				&:hover {
-					background-color: transparent;
-					color : map-get($colors, #{$key}-light);
-				}
-				&:active {
-					background-color : transparent;
-					border-color : map-get($colors, #{$key}-dark);
-				}
-			}
+      &.button-solid {
+        background-color: transparent;
+        color: $value;
+        &:hover {
+          background-color: transparent;
+          color: map-get($colors, #{$key}-light);
+        }
+        &:active {
+          background-color: transparent;
+          border-color: map-get($colors, #{$key}-dark);
+        }
+      }
 
-			&.clicked-animate:after {
-				border-color : $value;
-			}
+      &.clicked-animate:after {
+        border-color: $value;
+      }
 
-			&:hover{
-				background-color : map-get($colors, #{$key}-light);
-				border-color : map-get($colors, #{$key}-light);
-			}
+      &:hover {
+        background-color: map-get($colors, #{$key}-light);
+        border-color: map-get($colors, #{$key}-light);
+      }
 
-			&:active{
-				background-color : map-get($colors, #{$key}-dark);
-				border-color : map-get($colors, #{$key}-dark);
-			}
-		}
-
-	}
+      &:active {
+        background-color: map-get($colors, #{$key}-dark);
+        border-color: map-get($colors, #{$key}-dark);
+      }
+    }
+  }
 }

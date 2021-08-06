@@ -28,7 +28,8 @@
       &:last-child {
         border-bottom: 0;
       }
-      &:hover, &.active {
+      &:hover,
+      &.active {
         background-color: #f5f5f5;
       }
     }
