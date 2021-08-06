@@ -6,36 +6,36 @@ $text-white: #fff;
 $text-black: #000;
 $text-gray: #d5d5d5;
 
-.b-btn{
-	display: inline-block;
-	padding: .7em 1em;
-	background-color: $bg-gray;
-	color: $text-white;
-	border: none;
-	text-align: center;
-	transition: .25s background-color;
-	text-decoration: none;
+.b-btn {
+  display: inline-block;
+  padding: 0.7em 1em;
+  background-color: $bg-gray;
+  color: $text-white;
+  border: none;
+  text-align: center;
+  transition: 0.25s background-color;
+  text-decoration: none;
 
-	&:not([disabled]):not(.btn--nohover):hover{
-		color: $text-white;
-		background-color: $bg-black;
-	}
+  &:not([disabled]):not(.btn--nohover):hover {
+    color: $text-white;
+    background-color: $bg-black;
+  }
 
-	&--red{
-		background-color: $bg-red;
-	}
+  &--red {
+    background-color: $bg-red;
+  }
 
-	&--gray{
-		background-color: $text-gray;
-	}
+  &--gray {
+    background-color: $text-gray;
+  }
 
-	&--transparent{
-		background-color: transparent;
-		color: $text-black;
-	}
+  &--transparent {
+    background-color: transparent;
+    color: $text-black;
+  }
 
-	&--transparent-white{
-		background-color: transparent;
-		color: $text-white;
-	}
+  &--transparent-white {
+    background-color: transparent;
+    color: $text-white;
+  }
 }

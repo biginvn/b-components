@@ -1,15 +1,18 @@
 import Vue from 'vue'
 // import axios from 'axios'
 import VueResource from 'vue-resource'
-import {ServerTable, ClientTable, Event} from './components/vue-tables-2/compiled/'
-Vue.use(ServerTable);
-Vue.use(ClientTable);
+import {
+  ServerTable,
+  ClientTable,
+  Event,
+} from './components/vue-tables-2/compiled/'
+Vue.use(ServerTable)
+Vue.use(ClientTable)
 Vue.use(VueResource)
 // Vue.use(axios)
-Vue.http.options.emulateJSON = true;
-Vue.http.options.xhr = {withCredentials: true};
-Vue.http.options.emulateHTTP = true;
-
+Vue.http.options.emulateJSON = true
+Vue.http.options.xhr = { withCredentials: true }
+Vue.http.options.emulateHTTP = true
 
 // Components
 import BTextField from './themes/ios/TextField.vue'
@@ -83,5 +86,5 @@ Vue.component('BAutoComplete', BAutoComplete)
 Vue.component('BDocumentAdhoc', BDocumentAdhoc)
 
 export default {
-	Event: Event
+  Event: Event,
 }

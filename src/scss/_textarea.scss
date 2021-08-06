@@ -1,78 +1,78 @@
 .b-textarea {
+  position: relative;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  label {
+    position: absolute;
+    margin: 0;
+    opacity: 0;
+    top: 0px;
+    left: 6px;
+    height: 15px;
+    font-size: 11px;
+    color: #1976d2;
+    padding: 0px 2px;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+  }
+  label.active {
+    opacity: 1;
+    top: -8px;
+    z-index: 1;
+  }
+  textarea {
+    width: 100%;
+    outline: 0;
+    line-height: 1.5;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 1px solid #dfdfdf;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    padding: 6px 15px;
+    &:disabled {
+      border-color: whitesmoke;
+      color: #c5c5c5;
+      cursor: no-drop;
+    }
+  }
+  .b-wrapper-pre {
+    padding: 10px 10px 10px 8px;
     position: relative;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    label {
-        position: absolute;
-        margin: 0;
-        opacity: 0; 
-        top: 0px;
-        left: 6px;
-        height: 15px;
-        font-size: 11px;
-        color: #1976d2;
-        padding: 0px 2px;
-        background-color: #fff;
-        transition: all .2s ease-in-out;
+    label.label-pre {
+      background: transparent;
     }
-    label.active{
-        opacity: 1;
-        top: -8px;
-        z-index: 1;
+    .pre-b-textarea {
+      padding: 0px 10px 10px 0px;
+      font-size: 13px !important;
+      color: #444 !important;
+      pointer-events: auto !important;
+      background: transparent;
+      border: none;
+      font-family: Montserrat, sans-serif;
+      position: relative;
+      max-height: 60px;
+      overflow: hidden;
+      margin: 0;
+      &:hover {
+        overflow: auto;
+        padding-right: 0;
+        padding-bottom: 0;
+      }
+      &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 8px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #fff;
+        border-radius: 8px;
+      }
     }
-    textarea {
-        width: 100%;
-        outline: 0;
-        line-height: 1.5;
-        font-size: 14px;
-        border-radius: 3px;
-        border: 1px solid #dfdfdf;
-        background-color: #fff;
-        box-sizing: border-box;
-        transition: all .2s ease-in-out;
-        padding: 6px 15px;
-        &:disabled {
-            border-color: whitesmoke;
-            color: #c5c5c5;
-            cursor: no-drop;
-        }
-    }
-    .b-wrapper-pre {
-        padding: 10px 10px 10px 8px;
-        position: relative;
-        label.label-pre {
-            background: transparent;
-        }
-        .pre-b-textarea {
-            padding: 0px 10px 10px 0px;
-            font-size: 13px !important;
-            color: #444 !important;
-            pointer-events: auto !important;
-            background: transparent;
-            border: none;
-            font-family: Montserrat,sans-serif;
-            position: relative;
-            max-height: 60px;
-            overflow: hidden;
-            margin: 0;
-            &:hover {
-                overflow: auto;
-                padding-right: 0;
-                padding-bottom: 0;
-            }
-            &::-webkit-scrollbar {
-                width: 8px;
-                height: 8px;
-            }
-            &::-webkit-scrollbar-thumb {
-                background: #ccc;
-                border-radius: 8px;
-            }
-            &::-webkit-scrollbar-track {
-                background: #fff;
-                border-radius: 8px;
-            }
-        }
-    }
+  }
 }

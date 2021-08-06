@@ -1,40 +1,40 @@
 @keyframes buttonEffect {
-    to {
-        opacity: 0;
-        top: -6px;
-        left: -6px;
-        bottom: -6px;
-        right: -6px;
-        border-width: 6px
-    }
+  to {
+    opacity: 0;
+    top: -6px;
+    left: -6px;
+    bottom: -6px;
+    right: -6px;
+    border-width: 6px;
+  }
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform-origin: 50% 50%;
-        transform: scale(0, 0);
-    }
+  0% {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    transform: scale(0, 0);
+  }
 
-    100% {
-        opacity: 1;
-        transform-origin: 50% 50%;
-        transform: scale(1, 1);
-    }
+  100% {
+    opacity: 1;
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+  }
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity: 1;
-        transform-origin: 50% 50%;
-        transform: scale(1, 1);
-    }
+  0% {
+    opacity: 1;
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+  }
 
-    100% {
-        opacity: 0;
-        transform-origin: 50% 50%;
-        transform: scale(0, 0);
-    }
+  100% {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    transform: scale(0, 0);
+  }
 }
 
 @keyframes vanishOut {
