@@ -9,7 +9,7 @@
       :checked="isChecked"
     />
     <span class="checkbox__checkmark"></span>
-    <label :for="id">{{ label }}</label>
+    <label :for="id" v-html="label"></label>
   </div>
 </template>
 <script>
