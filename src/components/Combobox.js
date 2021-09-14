@@ -221,7 +221,7 @@ export default {
       // Close LIST after 500ms (waiting for CLICK event was handled)
       setTimeout(() => {
         this.switchList(false)
-        if (this.selectedValue == null) {
+        if (this.selectedValue == null || this.selectedValue === '' || this.selectedValue === 0) {
           this.searchList = JSON.parse(JSON.stringify(this.searchListTotal))
           if (this.isResetWhenBlurOut) this.searchKeyword = ''
           this.showResult = false
