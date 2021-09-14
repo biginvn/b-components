@@ -13,6 +13,6 @@
   </div>
 </template>
 <script>
-  import CheckBox from './../../components/CheckBox'
+  import CheckBox from './../../components/CheckBox' 
   export default CheckBox
 </script>
