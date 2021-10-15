@@ -38,7 +38,7 @@
       :ref="'input-search-' + id"
       v-show="showInputSearchCombobox"
       :disabled="disabled"
-      autocomplete="new-password"
+      autocomplete="off"
       :placeholder="inputPlacehoder"
       :null-placeholder="nullPlaceholder"
       :org-placeholder="orgPlaceholder"
