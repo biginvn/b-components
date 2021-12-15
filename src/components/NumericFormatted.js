@@ -55,6 +55,9 @@ export default {
       if (this.minValue === null) return 0
       return this.minValue
     },
+    isNegative() {
+      return this.minValue < 0
+    },
   },
   watch: {
     value() {
@@ -75,17 +78,11 @@ export default {
     },
     keypress(event) {
       var charCode = event.charCode
-      let minCharCodeAllow = 46
+      let minCharCodeAllow = this.isNegative ? 45 : 46
 
       // Prevent '..'
       if (event.target.value.includes('.')) {
         event.charCode == 46 ? event.preventDefault() : event.charCode
-      }
-
-      // Allow input "-" for negative number (only start of string):
-      if (event.target.value !== '' && this.minValueNumber < 0) {
-        event.charCode == 45 ? event.preventDefault() : event.charCode
-        minCharCodeAllow = 45
       }
 
       // Remove Alphabet
