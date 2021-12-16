@@ -178,8 +178,13 @@ export default {
       )
         n = null
       else {
-        if (behind === null) n = parseFloat(mask)
-        else n = parseFloat(mask) + parseFloat(behind)
+        if (behind === null) {
+          n = parseFloat(mask)
+        } else {
+          n = this.isNegative
+            ? parseFloat(mask) - parseFloat(behind)
+            : parseFloat(mask) + parseFloat(behind)
+        }
       }
 
       // Check Value is Null & Check Affix
