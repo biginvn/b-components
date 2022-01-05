@@ -119,6 +119,7 @@ export default {
           : Math.round(parseFloat(this.value) * 100) / 100
     },
     blur(mask) {
+      const maskOrigin = mask
       // Validation type Affix
       if (mask === '' || mask === null) {
         this.$emit('input', '')
@@ -181,9 +182,10 @@ export default {
         if (behind === null) {
           n = parseFloat(mask)
         } else {
-          n = this.isNegative
-            ? parseFloat(mask) - parseFloat(behind)
-            : parseFloat(mask) + parseFloat(behind)
+          n =
+            maskOrigin < 0
+              ? parseFloat(mask) - parseFloat(behind)
+              : parseFloat(mask) + parseFloat(behind)
         }
       }
 
