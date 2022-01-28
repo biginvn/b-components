@@ -113,10 +113,11 @@ export default {
       this.updateFloatLabel(mask)
     },
     focus() {
+      const decimalUnit = Math.pow(10, this.decimalNumber)
       this.mask =
         this.value === '' || this.value === null
           ? ''
-          : Math.round(parseFloat(this.value) * 100) / 100
+          : Math.round(parseFloat(this.value) * decimalUnit) / decimalUnit
     },
     blur(mask) {
       const maskOrigin = mask
