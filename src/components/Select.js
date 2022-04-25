@@ -42,8 +42,12 @@ export default {
         return []
       },
     },
-    itemText: {},
-    itemVal: {},
+    itemText: {
+      default: 'display_value',
+    },
+    itemVal: {
+      default: 'id',
+    },
     itemUrl: {
       default: 'url',
     },
