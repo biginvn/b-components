@@ -15,9 +15,7 @@ export default {
   mounted() {
     this.float()
   },
-  // props: [ 'id', 'default', 'label', 'name', 'disabled', 'list', 'item-text', 'item-val', 'item-url', 'class-name', 'placeholder'],
   props: {
-    // [ 'id', 'default', 'label', 'name', 'disabled', 'list', 'item-text', 'item-val', 'item-url', 'class-name', 'placeholder'],
     id: {},
     default: {},
     label: {},
