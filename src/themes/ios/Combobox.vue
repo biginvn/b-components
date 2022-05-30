@@ -8,7 +8,7 @@
   >
     <label :for="id" :class="isActive ? 'active' : ''">{{
       label.toUpperCase()
-    }}</label>
+    }}<slot name="append-label"></slot></label>
     <div
       v-show="showResult && isShowHtmlResult"
       class="result"
