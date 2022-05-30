@@ -11,7 +11,7 @@
       @change="update($event.target.value)"
       v-model="selected"
       class="b__select_element"
-      :class="{ className, 'hyper-link-select-view': isHyperLinkView }"
+      :class="[className, { 'hyper-link-select-view': isHyperLinkView }]"
     >
       <option v-for="item in items" :value="item.value">{{ item.name }}</option>
     </select>
