@@ -148,6 +148,7 @@ export default {
     },
 
     toggleList(e) {
+      this.searchList = JSON.parse(JSON.stringify(this.list))
       e.stopPropagation()
       this.switchList(!this.isExpanding)
     },
