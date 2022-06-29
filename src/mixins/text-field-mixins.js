@@ -7,12 +7,11 @@ export default {
     }
   },
   mixins: [baseMixins],
-  // props: ['disabled', 'placeholder', 'label', 'class-name', 'name', 'id'],
   props: {
     disabled: {},
     placeholder: {},
     label: {},
-    'class-name': {},
+    className: {},
     name: {},
     id: {},
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="b__components b-select" :disabled="disabled">
     <label :for="id" :class="{ active: isActive, required: required }">{{
-      label
+      label || placeholder
     }}</label>
     <select
       :placeholder="placeholder"

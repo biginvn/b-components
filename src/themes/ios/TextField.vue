@@ -3,7 +3,9 @@
     class="b__components b-ios b-float-label b-input-extend-custom"
     :class="(hasUrl ? 'has-link-view' : '') + (classParent || '')"
   >
-    <label :class="[{ required: required }, classLabel]">{{ label }}</label>
+    <label :class="[{ required: required }, classLabel]">{{
+      label || placeholder
+    }}</label>
     <input
       :placeholder="placeholder"
       :type="type"
