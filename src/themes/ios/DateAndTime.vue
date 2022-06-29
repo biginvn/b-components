@@ -4,7 +4,9 @@
 <!-- Component: DateAndTime -->
 <template>
   <div class="b__datetime__picker b__components b-float-label">
-    <label :class="[{ required: required }, classLabel]">{{ label }}</label>
+    <label :class="[{ required: required }, classLabel]">{{
+      label || placeholder
+    }}</label>
     <input
       @click="$emit('clickCon')"
       :id="id"

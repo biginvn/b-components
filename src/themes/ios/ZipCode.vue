@@ -1,6 +1,6 @@
 <template>
   <div :class="wrapClass">
-    <label :class="classLabel">{{ label }}</label>
+    <label :class="classLabel">{{ label || placeholder }}</label>
     <input
       :placeholder="placeholder"
       :name="name"

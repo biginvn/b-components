@@ -3,7 +3,9 @@
     :class="{ 'has-error': error }"
     class="b__components b-ios b-float-label b__numeric"
   >
-    <label :class="[{ required: required }, classLabel]">{{ label }}</label>
+    <label :class="[{ required: required }, classLabel]">{{
+      label || placeholder
+    }}</label>
     <input
       type="text"
       :class="classes"

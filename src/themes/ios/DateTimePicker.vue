@@ -1,6 +1,6 @@
 <template>
   <div class="b__datetime__picker b__components b-float-label">
-    <label :class="classLabel">{{ label }}</label>
+    <label :class="classLabel">{{ label || placeholder }}</label>
     <input
       :placeholder="placeholder"
       type="text"
