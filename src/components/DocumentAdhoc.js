@@ -57,7 +57,7 @@ export default {
           exportType: typeProcess,
           isProcess: isProcess,
           media_id: file.media_id,
-          signature: file.signature,
+          signature: file.signature ? file.signature : {},
         })
       })
       this.items = items
@@ -89,7 +89,7 @@ export default {
                 </div>
               </div>
           </div>
-          <div class="setup-signature new-setup-signature" style="display:none;">
+          <div class="setup-signature new-setup-signature" id="signature-${file.uuid}" style="display:none;">
             <span class="signature-completed fas fa-check-circle fa-lg" style="color: mediumseagreen; display:none;"></span>
             Set up for signature
           </div>
@@ -113,12 +113,10 @@ export default {
       } else {
         $('.setup-signature').hide()
       }
-      let _this = this
-      $('.new-setup-signature')
-        .off('click')
-        .on('click', function () {
-          _this.$emit('setup-signature', file)
-        })
+
+      $(`#signature-${file.uuid}`).click(() => {
+        this.$emit('setup-signature', file)
+      })
 
       /* end register event js for review document */
       if (fileEx != 'docx') {

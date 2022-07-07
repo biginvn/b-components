@@ -31,7 +31,7 @@
           </a>
         </div>
       </div>
-      <div v-for="item in items" class="preview">
+      <div v-for="item in items" class="preview" style="height: 100%">
         <div :class="item.className" style="animation: fadeOut">
           <img
             v-if="
@@ -84,6 +84,18 @@
             ></b-radio>
           </div>
         </div>
+        <div
+          class="setup-signature"
+          v-show="isRequestSignature"
+          @click="$emit('setup-signature', item)"
+        >
+          <span
+            class="signature-completed fas fa-check-circle fa-lg"
+            style="color: mediumseagreen"
+            v-show="item.signature.docusign_template_id"
+          ></span>
+          Set up for signature
+        </div>
       </div>
     </div>
   </div>
@@ -111,5 +123,13 @@
     margin: 15px 30px 0px 30px;
     display: flex;
     justify-content: space-between;
+  }
+  .setup-signature {
+    background: #d4eafa;
+    text-align: center;
+    padding: 4px 2px;
+    font-weight: bold;
+    color: #108ee9;
+    cursor: pointer;
   }
 </style>
