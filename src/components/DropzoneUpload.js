@@ -45,6 +45,10 @@ export default {
         return
       },
     },
+    isRequestSignature: {
+      type: Boolean,
+      default: false,
+    },
   },
   mounted() {
     this.initDropzone()
@@ -67,9 +71,12 @@ export default {
       this.value.dropzone = this.dropzone
       this.$emit('input', this.value)
     },
-    'value.list'(files) {
-      if (Array.isArray(files)) return this.prepareItems(files)
-      return this.prepareItems([])
+    'value.list': {
+      handler: function (files) {
+        if (Array.isArray(files)) return this.prepareItems(files)
+        return this.prepareItems([])
+      },
+      deep: true,
     },
     disabled(value) {
       this.setStyleRemoveArchive()
@@ -425,6 +432,14 @@ export default {
         })
       }
       return currentFileSize
+    },
+    uuidv4() {
+      return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+        (
+          c ^
+          (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+        ).toString(16)
+      )
     },
   },
 }

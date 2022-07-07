@@ -57,17 +57,43 @@ export default {
           exportType: typeProcess,
           isProcess: isProcess,
           media_id: file.media_id,
+          signature: file.signature,
         })
       })
       this.items = items
       return this.items
     },
     afterAddedFile(file) {
+      file.uuid = this.uuidv4()
       var fileEx = this.getExtension(file.name)
       /* handle append export type after added file */
       var idExportTypeElement = Math.floor(Math.random() * 100000) // Create the remove button
       var exportTypeElement = Dropzone.createElement(
-        `<div class="form-group document-type export-type-upload"><div class="b__components b-checkbox"><input name="is-process-${idExportTypeElement}" type="checkbox" class="checkbox__input"> <span class="checkbox__checkmark"></span> <label>Document Process</label></div><div class="document-type-option"><div class="b__components b-radio" style="display:none;"><input checked name="export-type-${idExportTypeElement}" value="docx" type="radio" class="radio__input"> <span class="radio__checkmark"></span> <label>Docx</label></div> <div class="b__components b-radio" style="display:none;" ><input name="export-type-${idExportTypeElement}" type="radio" class="radio__input" value="pdf"> <span class="radio__checkmark"></span> <label>Pdf</label></div></div></div>`
+        `<div>
+          <div class="form-group document-type export-type-upload">
+              <div class="b__components b-checkbox">
+                <input name="is-process-${idExportTypeElement}" type="checkbox" class="checkbox__input"> 
+                <span class="checkbox__checkmark"></span> 
+                <label>Document Process</label>
+              </div>
+              <div class="document-type-option">
+                <div class="b__components b-radio" style="display:none;">
+                  <input checked name="export-type-${idExportTypeElement}" value="docx" type="radio" class="radio__input"> 
+                  <span class="radio__checkmark"></span> 
+                  <label>Docx</label>
+                </div> 
+                <div class="b__components b-radio" style="display:none;">
+                  <input name="export-type-${idExportTypeElement}" type="radio" class="radio__input" value="pdf">
+                  <span class="radio__checkmark"></span> 
+                  <label>Pdf</label>
+                </div>
+              </div>
+          </div>
+          <div class="setup-signature new-setup-signature" style="display:none;">
+            <span class="signature-completed fas fa-check-circle fa-lg" style="color: mediumseagreen; display:none;"></span>
+            Set up for signature
+          </div>
+        </div>`
       )
       var d = file.previewElement.appendChild(exportTypeElement)
       /* register event js for review document */
@@ -82,6 +108,18 @@ export default {
             .css('display', 'none')
         }
       })
+      if (this.isRequestSignature) {
+        $('.setup-signature').show()
+      } else {
+        $('.setup-signature').hide()
+      }
+      let _this = this
+      $('.new-setup-signature')
+        .off('click')
+        .on('click', function () {
+          _this.$emit('setup-signature', file)
+        })
+
       /* end register event js for review document */
       if (fileEx != 'docx') {
         let element = $(`input[name="is-process-${idExportTypeElement}"]`)
