@@ -89,4 +89,12 @@
     will-change: padding;
     cursor: help;
   }
+  .setup-signature {
+    background: #d4eafa;
+    text-align: center;
+    padding: 4px 2px;
+    font-weight: bold;
+    color: #108ee9;
+    cursor: pointer;
+  }
 </style>
