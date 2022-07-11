@@ -27,7 +27,12 @@ export default {
     prepareItems(files) {
       let items = []
       let _this = this
-      let className, fileSize, fileName, typeProcess, isProcess
+      let className,
+        fileSize,
+        fileName,
+        typeProcess,
+        isProcess,
+        isSupportSignature
       files.forEach((file, index) => {
         className = file.className
           ? file.className
@@ -48,6 +53,9 @@ export default {
           : file.is_process
           ? file.is_process
           : false
+        isSupportSignature =
+          this.signatureSupportFileType.indexOf(this.getExtension(fileName)) >=
+          0
         items.push({
           id: file.id,
           filesize: fileSize,
@@ -58,6 +66,7 @@ export default {
           isProcess: isProcess,
           media_id: file.media_id,
           signature: file.signature ? file.signature : {},
+          isSupportSignature: isSupportSignature,
         })
       })
       this.items = items
@@ -65,9 +74,19 @@ export default {
     },
     afterAddedFile(file) {
       file.uuid = this.uuidv4()
+      let elementSignature = ''
       var fileEx = this.getExtension(file.name)
       /* handle append export type after added file */
       var idExportTypeElement = Math.floor(Math.random() * 100000) // Create the remove button
+      const supportSignature =
+        this.signatureSupportFileType.indexOf(fileEx) >= 0
+      if (supportSignature) {
+        elementSignature = `<div class="setup-signature new-setup-signature" id="signature-${file.uuid}" style="display:none;">
+                              <span class="signature-completed fas fa-check-circle fa-lg" style="color: mediumseagreen; display:none;"></span>
+                              Set up for signature
+                            </div>`
+      }
+
       var exportTypeElement = Dropzone.createElement(
         `<div>
           <div class="form-group document-type export-type-upload">
@@ -89,13 +108,10 @@ export default {
                 </div>
               </div>
           </div>
-          <div class="setup-signature new-setup-signature" id="signature-${file.uuid}" style="display:none;">
-            <span class="signature-completed fas fa-check-circle fa-lg" style="color: mediumseagreen; display:none;"></span>
-            Set up for signature
-          </div>
+          ${elementSignature}
         </div>`
       )
-      var d = file.previewElement.appendChild(exportTypeElement)
+      file.previewElement.appendChild(exportTypeElement)
       /* register event js for review document */
       $(`input[name="is-process-${idExportTypeElement}"]`).change(function () {
         if ($(this).is(':checked') == true) {
@@ -108,15 +124,18 @@ export default {
             .css('display', 'none')
         }
       })
-      if (this.isRequestSignature) {
-        $('.setup-signature').show()
-      } else {
-        $('.setup-signature').hide()
-      }
 
-      $(`#signature-${file.uuid}`).click(() => {
-        this.$emit('setup-signature', file)
-      })
+      if (supportSignature) {
+        if (this.isRequestSignature) {
+          $('.setup-signature').show()
+        } else {
+          $('.setup-signature').hide()
+        }
+
+        $(`#signature-${file.uuid}`).click(() => {
+          this.$emit('setup-signature', file)
+        })
+      }
 
       /* end register event js for review document */
       if (fileEx != 'docx') {

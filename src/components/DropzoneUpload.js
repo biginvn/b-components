@@ -49,6 +49,12 @@ export default {
       type: Boolean,
       default: false,
     },
+    signatureSupportFileType: {
+      type: Object / Array,
+      default: function () {
+        return []
+      },
+    },
   },
   mounted() {
     this.initDropzone()
@@ -216,7 +222,35 @@ export default {
      * @param  {[type]} file [description]
      * @return {[type]}      [description]
      */
-    afterAddedFile(file) {},
+    afterAddedFile(file) {
+      const supportSignature =
+        this.signatureSupportFileType.indexOf(this.getExtension(file.name)) >= 0
+      let elementSignature = ''
+      if (supportSignature) {
+        file.uuid = this.uuidv4()
+        elementSignature = `<div class="setup-signature new-setup-signature" id="signature-${file.uuid}" style="display:none;">
+                              <span class="signature-completed fas fa-check-circle fa-lg" style="color: mediumseagreen; display:none;"></span>
+                              Set up for signature
+                            </div>`
+      }
+
+      var exportTypeElement = Dropzone.createElement(
+        `<div class="new-attachment-dropzone">
+          ${elementSignature}
+        </div>`
+      )
+      file.previewElement.appendChild(exportTypeElement)
+      if (supportSignature) {
+        if (this.isRequestSignature) {
+          $('.setup-signature').show()
+        } else {
+          $('.setup-signature').hide()
+        }
+        $(`#signature-${file.uuid}`).click(() => {
+          this.$emit('setup-signature', file)
+        })
+      }
+    },
     /**
      * Set base config dropzone
      * @return {[type]} [description]

@@ -84,17 +84,19 @@
             ></b-radio>
           </div>
         </div>
-        <div
-          class="setup-signature"
-          v-show="isRequestSignature"
-          @click="$emit('setup-signature', item)"
-        >
-          <span
-            class="signature-completed fas fa-check-circle fa-lg"
-            style="color: mediumseagreen"
-            v-show="item.signature.docusign_template_id"
-          ></span>
-          Set up for signature
+        <div v-if="item.isSupportSignature">
+          <div
+            class="setup-signature"
+            v-show="isRequestSignature"
+            @click="$emit('setup-signature', item)"
+          >
+            <span
+              class="signature-completed fas fa-check-circle fa-lg"
+              style="color: mediumseagreen"
+              v-show="item.signature.docusign_template_id"
+            ></span>
+            Set up for signature
+          </div>
         </div>
       </div>
     </div>
