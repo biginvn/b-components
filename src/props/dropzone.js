@@ -21,6 +21,8 @@ var fileTypes = [
   '.txt',
   '.max',
   '.pdf',
+  '.ppt',
+  '.pptx',
   '.JPG',
   '.JPEG',
   '.PNG',
@@ -43,6 +45,8 @@ var fileTypes = [
   '.TXT',
   '.MAX',
   '.PDF',
+  '.PPT',
+  '.PPTX',
 ]
 
 var variables = {
@@ -67,6 +71,8 @@ var variables = {
       rtf: ' dz-rtf',
       zip: ' dz-zip',
       rar: ' dz-zip',
+      ppt: ' dz-ppt',
+      pptx: ' dz-ppt',
     },
     default: ' dz-file',
   },
