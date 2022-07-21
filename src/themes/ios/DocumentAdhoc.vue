@@ -89,6 +89,7 @@
             class="setup-signature"
             v-show="isRequestSignature"
             @click="$emit('setup-signature', item)"
+            :id="`signature-${item.id}`"
           >
             <span
               class="signature-completed fas fa-check-circle fa-lg"
