@@ -1,4 +1,5 @@
 import baseComponent from '../mixins/base-mixins'
+import { debounce, cloneDeep } from 'lodash'
 
 export default {
   data() {
@@ -19,7 +20,7 @@ export default {
         icon: null,
         url: null,
       },
-      // value: null,
+      debounceSearch: null,
     }
   },
   props: {
@@ -31,10 +32,6 @@ export default {
     },
     value: {
       required: false,
-      // I don't know validation for what? Current because this line make error, so i comment it
-      // validator: function (value) {
-      //     return value == null;
-      // }
     },
     defaultValue: {
       default: null,
@@ -100,20 +97,23 @@ export default {
       type: Boolean,
       default: true,
     },
+    handleSearch: {
+      type: Function,
+    },
   },
   mixins: [baseComponent],
   created() {
-    if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== '') {
+    if (this.ajaxSearchUrl || this.handleSearch) {
       this.searchListTotal = []
-      this.searchList = JSON.parse(JSON.stringify(this.searchListTotal))
+      this.searchList = cloneDeep(this.searchListTotal)
     } else {
-      this.searchList = JSON.parse(JSON.stringify(this.list))
-      this.searchListTotal = JSON.parse(JSON.stringify(this.list))
+      this.searchList = cloneDeep(this.list)
+      this.searchListTotal = cloneDeep(this.list)
     }
 
     if (this.defaultValue !== null) {
-      let value = this.defaultValue
-      let selectItem = this.searchListTotal.filter(
+      const value = this.defaultValue
+      const selectItem = this.searchListTotal.filter(
         item => item.id.toString() === value.toString()
       )
       if (selectItem.length > 0) {
@@ -126,35 +126,34 @@ export default {
   watch: {
     searchListTotal() {
       this.searchList = JSON.parse(JSON.stringify(this.searchListTotal))
-      if (this.ajaxSearchUrl === null || this.ajaxSearchUrl === '') {
+
+      if (!this.ajaxSearchUrl && !this.handleSearch) {
         this.switchList(false)
       }
     },
     list() {
       this.searchListTotal = JSON.parse(JSON.stringify(this.list))
-      if (this.ajaxSearchUrl === null || this.ajaxSearchUrl === '') {
+      if (!this.ajaxSearchUrl && !this.handleSearch) {
         this.switchList(false)
       }
     },
     value(newValue) {
-      // When model is updated we will update search keywords
       if (newValue == null) {
-        // this.searchKeyword = '';
-        if (this.ajaxSearchUrl !== null && this.ajaxSearchUrl !== '')
+        if (this.ajaxSearchUrl || this.handleSearch) {
           this.searchListTotal = []
+        }
         return
       }
-      let newId = newValue ? newValue : ''
-      let selectItem = this.searchListTotal.filter(
+      const selectItem = this.searchListTotal.find(
         item => item.id.toString() === newValue.toString()
       )
-      if (selectItem.length > 0) {
-        this.searchKeyword = selectItem[0].title
+      if (selectItem) {
+        this.searchKeyword = selectItem.title
       }
     },
     defaultValue(value) {
       if (value !== null) {
-        let selectItem = this.searchList.filter(
+        const selectItem = this.searchList.filter(
           item => item.id.toString() === value.toString()
         )
         this.pointerIndex = this.searchList.indexOf(selectItem[0])
@@ -221,12 +220,15 @@ export default {
       // Close LIST after 500ms (waiting for CLICK event was handled)
       setTimeout(() => {
         this.switchList(false)
-        if (this.selectedValue == null || this.selectedValue === '' || this.selectedValue === 0) {
+        if (
+          this.selectedValue == null ||
+          this.selectedValue === '' ||
+          this.selectedValue === 0
+        ) {
           this.searchList = JSON.parse(JSON.stringify(this.searchListTotal))
           if (this.isResetWhenBlurOut) this.searchKeyword = ''
           this.showResult = false
         } else this.showResult = true
-        // this.pointerIndex = this.selectedPointerIndex;
       }, 500)
       this.$emit('input', this.selectedValue)
     },
@@ -243,7 +245,6 @@ export default {
         }
       }
     },
-
     toggleArrowDropdown() {
       this.switchList(!this.isExpanding)
       if (this.selectedValue == null) {
@@ -254,7 +255,6 @@ export default {
       this.$emit('input', this.selectedValue)
     },
     selectItem(index) {
-      // index item of searchList
       if (index == undefined || index == null) {
         return
       }
@@ -264,8 +264,7 @@ export default {
       }
 
       this.pointerIndex = index
-      let id = this.searchList[index].id
-      this.selectedValue = id
+      this.selectedValue = this.searchList[index].id
       this.searchKeyword = this.searchList[index].title
     },
     toggleItem(id, index) {
@@ -275,54 +274,34 @@ export default {
         this.searchKeyword = this.searchList[index].title
       })
     },
-    hoverItem(index) {
-      // Hover on item at (index) in searchList
-      // this
-    },
     searchAction(event) {
-      let self = this
       this.selectedValue = null
       this.searchKeyword = event.target.value ? event.target.value : ''
-      this.switchList(true) // Open dropdown list
+      this.switchList(true)
       this.pointerIndex = null
       this.$emit('search-keywords', this.searchKeyword)
-      let searchKey = this.searchKeyword.trim()
-      if (
-        this.ajaxSearchUrl !== null &&
-        this.ajaxSearchUrl !== '' &&
-        searchKey.length >= this.startLengthKey
-      ) {
-        let urlSearch =
-          this.ajaxSearchUrl + '?' + this.keyNameSearch + '=' + searchKey
-        this.$http.get(urlSearch, { params: this.paramAjaxSearch }).then(
-          success => {
-            this.pointerIndex = null
-            let dataList = success.body[this.dataPrefix]
-            this.searchListTotal = []
-            dataList.map(data => {
-              let tmp = {
-                id: self.formatList.id
-                  ? self.formatListHtml(self.formatList.id, data)
-                  : null,
-                html: self.formatList.html
-                  ? self.formatListHtml(self.formatList.html, data)
-                  : null,
-                title: self.formatList.title
-                  ? self.formatListHtml(self.formatList.title, data)
-                  : null,
-                icon: self.formatList.icon
-                  ? self.formatListHtml(self.formatList.icon, data)
-                  : null,
-                url: self.formatList.url
-                  ? self.formatListHtml(self.formatList.url, data)
-                  : null,
-              }
-              this.searchListTotal.push(tmp)
-            })
-            // this.searchList = JSON.parse(JSON.stringify(this.searchListTotal));
-          },
-          response => {}
-        )
+
+      if (this.handleSearch || this.ajaxSearchUrl) {
+        if (this.searchKeyword.trim().length >= this.startLengthKey) {
+          this.callDebounceSearch(
+            this.handleSearch
+              ? this.handleSearch.bind(this)
+              : () => {
+                  this.$http
+                    .get(this.ajaxSearchUrl, {
+                      params: {
+                        ...this.paramAjaxSearch,
+                        [this.keyNameSearch]: this.searchKeyword.trim(),
+                      },
+                    })
+                    .then(success => {
+                      this.searchListTotal = (
+                        success.body[this.dataPrefix] || []
+                      ).map(this.responseSearch)
+                    })
+                }
+          )
+        }
       } else {
         this.searchList = this.searchListTotal.filter(item => {
           return item.title != undefined && item.title != null
@@ -335,7 +314,22 @@ export default {
         })
       }
     },
-
+    callDebounceSearch(callback) {
+      if (this.debounceSearch) {
+        this.debounceSearch()
+      } else {
+        this.debounceSearch = debounce(callback, 1000)
+        this.debounceSearch()
+      }
+    },
+    responseSearch(data) {
+      return ['id', 'html', 'title', 'icon', 'url'].reduce((prev, curr) => {
+        prev[curr] = this.formatList[curr]
+          ? this.formatListHtml(this.formatList[curr], data)
+          : null
+        return prev
+      }, {})
+    },
     resolve(obj, path) {
       path = path.split('.')
       let current = obj
@@ -362,7 +356,6 @@ export default {
 
     keypressAction(keyName, event) {
       let pointerIndex = this.pointerIndex
-      // this.selectedValue = null;
       switch (keyName) {
         case 'ArrowDown':
           if (
@@ -373,8 +366,6 @@ export default {
           } else {
             pointerIndex++
           }
-          // this.selectedValue = this.searchList[pointerIndex].id;
-          // this.switchList(true);
           break
         case 'ArrowUp':
           if (this.pointerIndex == null || this.pointerIndex == 0) {
@@ -382,11 +373,8 @@ export default {
           } else {
             pointerIndex--
           }
-          // this.selectedValue = this.searchList[pointerIndex].id;
-          // this.switchList(true);
           break
         case 'Enter':
-          // this.selectedValue = this.searchList[pointerIndex].id;
           this.switchList(false)
           this.selectItem(pointerIndex)
           break

@@ -6,9 +6,9 @@
     :null-placeholder="nullPlaceholder"
     :org-placeholder="orgPlaceholder"
   >
-    <label :for="id" :class="isActive ? 'active' : ''">{{
-      label.toUpperCase()
-    }}<slot name="append-label"></slot></label>
+    <label :for="id" :class="{ active: isActive }"
+      >{{ label.toUpperCase() }}<slot name="append-label"
+    /></label>
     <div
       v-show="showResult && isShowHtmlResult"
       class="result"
@@ -29,11 +29,10 @@
         <div class="icon" v-if="!disableIcon">
           <img :src="itemResult.icon" class="icon-img" />
         </div>
-        <div class="content" v-html="itemResult.html"></div>
+        <div class="content" v-html="itemResult.html" />
       </div>
     </div>
 
-    <!--remove action key down backspace: @keydown.8="keypressAction('BackSpace', null)" -->
     <input
       :ref="'input-search-' + id"
       v-show="showInputSearchCombobox"
@@ -68,7 +67,7 @@
         v-show="searchList.length == 0"
         class="not-found"
         v-html="placeholderEmpty"
-      ></li>
+      />
       <li
         class="list-item"
         :class="{ hover: index == pointerIndex }"
@@ -79,7 +78,7 @@
         <div class="icon" v-if="!disableIcon">
           <img :src="item.icon" class="icon-img" />
         </div>
-        <div class="content" v-html="item.html"></div>
+        <div class="content" v-html="item.html" />
       </li>
     </ul>
     <div
