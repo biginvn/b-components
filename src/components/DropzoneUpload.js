@@ -49,6 +49,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isInvoicingMail: {
+      type: Boolean,
+      default: false,
+    },
     signatureSupportFileType: {
       type: Object / Array,
       default: function () {

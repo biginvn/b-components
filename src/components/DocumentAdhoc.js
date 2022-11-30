@@ -12,6 +12,7 @@ export default {
           val.forEach((item, index) => {
             if (!item.isProcess) item.exportType = 'docx'
             vm.value.list[index].isProcess = item.isProcess
+            vm.value.list[index].isInvoiceDocument = item.isInvoiceDocument
             vm.value.list[index].exportType = item.exportType
           })
         }
@@ -32,6 +33,7 @@ export default {
         fileName,
         typeProcess,
         isProcess,
+        isInvoiceDocument,
         isSupportSignature
       files.forEach((file, index) => {
         className = file.className
@@ -53,6 +55,11 @@ export default {
           : file.is_process
           ? file.is_process
           : false
+        isInvoiceDocument = file.isInvoiceDocument
+          ? file.isInvoiceDocument
+          : file.is_invoice_document
+          ? file.is_invoice_document
+          : false
         isSupportSignature =
           this.signatureSupportFileType.indexOf(this.getExtension(fileName)) >=
           0
@@ -64,6 +71,7 @@ export default {
           className: className,
           exportType: typeProcess,
           isProcess: isProcess,
+          isInvoiceDocument: isInvoiceDocument,
           media_id: file.media_id,
           signature: file.signature ? file.signature : {},
           isSupportSignature: isSupportSignature,
@@ -107,6 +115,11 @@ export default {
                   <label>Pdf</label>
                 </div>
               </div>
+              <div class="invoice-document b__components b-checkbox">
+                <input name="is-invoice-document-${idExportTypeElement}" type="checkbox" class="invoice-document checkbox__input"> 
+                <span class="checkbox__checkmark"></span> 
+                <label>Invoice Document</label>
+              </div>
           </div>
           ${elementSignature}
         </div>`
@@ -136,6 +149,9 @@ export default {
           this.$emit('setup-signature', file)
         })
       }
+      this.isInvoicingMail
+        ? $('.invoice-document').show()
+        : $('.invoice-document').hide()
 
       /* end register event js for review document */
       if (fileEx != 'docx') {

@@ -83,6 +83,12 @@
               v-if="item.isProcess"
             ></b-radio>
           </div>
+          <b-check-box
+            class="invoice-document"
+            v-show="isInvoicingMail"
+            v-model="item.isInvoiceDocument"
+            label="Invoice Document"
+          />
         </div>
         <div v-if="item.isSupportSignature">
           <div
