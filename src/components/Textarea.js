@@ -21,6 +21,10 @@ export default {
     nullPrePlaceholder: {
       default: '-',
     },
+    required: {
+      type: Boolean,
+      default: false,
+    },
   },
   watch: {
     value(val) {

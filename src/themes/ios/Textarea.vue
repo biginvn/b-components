@@ -1,6 +1,6 @@
 <template>
   <div class="b__components b-ios b-textarea">
-    <label :class="classLabel" v-show="!isViewPre">{{ label }}</label>
+    <label :class="[{ required: required }, classLabel]" v-show="!isViewPre">{{ label }}</label>
     <textarea
       v-show="!isViewPre"
       :placeholder="placeholder"
@@ -16,7 +16,7 @@
       @input="change($event.target.value)"
     ></textarea>
     <div class="b-wrapper-pre" v-show="isViewPre">
-      <label class="label-pre" :class="classLabel">{{ label }}</label>
+      <label class="label-pre" :class="[{ required: required }, classLabel]">{{ label }}</label>
       <pre class="pre-b-textarea" :placeholder="placeholder">{{
         contentPreview
       }}</pre>
@@ -27,3 +27,9 @@
   import Textarea from './../../components/Textarea'
   export default Textarea
 </script>
+<style scoped>
+  .required:after {
+    content: ' *';
+    color: red;
+  }
+</style>
