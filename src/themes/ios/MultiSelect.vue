@@ -157,7 +157,7 @@
   }
 
   .addBorder {
-    border: 1px solid #0082d5 !important;
+    border: 1px solid #0082d5;
   }
 
   .b__multi__select__control {
