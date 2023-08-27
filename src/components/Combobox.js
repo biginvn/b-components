@@ -100,6 +100,16 @@ export default {
     handleSearch: {
       type: Function,
     },
+    textTranslate: {
+      type: Object,
+      default: function(){
+        return {
+          not_found: 'Not Found',
+          please_type_at_least: 'Please type at least',
+          characters_to_search: 'characters to search'
+        }
+      }
+    },
   },
   mixins: [baseComponent],
   created() {
@@ -191,13 +201,13 @@ export default {
       )
     },
     placeholderEmpty() {
-      if (this.searchKeyword.length >= this.startLengthKey) return 'Not Found'
+      if (this.searchKeyword.length >= this.startLengthKey) return this.textTranslate.not_found
 
       if (this.searchList.length == 0)
         return (
-          'Please type at least ' +
+          `${this.textTranslate.please_type_at_least} ` +
           this.startLengthKey +
-          ' characters to search'
+          ` ${this.textTranslate.characters_to_search}`
         )
     },
   },
