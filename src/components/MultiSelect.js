@@ -53,6 +53,15 @@ export default {
     selectAllId: {
       type: Number,
     },
+    textTranslate: {
+      type: Object,
+      default: function(){
+        return {
+          not_found: 'Not Found',
+          all_service: 'All Service'
+        }
+      }
+    }
   },
   computed: {
     selected() {

@@ -106,7 +106,7 @@
           v-show="searchList == undefined || searchList.length == 0"
           class="not-found"
         >
-          Not found
+          {{ textTranslate.not_found }}
         </li>
         <li
           @mousedown="selectAll()"
@@ -118,7 +118,7 @@
           "
           class="list-item select-all-option"
         >
-          All Service
+          {{ textTranslate.all_service }}
         </li>
         <li
           v-for="(item, index) in searchList"
