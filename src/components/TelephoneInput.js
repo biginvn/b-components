@@ -3,6 +3,7 @@ import {
   AsYouType,
   isValidNumber,
   parseDigits,
+  parseNumber
 } from 'libphonenumber-js'
 import allCountries from '../assets/telephone-input/all-countries'
 import getCountry from '../assets/telephone-input/default-country'
@@ -120,7 +121,7 @@ export default {
     },
     formatTypePhone: {
       type: String,
-      default: 'NATIONAL',
+      default: 'INTERNATIONAL', //NATIONAL
     },
     formatByDefaultCountry: {
       type: String,
@@ -197,27 +198,28 @@ export default {
           return ''
         }
         let phone = this.phone
-        let formatter = new AsYouType() // eslint-disable-line
-        if (!this.useCustomFormatNumber) {
-          formatter = new AsYouType(this.formatCountryNumber) // eslint-disable-line
-        }
-        formatter.input(this.phone)
+        // console.log('phone', phone)
+        // let formatter = new AsYouType() // eslint-disable-line
+        // if (!this.useCustomFormatNumber) {
+        //   formatter = new AsYouType(this.formatCountryNumber) // eslint-disable-line
+        // }
+        // formatter.input(this.phone)
 
         if (this.mode === 'code') {
           // Find inputted country in the countries list
           this.activeCountry =
-            this.findCountry(formatter.country) || this.activeCountry
+            this.findCountry(this.formatCountryNumber) || this.activeCountry
         } else if (this.mode === 'prefix') {
           // Remove the first '0' if this is a '0' prefix number
           // Ex: 0432421999
           phone = this.phone.slice(1)
         }
-
-        return formatNumber(
-          phone,
-          this.formatCountryNumber,
-          this.formatTypePhone
-        )
+        return phone
+        // return formatNumber(
+        //   phone,
+        //   this.formatCountryNumber,
+        //   this.formatTypePhone
+        // )
       } else {
         return this.formatNumberByCustom(this.phone)
       }
@@ -267,9 +269,9 @@ export default {
       // Emit input event in case v-model is used in the parent
       this.$emit('input', this.phone)
     },
-    activeCountry() {
-      this.$emit('updatePhoneCountryCode', this.activeCountry.dialCode)
-      this.phone = this.formatPhoneByNational(this.phone)
+    activeCountry(value) {
+      this.$emit('updatePhoneCountryCode', value)
+      // this.phone = this.formatPhoneByNational(this.phone)
     },
     countryCode() {
       this.initializeCountry()
@@ -295,12 +297,50 @@ export default {
       }
     },
     formatPhoneByNational(phone) {
-      phone = parseDigits(phone)
-      let formatter = new AsYouType() // eslint-disable-line
-      if (!this.useCustomFormatNumber) {
-        formatter = new AsYouType(this.formatCountryNumber) // eslint-disable-line
+      let currentPhone = parseNumber(phone, 'US', { extended: true })
+      if(currentPhone.countryCallingCode != undefined) {
+        const code = '+' + currentPhone.countryCallingCode
+        let numbers = currentPhone.phone
+
+        let newPhone = ''
+        if (numbers.length <= this.maxLengthStandardDigits) {
+          for (var i = 0; i < numbers.length; i++) {
+            newPhone += (this.customFormatNumberStandard[i] || '') + numbers[i]
+          }
+        } else {
+          for (var i = 0; i < numbers.length; i++) {
+            newPhone += (this.customFormatNumberNotStandard[i] || '') + numbers[i]
+          }
+        }
+        return code + newPhone
       }
-      return formatter.input(phone)
+      return phone
+
+
+      // let formatter = new AsYouType() // eslint-disable-line
+      // if (!this.useCustomFormatNumber) {
+      //   formatter = new AsYouType(this.formatCountryNumber) // eslint-disable-line
+      // } else {
+      //   phone = parseDigits(phone)
+      // }
+      // return formatter.input(phone)
+
+      // const code = '+' + this.activeCountry.dialCode
+      // let numbers = formatter.getNumber().number
+      // numbers = numbers.replace(code, '')
+      // // numbers = numbers.replace(/\D/g, '')
+      // // console.log('==', numbers)
+      // let newPhone = ''
+      // if (numbers.length <= this.maxLengthStandardDigits) {
+      //   for (var i = 0; i < numbers.length; i++) {
+      //     newPhone += (this.customFormatNumberStandard[i] || '') + numbers[i]
+      //   }
+      // } else {
+      //   for (var i = 0; i < numbers.length; i++) {
+      //     newPhone += (this.customFormatNumberNotStandard[i] || '') + numbers[i]
+      //   }
+      // }
+      // return code + newPhone
     },
     initializeCountry() {
       /**
@@ -347,7 +387,7 @@ export default {
         .filter(Boolean)
     },
     findCountry(iso = '') {
-      return allCountries.find(country => country.iso2 === iso.toUpperCase())
+      return allCountries.find(country => country.iso2.toUpperCase() === iso.toUpperCase())
     },
     findCountryByCode(countryCode) {
       return allCountries.find(
@@ -369,9 +409,17 @@ export default {
       }
     },
     choose(country) {
+      let newPhone = this.phone
+      this.phone = newPhone.replace('+' + this.activeCountry.dialCode, '+' + country.dialCode)
       this.activeCountry = country
     },
     onInput() {
+      let newPhone = this.phone;
+      newPhone = newPhone.replace(' ', '')
+      if(!newPhone.startsWith('+' + this.activeCountry.dialCode)) {
+        this.phone = '+' + this.activeCountry.dialCode
+      }
+
       this.$refs.input.setCustomValidity(
         this.response.isValid ? '' : this.invalidMsg
       )
@@ -418,14 +466,15 @@ export default {
       ) {
         // Left / Up / Right / Down Arrow, Delete keys;
         if (!this.useCustomFormatNumber) {
-          if (
-            e.target.selectionEnd == e.target.selectionStart &&
-            this.isPreventAfterInputValidNumber &&
-            this.response.isValid
-          ) {
-            e.preventDefault()
-            return false
-          }
+          // if (
+          //   e.target.selectionEnd == e.target.selectionStart &&
+          //   this.isPreventAfterInputValidNumber &&
+          //   this.response.isValid
+          // ) {
+          //   console.log('keyDownPress', e.target, this.isPreventAfterInputValidNumber, this.response.isValid)
+          //   e.preventDefault()
+          //   return false
+          // }
         } else {
           let phoneDigits = parseDigits(this.phone)
           if (
@@ -452,23 +501,24 @@ export default {
           }
         }
       }
-      if (keyCode === 8) {
-        let phoneTmp = this.phone
-        let cursorPositionStart = this.getPositionCursorInPhone(
-          phoneTmp,
-          e.target.selectionStart
-        )
-        if (cursorPositionStart > 0) {
-          if (e.target.selectionEnd == e.target.selectionStart) {
-            e.preventDefault()
-            this.phone = this.removeCharacter(
-              parseDigits(phoneTmp),
-              cursorPositionStart - 1
-            )
-            return
-          }
-        }
-      }
+
+      // if (keyCode === 8) {
+      //   let phoneTmp = this.phone
+      //   let cursorPositionStart = this.getPositionCursorInPhone(
+      //     phoneTmp,
+      //     e.target.selectionStart
+      //   )
+      //   if (cursorPositionStart > 0) {
+      //     if (e.target.selectionEnd == e.target.selectionStart) {
+      //       e.preventDefault()
+      //       this.phone = this.removeCharacter(
+      //         parseDigits(phoneTmp),
+      //         cursorPositionStart - 1
+      //       )
+      //       return
+      //     }
+      //   }
+      // }
     },
     keyUpPress(e) {
       let ctrlKey = 17,
