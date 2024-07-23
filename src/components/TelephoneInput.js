@@ -297,7 +297,12 @@ export default {
       }
     },
     formatPhoneByNational(phone) {
-      let currentPhone = parseNumber(phone, 'US', { extended: true })
+      // console.log('phone', phone)
+      if(phone == '+' + this.activeCountry.dialCode) {
+        return phone
+      }
+      let currentPhone = parseNumber(phone, this.activeCountry.iso2, { extended: true })
+      // console.log('currentPhone', currentPhone)
       if(currentPhone.countryCallingCode != undefined) {
         const code = '+' + currentPhone.countryCallingCode
         let numbers = currentPhone.phone
@@ -410,14 +415,16 @@ export default {
     },
     choose(country) {
       let newPhone = this.phone
+      newPhone = '+' + newPhone.replace(/\D/g, '')
       this.phone = newPhone.replace('+' + this.activeCountry.dialCode, '+' + country.dialCode)
       this.activeCountry = country
     },
     onInput() {
       let newPhone = this.phone;
-      newPhone = newPhone.replace(' ', '')
-      if(!newPhone.startsWith('+' + this.activeCountry.dialCode)) {
-        this.phone = '+' + this.activeCountry.dialCode
+      newPhone = '+' + newPhone.replace(/\D/g, '')
+      const code = this.activeCountry.dialCode
+      if(!newPhone.startsWith('+' + code)) {
+        this.phone = '+' + code
       }
 
       this.$refs.input.setCustomValidity(
