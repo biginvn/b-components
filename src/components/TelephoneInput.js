@@ -274,6 +274,7 @@ export default {
       // this.phone = this.formatPhoneByNational(this.phone)
     },
     countryCode() {
+      // console.log('countryCode aaaaa')
       this.initializeCountry()
     },
   },
@@ -375,6 +376,7 @@ export default {
       // return code + newPhone
     },
     initializeCountry() {
+      // console.log('initializeCountry')
       /**
        * 1. Use default country if passed from parent
        */
@@ -389,7 +391,15 @@ export default {
        * 2. Use default country if passed from parent
        */
       if (this.countryCode) {
-        const countryByCode = this.findCountryByCode(this.countryCode)
+        // console.log('this.countryCode', this.countryCode)
+        // console.log('this.activeCountry', this.activeCountry)
+        let countryByCode = null
+        if(this.activeCountry) {
+          countryByCode = this.findCountry(this.activeCountry.iso2)
+        } else {
+          countryByCode = this.findCountryByCode(this.countryCode)
+        }
+
         if (countryByCode) {
           this.activeCountry = countryByCode
           return
@@ -404,11 +414,11 @@ export default {
       /**
        * 4. Check if fetching country based on user's IP is allowed, set it as the default country
        */
-      if (!this.disabledFetchingCountry) {
-        getCountry().then(res => {
-          this.activeCountry = this.findCountry(res) || this.activeCountry
-        })
-      }
+      // if (!this.disabledFetchingCountry) {
+      //   getCountry().then(res => {
+      //     this.activeCountry = this.findCountry(res) || this.activeCountry
+      //   })
+      // }
     },
     /**
      * Get the list of countries from the list of iso2 code
@@ -419,9 +429,11 @@ export default {
         .filter(Boolean)
     },
     findCountry(iso = '') {
+      // console.log('findCountry', iso)
       return allCountries.find(country => country.iso2.toUpperCase() === iso.toUpperCase())
     },
     findCountryByCode(countryCode) {
+      // console.log('findCountryByCode', countryCode)
       return allCountries.find(
         country =>
           country.dialCode.toString() === countryCode.toString() &&
@@ -441,17 +453,21 @@ export default {
       }
     },
     choose(country) {
+      // console.log('this.activeCountry before', this.activeCountry)
       let newPhone = this.phone
+      // console.log('newPhone', newPhone)
       if(newPhone == '') {
         this.phone = '+' + country.dialCode
       } else {
         newPhone = '+' + newPhone.replace(/\D/g, '')
         this.phone = newPhone.replace('+' + this.activeCountry.dialCode, '+' + country.dialCode)
+        // console.log('newPhone before', newPhone.replace('+' + this.activeCountry.dialCode, '+' + country.dialCode))
       }
       this.activeCountry = country
+      // console.log('this.activeCountry after', this.activeCountry)
     },
     onInput(e) {
-      console.log('e', e)
+      // console.log('e', e)
       let newPhone = this.phone;
       newPhone = '+' + newPhone.replace(/\D/g, '')
       const code = this.activeCountry.dialCode
