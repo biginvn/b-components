@@ -62,6 +62,12 @@ export default {
       // type: Number,
       default: null,
     },
+    countryIso: {
+      // Default country code, ie: 1
+      // Will override the current country of user
+      // type: Number,
+      default: null,
+    },
     enabledFlags: {
       type: Boolean,
       default: true,
@@ -273,10 +279,14 @@ export default {
       this.$emit('updatePhoneCountryCode', value)
       // this.phone = this.formatPhoneByNational(this.phone)
     },
-    countryCode() {
+    // countryCode() {
       // console.log('countryCode aaaaa')
+      // this.initializeCountry()
+    // },
+    countryIso() {
+      // console.log('countryIso aaaaa')
       this.initializeCountry()
-    },
+    }
   },
   methods: {
     formatNumberByCustom(phone) {
@@ -322,6 +332,7 @@ export default {
         return code + ' ' + newPhone
 
       } else {
+        // console.log('phone', phone)
 
         let currentPhone = parseNumber(phone, this.activeCountry.iso2, { extended: true })
         // console.log('currentPhone', currentPhone)
@@ -390,21 +401,22 @@ export default {
       /**
        * 2. Use default country if passed from parent
        */
-      if (this.countryCode) {
-        // console.log('this.countryCode', this.countryCode)
-        // console.log('this.activeCountry', this.activeCountry)
-        let countryByCode = null
-        if(this.activeCountry) {
-          countryByCode = this.findCountry(this.activeCountry.iso2)
-        } else {
-          countryByCode = this.findCountryByCode(this.countryCode)
-        }
-
-        if (countryByCode) {
-          this.activeCountry = countryByCode
+      if (this.countryIso) {
+        const countryByIso = this.findCountry(this.countryIso)
+        // console.log('countryByIso', countryByIso)
+        if (countryByIso) {
+          // console.log('aaaa')
+          this.activeCountry = countryByIso
           return
         }
       }
+      // if (this.countryCode) {
+      //   const countryByCode = this.findCountryByCode(this.countryCode)
+      //   if (countryByCode) {
+      //     this.activeCountry = countryByCode
+      //     return
+      //   }
+      // }
       /**
        * 3. Use the first country from preferred list (if available) or all countries list
        */
