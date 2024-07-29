@@ -263,6 +263,7 @@ export default {
       this.phone = this.value
     },
     phone() {
+      // console.log('phone', this.phone)
       if (!this.useCustomFormatNumber) {
         this.phone = this.formatPhoneByNational(this.phone)
         this.updateLabel(this.phone)
@@ -276,6 +277,7 @@ export default {
       this.$emit('input', this.phone)
     },
     activeCountry(value) {
+      // console.log('activeCountry', value)
       this.$emit('updatePhoneCountryCode', value)
       // this.phone = this.formatPhoneByNational(this.phone)
     },
@@ -284,7 +286,7 @@ export default {
       // this.initializeCountry()
     // },
     countryIso() {
-      // console.log('countryIso aaaaa')
+      // console.log('countryIso', this.countryIso)
       this.initializeCountry()
     }
   },
@@ -308,32 +310,31 @@ export default {
       }
     },
     formatPhoneByNational(phone) {
-      // console.log('phone', phone)
+      // console.log('formatPhoneByNational', phone, this.activeCountry.dialCode)
       if(phone == '+' + this.activeCountry.dialCode) {
         return phone
       }
       // console.log('phone', phone)
 
-      if(this.activeCountry.dialCode.length > 3) {
-        // console.log('4 digit')
-        const code = '+' + this.activeCountry.dialCode
-        let numbers = phone.replace(code, '')
-        numbers = numbers.replace(/\D/g, '')
-        let newPhone = ''
-        if (numbers.length <= this.maxLengthStandardDigits) {
-          for (var i = 0; i < numbers.length; i++) {
-            newPhone += (this.customFormatNumberStandard[i] || '') + numbers[i]
-          }
-        } else {
-          for (var i = 0; i < numbers.length; i++) {
-            newPhone += (this.customFormatNumberNotStandard[i] || '') + numbers[i]
-          }
-        }
-        return code + ' ' + newPhone
+      // if(this.activeCountry.dialCode.length > 3) {
+      //   // console.log('4 digit')
+      //   const code = '+' + this.activeCountry.dialCode
+      //   let numbers = phone.replace(code, '')
+      //   numbers = numbers.replace(/\D/g, '')
+      //   let newPhone = ''
+      //   if (numbers.length <= this.maxLengthStandardDigits) {
+      //     for (var i = 0; i < numbers.length; i++) {
+      //       newPhone += (this.customFormatNumberStandard[i] || '') + numbers[i]
+      //     }
+      //   } else {
+      //     for (var i = 0; i < numbers.length; i++) {
+      //       newPhone += (this.customFormatNumberNotStandard[i] || '') + numbers[i]
+      //     }
+      //   }
+      //   return code + ' ' + newPhone
 
-      } else {
+      // } else {
         // console.log('phone', phone)
-
         let currentPhone = parseNumber(phone, this.activeCountry.iso2, { extended: true })
         // console.log('currentPhone', currentPhone)
         // console.log('this.activeCountry.dialCode', this.activeCountry.dialCode)
@@ -355,7 +356,7 @@ export default {
           return code + ' ' + newPhone
         }
 
-      }
+      // }
 
 
       return phone
