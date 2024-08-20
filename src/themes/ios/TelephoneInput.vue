@@ -38,6 +38,7 @@
           v-if="enabledFlags"
           :class="activeCountry.iso2.toLowerCase()"
         ></div>
+        <span class="b-code">{{ activeCountry.iso2 }}</span>
         <span class="dropdown-arrow">{{ open ? '▲' : '▼' }}</span>
       </span>
     </div>
@@ -171,6 +172,11 @@
   .b-tel-input.disabled .dropdown,
   .b-tel-input.disabled input {
     cursor: no-drop;
+  }
+  .b-code{
+    margin: 0px 4px 0 0px;
+    font-weight: bold;
+    font-size: 12px;
   }
   @-moz-document url-prefix() {
     .uiFirefox {
