@@ -67,15 +67,14 @@ export default {
     selected() {
       // Convert v-model to [] if it's null
       let selected = this.value ? this.value : this.isSingle ? null : []
-
       if (Array.isArray(selected)) {
         selected = selected.filter(el => {
           return !!el || parseInt(el) === 0
         })
 
-        selected = selected.map(el => {
-          return parseInt(el)
-        })
+        // selected = selected.map(el => {
+        //   return parseInt(el)
+        // })
       }
       return selected
     },
@@ -144,15 +143,12 @@ export default {
       // Get selected with full information [ { id : .. , html : ... } ]
       if (this.isSingle) return
       let selected = []
-      // console.log('aa', this.selected)
+      
       this.selected.forEach((id, index) => {
         let item = this.list.find(value => value.id == id)
-        item.id = parseInt(item.id)
+        // item.id = parseInt(item.id)
         if (item != undefined) selected.push(item)
       })
-      // console.log(selected)
-      // selected = selected.map(elem => parseInt(elem.id))
-      // console.log(selected)
       return selected
     },
 
@@ -175,12 +171,12 @@ export default {
       }
 
       if (!this.isSingle) {
-        id = parseInt(id)
+        // id = parseInt(id)
         let selectList = []
 
         if (this.value) {
           if (Array.isArray(this.value))
-            selectList = this.value.map(item => parseInt(item))
+            selectList = this.value.map(item => item)
         }
 
         if (
@@ -283,7 +279,7 @@ export default {
       this.pointerIndex = pointerIndex
     },
     selectAll() {
-      let list = this.searchList.map(elem => parseInt(elem.id))
+      let list = this.searchList.map(elem => elem.id)
       this.searchKeyword = ''
       this.$el.querySelector('input.input-control').focus()
       this.focusInputAction('')
