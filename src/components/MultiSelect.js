@@ -187,7 +187,7 @@ export default {
           selectList = selectList.filter(item => item == this.selectAllId)
         }
 
-        if (selectList.includes(id))
+        if (selectList.includes(id.toString()) || selectList.includes(id))
           selectList.splice(selectList.indexOf(id), 1)
         else selectList.push(id)
         this.switchList(true)
