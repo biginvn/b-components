@@ -125,7 +125,7 @@
           class="list-item"
           :class="{
             active:
-              (!isSingle && selected.includes(parseInt(item.id))) ||
+              (!isSingle && (selected.includes(parseInt(item.id)) || selected.includes(item.id.toString()))) ||
               (isSingle && selected == parseInt(item.id)),
             hover: index == pointerIndex,
             'main-vendor': item.main_vendor,
