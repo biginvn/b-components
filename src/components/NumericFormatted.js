@@ -1,4 +1,6 @@
 import baseMixins from '../mixins/text-field-mixins'
+var numeral = require('numeral')
+
 export default {
   data() {
     return {
@@ -235,7 +237,10 @@ export default {
           if (this.decimalNumber === 0) {
             return Math.round(n).toString()
           } else {
-            return n.toFixed(this.decimalNumber)
+            // return n.toFixed(this.decimalNumber)
+            const decimal = Array(this.decimalNumber).fill(0).join('')
+            const format = `0,0.${decimal}`
+            return numeral(n).format(format)
           }
         }
       }
