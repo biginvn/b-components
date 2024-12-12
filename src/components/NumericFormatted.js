@@ -41,11 +41,7 @@ export default {
     required: {
       type: Boolean,
       default: false,
-    },
-    acceptNegative: {
-      type: Boolean,
-      default: true
-    },
+    }
   },
   mounted() {
     this.blur(this.value)
@@ -90,10 +86,6 @@ export default {
       if (event.target.value.includes('.')) {
         event.charCode == 46 ? event.preventDefault() : event.charCode
       }
-
-      if (this.acceptNegative) {
-         minCharCodeAllow = 44 
-        }
 
       // Remove Alphabet
       if (charCode != 0) {
@@ -143,7 +135,7 @@ export default {
           : mask
 
       if (this.minValueNumber !== null)
-        parseFloat(mask) < this.minValueNumber && !this.acceptNegative
+        parseFloat(mask) < this.minValueNumber
           ? (mask = this.minValueNumber.toString())
           : mask
 
@@ -209,7 +201,7 @@ export default {
             ? this.affix + this.separator($mask)
             : this.separator($mask) + this.affix
 
-          if (this.acceptNegative && $mask < 0) {
+          if (this.isNegative && $mask < 0) {
             $result = '-' + $result.replace('-', '')
           }
         else $result = this.separator($mask)
