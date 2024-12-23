@@ -196,11 +196,15 @@ export default {
       $mask = this.isNull(n)
 
       if ($mask != '') {
-        if (this.affix !== null)
+        if (this.affix !== null) {
           $result = this.is_prefix
             ? this.affix + this.separator($mask)
             : this.separator($mask) + this.affix
-        else $result = this.separator($mask)
+
+          if (this.isNegative && $mask < 0) {
+            $result = '-' + $result.replace('-', '')
+          }
+        } else $result = this.separator($mask)
       } else {
         $result = ''
       }
@@ -237,7 +241,10 @@ export default {
           if (this.decimalNumber === 0) {
             return Math.round(n).toString()
           } else {
-            return n.toFixed(this.decimalNumber)
+            // return n.toFixed(this.decimalNumber)
+            const decimal = Array(this.decimalNumber).fill(0).join('')
+            const format = `0,0.${decimal}`
+            return numeral(n).format(format)
           }
         }
       }
