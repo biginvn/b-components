@@ -193,7 +193,7 @@ export default {
       }
 
       // Check Value is Null & Check Affix
-      $mask = this.isNull(n)
+      $mask = this.isNull(n, true)
 
       if ($mask != '') {
         if (this.affix !== null) {
@@ -232,7 +232,7 @@ export default {
             .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
         : value
     },
-    isNull(n) {
+    isNull(n, isBeautiful = false) {
       if (n === null) return (n = '')
       if (typeof n == 'number') {
         if (n === undefined || n === null || isNaN(n)) {
@@ -241,9 +241,10 @@ export default {
           if (this.decimalNumber === 0) {
             return Math.round(n).toString()
           } else {
-            // return n.toFixed(this.decimalNumber)
             const decimal = Array(this.decimalNumber).fill(0).join('')
-            const format = `0,0.${decimal}`
+            const format = isBeautiful
+              ? `0,0.${decimal}`
+              : `0.${decimal}`
             return numeral(n).format(format)
           }
         }
