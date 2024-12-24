@@ -245,6 +245,12 @@ export default {
             const format = isBeautiful
               ? `0,0.${decimal}`
               : `0.${decimal}`
+
+            if(n.toString().indexOf('-') !== -1) {
+              n = n.toString().replace('-', '')
+              return '-' + numeral(parseFloat(n)).format(format)
+            }
+            
             return numeral(n).format(format)
           }
         }
