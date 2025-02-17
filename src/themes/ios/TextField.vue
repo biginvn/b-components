@@ -10,6 +10,7 @@
       :placeholder="placeholder"
       :type="type"
       :min="min"
+      :max="max"
       :maxlength="maxlength"
       ref="bInput"
       :name="name"

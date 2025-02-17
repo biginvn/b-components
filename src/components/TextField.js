@@ -11,6 +11,10 @@ export default {
       type: Number / String,
       default: null,
     },
+    max: {
+      type: Number / String,
+      default: null,
+    },
     maxlength: {
       type: Number / String,
       default: null,
@@ -92,13 +96,18 @@ export default {
       const keyCode = e.keyCode || e.which
 
       let pattern = new RegExp(this.regex)
+      const value = $(e.target).val() + e.key
       if (!!this.regex) {
-        const value = $(e.target).val() + e.key
         let res = pattern.test(value)
         if (!res && keyCode != 8 && keyCode != 37 && keyCode != 39) {
           e.preventDefault()
           return false
         }
+      }
+
+      if(this.type == 'number' && (+value > +this.max || +value < +this.min)) {
+        e.preventDefault()
+        return false
       }
 
       // Don't validate the input if below arrow, delete and backspace keys were pressed
