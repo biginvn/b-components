@@ -3,7 +3,7 @@ var variables = {
   range: null,
   contentTinyMCE: '',
   toolbar1:
-    'undo redo formatselect | bold italic strikethrough | link image | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent pagebreak line-height-select',
+    'undo redo formatselect | bold italic strikethrough | link image | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent pagebreak line-height-select | code',
 }
 
 var baseProps = [
@@ -31,7 +31,7 @@ var tinyConfig = {
   lineheight_formats: 'Single=100% 1.5=150% Double=200%',
   theme: 'silver',
   plugins:
-    'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help noneditable line-height',
+    'print preview searchreplace autolink directionality visualblocks visualchars image link template codesample table charmap hr pagebreak nonbreaking toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help noneditable line-height code',
   menubar: 'edit insert view format table tools help',
   content_css: [
     'https://fonts.googleapis.com/css?family=Montserrat',
